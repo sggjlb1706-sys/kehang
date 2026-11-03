@@ -14,3 +14,5 @@
 独立delta适用代码HEAD 4330c70678e8951c1a5fc8d1b429b600f8afd54c，正文在records/review/independent-delta.md，SHA-256 861A5F93B668B34B20FA11D1FE570EB7DC480DDCB7EA85D7A7EAC45F10C453BA。初审报告正文SHA-256 714010C30309D3F2DFCB34A1444DECABFFD49E6E599106D2DEBD3334F852963A。本轮R1无阻塞，正式材料与官方资格不在通过范围。
 
 收尾仅补充审查归档、矩阵、来源索引、状态和SHA，不改变产品代码；最终Git HEAD由交付回执记录。全部完整原始开发证据保留C盘工作副本，D盘交付省略重复解压运行时。
+
+交付发现的15个初始Git对象换行归一化差异已用新增提交记录原始工作字节，未重写历史、修改产品工作字节或改变审查适用源码SHA。首次复制因字节状态不一致主动停止，恢复前验证整个既有交付副本仍与上一固定清单相同；实际差异记录见git-byte-roundtrip.json。

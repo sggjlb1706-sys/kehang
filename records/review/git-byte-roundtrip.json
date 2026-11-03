@@ -1,0 +1,24 @@
+{
+  "previous_delivery_head": "ea26a908a76c3e31d245b0db9c0236da3ae65219",
+  "affected_initial_files": [
+    "AGENTS.md",
+    "DESIGN.md",
+    "PLAN.md",
+    "PRODUCT.md",
+    "PROVENANCE.md",
+    "campuslab/__init__.py",
+    "docs/legacy/index.json",
+    "docs/legacy/root/AGENTS.md",
+    "docs/legacy/root/HANDOFF.md",
+    "docs/legacy/root/PLAN.md",
+    "docs/legacy/root/PROJECT.md",
+    "docs/legacy/root/REVIEW.md",
+    "docs/legacy/root/TASK.md",
+    "docs/legacy/root/WORKFLOW.md",
+    "docs/user-authorization.md"
+  ],
+  "count": 15,
+  "working_and_delivered_bytes_identical": true,
+  "difference": "Initial Git objects were normalized before .gitattributes was introduced; force-restage records the exact preserved bytes. No filesystem content or functional change.",
+  "old_prototypes_modified": false
+}
