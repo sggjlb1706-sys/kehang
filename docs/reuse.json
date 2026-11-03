@@ -1,0 +1,54 @@
+{
+  "product_implementation": "new implementation of own existing product; no old business modules imported at setup",
+  "historical_documents": [
+    {
+      "source": "D:\\传智杯\\AGENTS.md",
+      "copy": "docs/legacy/root/AGENTS.md",
+      "sha256": "7C2387F73D5075970E797EF10A546E70F615F9879114CF5E8237BE3BEB7F4235",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\PROJECT.md",
+      "copy": "docs/legacy/root/PROJECT.md",
+      "sha256": "436080C739212DF349BCE369CED1D311B0E2AC717D6D29669B0659F8DE747474",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\PLAN.md",
+      "copy": "docs/legacy/root/PLAN.md",
+      "sha256": "7C24CAA55414BCEA7C63D36D678D213F90AE7391B6E284A227B1DCCD7CDB316B",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\WORKFLOW.md",
+      "copy": "docs/legacy/root/WORKFLOW.md",
+      "sha256": "D702A78A33C991E97699BAFFD640788363CB61C7FA64B7B50E35B20AAB566FEE",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\TASK.md",
+      "copy": "docs/legacy/root/TASK.md",
+      "sha256": "5F494C32043A78232497051847B80EC0F625839D57D86CB232996289B750409B",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\HANDOFF.md",
+      "copy": "docs/legacy/root/HANDOFF.md",
+      "sha256": "2E55B10CD2A13FF99E914D329DA7DEC3860B3B0BF821554CC9C272CB123C1CCB",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\REVIEW.md",
+      "copy": "docs/legacy/root/REVIEW.md",
+      "sha256": "34790F38EF401E6EB69A2F97A437C35233819A316861F121B47FA6D3F42193D6",
+      "kind": "historical prototype document"
+    },
+    {
+      "source": "D:\\传智杯\\已恢复的中和方案与V1范围.md",
+      "copy": "docs/legacy/root/已恢复的中和方案与V1范围.md",
+      "sha256": "C140A5FA25FBFBD79F67925823B2DBB3D400E5C53ED319BBA36AF7F0E0352E43",
+      "kind": "historical prototype document"
+    }
+  ],
+  "tools": []
+}
