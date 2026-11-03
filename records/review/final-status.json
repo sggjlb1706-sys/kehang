@@ -1,0 +1,49 @@
+{
+  "closed_at": "2026-11-03T01:42:12.623043+00:00",
+  "project_status": "R1 local core completed; formal competition package pending",
+  "implementation_reviewed_head": "4330c70678e8951c1a5fc8d1b429b600f8afd54c",
+  "independent_review": "no_blockers",
+  "independent_original_sha256": "714010C30309D3F2DFCB34A1444DECABFFD49E6E599106D2DEBD3334F852963A",
+  "independent_delta_sha256": "861A5F93B668B34B20FA11D1FE570EB7DC480DDCB7EA85D7A7EAC45F10C453BA",
+  "unit_tests": 23,
+  "unit_log": "records/iteration-4/unit-tests-quote-regression.txt",
+  "browser_checks": 10,
+  "browser_record": "records/browser/20261103T013607390941Z/results.json",
+  "product_source_sha256": {
+    "campuslab/collect.py": "F6E1F70A412530C31E2692A8A6B1F8C7FB89CB8F9C160CD80071502B8C3B27DF",
+    "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+    "campuslab/diagnosis.py": "F90E17E0E77BC5F2F6FD97FDCDF9235181B6C2FE9C441162E42187D2DD5B187C",
+    "campuslab/guidance.py": "85E354CC0C4779BED10082FF6AB451DB2A2A05277DD93D3FC88539B4821196CB",
+    "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+    "campuslab/rules.py": "E698224EA82E27D267C088E27BD7C36FBA8CF574589E8D2E50F37788E590A179",
+    "campuslab/web.py": "46CBD07290F494E3B714FBEFF0379FC76C0434475E4215150B666601EB7B7F34",
+    "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+    "web/app.js": "2EA3647C5C7F43F7B0810EEE38A507D334F0ACDA3DEC605A21B1DDF4135DE8DA",
+    "web/index.html": "0010C70F3110BA28E897595AA78BF8DE0EB0A5A3CD0D7A9AF74B229017407279",
+    "web/style.css": "7A2DB016EC4CEEFD74309D5ABE97377EB9B7648AB88C158C28EB0EA58DC327C3"
+  },
+  "protected_files": 814,
+  "legacy_phase_files": 550,
+  "source_prefixes_verified": 8,
+  "paid_model_requests": 0,
+  "model_downloads": 0,
+  "installs": 0,
+  "old_stage_history_fabricated": false,
+  "official_eligibility_certified": false,
+  "whole_competition_complete": false,
+  "formal_pending": [
+    "Three complete core Prompt chains reviewed individually",
+    "5-8 minute 1080p MP4 with >=2 minute AI collaboration reproduction",
+    "Technical PDF <=30 pages",
+    "Reviewer-accessible GitHub/Gitee repository",
+    "Official eligibility decision"
+  ],
+  "external_validation_pending": [
+    "New-code clean Windows with no Python",
+    "Second device and physical phone",
+    "Independent novice install",
+    "Real AI error diagnosis",
+    "CPU inference"
+  ],
+  "planned_delivery": "D:/传智杯/versions/competition-rebuild-20261103"
+}
