@@ -59,7 +59,7 @@ def main():
             check('Supported goal and preparation never imply environmental success')
             with page.expect_download() as dl:page.locator('#download-tool').click()
             archive=out/'downloaded-tool.zip';dl.value.save_as(archive)
-            tool=working/"工具 O'Brien";tool.mkdir()
+            tool=working/"工具 O'Brien ‘左’ ‚低‛ “双” „低‟ $Literal `tick";tool.mkdir()
             with zipfile.ZipFile(archive) as z:
                 assert z.testzip() is None;z.extractall(tool)
             page.locator('#command-panel').evaluate('(e)=>e.open=true')

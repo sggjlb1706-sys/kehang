@@ -6,3 +6,6 @@ private/
 records/runtime/
 records/browser/*/downloaded-tool.zip
 vendor/
+records/review/deployment-receipt.json
+records/review/SHA256SUMS-delivery.json
+records/review/SHA256SUMS-delivery.json.sha256

@@ -66,7 +66,7 @@ $('teacher-form').addEventListener('submit',e=>{
 $('download-task').addEventListener('click',()=>save('task.json',state.task));
 for(const id of ['mode','prepared'])$(id).addEventListener('change',()=>{clearAI();guidance().catch(e=>notice(e.message,true));});
 
-const ps = value => "'"+value.replaceAll("'","''")+"'";
+const ps = value => '"'+value.replace(/[`"$\u2018-\u201f]/g,character=>'`'+character)+'"';
 function requirePath(value,label){if(!/^[a-zA-Z]:[\\/]/.test(value)||/[\r\n\0]/.test(value))throw Error(label+'须填写完整的Windows路径');return value;}
 $('make-command').addEventListener('click',()=>{
   try{
