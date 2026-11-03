@@ -50,5 +50,12 @@
       "kind": "historical prototype document"
     }
   ],
-  "tools": []
+  "tools": [
+    {
+      "file": "tools/export_prompt_history.py",
+      "origin": "D:\\传智杯\\versions\\goal-onboarding-20261101\\tools\\export_prompt_history.py",
+      "sha256": "9967C60722FCCD9F643CA2D3AEBC258DCAA9C00A840A0022F498950C634E5F4E",
+      "use": "Unchanged provenance utility; not a newly implemented product module"
+    }
+  ]
 }
