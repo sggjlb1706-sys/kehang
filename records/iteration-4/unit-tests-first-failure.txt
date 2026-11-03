@@ -1,0 +1,14 @@
+.F..................
+======================================================================
+FAIL: test_local_protocol_simulation_success_and_failure (test_diagnosis.DiagnosisTest.test_local_protocol_simulation_success_and_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-rebuild-20261103\tests\test_diagnosis.py", line 43, in test_local_protocol_simulation_success_and_failure
+    self.assertTrue(diagnose('explicit mock evidence',True)['completed'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.106s
+
+FAILED (failures=1)

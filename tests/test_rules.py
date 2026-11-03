@@ -65,5 +65,16 @@ class RulesTest(unittest.TestCase):
         a=evidence(); a['facts']['python']='3.9.9'
         self.assertEqual(analyze(task(),a)['checks'][1]['status'],'mismatch')
 
+    def test_malformed_target_and_schema_are_rejected(self):
+        for value in ('not-an-object',None,[],{}):
+            a=evidence();a['target']=value
+            with self.assertRaises(ValueError):analyze(task(),a)
+        a=evidence();a['schema']=True
+        with self.assertRaises(ValueError):analyze(task(),a)
+
+    def test_invalid_package_version_is_unknown(self):
+        a=evidence();a['facts']['packages']['requests']='2.32.invalid'
+        self.assertEqual(analyze(task(),a)['checks'][2]['status'],'unknown')
+
 
 if __name__ == '__main__': unittest.main()

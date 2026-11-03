@@ -8,6 +8,8 @@ from urllib.parse import parse_qs, urlsplit
 import zipfile
 
 from .courses import CourseStore
+from .diagnosis import configuration, diagnose, redact
+from .guidance import plan
 from .rules import analyze, compare, task, validate_task
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -68,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
                 spec = self.server.store.get(parse_qs(path.query)['course'][0]) if 'course' in parse_qs(path.query) else task(parse_qs(path.query).get('goal',['python-basics'])[0])
                 self.send(200, self.tool_zip(spec), 'application/zip', 'CampusLab-tool.zip')
             elif path.path == '/api/config':
-                self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai_configured=False))
+                self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai=configuration()))
             else:
                 self.send(404, dict(error='未找到该地址'))
         except (ValueError, KeyError, TypeError, OSError) as exc:
@@ -117,6 +119,17 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200, analyze(body['task'], body['report']))
             elif self.path == '/api/compare':
                 self.send(200, compare(body['task'], body['before'], body['after']))
+            elif self.path == '/api/plan':
+                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources')))
+            elif self.path == '/api/preview':
+                result=analyze(body['task'],body['report'])
+                error=body.get('error','')
+                if not isinstance(error,str) or len(error)>8000:
+                    raise ValueError('报错过长')
+                self.send(200, dict(preview=redact(json.dumps(dict(task_title=body['task']['title'],scenario=body['task']['scenario'],checks=result['checks'],user_error=error),ensure_ascii=False,indent=2)),ai=configuration()))
+            elif self.path == '/api/diagnose':
+                analyze(body['task'],body['report'])
+                self.send(200, diagnose(body.get('preview'),body.get('consent')))
             else:
                 self.send(404, dict(error='未找到该接口'))
         except (ValueError, KeyError, TypeError, OSError):

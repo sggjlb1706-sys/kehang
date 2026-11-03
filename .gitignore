@@ -4,3 +4,5 @@ data/
 private/
 .env
 records/runtime/
+records/browser/*/downloaded-tool.zip
+vendor/

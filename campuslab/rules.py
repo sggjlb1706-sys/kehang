@@ -63,10 +63,13 @@ def seal(spec):
 
 
 def validate_task(spec):
-    if not isinstance(spec, dict) or spec != seal(spec) or spec.get('schema') != 1:
+    if not isinstance(spec, dict) or type(spec.get('schema')) is not int or spec.get('schema') != 1 or spec != seal(spec):
         raise ValueError('任务快照缺失或摘要不匹配')
-    expected = task(spec.get('scenario'), spec.get('title'), spec['python']['min'],
-                    spec['python']['max_exclusive'], spec['packages'].get('requests','2.31'))
+    try:
+        expected = task(spec.get('scenario'), spec.get('title'), spec['python']['min'],
+                        spec['python']['max_exclusive'], spec['packages'].get('requests','2.31'))
+    except (KeyError,TypeError,AttributeError):
+        raise ValueError('任务结构不完整') from None
     if expected != spec:
         raise ValueError('任务中存在未支持或变更的要求')
     return spec
@@ -74,10 +77,12 @@ def validate_task(spec):
 
 def analyze(spec, report):
     validate_task(spec)
-    if not isinstance(report, dict) or report.get('schema') != 1 or report.get('task_id') != spec['id']:
+    if not isinstance(report, dict) or type(report.get('schema')) is not int or report.get('schema') != 1 or report.get('task_id') != spec['id']:
         raise ValueError('报告与当前任务快照不一致')
     timestamp(report.get('collected_at'))
     target, facts = report.get('target', {}), report.get('facts', {})
+    if not isinstance(target,dict) or set(target)!={'requested','actual','exists'}:
+        raise ValueError('缺少完整目标身份')
     requested = absolute(target.get('requested'))
     actual, exists = target.get('actual'), target.get('exists')
     if exists is not None and type(exists) is not bool:
@@ -117,8 +122,8 @@ def analyze(spec, report):
         if observed is not None:
             if not isinstance(observed, str):
                 raise ValueError('依赖版本无效')
-            release = re.match(r'^(\d+\.\d+(?:\.\d+)?)', observed)
-            state = 'unknown' if not release else ('pass' if version(release[0]) >= version(minimum) else 'mismatch')
+            release = re.fullmatch(r'(\d+\.\d+(?:\.\d+)?)(?:\+[A-Za-z0-9.]+)?', observed)
+            state = 'unknown' if not release else ('pass' if version(release[1]) >= version(minimum) else 'mismatch')
         check('package:' + name, state, observed, '>=' + minimum)
     runstate = 'unknown' if verify['returncode'] is None else ('pass' if verify['returncode'] == 0 and verify['stdout'].strip() == 'OK' else 'mismatch')
     check('run', runstate, verify, '固定导入程序退出0且输出OK')

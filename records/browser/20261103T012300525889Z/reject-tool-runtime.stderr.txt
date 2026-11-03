@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-rebuild-20261103\records\runtime\20261103T012300525889Z\missing-target\campuslab\collect.py", line 68, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-rebuild-20261103\records\runtime\20261103T012300525889Z\missing-target\campuslab\collect.py", line 61, in main
+    report = collect(spec, args.target, args.model_dir, args.infer)
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-rebuild-20261103\records\runtime\20261103T012300525889Z\missing-target\campuslab\collect.py", line 20, in collect
+    raise ValueError('工具自带运行时不能作为课程目标')
+ValueError: 工具自带运行时不能作为课程目标
+閲囬泦鏈畬鎴愶紱璇锋煡鐪嬮敊璇紝涓嶈鎶婃棫鎶ュ憡褰撲綔鏈缁撴灉
+At C:\Users\DELL\Documents\ChatGPT\浼犳櫤鏉痋work\competition-rebuild-20261103\records\browser\20261103T012300525889Z\reject-
+tool-runtime.ps1:12 char:28
++ if ($LASTEXITCODE -ne 0) { throw '閲囬泦鏈畬鎴愶紱璇锋煡鐪嬮敊璇紝涓嶈鎶婃棫鎶ュ憡褰撲綔鏈缁撴灉' }
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (閲囬泦鏈畬鎴愶紱璇锋煡鐪嬮敊璇紝涓嶈鎶婃棫鎶ュ憡褰撲綔鏈缁撴灉:String) [], RuntimeException
+    + FullyQualifiedErrorId : 閲囬泦鏈畬鎴愶紱璇锋煡鐪嬮敊璇紝涓嶈鎶婃棫鎶ュ憡褰撲綔鏈缁撴灉
+ 
