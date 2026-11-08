@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "task_id": "cccbae62928ff2096d34dac56986344ca56465ee7dafcb522ad6b33b8dee69c3",
+  "collected_at": "2026-11-08T09:55:01.211971+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\python.exe",
+    "actual": "D:\\ANACONDA\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.13.9",
+    "torch": {
+      "installed": false,
+      "version": null,
+      "imported": false,
+      "error": "所选环境未安装PyTorch"
+    },
+    "cpu": {
+      "returncode": null,
+      "result": null,
+      "device": null,
+      "error": "框架未导入"
+    },
+    "gpu": {
+      "build": null,
+      "available": null,
+      "device": null,
+      "error": "",
+      "run": {
+        "requested": false,
+        "returncode": null,
+        "result": null,
+        "device": null,
+        "device_uuid": null,
+        "error": "未触发GPU验证"
+      }
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-I",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-courses-20261108\\campuslab\\torch_probe.py"
+    ]
+  ],
+  "probe_exit": 0
+}

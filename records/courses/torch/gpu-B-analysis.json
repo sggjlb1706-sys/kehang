@@ -1,0 +1,100 @@
+{
+  "task_id": "e918825118b5d8a4de045ef5059f96dcd33a804b579770912b2837f24145d55f",
+  "target": {
+    "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "exists": true
+  },
+  "collected_at": "2026-11-08T09:52:47.408818+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "python",
+      "status": "pass",
+      "observed": "3.11.16",
+      "requirement": {
+        "min": "3.10",
+        "max_exclusive": "3.15"
+      }
+    },
+    {
+      "id": "package:torch",
+      "status": "pass",
+      "observed": "2.14.0+cu126",
+      "requirement": "torch>=2.2；演示要求，组合兼容须实际运行"
+    },
+    {
+      "id": "torch:import",
+      "status": "pass",
+      "observed": {
+        "installed": true,
+        "version": "2.14.0+cu126",
+        "imported": true,
+        "error": ""
+      },
+      "requirement": "所选解释器实际导入PyTorch"
+    },
+    {
+      "id": "torch:cpu",
+      "status": "pass",
+      "observed": {
+        "returncode": 0,
+        "result": [
+          [
+            4,
+            4
+          ],
+          [
+            10,
+            8
+          ]
+        ],
+        "device": "cpu",
+        "error": ""
+      },
+      "requirement": "CPU固定矩阵乘法得到[[4,4],[10,8]]"
+    },
+    {
+      "id": "torch:cuda-build",
+      "status": "pass",
+      "observed": "12.6",
+      "requirement": "框架包含CUDA构建"
+    },
+    {
+      "id": "torch:gpu-available",
+      "status": "pass",
+      "observed": true,
+      "requirement": "所选框架报告CUDA设备可用"
+    },
+    {
+      "id": "torch:gpu-identity",
+      "status": "pass",
+      "observed": {
+        "index": 0,
+        "uuid": "2149a163-e74b-5e6e-3861-77a465128b38",
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory": 8585216000
+      },
+      "requirement": "CUDA:0独立GPU UUID；名称不足以证明同一设备"
+    },
+    {
+      "id": "torch:gpu-run",
+      "status": "mismatch",
+      "observed": {
+        "requested": true,
+        "returncode": 1,
+        "result": null,
+        "device": null,
+        "device_uuid": null,
+        "error": "NotImplementedError: \"addmm_cuda\" not implemented for 'Long'"
+      },
+      "requirement": "本人触发CUDA:0固定矩阵乘法，实际设备UUID匹配；CPU结果不可替代"
+    }
+  ],
+  "passed": false
+}

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\records\courses\torch\run-real.py", line 6, in <module>
+    from campuslab.torch_course import make_task, collect, analyze, compare_identity
+ModuleNotFoundError: No module named 'campuslab'

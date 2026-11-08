@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "title": "PyTorch深度学习 · GPU演示任务",
+  "scenario": "pytorch-gpu",
+  "source": "演示配置；课程方向参考重庆科技大学深度学习大纲，版本与验证程序非学校指定",
+  "os": "Windows",
+  "python": {
+    "min": "3.10",
+    "max_exclusive": "3.15"
+  },
+  "packages": {
+    "torch": "2.2"
+  },
+  "verify": "torch-fixed-matmul",
+  "gpu_required": true,
+  "gpu": {
+    "backend": "cuda",
+    "index": 0
+  },
+  "expected": [
+    [
+      4,
+      4
+    ],
+    [
+      10,
+      8
+    ]
+  ],
+  "id": "e918825118b5d8a4de045ef5059f96dcd33a804b579770912b2837f24145d55f"
+}

@@ -1,0 +1,55 @@
+{
+  "task_id": "cccbae62928ff2096d34dac56986344ca56465ee7dafcb522ad6b33b8dee69c3",
+  "target": {
+    "requested": "D:\\ANACONDA\\python.exe",
+    "actual": "D:\\ANACONDA\\python.exe",
+    "exists": true
+  },
+  "collected_at": "2026-11-08T09:55:01.211971+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "python",
+      "status": "pass",
+      "observed": "3.13.9",
+      "requirement": {
+        "min": "3.10",
+        "max_exclusive": "3.15"
+      }
+    },
+    {
+      "id": "package:torch",
+      "status": "missing",
+      "observed": null,
+      "requirement": "torch>=2.2；演示要求，组合兼容须实际运行"
+    },
+    {
+      "id": "torch:import",
+      "status": "missing",
+      "observed": {
+        "installed": false,
+        "version": null,
+        "imported": false,
+        "error": "所选环境未安装PyTorch"
+      },
+      "requirement": "所选解释器实际导入PyTorch"
+    },
+    {
+      "id": "torch:cpu",
+      "status": "unknown",
+      "observed": {
+        "returncode": null,
+        "result": null,
+        "device": null,
+        "error": "框架未导入"
+      },
+      "requirement": "CPU固定矩阵乘法得到[[4,4],[10,8]]"
+    }
+  ],
+  "passed": false
+}
