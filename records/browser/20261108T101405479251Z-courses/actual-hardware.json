@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "kind": "hardware",
+  "collected_at": "2026-11-08T10:14:16.434100+00:00",
+  "tool_runtime": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-courses-20261108\\records\\runtime\\20261108T101405479251Z-courses\\gpu O'Brien ‘引’ $literal `tick\\runtime\\python.exe",
+  "drive": "C:\\",
+  "fields": {
+    "os": {
+      "value": "Windows 10.0.26200",
+      "source": "Python platform.version (Windows宿主)",
+      "collected_at": "2026-11-08T10:14:16.434100+00:00",
+      "reason": "CIM不可用；未取得产品名称/版本营销名"
+    },
+    "ram_bytes": {
+      "value": 16849256448,
+      "source": "Windows GlobalMemoryStatusEx.ullTotalPhys",
+      "collected_at": "2026-11-08T10:14:16.434100+00:00",
+      "reason": "CIM不可用；使用宿主系统API的可用物理内存总量"
+    },
+    "storage_free_bytes": {
+      "value": 128373616640,
+      "source": "Python shutil.disk_usage: C:\\",
+      "collected_at": "2026-11-08T10:14:16.434100+00:00",
+      "reason": ""
+    },
+    "gpus": {
+      "value": [
+        {
+          "id": "GPU-2149a163-e74b-5e6e-3861-77a465128b38",
+          "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+          "vram_bytes": 8585740288
+        }
+      ],
+      "source": "nvidia-smi UUID/name/memory.total；非NVIDIA名称来自CIM",
+      "collected_at": "2026-11-08T10:14:16.434100+00:00",
+      "reason": ""
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ErrorActionPreference='Stop'; [Console]::OutputEncoding=[System.Text.Encoding]::UTF8; $os=Get-CimInstance Win32_OperatingSystem; $cs=Get-CimInstance Win32_ComputerSystem; $video=@(Get-CimInstance Win32_VideoController | Select-Object PNPDeviceID,Name); @{os=($os.Caption+' '+$os.Version);ram_bytes=$cs.TotalPhysicalMemory;gpus=$video} | ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Get-CimInstance : 拒绝访问 \nAt line:1 char:92\n+ ... xt.Encoding]::UTF8; $os=Get-CimInstance Win32_OperatingSystem; $cs=Ge ...\n+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2:Win32_OperatingSystem:String) [Get-CimInstance], CimExcept \n   ion\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \n"
+    },
+    {
+      "command": [
+        "C:\\Windows\\system32\\nvidia-smi.exe",
+        "--query-gpu=uuid,name,memory.total",
+        "--format=csv,noheader,nounits"
+      ],
+      "returncode": 0,
+      "stdout": "GPU-2149a163-e74b-5e6e-3861-77a465128b38, NVIDIA GeForce RTX 4060 Laptop GPU, 8188\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+PASS: Text-only error preview declares missing facts, redacts and requires explicit consent
+PASS: Natural language proposal creates a fixed GPU task only after confirmation
+PASS: Downloaded tool and generated PS5.1 command obtain real CPU and explicit GPU evidence with matching UUID
+PASS: Independent hardware command works from the downloaded tool without changing the environment verdict
+PASS: Portable teacher task transfers to an independent database with the same digest and original A/B acceptance
+PASS: Offline guide and course workflow are readable at 390px; desktop emulation only
+PASS: Tampered package rejection clears prior task and success state
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\records\browser\20261108T101214063032Z-courses
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\browser_courses.py", line 128, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\browser_courses.py", line 109, in main
+    page.fill('#vm-id','D:\\Different\\machine.vmx');assert page.evaluate('()=>state.before===null&&state.analysis===null')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\sync_api\_generated.py", line 10998, in fill
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.fill(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        )
+        ^
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_page.py", line 917, in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_frame.py", line 610, in fill
+    await self._fill(**locals_to_params(locals()))
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_frame.py", line 622, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#vm-id")
+    - locator resolved to <input id="vm-id" placeholder="UUID �� D:\Virtual Machines\course\course.vmx"/>
+    - fill("D:\Different\machine.vmx")
+  - attempting fill action
+    2 �� waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+    - waiting 20ms
+    2 �� waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+      - waiting 100ms
+    59 �� waiting for element to be visible, enabled and editable
+       - element is not visible
+     - retrying fill action
+       - waiting 500ms
+

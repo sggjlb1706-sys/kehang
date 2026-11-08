@@ -40,9 +40,10 @@ async function chooseTask(loader,course=null){
   $('target-help').textContent=node?'npm 使用所选 node.exe 同目录的 node_modules/npm/bin/npm-cli.js，并由该 node.exe 执行；PATH 中其他 npm 不作证据。':'py 不可用时，从安装目录或编辑器的解释器设置寻找 python.exe。';
   $('task-id').textContent=`固定任务摘要 ${spec.id}`;
   $('model-options').hidden=spec.scenario!=='local-qwen';$('infer').checked=false;
-  $('torch-options').hidden=!spec.scenario.startsWith('pytorch-');$('gpu-run').checked=false;$('vm-options').hidden=!vm;
+  $('torch-options').hidden=spec.scenario!=='pytorch-gpu';$('gpu-run').checked=false;$('vm-options').hidden=!vm;
   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
   await guidance();await routes();progress();notice('任务已确定。先查看步骤，再到目标电脑手动采集报告。');
+  if(innerWidth<760&&epoch===state.epoch)$('task-panel').scrollIntoView({block:'start'});
 }
 async function guidance(){
   if(!state.task)return;
@@ -193,8 +194,10 @@ $('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++s
 });});
 $('need-text').addEventListener('input',()=>{state.needEpoch++;$('need-result').replaceChildren();});
 $('course-package').addEventListener('change',e=>action(null,async()=>{
+  clearTask();const epoch=state.epoch;
   const file=e.target.files[0];if(!file||file.size>100000)throw Error('课程包须小于100KB');const packageValue=JSON.parse(await file.text());
   const result=await api('/api/import-course',{package:packageValue});
+  if(epoch!==state.epoch)return;
   await chooseTask(async()=>result.task,result.code);notice('课程包已导入。请向教师核对任务摘要；摘要一致性不证明发布人身份。');
 }));
 $('export-course').addEventListener('click',e=>action(e.target,async()=>save('CampusLab-course.json',await api('/api/package',{task:state.task}))));

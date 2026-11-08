@@ -1,0 +1,19 @@
+{
+  "code": "6616101F1B",
+  "task": {
+    "schema": 1,
+    "title": "真实浏览器测试课程",
+    "scenario": "python-basics",
+    "source": "演示课程要求，非学校既定要求",
+    "os": "Windows",
+    "python": {
+      "min": "3.14",
+      "max_exclusive": "3.15"
+    },
+    "packages": {
+      "requests": "2.31"
+    },
+    "verify": "import-requests",
+    "id": "1690d66723051b5f98499427f77beb0d03d24a84fd69150ead304859aa2fe4e2"
+  }
+}

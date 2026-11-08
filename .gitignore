@@ -5,6 +5,7 @@ private/
 .env
 records/runtime/
 records/browser/*/downloaded-tool.zip
+records/browser/*/*-tool.zip
 vendor/
 records/review/deployment-receipt.json
 records/review/SHA256SUMS-delivery.json

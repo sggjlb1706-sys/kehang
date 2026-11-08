@@ -1,0 +1,68 @@
+{
+  "status": "failed",
+  "checks": [
+    "Text-only error preview declares missing facts, redacts and requires explicit consent",
+    "Natural language proposal creates a fixed GPU task only after confirmation",
+    "Downloaded tool and generated PS5.1 command obtain real CPU and explicit GPU evidence with matching UUID",
+    "Independent hardware command works from the downloaded tool without changing the environment verdict",
+    "Portable teacher task transfers to an independent database with the same digest and original A/B acceptance",
+    "Offline guide and course workflow are readable at 390px; desktop emulation only",
+    "Tampered package rejection clears prior task and success state"
+  ],
+  "commands": [
+    {
+      "script": "gpu-precheck-A.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "gpu-run-B.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "actual-hardware.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "vm-A.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "vm-B.ps1",
+      "returncode": 0
+    }
+  ],
+  "browser_errors": [],
+  "external_requests": [],
+  "source_sha256": {
+    "campuslab/collect.py": "D2D5C43F36FF4623F27633CE01E14E3EF78519C305D9679220FEB099670BB636",
+    "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+    "campuslab/diagnosis.py": "F90E17E0E77BC5F2F6FD97FDCDF9235181B6C2FE9C441162E42187D2DD5B187C",
+    "campuslab/guest_probe.py": "A21A2DB9A6C20FC1275896FBCBA44E080DBB4A46C1F236FB86D126936E746925",
+    "campuslab/guidance.py": "908FFD2BD5D2771563EFF8C5B9B585B235934EA0376FCFBAE9E1BC2DBD369EFF",
+    "campuslab/node_collect.py": "806BB5B6C69A2440331F4A3CE77B947C028C4670FBDE54F8BE7C30F9775DF09A",
+    "campuslab/node_probe.js": "08CACCBACAFF7D5E4DD7DF31F323B118EE38935227BB1A115BBB60F25AC5F7ED",
+    "campuslab/portable.py": "A3F4C70FC3E4A5D11EC6891CF4055A97DE1AFB3F86D64222F6B2E22B7A2E4AFE",
+    "campuslab/preparation.py": "BC782EE363E0A9636AE21D68B05061748746935829A0D6DC9C8D5CF81D7592D1",
+    "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+    "campuslab/rules.py": "D77D23A22055395CA27098C320BA7CDBD549ED98437B8E082D8863168721C205",
+    "campuslab/torch_course.py": "42C9D1E5A5BD87B97E7158D22600D1B3D50C8D2757BD15BF7EEF6F1DF9089FDB",
+    "campuslab/torch_probe.py": "3786426242F9E31CF442F08EF46DAE9804E9C26F30441A3EF249151C7313B028",
+    "campuslab/vm_course.py": "B5EC7DF93EA22E86ABE6492A96BD126E3C3F197A4E6FC5075A0E5246BFE2F6A0",
+    "campuslab/web.py": "F91905EE046614272B40AA493F5A9D4CC5DEAD2D5C00FA882E991BCD27AF036F",
+    "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+    "web/app.js": "EE1574E0A1E1EF4FE031CF30FB9062B7B4694A12E7D9DF3752170A0F980BC343",
+    "web/index.html": "1B7F39B2E2DABD127F08E697613046FEC300F22243149C49DA6E50A9B296C459",
+    "web/style.css": "84DBE787D2DA411ED165D4354AA1737B830EA7362221670FD2F6160702871A46"
+  },
+  "physical_phone": false,
+  "second_device": false,
+  "guest_real_validation": false,
+  "real_ai_diagnosis": false,
+  "local_ai_ports": {
+    "11434": "not listening",
+    "1234": "not listening"
+  },
+  "paid_requests": 0,
+  "installs": 0,
+  "vm_start_calls": 0
+}

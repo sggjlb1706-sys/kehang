@@ -1,0 +1,10 @@
+PASS: Text-only error preview declares missing facts, redacts and requires explicit consent
+PASS: Natural language proposal creates a fixed GPU task only after confirmation
+PASS: Downloaded tool and generated PS5.1 command obtain real CPU and explicit GPU evidence with matching UUID
+PASS: Independent hardware command works from the downloaded tool without changing the environment verdict
+PASS: Portable teacher task transfers to an independent database with the same digest and original A/B acceptance
+PASS: Offline guide and course workflow are readable at 390px; desktop emulation only
+PASS: Tampered package rejection clears prior task and success state
+PASS: Real installed VMware is verified while absent instance and guest stay unknown; changing instance clears evidence
+PASS: CPU task consumes its real fixed tensor report and does not offer the GPU-only trigger
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\records\browser\20261108T101444960811Z-courses

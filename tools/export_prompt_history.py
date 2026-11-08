@@ -38,7 +38,7 @@ def extract(raw):
         text = '\n'.join(b.get('text', '') for b in blocks if b.get('type') in ('input_text', 'output_text'))
         if not text.strip():
             continue
-        context_prefixes = ('# AGENTS.md instructions', '<environment_context>', '<external_codex_apps_open_page>', '<turn_aborted>')
+        context_prefixes = ('# AGENTS.md instructions', '<environment_context>', '<external_codex_apps_open_page>', '<external_codex_apps_selected_page_part_', '<turn_aborted>')
         if role == 'user' and text.lstrip().startswith(context_prefixes):
             excluded['injected_context'] = excluded.get('injected_context', 0) + 1
             continue

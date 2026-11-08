@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "kind": "campuslab-course",
+  "task": {
+    "schema": 1,
+    "title": "PyTorch深度学习 · GPU演示任务",
+    "scenario": "pytorch-gpu",
+    "source": "演示配置；课程方向参考重庆科技大学深度学习大纲，版本与验证程序非学校指定",
+    "os": "Windows",
+    "python": {
+      "min": "3.10",
+      "max_exclusive": "3.15"
+    },
+    "packages": {
+      "torch": "2.2"
+    },
+    "verify": "torch-fixed-matmul",
+    "gpu_required": true,
+    "gpu": {
+      "backend": "cuda",
+      "index": 0
+    },
+    "tensor_dtype": "float32",
+    "expected": [
+      [
+        4,
+        4
+      ],
+      [
+        10,
+        8
+      ]
+    ],
+    "id": "0e2f68790f83d75da8e92aeb0ccc814901a2a328e2ffd0705024834981881fa4"
+  },
+  "sha256": "74719f2daff21eae3ad236bc3e2226e52ff35ed151ecef7d4c0445cde430d2d7"
+}
