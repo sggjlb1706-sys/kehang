@@ -1,0 +1,17 @@
+F....
+======================================================================
+FAIL: test_ambiguity_errors_conflicts_and_catalog (test_preparation.PreparationTest.test_ambiguity_errors_conflicts_and_catalog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108\tests\test_preparation.py", line 31, in test_ambiguity_errors_conflicts_and_catalog
+    self.assertEqual(resolve_need('Python和Node都要安装')['status'], 'conflict')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'recognized' != 'conflict'
+- recognized
++ conflict
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+FAILED (failures=1)

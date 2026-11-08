@@ -1,0 +1,1 @@
+{"output": "records\\courses\\preparation\\actual-hardware.json", "collected_at": "2026-11-08T09:52:44.400404+00:00"}

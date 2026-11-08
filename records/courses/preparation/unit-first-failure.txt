@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_preparation (unittest.loader._FailedTest.test_preparation)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_preparation
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 4, in <module>
+    from campuslab.preparation import resolve_need, recommend, validate_hardware
+ModuleNotFoundError: No module named 'campuslab.preparation'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
