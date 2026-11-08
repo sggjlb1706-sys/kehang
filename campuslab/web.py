@@ -114,7 +114,6 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
-            self.check_origin()
             if self.headers.get('Content-Type','').split(';')[0] != 'application/json':
                 raise ValueError('请求须使用JSON')
             if self.headers.get('Transfer-Encoding') is not None or len(self.headers.get_all('Content-Length',[])) != 1:
@@ -127,6 +126,7 @@ class Handler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length), parse_constant=invalid_constant)
             if not isinstance(body, dict):
                 raise ValueError('请求须为对象')
+            self.check_origin()
             if self.path == '/api/course':
                 spec = task(body.get('scenario','python-basics'), body.get('title'), body.get('python_min','3.10'), body.get('python_max','3.15'), body.get('requests_min','2.31'))
                 self.send(200, self.server.store.publish(spec))

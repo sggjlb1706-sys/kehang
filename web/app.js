@@ -46,9 +46,9 @@ async function chooseTask(loader,course=null){
 }
 async function guidance(){
   if(!state.task)return;
-  const epoch=state.epoch;const mode=$('mode').value;
+  const epoch=state.epoch,serial=state.importEpoch;const mode=$('mode').value;
   const data=await api('/api/plan',{task:state.task,mode,resources:(state.after||state.before)?.resources,report:state.after||state.before});
-  if(epoch!==state.epoch||mode!==$('mode').value)return;
+  if(epoch!==state.epoch||serial!==state.importEpoch||mode!==$('mode').value)return;
   const list=document.createElement('ol');list.className='steps';
   for(const step of data.steps){const item=document.createElement('li');const title=document.createElement('strong');title.textContent=step.title;const body=document.createElement('p');body.textContent=step.body;item.append(title,body);list.append(item);}
   $('guidance').replaceChildren(list);
@@ -58,6 +58,7 @@ async function guidance(){
   $('guidance').append(links);
   if(data.preparation){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='从未准备到固定本地推理';d.append(s);for(const text of data.preparation){const p=document.createElement('p');p.textContent=text;d.append(p);}$('guidance').append(d);}
   $('remediation').replaceChildren();
+  if(data.remediation?.length){const h=document.createElement('h3');h.textContent='按差异处理';$('remediation').append(h);}
   for(const step of data.remediation||[]){const d=document.createElement('div');d.className='remedy';const h=document.createElement('h3');h.textContent=step.title;const p=document.createElement('p');p.textContent=step.body;const v=document.createElement('p');v.className='muted';v.textContent=step.verify;d.append(h,p,v);$('remediation').append(d);}
   $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再生成只读采集命令。':'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
 }
@@ -107,6 +108,8 @@ for(const id of ['tool-dir','target','tool-python','model-dir','infer','report-s
 function render(a){
   state.analysis=a;$('results').replaceChildren();
   const identity=document.createElement('p');identity.textContent=`本次目标：${a.target.requested} · ${a.collected_at}`;$('results').append(identity);
+  const next=document.createElement('p');next.className='result-summary';const counts=Object.fromEntries(Object.keys(labels).map(key=>[key,a.checks.filter(x=>x.status===key).length]));
+  next.textContent=`通过 ${counts.pass} · 缺失 ${counts.missing} · 不符合 ${counts.mismatch} · 未知 ${counts.unknown}。`+(a.passed?(state.after?'核对同目标复检结论。':'初检已通过，保留原件后采集较晚的B。'):'查看“按差异处理”的下一步，手动处理后复检。');$('results').append(next);
   for(const c of a.checks){
     const row=document.createElement('div');row.className='check';const name=document.createElement('strong');name.textContent=names[c.id]||c.id;
     const status=document.createElement('strong');status.className='state-'+c.status;status.textContent=labels[c.status];

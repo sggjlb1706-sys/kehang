@@ -141,7 +141,7 @@ def main():
             page.set_input_files('#before-file', str(before)); page.wait_for_selector('#results .check')
             page.fill('#target', 'C:\\DifferentNode\\node.exe')
             assert page.locator('#results .check').count() == 0
-            assert page.locator('#diagnosis').is_hidden()
+            assert page.locator('#ai-preview-panel').is_hidden()
             assert page.locator('#after-file').is_disabled()
             check('Editing the selected target clears old results, comparison and AI consent')
 

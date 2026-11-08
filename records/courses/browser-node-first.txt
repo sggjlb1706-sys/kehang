@@ -1,0 +1,17 @@
+PASS: Node autonomous goal displays fixed demonstration requirements without inferring a pass
+PASS: Downloaded tool and exact generated PS5.1 commands collect real selected Node/npm stable A/B
+PASS: Three Node guidance modes preserve the identical facts and verdicts
+PASS: Node evidence uses editable redaction and explicit AI consent without any model request
+PASS: Teacher code and autonomous Node entry consume the exact same immutable task and reports
+PASS: Clearly labelled constructed reports with another target or incomplete facts cannot complete recheck
+Evidence: C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108\records\browser\20261108T100005914677Z-node
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\browser_node.py", line 178, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\browser_node.py", line 144, in main
+    assert page.locator('#diagnosis').is_hidden()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+AssertionError
