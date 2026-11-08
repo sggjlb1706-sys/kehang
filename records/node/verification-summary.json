@@ -1,9 +1,9 @@
 {
   "recorded_at": "2026-11-08T09:09:05.882083+00:00",
-  "unit_tests": 30,
-  "unit_log": "records/node/unit-regression.txt",
-  "node_browser": "records/browser/20261108T090411006997Z-node/results.json",
-  "python_browser": "records/browser/20261108T090348975120Z/results.json",
+  "unit_tests": 31,
+  "unit_log": "records/node/unit-regression-after-readme.txt",
+  "node_browser": "records/browser/20261108T091518984486Z-node/results.json",
+  "python_browser": "records/browser/20261108T091526620608Z/results.json",
   "node_browser_checks": 9,
   "python_browser_checks": 10,
   "node": "24.21.0",
@@ -20,5 +20,7 @@
   "legacy_protected_files": 814,
   "physical_phone": false,
   "second_device": false,
-  "novice_user": false
+  "novice_user": false,
+  "updated_at": "2026-11-08T09:16:39.731041+00:00",
+  "readme_fix_commit": "49720ae"
 }

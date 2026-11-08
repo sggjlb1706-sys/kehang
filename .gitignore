@@ -9,3 +9,6 @@ vendor/
 records/review/deployment-receipt.json
 records/review/SHA256SUMS-delivery.json
 records/review/SHA256SUMS-delivery.json.sha256
+/SHA256SUMS-delivery.json
+/SHA256SUMS-delivery.json.sha256
+records/review/node-delivery-receipt.json

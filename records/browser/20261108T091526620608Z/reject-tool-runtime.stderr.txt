@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108\records\runtime\20261108T091526620608Z\missing-target\campuslab\collect.py", line 73, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108\records\runtime\20261108T091526620608Z\missing-target\campuslab\collect.py", line 66, in main
+    report = collect(spec, args.target, args.model_dir, args.infer)
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108\records\runtime\20261108T091526620608Z\missing-target\campuslab\collect.py", line 25, in collect
+    raise ValueError('工具自带运行时不能作为课程目标')
+ValueError: 工具自带运行时不能作为课程目标
+采集未完成；请查看错误，不要把旧报告当作本次结果
+At C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108\records\browser\20261108T091526620608Z\reject-
+tool-runtime.ps1:12 char:28
++ if ($LASTEXITCODE -ne 0) { throw '采集未完成；请查看错误，不要把旧报告当作本次结果' }
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (采集未完成；请查看错误，不要把旧报告当作本次结果:String) [], RuntimeException
+    + FullyQualifiedErrorId : 采集未完成；请查看错误，不要把旧报告当作本次结果
+ 

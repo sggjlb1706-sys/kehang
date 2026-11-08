@@ -1,14 +1,14 @@
 # R1 Node.js/npm 扩展轮交接（2026-11-08）
 
-当前状态：实现与本机验证已完成，独立审查待完成；本轮尚未记录通过。整套赛事作品与资格未通过。
+当前状态：初审无阻塞，所列P3工具README示例已修正并验证，独立delta待完成；本轮尚未记录通过。整套赛事作品与资格未通过。
 
 新工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108`。计划交付目录：`D:\传智杯\versions\competition-r1-node-20261108`。分支：`codex/r1-node-20261108`；继承正式R1完整历史，原HEAD `eee876053eebfb7d82e2ad6a9b45272f0075b1fe`。最终HEAD在新版本交付回执记录，不将原交付回执当作本轮回执。
 
 本轮新增Node.js/npm固定演示课程：自主与教师默认快照一致、显式选择Node、同目录npm CLI由所选Node执行、完整事实四状态、手动采集/修复和同任务同目标有序复检。三模式只改文字，Python/固定Qwen及AI同意机制保留。课程范围来自演示配置，不代表学校真实课程。
 
-验证：原23项+Node7项共30单测通过；Node浏览器9组、Python/模型网页回归10组通过。Node24.21.0/npm11.19.0真实A/B四项通过、stable-pass；Python真实A/B四项通过。当前Qwen真实复测输出2/EOS、7项通过，verified，指定RTX4060环境。模型首次导入超时未知原件保留，后续计时5.14秒后另采才通过；根因未确认，不称已修复。AI仅本机协议模拟，无真实收费请求。
+验证：原23项+Node7项+工具快照打包1项共31单测通过；Node浏览器9组、Python/模型网页回归10组通过。Node24.21.0/npm11.19.0真实A/B四项通过、stable-pass；Python真实A/B四项通过。当前Qwen真实复测输出2/EOS、7项通过，verified，指定RTX4060环境。模型首次导入超时未知原件保留，后续计时5.14秒后另采才通过；根因未确认，不称已修复。AI仅本机协议模拟，无真实收费请求。
 
-证据入口：`records/node/verification-summary.json`；Node最终 `records/browser/20261108T090411006997Z-node/results.json`；Python回归 `records/browser/20261108T090348975120Z/results.json`；当前模型 `records/node/model-regression-retry/comparison.json`。所有失败记录保留、构造报告与自动化范围各自标注。390px通过是浏览器模拟，不是实体手机。
+证据入口：`records/node/verification-summary.json`；Node最终 `records/browser/20261108T091518984486Z-node/results.json`；Python回归 `records/browser/20261108T091526620608Z/results.json`；当前模型 `records/node/model-regression-retry/comparison.json`。所有失败记录保留、构造报告与自动化范围各自标注。390px通过是浏览器模拟，不是实体手机。
 
 来源保护：原R1交付清单205项一致，原目录212项非Git字节未改；旧材料814项保护一致；8组旧Prompt来源验证通过。复用原产品及历史范围见PROVENANCE和docs/reuse.json；本轮提交按实际时间产生，不回填旧历史。
 
