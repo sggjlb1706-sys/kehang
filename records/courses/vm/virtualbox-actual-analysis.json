@@ -1,0 +1,84 @@
+{
+  "task_id": "df51b551eea45c9a3481a6edd97262d43b7084df739c9019cfc4f33c993ad8a6",
+  "target": {
+    "requested": "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe",
+    "actual": null,
+    "exists": false
+  },
+  "collected_at": "2026-11-08T09:54:44.154490+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows宿主"
+    },
+    {
+      "id": "host:virtualization",
+      "status": "unknown",
+      "observed": {
+        "id": "a94043c45c7bfca6b57ac0930a0069c9f9464bb67112e6dd45fe4797497e0e37",
+        "virtualization": {
+          "firmware_enabled": null,
+          "vm_monitor": null,
+          "slat": null,
+          "hypervisor_present": null
+        },
+        "source": "Windows CIM; HKLM MachineGuid SHA256",
+        "error": "CIM虚拟化查询未完成或权限不足，保留未知"
+      },
+      "requirement": "同一宿主身份；固件虚拟化、VM扩展和SLAT均有只读证据。HypervisorPresent单独不替代"
+    },
+    {
+      "id": "vm:software",
+      "status": "missing",
+      "observed": {
+        "provider": "virtualbox",
+        "version": null,
+        "returncode": null,
+        "error": "所选软件不存在或未确认"
+      },
+      "requirement": "VirtualBox CLI 7.x 或 vmrun CLI 1.x（非Workstation版本）；vmrun无参数帮助可退出-1"
+    },
+    {
+      "id": "vm:instance",
+      "status": "unknown",
+      "observed": {
+        "requested": null,
+        "uuid": null,
+        "name": null,
+        "os_type": null,
+        "state": null,
+        "exists": null,
+        "listed": null,
+        "error": "请选择具体实例"
+      },
+      "requirement": "显式选择的UUID或.vmx配置身份；不代表来宾已运行"
+    },
+    {
+      "id": "vm:running",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "所选实例当前运行证据；工具不会启动实例"
+    },
+    {
+      "id": "guest:identity",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "手动来宾报告：同任务/实例、DMI UUID、machine-id摘要；30分钟内，不是密码学远程证明"
+    },
+    {
+      "id": "guest:linux",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "来宾实际Linux与内核证据；配置文件OS类型不替代"
+    },
+    {
+      "id": "guest:run",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "来宾固定uname与Python求和输出Linux:6；非完整课程作业验收"
+    }
+  ],
+  "passed": false
+}

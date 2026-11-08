@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_vm_course (unittest.loader._FailedTest.test_vm_course)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_vm_course
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_vm_course.py", line 9, in <module>
+    from campuslab.vm_course import analyze, collect, compare_identity, make_task, validate_spec
+ModuleNotFoundError: No module named 'campuslab.vm_course'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

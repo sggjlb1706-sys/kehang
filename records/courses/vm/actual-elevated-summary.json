@@ -1,0 +1,62 @@
+{
+  "collected_at": "2026-11-08T09:57:00.115206+00:00",
+  "scope": "real local host inventory under approved read-only escalation; no VM created/started, no guest",
+  "results": [
+    {
+      "provider": "virtualbox",
+      "report": "virtualbox-actual-elevated-host.json",
+      "sha256": "1e5e270c14af02e1efcf138eeac5247493a043e32643eeb4490666569fbc3021",
+      "passed": false,
+      "states": {
+        "os": "pass",
+        "host:virtualization": "unknown",
+        "vm:software": "missing",
+        "vm:instance": "unknown",
+        "vm:running": "unknown",
+        "guest:identity": "unknown",
+        "guest:linux": "unknown",
+        "guest:run": "unknown"
+      },
+      "virtualization": {
+        "firmware_enabled": false,
+        "vm_monitor": false,
+        "slat": false,
+        "hypervisor_present": true
+      },
+      "inventory": {
+        "kind": "registered",
+        "returncode": null,
+        "items": [],
+        "error": "未采集"
+      }
+    },
+    {
+      "provider": "vmware",
+      "report": "vmware-actual-elevated-host.json",
+      "sha256": "8b41a9ddad927b57fc3d1a540764dc5a410ed29b81e75ba936619ace059e7d60",
+      "passed": false,
+      "states": {
+        "os": "pass",
+        "host:virtualization": "unknown",
+        "vm:software": "pass",
+        "vm:instance": "unknown",
+        "vm:running": "unknown",
+        "guest:identity": "unknown",
+        "guest:linux": "unknown",
+        "guest:run": "unknown"
+      },
+      "virtualization": {
+        "firmware_enabled": false,
+        "vm_monitor": false,
+        "slat": false,
+        "hypervisor_present": true
+      },
+      "inventory": {
+        "kind": "running",
+        "returncode": 0,
+        "items": [],
+        "error": ""
+      }
+    }
+  ]
+}

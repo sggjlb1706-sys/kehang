@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "task_id": "df51b551eea45c9a3481a6edd97262d43b7084df739c9019cfc4f33c993ad8a6",
+  "collected_at": "2026-11-08T09:57:01.679191+00:00",
+  "target": {
+    "requested": "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe",
+    "actual": null,
+    "exists": false
+  },
+  "facts": {
+    "os": "Windows",
+    "host": {
+      "id": "a94043c45c7bfca6b57ac0930a0069c9f9464bb67112e6dd45fe4797497e0e37",
+      "virtualization": {
+        "firmware_enabled": false,
+        "vm_monitor": false,
+        "slat": false,
+        "hypervisor_present": true
+      },
+      "source": "Windows CIM; HKLM MachineGuid SHA256",
+      "error": ""
+    },
+    "software": {
+      "provider": "virtualbox",
+      "version": null,
+      "returncode": null,
+      "error": "所选软件不存在或未确认"
+    },
+    "inventory": {
+      "kind": "registered",
+      "returncode": null,
+      "items": [],
+      "error": "未采集"
+    },
+    "instance": {
+      "requested": null,
+      "uuid": null,
+      "name": null,
+      "os_type": null,
+      "state": null,
+      "exists": null,
+      "listed": null,
+      "error": "请选择具体实例"
+    },
+    "guest": null
+  },
+  "commands": []
+}

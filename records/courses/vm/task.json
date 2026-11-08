@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "title": "虚拟机 / Linux 环境 · 演示任务",
+  "scenario": "vm-linux",
+  "os": "Windows",
+  "source": "演示课程要求，参考高校虚拟机/Linux课程；不等于原校实验验收",
+  "software": {
+    "virtualbox": {
+      "min": "7.0",
+      "max_exclusive": "8.0"
+    },
+    "vmware": {
+      "min": "1.0",
+      "max_exclusive": "2.0"
+    }
+  },
+  "guest_os": "Linux",
+  "verify": "linux-uname-and-fixed-sum",
+  "guest_max_age_seconds": 1800,
+  "id": "df51b551eea45c9a3481a6edd97262d43b7084df739c9019cfc4f33c993ad8a6"
+}

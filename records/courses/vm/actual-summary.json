@@ -1,0 +1,77 @@
+{
+  "collected_at": "2026-11-08T09:54:43.726281+00:00",
+  "scope": "real local host inventory; no VM created or started; no guest evidence",
+  "results": [
+    {
+      "provider": "virtualbox",
+      "report": "virtualbox-actual-host.json",
+      "sha256": "6bd2ce09988cca1012a0aefbdcb1c2f18709be0b5a2c740fdd5e2f1ea44743f5",
+      "passed": false,
+      "states": {
+        "os": "pass",
+        "host:virtualization": "unknown",
+        "vm:software": "missing",
+        "vm:instance": "unknown",
+        "vm:running": "unknown",
+        "guest:identity": "unknown",
+        "guest:linux": "unknown",
+        "guest:run": "unknown"
+      },
+      "inventory": {
+        "kind": "registered",
+        "returncode": null,
+        "items": [],
+        "error": "未采集"
+      }
+    },
+    {
+      "provider": "vmware",
+      "report": "vmware-actual-host.json",
+      "sha256": "20c6bfd8393b202ccc9003aa8ae60dd39eb4a1268092a11c1674c92984cda864",
+      "passed": false,
+      "states": {
+        "os": "pass",
+        "host:virtualization": "unknown",
+        "vm:software": "pass",
+        "vm:instance": "unknown",
+        "vm:running": "unknown",
+        "guest:identity": "unknown",
+        "guest:linux": "unknown",
+        "guest:run": "unknown"
+      },
+      "inventory": {
+        "kind": "running",
+        "returncode": 0,
+        "items": [],
+        "error": ""
+      }
+    }
+  ],
+  "raw_executions": [
+    {
+      "command": [
+        "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe"
+      ],
+      "returncode": 4294967295,
+      "note": "-v is an investigation error reproduced and retained; actual collector uses no arguments for version help and list only"
+    },
+    {
+      "command": [
+        "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+        "-v"
+      ],
+      "returncode": 4294967295,
+      "note": "-v is an investigation error reproduced and retained; actual collector uses no arguments for version help and list only"
+    },
+    {
+      "command": [
+        "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+        "-T",
+        "ws",
+        "list"
+      ],
+      "returncode": 0,
+      "note": "-v is an investigation error reproduced and retained; actual collector uses no arguments for version help and list only"
+    }
+  ]
+}
