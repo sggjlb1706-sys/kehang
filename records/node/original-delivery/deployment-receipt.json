@@ -1,0 +1,14 @@
+{
+  "delivered_at": "2026-11-03T01:46:46.005729+00:00",
+  "source": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-rebuild-20261103",
+  "destination": "D:\\传智杯\\versions\\competition-rebuild-20261103",
+  "head": "eee876053eebfb7d82e2ad6a9b45272f0075b1fe",
+  "tracked_files_copied": 202,
+  "copied_files_verified": true,
+  "protected_original_files_verified": 806,
+  "model_requests_sent": 0,
+  "old_versions_modified": false,
+  "remote_published": false,
+  "omitted": "Duplicate extracted test runtimes and earlier ignored downloaded ZIPs remain in original C evidence workspace",
+  "downloaded_final_tool_sha256": "FA964C58A589CCF5777D7F270EA4DD296B7F0A354A2C0554187F532B65E42977"
+}
