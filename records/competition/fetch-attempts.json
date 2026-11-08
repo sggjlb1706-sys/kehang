@@ -1,0 +1,21 @@
+{
+  "checked_on_Asia_Shanghai": "2026-11-08",
+  "attempts": [
+    {
+      "method": "web.open",
+      "url": "https://www.boxuegu.com/matchTrack/detail/?id=10039",
+      "result": "Internal Error / URL inaccessible via web tool"
+    },
+    {
+      "method": "Playwright Microsoft Edge, clean headless context",
+      "url": "https://www.boxuegu.com/matchTrack/detail/?id=10039",
+      "result": "Page.goto: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "method": "urllib anonymous GET of official public API used by site JS",
+      "result": "HTTP 200; authoritative response archived separately"
+    }
+  ],
+  "cookies_or_credentials_used": false,
+  "system_network_changes": false
+}

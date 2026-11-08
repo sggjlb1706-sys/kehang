@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "checks": [],
+  "passed": 0,
+  "browser_errors": [],
+  "external_requests": [],
+  "executions": [],
+  "source_sha256": {
+    "campuslab/collect.py": "D7CEFB7E1262DDFEF12A8E0355A779E87A46B43F3342306E440661F221F8A0A2",
+    "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+    "campuslab/diagnosis.py": "F90E17E0E77BC5F2F6FD97FDCDF9235181B6C2FE9C441162E42187D2DD5B187C",
+    "campuslab/guidance.py": "DAF8AFE6AE8BAA54B3CA4C1FAEA61B5016D5160821DD3432F7EED1FE21EB0BED",
+    "campuslab/node_collect.py": "806BB5B6C69A2440331F4A3CE77B947C028C4670FBDE54F8BE7C30F9775DF09A",
+    "campuslab/node_probe.js": "08CACCBACAFF7D5E4DD7DF31F323B118EE38935227BB1A115BBB60F25AC5F7ED",
+    "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+    "campuslab/rules.py": "B1DA4F5B30FD047FCE46A3A089E790E8B3B0C4FC335A424762D42953CEB9EABE",
+    "campuslab/web.py": "97F7D71C79A70E1E85ACDCDF32B98B30A207198F04B860570C034BD624367270",
+    "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+    "web/app.js": "E011E17D9E0C95E3DC7310F0F7166815DDCC3EBE4BF671BF3CDACF5565E58DA6",
+    "web/index.html": "48F842168F59AA13C9E14611F883725218757E9A95957B47474EE8D547A3FACD",
+    "web/style.css": "7A2DB016EC4CEEFD74309D5ABE97377EB9B7648AB88C158C28EB0EA58DC327C3"
+  },
+  "real_local_node": true,
+  "node_target": "D:\\Program Files\\nodejs\\node.exe",
+  "constructed_reports": [
+    "constructed-other-target-B.json",
+    "constructed-incomplete-A.json"
+  ],
+  "developer_automation": true,
+  "novice_user_test": false,
+  "clean_device_test": false,
+  "physical_phone_test": false,
+  "install_calls": 0,
+  "paid_model_requests": 0
+}

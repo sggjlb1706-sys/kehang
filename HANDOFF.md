@@ -1,4 +1,24 @@
-# 正式重建版 R1 交接
+# R1 Node.js/npm 扩展轮交接（2026-11-08）
+
+当前状态：实现与本机验证已完成，独立审查待完成；本轮尚未记录通过。整套赛事作品与资格未通过。
+
+新工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108`。计划交付目录：`D:\传智杯\versions\competition-r1-node-20261108`。分支：`codex/r1-node-20261108`；继承正式R1完整历史，原HEAD `eee876053eebfb7d82e2ad6a9b45272f0075b1fe`。最终HEAD在新版本交付回执记录，不将原交付回执当作本轮回执。
+
+本轮新增Node.js/npm固定演示课程：自主与教师默认快照一致、显式选择Node、同目录npm CLI由所选Node执行、完整事实四状态、手动采集/修复和同任务同目标有序复检。三模式只改文字，Python/固定Qwen及AI同意机制保留。课程范围来自演示配置，不代表学校真实课程。
+
+验证：原23项+Node7项共30单测通过；Node浏览器9组、Python/模型网页回归10组通过。Node24.21.0/npm11.19.0真实A/B四项通过、stable-pass；Python真实A/B四项通过。当前Qwen真实复测输出2/EOS、7项通过，verified，指定RTX4060环境。模型首次导入超时未知原件保留，后续计时5.14秒后另采才通过；根因未确认，不称已修复。AI仅本机协议模拟，无真实收费请求。
+
+证据入口：`records/node/verification-summary.json`；Node最终 `records/browser/20261108T090411006997Z-node/results.json`；Python回归 `records/browser/20261108T090348975120Z/results.json`；当前模型 `records/node/model-regression-retry/comparison.json`。所有失败记录保留、构造报告与自动化范围各自标注。390px通过是浏览器模拟，不是实体手机。
+
+来源保护：原R1交付清单205项一致，原目录212项非Git字节未改；旧材料814项保护一致；8组旧Prompt来源验证通过。复用原产品及历史范围见PROVENANCE和docs/reuse.json；本轮提交按实际时间产生，不回填旧历史。
+
+赛事：官网2026-11-08当前正文仍同时列省赛11月18日与指导反馈预计2027年1月底的冲突，按较早2026-11-18准备；来源/抓取日期在 `docs/赛事要求核查-20261108.md`。`docs/Prompt链逐项核查.md`定位旧3候选、R1各模块及本轮Node真实提问/建议/实现/测试/提交；不能确认至少3条完整链，不虚构用户Bug反馈。旧无Git、赛事方未答复状态保留。
+
+启动（交付后）：PowerShell进入新交付目录，运行 `& .\Start-Web.ps1 -Python 'D:\ANACONDA\python.exe' -Port 8772`，打开 `http://127.0.0.1:8772/`，Ctrl+C结束。服务器需已有Python>=3.10；检测包自带既有官方嵌入运行时（vendor），不需安装Web依赖。更换电脑必须改为其已有Python路径。Node及模型仍需本人已有课程环境。
+
+剩余：正式5—8分钟1080p MP4（含至少2分钟AI过程）、<=30页技术PDF、评审可访问GitHub/Gitee、三条完整链及官方资格确认；新代码真实无Python设备、第二电脑/实体手机、新手独立安装、真实AI报错诊断及CPU推理未验证。未发布/推送/发邮件/安装/改系统网络。交付后停止，不自动推进。
+
+## 2026-11-03原首轮交接（历史原文）
 
 最终状态：独立初审及修复delta完成，原P2已关闭，本轮R1本机核心路径无阻塞。23项单元测试（0.856秒/OK）、复杂路径Edge10组通过，旧814项保护一致。正式参赛材料与外部验证仍未完成；详见docs/验收矩阵.md及records/review/final-status.json。
 

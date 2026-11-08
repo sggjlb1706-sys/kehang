@@ -1,0 +1,7 @@
+{
+  "source_url": "https://www.boxuegu.com/_nuxt/app.ac9d38b.js",
+  "full_source_bytes": 3565925,
+  "full_source_sha256": "0BD61635B2F6E6795809509CEDB5B8FFED8350502F889A98108FDB9D0905B082",
+  "verbatim_route_snippet": "unction(){return P}));n(120),n(98),n(92),n(73),n(112),n(77);var r=n(45);n(140);function o(e,t){return Object(r.a)({url:\"https://gateway.boxuegu.com/portal-marketing/competition/track/list\",method:\"get\",params:e,headers:{headers:t}})}function l(e){return Object(r.a)({url:\"https://gateway.boxuegu.com/portal-marketing/competition/track/detail\",method:\"get\",params:e})}function c(data){return Object(r.a)({url:\"https://gateway.boxuegu.com/portal-marketing/competition/track/apply\",method:\"POST\",data:data,headers:{\"Content-Type\":\"\\tapplication/json\"}})}function d(e){return Object(r.a)({url:\"https://gateway.boxuegu.com/portal-marketing/competition/my-track/getTeacherList\",method:\"get\",params:e})}function h(e){return Object(r.a)({url:\"https://gateway.boxuegu.com/portal-",
+  "access": "anonymous GET, no cookies or credentials"
+}

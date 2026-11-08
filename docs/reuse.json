@@ -70,5 +70,15 @@
     "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
     "weights_sha256": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
     "use": "Existing local model, no model download. Original model environment and weights retained; inference program written this run."
+  },
+  "extension_20261108": {
+    "base": "D:/传智杯/versions/competition-rebuild-20261103",
+    "head": "eee876053eebfb7d82e2ad6a9b45272f0075b1fe",
+    "method": "Full history local clone; existing product reused and extended, no history rewritten",
+    "reuse": "All tracked R1 files and history; existing Python/model/rules/courses/UI/AI consent; official embedded runtime copied byte for byte",
+    "new": "Node fixed task and explicit collector/probe, integration/guidance/tests and audit documentation",
+    "changes": "Use git diff eee876053eebfb7d82e2ad6a9b45272f0075b1fe..HEAD",
+    "runtime_downloaded": false,
+    "model_downloaded": false
   }
 }

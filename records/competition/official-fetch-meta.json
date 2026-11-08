@@ -1,0 +1,9 @@
+{
+  "checked_at_utc": "2026-11-08T08:59:35.855867+00:00",
+  "display_date_Asia_Shanghai": "2026-11-08",
+  "page_url": "https://www.boxuegu.com/matchTrack/detail/?id=10039",
+  "public_api_url": "https://gateway.boxuegu.com/portal-marketing/competition/track/detail?id=10039&includeDetail=true",
+  "method": "GET, no credentials",
+  "status": 200,
+  "sha256": "0DE81EDA669C7B24FE1A7E14C117E0A329EF6AD2E0423CA498742F6509623549"
+}

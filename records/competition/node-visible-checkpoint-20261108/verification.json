@@ -1,0 +1,10 @@
+{
+  "verified_at_utc": "2026-11-08T09:06:00.210585+00:00",
+  "source_prefix_matches": true,
+  "export_file_hashes_match": true,
+  "all_visible_message_original_text_hashes_match": true,
+  "verified_messages": 6,
+  "original_sources_modified": false,
+  "chain_completeness_or_official_eligibility_certified": false,
+  "contextual_companion_metadata_excluded": 1
+}

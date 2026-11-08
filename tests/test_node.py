@@ -4,7 +4,6 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
 
 from campuslab.collect import collect
 from campuslab.courses import CourseStore

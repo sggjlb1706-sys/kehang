@@ -1,0 +1,24 @@
+{
+  "record_type": "Audit summary of actual read-only tool output observed in this turn",
+  "checked_on_Asia_Shanghai": "2026-11-08",
+  "working_directory": "D:/传智杯/versions/competition-rebuild-20261103",
+  "command": [
+    "D:/ANACONDA/python.exe",
+    "-B",
+    "-m",
+    "tools.verify_prompts"
+  ],
+  "returncode": 0,
+  "result": {
+    "source_prefixes_and_exports_verified": 8,
+    "losslessly_compressed_originals_verified": [
+      "01a17245-fd65-7ef2-a1e9-243d6e394cec",
+      "01a176bd-3c50-7e60-aad2-c53056af6058",
+      "01a180db-4b25-79c3-a67c-15ad32d83970"
+    ],
+    "actual_user_selection_2_preserved": true,
+    "originals_modified": false,
+    "official_three_complete_chains_certified": false
+  },
+  "scope": "Verifies original 8 indexed exports; new complete-visible R1 export has its own current prefix SHA/index"
+}

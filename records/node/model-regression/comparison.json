@@ -1,0 +1,169 @@
+{
+  "before": {
+    "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+    "target": {
+      "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+      "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-08T09:04:50.221473+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "python",
+        "status": "pass",
+        "observed": "3.11.16",
+        "requirement": {
+          "min": "3.10",
+          "max_exclusive": "3.15"
+        }
+      },
+      {
+        "id": "package:torch",
+        "status": "pass",
+        "observed": "2.14.0+cu126",
+        "requirement": ">=2.2"
+      },
+      {
+        "id": "package:transformers",
+        "status": "pass",
+        "observed": "4.57.1",
+        "requirement": ">=4.45"
+      },
+      {
+        "id": "run",
+        "status": "unknown",
+        "observed": {
+          "returncode": null,
+          "stdout": "",
+          "error": "TimeoutExpired"
+        },
+        "requirement": "固定导入程序退出0且输出OK"
+      },
+      {
+        "id": "model:weights",
+        "status": "pass",
+        "observed": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+        "requirement": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE"
+      },
+      {
+        "id": "model:inference",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本地离线固定问题输出2，正常EOS结束；云端输出不替代"
+      }
+    ],
+    "passed": false
+  },
+  "after": {
+    "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+    "target": {
+      "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+      "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-08T09:05:12.309412+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "python",
+        "status": "pass",
+        "observed": "3.11.16",
+        "requirement": {
+          "min": "3.10",
+          "max_exclusive": "3.15"
+        }
+      },
+      {
+        "id": "package:torch",
+        "status": "pass",
+        "observed": "2.14.0+cu126",
+        "requirement": ">=2.2"
+      },
+      {
+        "id": "package:transformers",
+        "status": "pass",
+        "observed": "4.57.1",
+        "requirement": ">=4.45"
+      },
+      {
+        "id": "run",
+        "status": "unknown",
+        "observed": {
+          "returncode": null,
+          "stdout": "",
+          "error": "TimeoutExpired"
+        },
+        "requirement": "固定导入程序退出0且输出OK"
+      },
+      {
+        "id": "model:weights",
+        "status": "pass",
+        "observed": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+        "requirement": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE"
+      },
+      {
+        "id": "model:inference",
+        "status": "pass",
+        "observed": {
+          "offline": true,
+          "local": true,
+          "output": "2",
+          "ended_with_eos": true,
+          "device": "cuda",
+          "error": ""
+        },
+        "requirement": "本地离线固定问题输出2，正常EOS结束；云端输出不替代"
+      }
+    ],
+    "passed": false
+  },
+  "changes": [
+    {
+      "id": "os",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "python",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "package:torch",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "package:transformers",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "run",
+      "before": "unknown",
+      "after": "unknown"
+    },
+    {
+      "id": "model:weights",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "model:inference",
+      "before": "unknown",
+      "after": "pass"
+    }
+  ],
+  "outcome": "incomplete"
+}

@@ -1,0 +1,14 @@
+{
+  "session_id": "01a19238-bb78-74d1-a420-e661a5f5defd",
+  "source_file": "rollout-2026-10-31T21-49-14-01a19238-bb78-74d1-a420-e661a5f5defd.jsonl",
+  "source_prefix_bytes": 21318239,
+  "source_prefix_sha256": "C7E9A953DD1471BFAF6BF459556116D908DE298B293E6BC29CAAF0D5851EAAE0",
+  "preserved_at": "2026-11-08T09:01:42.056439+00:00",
+  "export": "01a19238-bb78-74d1-a420-e661a5f5defd.json",
+  "export_sha256": "6DAE7BE572A15170B9D7F7542BFFDB381442EC7EBB6EF88BFEF26BEC99247A76",
+  "readable_sha256": "F34C8A57766DAA163DE675B5F0AB4F91C9C70A2004BA467CA62E95354F1D81B0",
+  "visible_messages": 61,
+  "user_messages": 13,
+  "assistant_messages": 48,
+  "originals_modified": false
+}

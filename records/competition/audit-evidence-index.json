@@ -1,0 +1,257 @@
+{
+  "cataloged_at_utc": "2026-11-08T09:04:30.357105+00:00",
+  "evidence_type": "Current files read/hash-checked; historical results are not current R1 execution",
+  "files": [
+    {
+      "path": "D:\\传智杯\\records\\m1-cli\\REVIEW.md",
+      "exists": true,
+      "bytes": 3192,
+      "sha256": "03E0CFB7D515E202809A591693CCA52A219674A611ABE8B3E9CD94733AB0B14D"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-cli\\HANDOFF.md",
+      "exists": true,
+      "bytes": 16112,
+      "sha256": "BF179F18B2997FAC5E93D912D9C65A261D64FF1F3DD49E9072DFF14BEDF72A8E"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\automated-results.json",
+      "exists": true,
+      "bytes": 819,
+      "sha256": "15A34D36BB01F43D443D0B31A831A0201429259B414DDDE025C2F7C53B089588"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\browser-results.json",
+      "exists": true,
+      "bytes": 1190,
+      "sha256": "BF4D228952FAEEEBF1EB76FD42E041447B3809AB8FC120A936D94E0154677472"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\independent-review.json",
+      "exists": true,
+      "bytes": 1031,
+      "sha256": "565C5B1C5D5A6750DE83F9EDA1B8C1FD1A1CC99277687943C0C929189BD53C76"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\real-before.json",
+      "exists": true,
+      "bytes": 1855,
+      "sha256": "BBF1008A21F6595357DD72E04B6DE4D3C482961BFAC6E5DC033E1AF73427EA51"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\real-after.json",
+      "exists": true,
+      "bytes": 1663,
+      "sha256": "54EAEDCBBFFFC8B4268F1F37E104F6CA76B4DF9D0A4D672675580C37B1DC0002"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m1-page\\real-acceptance.json",
+      "exists": true,
+      "bytes": 2072,
+      "sha256": "CB6A50B1F8574E283163AC535E486962DF4C05E08D592FBF81B4A4D39F8D9A4F"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\automated-results.json",
+      "exists": true,
+      "bytes": 350,
+      "sha256": "103D4DC60884A74E9C21A2B03E4A482F236DA04480B49A376167805618D00787"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\automated-tests.txt",
+      "exists": true,
+      "bytes": 20861,
+      "sha256": "8A65F783B3DA360F640A49C878F18BACE5B8644A4423496CBEB773D3BD5B4DD9"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\local-32s-results.json",
+      "exists": true,
+      "bytes": 865,
+      "sha256": "921B30D04163A09399D54228B9670AF8D97CB85D5CCB19DA5BE62DF158477A8A"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\provider-evidence.json",
+      "exists": true,
+      "bytes": 1605,
+      "sha256": "4E1FB26E82B30D504792385C670FCD884845BCB8F0CA1585CFA0D56B14AB8964"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\provider-first-call.png",
+      "exists": true,
+      "bytes": 41671,
+      "sha256": "2A169035103CD2FEF8E030C77EA55535409F725D688B3FF28523A94953F786A0"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\provider-second-call.png",
+      "exists": true,
+      "bytes": 62994,
+      "sha256": "EEEBE081F80392D8E4E12646A135E17859598D8E76FCACA207BB5C25ADC02EDF"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\independent-review.txt",
+      "exists": true,
+      "bytes": 732,
+      "sha256": "13124B17B766BC3A2AD4C94518B8D81A5FB9BD1D2C1E80BD77E7EECE38B5D9CB"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\provider-log-followup-2026-10-29\\before-timeout-fix\\envcheck\\diagnosis.py",
+      "exists": true,
+      "bytes": 11281,
+      "sha256": "9196C22E4F4A068BAF35C216B7B8ED6890520FE0DCC382D9BC4DC7FC8D154352"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\README.md",
+      "exists": true,
+      "bytes": 4244,
+      "sha256": "86446A65CABAF0C544997143DEB6FA390F32FB86C4C473C4FF429D69F891AE77"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\automated-results.json",
+      "exists": true,
+      "bytes": 373,
+      "sha256": "771D5F9665E9C52BC292B3B07C0CE0E54E689A95CC2A70B5563EB2B6E7AB3B10"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\automated-tests.txt",
+      "exists": true,
+      "bytes": 21912,
+      "sha256": "EB54A203C4A58805510236FF46D1423D5089BB9FCC51CFE0115A86AE377E0EB0"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\browser\\browser-results.json",
+      "exists": true,
+      "bytes": 27783,
+      "sha256": "181E014572BAD2AA22A48BA3A06FF7B60639894635EEBA5A9B60AB413959FF4C"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\independent-code-review.txt",
+      "exists": true,
+      "bytes": 1106,
+      "sha256": "FBE1ED327764CDD30561F283A9D7CFEFE4C345721A0C8BEC7B28B19E1F18BCFF"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\before\\envcheck\\diagnosis.py",
+      "exists": true,
+      "bytes": 11697,
+      "sha256": "17AE517793FF08A2362F6FAC6C3442BF75FB48A6CD580DCB1F6FE2A4F3AC6767"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\provider-message-01.png",
+      "exists": true,
+      "bytes": 115196,
+      "sha256": "53C3709F5C24D0B4AF0B2A28C54422F8B1568942FBA3E607E5955388FAC84ACA"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\provider-message-02.png",
+      "exists": true,
+      "bytes": 104849,
+      "sha256": "3EC915160D3D4B8C19CDF0E24E3F55ED8A96959084A17A1E3B881C009039B4EE"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\provider-message-03.png",
+      "exists": true,
+      "bytes": 101202,
+      "sha256": "286E7683F28F2F98D77EE3AED6251D82F6B603F8557836709A16F5351FBC4972"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\request-contract-fix-2026-10-30\\provider-message-04.png",
+      "exists": true,
+      "bytes": 27705,
+      "sha256": "85BA9F2CFCEEF41D0202C687C7AD0335E6932C0DA10E60D633956374DF504630"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\real-model-2026-10-30-attempt-3\\README.md",
+      "exists": true,
+      "bytes": 3614,
+      "sha256": "2089FCF3E24705D045BA016ED3922C9DFAE91C1283F989F1FA04A398B39E5865"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\real-model-2026-10-30-attempt-3\\result.json",
+      "exists": true,
+      "bytes": 4943,
+      "sha256": "3E814BD8FF3EB8427512C1E7888A9EB2955F91FDE1371CC83B103FBFEBC27CC5"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\real-model-2026-10-30-attempt-3\\facts-before.json",
+      "exists": true,
+      "bytes": 7644,
+      "sha256": "0981B3D608D3415A91E4BE4748DE47C14AA3984CE4BEDA55EA514DF8A3BDC442"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\real-model-2026-10-30-attempt-3\\facts-after.json",
+      "exists": true,
+      "bytes": 7644,
+      "sha256": "0981B3D608D3415A91E4BE4748DE47C14AA3984CE4BEDA55EA514DF8A3BDC442"
+    },
+    {
+      "path": "D:\\传智杯\\records\\m3\\real-model-2026-10-30-attempt-3\\independent-final-review.txt",
+      "exists": true,
+      "bytes": 819,
+      "sha256": "8FBAFCB58A5A8C98AD8D192124CB882A97F0760A3CC2179C4035ECA8E74F6722"
+    },
+    {
+      "path": "D:\\传智杯\\submission\\预指导作品材料_20261031_最终版\\作品介绍文档.pdf",
+      "exists": true,
+      "bytes": 642107,
+      "sha256": "64A27473D48FC0DD46677C1BE3F72299746DC0E9CB7E0330DB1DDE6DBA8D2CAE"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\docs\\legacy\\prompt-exports-20261101\\01a17245-fd65-7ef2-a1e9-243d6e394cec.json",
+      "exists": true,
+      "bytes": 68817,
+      "sha256": "EB28BC6EFE0D61CBE8450A573A7A37FBA72A558CF2B388B15611D30688EC5ABF"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\docs\\legacy\\prompt-exports-20261101\\01a176bd-3c50-7e60-aad2-c53056af6058.json",
+      "exists": true,
+      "bytes": 14365,
+      "sha256": "B384BDE392039BCE4929016766977994DC0651F47D5C88C97ADB85F204C86E4E"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\docs\\legacy\\prompt-exports-20261101\\01a180db-4b25-79c3-a67c-15ad32d83970.json",
+      "exists": true,
+      "bytes": 90535,
+      "sha256": "B12A297CBC2BF086EB9683A596ED79B09BD461A85FD621AA1BF0DAB7315CD249"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\docs\\legacy\\prompt-exports-20261101\\index.json",
+      "exists": true,
+      "bytes": 1970,
+      "sha256": "8751B206EF6C72B05AC75539913F6249364E283B92064DD99B8FF4901572F479"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\docs\\prompts\\05-review-fix\\index.json",
+      "exists": true,
+      "bytes": 660,
+      "sha256": "0BEF3F236C9DAC88404CA333355BF416D18E485D28518CA8338D33C306BA767E"
+    },
+    {
+      "path": "D:\\传智杯\\versions\\competition-rebuild-20261103\\records\\review\\final-status.json",
+      "exists": true,
+      "bytes": 2599,
+      "sha256": "C732956106D924C5F97DC51461CF68AE4EBE6807E81B8BB7C0B58AC6E65441BB"
+    }
+  ],
+  "provider_image_hash_matches": {
+    "provider-first-call.png": {
+      "actual_sha256": "2A169035103CD2FEF8E030C77EA55535409F725D688B3FF28523A94953F786A0",
+      "recorded_sha256": "2A169035103CD2FEF8E030C77EA55535409F725D688B3FF28523A94953F786A0",
+      "matches_recorded": true,
+      "visually_reviewed_this_audit": false
+    },
+    "provider-second-call.png": {
+      "actual_sha256": "EEEBE081F80392D8E4E12646A135E17859598D8E76FCACA207BB5C25ADC02EDF",
+      "recorded_sha256": "EEEBE081F80392D8E4E12646A135E17859598D8E76FCACA207BB5C25ADC02EDF",
+      "matches_recorded": true,
+      "visually_reviewed_this_audit": false
+    }
+  },
+  "working_repository_remote": "origin\tD:\\浼犳櫤鏉痋versions\\competition-rebuild-20261103 (fetch)\norigin\tD:\\浼犳櫤鏉痋versions\\competition-rebuild-20261103 (push)\n",
+  "working_repository_formal_video_or_pdf_files": [],
+  "scope_limits": [
+    "Original files not changed or copied into historical Git",
+    "Image bytes present and hashed, not individually reinterpreted",
+    "Old PDF not approved as current R1 technical PDF",
+    "No official reply or external-device evidence newly obtained",
+    "No new paid model requests"
+  ]
+}

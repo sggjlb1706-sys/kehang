@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-08T09:06:59.327560+00:00",
+  "finished_at": "2026-11-08T09:07:04.466459+00:00",
+  "command": [
+    "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+    "-B",
+    "-I",
+    "-c",
+    "import torch, transformers; print(\"OK\")"
+  ],
+  "timeout_seconds": 90,
+  "elapsed_seconds": 5.137510000000475,
+  "returncode": 0,
+  "timed_out": false,
+  "error": "",
+  "stdout": "OK\r\n",
+  "stderr": "",
+  "prior_collector_import_timeout_seconds": 20,
+  "model_inference_performed": false,
+  "environment_modified": false
+}

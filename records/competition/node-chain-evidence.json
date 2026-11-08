@@ -1,0 +1,96 @@
+{
+  "cataloged_at_utc": "2026-11-08T09:07:45.225393+00:00",
+  "actual_user_task_source_line": 17,
+  "visible_checkpoint_user_messages": 1,
+  "visible_checkpoint_assistant_messages": 5,
+  "node_task_matches_current_user_request": true,
+  "commits": [
+    "c206e61e907609df95b2566d257005ea69070eed\t2026-11-08T17:00:56+08:00\ttest: specify Node identity completeness and immutable retest requirements",
+    "0916b9a941c81777120ac8fda8e51e28b8201ae9\t2026-11-08T17:02:53+08:00\tfeat: add explicit Node evidence and shared deterministic task contract",
+    "f47e2d369bf2bd1d2a27054a9bbce192fb0f6021\t2026-11-08T17:02:56+08:00\tfix: avoid loading the same npm null configuration twice",
+    "088802b5bef19817f72bd4dac1759a37c7e5149e\t2026-11-08T17:04:20+08:00\tfeat: connect Node demo to both course entries and manual guided workflow"
+  ],
+  "files": [
+    {
+      "path": "records/node/tests-red.txt",
+      "bytes": 5883,
+      "sha256": "D26CFD0BB9036A89AF0F2972390E5E4BFF316C23BEF64F25B2A9BE6350374154"
+    },
+    {
+      "path": "records/node/tests-green.txt",
+      "bytes": 110,
+      "sha256": "821C8A732D7394DD197A4D926B715E5BBFA1BC6F79E15186A8A043CBCA0FECD8"
+    },
+    {
+      "path": "records/node/unit-regression.txt",
+      "bytes": 134,
+      "sha256": "C2C1E74DC64F734F014C85BE053F690F1DEDB0ACD4920F56E6CDCEA2AFB6CFF2"
+    },
+    {
+      "path": "records/node/initial-npm-config-failure.json",
+      "bytes": 864,
+      "sha256": "6B5F874910DE96492754D186C1B14CF06456B6D3524126A3576988AEDE90FAA9"
+    },
+    {
+      "path": "records/node/npm-after-config-fix.json",
+      "bytes": 701,
+      "sha256": "07527BDE7060B7E844A33B36F9C8B58983AA63FF525B28BC9AB9AA314CC3CF92"
+    },
+    {
+      "path": "records/browser/20261108T090411006997Z-node/results.json",
+      "bytes": 2821,
+      "sha256": "FC4F03693261093D893D11830007BD5C4980F8D401E463D087C661E6C42D50AB"
+    },
+    {
+      "path": "records/browser/20261108T090411006997Z-node/actual-node-A.json",
+      "bytes": 1512,
+      "sha256": "104AC392A6F1474C314CF39BCFF8DCD6E7BAF4D8ACF75E5FAC6EEADEE0F8EA76"
+    },
+    {
+      "path": "records/browser/20261108T090411006997Z-node/actual-node-B.json",
+      "bytes": 1512,
+      "sha256": "F01D977F5F1A236C856E9ECB752AEA822729071F40A2E38AA7A6E20BB4FC82A4"
+    },
+    {
+      "path": "records/browser/20261108T090411006997Z-node/actual-node-A.ps1",
+      "bytes": 1264,
+      "sha256": "40C9623675544E03CB76C090EEFADC40BC1B132B7C91D2540369B92FB5270EAF"
+    },
+    {
+      "path": "records/browser/20261108T090411006997Z-node/actual-node-B.ps1",
+      "bytes": 1264,
+      "sha256": "BD6B6B972E5FCBDD75809B0AF2287BF068DA3281D68EE58A2DF812EE1E0F4F22"
+    },
+    {
+      "path": "records/competition/node-visible-checkpoint-20261108/01a1ba5e-61e3-7631-b7a9-4ce684fd75e2.json",
+      "bytes": 9668,
+      "sha256": "4E924DE66C2554C467D54C72E6C4B6F0EF58C03A4554492EC903EE38270730B6"
+    },
+    {
+      "path": "records/competition/node-visible-checkpoint-20261108/01a1ba5e-61e3-7631-b7a9-4ce684fd75e2.md",
+      "bytes": 7615,
+      "sha256": "9E8C68069B5C7CB465F20486B97E3EDB36F7C7DFCA16364CFF6D159171A3C4D3"
+    },
+    {
+      "path": "records/competition/node-visible-checkpoint-20261108/index.json",
+      "bytes": 774,
+      "sha256": "86A16439FCC53A2C75965A78D5AFCE210293267DDACD46205C16A11F33047058"
+    },
+    {
+      "path": "records/competition/node-visible-checkpoint-20261108/verification.json",
+      "bytes": 373,
+      "sha256": "30A5A37D65902A8BAE7605BF3D67EE5EEABE3B2C4F3EEE03350607D7618C75ED"
+    }
+  ],
+  "observed_failure": "Implementer detected npm double-loading the same NUL config as user and global during first real probe",
+  "fix": "Remove duplicate --globalconfig=NUL option; keep actual failure and successful follow-up",
+  "user_bug_feedback_messages_found": 0,
+  "official_complete_chain_count_increment": 0,
+  "classification": {
+    "tests": "constructed targeted negative/contract tests",
+    "real_node_AB": "same local target, same snapshot, ordered times, stable retest",
+    "browser": "actual desktop Edge + locally executed generated commands",
+    "390px": "desktop viewport emulation, no physical phone"
+  },
+  "originals_modified": false
+}
