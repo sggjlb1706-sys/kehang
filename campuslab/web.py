@@ -81,6 +81,9 @@ class Handler(BaseHTTPRequestHandler):
         with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as z:
             for name in ['__init__.py', 'rules.py', 'collect.py', 'probe.py']:
                 z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
+            if spec['scenario'] == 'node-basics':
+                for name in ['node_collect.py', 'node_probe.js']:
+                    z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
             z.writestr('task.json', json.dumps(spec, ensure_ascii=False, indent=2))
             z.writestr('README.txt', 'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target C:\\Course\\python.exe --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\n')
             if self.server.runtime_zip and self.server.runtime_zip.is_file():

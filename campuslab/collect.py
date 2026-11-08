@@ -13,6 +13,11 @@ from .rules import absolute, analyze, validate_task
 def collect(spec, target, model_dir=None, infer=False):
     validate_task(spec)
     absolute(target)
+    if spec['scenario'] == 'node-basics':
+        if model_dir is not None or infer:
+            raise ValueError('Node任务不接受模型参数')
+        from .node_collect import collect_node
+        return collect_node(spec, target)
     if model_dir is not None:
         absolute(model_dir)
     path = Path(target)

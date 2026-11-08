@@ -37,6 +37,14 @@ MODEL_SHA = 'FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE'
 
 
 def task(scenario='python-basics', title=None, python_min='3.10', python_max='3.15', requests_min='2.31'):
+    if scenario == 'node-basics':
+        spec = dict(schema=1, title=title or 'Node.js/npm 基础环境 · 演示任务', scenario=scenario,
+                    source='演示课程要求，非学校既定要求', os='Windows',
+                    node=dict(min='22.0', max_exclusive='25.0'),
+                    npm=dict(min='10.0', max_exclusive='12.0'), verify='node-npm-fixed')
+        if not isinstance(spec['title'], str) or not 1 <= len(spec['title'].strip()) <= 100:
+            raise ValueError('任务名称须为1—100字')
+        return seal(spec)
     if scenario not in ('python-basics', 'local-qwen'):
         raise ValueError('尚未支持该学习目标')
     if version(python_min) >= version(python_max):
@@ -66,8 +74,11 @@ def validate_task(spec):
     if not isinstance(spec, dict) or type(spec.get('schema')) is not int or spec.get('schema') != 1 or spec != seal(spec):
         raise ValueError('任务快照缺失或摘要不匹配')
     try:
-        expected = task(spec.get('scenario'), spec.get('title'), spec['python']['min'],
-                        spec['python']['max_exclusive'], spec['packages'].get('requests','2.31'))
+        if spec.get('scenario') == 'node-basics':
+            expected = task('node-basics', spec.get('title'))
+        else:
+            expected = task(spec.get('scenario'), spec.get('title'), spec['python']['min'],
+                            spec['python']['max_exclusive'], spec['packages'].get('requests','2.31'))
     except (KeyError,TypeError,AttributeError):
         raise ValueError('任务结构不完整') from None
     if expected != spec:
@@ -88,7 +99,9 @@ def analyze(spec, report):
     if exists is not None and type(exists) is not bool:
         raise ValueError('目标存在状态无效')
     if actual is not None and (absolute(actual) != requested or exists is not True):
-        raise ValueError('实际解释器与所选目标不一致')
+        raise ValueError('实际运行程序与所选目标不一致')
+    if spec['scenario'] == 'node-basics':
+        return analyze_node(spec, report, target, facts)
     if not isinstance(facts, dict) or set(facts) != {'os', 'python', 'packages', 'verification'}:
         raise ValueError('报告缺少完整事实集合')
     if not isinstance(facts['packages'], dict) or set(facts['packages']) != set(spec['packages']):
@@ -153,10 +166,59 @@ def analyze(spec, report):
                 checks=checks, passed=all(c['status'] == 'pass' for c in checks))
 
 
+def analyze_node(spec, report, target, facts):
+    if not isinstance(facts, dict) or set(facts) != {'os', 'node', 'npm', 'verification'}:
+        raise ValueError('Node报告缺少完整事实集合')
+    npm, verify = facts['npm'], facts['verification']
+    if not isinstance(npm, dict) or set(npm) != {'path', 'node', 'exists', 'version', 'returncode', 'error'}:
+        raise ValueError('npm关联证据不完整')
+    if not isinstance(verify, dict) or set(verify) != {'returncode', 'stdout', 'error'}:
+        raise ValueError('缺少固定Node运行证据')
+    if any(x is not None and type(x) is not int for x in (npm['returncode'], verify['returncode'])):
+        raise ValueError('运行退出码无效')
+    if any(not isinstance(x, str) for x in (npm['error'], verify['stdout'], verify['error'])):
+        raise ValueError('运行输出无效')
+    if npm['exists'] is not None and type(npm['exists']) is not bool:
+        raise ValueError('npm存在状态无效')
+    for observed in (facts['node'], npm['version']):
+        if observed is not None and not isinstance(observed, str):
+            raise ValueError('Node或npm版本无效')
+    expected_cli = ntpath.join(ntpath.dirname(absolute(target['requested'])), 'node_modules', 'npm', 'bin', 'npm-cli.js')
+    if npm['path'] is not None and absolute(npm['path']) != absolute(expected_cli):
+        raise ValueError('npm必须属于所选Node目录，拒绝混入其他环境')
+    if npm['node'] is not None and (target['actual'] is None or absolute(npm['node']) != absolute(target['actual'])):
+        raise ValueError('npm运行程序与所选Node不一致')
+    if npm['exists'] is True and (npm['path'] is None or npm['node'] is None):
+        raise ValueError('npm存在时须记录CLI及运行程序身份')
+    if npm['exists'] is not True and (npm['version'] is not None or npm['returncode'] is not None or npm['node'] is not None):
+        raise ValueError('npm未确认存在时不得携带运行或版本证据')
+    if target['actual'] is None and (facts['node'] is not None or npm['exists'] is not None or npm['path'] is not None or verify['returncode'] is not None):
+        raise ValueError('目标未确认时不得声称运行或版本')
+    if facts['os'] is not None and not isinstance(facts['os'], str):
+        raise ValueError('系统事实无效')
+    checks = [dict(id='os', status='unknown' if facts['os'] is None else ('pass' if facts['os'] == spec['os'] else 'mismatch'),
+                   observed=facts['os'], requirement=spec['os'])]
+    for name, observed, missing in [('node', facts['node'], target['exists'] is False),
+                                    ('npm', npm['version'], npm['exists'] is False)]:
+        state = 'missing' if missing else 'unknown'
+        if observed is not None:
+            state = ('pass' if version(spec[name]['min']) <= version(observed) < version(spec[name]['max_exclusive']) else 'mismatch') if re.fullmatch(r'\d+\.\d+\.\d+', observed) else 'unknown'
+        if name == 'npm' and npm['exists'] is True:
+            if npm['returncode'] is None:
+                state = 'unknown'
+            elif npm['returncode'] != 0 or npm['error']:
+                state = 'mismatch'
+        checks.append(dict(id=name, status=state, observed=npm if name == 'npm' else observed, requirement=spec[name]))
+    state = 'unknown' if verify['returncode'] is None else ('pass' if verify['returncode'] == 0 and verify['stdout'].strip() == 'OK' and not verify['error'] else 'mismatch')
+    checks.append(dict(id='run', status=state, observed=verify, requirement='所选Node固定程序退出0、输出OK且无错误'))
+    return dict(task_id=spec['id'], target=target, collected_at=report['collected_at'],
+                checks=checks, passed=all(c['status'] == 'pass' for c in checks))
+
+
 def compare(spec, before, after):
     a, b = analyze(spec, before), analyze(spec, after)
     if absolute(a['target']['requested']) != absolute(b['target']['requested']):
-        raise ValueError('复检必须使用同一目标解释器')
+        raise ValueError('复检必须使用同一目标环境路径')
     if spec['scenario'] == 'local-qwen' and before['model']['directory'] != after['model']['directory']:
         if before['model']['directory'] is None or after['model']['directory'] is None or absolute(before['model']['directory']) != absolute(after['model']['directory']):
             raise ValueError('复检必须使用同一模型目录')
