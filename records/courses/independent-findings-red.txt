@@ -1,0 +1,77 @@
+FFFFFFFF
+======================================================================
+FAIL: test_conflict_cannot_be_bypassed_by_cpu_clarification (test_review_regressions.ReviewRegressions.test_conflict_cannot_be_bypassed_by_cpu_clarification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 26, in test_conflict_cannot_be_bypassed_by_cpu_clarification
+    self.assertNotEqual(result['scenario'],'pytorch-cpu')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'pytorch-cpu' == 'pytorch-cpu'
+
+======================================================================
+FAIL: test_non_cuda_build_string_cannot_pass_gpu_course (test_review_regressions.ReviewRegressions.test_non_cuda_build_string_cannot_pass_gpu_course) (build='CPU-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 31, in test_non_cuda_build_string_cannot_pass_gpu_course
+    with self.subTest(build=build):self.assertFalse(analyze(spec,report)['passed'])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_non_cuda_build_string_cannot_pass_gpu_course (test_review_regressions.ReviewRegressions.test_non_cuda_build_string_cannot_pass_gpu_course) (build='garbage')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 31, in test_non_cuda_build_string_cannot_pass_gpu_course
+    with self.subTest(build=build):self.assertFalse(analyze(spec,report)['passed'])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_non_cuda_build_string_cannot_pass_gpu_course (test_review_regressions.ReviewRegressions.test_non_cuda_build_string_cannot_pass_gpu_course) (build='12')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 31, in test_non_cuda_build_string_cannot_pass_gpu_course
+    with self.subTest(build=build):self.assertFalse(analyze(spec,report)['passed'])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='PyTorch��ʦҪ�� GPU ���У��������� CPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 21, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    self.assertTrue(proposal['constraints']['gpu_required'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='���ѧϰ��ʦҪ�� CUDA������ֻ�� CPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 22, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    self.assertNotEqual(proposal['scenario'],'pytorch-cpu')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'pytorch-cpu' == 'pytorch-cpu'
+
+======================================================================
+FAIL: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='PyTorch �γ�Ҫ�� GPU���ȼ�� CPU �� GPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 21, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    self.assertTrue(proposal['constraints']['gpu_required'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_text_error_path_is_redacted_before_json_serialization (test_review_regressions.ReviewRegressions.test_text_error_path_is_redacted_before_json_serialization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 36, in test_text_error_path_is_redacted_before_json_serialization
+    self.assertNotIn('Alice',preview['user_error'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Alice' unexpectedly found in 'C:\\Users\\Alice\\private.txt api_key=<����ֵ��ɾ��>'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.542s
+
+FAILED (failures=8)
