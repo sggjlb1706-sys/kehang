@@ -10,7 +10,7 @@ const env = Object.fromEntries(Object.entries(process.env).filter(([key]) =>
 const options = {encoding:'utf8', timeout:15000, maxBuffer:262144, windowsHide:true, env, cwd:path.dirname(actual)};
 const npm = {path:cli, node:null, exists:false, version:null, returncode:null, error:'所选Node目录未找到npm CLI'};
 const commands = [];
-const npmArgs = [cli, '--version', '--offline', '--ignore-scripts', '--no-update-notifier', '--userconfig=NUL', '--globalconfig=NUL'];
+const npmArgs = [cli, '--version', '--offline', '--ignore-scripts', '--no-update-notifier', '--userconfig=NUL'];
 try {
   if (fs.statSync(cli).isFile()) {
     npm.path = fs.realpathSync(cli);
