@@ -1,4 +1,6 @@
 # 来源与历史边界
+本轮课程能力补全从 `D:\传智杯\versions\competition-r1-node-20261108` 的 `42d86482fa1540b35fcdda6bbdf15d888f6b8cd1` 完整克隆到 `C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108`，分支 `codex/courses-20261108`。358项交付SHA全部匹配、Git干净；全目录非Git摘要在records/courses/baseline.json。现有模块、测试、历史文档、既有嵌入运行时均复用；课程模型/解释器保留原位置，无安装或下载。下文是继承的历史，不能当作本轮新开发。
+
 2026-11-08本轮从正式R1 `D:\传智杯\versions\competition-rebuild-20261103` 完整克隆，基线HEAD `eee876053eebfb7d82e2ad6a9b45272f0075b1fe`。原工作区干净，`records/review/SHA256SUMS-delivery.json` 205项无差异；清单SHA-256为 `30031AF85E0AD799DE505367FC63F90E8EF5BA5D5B8AF2F46A62E49B467F81B0`。用户指名的根目录清单不存在，实际位于records/review；未补写原件。
 
 新工作目录 `C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108`，分支 `codex/r1-node-20261108`。完整复用原R1的任务摘要/四状态/复检、Python采集、固定模型、教师快照、手动网页流程及AI同意机制，在现有接缝新增Node课程。修改以本轮实际提交为准，原跟踪文件和历史来自原HEAD。原目录非Git字节清单在records/node/baseline.json；原交付回执/SHA作为来源保留，不冒充新交付。
