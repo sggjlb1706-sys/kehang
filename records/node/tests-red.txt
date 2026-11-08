@@ -1,0 +1,82 @@
+EEEEEEE
+======================================================================
+ERROR: test_all_facts_and_four_states (test_node.NodeTest.test_all_facts_and_four_states)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 41, in test_all_facts_and_four_states
+    spec = task('node-basics')
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_changed_node_task_even_resealed_is_rejected (test_node.NodeTest.test_changed_node_task_even_resealed_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 112, in test_changed_node_task_even_resealed_is_rejected
+    spec = task('node-basics'); spec['node']['min'] = '20.0'
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_incomplete_or_mixed_identity_rejected (test_node.NodeTest.test_incomplete_or_mixed_identity_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 77, in test_incomplete_or_mixed_identity_rejected
+    report = node_evidence(); mutation(report)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 15, in node_evidence
+    spec = spec or task('node-basics')
+                   ~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_missing_target_collects_complete_unknown_report (test_node.NodeTest.test_missing_target_collects_complete_unknown_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 59, in test_missing_target_collects_complete_unknown_report
+    report = collect(task('node-basics'), str(Path(folder)/'missing-node.exe'))
+                     ~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_partial_and_failed_results_cannot_pass (test_node.NodeTest.test_partial_and_failed_results_cannot_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 91, in test_partial_and_failed_results_cannot_pass
+    report = node_evidence(); mutation(report)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 15, in node_evidence
+    spec = spec or task('node-basics')
+                   ~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_retest_requires_snapshot_target_and_later_time (test_node.NodeTest.test_retest_requires_snapshot_target_and_later_time)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 96, in test_retest_requires_snapshot_target_and_later_time
+    spec = task('node-basics'); before = node_evidence(); after = deepcopy(before)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+======================================================================
+ERROR: test_shared_fixed_snapshot_and_immutable_course (test_node.NodeTest.test_shared_fixed_snapshot_and_immutable_course)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\tests\test_node.py", line 27, in test_shared_fixed_snapshot_and_immutable_course
+    spec = task('node-basics')
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-r1-node-20261108\campuslab\rules.py", line 41, in task
+    raise ValueError('��δ֧�ָ�ѧϰĿ��')
+ValueError: ��δ֧�ָ�ѧϰĿ��
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+
+FAILED (errors=7)
