@@ -1,8 +1,10 @@
 # R1 Node.js/npm 扩展轮交接（2026-11-08）
 
-当前状态：初审无阻塞，所列P3工具README示例已修正并验证，独立delta待完成；本轮尚未记录通过。整套赛事作品与资格未通过。
+最终状态：本轮范围通过。独立初审无阻塞，所列P3工具README示例已修正，独立delta确认闭合且无新增阻塞。整套赛事作品与资格仍未完成，不能据此宣布通过。
 
 新工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108`。计划交付目录：`D:\传智杯\versions\competition-r1-node-20261108`。分支：`codex/r1-node-20261108`；继承正式R1完整历史，原HEAD `eee876053eebfb7d82e2ad6a9b45272f0075b1fe`。最终HEAD在新版本交付回执记录，不将原交付回执当作本轮回执。
+
+独立delta适用HEAD `ca948128c70638d4c858247e0b281f4977c2ceb1`、347项候选清单。全文 `records/review/node-independent-delta.md`，SHA `AB1C5EDB9E7273BB40F4B033B784705C51BFD840F1E7A11D5465F0F174C7CAE1`。收尾不再修改产品。最终根目录SHA256SUMS-delivery.json覆盖交付内容（排除自身、Git元数据与生成回执）；完整Git历史另保留，最终HEAD/复制校验在records/review/node-delivery-receipt.json。
 
 本轮新增Node.js/npm固定演示课程：自主与教师默认快照一致、显式选择Node、同目录npm CLI由所选Node执行、完整事实四状态、手动采集/修复和同任务同目标有序复检。三模式只改文字，Python/固定Qwen及AI同意机制保留。课程范围来自演示配置，不代表学校真实课程。
 

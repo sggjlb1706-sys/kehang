@@ -1,8 +1,12 @@
 # R1 Node.js/npm 扩展轮独立审查（2026-11-08）
 
-当前状态：本轮独立初审无阻塞，发现1项P3工具README错误目标示例，已在真实提交49720ae修正并完成31项测试及Node9组/Python10组浏览器验证，等待独立delta。以下原首轮审查不作为本轮通过凭证。
+最终状态：本轮独立初审无阻塞，1项P3工具README目标示例经实际提交49720ae修正后，独立delta确认闭合，无新增阻塞。本轮范围通过；以下原首轮审查仅为历史，不作为本轮通过凭证。整套赛事材料和官方资格仍未完成。
 
 初审适用HEAD `cde0d4496c8ccda64933ae157073d406df9e6a27`；307项候选SHA清单 `node-candidate.json` 的SHA为 `1B5358D806A95D8FD408DBB197C8FD4EFE6E08710DF95B61B0C52D836FF21E3A`。独立初审全文 `records/review/node-independent-original.md`，SHA `F1D0B0F7E9BDE807A5FA6992E7DB2787B5E510AC6812C0061CCB624BB92F8242`。报告原文保留，不将非阻塞P3改写为不存在。
+
+独立delta全文 `records/review/node-independent-delta.md`，SHA `AB1C5EDB9E7273BB40F4B033B784705C51BFD840F1E7A11D5465F0F174C7CAE1`，适用HEAD `ca948128c70638d4c858247e0b281f4977c2ceb1`。347项候选清单 `node-delta-candidate.json` 的SHA为 `372A911663D38C8F150CDB0C653755965BDA57306C8DF401FD04293981F59699`。独立31测试通过，内存工具ZIP核对Node示例正确、Python/模型README原字节一致；最新Node9组和原网页10组源码摘要匹配；原R1 212项和旧814项保护无差异。审查未自行重跑Edge/模型、实体设备或官网抓取，适用范围在原文明确。
+
+此后仅更新结论、交接与交付清单，产品源码必须保持该delta候选摘要。最终Git HEAD及交付字节校验由新版本回执提供，不改写候选、旧报告或原交付。
 
 本轮重点：目标Node与npm关联身份、完整事实与错误通过、固定快照、同任务/同目标/有序复检、跨场景错配拒绝、Python/模型/AI同意回归、隐私、原件保护及Prompt/赛事证据适用范围。产品实现、测试记录、官网留档及逐链对照表均纳入待审清单。独立全文另存records/review/node-independent-original.md；如有修复则另作真实提交并要求复核，不能覆盖原阻塞报告。
 
