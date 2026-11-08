@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
-const names = {os:'操作系统',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
+const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 
 async function api(path,body){
   const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});
@@ -32,7 +32,12 @@ async function chooseTask(loader,course=null){
   clearTask();const epoch=state.epoch; const spec=await loader();if(epoch!==state.epoch)return;
   state.task=spec;state.course=course;$('task-panel').hidden=false;
   $('task-title').textContent=spec.title;
-  $('task-summary').textContent=`Windows · Python ${spec.python.min} 至 ${spec.python.max_exclusive}（不包含上限） · ${Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('，')}`;
+  const node=spec.scenario==='node-basics';
+  $('task-summary').textContent=node?`Windows · Node.js ${spec.node.min} 至 ${spec.node.max_exclusive} · npm ${spec.npm.min} 至 ${spec.npm.max_exclusive}（均不包含上限）`:`Windows · Python ${spec.python.min} 至 ${spec.python.max_exclusive}（不包含上限） · ${Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('，')}`;
+  $('task-source').textContent=spec.source;
+  $('target-label').textContent=node?'课程 Node.js 完整路径（明确选择 node.exe）':'课程解释器完整路径';
+  $('target').placeholder=node?'例如 C:\\Program Files\\nodejs\\node.exe':'例如 C:\\CoursePython\\python.exe';
+  $('target-help').textContent=node?'npm 使用所选 node.exe 同目录的 node_modules/npm/bin/npm-cli.js，并由该 node.exe 执行；PATH 中其他 npm 不作证据。':'py 不可用时，从安装目录或编辑器的解释器设置寻找 python.exe。';
   $('task-id').textContent=`固定任务摘要 ${spec.id}`;
   $('model-options').hidden=spec.scenario!=='local-qwen';$('infer').checked=false;
   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
@@ -50,12 +55,18 @@ async function guidance(){
   const links=document.createElement('div');links.className='official-links';
   for(const link of data.links){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a);}
   $('guidance').append(links);
-  $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
+  $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再生成只读采集命令。':'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
 }
 $('goal').addEventListener('change',()=>{clearTask();notice('目标已更换，请确认新的任务。');});
 $('course-code').addEventListener('input',()=>{if(state.course)clearTask();});
 $('goal-form').addEventListener('submit',e=>{e.preventDefault();action(e.submitter,()=>chooseTask(()=>api(`/api/goal?goal=${encodeURIComponent($('goal').value)}`)));});
 $('course-form').addEventListener('submit',e=>{e.preventDefault();const code=$('course-code').value.trim().toUpperCase();action(e.submitter,()=>chooseTask(()=>api('/api/course/'+encodeURIComponent(code)),code));});
+$('teacher-goal').addEventListener('change',()=>{
+  const node=$('teacher-goal').value==='node-basics';
+  $('teacher-python-options').hidden=node;$('teacher-node-requirements').hidden=!node;
+  const defaults=['Python 基础实验','Node.js/npm 基础环境 · 演示任务','本地模型入门 · 固定离线实验'];
+  if(defaults.includes($('teacher-title').value))$('teacher-title').value=node?defaults[1]:($('teacher-goal').value==='local-qwen'?defaults[2]:defaults[0]);
+});
 $('teacher-form').addEventListener('submit',e=>{
   e.preventDefault();action(e.submitter,async()=>{
     const result=await api('/api/course',{title:$('teacher-title').value,scenario:$('teacher-goal').value,python_min:$('python-min').value,python_max:$('python-max').value,requests_min:$('requests-min').value});
@@ -71,7 +82,7 @@ function requirePath(value,label){if(!/^[a-zA-Z]:[\\/]/.test(value)||/[\r\n\0]/.
 $('make-command').addEventListener('click',()=>{
   try{
     if(!state.task)throw Error('请先确定任务');
-    const root=requirePath($('tool-dir').value.trim(),'工具目录');const target=requirePath($('target').value.trim(),'课程解释器');
+    const root=requirePath($('tool-dir').value.trim(),'工具目录');const target=requirePath($('target').value.trim(),state.task.scenario==='node-basics'?'课程 Node.js':'课程解释器');
     const toolPython=$('tool-python').value.trim();if(toolPython)requirePath(toolPython,'工具Python');
     if(!toolPython&&!state.config?.portable_available)throw Error('当前工具包未配置独立运行时，请填写已有工具Python；工具Python不代表课程环境。');
     const stage=$('report-stage').value;const lines=["$ErrorActionPreference = 'Stop'",`$taskToolRoot = ${ps(root)}`,`$taskTarget = ${ps(target)}`,"if (!(Test-Path -LiteralPath $taskToolRoot -PathType Container)) { throw '工具目录不存在，请完整解压' }",'$taskSnapshot = Join-Path $taskToolRoot '+ps('task.json'),"if (!(Test-Path -LiteralPath $taskSnapshot -PathType Leaf)) { throw '缺少task.json，请完整解压本任务工具' }",`if ((Get-Content -LiteralPath $taskSnapshot -Raw -Encoding UTF8 | ConvertFrom-Json).id -ne ${ps(state.task.id)}) { throw '工具任务与网页任务不一致，请重新下载' }`,`$taskRunner = ${toolPython?ps(toolPython):'Join-Path $taskToolRoot '+ps('runtime\\python.exe')}`,"if (!(Test-Path -LiteralPath $taskRunner -PathType Leaf)) { throw '工具Python不存在' }",'Set-Location -LiteralPath $taskToolRoot'];
@@ -81,7 +92,7 @@ $('make-command').addEventListener('click',()=>{
     $('command').textContent=lines.join('\n');notice('已生成命令。先检查路径和操作内容，再由本人到目标电脑运行。');
   }catch(e){$('command').textContent='';notice(e.message,true);}
 });
-for(const id of ['tool-dir','target','tool-python','model-dir','infer','report-stage'])$(id).addEventListener('input',()=>{$('command').textContent='';});
+for(const id of ['tool-dir','target','tool-python','model-dir','infer','report-stage'])$(id).addEventListener('input',()=>{$('command').textContent='';if(id==='target'||id==='model-dir')clearReports();});
 
 function render(a){
   state.analysis=a;$('results').replaceChildren();
