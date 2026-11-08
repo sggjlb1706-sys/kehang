@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_portable (unittest.loader._FailedTest.test_portable)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_portable
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_portable.py", line 4, in <module>
+    from campuslab.portable import export_package, import_package, guide_html
+ModuleNotFoundError: No module named 'campuslab.portable'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

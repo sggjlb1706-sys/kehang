@@ -45,7 +45,7 @@ class WebTest(unittest.TestCase):
     def test_tool_has_only_explicit_source_and_snapshot(self):
         raw=self.request('/api/tool').read()
         with zipfile.ZipFile(BytesIO(raw)) as z:
-            self.assertEqual(set(z.namelist()),{'campuslab/__init__.py','campuslab/collect.py','campuslab/probe.py','campuslab/rules.py','task.json','README.txt'})
+            self.assertEqual(set(z.namelist()),{'campuslab/__init__.py','campuslab/collect.py','campuslab/probe.py','campuslab/rules.py','campuslab/preparation.py','task.json','README.txt'})
             self.assertEqual(z.testzip(),None)
         response=self.request('/')
         self.assertIn("script-src 'self'",response.headers['Content-Security-Policy'])
@@ -60,8 +60,8 @@ class WebTest(unittest.TestCase):
         with zipfile.ZipFile(BytesIO(self.request('/api/tool?goal=node-basics').read())) as z:
             self.assertEqual(json.loads(z.read('task.json')), spec)
             self.assertTrue({'campuslab/node_collect.py','campuslab/node_probe.js'} <= set(z.namelist()))
-            self.assertIn(r'--target C:\CourseNode\node.exe', z.read('README.txt').decode('utf-8'))
-            self.assertNotIn(r'--target C:\Course\python.exe', z.read('README.txt').decode('utf-8'))
+            self.assertIn(r'--target "C:\CourseNode\node.exe"', z.read('README.txt').decode('utf-8'))
+            self.assertNotIn(r'--target "C:\Course\python.exe"', z.read('README.txt').decode('utf-8'))
 
 
 if __name__=='__main__': unittest.main()

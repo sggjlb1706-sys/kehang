@@ -37,6 +37,12 @@ MODEL_SHA = 'FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE'
 
 
 def task(scenario='python-basics', title=None, python_min='3.10', python_max='3.15', requests_min='2.31'):
+    if scenario in ('pytorch-cpu','pytorch-gpu'):
+        from .torch_course import make_task
+        return make_task(title, gpu_required=scenario=='pytorch-gpu')
+    if scenario == 'vm-linux':
+        from .vm_course import make_task
+        return make_task(title)
     if scenario == 'node-basics':
         spec = dict(schema=1, title=title or 'Node.js/npm 基础环境 · 演示任务', scenario=scenario,
                     source='演示课程要求，非学校既定要求', os='Windows',
@@ -74,6 +80,12 @@ def validate_task(spec):
     if not isinstance(spec, dict) or type(spec.get('schema')) is not int or spec.get('schema') != 1 or spec != seal(spec):
         raise ValueError('任务快照缺失或摘要不匹配')
     try:
+        if spec.get('scenario') in ('pytorch-cpu','pytorch-gpu'):
+            from .torch_course import validate_spec
+            return validate_spec(spec)
+        if spec.get('scenario') == 'vm-linux':
+            from .vm_course import validate_spec
+            return validate_spec(spec)
         if spec.get('scenario') == 'node-basics':
             expected = task('node-basics', spec.get('title'))
         else:
@@ -88,6 +100,12 @@ def validate_task(spec):
 
 def analyze(spec, report):
     validate_task(spec)
+    if spec['scenario'] in ('pytorch-cpu','pytorch-gpu'):
+        from .torch_course import analyze as analyze_torch
+        return analyze_torch(spec,report)
+    if spec['scenario'] == 'vm-linux':
+        from .vm_course import analyze as analyze_vm
+        return analyze_vm(spec,report)
     if not isinstance(report, dict) or type(report.get('schema')) is not int or report.get('schema') != 1 or report.get('task_id') != spec['id']:
         raise ValueError('报告与当前任务快照不一致')
     timestamp(report.get('collected_at'))
@@ -217,6 +235,12 @@ def analyze_node(spec, report, target, facts):
 
 def compare(spec, before, after):
     a, b = analyze(spec, before), analyze(spec, after)
+    if spec['scenario'] in ('pytorch-cpu','pytorch-gpu'):
+        from .torch_course import compare_identity
+        compare_identity(before,after)
+    elif spec['scenario'] == 'vm-linux':
+        from .vm_course import compare_identity
+        compare_identity(before,after)
     if absolute(a['target']['requested']) != absolute(b['target']['requested']):
         raise ValueError('复检必须使用同一目标环境路径')
     if spec['scenario'] == 'local-qwen' and before['model']['directory'] != after['model']['directory']:

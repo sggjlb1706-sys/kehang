@@ -1,0 +1,32 @@
+...F.......F............................................................F..
+======================================================================
+FAIL: test_node_tool_has_matching_target_example_and_snapshot (test_course_flow.CourseFlowTest.test_node_tool_has_matching_target_example_and_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_web.py", line 63, in test_node_tool_has_matching_target_example_and_snapshot
+    self.assertIn(r'--target C:\CourseNode\node.exe', z.read('README.txt').decode('utf-8'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--target C:\\CourseNode\\node.exe' not found in 'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "C:\\CourseNode\\node.exe" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n'
+
+======================================================================
+FAIL: test_node_tool_has_matching_target_example_and_snapshot (test_web.WebTest.test_node_tool_has_matching_target_example_and_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_web.py", line 63, in test_node_tool_has_matching_target_example_and_snapshot
+    self.assertIn(r'--target C:\CourseNode\node.exe', z.read('README.txt').decode('utf-8'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--target C:\\CourseNode\\node.exe' not found in 'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "C:\\CourseNode\\node.exe" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n'
+
+======================================================================
+FAIL: test_node_tool_has_matching_target_example_and_snapshot (test_web.WebTest.test_node_tool_has_matching_target_example_and_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_web.py", line 63, in test_node_tool_has_matching_target_example_and_snapshot
+    self.assertIn(r'--target C:\CourseNode\node.exe', z.read('README.txt').decode('utf-8'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--target C:\\CourseNode\\node.exe' not found in 'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "C:\\CourseNode\\node.exe" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n'
+
+----------------------------------------------------------------------
+Ran 75 tests in 2.704s
+
+FAILED (failures=3)

@@ -10,9 +10,22 @@ import subprocess
 from .rules import absolute, analyze, validate_task
 
 
-def collect(spec, target, model_dir=None, infer=False):
+def collect(spec, target, model_dir=None, infer=False, gpu_run=False, vm_id=None, guest_report=None):
     validate_task(spec)
     absolute(target)
+    scenario=spec['scenario']
+    if gpu_run and scenario not in ('pytorch-cpu','pytorch-gpu'):
+        raise ValueError('该任务不接受GPU验证参数')
+    if (vm_id is not None or guest_report is not None) and scenario!='vm-linux':
+        raise ValueError('该任务不接受虚拟机参数')
+    if scenario in ('pytorch-cpu','pytorch-gpu','vm-linux'):
+        if model_dir is not None or infer:
+            raise ValueError('该任务不接受模型参数')
+        if scenario=='vm-linux':
+            from .vm_course import collect as collect_vm
+            return collect_vm(spec,target,vm_id,guest_report)
+        from .torch_course import collect as collect_torch
+        return collect_torch(spec,target,gpu_run)
     if spec['scenario'] == 'node-basics':
         if model_dir is not None or infer:
             raise ValueError('Node任务不接受模型参数')
@@ -61,9 +74,13 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--model-dir')
     parser.add_argument('--infer',action='store_true',help='Explicitly run the fixed offline local model check')
+    parser.add_argument('--gpu-run',action='store_true',help='Explicitly run the fixed GPU tensor check')
+    parser.add_argument('--vm-id',help='Selected VirtualBox UUID or VMware absolute .vmx path')
+    parser.add_argument('--guest-report',type=Path,help='Manually collected guest JSON bound to the same task and VM')
     args = parser.parse_args()
     spec = json.loads(args.task.read_text(encoding='utf-8-sig'))
-    report = collect(spec, args.target, args.model_dir, args.infer)
+    guest=json.loads(args.guest_report.read_text(encoding='utf-8-sig')) if args.guest_report else None
+    report = collect(spec, args.target, args.model_dir, args.infer,args.gpu_run,args.vm_id,guest)
     with args.output.open('x', encoding='utf-8') as output:
         json.dump(report, output, ensure_ascii=False, indent=2)
     print(json.dumps(analyze(spec, report), ensure_ascii=True))

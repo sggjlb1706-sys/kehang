@@ -2,10 +2,12 @@
 from .rules import validate_task
 
 
-def plan(spec, mode='novice', resources=None):
+def plan(spec, mode='novice', resources=None, report=None):
     validate_task(spec)
     if mode not in ('novice','standard','quick'):
         raise ValueError('指导模式无效')
+    if spec['scenario'] in ('pytorch-cpu','pytorch-gpu','vm-linux'):
+        return course_plan(spec,mode,report)
     local = spec['scenario'] == 'local-qwen'
     if spec['scenario'] != 'node-basics':
         steps = [
@@ -46,4 +48,76 @@ def plan(spec, mode='novice', resources=None):
         steps=[steps[0],steps[2],steps[-3],steps[-2],steps[-1]]
     elif mode == 'quick':
         steps=[('确认固定目标与要求',steps[0][1]),('采集、处理、同目标复检','使用下方手动命令，导入原始A/B。规则结果与其他模式相同。')]
-    return dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=recommendation)
+    result=dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=recommendation)
+    if local:
+        result['preparation']=[
+            '先手动运行硬件预检；内存、磁盘或显卡未知时先补证据。工具Python与课程Python分别选择。',
+            '在明确选定的课程Python中按PyTorch官方安装选择器准备torch>=2.2及transformers>=4.45；不向其他环境安装。',
+            '模型：'+spec['model']['name']+'；固定revision '+spec['model']['revision']+'；手动从官方文件页取得该revision，权重SHA256须为 '+spec['model']['weights_sha256']+'。',
+            '选择真实模型目录，先采集预检查。权重/依赖齐备后主动勾选固定离线推理，再采集B；输出2和EOS必须来自当前本地目标。']
+    result['remediation']=remediation(spec,report,mode)
+    return result
+
+
+def ps_literal(value):
+    return '"'+''.join('`'+c if c in '`"$‘’‚‛“”„‟' else c for c in value)+'"'
+
+
+def remediation(spec,report,mode):
+    if report is None:
+        return []
+    from .rules import analyze
+    result=analyze(spec,report)
+    target=report['target']['requested']
+    actions=[]
+    for check in result['checks']:
+        status=check['status']; key=check['id']
+        if status=='pass':
+            continue
+        intro={'missing':'未取得所需组件，请按课程要求手动准备。','mismatch':'已取得证据但不符合要求；先核对版本或运行错误。','unknown':'现有证据不足；先补充事实，不要直接重装。'}[status]
+        if key.startswith('package:'):
+            package=key.split(':',1)[1]
+            extra='仅在所选解释器中操作：'+ps_literal(target)+'。'
+            if package=='requests':
+                extra+=' 可审查的PowerShell建议：& '+ps_literal(target)+' -m pip install '+ps_literal('requests>='+spec['packages']['requests'])+'。由本人决定是否运行。'
+            else:
+                extra+=' PyTorch按官方安装选择器核对CPU/CUDA构建；先确认课程版本和驱动兼容，再手动安装。'
+        elif key in ('python','node'):
+            extra='找到课程实际程序完整路径，核对任务显示的允许版本。若换目标，清除原报告并重新初检A。'
+        elif key=='npm':
+            extra='使用所选node.exe同目录的node_modules/npm/bin/npm-cli.js；不要用PATH中另一份npm凑齐。缺失时按Node官方安装说明手动修复该目录。'
+        elif 'gpu' in key or 'cuda' in key:
+            extra='分别核对框架CUDA构建、设备可用性及所选GPU UUID；课程要求GPU时主动勾选固定GPU运算，CPU通过不能替代。'
+        elif key.startswith('model:'):
+            extra='按固定revision和权重SHA核对模型目录；依赖与权重齐备后主动执行本地离线推理。缺少权重不会自动下载。'
+        elif any(part in key for part in ('guest','instance','vm','host','virtual')):
+            extra='分别核对宿主、软件及实例身份；在本人已启动的所选Linux来宾中手动运行绑定采集器并导入来宾原始JSON。无法取得来宾时保持未知。'
+        else:
+            extra='展开本项原始证据查看错误。在同一目标重跑固定采集器；建议已阅读不会改变检查状态。'
+        actions.append(dict(id=key,status=status,title=key+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[status],
+            body=(intro+' '+extra if mode=='novice' else extra),verify='保持同一任务与所有已确认组件身份，采集较晚的B报告；更换环境则重新初检。'))
+    return actions
+
+
+def course_plan(spec,mode,report):
+    vm=spec['scenario']=='vm-linux'
+    if vm:
+        steps=[('确认分层要求','宿主虚拟化、所选VirtualBox或VMware、具体实例和Linux来宾分别验证。软件已安装不代表实例或课程实验通过。'),
+            ('选择软件和实例','填写VBoxManage.exe或vmrun.exe绝对路径；实例填VirtualBox UUID或VMware .vmx绝对路径。未知实例先查看虚拟化软件界面，工具不会创建或启动。'),
+            ('准备来宾证据','在已由本人启动的Linux来宾复制guest_probe.py和同一task.json；手动运行 python3 guest_probe.py --help 查看绑定参数。将输出JSON带回宿主，采集时填写其路径；没有来宾证据保持未知。'),
+            ('手动采集初检','完整解压工具并检查生成的PowerShell命令。固定只读命令核对软件与所选实例；没有证据的层不能由其他层代替。'),
+            ('按差异复检','宿主、软件、实例及已知来宾身份须相同，B时间晚于A；换虚拟机重新开始。Linux基础固定验证不代表完成其他课程作业。'),
+            ('传递与求助','下载课程包与离线指导，在另一实例导入同一摘要；诊断和分享先预览脱敏，步骤勾选不改变状态。')]
+        links=[dict(title='VirtualBox 官方手册',url='https://www.virtualbox.org/manual/ch08.html'),dict(title='哈工深虚拟机实验参考（其版本仅适用于原课程）',url='https://oslabs.hitsz.edu.cn/vm_env.html')]
+    else:
+        gpu=spec['scenario']=='pytorch-gpu'
+        steps=[('确认课程与运行设备','本演示明确选择Python与PyTorch环境；固定CPU张量必须运行。'+('本任务另外要求CUDA构建、GPU可用性与实际GPU张量运算。' if gpu else '本CPU任务不要求GPU通过。')),
+            ('选择课程解释器','编辑器只是入口；在编辑器或Notebook手动查看 import sys; print(sys.executable)，把实际python.exe填入。Notebook内核关联未自动验证，请核对同一路径。'),
+            ('按所选目标准备框架','从PyTorch官方安装选择器选择符合本任务版本的CPU/CUDA构建。安装建议只供本人审查，工具不安装。不能把另一个环境的torch当作当前目标。'),
+            ('手动运行固定张量检查','完整解压工具，填写课程Python。CPU计算由固定探测器执行；GPU课程须主动勾选实际GPU运算，采集框架、可用性、设备UUID与运算结果。'),
+            ('处理差异并复检','先看缺失、版本不符、执行失败和未知。保持相同任务、解释器及已确认GPU身份采集B；更换GPU或解释器重新开始。'),
+            ('解释并分享','全部必需项有证据才通过；AI只解释已有事实。分享前编辑脱敏副本，原始报告留作复检。')]
+        links=[dict(title='PyTorch 官方安装选择器',url='https://pytorch.org/get-started/locally/'),dict(title='PyTorch CUDA 语义',url='https://docs.pytorch.org/docs/stable/notes/cuda.html')]
+    if mode=='standard':steps=[steps[i] for i in (0,2,3,4,5)]
+    elif mode=='quick':steps=[steps[0],('采集与同目标复检',steps[3][1]+' '+steps[4][1])]
+    return dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=None,remediation=remediation(spec,report,mode))

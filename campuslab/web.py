@@ -11,6 +11,7 @@ from .courses import CourseStore
 from .diagnosis import configuration, diagnose, redact
 from .guidance import plan
 from .rules import analyze, compare, task, validate_task
+from .portable import export_package, import_package, guide_html
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -71,6 +72,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200, self.tool_zip(spec), 'application/zip', 'CampusLab-tool.zip')
             elif path.path == '/api/config':
                 self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai=configuration()))
+            elif path.path == '/api/catalog':
+                from .preparation import CATALOG
+                self.send(200,CATALOG)
             else:
                 self.send(404, dict(error='未找到该地址'))
         except (ValueError, KeyError, TypeError, OSError) as exc:
@@ -84,9 +88,16 @@ class Handler(BaseHTTPRequestHandler):
             if spec['scenario'] == 'node-basics':
                 for name in ['node_collect.py', 'node_probe.js']:
                     z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
+            if spec['scenario'] in ('pytorch-cpu','pytorch-gpu','vm-linux'):
+                names=['torch_course.py','torch_probe.py'] if spec['scenario'].startswith('pytorch-') else ['vm_course.py','guest_probe.py']
+                for name in names:
+                    z.writestr('campuslab/'+name,(ROOT/'campuslab'/name).read_bytes())
+                if spec['scenario']=='vm-linux':
+                    z.writestr('guest_probe.py',(ROOT/'campuslab/guest_probe.py').read_bytes())
+            z.writestr('campuslab/preparation.py',(ROOT/'campuslab/preparation.py').read_bytes())
             z.writestr('task.json', json.dumps(spec, ensure_ascii=False, indent=2))
-            target_example = r'C:\CourseNode\node.exe' if spec['scenario'] == 'node-basics' else r'C:\Course\python.exe'
-            z.writestr('README.txt', f'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target {target_example} --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\n')
+            target_example = r'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' if spec['scenario']=='vm-linux' else (r'C:\CourseNode\node.exe' if spec['scenario'] == 'node-basics' else r'C:\Course\python.exe')
+            z.writestr('README.txt', f'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "{target_example}" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n')
             if self.server.runtime_zip and self.server.runtime_zip.is_file():
                 with zipfile.ZipFile(self.server.runtime_zip) as runtime:
                     for info in runtime.infolist():
@@ -124,15 +135,39 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/api/compare':
                 self.send(200, compare(body['task'], body['before'], body['after']))
             elif self.path == '/api/plan':
-                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources')))
-            elif self.path == '/api/preview':
+                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report')))
+            elif self.path == '/api/need':
+                from .preparation import resolve_need
+                self.send(200,resolve_need(body.get('text'),body.get('clarification')))
+            elif self.path == '/api/recommend':
+                from .preparation import recommend
+                validate_task(body['task'])
+                self.send(200,recommend(body['task'],body.get('hardware')))
+            elif self.path == '/api/package':
+                self.send(200,export_package(body['task']))
+            elif self.path == '/api/import-course':
+                spec=import_package(body['package'])
+                self.send(200,self.server.store.publish(spec))
+            elif self.path == '/api/guide':
+                self.send(200,guide_html(body['task']).encode('utf-8'),'text/html; charset=utf-8','CampusLab-guide.html')
+            elif self.path == '/api/share':
                 result=analyze(body['task'],body['report'])
+                def clean(value):
+                    if isinstance(value,str):return redact(value)
+                    if isinstance(value,list):return [clean(x) for x in value]
+                    if isinstance(value,dict):return {k:clean(v) for k,v in value.items()}
+                    return value
+                self.send(200,clean(dict(share_only=True,note='脱敏交流副本，不作为原始复检报告导入',task=body['task'],report=body['report'],result=result)))
+            elif self.path == '/api/preview':
+                spec=validate_task(body['task']) if body.get('task') else None
+                result=analyze(spec,body['report']) if body.get('report') is not None and spec else None
                 error=body.get('error','')
                 if not isinstance(error,str) or len(error)>8000:
                     raise ValueError('报错过长')
-                self.send(200, dict(preview=redact(json.dumps(dict(task_title=body['task']['title'],scenario=body['task']['scenario'],checks=result['checks'],user_error=error),ensure_ascii=False,indent=2)),ai=configuration()))
+                self.send(200, dict(preview=redact(json.dumps(dict(task_title=spec['title'] if spec else '尚未确认课程',scenario=spec['scenario'] if spec else None,checks=result['checks'] if result else [],evidence_note='引用已有报告；建议不改变规则' if result else '没有检测证据，解释器、依赖、硬件与目标身份均未确认；请先澄清课程并手动采集',user_error=error),ensure_ascii=False,indent=2)),ai=configuration()))
             elif self.path == '/api/diagnose':
-                analyze(body['task'],body['report'])
+                if body.get('report') is not None:
+                    analyze(body['task'],body['report'])
                 self.send(200, diagnose(body.get('preview'),body.get('consent')))
             else:
                 self.send(404, dict(error='未找到该接口'))
