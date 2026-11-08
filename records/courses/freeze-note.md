@@ -1,0 +1,7 @@
+# 冻结预检查说明
+
+首个courses-candidate.json在模型回归仍执行时生成，不用作最终独立审查清单。产品源码已稳定，但其中采集中证据当时尚未封存；保留该预检查记录，不把后续写入说成其已审内容。最终独立审查以另行完成的courses-review-candidate.json和该清单parent_head为准。
+
+模型第一次开发回归选择既有PyTorch解释器，该环境缺transformers，正确为missing/mismatch；不是已知模型成功环境。随后从基线原始报告核对到独立model-venv，按显式--target另采A/B通过。不是安装修复或旧失败被取消：20261108T103532Z与20261108T103903Z各自保留。
+
+shared-green.txt是当时输出文件名，其中跨来源拒绝测试实际发生Windows连接中止；不能按文件名算绿。服务端改为先读取有界JSON请求体、再校验Origin且在校验前不作变更，随后shared-verified.txt及unit-release.txt的65项通过。浏览器首次课程测试误把已折叠面板内字段当作可见输入，脚本失败独立保留；打开面板后重跑通过，不归为学生环境Bug。

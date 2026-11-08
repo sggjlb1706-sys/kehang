@@ -1,0 +1,1 @@
+{"path": "C:\\Users\\DELL\\Documents\\ChatGPT\\\u4f20\u667a\u676f\\work\\competition-courses-20261108\\records\\courses\\model\\20261108T103903Z", "outcome": "verified", "passed": true}
