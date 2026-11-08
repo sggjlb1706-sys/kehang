@@ -130,7 +130,8 @@ def analyze(spec, report):
     check('torch:cpu', 'unknown' if cpu['returncode'] is None else ('pass' if cpu['returncode'] == 0 and cpu['result'] == EXPECTED and cpu['device'] == 'cpu' and not cpu['error'] else 'mismatch'),
           cpu, 'CPU固定矩阵乘法得到[[4,4],[10,8]]')
     if spec['gpu_required']:
-        check('torch:cuda-build', 'unknown' if imported is not True else ('pass' if gpu['build'] else 'missing'), gpu['build'], '框架包含CUDA构建')
+        build_state='unknown' if imported is not True else ('missing' if gpu['build'] is None else ('pass' if re.fullmatch(r'\d+\.\d+(?:\.\d+)?',gpu['build']) else 'unknown'))
+        check('torch:cuda-build', build_state, gpu['build'], '框架包含有效CUDA版本构建')
         check('torch:gpu-available', 'unknown' if gpu['available'] is None or gpu['error'] else ('pass' if gpu['available'] else 'missing'), gpu['available'], '所选框架报告CUDA设备可用')
         check('torch:gpu-identity', 'pass' if device is not None and device['uuid'] else 'unknown', device, 'CUDA:0独立GPU UUID；名称不足以证明同一设备')
         check('torch:gpu-run', 'unknown' if run['returncode'] is None else ('pass' if run['returncode'] == 0 and run['result'] == EXPECTED and run['device'] == 'cuda:0' and run['device_uuid'] and not run['error'] else 'mismatch'),

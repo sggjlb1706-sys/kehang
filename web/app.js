@@ -1,6 +1,6 @@
 'use strict';
 const $ = id => document.getElementById(id);
-const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0};
+const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
 const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 
@@ -22,6 +22,7 @@ function clearAI(){
 function clearReports(){
   state.importEpoch++; Object.assign(state,{before:null,after:null,analysis:null});
   $('results').replaceChildren();$('comparison').textContent='';$('before-file').value='';$('after-file').value='';
+  $('remediation').replaceChildren();
   $('after-file').disabled=true;$('export').disabled=true;$('export-preview').hidden=true;$('save-export').hidden=true;
   $('diagnosis').hidden=false;clearAI();progress();
 }
@@ -76,11 +77,14 @@ $('teacher-goal').addEventListener('change',()=>{
 });
 $('teacher-form').addEventListener('submit',e=>{
   e.preventDefault();action(e.submitter,async()=>{
+    const epoch=state.epoch,serial=state.teacherEpoch;
     const result=await api('/api/course',{title:$('teacher-title').value,scenario:$('teacher-goal').value,python_min:$('python-min').value,python_max:$('python-max').value,requests_min:$('requests-min').value});
+    if(epoch!==state.epoch||serial!==state.teacherEpoch)return;
     $('published').textContent=`课程码 ${result.code} · 本机入口 ${location.origin}/?course=${result.code}`;
     await chooseTask(async()=>result.task,result.code);
   });
 });
+$('teacher-form').addEventListener('input',()=>{state.teacherEpoch++;});
 $('download-task').addEventListener('click',()=>save('task.json',state.task));
 for(const id of ['mode','prepared'])$(id).addEventListener('change',()=>{clearAI();guidance().catch(e=>notice(e.message,true));});
 
@@ -125,7 +129,7 @@ async function importReport(which,file){
   if(!state.task)throw Error('请先选择任务');
   if(which==='after'&&!state.before)throw Error('请先导入有效初检报告A');
   const epoch=state.epoch, serial=++state.importEpoch, spec=state.task;
-  clearAI();$('export-preview').hidden=true;$('save-export').hidden=true;
+  clearAI();$('export-preview').hidden=true;$('save-export').hidden=true;$('remediation').replaceChildren();
   if(which==='before'){
     Object.assign(state,{before:null,after:null,analysis:null});$('after-file').value='';$('after-file').disabled=true;
     $('results').replaceChildren();$('comparison').textContent='';$('export').disabled=true;$('diagnosis').hidden=false;

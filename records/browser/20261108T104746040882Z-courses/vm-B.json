@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "task_id": "df51b551eea45c9a3481a6edd97262d43b7084df739c9019cfc4f33c993ad8a6",
+  "collected_at": "2026-11-08T10:48:14.027697+00:00",
+  "target": {
+    "requested": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+    "actual": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "host": {
+      "id": "a94043c45c7bfca6b57ac0930a0069c9f9464bb67112e6dd45fe4797497e0e37",
+      "virtualization": {
+        "firmware_enabled": null,
+        "vm_monitor": null,
+        "slat": null,
+        "hypervisor_present": null
+      },
+      "source": "Windows CIM; HKLM MachineGuid SHA256",
+      "error": "CIM虚拟化查询未完成或权限不足，保留未知"
+    },
+    "software": {
+      "provider": "vmware",
+      "version": "1.17.0",
+      "returncode": 4294967295,
+      "error": ""
+    },
+    "inventory": {
+      "kind": "running",
+      "returncode": 0,
+      "items": [],
+      "error": ""
+    },
+    "instance": {
+      "requested": null,
+      "uuid": null,
+      "name": null,
+      "os_type": null,
+      "state": null,
+      "exists": null,
+      "listed": null,
+      "error": "请选择具体实例"
+    },
+    "guest": null
+  },
+  "commands": [
+    [
+      "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe"
+    ],
+    [
+      "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+      "-T",
+      "ws",
+      "list"
+    ]
+  ]
+}

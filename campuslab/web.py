@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urlsplit
 import zipfile
 
 from .courses import CourseStore
-from .diagnosis import configuration, diagnose, redact
+from .diagnosis import configuration, diagnose, redact_value
 from .guidance import plan
 from .rules import analyze, compare, task, validate_task
 from .portable import export_package, import_package, guide_html
@@ -152,19 +152,15 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200,guide_html(body['task']).encode('utf-8'),'text/html; charset=utf-8','CampusLab-guide.html')
             elif self.path == '/api/share':
                 result=analyze(body['task'],body['report'])
-                def clean(value):
-                    if isinstance(value,str):return redact(value)
-                    if isinstance(value,list):return [clean(x) for x in value]
-                    if isinstance(value,dict):return {k:clean(v) for k,v in value.items()}
-                    return value
-                self.send(200,clean(dict(share_only=True,note='脱敏交流副本，不作为原始复检报告导入',task=body['task'],report=body['report'],result=result)))
+                self.send(200,redact_value(dict(share_only=True,note='脱敏交流副本，不作为原始复检报告导入',task=body['task'],report=body['report'],result=result)))
             elif self.path == '/api/preview':
                 spec=validate_task(body['task']) if body.get('task') else None
                 result=analyze(spec,body['report']) if body.get('report') is not None and spec else None
                 error=body.get('error','')
                 if not isinstance(error,str) or len(error)>8000:
                     raise ValueError('报错过长')
-                self.send(200, dict(preview=redact(json.dumps(dict(task_title=spec['title'] if spec else '尚未确认课程',scenario=spec['scenario'] if spec else None,checks=result['checks'] if result else [],evidence_note='引用已有报告；建议不改变规则' if result else '没有检测证据，解释器、依赖、硬件与目标身份均未确认；请先澄清课程并手动采集',user_error=error),ensure_ascii=False,indent=2)),ai=configuration()))
+                preview=redact_value(dict(task_title=spec['title'] if spec else '尚未确认课程',scenario=spec['scenario'] if spec else None,checks=result['checks'] if result else [],evidence_note='引用已有报告；建议不改变规则' if result else '没有检测证据，解释器、依赖、硬件与目标身份均未确认；请先澄清课程并手动采集',user_error=error))
+                self.send(200, dict(preview=json.dumps(preview,ensure_ascii=False,indent=2),ai=configuration()))
             elif self.path == '/api/diagnose':
                 if body.get('report') is not None:
                     analyze(body['task'],body['report'])

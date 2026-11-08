@@ -1,0 +1,11 @@
+PASS: Supported goal and preparation never imply environmental success
+PASS: Downloaded embedded runtime and exact generated PS5.1 commands produce actual stable A/B
+PASS: Three guidance modes preserve identical report facts
+PASS: Redacted editable preview and unconfigured AI preserve facts without sending
+PASS: Deliberately missing target remains missing/unknown; bundled interpreter rejected
+PASS: Published immutable course opens through code and rejects another task report
+PASS: Actual fixed offline Qwen evidence is consumed by the same course/report workflow
+PASS: Unsupported goal clears old successful evidence
+PASS: Delayed old analysis cannot restore results after changing goal
+PASS: 390px mobile layout has no horizontal overflow
+Evidence: C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108\records\browser\20261108T104745025392Z

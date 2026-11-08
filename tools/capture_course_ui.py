@@ -11,7 +11,7 @@ from campuslab.web import AppServer
 def main():
     root=Path(__file__).resolve().parents[1]
     evidence=root/'records/browser/20261108T101444960811Z-courses'
-    out=root/'records/courses/ui';out.mkdir(exist_ok=False)
+    out=root/'records/courses/ui-final';out.mkdir(exist_ok=False)
     server=AppServer(0,root/'records/runtime/ui-capture.sqlite')
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     try:

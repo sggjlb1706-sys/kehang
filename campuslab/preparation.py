@@ -54,23 +54,26 @@ def resolve_need(text, clarification=None):
     if not isinstance(text, str) or not 1 <= len(text.strip()) <= 4000:
         raise ValueError('请用1—4000字描述学习目标或文字报错')
     value = text.casefold()
+    compact = ''.join(value.split())
     error = any(word in value for word in ('报错', '错误', '失败', 'error', 'exception', '找不到', 'failed'))
     result = dict(status='clarify', scenario=None, candidates=[], question='',
                   constraints=dict(local_required=False, gpu_required=False), error_help=error,
                   message='', requires_confirmation=True)
-    if any(word in value for word in ('课程要求本地', '必须本地', '老师要求本地')):
+    if any(word in compact for word in ('课程要求本地', '必须本地', '老师要求本地')):
         result['constraints']['local_required'] = True
-    if any(word in value for word in ('要求gpu', '必须gpu', '需要gpu', '要求 cuda')):
+    if any(word in compact for word in ('要求gpu', '必须gpu', '需要gpu', '要求cuda')):
         result['constraints']['gpu_required'] = True
-    if ((result['constraints']['local_required'] and any(word in value for word in ('只用云', '只要云', '不能本地')))
-            or (result['constraints']['gpu_required'] and any(word in value for word in ('没有gpu', '无gpu', '只能cpu')))):
+    if ((result['constraints']['local_required'] and any(word in compact for word in ('只用云', '只要云', '不能本地')))
+            or (result['constraints']['gpu_required'] and any(word in compact for word in ('没有gpu', '无gpu', '只能cpu', '只用cpu', '先用cpu')))):
         result.update(status='conflict', message='个人条件与课程要求冲突。先向教师确认允许的路线，当前要求保持。',
                       question='课程是否允许替代路线？取得教师确认后再选择任务。')
         return result
     candidates = []
     deep = any(word in value for word in ('pytorch', '深度学习', 'torch'))
     if deep:
-        if 'cpu' in value or '无gpu' in value or '没有gpu' in value:
+        if result['constraints']['gpu_required']:
+            candidates.append('pytorch-gpu')
+        elif 'cpu' in value or '无gpu' in compact or '没有gpu' in compact:
             candidates.append('pytorch-cpu')
         elif result['constraints']['gpu_required'] or 'gpu' in value or 'cuda' in value:
             candidates.append('pytorch-gpu')

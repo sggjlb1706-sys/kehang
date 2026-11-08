@@ -1,0 +1,140 @@
+.......................EE..EEEEEEE.EEE......................................
+======================================================================
+ERROR: test_ambiguity_errors_conflicts_and_catalog (test_preparation.PreparationTest.test_ambiguity_errors_conflicts_and_catalog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 28, in test_ambiguity_errors_conflicts_and_catalog
+    self.assertEqual(resolve_need('����ѧ���ѧϰ')['status'], 'clarify')
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_clarification_cannot_select_arbitrary_code (test_preparation.PreparationTest.test_clarification_cannot_select_arbitrary_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 41, in test_clarification_cannot_select_arbitrary_code
+    self.assertEqual(resolve_need('���ѧϰ', 'pytorch-gpu')['scenario'], 'pytorch-gpu')
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='����ѧPython')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='��������Node.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='���б���ģ��')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='PyTorch CPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='PyTorch�γ�Ҫ��GPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_supported_goals_and_confirmation (test_preparation.PreparationTest.test_supported_goals_and_confirmation) (text='�����Linuxʵ��')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_preparation.py", line 22, in test_supported_goals_and_confirmation
+    result = resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_conflict_cannot_be_bypassed_by_cpu_clarification (test_review_regressions.ReviewRegressions.test_conflict_cannot_be_bypassed_by_cpu_clarification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 25, in test_conflict_cannot_be_bypassed_by_cpu_clarification
+    result=resolve_need('PyTorch��ʦҪ�� GPU ���У��������� CPU','pytorch-cpu')
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='PyTorch��ʦҪ�� GPU ���У��������� CPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 20, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    proposal=resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='���ѧϰ��ʦҪ�� CUDA������ֻ�� CPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 20, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    proposal=resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+======================================================================
+ERROR: test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu (test_review_regressions.ReviewRegressions.test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu) (text='PyTorch �γ�Ҫ�� GPU���ȼ�� CPU �� GPU')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\tests\test_review_regressions.py", line 20, in test_spaced_teacher_gpu_requirement_cannot_downgrade_to_cpu
+    proposal=resolve_need(text)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-courses-20261108\campuslab\preparation.py", line 57, in resolve_need
+    compact = re.sub(r'\s+', '', value)
+              ^^
+NameError: name 're' is not defined. Did you forget to import 're'?
+
+----------------------------------------------------------------------
+Ran 69 tests in 2.812s
+
+FAILED (errors=12)

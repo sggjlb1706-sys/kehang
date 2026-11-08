@@ -13,10 +13,17 @@ def redact(text):
     text=re.sub(r'(?i)\bsk-[A-Za-z0-9_-]{8,}','<密钥已删除>',text)
     text=re.sub(r'(?i)(Bearer\s+)[^\s"\'<>]+',r'\1<密钥已删除>',text)
     text=re.sub(r'(?i)((?:api[_-]?key|password|secret|access_token)["\' ]*\s*[:=]\s*["\']?)[^\s"\'<>;,}]+',r'\1<敏感值已删除>',text)
-    text=re.sub(r'(?i)[A-Z]:[\\/]Users[\\/][^\\/\s"\'<>]+','<个人用户目录>',text)
+    text=re.sub(r'(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\s"\'<>]+','<个人用户目录>',text)
     text=re.sub(r'\b(?:192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3})\b','<私网地址>',text)
     text=re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b','<邮箱>',text)
     return text
+
+
+def redact_value(value):
+    if isinstance(value,str):return redact(value)
+    if isinstance(value,list):return [redact_value(x) for x in value]
+    if isinstance(value,dict):return {k:redact_value(v) for k,v in value.items()}
+    return value
 
 
 def configuration():
