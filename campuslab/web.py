@@ -85,7 +85,8 @@ class Handler(BaseHTTPRequestHandler):
                 for name in ['node_collect.py', 'node_probe.js']:
                     z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
             z.writestr('task.json', json.dumps(spec, ensure_ascii=False, indent=2))
-            z.writestr('README.txt', 'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target C:\\Course\\python.exe --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\n')
+            target_example = r'C:\CourseNode\node.exe' if spec['scenario'] == 'node-basics' else r'C:\Course\python.exe'
+            z.writestr('README.txt', f'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target {target_example} --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\n')
             if self.server.runtime_zip and self.server.runtime_zip.is_file():
                 with zipfile.ZipFile(self.server.runtime_zip) as runtime:
                     for info in runtime.infolist():

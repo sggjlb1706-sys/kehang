@@ -55,5 +55,13 @@ class WebTest(unittest.TestCase):
         with self.assertRaises(HTTPError) as caught: self.request('/api/execute',{'command':'test'})
         self.assertEqual(caught.exception.code,404)
 
+    def test_node_tool_has_matching_target_example_and_snapshot(self):
+        spec = json.load(self.request('/api/goal?goal=node-basics'))
+        with zipfile.ZipFile(BytesIO(self.request('/api/tool?goal=node-basics').read())) as z:
+            self.assertEqual(json.loads(z.read('task.json')), spec)
+            self.assertTrue({'campuslab/node_collect.py','campuslab/node_probe.js'} <= set(z.namelist()))
+            self.assertIn(r'--target C:\CourseNode\node.exe', z.read('README.txt').decode('utf-8'))
+            self.assertNotIn(r'--target C:\Course\python.exe', z.read('README.txt').decode('utf-8'))
+
 
 if __name__=='__main__': unittest.main()
