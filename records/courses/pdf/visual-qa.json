@@ -1,0 +1,93 @@
+{
+  "checked_at": "2026-11-08T10:59:39.369284+00:00",
+  "product_head": "3dddd3314d63496965c2f23ca3a01a43b20167d1",
+  "pdf": "output/pdf/AI实验环境管家_课程能力版_技术文档.pdf",
+  "sha256": "5C7BD452C51F79441C3AB9117AFA4DDDA52C7CCE1567A7E6F921D865E1E44501",
+  "pages": 9,
+  "bytes": 363180,
+  "pdf_skill_mark": {
+    "executions": 1,
+    "operation": "create",
+    "exit_code": 0,
+    "expected_outputs": 1
+  },
+  "renderer": "Existing Poppler pdftoppm",
+  "visual_pages": [
+    {
+      "page": 1,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 2,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 3,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 4,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 5,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 6,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 7,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 8,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    },
+    {
+      "page": 9,
+      "inspected": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false
+    }
+  ],
+  "text_checks": {
+    "full_product_head": true,
+    "69_tests": true,
+    "review_findings_and_delta": true,
+    "vmware_scope": true,
+    "formal_video_missing": true,
+    "deadline": true,
+    "nonempty_pages": true
+  },
+  "screenshots": "Final source-matching viewport images; only rectangular detail crops for legibility, with original/crop hashes in technical-pdf-build.json",
+  "official_eligibility_certified": false,
+  "formal_mp4_created": false,
+  "published": false
+}

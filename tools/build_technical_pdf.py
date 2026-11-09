@@ -106,7 +106,7 @@ def main():
         'cell':ParagraphStyle('cell',fontName='CN',fontSize=9.2,leading=14.3,textColor=INK,wordWrap='CJK'),
         'code':ParagraphStyle('code',fontName='CN',fontSize=8.2,leading=13,textColor=INK,backColor=PALE,borderPadding=10,spaceAfter=10,wordWrap='CJK'),
     }
-    story=[]
+    story=[];image_records=[]
     def p(text,kind='body'):
         story.append(Paragraph(escape(text).replace('\n','<br/>'),styles[kind]))
     def h(text):p(text,'h2')
@@ -121,12 +121,19 @@ def main():
             ('LEFTPADDING',(0,0),(-1,-1),9),('RIGHTPADDING',(0,0),(-1,-1),9),
             ('TOPPADDING',(0,0),(-1,-1),8),('BOTTOMPADDING',(0,0),(-1,-1),8)]))
         story.extend([t,Spacer(1,10)])
-    def screenshot(path,max_w,max_h,caption):
+    def screenshot(path,max_w,max_h,caption,crop=None):
         if path is None:return
         path=path.resolve()
         if not path.is_file():raise ValueError('Missing supplied screenshot: '+str(path))
         from PIL import Image as PILImage
-        with PILImage.open(path) as im:w,h=im.size
+        original=path
+        with PILImage.open(path) as im:
+            if crop:
+                cropped=im.crop(crop);path=qa/(original.stem+'-detail.png');cropped.save(path)
+                w,h=cropped.size
+            else:w,h=im.size
+        image_records.append(dict(source=original.relative_to(ROOT).as_posix(),source_sha256=digest(original),
+            used_image=path.relative_to(ROOT).as_posix(),used_image_sha256=digest(path),crop_pixels=crop))
         scale=min(max_w/w,max_h/h)
         story.append(Image(str(path),width=w*scale,height=h*scale,hAlign='LEFT'))
         p(caption,'small')
@@ -167,7 +174,7 @@ def main():
     # 3 - Need and independent hardware evidence.
     page('从学习目标到有依据的准备路线')
     p('需求入口采用确定性识别与澄清：明确课程可以提出固定任务；CPU/GPU不清时提出选项；多课程、强制本地与仅云端等冲突先说明约束。学生确认后才建立任务。尚未实现的课程进入有来源目录，不退化成一个看似支持的替代任务。')
-    screenshot(args.desktop,WIDTH,210,'本轮真实产品桌面截图；画面来源摘要在PDF构建记录中。')
+    screenshot(args.desktop,WIDTH,210,'本轮真实产品任务区域（从最终桌面视口截取）；原图及局部图摘要在构建记录中。',(450,260,1320,650))
     h('预检独立于课程是否已经装好')
     p('手动硬件CLI只读Windows、物理内存、目标盘容量与GPU/显存，记录采集时间、来源和未知原因。工具Python与课程解释器分开；不必先装PyTorch、下载权重或完成模型推理。')
     table(['本机事实','取得方式与解释'],[
@@ -212,7 +219,7 @@ def main():
     page('让下一步操作清楚，也让任务可以传递')
     p('页面按“确定任务 - 准备课程环境 - 采集与复检”连续组织。任务要求与摘要可核对；缺失、不符合和未知同时使用文字状态，原始JSON细节默认收起。每个差异绑定当前任务和目标，给出本人可审查的步骤及复检方式。')
     if args.mobile:
-        screenshot(args.mobile,145,230,'390px桌面浏览器宽度模拟，非实体手机。')
+        screenshot(args.mobile,165,230,'390px桌面浏览器宽度模拟局部，非实体手机。',(0,0,390,445))
     table(['使用方式','同一事实下的不同帮助'],[
         ['新手','分步解释术语、路径和操作位置；先区别工具Python、课程解释器与编辑器。'],
         ['标准','保留任务要求、依赖准备、采集、差异处理和复检关键步骤。'],
@@ -231,10 +238,11 @@ def main():
         ['VM/Linux落地','14244f1：宿主/软件/实例/来宾分层，固定只读命令和未知路径。'],
         ['准备与需求','aee993f：需求澄清、独立硬件预检、带来源课程目录。'],
         ['共用闭环','8e33aa1：课程包、离线指导、分层步骤与无报告文字报错入口。'],
-        ['UI/最终修复','以本技术文档产品HEAD及真实git log为准；不回填或拆造不存在的旧对话。'],
+        ['独立发现与修复','12d2a1b保留独立初审4项P2及1项P3；3dddd33实际修复，随后独立delta确认全部闭合。'],
     ],[105,WIDTH-105])
     h('失败保留，原因与证据分开')
-    p('PyTorch首次CUDA dtype错误、vmrun -v参数调查失败、受限账户CIM取证失败，以及首次模块缺失/识别条件失败都按实际记录保留。开发脚本或协议夹具失败不改写成学生环境故障；补齐证据不冒称真实修复。')
+    p('PyTorch首次CUDA dtype错误、vmrun -v参数调查失败、受限账户CIM取证失败，以及首次模块缺失/识别条件失败都按实际记录保留。Qwen首次错选缺transformers的PyTorch环境，改选已有模型环境后另采七项通过；没有安装修复。')
+    p('独立审查另发现GPU硬要求被空格/CPU偏好降级、非CUDA文本误通过、JSON转义路径脱敏遗漏、旧目标修复命令残留及晚发布响应覆盖。主执行者保留反例并实际修复，由独立delta复核，不改写为用户Bug反馈。','small')
     h('真实Prompt的适用范围')
     p('可见消息留档保留来源行号和SHA，排除工具、系统/开发者和隐藏推理。用户的本轮范围指令是真实总授权，不伪装为具体Bug反馈。现有候选链尚不能确认达到至少三条完整核心链；旧阶段无Git与官方未答复仍明确保留。')
 
@@ -243,15 +251,15 @@ def main():
     table(['验证类型','本轮结果及适用范围'],[
         ['自动化单元/协议',str(args.unit_tests)+'项测试通过。覆盖固定任务、身份/时序、缺失未知、负例、携带课程、指导及AI同意；构造与本机协议测试不等于设备实测。'],
         ['浏览器回归',args.browser_summary],
-        ['真实新课程','CPU A/B稳定通过；GPU预检到主动运算后通过；VMware同目标A/B仍incomplete，实例/来宾未知。'],
+        ['真实课程','CPU A/B稳定通过；GPU预检到主动运算后通过；固定Qwen七项通过、outcome=verified；VMware A/B仍incomplete。'],
         ['独立审查',args.review_status],
         ['原版本保护','基线358项交付文件匹配；原目录非Git文件保护与最终复核以交付回执为准。'],
     ],[105,WIDTH-105])
     h('AI诊断保持原规则')
     p('没有报告也能粘贴文字报错，但预览会明确解释器、依赖、硬件与目标身份尚未确认。有报告时引用既有检查；目的地与实际消息可预览编辑，必须明确单次同意。接口失败、超时、格式错误和未知建议不提升规则状态，建议命令由本人审查。')
-    p('当前真实AI诊断与免费/本地调用条件以本轮交付记录为准。固定Qwen课程离线推理是课程验证，不能自动当作AI报错诊断成功；本机假服务只能证明协议行为。')
+    p('本轮没有取得可合法使用的免费/本地真实AI诊断条件，尚未发送真实诊断请求。固定Qwen课程离线推理是课程验证，不能当作AI报错诊断成功；本机假服务只能证明协议行为。')
     h('证据索引')
-    p('records/courses/torch/、vm/、preparation/保存真实与构造范围；records/browser/保存浏览器运行及截图；最终REVIEW与HANDOFF列固定版本、审查发现/修复及剩余限制。原失败保留，不用后续成功抹除。','small')
+    p('records/courses/torch/、vm/、preparation/、model/保存真实与构造范围；records/browser/保存网页回归；最终UI三项以review-ui/20261108T105547Z为准。独立delta及evidence-note共同说明最终源码匹配范围，旧记录未覆盖。','small')
 
     # 9 - Reproduction, sources, delivery.
     page('复现与交付：同一个版本交给评审')
@@ -295,7 +303,7 @@ def main():
     screenshots={str(p.resolve()):digest(p) for p in [args.desktop,args.mobile] if p}
     receipt=dict(created_at=stamp,product_head=args.product_head,
         document_build_head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-        source_sha256=source_hashes,screenshots_sha256=screenshots,output=out.relative_to(ROOT).as_posix(),
+        source_sha256=source_hashes,screenshots_sha256=screenshots,image_records=image_records,output=out.relative_to(ROOT).as_posix(),
         output_sha256=digest(out),pages=count,bytes=out.stat().st_size,font_source=font,
         unit_tests=args.unit_tests,browser_summary=args.browser_summary,review_status=args.review_status,
         renderer='Existing Poppler pdftoppm' if poppler else 'Existing PyMuPDF fallback; no installation',page_records=page_records,

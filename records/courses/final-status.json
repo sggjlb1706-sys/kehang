@@ -1,0 +1,114 @@
+{
+  "recorded_at": "2026-11-09T02:46:14.511664+00:00",
+  "product_head": "3dddd3314d63496965c2f23ca3a01a43b20167d1",
+  "product_sources": {
+    "Start-Web.ps1": "1CC696FC5B9CA548162E67C85DFE8CA950F9B89063132DDF2FC758E2988065A0",
+    "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+    "campuslab/collect.py": "D2D5C43F36FF4623F27633CE01E14E3EF78519C305D9679220FEB099670BB636",
+    "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+    "campuslab/diagnosis.py": "0E833B62314897237A049B57C590FB92CE7FD883005AB8259D1BDCCD69549E6A",
+    "campuslab/guest_probe.py": "A21A2DB9A6C20FC1275896FBCBA44E080DBB4A46C1F236FB86D126936E746925",
+    "campuslab/guidance.py": "908FFD2BD5D2771563EFF8C5B9B585B235934EA0376FCFBAE9E1BC2DBD369EFF",
+    "campuslab/node_collect.py": "806BB5B6C69A2440331F4A3CE77B947C028C4670FBDE54F8BE7C30F9775DF09A",
+    "campuslab/node_probe.js": "08CACCBACAFF7D5E4DD7DF31F323B118EE38935227BB1A115BBB60F25AC5F7ED",
+    "campuslab/portable.py": "A3F4C70FC3E4A5D11EC6891CF4055A97DE1AFB3F86D64222F6B2E22B7A2E4AFE",
+    "campuslab/preparation.py": "014793AAC50796421679B4783CEE4D0AC34891989B1B38613717672778E2187C",
+    "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+    "campuslab/rules.py": "D77D23A22055395CA27098C320BA7CDBD549ED98437B8E082D8863168721C205",
+    "campuslab/torch_course.py": "49370EA0E27D9D723E1C60726129628E62B64074261381D4C2BEE66771528CCB",
+    "campuslab/torch_probe.py": "3786426242F9E31CF442F08EF46DAE9804E9C26F30441A3EF249151C7313B028",
+    "campuslab/vm_course.py": "B5EC7DF93EA22E86ABE6492A96BD126E3C3F197A4E6FC5075A0E5246BFE2F6A0",
+    "campuslab/web.py": "555A5ADD4D8B7FB55727893A2699A96179005203FBD1F2F5DE98B6109E9028EF",
+    "web/app.js": "57CC21E3E1CF9BCAD221168A3960603464B1C3A9106A89870AD5F3FB154E1A6E",
+    "web/index.html": "1B7F39B2E2DABD127F08E697613046FEC300F22243149C49DA6E50A9B296C459",
+    "web/style.css": "84DBE787D2DA411ED165D4354AA1737B830EA7362221670FD2F6160702871A46"
+  },
+  "unit_tests": 69,
+  "unit_record": "records/courses/unit-review-final.txt",
+  "browser": {
+    "records/browser/20261108T104745025392Z/results.json": {
+      "checks": 10,
+      "source_sha_matches": true,
+      "sha256": "A6D8F9AC02C52DD498297833B10185CEDAEC5767046409BA435F6AC9EBFB53C3"
+    },
+    "records/browser/20261108T104745480764Z-node/results.json": {
+      "checks": 9,
+      "source_sha_matches": true,
+      "sha256": "67B61084A6BF748B794F4E3860EC99C1230C904736E79C8764C46C2EA37E30AF"
+    },
+    "records/browser/20261108T104746040882Z-courses/results.json": {
+      "checks": 9,
+      "source_sha_matches": true,
+      "sha256": "C9E9CE8EEDDD1653B73A0CEE89F9C1D46C9C0D7235D2E28B917C90908B9B0FF7"
+    },
+    "records/courses/review-ui/20261108T105547Z/results.json": {
+      "checks": 3,
+      "source_sha_matches": true,
+      "sha256": "E4A0893A0F49CD1D88953BF9173E69A4253502BCE406F429688E8E43E671983D"
+    }
+  },
+  "real_results": {
+    "pytorch-cpu": {
+      "outcome": "stable-pass",
+      "checks": 5,
+      "real_local": true,
+      "recomputed_only": true
+    },
+    "pytorch-gpu": {
+      "outcome": "verified",
+      "checks": 9,
+      "real_local": true,
+      "recomputed_only": true
+    },
+    "local-qwen": {
+      "outcome": "verified",
+      "checks": 7,
+      "real_local": true,
+      "recomputed_only": true
+    },
+    "vm-linux": {
+      "passed": false,
+      "states": {
+        "os": "pass",
+        "host:virtualization": "unknown",
+        "vm:software": "pass",
+        "vm:instance": "unknown",
+        "vm:running": "unknown",
+        "guest:identity": "unknown",
+        "guest:linux": "unknown",
+        "guest:run": "unknown"
+      },
+      "real_guest": false
+    }
+  },
+  "pdf": {
+    "path": "output/pdf/AI实验环境管家_课程能力版_技术文档.pdf",
+    "pages": 9,
+    "sha256": "5C7BD452C51F79441C3AB9117AFA4DDDA52C7CCE1567A7E6F921D865E1E44501"
+  },
+  "independent_review": "4 P2 and 1 P3 closed; no new blockers",
+  "independent_delta_sha256": "0250AA3293C36F4C87B6A88B732B9F9FA8454580C657E4F25EAF55E234A2D8A7",
+  "materials_review": "9-page PDF and current handoff independently verified; no new material blockers",
+  "materials_review_sha256": "2F3DD17668562B821B12EA418668EF9897A05CB939998B7961E8EB7D4A1520E9",
+  "formal_mp4": false,
+  "three_complete_prompt_chains_certified": false,
+  "reviewer_remote_repository": false,
+  "uploaded": false,
+  "official_eligibility_certified": false,
+  "physical_phone": false,
+  "second_computer": false,
+  "real_guest": false,
+  "real_ai_diagnosis": false,
+  "installs": 0,
+  "vm_starts": 0,
+  "paid_requests": 0,
+  "published": false,
+  "remaining": [
+    "Formal MP4 and authentic AI collaboration footage",
+    "Three complete authentic Prompt chains not confirmed",
+    "Reviewer-accessible repository",
+    "Real Linux guest/VM instance, second computer, physical phone, clean Windows and independent novice",
+    "Real AI diagnosis, other GPU/CPU-only combinations and CPU Qwen inference",
+    "User upload and receipt"
+  ]
+}

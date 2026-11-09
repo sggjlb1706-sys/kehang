@@ -1,59 +1,64 @@
-# R1 Node.js/npm 扩展轮交接（2026-11-08）
+# 课程能力补全版交接（2026-11-08）
 
-最终状态：本轮范围通过。独立初审无阻塞，所列P3工具README示例已修正，独立delta确认闭合且无新增阻塞。整套赛事作品与资格仍未完成，不能据此宣布通过。
+交付收尾核对日期：2026-11-09。11月8日的真实开发、审查、PDF和版本目录名称保留，不回填Git时间；实际复制时间以新交付回执为准。
 
-新工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-r1-node-20261108`。计划交付目录：`D:\传智杯\versions\competition-r1-node-20261108`。分支：`codex/r1-node-20261108`；继承正式R1完整历史，原HEAD `eee876053eebfb7d82e2ad6a9b45272f0075b1fe`。最终HEAD在新版本交付回执记录，不将原交付回执当作本轮回执。
+新开发目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108`。新交付目录：`D:\传智杯\versions\competition-courses-20261108`。分支 `codex/courses-20261108`，完整继承正式Node版 `42d86482fa1540b35fcdda6bbdf15d888f6b8cd1` 历史。
 
-独立delta适用HEAD `ca948128c70638d4c858247e0b281f4977c2ceb1`、347项候选清单。全文 `records/review/node-independent-delta.md`，SHA `AB1C5EDB9E7273BB40F4B033B784705C51BFD840F1E7A11D5465F0F174C7CAE1`。收尾不再修改产品。最终根目录SHA256SUMS-delivery.json覆盖交付内容（排除自身、Git元数据与生成回执）；完整Git历史另保留，最终HEAD/复制校验在records/review/node-delivery-receipt.json。
+固定产品HEAD：`3dddd3314d63496965c2f23ca3a01a43b20167d1`；后续仅材料/交接/交付工具提交，最终仓库HEAD见根Git及`records/review/courses-delivery-receipt.json`，产品文件须与该固定产品HEAD相同。旧版交接原文仍在原D盘版本及Git历史，不拿旧Node结论当本轮通过凭证。
 
-本轮新增Node.js/npm固定演示课程：自主与教师默认快照一致、显式选择Node、同目录npm CLI由所选Node执行、完整事实四状态、手动采集/修复和同任务同目标有序复检。三模式只改文字，Python/固定Qwen及AI同意机制保留。课程范围来自演示配置，不代表学校真实课程。
+## 本轮功能
 
-验证：原23项+Node7项+工具快照打包1项共31单测通过；Node浏览器9组、Python/模型网页回归10组通过。Node24.21.0/npm11.19.0真实A/B四项通过、stable-pass；Python真实A/B四项通过。当前Qwen真实复测输出2/EOS、7项通过，verified，指定RTX4060环境。模型首次导入超时未知原件保留，后续计时5.14秒后另采才通过；根因未确认，不称已修复。AI仅本机协议模拟，无真实收费请求。
+- PyTorch CPU/GPU独立固定任务：显式课程Python、框架版本/导入、固定float32矩阵；GPU课程另核对CUDA构建、可用性、CUDA:0 UUID及主动实算。CPU成功不能替代GPU。
+- VM/Linux固定任务：只读VirtualBox/VMware CLI、宿主条件、所选UUID/.vmx、实例状态与手动Linux来宾取证分层；没有实例/来宾时未知。不安装、不创建或启动VM，不改BIOS、系统或网络。
+- 自然语言目标/报错进入、必要澄清、独立硬件预检、依据来源事实的准备路线、按四状态差异生成绑定目标的分层指导；固定Qwen从准备到离线推理的路线。
+- 教师任务包导出/严格导入、独立实例同摘要、离线HTML手机指导；localhost码不当作跨设备分享，内容摘要不当作教师数字签名。
+- 无报告文字报错预览、递归脱敏、可编辑消息/目的地/单次同意、AI失败保留规则、手动处理和同目标复检。无真实AI调用成功证据。
+- 统一任务→准备/事实→差异/复检工作台，三种指导密度、桌面和390px；原始JSON可展开，模式不改变任务/判断。其他课程有来源目录及扩展验收，未冒称全部支持。
 
-证据入口：`records/node/verification-summary.json`；Node最终 `records/browser/20261108T091518984486Z-node/results.json`；Python回归 `records/browser/20261108T091526620608Z/results.json`；当前模型 `records/node/model-regression-retry/comparison.json`。所有失败记录保留、构造报告与自动化范围各自标注。390px通过是浏览器模拟，不是实体手机。
+逐项表：`docs/能力对照-20261108.md`、`docs/课程目录与扩展路线.md`、`docs/验收矩阵.md`。
 
-来源保护：原R1交付清单205项一致，原目录212项非Git字节未改；旧材料814项保护一致；8组旧Prompt来源验证通过。复用原产品及历史范围见PROVENANCE和docs/reuse.json；本轮提交按实际时间产生，不回填旧历史。
+## 验证与真实结果
 
-赛事：官网2026-11-08当前正文仍同时列省赛11月18日与指导反馈预计2027年1月底的冲突，按较早2026-11-18准备；来源/抓取日期在 `docs/赛事要求核查-20261108.md`。`docs/Prompt链逐项核查.md`定位旧3候选、R1各模块及本轮Node真实提问/建议/实现/测试/提交；不能确认至少3条完整链，不虚构用户Bug反馈。旧无Git、赛事方未答复状态保留。
+- `records/courses/unit-review-final.txt`：69项单测通过，包含原31项及新场景/共用流程/独立发现回归；Node语法检查通过。
+- 最终Edge：`records/browser/20261108T104745025392Z/results.json` Python/模型网页10组；`20261108T104745480764Z-node/results.json` Node9组；`20261108T104746040882Z-courses/results.json` 新课程9组。三组均页面错误0、外部HTTP(S)请求0，产品源SHA匹配。额外`records/courses/review-ui/20261108T105547Z/results.json`三项构造UI回归通过且全部产品源SHA匹配；不是学生环境修复。先前104712记录的preparation哈希属于临时修复中版本，原件保留，不再当最终全源匹配记录。
+- PyTorch真实CPU A/B五项稳定通过；GPU预检A尚无实际运算，B明确触发后九项通过、verified。本机Python3.11.16、torch2.14.0+cu126、CUDA12.6、RTX4060 Laptop，解释器和GPU UUID分别核对。原int64 CUDA失败保留，探测程序改float32形成新快照另采，不编造环境修复。
+- VMware真实vmrun1.17.0可读取、当前运行实例0；Windows和软件通过，其余六项未知。同目标A/B incomplete。VirtualBox标准路径缺失。来宾采集/绑定已实现并有构造协议测试，没有真实Linux来宾完整实测。
+- 硬件手动预检取得Windows版本、约16GiB物理内存、所选盘容量和RTX4060/驱动显存；每字段含来源和时间。首次CIM权限失败与只读回退/另次提权报告各自保留。预检不依赖torch/权重，不作为课程通过依据。
+- Qwen `records/courses/model/20261108T103903Z/`：独立model-venv明确目标，A缺推理、B固定离线输出2/EOS、七项通过、verified。`20261108T103532Z/`首次错选PyTorch环境缺transformers失败原样保留；不同环境不能说成同目标修复。
+- 教师包在同一电脑的两个独立本机服务/数据库传递成功，摘要与原始A/B一致；篡改包拒绝；离线HTML及390px无横向溢出。不是第二电脑/实体手机。
+- 最终可读视口截图在`records/courses/ui-final/`；记录对应最终产品源码。旧截图与失败记录不覆盖。
 
-启动（交付后）：PowerShell进入新交付目录，运行 `& .\Start-Web.ps1 -Python 'D:\ANACONDA\python.exe' -Port 8772`，打开 `http://127.0.0.1:8772/`，Ctrl+C结束。服务器需已有Python>=3.10；检测包自带既有官方嵌入运行时（vendor），不需安装Web依赖。更换电脑必须改为其已有Python路径。Node及模型仍需本人已有课程环境。
+## 审查与真实开发记录
 
-剩余：正式5—8分钟1080p MP4（含至少2分钟AI过程）、<=30页技术PDF、评审可访问GitHub/Gitee、三条完整链及官方资格确认；新代码真实无Python设备、第二电脑/实体手机、新手独立安装、真实AI报错诊断及CPU推理未验证。未发布/推送/发邮件/安装/改系统网络。交付后停止，不自动推进。
+初审：固定f8e9a13、654项清单SHA `E68878BA78FD37F062DAB263C15704C145604EBBF15A3564152B6D51D9C87A28`。独立代码发现4项P2和1项P3，全文`records/review/courses-independent-code.md`；独立证据审查未发现新增证据真实性阻塞，全文`courses-independent-evidence.md`。
 
-## 2026-11-03原首轮交接（历史原文）
+五项修复：带空格GPU硬约束不再降级、CUDA构建值须有效版本、先递归脱敏再序列化、清理旧目标的修复建议、延迟教师响应门控。真实先失败测试和修复提交分别`12d2a1b`、`3dddd33`。delta对象为747项清单`courses-delta-candidate.json`，SHA `54EA4636E9823E30095C1748457FAB47E8F35027838CCD0F1F6723918989938C`；最终闭合结论以`courses-independent-delta.md`及REVIEW为准。
 
-最终状态：独立初审及修复delta完成，原P2已关闭，本轮R1本机核心路径无阻塞。23项单元测试（0.856秒/OK）、复杂路径Edge10组通过，旧814项保护一致。正式参赛材料与外部验证仍未完成；详见docs/验收矩阵.md及records/review/final-status.json。
+独立delta最终确认五项全部闭合、无新增阻塞。原文SHA256 `0250AA3293C36F4C87B6A88B732B9F9FA8454580C657E4F25EAF55E234A2D8A7`，69项单测独立通过、747候选重算一致。此后产品不再修改。
 
-第二轮送审：独立初审发现弯引号路径转义P2阻塞，原文已存records/review/independent-original.md。已仅修正路径字面值编码，并在包含U+2018—U+201F、ASCII单引号、$及反引号的真实工具目录重跑Edge下载采集，10组通过，记录records/browser/20261103T013607390941Z/results.json；旧162项候选清单保留，不覆盖。同一独立代理delta确认P2闭合，无新增阻塞；正文见records/review/independent-delta.md。
+本轮真实Prompt索引为`docs/本轮真实Prompt与提交索引.md`。初始可见留档只有2条用户/7条助手；用户“继续完成”不是具体Bug反馈。并行模块17:59:35统一按完成模块入库，提交时间不是各模块首次写入时间。没有回填旧Git或虚构三条完整链。
 
-2026-11-03用户选择方案2。本轮在独立仓库实际重建，旧M4根目录和2026-11-01版本保持。交付目标目录D:\传智杯\versions\competition-rebuild-20261103；开发与完整运行记录在C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-rebuild-20261103。
+## 启动、交付与材料
 
-## 本轮实际完成
+```powershell
+Set-Location -LiteralPath 'D:\传智杯\versions\competition-courses-20261108'
+& .\Start-Web.ps1 -Python 'D:\ANACONDA\python.exe' -Port 8772
+```
 
-从文档与空包首提交开始，实现统一规则/Python采集、教师固定快照/网页、固定本地Qwen任务、三模式新手流程、独立工具下载、同目标复检、脱敏导出与可选AI单次接口。旧业务模块未批量导入；既有产品设计、Prompt导出工具、官方运行时和模型的来源明确列于PROVENANCE与reuse.json。
+打开 `http://127.0.0.1:8772/`，Ctrl+C停止。服务器需要已有Python>=3.10；检测包复用既有vendor嵌入runtime，工具Python不等于课程环境。模型权重/既有模型环境留原位置，不下载、不复制入仓库。
 
-## 验证依据
+正式技术PDF位置`output/pdf/AI实验环境管家_课程能力版_技术文档.pdf`，生成与逐页核验见`records/courses/pdf/`。视频已提供6分40秒可录脚本、2分10秒真实AI协作镜头方案，尚缺本人素材和正式MP4。提交清单沿用本人上传百度网盘、核对链接/提取码/有效期的预指导流程。
 
-- 第一轮送审22项unittest：records/iteration-4/unit-tests-final.txt，1.115秒，OK，退出0；包含本机假AI协议测试，无真实收费模型请求。
-- Node语法检查通过。
-- 第一轮送审Edge：records/browser/20261103T012753583646Z/results.json，10组通过、浏览器错误0、http(s)外部请求0；3条采集命令退出0，1条工具runtime目标拒绝退出非0。Edge内部下载页资源单独计数，不算外网请求。
-- Python：records/iteration-1与上述Edge下载工具A/B，D盘已装解释器两次通过，稳定复检；不存在路径是构造测试，非干净设备。
-- Qwen：records/iteration-3，既有环境预检查后用新代码实际本地推理；输出2、正常EOS，7项通过。初检缺推理证据，复检补齐，outcome=verified，非修复。实际Python3.11.16/torch2.14.0+cu126/transformers4.57.1/RTX4060。
-- 原型保护：tools.verify_legacy，814文件一致；550个阶段原件以SHA索引保留在D盘，不复制成Git开发史。旧三份217条可见对话导出已复制，原始会话保留本地。
-- 所有失败记录保留。SQLite关闭、课程链接自动提交等实际问题及测试脚本问题分开说明，见docs/实现与证据说明.md。
+PDF实际9页、363180字节，SHA256 `5C7BD452C51F79441C3AB9117AFA4DDDA52C7CCE1567A7E6F921D865E1E44501`；20项产品源逐字节匹配固定产品HEAD，9页Poppler图像及文本已核验。截图只作矩形局部展示并记录原图/裁切SHA，不修改事实。材料独立复核另归档。
 
-## 启动
+独立材料复核已完成，文档顺序问题已关闭，无新增材料阻塞；全文`records/review/courses-materials-delta.md`，SHA256 `2F3DD17668562B821B12EA418668EF9897A05CB939998B7961E8EB7D4A1520E9`。独立重算PDF/20源码/原图及矩形裁切SHA，逐像素核对裁切、实际查看9页，结论不覆盖未取得的正式视频或实际上传。
 
-在交付目录执行Start-Web.ps1 -Python 'D:\ANACONDA\python.exe' -Port 8772，浏览器打开http://127.0.0.1:8772/；Ctrl+C退出。独立工具运行时ZIP在vendor目录显式启用，Git仅记录来源SHA，不提交二进制。模型原件仍在旧artifacts目录，没有下载或安装新模型/依赖。
+新ZIP：`D:\传智杯\submission\课程能力版_20261108_待补本人视频.zip`，为本机审阅包，含完整真实Git历史，不含.env、private映射、课程库、重复解压运行时和测试下载ZIP；正式MP4缺失。以交付回执实际路径/SHA/CRC、复制启动烟测为准，无回执不视为已复制。
 
-## 审查与停止
+原件保护已核对：Node358交付项/361非Git项、原R1 212项、旧814项；交付复制后再次校验。完整Git单列不在非Git清单内。新清单排除自身、清单SHA与生成回执；没有修改旧正式版、原型或已提交材料。
 
-本轮先冻结162项候选接受独立整体初审；主执行修复唯一P2后，192项候选接受独立delta。已确认本轮无阻塞，原清单与两份报告正文保留。最终结论写入REVIEW及records/review/final-status.json。
+## 未取得条件
 
-R1本机核心路径与整套参赛作品分别记录。新代码真实无Python设备、第二设备/实体手机、新手本人安装、真实AI报错诊断未测；完整自然语言需求、Node.js和其他模型未实现。完整三链需逐项审核；正式5—8分钟1080p视频含2分钟AI过程、技术PDF<=30页、托管访问和官方资格尚未完成。旧失败不因本轮模拟被关闭。
+真实Linux来宾/实例、第二电脑、实体手机、干净无Python设备、独立新手安装、真实AI诊断、其他GPU/多GPU/CPU专用框架与本地Qwen CPU推理未测；无合法可用接口和单次用户同意时不发送AI请求。Notebook/JDK/数据库/Hadoop等只研究与扩展路线。正式MP4、三条完整真实Prompt链、评审可访问远程仓库、本人上传及回执仍缺。没有公开/推送、发邮件、安装或改系统网络。
 
-不自动公开仓库、不发送邮件、不覆盖旧包、不进入下一阶段。用户可先试用R1，再决定剩余工作。
-
-## 交付字节核对
-
-首次D盘复制校验发现，最初引入.gitattributes之前的15个Git对象保存了归一化换行，而工作文件和D盘副本字节完全相同。已核对15项仅有换行表示差异，并强制重新入索引，保留原始字节后另作真实提交，不重写旧提交。产品11项源码工作字节及原型原件没有改动；记录见records/review/git-byte-roundtrip.json。交付中断发生在创建回执和入口前；恢复前逐项核对已复制文件未被改动。
+硬截止为2026-11-18 15:00北京时间，不等待官方答复。本轮功能/审查结论不认证赛事资格、整套材料或实际提交通过。完成交付后停止。
