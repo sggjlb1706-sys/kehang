@@ -1,3 +1,9 @@
+# 本轮来源（2026-11-09）
+
+从 D:\传智杯\versions\competition-courses-20261108 的 e0aca9ca04f350c5db0e3d6f197307260eee6276 以 --no-hardlinks 完整本地克隆，新分支 codex/reuse-ai-courses-20261109。全部既有跟踪产品、文档、测试和真实历史复用；新功能与上游适配按真实改动提交。777跟踪项、778交付项、20产品 blob、31可达提交由本轮独立审计复核。新增运行数据库不复制。外部开源源码、许可证、采用文件/修改摘要将逐项登记 docs/reuse.json 与第三方清单。
+
+## 继承来源（历史）
+
 # 来源与历史边界
 本轮课程能力补全从 `D:\传智杯\versions\competition-r1-node-20261108` 的 `42d86482fa1540b35fcdda6bbdf15d888f6b8cd1` 完整克隆到 `C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-courses-20261108`，分支 `codex/courses-20261108`。358项交付SHA全部匹配、Git干净；全目录非Git摘要在records/courses/baseline.json。现有模块、测试、历史文档、既有嵌入运行时均复用；课程模型/解释器保留原位置，无安装或下载。下文是继承的历史，不能当作本轮新开发。
 
