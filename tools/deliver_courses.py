@@ -23,6 +23,8 @@ def sha(path):
 
 
 def command(args,cwd=ROOT):
+    if args[0]=='git':
+        args=['git','-c','safe.directory='+ROOT.as_posix()]+args[1:]
     return subprocess.check_output(args,cwd=cwd,text=True,encoding='utf-8').strip()
 
 
@@ -34,7 +36,7 @@ def main():
     for module in ('tools.course_baseline','tools.verify_baseline','tools.verify_legacy'):
         subprocess.run([sys.executable,'-B','-m',module],cwd=ROOT,check=True)
     head=command(['git','rev-parse','HEAD'])
-    subprocess.run(['git','merge-base','--is-ancestor','42d86482fa1540b35fcdda6bbdf15d888f6b8cd1',head],cwd=ROOT,check=True)
+    subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),'merge-base','--is-ancestor','42d86482fa1540b35fcdda6bbdf15d888f6b8cd1',head],cwd=ROOT,check=True)
     DEST.parent.mkdir(parents=True,exist_ok=True);ARCHIVE.parent.mkdir(parents=True,exist_ok=True)
     subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),'clone','--no-local','--no-hardlinks',str(ROOT),str(DEST)],check=True)
     git=['git','-c','safe.directory='+DEST.as_posix(),'-C',str(DEST)]
