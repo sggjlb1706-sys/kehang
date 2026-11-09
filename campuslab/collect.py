@@ -10,10 +10,29 @@ import subprocess
 from .rules import absolute, analyze, validate_task
 
 
-def collect(spec, target, model_dir=None, infer=False, gpu_run=False, vm_id=None, guest_report=None):
+def collect(spec, target, model_dir=None, infer=False, gpu_run=False, vm_id=None, guest_report=None,
+            kernel_spec=None,package_json=None,workspace=None,provider=None,model=None,agent_evidence=None,
+            learning_record=None,api_preview=None,api_send=False):
     validate_task(spec)
     absolute(target)
     scenario=spec['scenario']
+    extras={'kernel_spec':kernel_spec,'package_json':package_json,'workspace':workspace,'provider':provider,
+            'model':model,'agent_evidence':agent_evidence,'learning_record':learning_record,'api_preview':api_preview}
+    allowed={'notebook-data':{'kernel_spec'},'dsh-desktop':{'workspace','provider','model','agent_evidence'},
+             'dsh-cli':{'package_json','workspace','provider','model','agent_evidence'},
+             'ai-web-deepseek':{'learning_record'},'deepseek-api':{'api_preview'}}
+    if any(v is not None and k not in allowed.get(scenario,set()) for k,v in extras.items()) or (api_send and scenario!='deepseek-api'):
+        raise ValueError('当前固定任务不接受这些采集参数')
+    from .rules import NEW_COURSES, course_module
+    if scenario in NEW_COURSES:
+        if model_dir is not None or infer or gpu_run or vm_id is not None or guest_report is not None:
+            raise ValueError('当前任务不接受其他课程参数')
+        module=course_module(scenario)
+        if scenario=='notebook-data': return module.collect(spec,target,kernel_spec=kernel_spec)
+        if scenario.startswith('dsh-'): return module.collect(spec,target,package_json=package_json,workspace=workspace,provider=provider,model=model,evidence=agent_evidence)
+        if scenario=='ai-web-deepseek': return module.collect_web(spec,target,learning_record)
+        if scenario=='deepseek-api': return module.collect(spec,target,api_preview,api_send)
+        return module.collect(spec,target)
     if gpu_run and scenario not in ('pytorch-cpu','pytorch-gpu'):
         raise ValueError('该任务不接受GPU验证参数')
     if (vm_id is not None or guest_report is not None) and scenario!='vm-linux':
@@ -77,10 +96,22 @@ def main():
     parser.add_argument('--gpu-run',action='store_true',help='Explicitly run the fixed GPU tensor check')
     parser.add_argument('--vm-id',help='Selected VirtualBox UUID or VMware absolute .vmx path')
     parser.add_argument('--guest-report',type=Path,help='Manually collected guest JSON bound to the same task and VM')
+    parser.add_argument('--kernel-spec',help='Explicit existing kernel.json; only reviewed ipykernel launch syntax')
+    parser.add_argument('--package-json',help='Explicit DSH CLI package.json')
+    parser.add_argument('--workspace',help='Dedicated DSH exercise directory')
+    parser.add_argument('--provider',help='Explicit DSH model provider, no credentials')
+    parser.add_argument('--model',help='Explicit DSH model identifier')
+    parser.add_argument('--agent-evidence',type=Path,help='Minimal user-exported DSH tool evidence, no private chats')
+    parser.add_argument('--learning-record',type=Path,help='User-completed fixed web exercise record')
+    parser.add_argument('--api-preview',type=Path,help='Editable exact request JSON; no key')
+    parser.add_argument('--api-send',action='store_true',help='Interactive preview + single typed consent + getpass; may incur API fees')
     args = parser.parse_args()
     spec = json.loads(args.task.read_text(encoding='utf-8-sig'))
     guest=json.loads(args.guest_report.read_text(encoding='utf-8-sig')) if args.guest_report else None
-    report = collect(spec, args.target, args.model_dir, args.infer,args.gpu_run,args.vm_id,guest)
+    evidence=json.loads(args.agent_evidence.read_text(encoding='utf-8-sig')) if args.agent_evidence else None
+    report = collect(spec, args.target, args.model_dir, args.infer,args.gpu_run,args.vm_id,guest,
+                     args.kernel_spec,args.package_json,args.workspace,args.provider,args.model,evidence,
+                     args.learning_record,args.api_preview,args.api_send)
     with args.output.open('x', encoding='utf-8') as output:
         json.dump(report, output, ensure_ascii=False, indent=2)
     print(json.dumps(analyze(spec, report), ensure_ascii=True))

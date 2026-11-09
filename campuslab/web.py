@@ -95,8 +95,36 @@ class Handler(BaseHTTPRequestHandler):
                 if spec['scenario']=='vm-linux':
                     z.writestr('guest_probe.py',(ROOT/'campuslab/guest_probe.py').read_bytes())
             z.writestr('campuslab/preparation.py',(ROOT/'campuslab/preparation.py').read_bytes())
+            new_files={'notebook-data':['notebook_course.py','notebook_probe.py'],
+                       'java-jdk':['java_course.py'],'sqlite-basics':['sqlite_course.py'],
+                       'ai-web-deepseek':['ai_course.py','ai_probe.py','diagnosis.py'],
+                       'deepseek-api':['ai_course.py','ai_probe.py','diagnosis.py'],
+                       'dsh-desktop':['dsh_course.py'],'dsh-cli':['dsh_course.py']}
+            for name in new_files.get(spec['scenario'],[]):
+                z.writestr('campuslab/'+name,(ROOT/'campuslab'/name).read_bytes())
+            if spec['scenario']=='notebook-data':
+                z.writestr('campuslab/data/notebook_scores.csv',(ROOT/'campuslab/data/notebook_scores.csv').read_bytes())
+            if spec['scenario']=='deepseek-api':
+                from .ai_course import preview
+                z.writestr('api-preview.json',json.dumps(preview(spec),ensure_ascii=False,indent=2))
+            if spec['scenario']=='ai-web-deepseek':
+                from .ai_course import web_record_template
+                z.writestr('web-record.json',json.dumps(web_record_template(spec),ensure_ascii=False,indent=2))
             z.writestr('task.json', json.dumps(spec, ensure_ascii=False, indent=2))
-            target_example = r'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' if spec['scenario']=='vm-linux' else (r'C:\CourseNode\node.exe' if spec['scenario'] == 'node-basics' else r'C:\Course\python.exe')
+            examples={'vm-linux':r'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe','node-basics':r'C:\CourseNode\node.exe',
+                      'java-jdk':r'C:\Program Files\Zulu\zulu-21','sqlite-basics':r'C:\Course\demo.sqlite',
+                      'ai-web-deepseek':r'C:\Course\exercise','dsh-desktop':r'C:\DSH\DeepSeek Harness.exe','dsh-cli':r'C:\Node\node.exe'}
+            target_example=examples.get(spec['scenario'],r'C:\Course\python.exe')
+            extras={'notebook-data':' --kernel-spec "C:\\Users\\Student\\AppData\\Roaming\\jupyter\\kernels\\python3\\kernel.json"',
+                    'ai-web-deepseek':' --learning-record web-record.json',
+                    'deepseek-api':' --api-preview api-preview.json',
+                    'dsh-cli':' --package-json "C:\\CourseDSH\\package.json" --workspace "C:\\Course\\dsh-practice"',
+                    'dsh-desktop':' --workspace "C:\\Course\\dsh-practice"'}.get(spec['scenario'],'')
+            if extras:
+                z.writestr('COURSE.txt','Add these explicit fields to the manual collector command: '+extras+'\n'
+                    'Notebook: select an existing reviewed kernel.json for the same Python; a real temporary kernel runs fixed CSV.\n'
+                    'API: preview is editable. No request by default. Only --api-send asks for SEND <preview digest> and a hidden key in the terminal; possible fees. Never put keys in files or commands.\n'
+                    'DSH: no DSH process is launched. Prepare a NEW workspace explicitly using python -B -m campuslab.dsh_course --task task.json --prepare-workspace NEW_ABSOLUTE_PATH; user runs and authorizes the real Agent. Evidence is a minimal user excerpt, never credentials/config dumps.\n')
             z.writestr('README.txt', f'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "{target_example}" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n')
             if self.server.runtime_zip and self.server.runtime_zip.is_file():
                 with zipfile.ZipFile(self.server.runtime_zip) as runtime:
@@ -136,6 +164,13 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200, compare(body['task'], body['before'], body['after']))
             elif self.path == '/api/plan':
                 self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report')))
+            elif self.path == '/api/lesson':
+                from .teaching import lesson_checks
+                self.send(200,lesson_checks(analyze(body['task'],body['report'])))
+            elif self.path == '/api/learning-preview':
+                from .ai_course import preview
+                validate_task(body['task'])
+                self.send(200,preview(body['task']))
             elif self.path == '/api/need':
                 from .preparation import resolve_need
                 self.send(200,resolve_need(body.get('text'),body.get('clarification')))

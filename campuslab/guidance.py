@@ -6,6 +6,8 @@ def plan(spec, mode='novice', resources=None, report=None):
     validate_task(spec)
     if mode not in ('novice','standard','quick'):
         raise ValueError('指导模式无效')
+    from .rules import NEW_COURSES
+    if spec['scenario'] in NEW_COURSES: return learning_plan(spec,mode,report)
     if spec['scenario'] in ('pytorch-cpu','pytorch-gpu','vm-linux'):
         return course_plan(spec,mode,report)
     local = spec['scenario'] == 'local-qwen'
@@ -61,6 +63,58 @@ def plan(spec, mode='novice', resources=None, report=None):
 
 def ps_literal(value):
     return '"'+''.join('`'+c if c in '`"$‘’‚‛“”„‟' else c for c in value)+'"'
+
+
+def learning_plan(spec,mode,report):
+    scenario=spec['scenario']
+    from .ai_course import QUESTION, SOURCES
+    if scenario=='notebook-data':
+        steps=[('选择真正的课程内核','在Jupyter内核设置确认课程Python；填写该python.exe和已有kernelspec目录中的kernel.json。可手动执行 & "课程python.exe" -m jupyter kernelspec list 找位置。工具只接受明确ipykernel启动格式，不运行内核配置中的任意命令或环境变量。'),
+               ('核对数据与依赖','所选Python需要已有jupyter_client、ipykernel、NumPy、Pandas。内核真正启动后读取sys.executable与依赖版本，执行随固定任务审查的小数据计算；找到包不表示内核已经运行。'),
+               ('运行与处理差异','生成并运行手动命令。缺解释器、缺依赖、内核错配、版本不符、启动/计算失败分别看原始证据。工具只清理自己创建的临时内核，不操作已有会话。')]
+        links=[dict(title='Jupyter kernelspec 官方说明',url='https://jupyter-client.readthedocs.io/en/stable/kernels.html')]
+    elif scenario=='java-jdk':
+        steps=[('明确JDK目录','填写JDK根目录，例如 C:\\Program Files\\Zulu\\zulu-21，里面应同时有bin/java.exe和bin/javac.exe。JRE或编辑器不等于JDK。'),
+               ('核对同一套工具','采集器只用这份JDK中的java/javac，核对版本与运行身份，不从PATH借另一编译器。固定源码在自己新建的临时目录编译运行，不写入本人项目。'),
+               ('定位失败','工具缺失先确认目录；版本不符按任务范围手动准备；编译或运行错误先展开原始退出码和输出。处理后同一JDK复检。')]
+        links=[dict(title='Oracle JDK 工具文档',url='https://docs.oracle.com/en/java/javase/21/docs/specs/man/index.html')]
+    elif scenario=='sqlite-basics':
+        steps=[('准备独立演示数据库','这是SQLite单机SQL入门。明确数据库文件路径；点击生成样例命令后本人执行，prepare-demo只创建新文件并拒绝覆盖。不要选择私人数据库或将其当作MySQL/PostgreSQL实例。'),
+               ('只读执行固定查询','采集器使用SQLite URI mode=ro，固定SELECT核对随任务的演示表和结果；不接受导入的任意SQL，不写数据，不加载扩展。'),
+               ('核对数据库身份','报告记录完整路径与文件摘要；更换文件或内容后重新初检，不将旧成功套到新数据库。缺表、错误数据和查询失败保留不符合或未知。')]
+        links=[dict(title='SQLite 只读URI官方说明',url='https://www.sqlite.org/uri.html')]
+    elif scenario=='ai-web-deepseek':
+        steps=[('本人打开官方入口','从DeepSeek官方网页或客户端下载入口进入，由本人按页面条件注册/登录；不要在本工具填写密码。账号和可用条件以官方当前页面为准。Qwen、豆包提供代表性指导路线，未接入其自动验证。'),
+               ('完成一次课程提问','新建对话，说明数据分析课程目标，粘贴这份非个人演示CSV；也可将相同内容保存为CSV后本人上传到工具支持的文件入口。问题：'+QUESTION),
+               ('独立核对成果','手算10+14+18=42，行数3，均值14。检查模型解释和引用，避免把流畅回答当作事实。若登录失败按官网提示处理；若文件功能不可用直接粘贴演示文本。'),
+               ('保存必要本人记录','下载包内web-record.json只填写本次是否完成、是否独立核对及JSON结果，不附无关聊天。本人记录和固定数字核对分别显示；本工具没有登录/远端连接证据，因此环境结论仍未知。')]
+        links=SOURCES
+    elif scenario=='deepseek-api':
+        steps=[('确认API编程路线','本任务使用所选Python>=3.10且<3.15的urllib/ssl/json标准库，无需新SDK；提供方DeepSeek，接口 '+spec['api']['endpoint']+'，模型 '+spec['api']['model']+'。这与网页使用、本地Qwen和产品报错解释接口分别验收。'),
+               ('先做未调用预检','下载工具中的api-preview.json展示系统说明及真实用户内容，可编辑并删除敏感信息；生成命令默认只预检Python，不读任何凭据，不发API请求。'),
+               ('本人决定单次调用','仅当本人确认账号、调用条件和可能费用后，勾选“本次进入单次发送确认”生成命令；终端再次显示完整目的地/模型/内容，要求键入SEND及摘要，随后隐藏输入本次密钥。密钥不进网页、命令、报告或分享。此页面勾选本身不发送。'),
+               ('核对响应和复检','HTTP200还须模型/协议、正常结束和固定JSON计算分别符合。未配置、认证/余额、模型/协议、限流、超时、异常分别报告；未调用保持未知。更改模型、目的地、解释器或发送内容后重新初检。')]
+        links=SOURCES[:2]+[dict(title='DeepSeek 错误码',url='https://api-docs.deepseek.com/quick_start/error_codes/')]
+    else:
+        desktop=scenario=='dsh-desktop'
+        steps=[('确认DSH路线','本任务是DeepSeek Harness。'+('选择明确的Windows桌面exe，读取文件身份/版本；官方桌面自带运行时，无外部Node或PATH无dsh不作为桌面失败依据。' if desktop else '选择明确node.exe及@deepseek-ai/dsh的package.json；固定0.2.2-rc.1包要求Node>=24.9.0，旧Node演示课通过不能替代。只查固定Node身份，不运行DSH/npx。')),
+               ('准备专用练习工作区','生成准备命令，由本人新建专用目录。练习仅允许读取input.csv、写summary.json，目标sum=42。填写明确提供方和模型。路径/权限不明确先停止；不会读取DSH凭据或完整配置。'),
+               ('本人在DSH启动并授权','打开所选桌面或使用该Node与固定包入口，按官方provider指南本人配置模型，在专用工作区审查任务和工具权限后运行。只看配置、版本或普通聊天不能证明Agent任务完成。'),
+               ('带回必要运行证据','按工作区任务说明保存最少工具调用摘要、运行时间和固定产物；不收集隐藏推理或无关对话。采集器分别核对软件/运行时/模型/权限/实际工具与产物；无真实任务证据仍未知。'),
+               ('同一路线与组件复检','保持安装/运行时、provider/model及工作区身份；更换后重新初检。未安装、未连接、权限未明、任务失败都给出不同检查项，不能用另一份Node或产物凑通过。')]
+        links=[dict(title='DSH 官方下载与预览说明',url='https://www.deepseek.com/harness/'),dict(title='DSH 官方provider指南',url='https://deepseek-harness.github.io/deepseek-harness/en/guide/providers')]
+    full=steps
+    if mode=='standard': steps=[steps[0],steps[-2],steps[-1]] if len(steps)>3 else steps
+    if mode=='quick': steps=[steps[0],('固定练习与同目标复检','核对页面的可审查手动命令、原始错误及任务摘要。'+steps[-1][1])]
+    actions=[]
+    if report is not None:
+        from .rules import analyze
+        for c in analyze(spec,report)['checks']:
+            if c['status']=='pass': continue
+            actions.append(dict(id=c['id'],status=c['status'],title=c['id']+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[c['status']],
+                body='所选目标：'+report['target']['requested']+'。'+({'missing':'先确认组件路径并按任务要求手动准备。','mismatch':'展开本项原始事实与错误，核对固定要求后手动处理。','unknown':'先补充本项证据；其他组件或本人勾选不能替代。'}[c['status']]),
+                verify=full[-1][1]+' 保留原A，采集较晚B；不同目标重新初检。'))
+    return dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=None,remediation=actions)
 
 
 def remediation(spec,report,mode):

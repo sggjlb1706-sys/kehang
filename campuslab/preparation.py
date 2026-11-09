@@ -41,11 +41,26 @@ CATALOG = [
          status='候选目录；未实现JDK检测；原课程PDF本轮抓取超时', extension='显式JAVA_HOME、java/javac同源版本、固定编译运行'),
     dict(scenario='database', label='数据库 / SQL', implemented=False, source=SOURCES['hubu'],
          status='候选目录；未实现数据库检测；培养方案本轮抓取超时', extension='明确DBMS与实例身份、只读连接、固定SELECT；凭据不入分享'),
-    dict(scenario='hadoop', label='Hadoop / 大数据', implemented=False, source=SOURCES['hadoop'],
-         status='候选目录；未实现Hadoop检测；原课程PDF本轮抓取超时', extension='Linux来宾、JDK、SSH及明确集群身份；固定作业另行授权'),
+    dict(scenario='hadoop', label='Hadoop / 大数据', implemented=False, source='https://hadoop.apache.org/docs/r3.5.0/hadoop-project-dist/hadoop-common/SingleCluster.html',
+         status='官方3.5.0组合准备路线；未取得Linux来宾、SSH或集群证据', extension='服务端JDK17、Linux来宾、SSH、明确Hadoop配置/集群身份逐项核对；现有Java课程JDK21通过不代表Hadoop服务端可用。详见docs/Hadoop与框架组合路线-20261109.md'),
     dict(scenario='network-cloud', label='网络 / 云计算', implemented=False, source=SOURCES['bjtu'],
          status='候选目录；未实现云资源或网络配置检测；原培养方案URL本轮404', extension='教师固定拓扑、资源/账户身份、只读证据；不自动创建云资源'),
 ]
+for item in CATALOG:
+    if item['scenario'] in ('notebook','java','database'):
+        new_name={'notebook':'notebook-data','java':'java-jdk','database':'sqlite-basics'}[item['scenario']]
+        item.update(scenario=new_name,implemented=True,
+                    status='本轮新增固定任务；真实结果与外部条件见本轮证据',
+                    extension={'notebook-data':'显式内核/解释器、NumPy/Pandas与固定数据运算',
+                               'java-jdk':'显式JDK、同源java/javac、固定临时编译运行',
+                               'sqlite-basics':'SQLite单机SQL入门，明确数据库文件，只读固定SELECT；不代表MySQL/PostgreSQL'}[new_name])
+CATALOG.extend([
+    dict(scenario='ai-web-deepseek',label='AI 网页/客户端 · DeepSeek',implemented=True,source='https://www.deepseek.com/',status='本人练习记录与固定成果核对；登录/连接不作自动认证',extension='网页使用、课程上下文、结果核对；另有Qwen/豆包官方指导路线'),
+    dict(scenario='deepseek-api',label='DeepSeek API 编程准备',implemented=True,source='https://api-docs.deepseek.com/',status='固定官方目的地/模型/练习；真实发送须本人单次确认',extension='显式Python标准库、可编辑预览、终端密钥、协议/结果与复检'),
+    dict(scenario='dsh-desktop',label='DeepSeek Harness · Windows 桌面',implemented=True,source='https://www.deepseek.com/harness/',status='静态安装身份与本人Agent证据分别验证',extension='自带运行时；系统Node/PATH无dsh不表示桌面失败'),
+    dict(scenario='dsh-cli',label='DeepSeek Harness · npm/CLI/Web',implemented=True,source='https://github.com/deepseek-ai/deepseek-harness',status='固定包/Node身份、工作区、模型及Agent证据分层',extension='Node>=24.9.0；不会运行npx、启动DSH或读取其凭据'),
+    dict(scenario='database-server',label='MySQL / PostgreSQL',implemented=False,source=SOURCES['hubu'],status='调研/指导；未实现实例连接验收',extension='需明确实例、只读账号和固定查询；SQLite不能替代'),
+    dict(scenario='agent-framework-mcp',label='Agent 开发框架 / MCP',implemented=False,source='https://modelcontextprotocol.io/docs/learn/architecture',status='来源目录及后续路线；未实现真实模型工具调用验收',extension='未来固定工具参数/结果闭环，不能执行任意工具或命令')])
 SUPPORTED = {x['scenario']: x['label'] for x in CATALOG if x['implemented']}
 
 
@@ -68,6 +83,33 @@ def resolve_need(text, clarification=None):
         result.update(status='conflict', message='个人条件与课程要求冲突。先向教师确认允许的路线，当前要求保持。',
                       question='课程是否允许替代路线？取得教师确认后再选择任务。')
         return result
+    new=[]
+    if any(word in value for word in ('deepseek harness','deepseek-harness','harness','dsh')):
+        new=['dsh-cli'] if any(word in value for word in ('cli','npm','命令行','web端')) else (['dsh-desktop'] if any(word in value for word in ('桌面','desktop','客户端')) else ['dsh-desktop','dsh-cli'])
+    elif any(word in value for word in ('deepseek','深度求索','主流ai','使用ai','ai工具')):
+        new=['deepseek-api'] if 'api' in value else (['ai-web-deepseek'] if any(word in value for word in ('网页','客户端','聊天')) else ['ai-web-deepseek','deepseek-api','local-qwen'])
+    elif any(word in value for word in ('hadoop','大数据','spark')):
+        result.update(status='catalog_only',catalog=[x for x in CATALOG if x['scenario']=='hadoop'],message='组合课程须分别核对Linux、JDK、SSH和集群；单独Java或Linux通过不能替代。',question='先按官方组合路线确认教师要求与缺少组件。')
+        if clarification is not None:raise ValueError('组合路线尚无集群检测任务')
+        return result
+    elif any(word in value for word in ('notebook','jupyter','数据分析','pandas')): new=['notebook-data']
+    elif any(word in value for word in ('java','jdk')): new=['java-jdk']
+    elif 'sqlite' in value or ('sql' in value and not any(word in value for word in ('mysql','postgres','sqlserver'))): new=['sqlite-basics']
+    if new:
+        if result['constraints']['local_required'] and any(x in new for x in ('deepseek-api','ai-web-deepseek')):
+            result.update(status='conflict',message='课程明确要求本地，网页或远程API不可替代本地通过。',question='先确认教师允许的本地模型路线。')
+            return result
+        if result['constraints']['gpu_required']:
+            result.update(status='conflict',message='当前固定任务不验证所要求的GPU运算，不能降低课程要求。',question='请先确认GPU课程及验收条件。')
+            return result
+        if clarification is not None:
+            if clarification not in new: raise ValueError('澄清选项不属于当前学习目标')
+            new=[clarification]
+        result.update(candidates=[dict(scenario=x,label=SUPPORTED[x]) for x in new],
+                      status='recognized' if len(new)==1 else 'clarify',scenario=new[0] if len(new)==1 else None,
+                      message='确认具体路线后建立固定任务。网页使用、API和本地模型各有独立验收。',
+                      question='' if len(new)==1 else '请选择要完成的路线；DSH桌面端与CLI依赖分别核对。')
+        return result
     candidates = []
     deep = any(word in value for word in ('pytorch', '深度学习', 'torch'))
     if deep:
@@ -88,8 +130,7 @@ def resolve_need(text, clarification=None):
     if 'python' in value and not deep and not any(x in candidates for x in ('local-qwen',)):
         candidates.append('python-basics')
     research = []
-    for scenario, words in [('notebook', ('notebook', 'jupyter', '数据分析', 'pandas')),
-                            ('java', ('java', 'jdk')), ('database', ('数据库', 'mysql', 'sql', 'postgres')),
+    for scenario, words in [('database-server', ('数据库', 'mysql', 'sql', 'postgres')),
                             ('hadoop', ('hadoop', '大数据', 'spark')), ('network-cloud', ('网络', '云计算', '云端模型', 'api模型'))]:
         if any(word in value for word in words): research.append(scenario)
     if research:

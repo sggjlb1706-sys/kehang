@@ -5,6 +5,7 @@ import hashlib
 import json
 import ntpath
 import re
+from importlib import import_module
 
 
 def canonical(value):
@@ -35,8 +36,21 @@ def timestamp(value):
 
 MODEL_SHA = 'FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE'
 
+# Closed dispatch for this round's reviewed fixed tasks; never an imported command.
+NEW_COURSES = {'notebook-data':'notebook_course','java-jdk':'java_course','sqlite-basics':'sqlite_course',
+               'deepseek-api':'ai_course','ai-web-deepseek':'ai_course','dsh-desktop':'dsh_course','dsh-cli':'dsh_course'}
+
+
+def course_module(scenario):
+    return import_module('.'+NEW_COURSES[scenario],__package__)
+
 
 def task(scenario='python-basics', title=None, python_min='3.10', python_max='3.15', requests_min='2.31'):
+    if scenario in NEW_COURSES:
+        module=course_module(scenario)
+        if scenario=='ai-web-deepseek': return module.make_web_task(title)
+        if scenario.startswith('dsh-'): return module.make_task(title,route=scenario.split('-')[1])
+        return module.make_task(title)
     if scenario in ('pytorch-cpu','pytorch-gpu'):
         from .torch_course import make_task
         return make_task(title, gpu_required=scenario=='pytorch-gpu')
@@ -80,6 +94,8 @@ def validate_task(spec):
     if not isinstance(spec, dict) or type(spec.get('schema')) is not int or spec.get('schema') != 1 or spec != seal(spec):
         raise ValueError('任务快照缺失或摘要不匹配')
     try:
+        if spec.get('scenario') in NEW_COURSES:
+            return course_module(spec['scenario']).validate_spec(spec)
         if spec.get('scenario') in ('pytorch-cpu','pytorch-gpu'):
             from .torch_course import validate_spec
             return validate_spec(spec)
@@ -100,6 +116,9 @@ def validate_task(spec):
 
 def analyze(spec, report):
     validate_task(spec)
+    if spec['scenario'] in NEW_COURSES:
+        module=course_module(spec['scenario'])
+        return module.analyze_web(spec,report) if spec['scenario']=='ai-web-deepseek' else module.analyze(spec,report)
     if spec['scenario'] in ('pytorch-cpu','pytorch-gpu'):
         from .torch_course import analyze as analyze_torch
         return analyze_torch(spec,report)
@@ -235,7 +254,9 @@ def analyze_node(spec, report, target, facts):
 
 def compare(spec, before, after):
     a, b = analyze(spec, before), analyze(spec, after)
-    if spec['scenario'] in ('pytorch-cpu','pytorch-gpu'):
+    if spec['scenario'] in NEW_COURSES:
+        course_module(spec['scenario']).compare_identity(before,after)
+    elif spec['scenario'] in ('pytorch-cpu','pytorch-gpu'):
         from .torch_course import compare_identity
         compare_identity(before,after)
     elif spec['scenario'] == 'vm-linux':

@@ -31,10 +31,19 @@ class PreparationTest(unittest.TestCase):
         self.assertEqual(resolve_need('Python和Node都要安装')['status'], 'conflict')
         self.assertEqual(resolve_need('课程要求本地模型但我只用云端')['status'], 'conflict')
         self.assertEqual(resolve_need('课程要求GPU但没有GPU')['status'], 'conflict')
-        for text in ('Java JDK', 'Jupyter Notebook', 'MySQL数据库', 'Hadoop大数据', '云计算'):
+        for text in ('MySQL数据库', 'Hadoop大数据', '云计算'):
             self.assertEqual(resolve_need(text)['status'], 'catalog_only')
-        self.assertEqual(resolve_need('Python数据分析Notebook')['status'], 'catalog_only')
+        for text, scenario in [('Java JDK', 'java-jdk'), ('Jupyter Notebook', 'notebook-data'),
+                               ('Python数据分析Notebook', 'notebook-data'), ('SQLite SQL', 'sqlite-basics'),
+                               ('DeepSeek API', 'deepseek-api'), ('DeepSeek网页', 'ai-web-deepseek'),
+                               ('DSH桌面', 'dsh-desktop'), ('DSH CLI', 'dsh-cli')]:
+            self.assertEqual(resolve_need(text)['scenario'], scenario)
+        for text in ('DeepSeek', 'DSH'):
+            self.assertEqual(resolve_need(text)['status'], 'clarify')
         self.assertEqual(resolve_need('Linux Hadoop')['status'], 'catalog_only')
+        self.assertEqual(resolve_need('Java JDK Hadoop')['status'], 'catalog_only')
+        self.assertEqual(resolve_need('课程要求本地DeepSeek API')['status'], 'conflict')
+        self.assertEqual(resolve_need('必须GPU Notebook')['status'], 'conflict')
         self.assertEqual(resolve_need('运行本地模型但是我只用云端')['status'], 'conflict')
 
     def test_clarification_cannot_select_arbitrary_code(self):
