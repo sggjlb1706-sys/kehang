@@ -5,6 +5,6 @@ test_stale_task_material_and_tampered_data_distinguished (tests.test_practice.Pr
 test_two_local_libraries_publish_import_and_reject_old_results (tests.test_practice.PracticeWebTest.test_two_local_libraries_publish_import_and_reject_old_results) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.661s
+Ran 5 tests in 0.627s
 
 OK

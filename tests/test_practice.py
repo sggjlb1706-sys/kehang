@@ -32,6 +32,10 @@ class PracticeTest(unittest.TestCase):
         changed = deepcopy(package)
         changed['practice']['expected']['notebook']['array_sum'] = 43
         with self.assertRaises(ValueError): practice.import_package(changed)
+        changed = deepcopy(package); changed['schema'] = True
+        with self.assertRaises(ValueError): practice.import_package(changed)
+        changed = deepcopy(self.spec); changed['expected']['notebook']['rows'] = 3.0
+        with self.assertRaises(ValueError): practice.validate_practice(changed)
 
     def test_result_states_and_scope(self):
         for value in (None, {}):

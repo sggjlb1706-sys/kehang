@@ -9,6 +9,7 @@ from .rules import absolute, validate_task
 def selected_path(value):
     value=value.strip()
     if len(value)>=2 and value[0]==value[-1]=='"':value=value[1:-1]
+    if any(character in value for character in '\r\n\x00'):raise ValueError('路径不能含换行或空字符')
     absolute(value)
     return value
 
