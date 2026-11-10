@@ -1,0 +1,24 @@
+test_bundle_identity_and_new_excerpt_are_bound (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_bundle_identity_and_new_excerpt_are_bound) ... ok
+test_exact_package_resolves_pe_prerelease_without_claiming_agent (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_exact_package_resolves_pe_prerelease_without_claiming_agent) ... ok
+test_new_excerpt_cannot_omit_or_change_bundle_binding (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_new_excerpt_cannot_omit_or_change_bundle_binding) ... ok
+test_numeric_pe_version_alone_never_passes (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_numeric_pe_version_alone_never_passes) ... ok
+test_old_reports_keep_original_contract (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_old_reports_keep_original_contract) ... ok
+test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) ... ok
+test_package_cannot_be_borrowed_from_other_installation (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_package_cannot_be_borrowed_from_other_installation) ... ok
+test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) ... ok
+test_artifact_alone_or_declaration_does_not_pass (tests.test_dsh_course.DshCourseTests.test_artifact_alone_or_declaration_does_not_pass) ... ok
+test_cli_selected_node_and_package_are_paired_without_dsh_execution (tests.test_dsh_course.DshCourseTests.test_cli_selected_node_and_package_are_paired_without_dsh_execution) ... ok
+test_complete_user_excerpt_is_distinguished_from_simulation (tests.test_dsh_course.DshCourseTests.test_complete_user_excerpt_is_distinguished_from_simulation) ... ok
+test_incomplete_fact_or_wrong_actual_identity_is_rejected (tests.test_dsh_course.DshCourseTests.test_incomplete_fact_or_wrong_actual_identity_is_rejected) ... ok
+test_mismatched_evidence_identity_and_unapproved_calls_rejected (tests.test_dsh_course.DshCourseTests.test_mismatched_evidence_identity_and_unapproved_calls_rejected) ... ok
+test_missing_desktop_does_not_require_node (tests.test_dsh_course.DshCourseTests.test_missing_desktop_does_not_require_node) ... ok
+test_package_bin_escape_is_rejected (tests.test_dsh_course.DshCourseTests.test_package_bin_escape_is_rejected) ... ok
+test_prepare_never_overwrites_and_uses_fixed_data (tests.test_dsh_course.DshCourseTests.test_prepare_never_overwrites_and_uses_fixed_data) ... ok
+test_prepared_template_is_not_success_evidence (tests.test_dsh_course.DshCourseTests.test_prepared_template_is_not_success_evidence) ... ok
+test_retest_rejects_component_changes (tests.test_dsh_course.DshCourseTests.test_retest_rejects_component_changes) ... ok
+test_route_snapshots_are_fixed (tests.test_dsh_course.DshCourseTests.test_route_snapshots_are_fixed) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.214s
+
+OK

@@ -1,0 +1,42 @@
+test_bundle_identity_and_new_excerpt_are_bound (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_bundle_identity_and_new_excerpt_are_bound) ... FAIL
+test_exact_package_resolves_pe_prerelease_without_claiming_agent (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_exact_package_resolves_pe_prerelease_without_claiming_agent) ... FAIL
+test_numeric_pe_version_alone_never_passes (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_numeric_pe_version_alone_never_passes) ... ok
+test_old_reports_keep_original_contract (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_old_reports_keep_original_contract) ... ok
+test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) ... ok
+test_package_cannot_be_borrowed_from_other_installation (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_package_cannot_be_borrowed_from_other_installation) ... ERROR
+test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) ... ok
+
+======================================================================
+ERROR: test_package_cannot_be_borrowed_from_other_installation (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_package_cannot_be_borrowed_from_other_installation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 72, in test_package_cannot_be_borrowed_from_other_installation
+    report['facts']['installation']['desktop_package']['path']=str(folder/'other'/'resources'/'app.asar')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'desktop_package'
+
+======================================================================
+FAIL: test_bundle_identity_and_new_excerpt_are_bound (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_bundle_identity_and_new_excerpt_are_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 78, in test_bundle_identity_and_new_excerpt_are_bound
+    self.assertIn('desktop_package_sha256',evidence_template(before))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'desktop_package_sha256' not found in {'schema': 1, 'source': 'dsh-user-excerpt', 'task_id': '36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581', 'route': 'desktop', 'target': 'C:\\Users\\DELL\\AppData\\Local\\Temp\\tmpfdsoxapa\\DeepSeek Harness.exe', 'installation_sha256': '9471ae744905075795a9268a2e45612c3a21b49c21d3df8b3b97f4ff19f5eba3', 'package_json': None, 'runtime': None, 'runtime_version': None, 'workspace': None, 'workspace_id': None, 'provider': None, 'model': None, 'started_at': None, 'ended_at': None, 'permission': {'confirmed': False, 'read': ['input.csv'], 'write': ['summary.json'], 'tools': ['read', 'write']}, 'model_result': 'unknown', 'calls': [], 'artifact_sha256': None}
+
+======================================================================
+FAIL: test_exact_package_resolves_pe_prerelease_without_claiming_agent (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_exact_package_resolves_pe_prerelease_without_claiming_agent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 41, in test_exact_package_resolves_pe_prerelease_without_claiming_agent
+    self.assertEqual(self.software(report),'pass')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'mismatch' != 'pass'
+- mismatch
++ pass
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.063s
+
+FAILED (failures=2, errors=1)

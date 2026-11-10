@@ -5,11 +5,13 @@ import ctypes
 from datetime import datetime, timezone
 import hashlib
 import json
+import ntpath
 import os
 from pathlib import Path
 import platform
 import re
 import subprocess
+import struct
 import uuid
 
 from .rules import absolute, canonical, seal, timestamp, version
@@ -98,6 +100,65 @@ def _desktop_metadata(path):
     return result
 
 
+def _desktop_package(path):
+    """Read only the selected desktop installation's root ASAR package metadata."""
+    archive = path.parent/'resources'/'app.asar'
+    if not archive.exists():
+        return None
+    result = dict(path=str(archive.absolute()), sha256=None, package_sha256=None,
+                  name=None, version=None, main=None, error='未取得有效的相邻桌面包元数据')
+    try:
+        if archive.is_symlink() or archive.parent.is_symlink() or archive.resolve() != path.resolve().parent/'resources'/'app.asar':
+            raise ValueError('桌面包必须位于所选程序的resources目录')
+        before = _hash(archive)
+        result['sha256'] = before
+        with archive.open('rb') as source:
+            raw = source.read(16)
+            if len(raw) != 16:
+                raise ValueError('ASAR头不完整')
+            marker, header_size, payload_size, json_size = struct.unpack('<4I', raw)
+            if marker != 4 or header_size != payload_size+4 or not 0 < json_size <= 8*1024*1024 or not 0 <= payload_size-4-json_size <= 3:
+                raise ValueError('ASAR头大小无效')
+            data_start = 8+header_size
+            archive_size = archive.stat().st_size
+            if data_start > archive_size:
+                raise ValueError('ASAR头超出文件')
+            def unique_pairs(items):
+                value = {}
+                for key, item in items:
+                    if key in value:
+                        raise ValueError('ASAR/JSON字段重复')
+                    value[key] = item
+                return value
+            header = json.loads(source.read(json_size).decode('utf-8'), object_pairs_hook=unique_pairs)
+            entry = header['files']['package.json']
+            _object(entry, ('size', 'offset', 'integrity'), 'ASAR根package.json')
+            size, offset = entry['size'], entry['offset']
+            if type(size) is not int or not 1 <= size <= 65536 or not isinstance(offset, str) or not re.fullmatch(r'\d{1,20}', offset):
+                raise ValueError('ASAR元数据长度或偏移无效')
+            offset = int(offset)
+            if offset+size > archive_size-data_start:
+                raise ValueError('ASAR元数据超出文件')
+            integrity = entry['integrity']
+            _object(integrity, ('algorithm', 'hash', 'blockSize', 'blocks'), 'ASAR元数据完整性')
+            if integrity['algorithm'] != 'SHA256' or integrity['blockSize'] != 4194304:
+                raise ValueError('ASAR完整性算法不受支持')
+            source.seek(data_start+offset)
+            content = source.read(size)
+            digest = hashlib.sha256(content).hexdigest()
+            if len(content) != size or integrity['hash'] != digest or integrity['blocks'] != [digest]:
+                raise ValueError('ASAR根package.json完整性不符')
+            value = json.loads(content.decode('utf-8'), object_pairs_hook=unique_pairs)
+            if not isinstance(value, dict) or any(not isinstance(value.get(key), str) or not 1 <= len(value[key]) <= 100 for key in ('name', 'version', 'main')):
+                raise ValueError('桌面包公开身份字段无效')
+        if before != _hash(archive):
+            raise ValueError('读取期间桌面包发生变化')
+        result.update(package_sha256=digest, name=value['name'], version=value['version'], main=value['main'], error='')
+    except (OSError, ValueError, KeyError, TypeError, AttributeError, RecursionError) as exc:
+        result['error'] = '桌面包元数据无效：'+str(exc)[:200]
+    return result
+
+
 def _node_identity(path):
     """Only the selected Node executes a fixed expression; the DSH entry never runs."""
     env = {key: value for key, value in os.environ.items() if key.upper() not in ('NODE_OPTIONS', 'NODE_PATH')}
@@ -180,12 +241,18 @@ def _workspace(path, spec):
 def _validate_excerpt(value, report):
     keys = ('schema', 'source', 'task_id', 'route', 'target', 'installation_sha256', 'package_json', 'runtime', 'runtime_version',
             'workspace', 'workspace_id', 'provider', 'model', 'started_at', 'ended_at', 'permission', 'model_result', 'calls', 'artifact_sha256')
-    _object(value, keys, 'DSH最小工具摘要')
     facts = report['facts']; installation = facts['installation']; runtime = facts['runtime']; work = facts['workspace']
+    desktop_package = installation.get('desktop_package')
+    desktop_sha = desktop_package['sha256'] if desktop_package else None
+    if desktop_sha is not None:
+        keys += ('desktop_package_sha256',)
+    _object(value, keys, 'DSH最小工具摘要')
     expected = dict(schema=1, task_id=report['task_id'], route=installation['route'], target=report['target']['requested'],
                     installation_sha256=installation['sha256'], package_json=installation['package_json'], runtime=runtime['actual'],
                     runtime_version=runtime['version'], workspace=work['requested'], workspace_id=work['id'],
                     provider=facts['model']['provider'], model=facts['model']['model'], artifact_sha256=facts['artifact']['sha256'])
+    if desktop_sha is not None:
+        expected['desktop_package_sha256'] = desktop_sha
     if any(value[key] != item for key, item in expected.items()) or type(value['schema']) is not int:
         raise ValueError('DSH工具摘要与当前任务/安装/运行时/模型/练习目录或产物不一致')
     if value['source'] not in ('dsh-user-excerpt', 'protocol-simulation') or value['model_result'] not in ('completed', 'failed', 'unknown'):
@@ -224,6 +291,7 @@ def collect(spec, target, package_json=None, workspace=None, provider=None, mode
         if path.is_file():
             installation.update(_desktop_metadata(path)); installation['sha256'] = _hash(path)
             target_info['actual'] = str(path.resolve())
+            installation['desktop_package'] = _desktop_package(path)
         runtime['error'] = '桌面程序自带Electron运行时；本工具不执行或读取其凭据/会话'
     else:
         if path.is_file():
@@ -272,7 +340,8 @@ def analyze(spec, report):
         raise ValueError('DSH实际程序或Node与所选目标不一致')
     _object(facts, ('os', 'installation', 'runtime', 'workspace', 'model', 'permission', 'artifact', 'agent'), 'DSH事实')
     installation, runtime, work, selected_model, artifact = [facts[key] for key in ('installation', 'runtime', 'workspace', 'model', 'artifact')]
-    _object(installation, ('route', 'exists', 'product', 'version', 'sha256', 'package_json', 'bin', 'bin_sha256', 'node_requirement', 'error'), '软件安装')
+    installation_keys = ('route', 'exists', 'product', 'version', 'sha256', 'package_json', 'bin', 'bin_sha256', 'node_requirement', 'error')
+    _object(installation, installation_keys+(('desktop_package',) if 'desktop_package' in installation else ()), '软件安装')
     _object(runtime, ('kind', 'actual', 'version', 'sha256', 'error'), '运行时')
     _object(work, ('requested', 'actual', 'exists', 'id', 'task_id', 'input_sha256', 'error'), '练习目录')
     _object(selected_model, ('provider', 'model', 'connection'), '模型接入')
@@ -309,6 +378,18 @@ def analyze(spec, report):
             raise ValueError('桌面报告不能混入CLI运行时证据')
     elif runtime['actual'] is not None and (target['actual'] is None or absolute(runtime['actual']) != absolute(target['actual'])):
         raise ValueError('所选Node身份关联不一致')
+    desktop_package = installation.get('desktop_package')
+    if desktop_package is not None:
+        if spec['route'] != 'desktop' or installation['exists'] is not True or target['actual'] is None:
+            raise ValueError('桌面包元数据必须绑定所选实际桌面程序')
+        _object(desktop_package, ('path', 'sha256', 'package_sha256', 'name', 'version', 'main', 'error'), '桌面包元数据')
+        expected_path = ntpath.join(ntpath.dirname(target['requested']), 'resources', 'app.asar')
+        if absolute(desktop_package['path']) != absolute(expected_path):
+            raise ValueError('桌面包不是所选程序的相邻resources/app.asar')
+        for key in ('sha256', 'package_sha256'):
+            _sha(desktop_package[key])
+        if not isinstance(desktop_package['error'], str) or any(desktop_package[key] is not None and (not isinstance(desktop_package[key], str) or not 1 <= len(desktop_package[key]) <= 100) for key in ('name', 'version', 'main')):
+            raise ValueError('桌面包身份字段无效')
     agent = facts['agent']
     if agent is not None:
         _validate_excerpt(agent, report)
@@ -323,7 +404,10 @@ def analyze(spec, report):
     software_state = 'missing' if installation['exists'] is False else 'unknown'
     product = 'DeepSeek Harness' if spec['route'] == 'desktop' else '@deepseek-ai/dsh'
     if installation['exists'] is True and installation['product'] is not None and installation['version'] is not None:
-        valid = installation['product'] == product and installation['version'] == SUPPORTED_VERSION and bool(installation['sha256']) and not installation['error'] and target['actual'] is not None
+        version_valid = installation['version'] == SUPPORTED_VERSION
+        if desktop_package is not None:
+            version_valid = installation['version'] in (SUPPORTED_VERSION, '0.2.2.0') and desktop_package['name'] == '@deepseek-ai/dsh-desktop' and desktop_package['version'] == SUPPORTED_VERSION and desktop_package['main'] == 'lib/main.js' and bool(desktop_package['sha256']) and bool(desktop_package['package_sha256']) and not desktop_package['error']
+        valid = installation['product'] == product and version_valid and bool(installation['sha256']) and not installation['error'] and target['actual'] is not None
         if spec['route'] == 'cli':
             valid = valid and installation['node_requirement'] == '>=24.9.0' and bool(installation['bin']) and bool(installation['bin_sha256'])
         software_state = 'pass' if valid else 'mismatch'
@@ -366,6 +450,8 @@ def compare_identity(before, after):
         for key in keys:
             if a[key] != b[key]:
                 raise ValueError('DSH复检组件身份改变：'+name+'/'+key+'；请为新目标重新初检')
+    if before['facts']['installation'].get('desktop_package') != after['facts']['installation'].get('desktop_package'):
+        raise ValueError('DSH桌面包身份改变；请为新目标重新初检')
     a, b = before['facts']['agent'], after['facts']['agent']
     if a is not None and b is not None and timestamp(b['ended_at']) <= timestamp(a['ended_at']):
         raise ValueError('DSH复检须使用较晚的实际Agent任务摘要，不能重复旧成功')
@@ -374,12 +460,16 @@ def compare_identity(before, after):
 def evidence_template(report):
     """Copy only public identity fields; every execution/permission field starts unconfirmed."""
     facts = report['facts']; installation = facts['installation']; runtime = facts['runtime']; work = facts['workspace']
-    return dict(schema=1, source='dsh-user-excerpt', task_id=report['task_id'], route=installation['route'],
+    result = dict(schema=1, source='dsh-user-excerpt', task_id=report['task_id'], route=installation['route'],
                 target=report['target']['requested'], installation_sha256=installation['sha256'],
                 package_json=installation['package_json'], runtime=runtime['actual'], runtime_version=runtime['version'],
                 workspace=work['requested'], workspace_id=work['id'], provider=facts['model']['provider'], model=facts['model']['model'],
                 started_at=None, ended_at=None, permission=dict(confirmed=False, read=['input.csv'], write=['summary.json'], tools=['read', 'write']),
                 model_result='unknown', calls=[], artifact_sha256=facts['artifact']['sha256'])
+    desktop_package = installation.get('desktop_package')
+    if desktop_package and desktop_package['sha256'] is not None:
+        result['desktop_package_sha256'] = desktop_package['sha256']
+    return result
 
 
 def main():

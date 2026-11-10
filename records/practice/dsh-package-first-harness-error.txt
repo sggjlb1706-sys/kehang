@@ -1,0 +1,412 @@
+test_bundle_identity_and_new_excerpt_are_bound (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_bundle_identity_and_new_excerpt_are_bound) ... ERROR
+test_exact_package_resolves_pe_prerelease_without_claiming_agent (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_exact_package_resolves_pe_prerelease_without_claiming_agent) ... ERROR
+test_numeric_pe_version_alone_never_passes (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_numeric_pe_version_alone_never_passes) ... ERROR
+test_old_reports_keep_original_contract (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_old_reports_keep_original_contract) ... ERROR
+test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) ... 
+  test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'offset': '-1'}) ... ERROR
+  test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'offset': '9999999999999999999999'}) ... ERROR
+  test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'size': 65537}) ... ERROR
+  test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'size': True}) ... ERROR
+test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) ... ERROR
+test_package_cannot_be_borrowed_from_other_installation (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_package_cannot_be_borrowed_from_other_installation) ... ERROR
+test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) ... 
+  test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'name': 'unrelated-app'}) ... ERROR
+  test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'version': '0.2.2'}) ... ERROR
+  test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'bad_hash': True}) ... ERROR
+  test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'link': '../other/package.json'}) ... ERROR
+
+======================================================================
+ERROR: test_bundle_identity_and_new_excerpt_are_bound (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_bundle_identity_and_new_excerpt_are_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 77, in test_bundle_identity_and_new_excerpt_are_bound
+    folder=Path(temp);bundle(folder);before=self.collect_fixture(folder);after=deepcopy(before)
+                                            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_exact_package_resolves_pe_prerelease_without_claiming_agent (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_exact_package_resolves_pe_prerelease_without_claiming_agent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 40, in test_exact_package_resolves_pe_prerelease_without_claiming_agent
+    folder=Path(temp);path=bundle(folder);report=self.collect_fixture(folder)
+                                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_numeric_pe_version_alone_never_passes (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_numeric_pe_version_alone_never_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 52, in test_numeric_pe_version_alone_never_passes
+    self.assertEqual(self.software(self.collect_fixture(Path(temp))),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_old_reports_keep_original_contract (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_old_reports_keep_original_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 84, in test_old_reports_keep_original_contract
+    report=self.collect_fixture(Path(temp))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'offset': '-1'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 64, in test_out_of_bounds_offsets_and_lengths_are_rejected
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'offset': '9999999999999999999999'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 64, in test_out_of_bounds_offsets_and_lengths_are_rejected
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'size': 65537})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 64, in test_out_of_bounds_offsets_and_lengths_are_rejected
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected) (options={'size': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 64, in test_out_of_bounds_offsets_and_lengths_are_rejected
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_out_of_bounds_offsets_and_lengths_are_rejected (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_out_of_bounds_offsets_and_lengths_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 67, in test_out_of_bounds_offsets_and_lengths_are_rejected
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_package_cannot_be_borrowed_from_other_installation (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_package_cannot_be_borrowed_from_other_installation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 71, in test_package_cannot_be_borrowed_from_other_installation
+    folder=Path(temp);bundle(folder);report=self.collect_fixture(folder)
+                                            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'name': 'unrelated-app'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 58, in test_wrong_name_version_or_tampered_integrity_never_pass
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'version': '0.2.2'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 58, in test_wrong_name_version_or_tampered_integrity_never_pass
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'bad_hash': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 58, in test_wrong_name_version_or_tampered_integrity_never_pass
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+======================================================================
+ERROR: test_wrong_name_version_or_tampered_integrity_never_pass (tests.test_dsh_desktop_package.DshDesktopPackageTests.test_wrong_name_version_or_tampered_integrity_never_pass) (options={'link': '../other/package.json'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 58, in test_wrong_name_version_or_tampered_integrity_never_pass
+    self.assertEqual(self.software(self.collect_fixture(folder)),'mismatch')
+                                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_dsh_desktop_package.py", line 31, in collect_fixture
+    report=collect(make_task(),str(exe))
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\dsh_course.py", line 249, in collect
+    facts=dict(os=platform.system(), installation=installation, runtime=runtime, workspace=work,
+                  ~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 1073, in system
+    return uname().system
+           ~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 999, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 450, in win32_ver
+    version, csd, ptype, is_client = _win32_ver(version, csd, ptype)
+                                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\platform.py", line 417, in _win32_ver
+    version = _syscmd_ver()[2]
+              ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\platform.py", line 307, in _syscmd_ver
+    m = ver_output.match(info)
+TypeError: expected string or bytes-like object, got 'MagicMock'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.109s
+
+FAILED (errors=14)
