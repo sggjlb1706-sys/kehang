@@ -1,0 +1,98 @@
+{
+  "checked_at": "2026-11-10T05:44:48.145686+00:00",
+  "head": "1eadacb6eee7ab4fc013ca586b863e36d6ef8559",
+  "manifest_sha256": "C7E498D16997F5E6343383823C21A9527DB07BC7E4217AA33A7EFFF007A78E9B",
+  "source_files": 81,
+  "source_and_head_match": true,
+  "browser_groups": 9,
+  "browser_final_source_matches": true,
+  "task_snapshots_equal": 13,
+  "changed_product_files": [
+    "campuslab/guest_probe.py",
+    "campuslab/portable.py",
+    "campuslab/teaching.py",
+    "campuslab/web.py",
+    "web/app.js",
+    "web/index.html"
+  ],
+  "history_doc_suffixes_equal": [
+    "README.md",
+    "PRODUCT.md",
+    "DESIGN.md",
+    "TASK.md",
+    "PLAN.md",
+    "HANDOFF.md",
+    "REVIEW.md",
+    "PROVENANCE.md"
+  ],
+  "prior_report_reanalysis": [
+    {
+      "scenario": "notebook-data",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": 10,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "java-jdk",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": 6,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "sqlite-basics",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": 5,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "deepseek-api",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": 6,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "ai-web-deepseek",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": 4,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "dsh-desktop",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": 7,
+      "legacy_package_unchanged": true
+    },
+    {
+      "scenario": "dsh-cli",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": 8,
+      "legacy_package_unchanged": true
+    }
+  ],
+  "thirteen_tool_and_guide_endpoints": [
+    "python-basics",
+    "node-basics",
+    "local-qwen",
+    "pytorch-cpu",
+    "pytorch-gpu",
+    "vm-linux",
+    "notebook-data",
+    "java-jdk",
+    "sqlite-basics",
+    "deepseek-api",
+    "ai-web-deepseek",
+    "dsh-desktop",
+    "dsh-cli"
+  ],
+  "owned_service_stopped": true,
+  "actual_api_dsh_vm_calls": 0,
+  "actual_new_course_collection": false,
+  "scope": "Independent unit/protocol and old report reanalysis; archived browser source match. Not a new physical device, actual model or Agent task."
+}

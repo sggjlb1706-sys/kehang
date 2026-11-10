@@ -1,0 +1,68 @@
+{
+  "pages": 10,
+  "pdf_sha256": "32B3718005CC2AD215EB556B855C9F60E6737681801B81BE28D6062230693451",
+  "page_records": [
+    {
+      "page": 1,
+      "png": "records/brand/pdf/page-01.png",
+      "sha256": "9C50E99827DA8DD75EA58958EBDE5322FE286FE97B1110157DC90C89C81FF413",
+      "text_characters": 691
+    },
+    {
+      "page": 2,
+      "png": "records/brand/pdf/page-02.png",
+      "sha256": "666714B0E9B74E4D6D4ACC6BF5F84D6FD8676DA751E05834F988B3AFF2A33537",
+      "text_characters": 704
+    },
+    {
+      "page": 3,
+      "png": "records/brand/pdf/page-03.png",
+      "sha256": "827A9F53BDD4AA3576943E87476CA26B56E7352235CFBE1C28CD226FCF45872A",
+      "text_characters": 853
+    },
+    {
+      "page": 4,
+      "png": "records/brand/pdf/page-04.png",
+      "sha256": "7036EC946E27FB8E11E692AFE852C40DB59C2215F3A0A867375AF0F35C020EDA",
+      "text_characters": 951
+    },
+    {
+      "page": 5,
+      "png": "records/brand/pdf/page-05.png",
+      "sha256": "64B6703F6204DB37D5E1A63563F99D4AC6FFAC3529FF0FC8A9E5EC05628594D7",
+      "text_characters": 835
+    },
+    {
+      "page": 6,
+      "png": "records/brand/pdf/page-06.png",
+      "sha256": "CE594644FE070E9160E55F3A53F68E520154503FBD507F48849F5289A216B208",
+      "text_characters": 909
+    },
+    {
+      "page": 7,
+      "png": "records/brand/pdf/page-07.png",
+      "sha256": "02E425ED19E41DD9BB6F679C82384765F917B5E6C1FAB82E9A97E3C77B1E6BFE",
+      "text_characters": 914
+    },
+    {
+      "page": 8,
+      "png": "records/brand/pdf/page-08.png",
+      "sha256": "1006EF04561668155F1743094239F7806EF726F9491F6853F6ED1EB65FB46141",
+      "text_characters": 775
+    },
+    {
+      "page": 9,
+      "png": "records/brand/pdf/page-09.png",
+      "sha256": "62576B9C55DA3D04CFD479092DD3401C283A5B65C60CC1B36A3FE093D3BBF0CE",
+      "text_characters": 320
+    },
+    {
+      "page": 10,
+      "png": "records/brand/pdf/page-10.png",
+      "sha256": "FBBC92F6C59BF45C43BCF07265E2F19990E0E1D22D1AA0ADD8B52EC036598F19",
+      "text_characters": 1137
+    }
+  ],
+  "result": "passed",
+  "scope": "All ten pages inspected; current brand versus original functionality evidence distinguished; desktop browser emulation only"
+}

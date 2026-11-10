@@ -1,0 +1,86 @@
+{
+  "head": "1eadacb6eee7ab4fc013ca586b863e36d6ef8559",
+  "baseline_head": "fc14fc752a83709df496b386e4ce950b01996afe",
+  "files": [
+    {
+      "name": "README.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 13883,
+      "new_prefix_bytes": 2655,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## Python直接启动\n\n```powershell\nSet-Location -LiteralPath 'D:\\传智杯\\versions\\kehang-20261110'\n& 'D:\\ANACONDA\\python.exe' -B -m campuslab.web --port 8782 --database '.\\data\\kehang-courses.sqlite' --runtime-zip '.\\vendor\\python-3.13.17-embed-amd64.zip'\n```\n\n访问 http://127.0.0.1:8782/ ，无需运行ps1或修改执行策略；端口冲突时换空闲端口并保留已有服务。工具Python与课程目标分别记录，旧个人课程库不复制。\n\n## 本轮范围与证据\n\n现有Notebook真实内核、Java编译运行、SQLite只读查询、AI网页/API和DSH双路线及旧六类课程保持原功能。页面标题/页眉、下载与导出名、离线指导页眉、工具说明及当前PDF统一新名；内部标识与固定验证源码继续兼容。实际采用Educates两教学模板的原作者、Apache LICENSE/NOTICE和源码留档照原样保留，改名不改变许可或原创归属。\n\n新技术文档：`output/pdf/课航_技术文档.pdf`；新视频脚本及提交清单见 `docs/课航视频录制脚本.md`、`docs/课航提交准备清单.md`。原功能基线的115单测/52组网页及独立三项闭合属于各自固定版本；本轮的115项单测、品牌浏览器与快照/报告兼容验证另存 `records/brand/`。改名不要求重新调用模型或启动DSH/VM。\n\nAPI真实发送、DSH本人实际Agent任务、Linux来宾/SSH/Hadoop集群、第二设备/实体手机、本人正式视频、三条完整Prompt链认证、评审远程访问与上传回执仍保留原缺口。无安装、收费请求、公开发布或自动上传。包含原始设备/开发记录，供本人本机审阅。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "PRODUCT.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 1007,
+      "new_prefix_bytes": 1349,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 当前定位\n面向计算机和大数据课程的学习与实训助手。支持课程准备、固定实训、差异指导和运行验证；AI/Agent课程是其中一类。现有Notebook、Java、SQLite已经实现，Hadoop/服务器数据库等仍按实际来源与条件列缺。不是任意作业自动代做或全能教学平台。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "DESIGN.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 773,
+      "new_prefix_bytes": 1277,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 当前品牌\n展示简称“课航”，浏览器标题和正式材料使用完整名；副标题“计算机课程学习与实训助手”。保留原浅色工作台、布局、四状态与操作流程，仅核新名在桌面/390px和键盘场景正常呈现。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "TASK.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 5884,
+      "new_prefix_bytes": 1208,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 当前任务\n完成统一品牌、保持报告/任务兼容、更新PDF/视频/提交材料，固定版本独立核对后交付新目录和ZIP。不得把改名扩成新功能或重写历史。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "PLAN.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 6423,
+      "new_prefix_bytes": 1338,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 本轮验证顺序\n1. 可见品牌与导出名称统一，核任务和内部标识不变。\n2. 115单测及品牌浏览器验证下载、离线指导、旧报告和教师包兼容。\n3. 固定HEAD/SHA独立审查，制作新PDF并逐页核验。\n4. 完整历史克隆、SHA/ZIP/启动与旧版保护，独立最终核对。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "HANDOFF.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 15220,
+      "new_prefix_bytes": 1224,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 本轮交接\n最终HEAD/产品HEAD、完整SHA、ZIP、当前PDF与独立全文以课航版新回执为准；旧基线fc14fc7及其独立报告仍只覆盖旧版。外部条件与正式提交未因此完成。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "REVIEW.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 8294,
+      "new_prefix_bytes": 1215,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 本轮审查边界\n课航品牌变更另固定候选HEAD/SHA审查；旧独立产品/delta/材料/交付全文保持原件，不改标题、旧名或摘要。新报告仅认证其实际核对范围。\n\n## 继承文档（历史原字节保留）\n\n"
+    },
+    {
+      "name": "PROVENANCE.md",
+      "old_suffix_unchanged": true,
+      "base_bytes": 4967,
+      "new_prefix_bytes": 1295,
+      "full_name_in_prefix": true,
+      "new_path_in_prefix": true,
+      "live_matches_fixed_head": true,
+      "prefix": "# 课航——计算机课程学习与实训助手\n\n页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。\n\n2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。\n\n工作目录：`C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-20261110`。新交付目录：`D:\\传智杯\\versions\\kehang-20261110`；新ZIP：`D:\\传智杯\\submission\\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。\n\n## 本轮来源\n用户在真实命名讨论中接受“课航——计算机课程学习与实训助手”。从fc14fc7保留全部36可达提交独立克隆，新增真实改名提交，不回填历史。旧要求、证据、第三方版权声明与内部兼容名不全局替换。\n\n## 继承文档（历史原字节保留）\n\n"
+    }
+  ]
+}

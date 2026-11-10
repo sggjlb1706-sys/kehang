@@ -1,0 +1,10 @@
+PASS: All thirteen task snapshots and identifiers equal the previous delivered version
+PASS: Page title, brand, subtitle and introduction consistently show Kehang
+PASS: All thirteen UI course selections preserve the exact previous task snapshots
+PASS: Renamed downloadable tool includes brand and executes a missing-target report without changing its verdict
+PASS: Previous real JDK report is accepted; derived teaching attribution uses the new visible name
+PASS: New course filename roundtrips the unchanged legacy package kind and immutable digest
+PASS: Renamed offline guide shows new brand and unchanged course identity at 390px
+PASS: Share filename is renamed while editable redaction and explicit AI consent remain in place
+PASS: Desktop and 390px home retain keyboard navigation and fit without horizontal overflow
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-20261110\records\brand\browser\20261110T053806Z

@@ -1,0 +1,10 @@
+{
+  "product_head": "1eadacb6eee7ab4fc013ca586b863e36d6ef8559",
+  "manifest": "records/review/kehang-candidate.json",
+  "manifest_sha256": "C7E498D16997F5E6343383823C21A9527DB07BC7E4217AA33A7EFFF007A78E9B",
+  "report": "records/review/kehang-independent-product.md",
+  "report_sha256": "6800235A0113F51F49445E88A13584F44CAFC9E6BDDDD8FCDE9C6E329980B491",
+  "blocking_findings": 0,
+  "unit_tests": 115,
+  "scope": "Brand/product and legacy compatibility only; new materials and delivery need separate review."
+}
