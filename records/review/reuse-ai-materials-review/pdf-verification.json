@@ -1,0 +1,9 @@
+{
+  "pdf_sha256": "F5D02D598C6A800017D733B451D8E1DF3E63D1D380F96E3B0C437FE120441C49",
+  "pages": 10,
+  "source_sha_mismatch": [],
+  "raster_sha_mismatch": [],
+  "text_outside_page": [],
+  "renderer": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+  "all_ten_rasters_visually_inspected": true
+}

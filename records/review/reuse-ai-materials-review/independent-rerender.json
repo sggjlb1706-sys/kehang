@@ -1,0 +1,57 @@
+{
+  "all_ten_fresh_renders_match_archived_png": true,
+  "pages": [
+    {
+      "page": 1,
+      "sha256": "00C6EA7191A8540E9B5BF5736D9B65D1B5D7E10796FC12163A6CB1DE18DD2F82",
+      "matches": true
+    },
+    {
+      "page": 2,
+      "sha256": "ADB0396B6912B45FB66FA0C92A221FC604DB377B383F3D8F741C6634B4963A21",
+      "matches": true
+    },
+    {
+      "page": 3,
+      "sha256": "FACBDE393964DA4B11E806D758ABFE0CF26811BE0A67376F0F836FA5CAF8A045",
+      "matches": true
+    },
+    {
+      "page": 4,
+      "sha256": "B8ED67B66CBE6C081B25593676A8BBF21E1536B4A6D4A125DCF7C3526EEA3C06",
+      "matches": true
+    },
+    {
+      "page": 5,
+      "sha256": "24F0D94F8B72E29062DBCCB09AA1D4AAC876B356310F6D118961CB7845AB562D",
+      "matches": true
+    },
+    {
+      "page": 6,
+      "sha256": "0B5A8AAD6735049BD6F1015620ED9D4530BA6C9A0856E7BDDA26EC23BE67F6F4",
+      "matches": true
+    },
+    {
+      "page": 7,
+      "sha256": "FAFDB81ED29D3B8A8751F76E98403430AB6ED74673B87D84243C8396CABDB4E9",
+      "matches": true
+    },
+    {
+      "page": 8,
+      "sha256": "DD9ED9C41C1DF0F20E6358A64BCC92701CDB72B2364C2E17B6CC3CDABCDA8C43",
+      "matches": true
+    },
+    {
+      "page": 9,
+      "sha256": "9ED65DED0EEB2AB702061389CB78EB0F678290B39C8D26354526D006FCF43DEA",
+      "matches": true
+    },
+    {
+      "page": 10,
+      "sha256": "A1C5EB34D30C18DC6BE1AB68ECEDC6D968DB435D76FDCE7B17505405FF293C18",
+      "matches": true
+    }
+  ],
+  "temporary_rasters_removed": true,
+  "originals_modified": false
+}

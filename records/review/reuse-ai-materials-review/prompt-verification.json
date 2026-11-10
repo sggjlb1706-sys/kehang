@@ -1,0 +1,35 @@
+{
+  "exports": 1,
+  "visible_messages": 17,
+  "user_messages": 3,
+  "assistant_messages": 14,
+  "redacted_messages": 1,
+  "source_prefix_bytes": 4248061,
+  "source_prefix_sha256": "B1CB3ABA898266BEA7D686DBE2FEFB3657CFCF3BB8A7E1B36BD529E6EAF9B17A",
+  "exact_reextraction": true,
+  "excluded": {
+    "injected_context": 6
+  },
+  "roles": [
+    "assistant",
+    "user"
+  ],
+  "channels": [
+    "None"
+  ],
+  "user_sources": [
+    {
+      "source_line": 17,
+      "text": "请完整读取并严格执行：\nC:\\Users\\<用户>\\Documents\\ChatGPT\\传智杯\\后续工作提示词_开源二次开发与课程AI_Agent补全版_20261109.md\n\n不要依赖上一聊天上下文。先逐份完整阅读其中列出的要求文件、项目文档、源码、测试和审查报告，核对正式基线与已有修改，再在独立版本中开发。\n\n已授权审查、获取官方开源源码，并对适合本项目的能力进行复用、适配和二次开发。完成选型后直接推进产品实现，不只停留在推荐，也不重复询问已明确授权的复用事项。\n"
+    },
+    {
+      "source_line": 271,
+      "text": "继续\n"
+    },
+    {
+      "source_line": 810,
+      "text": "继续\n"
+    }
+  ],
+  "source_modified": false
+}

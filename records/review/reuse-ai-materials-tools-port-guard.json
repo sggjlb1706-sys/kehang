@@ -1,0 +1,10 @@
+{
+  "constructed_local_listener": true,
+  "port": 8781,
+  "smoke_returncode": 1,
+  "listener_still_open": true,
+  "smoke_json_emitted": false,
+  "stderr_last_line": "OSError: [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。",
+  "owned_listener_closed_by_context": true,
+  "external_service_stopped": false
+}
