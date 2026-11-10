@@ -1,3 +1,16 @@
+# 课航——计算机课程学习与实训助手
+
+页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。
+
+2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。
+
+工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-20261110`。新交付目录：`D:\传智杯\versions\kehang-20261110`；新ZIP：`D:\传智杯\submission\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。
+
+## 本轮审查边界
+课航品牌变更另固定候选HEAD/SHA审查；旧独立产品/delta/材料/交付全文保持原件，不改标题、旧名或摘要。新报告仅认证其实际核对范围。
+
+## 继承文档（历史原字节保留）
+
 # 开源适配与AI课程轮审查状态（2026-11-10）
 
 已审产品HEAD：`2c5ade24c512a6b15c7111f808192f480627c4fb`；新清单 `records/review/reuse-ai-final-candidate.json`，SHA256 `BD242703233272836DC99B6B819339EA30CC26CD9F404F7FB48E6FC0B6DFC615`。**独立delta确认初审2P2+1P3全部闭合、无新增产品阻塞。** 全文 `records/review/reuse-ai-independent-delta.md`，SHA256 `C89174C113B480FFA3CB02255BCAF1D443C4B43115B7BE393933AACED10BBB9A`。材料和最终交付仍另核对。

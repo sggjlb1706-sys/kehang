@@ -1,3 +1,30 @@
+# 课航——计算机课程学习与实训助手
+
+页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。
+
+2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。
+
+工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-20261110`。新交付目录：`D:\传智杯\versions\kehang-20261110`；新ZIP：`D:\传智杯\submission\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。
+
+## Python直接启动
+
+```powershell
+Set-Location -LiteralPath 'D:\传智杯\versions\kehang-20261110'
+& 'D:\ANACONDA\python.exe' -B -m campuslab.web --port 8782 --database '.\data\kehang-courses.sqlite' --runtime-zip '.\vendor\python-3.13.17-embed-amd64.zip'
+```
+
+访问 http://127.0.0.1:8782/ ，无需运行ps1或修改执行策略；端口冲突时换空闲端口并保留已有服务。工具Python与课程目标分别记录，旧个人课程库不复制。
+
+## 本轮范围与证据
+
+现有Notebook真实内核、Java编译运行、SQLite只读查询、AI网页/API和DSH双路线及旧六类课程保持原功能。页面标题/页眉、下载与导出名、离线指导页眉、工具说明及当前PDF统一新名；内部标识与固定验证源码继续兼容。实际采用Educates两教学模板的原作者、Apache LICENSE/NOTICE和源码留档照原样保留，改名不改变许可或原创归属。
+
+新技术文档：`output/pdf/课航_技术文档.pdf`；新视频脚本及提交清单见 `docs/课航视频录制脚本.md`、`docs/课航提交准备清单.md`。原功能基线的115单测/52组网页及独立三项闭合属于各自固定版本；本轮的115项单测、品牌浏览器与快照/报告兼容验证另存 `records/brand/`。改名不要求重新调用模型或启动DSH/VM。
+
+API真实发送、DSH本人实际Agent任务、Linux来宾/SSH/Hadoop集群、第二设备/实体手机、本人正式视频、三条完整Prompt链认证、评审远程访问与上传回执仍保留原缺口。无安装、收费请求、公开发布或自动上传。包含原始设备/开发记录，供本人本机审阅。
+
+## 继承文档（历史原字节保留）
+
 # AI 实验环境管家 · 开源适配与 AI / Agent 课程版
 
 本轮从正式课程交付 `e0aca9ca04f350c5db0e3d6f197307260eee6276` 完整克隆到独立分支 `codex/reuse-ai-courses-20261109`。沿用双入口、不可变任务、显式目标、四状态、本人手动采集、同组件复检和脱敏分享。原正式版、课程库、旧PDF/ZIP及真实Git历史保留；本轮结果和外部条件以当前HANDOFF及交付回执为准，下方旧课程版说明属于历史。

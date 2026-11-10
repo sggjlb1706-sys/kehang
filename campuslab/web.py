@@ -69,7 +69,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200, self.server.store.get(path.path.rsplit('/',1)[1]))
             elif path.path == '/api/tool':
                 spec = self.server.store.get(parse_qs(path.query)['course'][0]) if 'course' in parse_qs(path.query) else task(parse_qs(path.query).get('goal',['python-basics'])[0])
-                self.send(200, self.tool_zip(spec), 'application/zip', 'CampusLab-tool.zip')
+                self.send(200, self.tool_zip(spec), 'application/zip', 'Kehang-tool.zip')
             elif path.path == '/api/config':
                 self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai=configuration()))
             elif path.path == '/api/catalog':
@@ -125,7 +125,7 @@ class Handler(BaseHTTPRequestHandler):
                     'Notebook: select an existing reviewed kernel.json for the same Python; a real temporary kernel runs fixed CSV.\n'
                     'API: preview is editable. No request by default. Only --api-send asks for SEND <preview digest> and a hidden key in the terminal; possible fees. Never put keys in files or commands.\n'
                     'DSH: no DSH process is launched. Prepare a NEW workspace explicitly using python -B -m campuslab.dsh_course --task task.json --prepare-workspace NEW_ABSOLUTE_PATH; user runs and authorizes the real Agent. Evidence is a minimal user excerpt, never credentials/config dumps.\n')
-            z.writestr('README.txt', f'CampusLab read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "{target_example}" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n')
+            z.writestr('README.txt', f'Kehang / 课航——计算机课程学习与实训助手. Read-only collector. Extract all files; do not run inside ZIP.\nManual: runtime\\python.exe -B -m campuslab.collect --task task.json --target "{target_example}" --output report.json\nWithout bundled runtime use your existing tool Python. Tool runtime is not a course environment.\nFor PyTorch GPU explicitly add --gpu-run. For VM use --vm-id UUID-or-absolute-vmx-path and optionally --guest-report guest.json. Linux guest: python3 guest_probe.py --task-id TASK_SHA --vm-id SAME_VM_ID --output guest.json. Nothing starts a VM.\nHardware preparation: runtime\\python.exe -B -m campuslab.preparation --output hardware.json\n')
             if self.server.runtime_zip and self.server.runtime_zip.is_file():
                 with zipfile.ZipFile(self.server.runtime_zip) as runtime:
                     for info in runtime.infolist():
@@ -184,7 +184,7 @@ class Handler(BaseHTTPRequestHandler):
                 spec=import_package(body['package'])
                 self.send(200,self.server.store.publish(spec))
             elif self.path == '/api/guide':
-                self.send(200,guide_html(body['task']).encode('utf-8'),'text/html; charset=utf-8','CampusLab-guide.html')
+                self.send(200,guide_html(body['task']).encode('utf-8'),'text/html; charset=utf-8','Kehang-guide.html')
             elif self.path == '/api/share':
                 result=analyze(body['task'],body['report'])
                 self.send(200,redact_value(dict(share_only=True,note='脱敏交流副本，不作为原始复检报告导入',task=body['task'],report=body['report'],result=result)))
@@ -213,7 +213,7 @@ def main():
     parser.add_argument('--runtime-zip',type=Path)
     args=parser.parse_args()
     with AppServer(args.port,args.database,args.runtime_zip) as server:
-        print(f'CampusLab: http://127.0.0.1:{server.server_port}/ (local only)', flush=True)
+        print(f'课航: http://127.0.0.1:{server.server_port}/ (local only)', flush=True)
         server.serve_forever()
 
 

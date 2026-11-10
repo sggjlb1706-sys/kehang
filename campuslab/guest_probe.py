@@ -19,7 +19,7 @@ def read_value(path):
 
 def probe(task_id, vm_id):
     if not isinstance(task_id,str) or not re.fullmatch('[a-f0-9]{64}',task_id):
-        raise ValueError('Use the fixed task SHA-256 shown by CampusLab')
+        raise ValueError('Use the fixed task SHA-256 shown by 课航')
     if not isinstance(vm_id,str) or not vm_id or len(vm_id)>1000 or '\x00' in vm_id:
         raise ValueError('Use the selected host VM UUID or full .vmx path')
     hardware = read_value('/sys/class/dmi/id/product_uuid') if platform.system()=='Linux' else None

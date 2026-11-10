@@ -224,7 +224,7 @@ $('export').addEventListener('click',e=>action(e.target,async()=>{
   $('export-preview').value=JSON.stringify(value,null,2);
   $('export-preview').hidden=false;$('save-export').hidden=false;notice('已做基础脱敏。请继续检查个人路径、邮箱和无关日志，再保存分享。');
 }));
-$('save-export').addEventListener('click',()=>{try{JSON.parse($('export-preview').value);save('CampusLab-share.json',$('export-preview').value);}catch(e){notice('编辑后须保留有效JSON。',true);}});
+$('save-export').addEventListener('click',()=>{try{JSON.parse($('export-preview').value);save('Kehang-share.json',$('export-preview').value);}catch(e){notice('编辑后须保留有效JSON。',true);}});
 function progress(){
   $('progress-evidence').textContent=state.before?'② 已有初检事实':'② 准备并采集';
   $('progress-recheck').textContent=state.after?(state.analysis?.passed?'③ 复检全部通过':'③ 复检仍有差异'):'③ 等待同目标复检';
@@ -304,10 +304,10 @@ $('course-package').addEventListener('change',e=>action(null,async()=>{
   if(epoch!==state.epoch)return;
   await chooseTask(async()=>result.task,result.code);notice('课程包已导入。请向教师核对任务摘要；摘要一致性不证明发布人身份。');
 }));
-$('export-course').addEventListener('click',e=>action(e.target,async()=>save('CampusLab-course.json',await api('/api/package',{task:state.task}))));
+$('export-course').addEventListener('click',e=>action(e.target,async()=>save('Kehang-course.json',await api('/api/package',{task:state.task}))));
 $('export-guide').addEventListener('click',e=>action(e.target,async()=>{
   const r=await fetch('/api/guide',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task:state.task})});
-  if(!r.ok)throw Error('指导导出失败');save('CampusLab-guide.html',await r.text(),'text/html');
+  if(!r.ok)throw Error('指导导出失败');save('Kehang-guide.html',await r.text(),'text/html');
 }));
 $('hardware-command').addEventListener('click',()=>{try{
   const root=requirePath($('tool-dir').value.trim(),'先在采集面板填写工具目录');const toolPython=$('tool-python').value.trim();

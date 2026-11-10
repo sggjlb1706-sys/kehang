@@ -57,5 +57,5 @@ def lesson_checks(result):
                        'unknown': '证据不足。先补齐本项实际观察；阅读或勾选不会让它通过。'}[status]
         action = validate_action(dict(name=check['id'], title=CHECK_TITLES[check['id']], description=description, cooldown=3))
         items.append(dict(**action, task_id=result['task_id'], status=status, success=status == 'pass',
-                          action='manual-recollect', source='Educates教学动作模板适配；结果来自CampusLab确定性报告'))
+                          action='manual-recollect', source='Educates教学动作模板适配；结果来自课航确定性报告'))
     return items

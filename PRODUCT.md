@@ -1,3 +1,16 @@
+# 课航——计算机课程学习与实训助手
+
+页面简称：**课航**。介绍：从课程准备到实训验证，帮助你把学习任务跑通。
+
+2026-11-10，用户确认将“AI实验环境管家”更名为本名称。独立完整克隆自 `fc14fc752a83709df496b386e4ce950b01996afe`，分支 `codex/kehang-brand-20261110`；旧正式版、PDF、ZIP、课程库和审查原件保留。此轮只统一可见品牌与现行材料，课程规则、task_id、报告schema、campuslab命名空间及旧教师包兼容。
+
+工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-20261110`。新交付目录：`D:\传智杯\versions\kehang-20261110`；新ZIP：`D:\传智杯\submission\课航_课程学习与实训助手_20261110_待补本人视频.zip`。完整历史、SHA、当前验证和独立核对以 `records/review/kehang-delivery-receipt.json` 及本轮仓库外报告为准，不把上一版的固定SHA审查扩大到本次改名。
+
+## 当前定位
+面向计算机和大数据课程的学习与实训助手。支持课程准备、固定实训、差异指导和运行验证；AI/Agent课程是其中一类。现有Notebook、Java、SQLite已经实现，Hadoop/服务器数据库等仍按实际来源与条件列缺。不是任意作业自动代做或全能教学平台。
+
+## 继承文档（历史原字节保留）
+
 # AI实验环境管家 · 正式重建版
 ## Register
 product
