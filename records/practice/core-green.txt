@@ -1,0 +1,10 @@
+test_fixed_components_and_portable_content (tests.test_practice.PracticeTest.test_fixed_components_and_portable_content) ... ok
+test_material_zip_has_complete_fixed_data_and_editable_templates (tests.test_practice.PracticeTest.test_material_zip_has_complete_fixed_data_and_editable_templates) ... ok
+test_result_states_and_scope (tests.test_practice.PracticeTest.test_result_states_and_scope) ... ok
+test_stale_task_material_and_tampered_data_distinguished (tests.test_practice.PracticeTest.test_stale_task_material_and_tampered_data_distinguished) ... ok
+test_two_local_libraries_publish_import_and_reject_old_results (tests.test_practice.PracticeWebTest.test_two_local_libraries_publish_import_and_reject_old_results) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.661s
+
+OK

@@ -1,0 +1,29 @@
+EEE
+======================================================================
+ERROR: test_locates_bundle_and_requires_explicit_confirmation (tests.test_launcher.LauncherTests.test_locates_bundle_and_requires_explicit_confirmation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_launcher.py", line 12, in test_locates_bundle_and_requires_explicit_confirmation
+    from campuslab.launcher import run
+ModuleNotFoundError: No module named 'campuslab.launcher'
+
+======================================================================
+ERROR: test_notebook_requires_kernel_and_uses_exact_task (tests.test_launcher.LauncherTests.test_notebook_requires_kernel_and_uses_exact_task)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_launcher.py", line 39, in test_notebook_requires_kernel_and_uses_exact_task
+    from campuslab.launcher import run
+ModuleNotFoundError: No module named 'campuslab.launcher'
+
+======================================================================
+ERROR: test_report_never_overwrites_and_non_simple_course_is_refused (tests.test_launcher.LauncherTests.test_report_never_overwrites_and_non_simple_course_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_launcher.py", line 23, in test_report_never_overwrites_and_non_simple_course_is_refused
+    from campuslab.launcher import run
+ModuleNotFoundError: No module named 'campuslab.launcher'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (errors=3)

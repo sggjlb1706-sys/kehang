@@ -1,0 +1,18 @@
+test_practice (unittest.loader._FailedTest.test_practice) ... ERROR
+
+======================================================================
+ERROR: test_practice (unittest.loader._FailedTest.test_practice)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_practice
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\tests\test_practice.py", line 12, in <module>
+    from campuslab import practice
+ImportError: cannot import name 'practice' from 'campuslab' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-practice-20261110\campuslab\__init__.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

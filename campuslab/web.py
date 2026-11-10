@@ -62,6 +62,13 @@ class Handler(BaseHTTPRequestHandler):
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
                 self.send(200, (ROOT/'web'/name).read_bytes(), kind + '; charset=utf-8')
+            elif path.path == '/api/practice':
+                from .practice import make_practice, export_package as practice_package
+                spec = make_practice()
+                self.send(200, dict(practice=spec, package=practice_package(spec)))
+            elif path.path == '/api/practice/materials':
+                from .practice import make_practice, materials_zip
+                self.send(200, materials_zip(make_practice()), 'application/zip', 'Kehang-practice-materials.zip')
             elif path.path == '/api/goal':
                 goal = parse_qs(path.query).get('goal', ['python-basics'])[0]
                 self.send(200, task(goal))
@@ -85,6 +92,9 @@ class Handler(BaseHTTPRequestHandler):
         with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as z:
             for name in ['__init__.py', 'rules.py', 'collect.py', 'probe.py']:
                 z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
+            if spec['scenario'] in ('python-basics', 'notebook-data') and self.server.runtime_zip and self.server.runtime_zip.is_file():
+                z.writestr('campuslab/launcher.py', (ROOT/'campuslab/launcher.py').read_bytes())
+                z.writestr('Start-Collect.cmd', '@echo off\r\nsetlocal DisableDelayedExpansion\r\ncd /d "%~dp0"\r\n"%~dp0runtime\\python.exe" -X utf8 -B -m campuslab.launcher\r\npause\r\n')
             if spec['scenario'] == 'node-basics':
                 for name in ['node_collect.py', 'node_probe.js']:
                     z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
@@ -155,7 +165,14 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(body, dict):
                 raise ValueError('请求须为对象')
             self.check_origin()
-            if self.path == '/api/course':
+            if self.path in ('/api/practice/publish', '/api/practice/import'):
+                from .practice import make_practice, import_package as practice_import, publish as practice_publish
+                spec = practice_import(body['package']) if self.path.endswith('/import') else make_practice()
+                self.send(200, practice_publish(self.server.store,spec))
+            elif self.path == '/api/practice/check':
+                from .practice import check as practice_check
+                self.send(200, practice_check(body['practice'],body.get('submission')))
+            elif self.path == '/api/course':
                 spec = task(body.get('scenario','python-basics'), body.get('title'), body.get('python_min','3.10'), body.get('python_max','3.15'), body.get('requests_min','2.31'))
                 self.send(200, self.server.store.publish(spec))
             elif self.path == '/api/analyze':
