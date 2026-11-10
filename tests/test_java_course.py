@@ -15,6 +15,30 @@ def evidence():
 
 
 class JavaCourseTest(unittest.TestCase):
+    def test_unobserved_version_exit_never_passes(self):
+        for name in ('java','javac'):
+            spec,report=evidence();report['facts']['tools'][name]['returncode']=None
+            result=analyze(spec,report)
+            self.assertFalse(result['passed'])
+            states={c['id']:c['status'] for c in result['checks']}
+            self.assertEqual(states['java:'+name],'unknown')
+            self.assertEqual(states['java:identity'],'unknown')
+
+    def test_runtime_timeout_preserves_completed_compile(self):
+        from pathlib import Path
+        from subprocess import CompletedProcess,TimeoutExpired
+        import tempfile
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as folder:
+            home=Path(folder);(home/'bin').mkdir()
+            for name in ('java','javac'):(home/'bin'/(name+'.exe')).write_bytes(b'constructed')
+            versions=[CompletedProcess([],0,'',f'java.home = {home}\n'+text) for text in ('openjdk version "21.0.1"','javac 21.0.1')]
+            with patch('campuslab.java_course.subprocess.run',side_effect=versions+[CompletedProcess([],0,'',''),TimeoutExpired('java',25)]):
+                report=collect(make_task(),str(home))
+            self.assertEqual(report['facts']['compile']['returncode'],0)
+            self.assertEqual(report['facts']['compile']['error'],'')
+            self.assertIn('TimeoutExpired',report['facts']['run']['error'])
+
     def test_complete_fixed_compile_and_run(self):
         spec,r=evidence();self.assertTrue(analyze(spec,r)['passed'])
         spec['verify']='anything';

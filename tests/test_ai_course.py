@@ -101,5 +101,20 @@ class AICourseTests(unittest.TestCase):
                 self.assertEqual(ai.call_api(ai.make_task(),ai.preview(ai.make_task()),'x',True)['category'],category)
         self.assertEqual(ai.call_api(ai.make_task(),ai.preview(ai.make_task()),'',True)['category'],'unconfigured')
 
+    def test_probe_preserves_identity_when_ssl_dependency_missing(self):
+        import builtins,contextlib,io,runpy,sys
+        original=builtins.__import__
+        def without_ssl(name,*args,**kwargs):
+            if name=='ssl':raise ModuleNotFoundError('No module named ssl')
+            return original(name,*args,**kwargs)
+        output=io.StringIO()
+        with patch('builtins.__import__',side_effect=without_ssl),patch('sys.stdin',io.StringIO('{}')),contextlib.redirect_stdout(output):
+            runpy.run_path(str(ai.Path(ai.__file__).with_name('ai_probe.py')),run_name='__main__')
+        result=json.loads(output.getvalue())
+        self.assertEqual(result['actual'],sys.executable)
+        self.assertFalse(result['stdlib'])
+        self.assertEqual(result['run']['category'],'dependency_missing')
+        self.assertFalse(result['run']['attempted'])
+
 
 if __name__=='__main__': unittest.main()

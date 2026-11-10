@@ -67,11 +67,11 @@ def analyze(spec,report):
     check('os','unknown' if facts['os'] is None else ('pass' if facts['os']=='Windows' else 'mismatch'),facts['os'],'Windows')
     for name,item in facts['tools'].items():
         state='missing' if item['exists'] is False else 'unknown';release=re.fullmatch(r'\d+\.\d+\.\d+',item['version'] or '')
-        if release:state='pass' if version('21.0')<=version(item['version'])<version('25.0') else 'mismatch'
+        if release and item['returncode'] is not None:state='pass' if version('21.0')<=version(item['version'])<version('25.0') else 'mismatch'
         if item['returncode'] is not None and (item['returncode']!=0 or item['error']):state='mismatch'
         check('java:'+name,state,item,'同一JDK中的 '+name+'，21.0至25.0以下')
     tools=list(facts['tools'].values())
-    same='unknown' if any(x['home'] is None or x['sha256'] is None for x in tools) else ('pass' if all(absolute(x['home'])==home for x in tools) and tools[0]['version']==tools[1]['version'] else 'mismatch')
+    same='unknown' if any(x['home'] is None or x['sha256'] is None or x['returncode'] is None for x in tools) else ('pass' if all(absolute(x['home'])==home and x['returncode']==0 and not x['error'] for x in tools) and tools[0]['version']==tools[1]['version'] else 'mismatch')
     check('java:identity',same,[dict(path=x['path'],home=x['home'],sha256=x['sha256']) for x in tools],'java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存')
     compiled=facts['compile'];run=facts['run']
     check('java:compile','unknown' if compiled['returncode'] is None else ('pass' if compiled['returncode']==0 and not compiled['error'] else 'mismatch'),compiled,'固定源码在专用临时目录由所选javac编译，退出0')
@@ -126,5 +126,7 @@ def collect(spec,target):
                     if compiled.returncode==0:
                         run=execute([tools['java']['path'],'-cp',temporary,'CampusLabFixed'],temporary);lines=run.stdout.splitlines()
                         report['facts']['run']=dict(returncode=run.returncode,stdout=run.stdout,error=run.stderr[-1500:],home=lines[1] if len(lines)==2 else None)
-                except (OSError,subprocess.TimeoutExpired) as exc:report['facts']['compile']['error']=type(exc).__name__+': '+str(exc)[:300]
+                except (OSError,subprocess.TimeoutExpired) as exc:
+                    stage='run' if report['facts']['compile']['returncode']==0 else 'compile'
+                    report['facts'][stage]['error']=type(exc).__name__+': '+str(exc)[:300]
     report['collected_at']=datetime.now(timezone.utc).isoformat();analyze(spec,report);return report
