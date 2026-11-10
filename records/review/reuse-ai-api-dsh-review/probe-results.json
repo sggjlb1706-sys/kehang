@@ -1,0 +1,17 @@
+{
+  "network_api_calls": 0,
+  "real_dsh_tasks": 0,
+  "constructed_key_used": true,
+  "checks": [
+    "Known key in edited preview rejected before probe; no report returned",
+    "Same successful constructed Agent task cannot be reused as a later retest"
+  ],
+  "missing_ssl_actual_collector": {
+    "fixture": "existing official embed ZIP extracted without _ssl.pyd; no .campuslab-tool-runtime marker, explicit selected target",
+    "category": "runtime",
+    "stdlib": null,
+    "dependency_status": "unknown",
+    "python_status": "unknown",
+    "passed": false
+  }
+}

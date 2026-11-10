@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "checks": [
+    "Text-only error preview declares missing facts, redacts and requires explicit consent",
+    "Natural language proposal creates a fixed GPU task only after confirmation",
+    "Downloaded tool and generated PS5.1 command obtain real CPU and explicit GPU evidence with matching UUID",
+    "Independent hardware command works from the downloaded tool without changing the environment verdict",
+    "Portable teacher task transfers to an independent database with the same digest and original A/B acceptance",
+    "Offline guide and course workflow are readable at 390px; desktop emulation only",
+    "Tampered package rejection clears prior task and success state",
+    "Real installed VMware is verified while absent instance and guest stay unknown; changing instance clears evidence",
+    "CPU task consumes its real fixed tensor report and does not offer the GPU-only trigger"
+  ],
+  "commands": [
+    {
+      "script": "gpu-precheck-A.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "gpu-run-B.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "actual-hardware.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "vm-A.ps1",
+      "returncode": 0
+    },
+    {
+      "script": "vm-B.ps1",
+      "returncode": 0
+    }
+  ],
+  "browser_errors": [],
+  "external_requests": [],
+  "source_sha256": {
+    "campuslab/ai_course.py": "535FFF5528FE2BEE838BA9D4B3FDCD220469D3F7DC0D980A8136A30751F991DE",
+    "campuslab/ai_probe.py": "E4A445D51F2E37072CAAC1DEF55424729BAE0028A38BAC0C35F082A84797E189",
+    "campuslab/collect.py": "A8F4567C39AD58F993C46546BAFEEA8E51CF51134820FA4C9679A9967090BF3A",
+    "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+    "campuslab/diagnosis.py": "0E833B62314897237A049B57C590FB92CE7FD883005AB8259D1BDCCD69549E6A",
+    "campuslab/dsh_course.py": "826687CDBB48BD78DD681D0509DD8B57662B7B434764A70F6878144046DF402B",
+    "campuslab/guest_probe.py": "A21A2DB9A6C20FC1275896FBCBA44E080DBB4A46C1F236FB86D126936E746925",
+    "campuslab/guidance.py": "3DE3AC23E44598BEDB3AC471972FDC18C21A61EC94432C4C1D2094A7828488D8",
+    "campuslab/java_course.py": "3351DD33936FDFEB5464E248E3CEC4E2F0B10E7DE59A40399F480447057374DA",
+    "campuslab/node_collect.py": "806BB5B6C69A2440331F4A3CE77B947C028C4670FBDE54F8BE7C30F9775DF09A",
+    "campuslab/node_probe.js": "08CACCBACAFF7D5E4DD7DF31F323B118EE38935227BB1A115BBB60F25AC5F7ED",
+    "campuslab/notebook_course.py": "5E9F3EF367D215B7AB728AD662E8516F5532ACEAC1B4BA7D0FC473ABEC07A0C1",
+    "campuslab/notebook_probe.py": "ADEE144B7DC81DE4442D9A8B24547B0323557C6075B3B384B37D0DD7857FDC44",
+    "campuslab/portable.py": "A3F4C70FC3E4A5D11EC6891CF4055A97DE1AFB3F86D64222F6B2E22B7A2E4AFE",
+    "campuslab/preparation.py": "3C9E5B326F13F29A42405EA7358CF2664974C3640FE4C75FE82D8B1751E0F56E",
+    "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+    "campuslab/rules.py": "41F95844C39CB3BB74F5B222033AB5E46AB8E8B56877A521E0C22D53CE767603",
+    "campuslab/sqlite_course.py": "1F0D7764C2FB7AF1EB7596F041F60A472D98E7EFBC61D421C4540D37CF59400B",
+    "campuslab/teaching.py": "8D90FFEDEC5110E6BB4F56E5C4C249556F505AF07F48C19AE16F6E21D056A020",
+    "campuslab/torch_course.py": "49370EA0E27D9D723E1C60726129628E62B64074261381D4C2BEE66771528CCB",
+    "campuslab/torch_probe.py": "3786426242F9E31CF442F08EF46DAE9804E9C26F30441A3EF249151C7313B028",
+    "campuslab/vm_course.py": "B5EC7DF93EA22E86ABE6492A96BD126E3C3F197A4E6FC5075A0E5246BFE2F6A0",
+    "campuslab/web.py": "D0E8C43D3A69EEA71B93D736BFAFE73CC727FC997B48C2C93080E5AA689E3353",
+    "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+    "web/app.js": "EF4CAE295E728F30B6A381D60E6053351CDF66DDB72872543E70062D327C85C7",
+    "web/index.html": "CC85005E1A3CBFFF384009668BAC55027277FA566450F74E6A410EBE5DE4EEFE",
+    "web/style.css": "84DBE787D2DA411ED165D4354AA1737B830EA7362221670FD2F6160702871A46"
+  },
+  "physical_phone": false,
+  "second_device": false,
+  "guest_real_validation": false,
+  "real_ai_diagnosis": false,
+  "local_ai_ports": {
+    "11434": "not listening",
+    "1234": "not listening"
+  },
+  "paid_requests": 0,
+  "installs": 0,
+  "vm_start_calls": 0
+}

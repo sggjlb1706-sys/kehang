@@ -1,4 +1,44 @@
-# 课程能力补全版交接（2026-11-08）
+# 开源适配与AI / Agent课程版交接
+
+状态核对日期：2026-11-10。下方旧课程版交接为继承历史；当前结果以本节、新验收文档、固定版本独立报告和最终新交付回执为准。
+
+## 当前版本与启动
+
+工作目录：`C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109`。分支：`codex/reuse-ai-courses-20261109`。基线为正式课程版 `e0aca9ca04f350c5db0e3d6f197307260eee6276`，完整继承真实历史。已审产品HEAD：`2c5ade24c512a6b15c7111f808192f480627c4fb`；冻结清单 `records/review/reuse-ai-final-candidate.json`，SHA256 `BD242703233272836DC99B6B819339EA30CC26CD9F404F7FB48E6FC0B6DFC615`。独立delta确认初审2P2+1P3全部闭合、无新增产品阻塞。原bbee5bc初审/旧候选和发现保留；后续材料/交付HEAD可更晚，执行相关字节仍须一致。
+
+新交付目录为 `D:\传智杯\versions\competition-reuse-ai-20261109`；最终副本、HEAD、完整交付SHA、ZIP、启动及独立材料/交付结论，以 `records/review/reuse-ai-delivery-receipt.json`和仓库外独立核对报告为准。使用已有Python>=3.10直接启动，无需执行`.ps1`或修改执行策略：
+
+```powershell
+Set-Location -LiteralPath 'D:\传智杯\versions\competition-reuse-ai-20261109'
+& 'D:\ANACONDA\python.exe' -B -m campuslab.web --port 8781 --database '.\data\reuse-ai-courses.sqlite' --runtime-zip '.\vendor\python-3.13.17-embed-amd64.zip'
+```
+
+打开 `http://127.0.0.1:8781/`；只停止本人此次启动的进程。端口占用时选择空闲端口，不停止旧服务。新独立课程库不复制用户原课程库。运行时ZIP为既有官方Python3.13.17嵌入包，SHA256 `9E35319BFFEDAB8B36AD44D8F377CB4F1733BCEC257A0B6D04D94F01486DDB38`，仅为采集工具运行时，不算课程环境。
+
+## 已实现与实际证据
+
+- Notebook：明确课程Python及已有kernel.json，真实临时内核中核对解释器、NumPy/Pandas及固定CSV/数组；真实A/B十项稳定通过，错内核、Pandas真实缺失等负例留档，仅清理本次创建的内核。
+- Java与SQLite：Zulu21同源java/javac临时编译运行六项稳定通过；SQLite明确单文件、只读固定SELECT及前后SHA一致，五项稳定通过。SQLite不代替MySQL/PostgreSQL；JDK21不代表Hadoop服务端要求已满足。
+- AI网页/API：DeepSeek本人练习记录与固定数字成果、自动登录证据分别呈现；API固定官方目的地/模型/请求协议，页面可编辑预览，终端安全输入密钥并确认本次发送。当前没有真实API请求；HTTP/错误分型与同意边界为协议/构造测试。
+- DSH桌面/CLI：固定官方版本0.2.2-rc.1，桌面自带Electron不要求外部Node；CLI绑定所选Node>=24.9.0、明确包/入口。工作区、公开模型、权限、必要工具摘要和本机产物分别核对。所选Node满足引擎，但明确包/桌面候选路径缺失；无真实DSH运行、授权或Agent成功证据，不是全机未安装结论。
+- Educates：固定上游d7e018f0cee382a595d2c9ecc6c938da099eb67e，两份教学动作模板字段及标题/正文/状态结构已适配至teaching模块和页面；固定报告checks取代上游脚本分派，三秒冷却的动作仅引导本人同目标重采。Apache-2.0、原作者、LICENSE/NOTICE和原件SHA随包保留。
+- 共用流程：新场景接入自主/教师固定任务、下载工具、原始报告、分层指导、同组件有序复检、课程包/离线HTML和脱敏分享。原Python、Node、Qwen、PyTorch CPU/GPU和VM/Linux报告兼容保留。Hadoop、MCP等按来源路线及缺少组件列明。
+
+修复后115项单测通过；重跑五套浏览器共52组及另3项构造UI回归通过，源码SHA匹配新产品候选。数据课程18组、AI/DSH6组与原Python10/Node9/课程9组分别留档，实际最终路径见新候选和 `docs/验收与证据-开源AI版.md`。390px是桌面模拟，两本机数据库不是第二设备。Qwen在正确model-venv重新真实离线输出2/EOS，`records/courses/model/20261110T003151Z/`中A缺推理、B七项通过，verified；最初错选PyTorch环境缺transformers保留，不能跨目标说成修复。原初审112项及旧网页记录保持原适用范围。
+
+## 审查、材料及剩余条件
+
+独立产品初审2P2+1P3为JDK退出证据、API缺SSL身份/分型、Java超时阶段归属。原全文 `records/review/reuse-ai-independent-product.md`，SHA256 `4A1CD5943D95CB1E01F511D66A93512E437D5A7D277FA5F84CDC7B8152B726D4`。2c5ade2真实修复及先失败/后通过保留；独立delta `records/review/reuse-ai-independent-delta.md`的SHA256 `C89174C113B480FFA3CB02255BCAF1D443C4B43115B7BE393933AACED10BBB9A`，三项全部闭合、无新增产品阻塞。独立核对80项源/165项证据零差，实际运行115单测；52网页是归档源SHA核对，复核者未重跑全部浏览器或重新加载Qwen。产品delta不覆盖最终材料/交付或实际上传。
+
+新版技术文档 `output/pdf/AI实验环境管家_开源AI_Agent版_技术文档.pdf`共10页、本机逐页视觉QA通过，SHA256 `F5D02D598C6A800017D733B451D8E1DF3E63D1D380F96E3B0C437FE120441C49`；构建/QA见 `records/reuse-ai/pdf/`，旧九页PDF原字节保留。视频脚本目标6分40秒1080p、至少2分10秒真实AI协作，缺本人录屏/讲解和正式MP4。可见Prompt1导出17条（3用户/14助手、1条脱敏），索引 `records/reuse-ai/prompts-final/index.json`；工具/推理等未含，源前缀SHA见索引，三条完整链尚未认证。新ZIP为 `D:\传智杯\submission\开源AI_Agent课程版_20261109_待补本人视频.zip`；实际最终副本、ZIP/完整SHA/启动和独立材料/交付结论，以新回执及仓库外独立核对报告为准。
+
+开发副本Python直启8781、13种下载工具ZIP/报告入口的本机预烟测已通过；这与最终新副本启动核对分别记证。原保护778课程/361Node/212R1/814legacy再次字节一致，用户原课程库不复制，先前独立审计额外hash的边界偏差按补充原文保留。
+
+最少外部条件：本人合法账号/API单次发送同意；明确DSH安装及本人真实Agent授权和工具证据；教师固定Hadoop要求及已有Linux来宾/Java/SSH/集群；需要的第二设备/实体手机补证；本人正式视频、评审可访问仓库、百度网盘上传和提交回执。未取得时准确列缺，不要求本人从头完整重试全部开发流程。新包可能包含原始路径/设备证据，仅供本人本机审阅，公开前另核对隐私。
+
+硬截止为2026-11-18 15:00北京时间；沿用本人上传网盘、核对链接/提取码/有效期、再提交并留回执的流程。没有发布、推送、代登录、收费API请求、系统/网络/执行策略修改或VM启动。可独立收尾工作仍由代理完成；交付完成后停止。
+
+## 继承课程版交接（2026-11-08历史原文）
 
 交付收尾核对日期：2026-11-09。11月8日的真实开发、审查、PDF和版本目录名称保留，不回填Git时间；实际复制时间以新交付回执为准。
 

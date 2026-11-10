@@ -1,0 +1,26 @@
+PASS: notebook-data: downloaded embedded tool and original generated commands obtain real A/B, same task and stable retest
+PASS: notebook-data: three guidance modes, keyboard tab and Educates-derived manual retry preserve deterministic facts
+PASS: notebook-data: real teacher package transfers to an independent local database with unchanged snapshot and A/B acceptance
+PASS: notebook-data: desktop and 390px workflow/offline guide fit; desktop emulation, no physical phone claim
+PASS: notebook-data: invalid new A clears prior facts, share and derived teaching steps
+PASS: notebook-data: changing the selected environment component clears prior success and retry state
+PASS: java-jdk: downloaded embedded tool and original generated commands obtain real A/B, same task and stable retest
+PASS: java-jdk: three guidance modes, keyboard tab and Educates-derived manual retry preserve deterministic facts
+PASS: java-jdk: real teacher package transfers to an independent local database with unchanged snapshot and A/B acceptance
+PASS: java-jdk: desktop and 390px workflow/offline guide fit; desktop emulation, no physical phone claim
+PASS: java-jdk: invalid new A clears prior facts, share and derived teaching steps
+PASS: java-jdk: changing the selected environment component clears prior success and retry state
+PASS: sqlite-basics: downloaded embedded tool and original generated commands obtain real A/B, same task and stable retest
+PASS: sqlite-basics: three guidance modes, keyboard tab and Educates-derived manual retry preserve deterministic facts
+PASS: sqlite-basics: real teacher package transfers to an independent local database with unchanged snapshot and A/B acceptance
+PASS: sqlite-basics: desktop and 390px workflow/offline guide fit; desktop emulation, no physical phone claim
+PASS: sqlite-basics: invalid new A clears prior facts, share and derived teaching steps
+PASS: sqlite-basics: changing the selected environment component clears prior success and retry state
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\browser-data\20261110T003103340935Z
+PASS: API exact destination/model/system/content preview is editable; editing revokes send selection
+PASS: deepseek-api: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: ai-web-deepseek: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-desktop: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-cli: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: Constructed correct self record only completes learning; login unknown; selected target mismatch rejects import
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\browser-ai\20261110T003136119642Z

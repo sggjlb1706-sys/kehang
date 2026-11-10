@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+  "collected_at": "2026-11-09T08:22:10.754423+00:00",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "packages": {
+      "torch": "2.14.0+cu126",
+      "transformers": "4.57.1"
+    },
+    "verification": {
+      "returncode": 0,
+      "stdout": "OK\n",
+      "error": ""
+    }
+  },
+  "model": {
+    "directory": "D:\\传智杯\\artifacts\\local-model\\Qwen2.5-0.5B-Instruct",
+    "weights_sha256": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+    "inference": {
+      "offline": true,
+      "local": true,
+      "output": "2",
+      "ended_with_eos": true,
+      "device": "cuda",
+      "error": ""
+    }
+  },
+  "resources": {
+    "ram_bytes": 16849256448,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "vram_bytes": 8585216000,
+    "collection": "read-only; unknown fields remain null"
+  }
+}

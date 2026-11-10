@@ -1,0 +1,1 @@
+Controlled static kernelspec fixture created only in this evidence directory. Existing PyTorch interpreter actually launched a new loopback kernel; Pandas missing is a real package observation. Not a claim that a user-registered PyTorch kernel was tested. No packages or registered kernels changed.

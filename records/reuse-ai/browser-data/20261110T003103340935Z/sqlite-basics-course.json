@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "campuslab-course",
+  "task": {
+    "schema": 1,
+    "title": "SQLite 单机 SQL 入门 · 固定只读任务",
+    "scenario": "sqlite-basics",
+    "source": "本项目原创三行演示数据库；仅SQLite单机SQL，不代表MySQL/PostgreSQL课程",
+    "os": "Windows",
+    "sqlite_min": "3.35",
+    "database_mode": "standalone-rollback",
+    "verify": "sqlite-readonly-select-v1",
+    "query": "SELECT category, COUNT(*), SUM(score) FROM scores GROUP BY category ORDER BY category",
+    "expected": [
+      [
+        "A",
+        2,
+        30
+      ],
+      [
+        "B",
+        1,
+        12
+      ]
+    ],
+    "id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c"
+  },
+  "sha256": "c0cdf9aaed9c8b2ffaca9d2446b98f2579e93097a1491187e1efdf9816cb314a"
+}

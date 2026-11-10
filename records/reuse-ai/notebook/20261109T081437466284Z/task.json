@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "title": "Notebook 数据分析 · 固定内核演示任务",
+  "scenario": "notebook-data",
+  "source": "本项目原创演示数据及固定程序；课程方向参考云南师范大学数据分析大纲，非学校指定版本",
+  "os": "Windows",
+  "python": {
+    "min": "3.10",
+    "max_exclusive": "3.15"
+  },
+  "packages": {
+    "numpy": "1.24",
+    "pandas": "2.0"
+  },
+  "dependencies": {
+    "jupyter_client": "8.0",
+    "ipykernel": "6.0"
+  },
+  "verify": "ipykernel-fixed-data-v1",
+  "dataset_sha256": "37039948a897bcc319d0ca03d3c775fd1c09bb1a82a33adf43c0ad02baf51e7d",
+  "expected": {
+    "array_sum": 42,
+    "group_totals": {
+      "A": 30,
+      "B": 12
+    },
+    "rows": 3
+  },
+  "id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14"
+}

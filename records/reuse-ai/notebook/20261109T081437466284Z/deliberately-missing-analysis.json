@@ -1,0 +1,119 @@
+{
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\python.exe",
+    "actual": null,
+    "exists": false
+  },
+  "collected_at": "2026-11-09T08:14:42.895380+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "python",
+      "status": "missing",
+      "observed": null,
+      "requirement": {
+        "min": "3.10",
+        "max_exclusive": "3.15"
+      }
+    },
+    {
+      "id": "package:jupyter_client",
+      "status": "unknown",
+      "observed": {
+        "installed": null,
+        "version": null,
+        "error": "课程Python未运行"
+      },
+      "requirement": ">=8.0，来自所选课程Python"
+    },
+    {
+      "id": "package:ipykernel",
+      "status": "unknown",
+      "observed": {
+        "installed": null,
+        "version": null,
+        "error": "课程Python未运行"
+      },
+      "requirement": ">=6.0，来自所选课程Python"
+    },
+    {
+      "id": "notebook:spec",
+      "status": "mismatch",
+      "observed": {
+        "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+        "exists": true,
+        "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+        "argv": null,
+        "validated": false,
+        "started": null,
+        "actual": null,
+        "python": null,
+        "error": "内核argv与课程Python不一致，或启动命令未经审查"
+      },
+      "requirement": "明确选择受支持ipykernel的kernel.json，argv绑定课程Python"
+    },
+    {
+      "id": "notebook:identity",
+      "status": "unknown",
+      "observed": {
+        "started": null,
+        "actual": null,
+        "python": null
+      },
+      "requirement": "真实内核sys.executable及Python版本与课程Python一致"
+    },
+    {
+      "id": "package:numpy",
+      "status": "unknown",
+      "observed": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "真实内核未运行"
+      },
+      "requirement": "真实内核导入 numpy>=1.24"
+    },
+    {
+      "id": "package:pandas",
+      "status": "unknown",
+      "observed": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "真实内核未运行"
+      },
+      "requirement": "真实内核导入 pandas>=2.0"
+    },
+    {
+      "id": "notebook:run",
+      "status": "unknown",
+      "observed": {
+        "returncode": null,
+        "result": null,
+        "stdout": "",
+        "error": "真实内核未运行",
+        "executed_at": null
+      },
+      "requirement": "固定CSV分组A=30/B=12、数组和42、3行；真实内核执行"
+    },
+    {
+      "id": "notebook:cleanup",
+      "status": "unknown",
+      "observed": {
+        "kernel_stopped": null,
+        "channels_stopped": null,
+        "error": "未启动内核"
+      },
+      "requirement": "仅关闭本次创建的临时内核及通道"
+    }
+  ],
+  "passed": false
+}

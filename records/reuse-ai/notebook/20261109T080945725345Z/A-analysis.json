@@ -1,0 +1,133 @@
+{
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "target": {
+    "requested": "D:\\ANACONDA\\python.exe",
+    "actual": "D:\\ANACONDA\\python.exe",
+    "exists": true
+  },
+  "collected_at": "2026-11-09T08:09:51.443584+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "python",
+      "status": "pass",
+      "observed": "3.13.9",
+      "requirement": {
+        "min": "3.10",
+        "max_exclusive": "3.15"
+      }
+    },
+    {
+      "id": "package:jupyter_client",
+      "status": "pass",
+      "observed": {
+        "installed": true,
+        "version": "8.6.3",
+        "error": ""
+      },
+      "requirement": ">=8.0，来自所选课程Python"
+    },
+    {
+      "id": "package:ipykernel",
+      "status": "pass",
+      "observed": {
+        "installed": true,
+        "version": "6.30.1",
+        "error": ""
+      },
+      "requirement": ">=6.0，来自所选课程Python"
+    },
+    {
+      "id": "notebook:spec",
+      "status": "pass",
+      "observed": {
+        "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+        "exists": true,
+        "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+        "argv": [
+          "D:/ANACONDA\\python.exe",
+          "-Xfrozen_modules=off",
+          "-m",
+          "ipykernel_launcher",
+          "-f",
+          "{connection_file}"
+        ],
+        "validated": true,
+        "started": true,
+        "actual": "D:\\ANACONDA\\python.exe",
+        "python": "3.13.9",
+        "error": ""
+      },
+      "requirement": "明确选择受支持ipykernel的kernel.json，argv绑定课程Python"
+    },
+    {
+      "id": "notebook:identity",
+      "status": "pass",
+      "observed": {
+        "started": true,
+        "actual": "D:\\ANACONDA\\python.exe",
+        "python": "3.13.9"
+      },
+      "requirement": "真实内核sys.executable及Python版本与课程Python一致"
+    },
+    {
+      "id": "package:numpy",
+      "status": "pass",
+      "observed": {
+        "installed": true,
+        "version": "2.3.4",
+        "imported": true,
+        "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+        "error": ""
+      },
+      "requirement": "真实内核导入 numpy>=1.24"
+    },
+    {
+      "id": "package:pandas",
+      "status": "pass",
+      "observed": {
+        "installed": true,
+        "version": "3.0.3",
+        "imported": true,
+        "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+        "error": ""
+      },
+      "requirement": "真实内核导入 pandas>=2.0"
+    },
+    {
+      "id": "notebook:run",
+      "status": "pass",
+      "observed": {
+        "returncode": 0,
+        "result": {
+          "array_sum": 42,
+          "group_totals": {
+            "A": 30,
+            "B": 12
+          },
+          "rows": 3
+        },
+        "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+        "error": "",
+        "executed_at": "2026-11-09T08:09:48.669377+00:00"
+      },
+      "requirement": "固定CSV分组A=30/B=12、数组和42、3行；真实内核执行"
+    },
+    {
+      "id": "notebook:cleanup",
+      "status": "pass",
+      "observed": {
+        "kernel_stopped": true,
+        "channels_stopped": true,
+        "error": ""
+      },
+      "requirement": "仅关闭本次创建的临时内核及通道"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,17 @@
+.E.....
+======================================================================
+ERROR: test_full_result_and_incomplete_response (tests.test_ai_course.AICourseTests.test_full_result_and_incomplete_response) (change={'attempted': False, 'category': 'not_called'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_ai_course.py", line 29, in test_full_result_and_incomplete_response
+    self.assertFalse(ai.analyze(spec,candidate)['passed'])
+                     ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\campuslab\ai_course.py", line 161, in analyze
+    if not run['attempted'] and any(run[k] is not None for k in ('http_status','model','role','finish_reason','latency_ms')): raise ValueError('δ���ò��ɴ���Ӧ֤��')
+                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: δ���ò��ɴ���Ӧ֤��
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.009s
+
+FAILED (errors=1)

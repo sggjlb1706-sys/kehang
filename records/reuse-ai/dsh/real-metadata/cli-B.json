@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "task_id": "eac9155375eae17951a25d250a018c739af64fe1a4ded102cc9af1bc21c0e66c",
+  "collected_at": "2026-11-09T08:14:22.799826+00:00",
+  "target": {
+    "requested": "D:\\Program Files\\nodejs\\node.exe",
+    "actual": "D:\\Program Files\\nodejs\\node.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "installation": {
+      "route": "cli",
+      "exists": false,
+      "product": null,
+      "version": null,
+      "sha256": null,
+      "package_json": "D:\\Program Files\\nodejs\\node_modules\\@deepseek-ai\\dsh\\package.json",
+      "bin": null,
+      "bin_sha256": null,
+      "node_requirement": null,
+      "error": "所选DSH包或固定入口元数据不完整；未执行包入口"
+    },
+    "runtime": {
+      "kind": "selected-node",
+      "actual": "D:\\Program Files\\nodejs\\node.exe",
+      "version": "24.21.0",
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32",
+      "error": ""
+    },
+    "workspace": {
+      "requested": null,
+      "actual": null,
+      "exists": null,
+      "id": null,
+      "task_id": null,
+      "input_sha256": null,
+      "error": "尚未选择专用练习目录"
+    },
+    "model": {
+      "provider": null,
+      "model": null,
+      "connection": null
+    },
+    "permission": null,
+    "artifact": {
+      "exists": null,
+      "sha256": null,
+      "value": null,
+      "error": "尚无产物"
+    },
+    "agent": null
+  }
+}

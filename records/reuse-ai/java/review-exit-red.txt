@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_unobserved_version_exit_never_passes (tests.test_java_course.JavaCourseTest.test_unobserved_version_exit_never_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_java_course.py", line 22, in test_unobserved_version_exit_never_passes
+    self.assertFalse(result['passed'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

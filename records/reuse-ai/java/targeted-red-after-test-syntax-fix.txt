@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_java_course (unittest.loader._FailedTest.test_java_course)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_java_course
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_java_course.py", line 5, in <module>
+    from campuslab.java_course import make_task, validate_spec, analyze, compare_identity, collect
+ModuleNotFoundError: No module named 'campuslab.java_course'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

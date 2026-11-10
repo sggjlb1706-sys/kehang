@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+  "collected_at": "2026-11-09T08:09:55.591381+00:00",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\target",
+    "actual": null,
+    "exists": false
+  },
+  "facts": {
+    "os": "Windows",
+    "tools": {
+      "java": {
+        "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\java.exe",
+        "sha256": null,
+        "exists": false,
+        "version": null,
+        "home": null,
+        "returncode": null,
+        "error": "未运行"
+      },
+      "javac": {
+        "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\javac.exe",
+        "sha256": null,
+        "exists": false,
+        "version": null,
+        "home": null,
+        "returncode": null,
+        "error": "未运行"
+      }
+    },
+    "compile": {
+      "returncode": null,
+      "stdout": "",
+      "error": "JDK身份未确认"
+    },
+    "run": {
+      "returncode": null,
+      "stdout": "",
+      "error": "尚未编译运行",
+      "home": null
+    }
+  },
+  "commands": []
+}

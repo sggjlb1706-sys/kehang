@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\verify-upstream-files.py", line 21, in <module>
+    raise ValueError('Official Git blob mismatch: '+item['local'])
+ValueError: Official Git blob mismatch: dsh-reviewed/LICENSE

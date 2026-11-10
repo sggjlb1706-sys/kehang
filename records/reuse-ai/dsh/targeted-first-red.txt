@@ -1,0 +1,30 @@
+EE
+======================================================================
+ERROR: test_dsh_course (unittest.loader._FailedTest.test_dsh_course)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dsh_course
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_dsh_course.py", line 11, in <module>
+    from campuslab.dsh_course import (SUPPORTED_VERSION, INPUT_BYTES, make_task, validate_spec,
+                                      collect, analyze, compare_identity, prepare_workspace)
+ModuleNotFoundError: No module named 'campuslab.dsh_course'
+
+
+======================================================================
+ERROR: test_teaching (unittest.loader._FailedTest.test_teaching)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_teaching
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_teaching.py", line 3, in <module>
+    from campuslab.teaching import lesson_checks, validate_action
+ModuleNotFoundError: No module named 'campuslab.teaching'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

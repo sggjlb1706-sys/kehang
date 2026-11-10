@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "collected_at": "2026-11-09T08:11:43.750550+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "dependencies": {
+      "jupyter_client": {
+        "installed": true,
+        "version": "8.10.0",
+        "error": ""
+      },
+      "ipykernel": {
+        "installed": true,
+        "version": "7.4.0",
+        "error": ""
+      }
+    },
+    "kernel": {
+      "spec_path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\notebook\\pandas-missing-real-20261109T081140879259Z\\kernel.json",
+      "exists": true,
+      "spec_sha256": "9fb125b1990d303d2ddbf44bb36fb438686dffce8ca51db82dbc1a422ba2d8c9",
+      "argv": [
+        "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+        "-m",
+        "ipykernel_launcher",
+        "-f",
+        "{connection_file}"
+      ],
+      "validated": true,
+      "started": true,
+      "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "python": "3.11.16",
+      "error": ""
+    },
+    "packages": {
+      "numpy": {
+        "installed": true,
+        "version": "2.4.6",
+        "imported": true,
+        "path": "D:\\ANACONDA\\envs\\pytorch\\Lib\\site-packages\\numpy\\__init__.py",
+        "error": ""
+      },
+      "pandas": {
+        "installed": false,
+        "version": null,
+        "imported": false,
+        "path": null,
+        "error": "PackageNotFoundError: No package metadata was found for pandas"
+      }
+    },
+    "run": {
+      "returncode": 1,
+      "result": null,
+      "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\envs\\\\pytorch\\\\python.exe\", \"python\": \"3.11.16\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.4.6\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\envs\\\\pytorch\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": false, \"version\": null, \"imported\": false, \"path\": null, \"error\": \"PackageNotFoundError: No package metadata was found for pandas\"}}, \"result\": null, \"error\": \"ModuleNotFoundError: No module named 'pandas'\"}\n",
+      "error": "ModuleNotFoundError: No module named 'pandas'",
+      "executed_at": "2026-11-09T08:11:43.066848+00:00"
+    },
+    "cleanup": {
+      "kernel_stopped": true,
+      "channels_stopped": true,
+      "error": ""
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "-B",
+      "-I",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\campuslab\\notebook_probe.py",
+      "--kernel-spec",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\notebook\\pandas-missing-real-20261109T081140879259Z\\kernel.json"
+    ]
+  ],
+  "probe_exit": 0
+}

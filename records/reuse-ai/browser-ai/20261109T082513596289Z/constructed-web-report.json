@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "task_id": "c7554ee4af3de4be5ad856eac1c62184c0a8905a7f12d8f55e29c12f8437b9b2",
+  "collected_at": "2026-11-09T08:25:35.363586+00:00",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T082513596289Z",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T082513596289Z",
+    "exists": true
+  },
+  "facts": {
+    "record": {
+      "task_id": "c7554ee4af3de4be5ad856eac1c62184c0a8905a7f12d8f55e29c12f8437b9b2",
+      "provider": "DeepSeek",
+      "entry": "https://chat.deepseek.com/",
+      "prompt": "演示CSV数据 score\n10\n14\n18\n。计算 total、count、mean。只返回JSON对象，键恰为total、count、mean，不要代码围栏。",
+      "completed": true,
+      "checked_sources": true,
+      "response": "{\"total\":42,\"count\":3,\"mean\":14}"
+    }
+  }
+}

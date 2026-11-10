@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "collected_at": "2026-11-09T08:14:42.892123+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\python.exe",
+    "actual": "D:\\ANACONDA\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.13.9",
+    "dependencies": {
+      "jupyter_client": {
+        "installed": true,
+        "version": "8.6.3",
+        "error": ""
+      },
+      "ipykernel": {
+        "installed": true,
+        "version": "6.30.1",
+        "error": ""
+      }
+    },
+    "kernel": {
+      "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+      "exists": true,
+      "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+      "argv": [
+        "D:/ANACONDA\\python.exe",
+        "-Xfrozen_modules=off",
+        "-m",
+        "ipykernel_launcher",
+        "-f",
+        "{connection_file}"
+      ],
+      "validated": true,
+      "started": true,
+      "actual": "D:\\ANACONDA\\python.exe",
+      "python": "3.13.9",
+      "error": ""
+    },
+    "packages": {
+      "numpy": {
+        "installed": true,
+        "version": "2.3.4",
+        "imported": true,
+        "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+        "error": ""
+      },
+      "pandas": {
+        "installed": true,
+        "version": "3.0.3",
+        "imported": true,
+        "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+        "error": ""
+      }
+    },
+    "run": {
+      "returncode": 0,
+      "result": {
+        "array_sum": 42,
+        "group_totals": {
+          "A": 30,
+          "B": 12
+        },
+        "rows": 3
+      },
+      "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+      "error": "",
+      "executed_at": "2026-11-09T08:14:42.201083+00:00"
+    },
+    "cleanup": {
+      "kernel_stopped": true,
+      "channels_stopped": true,
+      "error": ""
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-I",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\campuslab\\notebook_probe.py",
+      "--kernel-spec",
+      "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json"
+    ]
+  ],
+  "probe_exit": 0
+}

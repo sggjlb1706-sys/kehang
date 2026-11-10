@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "task_id": "eac9155375eae17951a25d250a018c739af64fe1a4ded102cc9af1bc21c0e66c",
+  "collected_at": "2026-11-09T08:19:10.668790+00:00",
+  "target": {
+    "requested": "D:\\Program Files\\nodejs\\node.exe",
+    "actual": "D:\\Program Files\\nodejs\\node.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "installation": {
+      "route": "cli",
+      "exists": false,
+      "product": null,
+      "version": null,
+      "sha256": null,
+      "package_json": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T081851756191Z\\dsh-cli O'Brien ‘引’ $literal `tick\\missing-dsh\\package.json",
+      "bin": null,
+      "bin_sha256": null,
+      "node_requirement": null,
+      "error": "所选DSH包或固定入口元数据不完整；未执行包入口"
+    },
+    "runtime": {
+      "kind": "selected-node",
+      "actual": "D:\\Program Files\\nodejs\\node.exe",
+      "version": "24.21.0",
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32",
+      "error": ""
+    },
+    "workspace": {
+      "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T081851756191Z\\dsh-cli O'Brien ‘引’ $literal `tick\\practice",
+      "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T081851756191Z\\dsh-cli O'Brien ‘引’ $literal `tick\\practice",
+      "exists": true,
+      "id": "05dbe569-57dc-41bb-97b1-59af7c2d5225",
+      "task_id": "eac9155375eae17951a25d250a018c739af64fe1a4ded102cc9af1bc21c0e66c",
+      "input_sha256": "a51331f27faeac6ded086252d4e121e9628315fc42154fa23ffaf772f6531a06",
+      "error": ""
+    },
+    "model": {
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "connection": null
+    },
+    "permission": null,
+    "artifact": {
+      "exists": false,
+      "sha256": null,
+      "value": null,
+      "error": "尚无产物"
+    },
+    "agent": null
+  }
+}

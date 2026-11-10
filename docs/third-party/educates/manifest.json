@@ -1,0 +1,89 @@
+{
+  "retrieved_on": "2026-11-09",
+  "files": [
+    {
+      "local": "educates/examiner-execute-test.html",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/actions/examiner-execute-test.html",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/actions/examiner-execute-test.html",
+      "expected_bytes": 879,
+      "role": "adapted-template-original",
+      "upstream_git_blob_sha1": "e4d7623fdfa348b149d801dfb800c3568964c10e",
+      "sha256": "cba6958efab6661ca006a74b30a15ed54707bfe8a881ce489567a89e3c9b59b3",
+      "bytes": 879,
+      "git_blob_sha1": "e4d7623fdfa348b149d801dfb800c3568964c10e"
+    },
+    {
+      "local": "educates/clickable-action.html",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/clickable-action.html",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/clickable-action.html",
+      "expected_bytes": 1424,
+      "role": "adapted-template-original",
+      "upstream_git_blob_sha1": "801a34e6fcde2dccac3bf616b5500ceba4dba6eb",
+      "sha256": "04690d43a52852ae083ea1986eaa8840662f02568951ba05fed49e722addeac0",
+      "bytes": 1424,
+      "git_blob_sha1": "801a34e6fcde2dccac3bf616b5500ceba4dba6eb"
+    },
+    {
+      "local": "educates/LICENSE",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/LICENSE",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 10172,
+      "role": "reviewed-reference-or-license",
+      "upstream_git_blob_sha1": "1a9893b43e8e6d46ff5cda60ab6562850b7f78ff",
+      "sha256": "e0c01e71eb67453430e43947b628a40d2cca58ed7154bc33339fc3b0f3189671",
+      "bytes": 10172,
+      "git_blob_sha1": "1a9893b43e8e6d46ff5cda60ab6562850b7f78ff"
+    },
+    {
+      "local": "educates/NOTICE",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/NOTICE",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "NOTICE",
+      "expected_bytes": 565,
+      "role": "reviewed-reference-or-license",
+      "upstream_git_blob_sha1": "2f913b8dfb35f1cb2d706eaa407d291e8e6a308a",
+      "sha256": "b334b02f26ec33e030ae0a71f0092da5786d0680aee4b0369fc583e88921a4c6",
+      "bytes": 565,
+      "git_blob_sha1": "2f913b8dfb35f1cb2d706eaa407d291e8e6a308a"
+    },
+    {
+      "local": "educates/01-basic-test.md",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-samples/lab-examiner-actions/workshop/content/01-basic-test.md",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-samples/lab-examiner-actions/workshop/content/01-basic-test.md",
+      "expected_bytes": 1407,
+      "role": "reviewed-reference-or-license",
+      "sha256": "d4670bffd5c325a580a9576b92f67a19c929e7357c38dfa67f7410fdc342e773",
+      "bytes": 1407,
+      "git_blob_sha1": "a860284885e417fd4c04dd1b1e16df5f285c797b"
+    },
+    {
+      "local": "educates/04-retries-and-delay.md",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-samples/lab-examiner-actions/workshop/content/04-retries-and-delay.md",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-samples/lab-examiner-actions/workshop/content/04-retries-and-delay.md",
+      "expected_bytes": 3288,
+      "role": "reviewed-reference-or-license",
+      "sha256": "3733d699083937a0e1354f3ba6a16ac06e838bdde90c2ec2f9801d6de70d4249",
+      "bytes": 3288,
+      "git_blob_sha1": "da587b3eb27c3701be14d35949e0d2f68740dce9"
+    },
+    {
+      "local": "educates/examiner.ts",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/gateway/src/backend/modules/examiner.ts",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/gateway/src/backend/modules/examiner.ts",
+      "expected_bytes": 8807,
+      "role": "reviewed-reference-or-license",
+      "sha256": "7f46e52dca6a8e5d72b0dd65e4bae64c74e2e3a980c0995a89b1e5c4a5b20c76",
+      "bytes": 8807,
+      "git_blob_sha1": "3202e07df51017b94b7a73162ed2cb836947d9ca"
+    }
+  ],
+  "upstream_code_executed": false,
+  "dependency_installations": 0,
+  "product_adaptation": "campuslab/teaching.py"
+}

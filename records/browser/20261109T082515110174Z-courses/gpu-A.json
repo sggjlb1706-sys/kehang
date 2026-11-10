@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "task_id": "0e2f68790f83d75da8e92aeb0ccc814901a2a328e2ffd0705024834981881fa4",
+  "collected_at": "2026-11-09T08:25:18.907138+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "torch": {
+      "installed": true,
+      "version": "2.14.0+cu126",
+      "imported": true,
+      "error": ""
+    },
+    "cpu": {
+      "returncode": 0,
+      "result": [
+        [
+          4.0,
+          4.0
+        ],
+        [
+          10.0,
+          8.0
+        ]
+      ],
+      "device": "cpu",
+      "error": ""
+    },
+    "gpu": {
+      "build": "12.6",
+      "available": true,
+      "device": {
+        "index": 0,
+        "uuid": "2149a163-e74b-5e6e-3861-77a465128b38",
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory": 8585216000
+      },
+      "error": "",
+      "run": {
+        "requested": false,
+        "returncode": null,
+        "result": null,
+        "device": null,
+        "device_uuid": null,
+        "error": "未触发GPU验证"
+      }
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "-B",
+      "-I",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\20261109T082515110174Z-courses\\gpu O'Brien ‘引’ $literal `tick\\campuslab\\torch_probe.py"
+    ]
+  ],
+  "probe_exit": 0
+}

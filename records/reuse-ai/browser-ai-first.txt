@@ -1,0 +1,62 @@
+PASS: API exact destination/model/system/content preview is editable; editing revokes send selection
+PASS: deepseek-api: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: ai-web-deepseek: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-desktop: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-cli: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\browser-ai\20261109T081851756191Z
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\browser_reuse_ai.py", line 113, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\browser_reuse_ai.py", line 101, in main
+    page.fill('#target',str(work/'different'));assert page.evaluate('()=>state.analysis===null')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\sync_api\_generated.py", line 10998, in fill
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.fill(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        )
+        ^
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_page.py", line 917, in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_frame.py", line 610, in fill
+    await self._fill(**locals_to_params(locals()))
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_frame.py", line 622, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#target")
+    - locator resolved to <input id="target" placeholder="���� D:\CoursePractice"/>
+    - fill("C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\runtime\20261109T081851756191Z\different")
+  - attempting fill action
+    2 �� waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+    - waiting 20ms
+    2 �� waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+      - waiting 100ms
+    59 �� waiting for element to be visible, enabled and editable
+       - element is not visible
+     - retrying fill action
+       - waiting 500ms
+

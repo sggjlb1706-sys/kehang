@@ -1,0 +1,17 @@
+E
+======================================================================
+ERROR: test_ai_course (unittest.loader._FailedTest.test_ai_course)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ai_course
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_ai_course.py", line 8, in <module>
+    from campuslab import ai_course as ai
+ImportError: cannot import name 'ai_course' from 'campuslab' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\campuslab\__init__.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

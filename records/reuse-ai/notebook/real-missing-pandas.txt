@@ -1,0 +1,1 @@
+{"path": "records\\reuse-ai\\notebook\\pandas-missing-real-20261109T081140879259Z", "passed": false, "states": {"os": "pass", "python": "pass", "package:jupyter_client": "pass", "package:ipykernel": "pass", "notebook:spec": "pass", "notebook:identity": "pass", "package:numpy": "pass", "package:pandas": "missing", "notebook:run": "mismatch", "notebook:cleanup": "pass"}}

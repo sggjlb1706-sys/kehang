@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+  "collected_at": "2026-11-10T00:31:32.056645+00:00",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\reuse-data-20261110T003103340935Z\\sqlite-basics 工具 O'Brien ‘引’ $literal `tick\\scores.sqlite",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\reuse-data-20261110T003103340935Z\\sqlite-basics 工具 O'Brien ‘引’ $literal `tick\\scores.sqlite",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "sqlite": "3.50.4",
+    "tool_runtime": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\runtime\\reuse-data-20261110T003103340935Z\\sqlite-basics 工具 O'Brien ‘引’ $literal `tick\\runtime\\python.exe",
+    "database": {
+      "sha256": "6bed0444900e20dd5e28960bc23972ff9955f646c0443d2e0b3b61f2f1402169",
+      "after_sha256": "6bed0444900e20dd5e28960bc23972ff9955f646c0443d2e0b3b61f2f1402169",
+      "header_valid": true,
+      "error": ""
+    },
+    "query": {
+      "read_only": true,
+      "returncode": 0,
+      "rows": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "error": ""
+    }
+  }
+}

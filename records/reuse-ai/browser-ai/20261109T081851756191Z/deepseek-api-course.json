@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "kind": "campuslab-course",
+  "task": {
+    "schema": 1,
+    "scenario": "deepseek-api",
+    "title": "DeepSeek API · 固定数据练习",
+    "source": "本项目演示课程；官方接口资料核对于2026-11-09",
+    "os": "Windows",
+    "python": {
+      "min": "3.10",
+      "max_exclusive": "3.15"
+    },
+    "api": {
+      "provider": "DeepSeek",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "protocol": "chat-completions"
+    },
+    "exercise": {
+      "system": "你是数据分析课程练习助手。依据给出的演示数据计算，只输出要求的JSON，不访问工具或外部数据。",
+      "question": "演示CSV数据 score\n10\n14\n18\n。计算 total、count、mean。只返回JSON对象，键恰为total、count、mean，不要代码围栏。",
+      "expected": {
+        "total": 42,
+        "count": 3,
+        "mean": 14
+      }
+    },
+    "verify": "deepseek-fixed-json-v1",
+    "id": "97b878195b01ac825095c5b86fb93ad7c22bfad3ad675dd3b94f4b9774b3f6d3"
+  },
+  "sha256": "e07127594c5a3490f5fc70907c6ffd7935ea3daf7719d2b0e4e875e3513ec610"
+}

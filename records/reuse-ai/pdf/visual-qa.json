@@ -1,0 +1,70 @@
+{
+  "reviewed_at": "2026-11-10T00:37:41.341862+00:00",
+  "pages": 10,
+  "output_sha256": "F5D02D598C6A800017D733B451D8E1DF3E63D1D380F96E3B0C437FE120441C49",
+  "page_records": [
+    {
+      "page": 1,
+      "png": "records/reuse-ai/pdf/page-01.png",
+      "sha256": "00C6EA7191A8540E9B5BF5736D9B65D1B5D7E10796FC12163A6CB1DE18DD2F82",
+      "text_characters": 711
+    },
+    {
+      "page": 2,
+      "png": "records/reuse-ai/pdf/page-02.png",
+      "sha256": "ADB0396B6912B45FB66FA0C92A221FC604DB377B383F3D8F741C6634B4963A21",
+      "text_characters": 710
+    },
+    {
+      "page": 3,
+      "png": "records/reuse-ai/pdf/page-03.png",
+      "sha256": "FACBDE393964DA4B11E806D758ABFE0CF26811BE0A67376F0F836FA5CAF8A045",
+      "text_characters": 806
+    },
+    {
+      "page": 4,
+      "png": "records/reuse-ai/pdf/page-04.png",
+      "sha256": "B8ED67B66CBE6C081B25593676A8BBF21E1536B4A6D4A125DCF7C3526EEA3C06",
+      "text_characters": 945
+    },
+    {
+      "page": 5,
+      "png": "records/reuse-ai/pdf/page-05.png",
+      "sha256": "24F0D94F8B72E29062DBCCB09AA1D4AAC876B356310F6D118961CB7845AB562D",
+      "text_characters": 841
+    },
+    {
+      "page": 6,
+      "png": "records/reuse-ai/pdf/page-06.png",
+      "sha256": "0B5A8AAD6735049BD6F1015620ED9D4530BA6C9A0856E7BDDA26EC23BE67F6F4",
+      "text_characters": 915
+    },
+    {
+      "page": 7,
+      "png": "records/reuse-ai/pdf/page-07.png",
+      "sha256": "FAFDB81ED29D3B8A8751F76E98403430AB6ED74673B87D84243C8396CABDB4E9",
+      "text_characters": 920
+    },
+    {
+      "page": 8,
+      "png": "records/reuse-ai/pdf/page-08.png",
+      "sha256": "DD9ED9C41C1DF0F20E6358A64BCC92701CDB72B2364C2E17B6CC3CDABCDA8C43",
+      "text_characters": 811
+    },
+    {
+      "page": 9,
+      "png": "records/reuse-ai/pdf/page-09.png",
+      "sha256": "9ED65DED0EEB2AB702061389CB78EB0F678290B39C8D26354526D006FCF43DEA",
+      "text_characters": 329
+    },
+    {
+      "page": 10,
+      "png": "records/reuse-ai/pdf/page-10.png",
+      "sha256": "A1C5EB34D30C18DC6BE1AB68ECEDC6D968DB435D76FDCE7B17505405FF293C18",
+      "text_characters": 1157
+    }
+  ],
+  "result": "passed",
+  "scope": "All pages individually inspected. Desktop/mobile images remain explicitly browser emulation. First-build is superseded draft metadata, not the final PDF receipt.",
+  "final_edit": "Page10 PowerShell line continuations made explicit; first9 raster SHA identical"
+}

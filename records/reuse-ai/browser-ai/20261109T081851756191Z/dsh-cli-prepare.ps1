@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = 'Stop'
+Set-Location -LiteralPath "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081851756191Z\dsh-cli O'Brien `‘引`’ `$literal ``tick"
+& "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081851756191Z\dsh-cli O'Brien `‘引`’ `$literal ``tick\runtime\python.exe" -B -m campuslab.dsh_course --prepare-workspace "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081851756191Z\dsh-cli O'Brien `‘引`’ `$literal ``tick\practice" --task "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081851756191Z\dsh-cli O'Brien `‘引`’ `$literal ``tick\task.json"
+if ($LASTEXITCODE -ne 0) { throw '准备未完成，已有文件不覆盖' }

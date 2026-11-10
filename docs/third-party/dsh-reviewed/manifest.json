@@ -1,0 +1,112 @@
+{
+  "retrieved_on": "2026-11-09",
+  "files": [
+    {
+      "local": "dsh-reviewed/desktop-README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/desktop/README.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/desktop/README.md",
+      "expected_bytes": 88144,
+      "role": "reviewed-metadata-not-executed",
+      "sha256": "14646f67a56e5c80b8f418ffee4deaf38ada7aece291e4a2371d6de746bf8743",
+      "bytes": 88144,
+      "git_blob_sha1": "f59840e5c8bc8330681019d89e0ddc591085ffe3"
+    },
+    {
+      "local": "dsh-reviewed/desktop-package.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/desktop/package.json",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/desktop/package.json",
+      "expected_bytes": 4443,
+      "role": "reviewed-metadata-not-executed",
+      "sha256": "e5d0eda86ea6d2c539ddbe39c1c06f1f6745d20ab000dbc1ef6034559760fb2e",
+      "bytes": 4443,
+      "git_blob_sha1": "cd4422518412d142055c7a38bebf537b0aae0d9b"
+    },
+    {
+      "local": "dsh-reviewed/cli-package.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/package.json",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/package.json",
+      "expected_bytes": 8437,
+      "role": "reviewed-metadata-not-executed",
+      "sha256": "9fe7ab2812465f70cf95f8c15402c26a41485d9fcbe43c9b63da315bfcbaa6e6",
+      "bytes": 8437,
+      "git_blob_sha1": "8871c8738d81ed867dfb0f0af431ae2ca7023cc3"
+    },
+    {
+      "local": "dsh-reviewed/cli-bin.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/bin.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/bin.ts",
+      "expected_bytes": 2800,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "1ae0c4a59182c3ebe7dd38fcc17292e185332cdc",
+      "sha256": "7081b6503a635eb6c6d9c3e4619e740afe157252b246aa17acbf1a1ceec54c88",
+      "bytes": 2800,
+      "git_blob_sha1": "1ae0c4a59182c3ebe7dd38fcc17292e185332cdc"
+    },
+    {
+      "local": "dsh-reviewed/cli-args.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/args.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/args.ts",
+      "expected_bytes": 10485,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "41d4ebeaa832473b25952af1b185e02a7c182844",
+      "sha256": "adff9b75449f883529021bd931a25a380df25edbbf7fbda2e65e6ab2824128cd",
+      "bytes": 10485,
+      "git_blob_sha1": "41d4ebeaa832473b25952af1b185e02a7c182844"
+    },
+    {
+      "local": "dsh-reviewed/installed-bin.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/installed-bin.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/installed-bin.ts",
+      "expected_bytes": 975,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "a9e9b2ae7b36fe7a2bcbffc1b07b1039fcc83efa",
+      "sha256": "e37d9ccfc2df8b2023b2f4543f96673f43afa7c61688fe302b859ccc65ccbfc4",
+      "bytes": 975,
+      "git_blob_sha1": "a9e9b2ae7b36fe7a2bcbffc1b07b1039fcc83efa"
+    },
+    {
+      "local": "dsh-reviewed/LICENSE",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/LICENSE",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1065,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "c1f7a78e89e4e4dc7b86664c3b3c76eb5eee1785",
+      "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be",
+      "bytes": 1065,
+      "git_blob_sha1": "c1f7a78e89e4e4dc7b86664c3b3c76eb5eee1785"
+    },
+    {
+      "local": "dsh-reviewed/SAFETY.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/SAFETY.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "SAFETY.md",
+      "expected_bytes": 1673,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "2b76f00e0619ee69553afdc507df361080f4d3ac",
+      "sha256": "62075bb51e0f7790441e7722ff12063107b4866019332e71ef01b63b6f880fee",
+      "bytes": 1673,
+      "git_blob_sha1": "2b76f00e0619ee69553afdc507df361080f4d3ac"
+    },
+    {
+      "local": "dsh-reviewed/providers.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/docs/user/guide/providers.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "docs/user/guide/providers.md",
+      "expected_bytes": 19232,
+      "role": "reviewed-metadata-not-executed",
+      "sha256": "cedd248167573446bb8ed022be578a8a8fde9ec8250f4557b2e7ed592128bee1",
+      "bytes": 19232,
+      "git_blob_sha1": "fe831bcaf979710f54e5e98088a44b233dfbcbac"
+    }
+  ],
+  "upstream_code_executed": false,
+  "dependency_installations": 0,
+  "product_adaptation": null
+}

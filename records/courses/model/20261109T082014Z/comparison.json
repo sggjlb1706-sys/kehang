@@ -1,0 +1,169 @@
+{
+  "before": {
+    "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+    "target": {
+      "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-09T08:20:14.104054+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "python",
+        "status": "pass",
+        "observed": "3.11.16",
+        "requirement": {
+          "min": "3.10",
+          "max_exclusive": "3.15"
+        }
+      },
+      {
+        "id": "package:torch",
+        "status": "pass",
+        "observed": "2.14.0+cu126",
+        "requirement": ">=2.2"
+      },
+      {
+        "id": "package:transformers",
+        "status": "missing",
+        "observed": null,
+        "requirement": ">=4.45"
+      },
+      {
+        "id": "run",
+        "status": "mismatch",
+        "observed": {
+          "returncode": 1,
+          "stdout": "",
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'transformers'\n"
+        },
+        "requirement": "固定导入程序退出0且输出OK"
+      },
+      {
+        "id": "model:weights",
+        "status": "pass",
+        "observed": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+        "requirement": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE"
+      },
+      {
+        "id": "model:inference",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本地离线固定问题输出2，正常EOS结束；云端输出不替代"
+      }
+    ],
+    "passed": false
+  },
+  "after": {
+    "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+    "target": {
+      "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-09T08:20:17.781750+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "python",
+        "status": "pass",
+        "observed": "3.11.16",
+        "requirement": {
+          "min": "3.10",
+          "max_exclusive": "3.15"
+        }
+      },
+      {
+        "id": "package:torch",
+        "status": "pass",
+        "observed": "2.14.0+cu126",
+        "requirement": ">=2.2"
+      },
+      {
+        "id": "package:transformers",
+        "status": "missing",
+        "observed": null,
+        "requirement": ">=4.45"
+      },
+      {
+        "id": "run",
+        "status": "mismatch",
+        "observed": {
+          "returncode": 1,
+          "stdout": "",
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'transformers'\n"
+        },
+        "requirement": "固定导入程序退出0且输出OK"
+      },
+      {
+        "id": "model:weights",
+        "status": "pass",
+        "observed": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+        "requirement": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE"
+      },
+      {
+        "id": "model:inference",
+        "status": "mismatch",
+        "observed": {
+          "offline": true,
+          "local": true,
+          "output": "",
+          "ended_with_eos": false,
+          "device": "",
+          "error": "ModuleNotFoundError"
+        },
+        "requirement": "本地离线固定问题输出2，正常EOS结束；云端输出不替代"
+      }
+    ],
+    "passed": false
+  },
+  "changes": [
+    {
+      "id": "os",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "python",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "package:torch",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "package:transformers",
+      "before": "missing",
+      "after": "missing"
+    },
+    {
+      "id": "run",
+      "before": "mismatch",
+      "after": "mismatch"
+    },
+    {
+      "id": "model:weights",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "model:inference",
+      "before": "unknown",
+      "after": "mismatch"
+    }
+  ],
+  "outcome": "incomplete"
+}

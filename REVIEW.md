@@ -1,4 +1,14 @@
-# 课程能力补全轮独立审查（2026-11-08）
+# 开源适配与AI课程轮审查状态（2026-11-10）
+
+已审产品HEAD：`2c5ade24c512a6b15c7111f808192f480627c4fb`；新清单 `records/review/reuse-ai-final-candidate.json`，SHA256 `BD242703233272836DC99B6B819339EA30CC26CD9F404F7FB48E6FC0B6DFC615`。**独立delta确认初审2P2+1P3全部闭合、无新增产品阻塞。** 全文 `records/review/reuse-ai-independent-delta.md`，SHA256 `C89174C113B480FFA3CB02255BCAF1D443C4B43115B7BE393933AACED10BBB9A`。材料和最终交付仍另核对。
+
+初审固定bbee5bc及 `reuse-ai-candidate.json`（SHA256 `2BF219A95A55D242D5EBD56C0D38BE21EDB79E20D13DE4ADA847CE8C8F230E35`），80项源/测试/第三方和154项证据独立一致。未参与实现者发现2P2+1P3：JDK退出证据未知仍pass、API缺SSL丢身份/缺依赖分型、Java运行超时误写编译阶段。全文 `records/review/reuse-ai-independent-product.md`，SHA256 `4A1CD5943D95CB1E01F511D66A93512E437D5A7D277FA5F84CDC7B8152B726D4`。原文和反例保留；三项由主执行在2c5ade2实际修复，不改写成用户Bug反馈。
+
+执行方修复后115单测、重跑五套52组浏览器及另3项构造UI回归通过，源SHA匹配；Qwen正确目标重新真实推理verified。独立复核80项源/165项证据零差、实跑115单测并重现三项修复；52网页及3UI为归档/源SHA核对、Qwen为报告复算，复核者未重复全部浏览器或重新加载模型。初审112项/旧记录保留；API未真实发送、DSH未实际运行、VM来宾未知等边界继续适用。
+
+独立审查若发现有依据阻塞，保留原反例/报告并形成真实修复提交；必须给新HEAD/SHA复核后再更新闭合状态。材料制作后另核对PDF/Prompt/来源、已审产品字节和最终副本/完整历史/运行时/清单/ZIP/启动；前一步结论不覆盖后一步。原正式课程版及更早独立报告在下方保留，均不作为新增课程已通过凭证。
+
+## 继承课程轮独立审查（2026-11-08历史原文）
 
 初审f8e9a13/654项：独立代码发现4项P2和1项P3，原文保留在records/review/courses-independent-code.md；独立证据核对真实历史/原件/Prompt/报告/源SHA无新增真实性阻塞，原文courses-independent-evidence.md。
 

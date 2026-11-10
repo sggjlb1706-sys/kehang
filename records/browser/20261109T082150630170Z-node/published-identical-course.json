@@ -1,0 +1,20 @@
+{
+  "code": "093AA7FD5A",
+  "task": {
+    "schema": 1,
+    "title": "Node.js/npm 基础环境 · 演示任务",
+    "scenario": "node-basics",
+    "source": "演示课程要求，非学校既定要求",
+    "os": "Windows",
+    "node": {
+      "min": "22.0",
+      "max_exclusive": "25.0"
+    },
+    "npm": {
+      "min": "10.0",
+      "max_exclusive": "12.0"
+    },
+    "verify": "node-npm-fixed",
+    "id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb"
+  }
+}

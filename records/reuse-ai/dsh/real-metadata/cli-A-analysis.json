@@ -1,0 +1,95 @@
+{
+  "task_id": "eac9155375eae17951a25d250a018c739af64fe1a4ded102cc9af1bc21c0e66c",
+  "target": {
+    "requested": "D:\\Program Files\\nodejs\\node.exe",
+    "actual": "D:\\Program Files\\nodejs\\node.exe",
+    "exists": true
+  },
+  "collected_at": "2026-11-09T08:14:22.674558+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "dsh:software",
+      "status": "missing",
+      "observed": {
+        "route": "cli",
+        "exists": false,
+        "product": null,
+        "version": null,
+        "sha256": null,
+        "package_json": "D:\\Program Files\\nodejs\\node_modules\\@deepseek-ai\\dsh\\package.json",
+        "bin": null,
+        "bin_sha256": null,
+        "node_requirement": null,
+        "error": "所选DSH包或固定入口元数据不完整；未执行包入口"
+      },
+      "requirement": "@deepseek-ai/dsh 0.2.2-rc.1；静态身份/版本不证明已登录或任务成功"
+    },
+    {
+      "id": "dsh:node",
+      "status": "pass",
+      "observed": {
+        "kind": "selected-node",
+        "actual": "D:\\Program Files\\nodejs\\node.exe",
+        "version": "24.21.0",
+        "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32",
+        "error": ""
+      },
+      "requirement": "本人所选Node>=24.9.0；其他Node课程通过不能代替"
+    },
+    {
+      "id": "dsh:workspace",
+      "status": "unknown",
+      "observed": {
+        "requested": null,
+        "actual": null,
+        "exists": null,
+        "id": null,
+        "task_id": null,
+        "input_sha256": null,
+        "error": "尚未选择专用练习目录"
+      },
+      "requirement": "同一专用目录、任务标识和固定CSV摘要"
+    },
+    {
+      "id": "dsh:model",
+      "status": "unknown",
+      "observed": {
+        "provider": null,
+        "model": null,
+        "connection": null
+      },
+      "requirement": "实际本人任务模型结果；仅提供方/模型配置不证明连接可用"
+    },
+    {
+      "id": "dsh:permission",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "本人实际授权：只读input.csv、只写summary.json、固定read/write工具"
+    },
+    {
+      "id": "dsh:tools",
+      "status": "unknown",
+      "observed": null,
+      "requirement": "本人提供本次DSH读/写工具摘要；普通聊天、声明或模拟不代替"
+    },
+    {
+      "id": "dsh:artifact",
+      "status": "unknown",
+      "observed": {
+        "exists": null,
+        "sha256": null,
+        "value": null,
+        "error": "尚无产物"
+      },
+      "requirement": "本机summary.json恰为整数count=3、sum=42；产物不单独证明Agent调用"
+    }
+  ],
+  "passed": false,
+  "evidence_basis": "只读元数据/本机产物；无真实DSH任务摘要，相关项未知"
+}

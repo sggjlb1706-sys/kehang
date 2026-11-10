@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = 'Stop'
+Set-Location -LiteralPath "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081931412298Z-courses\gpu O'Brien `‘引`’ `$literal ``tick"
+& "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081931412298Z-courses\gpu O'Brien `‘引`’ `$literal ``tick\runtime\python.exe" -B -m campuslab.preparation --output "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\20261109T081931412298Z-courses\gpu O'Brien `‘引`’ `$literal ``tick\hardware.json" --drive "C:\"
+if ($LASTEXITCODE -ne 0) { throw '硬件预检未完成' }

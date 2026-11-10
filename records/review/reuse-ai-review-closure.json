@@ -1,0 +1,12 @@
+{
+  "product_head": "2c5ade24c512a6b15c7111f808192f480627c4fb",
+  "manifest": "records/review/reuse-ai-final-candidate.json",
+  "manifest_sha256": "BD242703233272836DC99B6B819339EA30CC26CD9F404F7FB48E6FC0B6DFC615",
+  "initial_report": "records/review/reuse-ai-independent-product.md",
+  "delta_report": "records/review/reuse-ai-independent-delta.md",
+  "delta_sha256": "C89174C113B480FFA3CB02255BCAF1D443C4B43115B7BE393933AACED10BBB9A",
+  "closed_findings": ["P2-1 JDK version exit evidence", "P2-2 API missing SSL dependency", "P3-1 Java runtime timeout classification"],
+  "blocking_findings": 0,
+  "independent_unit_tests": 115,
+  "scope": "Independent product delta only; materials and delivery require a separate check."
+}

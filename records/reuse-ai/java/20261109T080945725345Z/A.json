@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+  "collected_at": "2026-11-09T08:09:54.848431+00:00",
+  "target": {
+    "requested": "C:\\Program Files\\Zulu\\zulu-21",
+    "actual": "C:\\Program Files\\Zulu\\zulu-21",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "tools": {
+      "java": {
+        "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+        "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+        "exists": true,
+        "version": "21.0.1",
+        "home": "C:\\Program Files\\Zulu\\zulu-21",
+        "returncode": 0,
+        "error": ""
+      },
+      "javac": {
+        "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+        "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+        "exists": true,
+        "version": "21.0.1",
+        "home": "C:\\Program Files\\Zulu\\zulu-21",
+        "returncode": 0,
+        "error": ""
+      }
+    },
+    "compile": {
+      "returncode": 0,
+      "stdout": "",
+      "error": ""
+    },
+    "run": {
+      "returncode": 0,
+      "stdout": "42\nC:\\Program Files\\Zulu\\zulu-21\n",
+      "error": "",
+      "home": "C:\\Program Files\\Zulu\\zulu-21"
+    }
+  },
+  "commands": [
+    [
+      "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+      "-XshowSettings:properties",
+      "-version"
+    ],
+    [
+      "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+      "-J-XshowSettings:properties",
+      "-version"
+    ],
+    [
+      "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+      "-proc:none",
+      "-encoding",
+      "UTF-8",
+      "-d",
+      "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-qi4ifsyj",
+      "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-qi4ifsyj\\CampusLabFixed.java"
+    ],
+    [
+      "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+      "-cp",
+      "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-qi4ifsyj",
+      "CampusLabFixed"
+    ]
+  ]
+}

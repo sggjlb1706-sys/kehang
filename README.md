@@ -1,3 +1,46 @@
+# AI 实验环境管家 · 开源适配与 AI / Agent 课程版
+
+本轮从正式课程交付 `e0aca9ca04f350c5db0e3d6f197307260eee6276` 完整克隆到独立分支 `codex/reuse-ai-courses-20261109`。沿用双入口、不可变任务、显式目标、四状态、本人手动采集、同组件复检和脱敏分享。原正式版、课程库、旧PDF/ZIP及真实Git历史保留；本轮结果和外部条件以当前HANDOFF及交付回执为准，下方旧课程版说明属于历史。
+
+## 不修改执行策略，直接启动新交付版
+
+使用电脑上已有Python>=3.10，在PowerShell运行：
+
+```powershell
+Set-Location -LiteralPath 'D:\传智杯\versions\competition-reuse-ai-20261109'
+& 'D:\ANACONDA\python.exe' -B -m campuslab.web --port 8781 --database '.\data\reuse-ai-courses.sqlite' --runtime-zip '.\vendor\python-3.13.17-embed-amd64.zip'
+```
+
+打开 `http://127.0.0.1:8781/`，Ctrl+C停止本人启动的服务。换电脑时只需把工具Python路径改为该电脑已有解释器。该入口无需运行`.ps1`或修改执行策略；服务和规则只用标准库。使用新独立课程库，不占用旧版课程数据；端口若已被占用，应选择空闲端口并保持旧服务运行。最终实际启动与下载包核验见新交付回执。
+
+既有官方嵌入Python ZIP随私密本机审阅包提供给检测工具，SHA256为`9E35319BFFEDAB8B36AD44D8F377CB4F1733BCEC257A0B6D04D94F01486DDB38`。工具运行时不代表课程Python、Jupyter内核或Node；没有自动安装新软件、下载模型或启动VM。10分钟启动目标以已有工具Python和完整交付包为条件，不包含从零准备全部课程环境。
+
+## 本轮新增的实际流程
+
+| 课程 | 固定验证与身份 | 本机/外部条件边界 |
+|---|---|---|
+| Notebook数据分析 | 本人明确选课程Python和kernel.json；实际启动内核，核对sys.executable、NumPy/Pandas、固定数据计算及临时内核清理 | 本轮真实内核/固定计算和负例见records/reuse-ai/notebook；不能用普通Python调用代替内核 |
+| AI网页/客户端使用 | DeepSeek固定课堂练习、本人操作记录与成果核对；其他代表工具提供有来源的指导 | 登录和模型连接仍为本人操作；勾选或提交文字不冒充自动验证 |
+| DeepSeek API编程 | 指定课程Python、官方目的地/协议/模型、可编辑发送预览、终端安全输入密钥及本人单次同意、固定响应核对 | 协议和失败路径有测试；真实外部调用须本人有效配置与单次同意，未调用未知，模拟不计实测 |
+| DSH桌面 | 指定exe、静态PE版本/摘要、自带Electron路线、专用练习/模型/权限/必要工具摘要/产物 | 外部Node不作为桌面缺失条件；当前标准候选路径缺失不等于全机未安装 |
+| DSH CLI/Web | 指定Node、package.json和lib/bin.js，核对DSH0.2.2-rc.1与Node>=24.9.0；不执行DSH检测入口 | 所选Node本机满足引擎、明确包路径缺失；未取得真实DSH任务，不冒称成功 |
+| Java/JDK | 明确JDK目录，java/javac各自路径/摘要/home/版本；固定源码在专用临时目录编译运行 | 本机Zulu21固定课程实测；不代表Hadoop服务端或Linux来宾通过 |
+| SQLite单机SQL | 明确文件身份，只读打开，固定SELECT和固定演示数据；不接受任意SQL | 本机固定课程实测；不把SQLite结果扩为MySQL/PostgreSQL支持 |
+
+原Python、Node、固定Qwen、PyTorch CPU/GPU、VM/Linux仍保留固定任务与报告兼容。每条新任务共用自主/教师入口、课程包、离线指导、原始报告、差异行动与有序复检。教学步骤已阅读、本人声明或AI回复都不能覆盖规则事实。Hadoop及MCP仅保留[逐组件来源路线](docs/Hadoop与框架组合路线-20261109.md)，无集群/服务器实测时保持缺口。
+
+## 开源二次开发与许可
+
+本轮实际**适配修改Educates的两份教学动作模板**：固定提交`d7e018f0cee382a595d2c9ecc6c938da099eb67e`，将固定检查名称、标题、说明及冷却字段移植到`campuslab/teaching.py`，页面保留教学动作的标题/正文/状态结构；原来启动examiner脚本的分派改为导入报告的确定性检查和本人同目标重采。它不能接受shell/args/autostart或自动执行安装。Apache-2.0原LICENSE、NOTICE和原作者声明随包保留。
+
+DSH是单独学习工具：本项目自行实现其静态元数据和必要任务证据接缝，保存官方MIT源码/文档审查材料，未把整个框架、运行时、凭据或插件复制为本产品。Pinokio仅参考准备思路；Labtainers、TLJH、Open WebUI与Dify未采用产品代码。其中Open WebUI/Dify具有各自附加条款，未按普通宽松许可证改品牌或分发。
+
+精确上游路径/版本、采用方式、原字节SHA和修改映射见[开源选型与二次开发](docs/开源选型与二次开发-20261109.md)、[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)、[reuse.json](docs/reuse.json)及`docs/third-party/*/manifest.json`。参考思路、审查留档和接口对接均与源码适配分别标注，不计为同一种复用。
+
+当前开发/原始设备证据用于本人本机审阅；正式公开/上传前另核对隐私、MP4与Prompt/远程仓库/设备缺口。本人录屏、登录、真实Agent授权、百度网盘上传和提交回执不会由代理生成成功声明。硬截止仍为2026-11-18 15:00北京时间。
+
+## 继承README（2026-11-08历史，仅供来源核对）
+
 # AI 实验环境管家 · 课程能力补全版
 
 服务计算机/大数据课程的环境准备与故障处理：从学习目标或教师任务进入，明确选择目标环境，取得只读证据，按差异手动处理，再核对同一任务、同一组件身份的复检。规则决定通过、缺失、不符合、未知；AI只解释已有证据。

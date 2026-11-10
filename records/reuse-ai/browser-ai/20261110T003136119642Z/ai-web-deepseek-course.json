@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "kind": "campuslab-course",
+  "task": {
+    "schema": 1,
+    "scenario": "ai-web-deepseek",
+    "title": "DeepSeek 网页/客户端 · 课程提问",
+    "source": "本项目演示课程；官方接口资料核对于2026-11-09",
+    "os": "Windows",
+    "provider": "DeepSeek",
+    "entry": "https://chat.deepseek.com/",
+    "exercise": {
+      "question": "演示CSV数据 score\n10\n14\n18\n。计算 total、count、mean。只返回JSON对象，键恰为total、count、mean，不要代码围栏。",
+      "expected": {
+        "total": 42,
+        "count": 3,
+        "mean": 14
+      }
+    },
+    "verify": "self-record-and-fixed-artifact-v1",
+    "id": "c7554ee4af3de4be5ad856eac1c62184c0a8905a7f12d8f55e29c12f8437b9b2"
+  },
+  "sha256": "b8f0981f902c468353266ff9ada78ec41e4eebca4d1444753d755da6729f915f"
+}

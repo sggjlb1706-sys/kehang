@@ -1,0 +1,4 @@
+$ErrorActionPreference = 'Stop'
+Set-Location -LiteralPath "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\reuse-data-20261109T082545764681Z\sqlite-basics 工具 O'Brien `‘引`’ `$literal ``tick"
+& "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\reuse-data-20261109T082545764681Z\sqlite-basics 工具 O'Brien `‘引`’ `$literal ``tick\runtime\python.exe" -B -m campuslab.sqlite_course --prepare-demo "C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\reuse-data-20261109T082545764681Z\sqlite-basics 工具 O'Brien `‘引`’ `$literal ``tick\scores.sqlite"
+if ($LASTEXITCODE -ne 0) { throw '准备未完成，已有文件不覆盖' }

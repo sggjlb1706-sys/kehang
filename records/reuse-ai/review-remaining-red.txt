@@ -1,0 +1,42 @@
+EF
+======================================================================
+ERROR: test_probe_preserves_identity_when_ssl_dependency_missing (tests.test_ai_course.AICourseTests.test_probe_preserves_identity_when_ssl_dependency_missing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_ai_course.py", line 112, in test_probe_preserves_identity_when_ssl_dependency_missing
+    runpy.run_path(str(ai.Path(ai.__file__).with_name('ai_probe.py')),run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\campuslab\ai_probe.py", line 19, in <module>
+    if __name__=='__main__': main()
+                             ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\campuslab\ai_probe.py", line 13, in main
+    import ssl
+  File "D:\ANACONDA\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_ai_course.py", line 108, in without_ssl
+    if name=='ssl':raise ModuleNotFoundError('No module named ssl')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named ssl
+
+======================================================================
+FAIL: test_runtime_timeout_preserves_completed_compile (tests.test_java_course.JavaCourseTest.test_runtime_timeout_preserves_completed_compile)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_java_course.py", line 38, in test_runtime_timeout_preserves_completed_compile
+    self.assertEqual(report['facts']['compile']['returncode'],0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 0
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.032s
+
+FAILED (failures=1, errors=1)

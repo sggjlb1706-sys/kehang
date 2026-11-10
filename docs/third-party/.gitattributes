@@ -1,0 +1,4 @@
+# Retain retrieved upstream source/license bytes across Windows clone/checkout.
+educates/* -text
+dsh-reviewed/* -text
+selection-reviewed/* -text

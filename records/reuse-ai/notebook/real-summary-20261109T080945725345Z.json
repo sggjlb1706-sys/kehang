@@ -1,0 +1,32 @@
+{
+  "notebook": {
+    "folder": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\notebook\\20261109T080945725345Z",
+    "real_local": true,
+    "device": "same development computer",
+    "identity_checked": true,
+    "time_order_checked": true,
+    "both_passed": true,
+    "shared_rules_retest_pending": true,
+    "physical_second_device": false
+  },
+  "java": {
+    "folder": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\java\\20261109T080945725345Z",
+    "real_local": true,
+    "device": "same development computer",
+    "identity_checked": true,
+    "time_order_checked": true,
+    "both_passed": true,
+    "shared_rules_retest_pending": true,
+    "physical_second_device": false
+  },
+  "sqlite": {
+    "folder": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\sqlite\\20261109T080945725345Z",
+    "real_local": true,
+    "device": "same development computer",
+    "identity_checked": true,
+    "time_order_checked": true,
+    "both_passed": true,
+    "shared_rules_retest_pending": true,
+    "physical_second_device": false
+  }
+}

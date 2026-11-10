@@ -1,0 +1,84 @@
+{
+  "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\target",
+    "actual": null,
+    "exists": false
+  },
+  "collected_at": "2026-11-09T08:14:44.425533+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "java:java",
+      "status": "missing",
+      "observed": {
+        "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\java.exe",
+        "sha256": null,
+        "exists": false,
+        "version": null,
+        "home": null,
+        "returncode": null,
+        "error": "未运行"
+      },
+      "requirement": "同一JDK中的 java，21.0至25.0以下"
+    },
+    {
+      "id": "java:javac",
+      "status": "missing",
+      "observed": {
+        "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\javac.exe",
+        "sha256": null,
+        "exists": false,
+        "version": null,
+        "home": null,
+        "returncode": null,
+        "error": "未运行"
+      },
+      "requirement": "同一JDK中的 javac，21.0至25.0以下"
+    },
+    {
+      "id": "java:identity",
+      "status": "unknown",
+      "observed": [
+        {
+          "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\java.exe",
+          "home": null,
+          "sha256": null
+        },
+        {
+          "path": "C:\\CampusLab-Deliberately-Missing\\target\\bin\\javac.exe",
+          "home": null,
+          "sha256": null
+        }
+      ],
+      "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+    },
+    {
+      "id": "java:compile",
+      "status": "unknown",
+      "observed": {
+        "returncode": null,
+        "stdout": "",
+        "error": "JDK身份未确认"
+      },
+      "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+    },
+    {
+      "id": "java:run",
+      "status": "unknown",
+      "observed": {
+        "returncode": null,
+        "stdout": "",
+        "error": "尚未编译运行",
+        "home": null
+      },
+      "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+    }
+  ],
+  "passed": false
+}

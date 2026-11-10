@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "task_id": "97a83c881be376f68ae6ede5f637a6276718912411f48d2d5f8c62526056f983",
+  "collected_at": "2026-11-09T08:09:55.607209+00:00",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\sqlite\\20261109T080945725345Z\\scores.sqlite",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\sqlite\\20261109T080945725345Z\\scores.sqlite",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "sqlite": "3.50.2",
+    "tool_runtime": "D:\\ANACONDA\\python.exe",
+    "database": {
+      "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "header_valid": true,
+      "error": ""
+    },
+    "query": {
+      "read_only": true,
+      "returncode": 0,
+      "rows": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "error": ""
+    }
+  }
+}

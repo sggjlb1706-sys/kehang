@@ -1,0 +1,242 @@
+{
+  "checked_on": "2026-11-09",
+  "method": "Official GitHub commits/HEAD via GitHub connector; source downloads only, no installation",
+  "heads": [
+    {
+      "repo": "pinokiocomputer/pinokio",
+      "url": "https://api.github.com/repos/pinokiocomputer/pinokio/commits/HEAD",
+      "sha": "ae5f9f394ef735388631e480ed95ab5932d531f6",
+      "date": "2026-11-05T14:54:14Z",
+      "message": "8.3.7"
+    },
+    {
+      "repo": "mfthomps/Labtainers",
+      "url": "https://api.github.com/repos/mfthomps/Labtainers/commits/HEAD",
+      "sha": "fc1baca0aa2abe2809d92fbc9e93f5ce719b597e",
+      "date": "2026-11-06T17:06:06Z",
+      "message": "Merge pull request #112 from spencer-dollahite/fix/preexec-ifs-leak\n\nbash-pre-capinout.sh: scope IFS in preexec() so it doesn't leak into interactive commands"
+    },
+    {
+      "repo": "educates/educates-training-platform",
+      "url": "https://api.github.com/repos/educates/educates-training-platform/commits/HEAD",
+      "sha": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "date": "2026-11-04T11:13:06Z",
+      "message": "Merge pull request #1284 from jorgemoralespou/issue-543\n\nfeat: choose the images the image pre-puller pulls"
+    },
+    {
+      "repo": "jupyterhub/the-littlest-jupyterhub",
+      "url": "https://api.github.com/repos/jupyterhub/the-littlest-jupyterhub/commits/HEAD",
+      "sha": "4ad828943d8acaa631708b317a5cfbddb258d3db",
+      "date": "2026-11-05T19:43:58Z",
+      "message": "Merge pull request #1082 from ana-v-espinoza/dev-environment\n\nSet PATH in Dockerfile; Addresses #1081"
+    },
+    {
+      "repo": "open-webui/open-webui",
+      "url": "https://api.github.com/repos/open-webui/open-webui/commits/HEAD",
+      "sha": "b0e6098e940942281d9c83f3529ea117287a3a22",
+      "date": "2026-11-08T23:48:12Z",
+      "message": "Merge pull request #33931 from open-webui/dev"
+    },
+    {
+      "repo": "langgenius/dify",
+      "url": "https://api.github.com/repos/langgenius/dify/commits/HEAD",
+      "sha": "effb39c371aaf0aff3a9e2e26bad836856607e77",
+      "date": "2026-11-09T07:46:45Z",
+      "message": "fix: correct knowledge model settings chevron (#45899)"
+    },
+    {
+      "repo": "deepseek-ai/deepseek-harness",
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/commits/HEAD",
+      "sha": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "date": "2026-11-04T08:40:00Z",
+      "message": "Merge pull request #7873 from deepseek-harness/merge/release-dsh-0.2.2-rc.1-to-master\n\nMerge release/dsh-0.2.2 (0.2.2-rc.1) into master"
+    }
+  ],
+  "sources": [
+    {
+      "local": "educates/examiner-execute-test.html",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/actions/examiner-execute-test.html",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/actions/examiner-execute-test.html",
+      "expected_bytes": 879,
+      "role": "adapted-template-original",
+      "upstream_git_blob_sha1": "e4d7623fdfa348b149d801dfb800c3568964c10e"
+    },
+    {
+      "local": "educates/clickable-action.html",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/clickable-action.html",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/clickable-action.html",
+      "expected_bytes": 1424,
+      "role": "adapted-template-original",
+      "upstream_git_blob_sha1": "801a34e6fcde2dccac3bf616b5500ceba4dba6eb"
+    },
+    {
+      "local": "educates/LICENSE",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/LICENSE",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 10172,
+      "role": "reviewed-reference-or-license",
+      "upstream_git_blob_sha1": "1a9893b43e8e6d46ff5cda60ab6562850b7f78ff"
+    },
+    {
+      "local": "educates/NOTICE",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/NOTICE",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "NOTICE",
+      "expected_bytes": 565,
+      "role": "reviewed-reference-or-license",
+      "upstream_git_blob_sha1": "2f913b8dfb35f1cb2d706eaa407d291e8e6a308a"
+    },
+    {
+      "local": "educates/01-basic-test.md",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-samples/lab-examiner-actions/workshop/content/01-basic-test.md",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-samples/lab-examiner-actions/workshop/content/01-basic-test.md",
+      "expected_bytes": 1407,
+      "role": "reviewed-reference-or-license"
+    },
+    {
+      "local": "educates/04-retries-and-delay.md",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-samples/lab-examiner-actions/workshop/content/04-retries-and-delay.md",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-samples/lab-examiner-actions/workshop/content/04-retries-and-delay.md",
+      "expected_bytes": 3288,
+      "role": "reviewed-reference-or-license"
+    },
+    {
+      "local": "educates/examiner.ts",
+      "url": "https://github.com/educates/educates-training-platform/blob/d7e018f0cee382a595d2c9ecc6c938da099eb67e/workshop-images/base-environment/opt/gateway/src/backend/modules/examiner.ts",
+      "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+      "upstream_path": "workshop-images/base-environment/opt/gateway/src/backend/modules/examiner.ts",
+      "expected_bytes": 8807,
+      "role": "reviewed-reference-or-license"
+    },
+    {
+      "local": "dsh-reviewed/desktop-README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/desktop/README.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/desktop/README.md",
+      "expected_bytes": 88144,
+      "role": "reviewed-metadata-not-executed"
+    },
+    {
+      "local": "dsh-reviewed/desktop-package.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/desktop/package.json",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/desktop/package.json",
+      "expected_bytes": 4443,
+      "role": "reviewed-metadata-not-executed"
+    },
+    {
+      "local": "dsh-reviewed/cli-package.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/package.json",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/package.json",
+      "expected_bytes": 8437,
+      "role": "reviewed-metadata-not-executed"
+    },
+    {
+      "local": "dsh-reviewed/cli-bin.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/bin.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/bin.ts",
+      "expected_bytes": 2800,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "1ae0c4a59182c3ebe7dd38fcc17292e185332cdc"
+    },
+    {
+      "local": "dsh-reviewed/cli-args.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/args.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/args.ts",
+      "expected_bytes": 10485,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "41d4ebeaa832473b25952af1b185e02a7c182844"
+    },
+    {
+      "local": "dsh-reviewed/installed-bin.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/src/installed-bin.ts",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "apps/cli/src/installed-bin.ts",
+      "expected_bytes": 975,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "a9e9b2ae7b36fe7a2bcbffc1b07b1039fcc83efa"
+    },
+    {
+      "local": "dsh-reviewed/LICENSE",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/LICENSE",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1065,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "c1f7a78e89e4e4dc7b86664c3b3c76eb5eee1785"
+    },
+    {
+      "local": "dsh-reviewed/SAFETY.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/SAFETY.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "SAFETY.md",
+      "expected_bytes": 1673,
+      "role": "reviewed-metadata-not-executed",
+      "upstream_git_blob_sha1": "2b76f00e0619ee69553afdc507df361080f4d3ac"
+    },
+    {
+      "local": "dsh-reviewed/providers.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/docs/user/guide/providers.md",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "upstream_path": "docs/user/guide/providers.md",
+      "expected_bytes": 19232,
+      "role": "reviewed-metadata-not-executed"
+    },
+    {
+      "local": "selection-reviewed/Dify-LICENSE.txt",
+      "url": "https://github.com/langgenius/dify/blob/effb39c371aaf0aff3a9e2e26bad836856607e77/LICENSE",
+      "commit": "effb39c371aaf0aff3a9e2e26bad836856607e77",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1801,
+      "role": "reviewed-only-not-adopted"
+    },
+    {
+      "local": "selection-reviewed/Pinokio-LICENSE.txt",
+      "url": "https://github.com/pinokiocomputer/pinokio/blob/ae5f9f394ef735388631e480ed95ab5932d531f6/LICENSE",
+      "commit": "ae5f9f394ef735388631e480ed95ab5932d531f6",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1047,
+      "role": "reviewed-only-not-adopted"
+    },
+    {
+      "local": "selection-reviewed/Labtainers-license.md",
+      "url": "https://github.com/mfthomps/Labtainers/blob/fc1baca0aa2abe2809d92fbc9e93f5ce719b597e/docs/license.md",
+      "commit": "fc1baca0aa2abe2809d92fbc9e93f5ce719b597e",
+      "upstream_path": "docs/license.md",
+      "expected_bytes": 2731,
+      "role": "reviewed-only-not-adopted"
+    },
+    {
+      "local": "selection-reviewed/TLJH-LICENSE.txt",
+      "url": "https://github.com/jupyterhub/the-littlest-jupyterhub/blob/4ad828943d8acaa631708b317a5cfbddb258d3db/LICENSE",
+      "commit": "4ad828943d8acaa631708b317a5cfbddb258d3db",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1510,
+      "role": "reviewed-only-not-adopted"
+    },
+    {
+      "local": "selection-reviewed/OpenWebUI-LICENSE.txt",
+      "url": "https://github.com/open-webui/open-webui/blob/b0e6098e940942281d9c83f3529ea117287a3a22/LICENSE",
+      "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 2819,
+      "role": "reviewed-only-not-adopted"
+    },
+    {
+      "local": "selection-reviewed/OpenWebUI-LICENSE_HISTORY.txt",
+      "url": "https://github.com/open-webui/open-webui/blob/b0e6098e940942281d9c83f3529ea117287a3a22/LICENSE_HISTORY",
+      "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
+      "upstream_path": "LICENSE_HISTORY",
+      "expected_bytes": 2872,
+      "role": "reviewed-only-not-adopted"
+    }
+  ]
+}

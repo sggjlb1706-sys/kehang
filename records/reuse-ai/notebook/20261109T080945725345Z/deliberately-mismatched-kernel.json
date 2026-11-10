@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "collected_at": "2026-11-09T08:09:53.955148+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\python.exe",
+    "actual": "D:\\ANACONDA\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.13.9",
+    "dependencies": {
+      "jupyter_client": {
+        "installed": true,
+        "version": "8.6.3",
+        "error": ""
+      },
+      "ipykernel": {
+        "installed": true,
+        "version": "6.30.1",
+        "error": ""
+      }
+    },
+    "kernel": {
+      "spec_path": "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-spec-mismatch-fcxdmd1c\\kernel.json",
+      "exists": true,
+      "spec_sha256": "31b4892c798b77b8ab84f25058ab597e928ca434ed2285fa0eb489f36978aa40",
+      "argv": null,
+      "validated": false,
+      "started": null,
+      "actual": null,
+      "python": null,
+      "error": "内核argv与课程Python不一致，或启动命令未经审查"
+    },
+    "packages": {
+      "numpy": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "内核未运行"
+      },
+      "pandas": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "内核未运行"
+      }
+    },
+    "run": {
+      "returncode": null,
+      "result": null,
+      "stdout": "",
+      "error": "内核未运行",
+      "executed_at": null
+    },
+    "cleanup": {
+      "kernel_stopped": null,
+      "channels_stopped": null,
+      "error": "未启动内核"
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-I",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\campuslab\\notebook_probe.py"
+    ]
+  ],
+  "probe_exit": 0
+}

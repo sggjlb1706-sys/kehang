@@ -1,6 +1,12 @@
 # 本轮来源（2026-11-09）
 
-从 D:\传智杯\versions\competition-courses-20261108 的 e0aca9ca04f350c5db0e3d6f197307260eee6276 以 --no-hardlinks 完整本地克隆，新分支 codex/reuse-ai-courses-20261109。全部既有跟踪产品、文档、测试和真实历史复用；新功能与上游适配按真实改动提交。777跟踪项、778交付项、20产品 blob、31可达提交由本轮独立审计复核。新增运行数据库不复制。外部开源源码、许可证、采用文件/修改摘要将逐项登记 docs/reuse.json 与第三方清单。
+从 D:\传智杯\versions\competition-courses-20261108 的 e0aca9ca04f350c5db0e3d6f197307260eee6276 以 --no-hardlinks 完整本地克隆，新分支 codex/reuse-ai-courses-20261109。全部既有跟踪产品、文档、测试和真实历史复用；新功能与上游适配按真实改动提交。777跟踪项、778交付项、20产品 blob、31可达提交由本轮独立审计复核。新增运行数据库不复制。外部开源源码、许可证、采用文件/修改摘要已逐项登记 docs/reuse.json 与THIRD_PARTY_NOTICES.md。
+
+本轮唯一采用的候选上游教学代码是Educates两份教学动作模板，固定d7e018f0cee382a595d2c9ecc6c938da099eb67e。模板字段/标题正文状态结构移植为campuslab/teaching.py及web/app.js的lesson展示，保留默认3秒冷却；上游脚本spawn分派替换为固定报告checks与本人手动同目标重采。属于适配修改，不称为整平台集成或全新原创。Copyright 2020-2026 The Educates Authors、Apache-2.0 LICENSE/NOTICE原字节保留；原源与适配逐项映射在docs/third-party/educates/ADAPTATION.md和manifest.json。
+
+DSH版本0.2.2-rc.1、commit fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159的官方包/CLI/桌面/安全/provider资料已完整审查，MIT许可原件随留档；campuslab/dsh_course.py是独立实现的元数据/证据接口适配，没有复制或运行DSH成品、凭据或插件。DSH实际Agent任务仍由本人启动授权。Pinokio仅参考思路；Labtainers、TLJH、Open WebUI、Dify暂不采用产品代码，当前许可证与固定版本取舍见docs/开源选型与二次开发-20261109.md。Dify本次HEAD已变为effb39c371aaf0aff3a9e2e26bad836856607e77并重读许可，未沿用旧检查点冒称当前。
+
+其余新增课程采集/固定演示数据与程序是本项目在既有接缝上独立实现，外部组件仅在本人已有环境使用：Notebook用已有Jupyter/NumPy/Pandas，Java调用所选既有JDK，SQLite使用工具Python标准库，DeepSeek API使用固定官方协议，不安装SDK。原Python嵌入ZIP/固定Qwen权重来源和SHA继续适用，未新下载运行时或模型。来源取证有22项原文大小核对及9项官方Git blob复算，详见records/reuse-ai/upstream-heads-20261109.json与各manifest；不把源文件获取写成第三方软件已安装或真实调用成功。
 
 ## 继承来源（历史）
 

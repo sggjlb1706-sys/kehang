@@ -1,0 +1,70 @@
+{
+  "task_id": "97a83c881be376f68ae6ede5f637a6276718912411f48d2d5f8c62526056f983",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\sqlite\\20261109T081437466284Z\\scores.sqlite",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\competition-reuse-ai-20261109\\records\\reuse-ai\\sqlite\\20261109T081437466284Z\\scores.sqlite",
+    "exists": true
+  },
+  "collected_at": "2026-11-09T08:14:44.442374+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "sqlite:runtime",
+      "status": "pass",
+      "observed": {
+        "version": "3.50.2",
+        "tool_runtime": "D:\\ANACONDA\\python.exe"
+      },
+      "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+    },
+    {
+      "id": "sqlite:database",
+      "status": "pass",
+      "observed": {
+        "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+        "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+        "header_valid": true,
+        "error": ""
+      },
+      "requirement": "明确SQLite文件、有效文件头与内容摘要"
+    },
+    {
+      "id": "sqlite:readonly",
+      "status": "pass",
+      "observed": {
+        "mode_ro": true,
+        "before": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+        "after": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9"
+      },
+      "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+    },
+    {
+      "id": "sqlite:query",
+      "status": "pass",
+      "observed": {
+        "read_only": true,
+        "returncode": 0,
+        "rows": [
+          [
+            "A",
+            2,
+            30
+          ],
+          [
+            "B",
+            1,
+            12
+          ]
+        ],
+        "error": ""
+      },
+      "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+    }
+  ],
+  "passed": true
+}

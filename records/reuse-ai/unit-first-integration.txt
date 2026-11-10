@@ -1,0 +1,17 @@
+......................................................F......................................................
+======================================================================
+FAIL: test_ambiguity_errors_conflicts_and_catalog (test_preparation.PreparationTest.test_ambiguity_errors_conflicts_and_catalog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\tests\test_preparation.py", line 35, in test_ambiguity_errors_conflicts_and_catalog
+    self.assertEqual(resolve_need(text)['status'], 'catalog_only')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'recognized' != 'catalog_only'
+- recognized
++ catalog_only
+
+
+----------------------------------------------------------------------
+Ran 109 tests in 3.108s
+
+FAILED (failures=1)

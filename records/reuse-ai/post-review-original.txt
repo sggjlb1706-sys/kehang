@@ -1,0 +1,22 @@
+PASS: Supported goal and preparation never imply environmental success
+PASS: Downloaded embedded runtime and exact generated PS5.1 commands produce actual stable A/B
+PASS: Three guidance modes preserve identical report facts
+PASS: Redacted editable preview and unconfigured AI preserve facts without sending
+PASS: Deliberately missing target remains missing/unknown; bundled interpreter rejected
+PASS: Published immutable course opens through code and rejects another task report
+PASS: Actual fixed offline Qwen evidence is consumed by the same course/report workflow
+PASS: Unsupported goal clears old successful evidence
+PASS: Delayed old analysis cannot restore results after changing goal
+PASS: 390px mobile layout has no horizontal overflow
+Evidence: C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\browser\20261110T003103731709Z
+PASS: Node autonomous goal displays fixed demonstration requirements without inferring a pass
+PASS: Downloaded tool and exact generated PS5.1 commands collect real selected Node/npm stable A/B
+PASS: Three Node guidance modes preserve the identical facts and verdicts
+PASS: Node evidence uses editable redaction and explicit AI consent without any model request
+PASS: Teacher code and autonomous Node entry consume the exact same immutable task and reports
+PASS: Clearly labelled constructed reports with another target or incomplete facts cannot complete recheck
+PASS: Editing the selected target clears old results, comparison and AI consent
+PASS: Node report is rejected under the Python task snapshot
+PASS: 390px Node guidance, reports and teacher form have no horizontal overflow (desktop emulation)
+Evidence: C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\browser\20261110T003116207099Z-node
+{"path": "C:\\Users\\DELL\\Documents\\ChatGPT\\\u4f20\u667a\u676f\\work\\competition-reuse-ai-20261109\\records\\courses\\review-ui\\20261110T003123Z", "status": "passed"}

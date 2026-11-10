@@ -1,0 +1,1 @@
+Created fixed SQLite demo: C:\Users\DELL\Documents\ChatGPT\传智杯\work\competition-reuse-ai-20261109\records\runtime\reuse-data-20261109T082545764681Z\sqlite-basics 工具 O'Brien ‘引’ $literal `tick\scores.sqlite

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "kind": "campuslab-course",
+  "task": {
+    "schema": 1,
+    "title": "Java / JDK · 固定编译运行演示任务",
+    "scenario": "java-jdk",
+    "source": "本项目原创固定Java小程序；JDK21至25以下为演示配置，非学校统一要求",
+    "os": "Windows",
+    "jdk": {
+      "min": "21.0",
+      "max_exclusive": "25.0"
+    },
+    "verify": "same-jdk-fixed-compile-v1",
+    "source_sha256": "bbce8cbe6c4ab4e9aec3f2c76c362f017c9b193766b3f66fe37c42b57dc42904",
+    "expected": 42,
+    "id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3"
+  },
+  "sha256": "aa90359b13ddc4ed9ea28c5d27ceece99296bf25f3d18b79c51886897698f3f2"
+}

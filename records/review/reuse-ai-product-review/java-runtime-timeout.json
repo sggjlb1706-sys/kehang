@@ -1,0 +1,158 @@
+{
+  "constructed_protocol": true,
+  "report": {
+    "schema": 1,
+    "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+    "collected_at": "2026-11-10T00:28:39.002971+00:00",
+    "target": {
+      "requested": "C:\\Program Files\\Zulu\\zulu-21",
+      "actual": "C:\\Program Files\\Zulu\\zulu-21",
+      "exists": true
+    },
+    "facts": {
+      "os": "Windows",
+      "tools": {
+        "java": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+          "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "javac": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+          "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        }
+      },
+      "compile": {
+        "returncode": 0,
+        "stdout": "",
+        "error": "TimeoutExpired: Command '['C:\\\\Program Files\\\\Zulu\\\\zulu-21\\\\bin\\\\java.exe', '-cp', 'C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\Temp\\\\campuslab-java-fixed-42b8wx6u', 'CampusLabFixed']' timed out after 25 seconds"
+      },
+      "run": {
+        "returncode": null,
+        "stdout": "",
+        "error": "尚未编译运行",
+        "home": null
+      }
+    },
+    "commands": [
+      [
+        "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+        "-XshowSettings:properties",
+        "-version"
+      ],
+      [
+        "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+        "-J-XshowSettings:properties",
+        "-version"
+      ],
+      [
+        "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+        "-proc:none",
+        "-encoding",
+        "UTF-8",
+        "-d",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-42b8wx6u",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-42b8wx6u\\CampusLabFixed.java"
+      ],
+      [
+        "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+        "-cp",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\campuslab-java-fixed-42b8wx6u",
+        "CampusLabFixed"
+      ]
+    ]
+  },
+  "analysis": {
+    "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+    "target": {
+      "requested": "C:\\Program Files\\Zulu\\zulu-21",
+      "actual": "C:\\Program Files\\Zulu\\zulu-21",
+      "exists": true
+    },
+    "collected_at": "2026-11-10T00:28:39.002971+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "java:java",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+          "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 java，21.0至25.0以下"
+      },
+      {
+        "id": "java:javac",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+          "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 javac，21.0至25.0以下"
+      },
+      {
+        "id": "java:identity",
+        "status": "pass",
+        "observed": [
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31"
+          },
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8"
+          }
+        ],
+        "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+      },
+      {
+        "id": "java:compile",
+        "status": "mismatch",
+        "observed": {
+          "returncode": 0,
+          "stdout": "",
+          "error": "TimeoutExpired: Command '['C:\\\\Program Files\\\\Zulu\\\\zulu-21\\\\bin\\\\java.exe', '-cp', 'C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\Temp\\\\campuslab-java-fixed-42b8wx6u', 'CampusLabFixed']' timed out after 25 seconds"
+        },
+        "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+      },
+      {
+        "id": "java:run",
+        "status": "unknown",
+        "observed": {
+          "returncode": null,
+          "stdout": "",
+          "error": "尚未编译运行",
+          "home": null
+        },
+        "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+      }
+    ],
+    "passed": false
+  }
+}

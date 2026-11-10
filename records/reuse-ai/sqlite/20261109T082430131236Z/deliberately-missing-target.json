@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+  "collected_at": "2026-11-09T08:24:37.640502+00:00",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\target",
+    "actual": null,
+    "exists": false
+  },
+  "facts": {
+    "os": "Windows",
+    "sqlite": "3.50.2",
+    "tool_runtime": "D:\\ANACONDA\\python.exe",
+    "database": {
+      "sha256": null,
+      "after_sha256": null,
+      "header_valid": null,
+      "error": "数据库不存在"
+    },
+    "query": {
+      "read_only": null,
+      "returncode": null,
+      "rows": null,
+      "error": "数据库未打开"
+    }
+  }
+}

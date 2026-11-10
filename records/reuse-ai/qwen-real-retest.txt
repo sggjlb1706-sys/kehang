@@ -1,0 +1,1 @@
+{"path": "C:\\Users\\DELL\\Documents\\ChatGPT\\\u4f20\u667a\u676f\\work\\competition-reuse-ai-20261109\\records\\courses\\model\\20261109T082014Z", "outcome": "incomplete", "passed": false}

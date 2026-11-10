@@ -1,0 +1,74 @@
+{
+  "retrieved_on": "2026-11-09",
+  "files": [
+    {
+      "local": "selection-reviewed/Dify-LICENSE.txt",
+      "url": "https://github.com/langgenius/dify/blob/effb39c371aaf0aff3a9e2e26bad836856607e77/LICENSE",
+      "commit": "effb39c371aaf0aff3a9e2e26bad836856607e77",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1801,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "232cf91474932d5110ed304e53b6b742a58463857c571fae803fdf2ac36d7bb3",
+      "bytes": 1801,
+      "git_blob_sha1": "329ee302875f292fdd11e12e830562d0be9ade1c"
+    },
+    {
+      "local": "selection-reviewed/Pinokio-LICENSE.txt",
+      "url": "https://github.com/pinokiocomputer/pinokio/blob/ae5f9f394ef735388631e480ed95ab5932d531f6/LICENSE",
+      "commit": "ae5f9f394ef735388631e480ed95ab5932d531f6",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1047,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "454799ad2691bab3af8fda5a9a0d3baf29d517485d36c79a92fc48e07a589881",
+      "bytes": 1047,
+      "git_blob_sha1": "2fcfd23b14cb62d2f3dc3654c36c7b14419520f1"
+    },
+    {
+      "local": "selection-reviewed/Labtainers-license.md",
+      "url": "https://github.com/mfthomps/Labtainers/blob/fc1baca0aa2abe2809d92fbc9e93f5ce719b597e/docs/license.md",
+      "commit": "fc1baca0aa2abe2809d92fbc9e93f5ce719b597e",
+      "upstream_path": "docs/license.md",
+      "expected_bytes": 2731,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "206193d1f339db80a9fe285abcbc541c7d5f062dd761248201fcf1696b2129e0",
+      "bytes": 2731,
+      "git_blob_sha1": "3a6f64f9247be668911189ff4c526dc1605ac08f"
+    },
+    {
+      "local": "selection-reviewed/TLJH-LICENSE.txt",
+      "url": "https://github.com/jupyterhub/the-littlest-jupyterhub/blob/4ad828943d8acaa631708b317a5cfbddb258d3db/LICENSE",
+      "commit": "4ad828943d8acaa631708b317a5cfbddb258d3db",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 1510,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "a9d15a91664e80c13943741b0ab5b618f5a777b7d2a9dd9ff8b53446abc0dc73",
+      "bytes": 1510,
+      "git_blob_sha1": "6d9898b15d1fd6dadd0b417165324c10e75dfe49"
+    },
+    {
+      "local": "selection-reviewed/OpenWebUI-LICENSE.txt",
+      "url": "https://github.com/open-webui/open-webui/blob/b0e6098e940942281d9c83f3529ea117287a3a22/LICENSE",
+      "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
+      "upstream_path": "LICENSE",
+      "expected_bytes": 2819,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232",
+      "bytes": 2819,
+      "git_blob_sha1": "99f39e7feff29c93342877adad2d5c15e707444c"
+    },
+    {
+      "local": "selection-reviewed/OpenWebUI-LICENSE_HISTORY.txt",
+      "url": "https://github.com/open-webui/open-webui/blob/b0e6098e940942281d9c83f3529ea117287a3a22/LICENSE_HISTORY",
+      "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
+      "upstream_path": "LICENSE_HISTORY",
+      "expected_bytes": 2872,
+      "role": "reviewed-only-not-adopted",
+      "sha256": "b1567cc9763241a41569e01f08272a167dac57273f717b95b31ba7b5ec935e17",
+      "bytes": 2872,
+      "git_blob_sha1": "a9eb5e259d6df16ab6456cf1ba7b9f7a890bbafa"
+    }
+  ],
+  "upstream_code_executed": false,
+  "dependency_installations": 0,
+  "product_adaptation": null
+}

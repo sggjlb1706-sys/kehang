@@ -1,0 +1,59 @@
+{
+  "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\target",
+    "actual": null,
+    "exists": false
+  },
+  "collected_at": "2026-11-09T08:24:37.640502+00:00",
+  "checks": [
+    {
+      "id": "os",
+      "status": "pass",
+      "observed": "Windows",
+      "requirement": "Windows"
+    },
+    {
+      "id": "sqlite:runtime",
+      "status": "pass",
+      "observed": {
+        "version": "3.50.2",
+        "tool_runtime": "D:\\ANACONDA\\python.exe"
+      },
+      "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+    },
+    {
+      "id": "sqlite:database",
+      "status": "missing",
+      "observed": {
+        "sha256": null,
+        "after_sha256": null,
+        "header_valid": null,
+        "error": "数据库不存在"
+      },
+      "requirement": "明确SQLite文件、有效文件头与内容摘要"
+    },
+    {
+      "id": "sqlite:readonly",
+      "status": "unknown",
+      "observed": {
+        "mode_ro": null,
+        "before": null,
+        "after": null
+      },
+      "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+    },
+    {
+      "id": "sqlite:query",
+      "status": "unknown",
+      "observed": {
+        "read_only": null,
+        "returncode": null,
+        "rows": null,
+        "error": "数据库未打开"
+      },
+      "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+    }
+  ],
+  "passed": false
+}

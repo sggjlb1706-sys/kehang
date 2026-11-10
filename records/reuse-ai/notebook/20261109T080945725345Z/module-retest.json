@@ -1,0 +1,9 @@
+{
+  "real_local": true,
+  "device": "same development computer",
+  "identity_checked": true,
+  "time_order_checked": true,
+  "both_passed": true,
+  "shared_rules_retest_pending": true,
+  "physical_second_device": false
+}

@@ -1,0 +1,4 @@
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\notebook\run-real.py", line 38
+    missing=module.collect(spec,r'C:\CampusLab-Deliberately-Missing\'+('python.exe' if label=='notebook' else 'target'),**extra)
+                                                                                                                     ^
+SyntaxError: unterminated string literal (detected at line 38)

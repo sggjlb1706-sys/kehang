@@ -1,0 +1,110 @@
+{
+  "original_snapshots_equal": {
+    "python-basics": true,
+    "node-basics": true,
+    "local-qwen": true,
+    "pytorch-cpu": true,
+    "pytorch-gpu": true,
+    "vm-linux": true
+  },
+  "new_current_reports_recomputed": [
+    {
+      "scenario": "notebook-data",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": {
+        "os": "pass",
+        "python": "pass",
+        "package:jupyter_client": "pass",
+        "package:ipykernel": "pass",
+        "notebook:spec": "pass",
+        "notebook:identity": "pass",
+        "package:numpy": "pass",
+        "package:pandas": "pass",
+        "notebook:run": "pass",
+        "notebook:cleanup": "pass"
+      }
+    },
+    {
+      "scenario": "java-jdk",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": {
+        "os": "pass",
+        "java:java": "pass",
+        "java:javac": "pass",
+        "java:identity": "pass",
+        "java:compile": "pass",
+        "java:run": "pass"
+      }
+    },
+    {
+      "scenario": "sqlite-basics",
+      "outcome": "stable-pass",
+      "passed": true,
+      "checks": {
+        "os": "pass",
+        "sqlite:runtime": "pass",
+        "sqlite:database": "pass",
+        "sqlite:readonly": "pass",
+        "sqlite:query": "pass"
+      }
+    },
+    {
+      "scenario": "deepseek-api",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": {
+        "os": "pass",
+        "python": "pass",
+        "api:dependency": "pass",
+        "api:request": "pass",
+        "api:protocol": "unknown",
+        "api:exercise": "unknown"
+      }
+    },
+    {
+      "scenario": "ai-web-deepseek",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": {
+        "web:workspace": "pass",
+        "web:self-record": "unknown",
+        "web:artifact": "unknown",
+        "web:login": "unknown"
+      }
+    },
+    {
+      "scenario": "dsh-desktop",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": {
+        "os": "pass",
+        "dsh:software": "missing",
+        "dsh:workspace": "pass",
+        "dsh:model": "unknown",
+        "dsh:permission": "unknown",
+        "dsh:tools": "unknown",
+        "dsh:artifact": "missing"
+      }
+    },
+    {
+      "scenario": "dsh-cli",
+      "outcome": "incomplete",
+      "passed": false,
+      "checks": {
+        "os": "pass",
+        "dsh:software": "missing",
+        "dsh:node": "pass",
+        "dsh:workspace": "pass",
+        "dsh:model": "unknown",
+        "dsh:permission": "unknown",
+        "dsh:tools": "unknown",
+        "dsh:artifact": "missing"
+      }
+    }
+  ],
+  "qwen_latest_passed": true,
+  "qwen_latest_target": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\model-venv\\Scripts\\python.exe",
+  "scope": "Reanalysis of archived actual collector reports, not fresh collection or second device"
+}

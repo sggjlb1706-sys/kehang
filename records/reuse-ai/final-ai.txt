@@ -1,0 +1,7 @@
+PASS: API exact destination/model/system/content preview is editable; editing revokes send selection
+PASS: deepseek-api: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: ai-web-deepseek: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-desktop: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: dsh-cli: actual download/collector/A-B/import/package/offline/share/keyboard/mobile/invalid-state; no external call
+PASS: Constructed correct self record only completes learning; login unknown; selected target mismatch rejects import
+Evidence: C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\competition-reuse-ai-20261109\records\reuse-ai\browser-ai\20261109T082513596289Z

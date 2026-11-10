@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+  "collected_at": "2026-11-09T08:14:22.550609+00:00",
+  "target": {
+    "requested": "C:\\Program Files\\DeepSeek Harness\\DeepSeek Harness.exe",
+    "actual": null,
+    "exists": false
+  },
+  "facts": {
+    "os": "Windows",
+    "installation": {
+      "route": "desktop",
+      "exists": false,
+      "product": null,
+      "version": null,
+      "sha256": null,
+      "package_json": null,
+      "bin": null,
+      "bin_sha256": null,
+      "node_requirement": null,
+      "error": "尚未取得安装证据"
+    },
+    "runtime": {
+      "kind": "bundled-electron",
+      "actual": null,
+      "version": null,
+      "sha256": null,
+      "error": "桌面程序自带Electron运行时；本工具不执行或读取其凭据/会话"
+    },
+    "workspace": {
+      "requested": null,
+      "actual": null,
+      "exists": null,
+      "id": null,
+      "task_id": null,
+      "input_sha256": null,
+      "error": "尚未选择专用练习目录"
+    },
+    "model": {
+      "provider": null,
+      "model": null,
+      "connection": null
+    },
+    "permission": null,
+    "artifact": {
+      "exists": null,
+      "sha256": null,
+      "value": null,
+      "error": "尚无产物"
+    },
+    "agent": null
+  }
+}

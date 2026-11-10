@@ -1,4 +1,66 @@
 {
+  "extension_20261109": {
+    "base": "D:/传智杯/versions/competition-courses-20261108",
+    "head": "e0aca9ca04f350c5db0e3d6f197307260eee6276",
+    "branch": "codex/reuse-ai-courses-20261109",
+    "method": "Full-history --no-hardlinks local clone; all existing tracked product/tests/docs/history inherited; no history rewrite or private course database copied",
+    "adopted": [
+      {
+        "project": "Educates Training Platform",
+        "repository": "https://github.com/educates/educates-training-platform",
+        "commit": "d7e018f0cee382a595d2c9ecc6c938da099eb67e",
+        "kind": "adapted modification / structure-and-field port of two teaching action templates",
+        "paths": [
+          "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/actions/examiner-execute-test.html",
+          "workshop-images/base-environment/opt/eduk8s/etc/themes/educates/layouts/partials/clickable-action.html"
+        ],
+        "license": "Apache-2.0",
+        "copyright": "Copyright 2020-2026 The Educates Authors.",
+        "local_originals_and_hashes": "docs/third-party/educates/manifest.json",
+        "license_file": "docs/third-party/educates/LICENSE",
+        "notice_file": "docs/third-party/educates/NOTICE",
+        "adaptation": "docs/third-party/educates/ADAPTATION.md",
+        "product_entry": ["campuslab/teaching.py", "web/app.js lesson rendering"],
+        "changes": "Port name/title/description/cooldown and title/body/status structure; map to closed deterministic report check IDs; replace HTTP script spawn with user manual recollection; reject shell/args/autostart/unlimited retries; preserve four states and task identity",
+        "new_dependencies": [],
+        "upstream_platform_installed": false,
+        "upstream_backend_executed": false,
+        "tests": "tests/test_teaching.py; actual integrated browser evidence recorded separately"
+      }
+    ],
+    "interface_adaptations": [
+      {
+        "project": "DeepSeek Harness",
+        "repository": "https://github.com/deepseek-ai/deepseek-harness",
+        "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+        "supported_version": "0.2.2-rc.1",
+        "kind": "independent implementation of static metadata and minimal user task-evidence interface; no DSH runtime or business code imported",
+        "license": "MIT",
+        "reviewed_originals": "docs/third-party/dsh-reviewed/manifest.json",
+        "license_file": "docs/third-party/dsh-reviewed/LICENSE",
+        "product_entry": "campuslab/dsh_course.py",
+        "cli_node_requirement": ">=24.9.0",
+        "desktop_uses_bundled_runtime": true,
+        "dsh_launched_by_collector": false,
+        "credential_files_read": false,
+        "tests_and_real_scope": "records/reuse-ai/dsh/README.md"
+      }
+    ],
+    "reviewed_not_adopted": [
+      {"project": "Pinokio", "commit": "ae5f9f394ef735388631e480ed95ab5932d531f6", "kind": "reference only", "license": "MIT", "reason": "Arbitrary shell/download/execute launcher not imported"},
+      {"project": "Labtainers", "commit": "fc1baca0aa2abe2809d92fbc9e93f5ce719b597e", "kind": "not adopted", "license": "NPS government-work conditions and separate third-party/SEED lab licenses", "reason": "Linux/Docker labs need separate actual guest/container evidence"},
+      {"project": "The Littlest JupyterHub", "commit": "4ad828943d8acaa631708b317a5cfbddb258d3db", "kind": "optional teacher route only", "license": "BSD-3-Clause", "reason": "No automatic centralized server deployment"},
+      {"project": "Open WebUI", "commit": "b0e6098e940942281d9c83f3529ea117287a3a22", "kind": "not adopted", "license": "Open WebUI License with branding terms; LICENSE_HISTORY for prior materials", "reason": "No complete chat frontend imported or rebranded"},
+      {"project": "Dify", "commit": "effb39c371aaf0aff3a9e2e26bad836856607e77", "kind": "not adopted", "license": "Modified Apache-2.0 with multi-tenant and frontend logo/copyright conditions", "reason": "Workflow platform and deployment beyond fixed course scope"}
+    ],
+    "official_current_head_record": "records/reuse-ai/upstream-heads-20261109.json",
+    "selection": "docs/开源选型与二次开发-20261109.md",
+    "notices": "THIRD_PARTY_NOTICES.md",
+    "new_runtime_or_model_downloads": false,
+    "third_party_app_installations": false,
+    "original_demo_data": "Fixed Notebook arrays/CSV, Java source, SQLite dataset and DSH CSV exercise created for this project; not user data",
+    "historical_records_below": "The remaining root records describe earlier rebuilds and retain their original historical scope"
+  },
   "product_implementation": "new implementation of own existing product; no old business modules imported at setup",
   "historical_documents": [
     {

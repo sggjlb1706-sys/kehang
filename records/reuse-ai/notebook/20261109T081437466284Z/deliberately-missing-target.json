@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+  "collected_at": "2026-11-09T08:14:42.895380+00:00",
+  "target": {
+    "requested": "C:\\CampusLab-Deliberately-Missing\\python.exe",
+    "actual": null,
+    "exists": false
+  },
+  "facts": {
+    "os": "Windows",
+    "python": null,
+    "dependencies": {
+      "jupyter_client": {
+        "installed": null,
+        "version": null,
+        "error": "课程Python未运行"
+      },
+      "ipykernel": {
+        "installed": null,
+        "version": null,
+        "error": "课程Python未运行"
+      }
+    },
+    "kernel": {
+      "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+      "exists": true,
+      "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+      "argv": null,
+      "validated": false,
+      "started": null,
+      "actual": null,
+      "python": null,
+      "error": "内核argv与课程Python不一致，或启动命令未经审查"
+    },
+    "packages": {
+      "numpy": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "真实内核未运行"
+      },
+      "pandas": {
+        "installed": null,
+        "version": null,
+        "imported": null,
+        "path": null,
+        "error": "真实内核未运行"
+      }
+    },
+    "run": {
+      "returncode": null,
+      "result": null,
+      "stdout": "",
+      "error": "真实内核未运行",
+      "executed_at": null
+    },
+    "cleanup": {
+      "kernel_stopped": null,
+      "channels_stopped": null,
+      "error": "未启动内核"
+    }
+  },
+  "commands": []
+}
