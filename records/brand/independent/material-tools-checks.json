@@ -1,0 +1,23 @@
+{
+  "material_head": "7f60881d89d371f64b1e02c759c48bd079304b0f",
+  "source_files_verified": 81,
+  "actual_smoke_checks": 14,
+  "passed": true,
+  "port_negative": {
+    "constructed_local_listener": true,
+    "port": 8782,
+    "returncode": 1,
+    "listener_still_open": true,
+    "smoke_json_emitted": false,
+    "stderr_last_line": "OSError: [WinError 10048] ͨ��ÿ���׽��ֵ�ַ(Э��/�����ַ/�˿�)ֻ����ʹ��һ�Ρ�",
+    "only_owned_listener_closed_by_context": true
+  },
+  "reviewed_files": {
+    "tools/build_kehang_pdf.py": "7F29311648F72498E70BE654C6514E2E450EECFAB719E561176F22DCC2824927",
+    "tools/freeze_brand.py": "B9C3E7E790A74244EFF78BB4AD3BC3B1176FA5853E231BDAE98C1367A9FFA404",
+    "tools/deliver_kehang.py": "0C60082F7DD073893C26E55242E5D33DA8D1E8ADE13ED620BC07F0F92EB90EDC",
+    "tools/kehang_smoke.py": "DF495CBDB5AEF18BD47A695BF3346B22AC2BCB4B1D0E99D0960A061B4B55C7CA",
+    ".gitignore": "4A1F68F7CB294B5DE1A48EFD1047C41DE93621D43678FEEA5CC4C49F13B86948"
+  },
+  "d_release_not_executed": true
+}

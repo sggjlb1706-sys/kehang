@@ -1,0 +1,9 @@
+{
+  "constructed_local_listener": true,
+  "port": 8782,
+  "returncode": 1,
+  "listener_still_open": true,
+  "smoke_json_emitted": false,
+  "stderr_last_line": "OSError: [WinError 10048] ͨ��ÿ���׽��ֵ�ַ(Э��/�����ַ/�˿�)ֻ����ʹ��һ�Ρ�",
+  "only_owned_listener_closed_by_context": true
+}

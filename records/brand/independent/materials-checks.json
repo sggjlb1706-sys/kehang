@@ -1,0 +1,112 @@
+{
+  "checked_at": "2026-11-10T05:51:18.786204+00:00",
+  "material_head": "7f60881d89d371f64b1e02c759c48bd079304b0f",
+  "product_head": "1eadacb6eee7ab4fc013ca586b863e36d6ef8559",
+  "pdf_sha256": "32B3718005CC2AD215EB556B855C9F60E6737681801B81BE28D6062230693451",
+  "pages": [
+    {
+      "page": 1,
+      "text_characters": 691,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "9C50E99827DA8DD75EA58958EBDE5322FE286FE97B1110157DC90C89C81FF413",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 2,
+      "text_characters": 704,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "666714B0E9B74E4D6D4ACC6BF5F84D6FD8676DA751E05834F988B3AFF2A33537",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 3,
+      "text_characters": 853,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "827A9F53BDD4AA3576943E87476CA26B56E7352235CFBE1C28CD226FCF45872A",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 4,
+      "text_characters": 951,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "7036EC946E27FB8E11E692AFE852C40DB59C2215F3A0A867375AF0F35C020EDA",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 5,
+      "text_characters": 835,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "64B6703F6204DB37D5E1A63563F99D4AC6FFAC3529FF0FC8A9E5EC05628594D7",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 6,
+      "text_characters": 909,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "CE594644FE070E9160E55F3A53F68E520154503FBD507F48849F5289A216B208",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 7,
+      "text_characters": 914,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "02E425ED19E41DD9BB6F679C82384765F917B5E6C1FAB82E9A97E3C77B1E6BFE",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 8,
+      "text_characters": 775,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "1006EF04561668155F1743094239F7806EF726F9491F6853F6ED1EB65FB46141",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 9,
+      "text_characters": 320,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "62576B9C55DA3D04CFD479092DD3401C283A5B65C60CC1B36A3FE093D3BBF0CE",
+      "original_png_sha_matches": true
+    },
+    {
+      "page": 10,
+      "text_characters": 1137,
+      "out_of_bounds_text": [],
+      "rerender_sha256": "FBBC92F6C59BF45C43BCF07265E2F19990E0E1D22D1AA0ADD8B52EC036598F19",
+      "original_png_sha_matches": true
+    }
+  ],
+  "independent_poppler_render_all_ten_match": true,
+  "pdf_font_text_no_replacement_characters": true,
+  "source_files": 81,
+  "source_sha_matches": true,
+  "prompt_source_prefix_bytes": 8946342,
+  "prompt_source_prefix_sha256": "176FF908110BACBF7D467D742D0F8958A1CBCA0C022783E389FA116CF674EFF2",
+  "prompt_counts": {
+    "visible": 32,
+    "user": 6,
+    "assistant": 26,
+    "redacted": 2
+  },
+  "prompt_excluded": {
+    "injected_context": 6
+  },
+  "prompt_messages_reextracted_identical": true,
+  "naming_feedback_source_line": 1402,
+  "naming_confirmation_source_line": 1463,
+  "continue_source_line": 1538,
+  "material_files_equal_fixed_head": [
+    "docs/课航命名与版本说明.md",
+    "docs/课航视频录制脚本.md",
+    "docs/课航提交准备清单.md",
+    "docs/课航Prompt与验证索引.md",
+    "README.md",
+    "PRODUCT.md",
+    "DESIGN.md",
+    "TASK.md",
+    "PLAN.md",
+    "HANDOFF.md",
+    "REVIEW.md",
+    "PROVENANCE.md"
+  ],
+  "scope": "Read-only existing PDF and exact visible Prompt prefix; no authoring, external model call, install or D-write."
+}
