@@ -13,8 +13,9 @@ class LauncherTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='课航 工具 ') as name:
             root=Path(name);spec=task('python-basics')
             (root/'task.json').write_text(json.dumps(spec),encoding='utf-8')
+            target=root/'课程 Python/python.exe';target.parent.mkdir();target.write_bytes(b'unit selection fixture')
             with patch('campuslab.launcher.collect') as collector:
-                answers=iter([r'C:\Course Python\python.exe','A','取消'])
+                answers=iter([str(target),'A','取消'])
                 self.assertIsNone(run(root,lambda _:next(answers),lambda _:None))
                 collector.assert_not_called()
             self.assertFalse((root/'report-A.json').exists())
@@ -24,9 +25,10 @@ class LauncherTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as name:
             root=Path(name);spec=task('python-basics')
             (root/'task.json').write_text(json.dumps(spec),encoding='utf-8')
+            target=root/'课程 Python/python.exe';target.parent.mkdir();target.write_bytes(b'unit selection fixture')
             (root/'report-A.json').write_text('original',encoding='utf-8')
             with patch('campuslab.launcher.collect') as collector:
-                answers=iter([r'C:\Course\python.exe','A'])
+                answers=iter([str(target),'A'])
                 with self.assertRaisesRegex(ValueError,'已存在'):
                     run(root,lambda _:next(answers),lambda _:None)
                 collector.assert_not_called()
@@ -40,7 +42,9 @@ class LauncherTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='课航 内核 ') as name:
             root=Path(name);spec=task('notebook-data')
             (root/'task.json').write_text(json.dumps(spec),encoding='utf-8')
-            target=r'C:\Course Python\python.exe';kernel=r'C:\Course Kernel\kernel.json'
+            python=root/'课程 Python/python.exe';python.parent.mkdir();python.write_bytes(b'unit selection fixture')
+            specfile=root/'课程 Kernel/kernel.json';specfile.parent.mkdir();specfile.write_text('{}')
+            target=str(python);kernel=str(specfile)
             report={'task_id':spec['id'],'fixed_test':True}
             with patch('campuslab.launcher.collect',return_value=report) as collector:
                 answers=iter([target,kernel,'B','START'])

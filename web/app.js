@@ -285,6 +285,7 @@ function renderPreparation(plan){
 function syncCollector(){
   const simple=!!state.task&&['python-basics','notebook-data'].includes(state.task.scenario)&&!!state.config?.portable_available;
   $('simple-collector').hidden=!simple;
+  $('kernel-path-help').hidden=state.task?.scenario!=='notebook-data';
   $('command-panel').open=!simple||guided.manualCollectorChosen;
   $('command-panel').querySelector('summary').textContent=simple?'无法双击运行？使用手动采集入口':'填写本次检测要用的路径';
 }

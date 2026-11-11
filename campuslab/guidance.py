@@ -46,6 +46,10 @@ def plan(spec, mode='novice', resources=None, report=None):
         else:
             recommendation='已取得内存证据，可尝试本任务固定0.5B模型；显卡未知时可走CPU，最终能否运行以实际推理为准。'
         recommendation+=' 本任务不以GPU缺失直接判失败；4GiB是本演示的操作提示，不能保证性能。'
+    if spec['scenario']=='python-basics':
+        steps[1]=('选择课程 Python，不必先记完整路径','若下载包带Start-Collect.cmd，双击后按回车列出已登记的Python，再输入编号；未找到可按F浏览python.exe或输入?查看开始菜单/Anaconda查找方法。候选尚未检测，选择后仍需确认START。未安装时先从官方准备课程允许的版本。')
+        steps[2]=('完整解压检测工具','不要在ZIP中直接运行。带Start-Collect.cmd时可使用编号选择；不带该入口时，使用网页手动采集入口。包内runtime仅负责检测，不能作为课程Python。')
+        steps[3]=('主动采集并带回初检报告','核对固定任务、所选Python和报告阶段A后，输入START才开始固定采集。使用手动入口时由本人检查并运行命令。导入report-A.json后查看缺失、不符合和未知。')
     if mode == 'standard':
         steps=[steps[0],steps[2],steps[-3],steps[-2],steps[-1]]
     elif mode == 'quick':
@@ -69,7 +73,7 @@ def learning_plan(spec,mode,report):
     scenario=spec['scenario']
     from .ai_course import QUESTION, SOURCES
     if scenario=='notebook-data':
-        steps=[('选择真正的课程内核','在Jupyter内核设置确认课程Python；填写该python.exe和已有kernelspec目录中的kernel.json。可手动执行 & "课程python.exe" -m jupyter kernelspec list 找位置。工具只接受明确ipykernel启动格式，不运行内核配置中的任意命令或环境变量。'),
+        steps=[('选择真正的课程内核','在Jupyter内核设置确认课程Python。带Start-Collect.cmd的检测包可按回车列Python候选、按编号选择，再按F选择kernel.json；找内核目录时，在课程Python终端手动运行python -m jupyter kernelspec list。不带入口时使用网页手动命令。工具只接受明确ipykernel启动格式，不运行内核配置中的任意命令或环境变量。'),
                ('核对数据与依赖','所选Python需要已有jupyter_client、ipykernel、NumPy、Pandas。内核真正启动后读取sys.executable与依赖版本，执行随固定任务审查的小数据计算；找到包不表示内核已经运行。'),
                ('运行与处理差异','生成并运行手动命令。缺解释器、缺依赖、内核错配、版本不符、启动/计算失败分别看原始证据。工具只清理自己创建的临时内核，不操作已有会话。')]
         links=[dict(title='Jupyter kernelspec 官方说明',url='https://jupyter-client.readthedocs.io/en/stable/kernels.html')]

@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "Python/Notebook downloads contain new selector and matching offline path help; ZIP CRC and source bytes verified",
+    "Actual embedded-runtime launcher lists local registered/PATH candidates without starting a course program; Q writes no report",
+    "Actual new downloaded runtime collects explicit existing course Python A/B only after START; both pass same-target comparison",
+    "Actual Windows native dialog selects Unicode/space fixture path and cancels via process-owned UI Automation, without executing fixture",
+    "Point-of-use Python finding steps, optional Anaconda manual command, Notebook kernel help and 390px layout work with no remote requests"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "native_dialog": [
+    {
+      "cancelled": false,
+      "passed": true,
+      "unicode_space_path": true
+    },
+    {
+      "cancelled": true,
+      "passed": true,
+      "unicode_space_path": false
+    }
+  ],
+  "passed": true,
+  "scope": "Agent-owned temporary services; actual local fixed Python A/B; native dialog fixture is not executed; no install/model request."
+}

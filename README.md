@@ -1,4 +1,8 @@
-# 课航 · 新手分步引导版
+# 课航 · 路径选择引导版
+
+检测窗口不再要求新手先知道完整路径：直接按回车/L列出已登记的Python候选，输入编号选择；F打开文件窗口，?查看详细查找方法，Q退出；也保留粘贴/拖入路径。候选不是检测结论，最终核对并输入START才运行。网页“运行检测”步骤及包内“查找课程Python与内核.txt”均有对应说明。
+
+**请从这个新版本重新下载检测工具，完整解压到新文件夹。** 已经解压的旧Start-Collect.cmd仍调用旧程序，刷新网页不会替换旧包；原A/B报告保持原样。Notebook的kernel.json也可用F选择，具体目录查找步骤在网页和终端?帮助中。
 
 首次打开先看到“开始 Python 基础”，也可以选择其他课程、进入 Notebook ＋ SQLite 实训，或导入老师的课程。课程按“选择课程 → 准备环境 → 运行检测 → 查看与复检”逐步展开，每次只显示当前步骤。“上一步 / 下一步”保持在页面底部可见，教师发布与核对放在独立工作台。
 
@@ -9,10 +13,10 @@
 完整解压，进入有 `campuslab`、`web` 和 `vendor` 的根目录。网页服务使用已有 Python 3.10 或以上，只有标准库依赖。本机已核验的解释器为 `D:\ANACONDA\python.exe`。其他电脑将下一行的解释器替换为自己的绝对路径，也可使用已配置的 `python`。
 
 ```powershell
-& 'D:\ANACONDA\python.exe' -B -m campuslab.web --port 8786 --database '.\data\guided.sqlite' --runtime-zip '.\vendor\python-3.13.17-embed-amd64.zip'
+& 'D:\ANACONDA\python.exe' -B -m campuslab.web --port 8787 --database '.\data\path-help.sqlite' --runtime-zip '.\vendor\python-3.13.17-embed-amd64.zip'
 ```
 
-打开 http://127.0.0.1:8786/ 。端口被占用时换一个空闲端口，并用相同端口访问。按 Ctrl+C 停止本次服务。上面的路径会创建专用课程库。为演示教师与学生分别启动两个实例时，第二个实例请同时改端口和数据库文件名。
+打开 http://127.0.0.1:8787/ 。端口被占用时换一个空闲端口，并用相同端口访问。按 Ctrl+C 停止本次服务。上面的路径会创建专用课程库。为演示教师与学生分别启动两个实例时，第二个实例请同时改端口和数据库文件名。
 
 ## 用一堂课复核产品
 
@@ -25,7 +29,7 @@
 
 ## 评审材料
 
-- 本轮UI变更、真实用户反馈、截图和验证见 `docs/引导版改动与验收.md`、`records/guided`，独立结论见 `REVIEW.md`。本轮没有重新录制参赛成片。
+- 本轮路径选择变更、真实反馈及验证见 `docs/路径引导改动与验收.md`、`records/path-help`，独立结论见 `REVIEW.md`。继承的上一轮UI证据见 `docs/引导版改动与验收.md`、`records/guided`，只适用其所标版本。本轮没有重新录制参赛成片。
 - 全历史包中的 `output/pdf/课航_实训闭环技术文档.pdf` 与 `output/video/课航_实训闭环演示.mp4` 是继承自 `451d7b9` 的上一版材料，能说明旧实训，但其中界面不是本轮新UI。新评审运行副本不把旧媒体作为新界面演示。
 - `docs/实训版操作前后对照.md` 记录代表路径的实际输入和文件选择次数。`docs/实训版Prompt链逐项核查.md` 给出过程来源与缺项。
 - 全历史本机包另含 `records/practice/lab-run` 的执行后 Notebook、SQL、课堂产物与组件 A/B，`records/practice/completion-local.json` 的完整实际核验过程，以及 `REVIEW.md` 的独立审查入口。本机原始环境报告含本机路径。

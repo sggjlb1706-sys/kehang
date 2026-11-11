@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Python/Notebook downloads contain new selector and matching offline path help; ZIP CRC and source bytes verified",
+    "Actual embedded-runtime launcher lists local registered/PATH candidates without starting a course program; Q writes no report",
+    "Actual new downloaded runtime collects explicit existing course Python A/B only after START; both pass same-target comparison"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-path-help-20261111\\tools\\verify_path_help.py\", line 114, in main\n    result['native_dialog']=dialog_check(folder)\n                            ~~~~~~~~~~~~^^^^^^^^\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-path-help-20261111\\tools\\verify_path_help.py\", line 70, in dialog_check\n    raise RuntimeError('Owned dialog automation failed; native stderr retained in external test evidence')\nRuntimeError: Owned dialog automation failed; native stderr retained in external test evidence\n",
+  "scope": "Agent-owned temporary services; actual local fixed Python A/B; native dialog fixture is not executed; no install/model request."
+}

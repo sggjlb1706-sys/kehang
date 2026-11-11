@@ -93,7 +93,9 @@ class Handler(BaseHTTPRequestHandler):
             for name in ['__init__.py', 'rules.py', 'collect.py', 'probe.py']:
                 z.writestr('campuslab/' + name, (ROOT/'campuslab'/name).read_bytes())
             if spec['scenario'] in ('python-basics', 'notebook-data') and self.server.runtime_zip and self.server.runtime_zip.is_file():
+                from .launcher import PATH_HELP
                 z.writestr('campuslab/launcher.py', (ROOT/'campuslab/launcher.py').read_bytes())
+                z.writestr('查找课程Python与内核.txt',PATH_HELP)
                 z.writestr('Start-Collect.cmd', '@echo off\r\nsetlocal DisableDelayedExpansion\r\ncd /d "%~dp0"\r\n"%~dp0runtime\\python.exe" -X utf8 -B -m campuslab.launcher\r\npause\r\n')
             if spec['scenario'] == 'node-basics':
                 for name in ['node_collect.py', 'node_probe.js']:

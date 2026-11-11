@@ -1,4 +1,6 @@
-# 课航新手引导版交接
+# 课航路径选择引导版交接
+
+当前目录work/kehang-path-help-20261111，分支codex/kehang-path-help-20261111，从ffdeca59完整继承。新包的Start-Collect.cmd启动路径选择向导；旧解压目录不自动更新，需从新网页重新下载并解压到新目录。验收入口records/path-help/acceptance.json，新审查与交付以当前REVIEW及仓库外“交付/课航路径引导-20261111”回执为准。以下为继承的上一轮说明，只对其标明版本有效。
 
 当前开发目录为work/kehang-guided-20261111，分支codex/kehang-guided-20261111，继承实训版451d7b9全部历史。首页、单项课程四步、连续实训四步和独立教师工作台已实现；新入口以本版README为准。浏览器验收入口records/guided/acceptance.json；产品候选提交及只读审查以本版REVIEW和新交付回执为准。
 

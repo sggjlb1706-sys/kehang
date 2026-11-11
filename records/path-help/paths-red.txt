@@ -1,0 +1,53 @@
+EEEEEE
+======================================================================
+ERROR: test_browse_returns_unicode_space_path_and_cancel_is_retryable (test_launcher_paths.LauncherPathTests.test_browse_returns_unicode_space_path_and_cancel_is_retryable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 24, in test_browse_returns_unicode_space_path_and_cancel_is_retryable
+    from campuslab.launcher import choose_path
+ImportError: cannot import name 'choose_path' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+======================================================================
+ERROR: test_discovery_failure_gives_manual_recovery_and_q_cancels (test_launcher_paths.LauncherPathTests.test_discovery_failure_gives_manual_recovery_and_q_cancels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 58, in test_discovery_failure_gives_manual_recovery_and_q_cancels
+    from campuslab.launcher import choose_path
+ImportError: cannot import name 'choose_path' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+======================================================================
+ERROR: test_discovery_filters_runtime_missing_alias_and_deduplicates (test_launcher_paths.LauncherPathTests.test_discovery_filters_runtime_missing_alias_and_deduplicates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 42, in test_discovery_filters_runtime_missing_alias_and_deduplicates
+    from campuslab.launcher import discover_python
+ImportError: cannot import name 'discover_python' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+======================================================================
+ERROR: test_enter_lists_candidates_and_number_selects_without_running_python (test_launcher_paths.LauncherPathTests.test_enter_lists_candidates_and_number_selects_without_running_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 16, in test_enter_lists_candidates_and_number_selects_without_running_python
+    from campuslab.launcher import choose_path
+ImportError: cannot import name 'choose_path' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+======================================================================
+ERROR: test_invalid_directory_runtime_and_missing_file_can_recover_without_collect (test_launcher_paths.LauncherPathTests.test_invalid_directory_runtime_and_missing_file_can_recover_without_collect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 31, in test_invalid_directory_runtime_and_missing_file_can_recover_without_collect
+    from campuslab.launcher import choose_path
+ImportError: cannot import name 'choose_path' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+======================================================================
+ERROR: test_kernel_browse_is_explicit_and_wrong_filename_retries (test_launcher_paths.LauncherPathTests.test_kernel_browse_is_explicit_and_wrong_filename_retries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\tests\test_launcher_paths.py", line 51, in test_kernel_browse_is_explicit_and_wrong_filename_retries
+    from campuslab.launcher import choose_path
+ImportError: cannot import name 'choose_path' from 'campuslab.launcher' (C:\Users\DELL\Documents\ChatGPT\���Ǳ�\work\kehang-path-help-20261111\campuslab\launcher.py)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.031s
+
+FAILED (errors=6)
