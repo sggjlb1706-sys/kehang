@@ -1,0 +1,28 @@
+{
+  "head": "6b7e6119103050f43198ba7e26aa9534146b235b",
+  "web_sha256": {
+    "web/app.js": "FC0AC2476C88BF350BDC71335C0B9A1200FCFAD8844410A914E0CC7D002614CB",
+    "web/index.html": "934EE48FDE8F9DA05987F1BE2DE2EFFA8316E584C6DCCFB5EF78528162A76308",
+    "web/style.css": "758B77AD29C4F6A447C42546F5A1E51D3910975B706B678466774F57138DEA7D"
+  },
+  "source_clean": true,
+  "campuslab_unchanged_from_451d7b9": true,
+  "closed_P2": 4,
+  "remaining_blockers": 0,
+  "independent_browser_groups": 13,
+  "additional_checks": [
+    "Frozen snapshot independently re-ran all 13 browser groups from execution script; same computer, archived A/B only",
+    "Wrong-target single B rejected; valid original A preserved and review makes no recheck success claim",
+    "Late single import leaves later home navigation intact",
+    "Same single package can be selected again after cancellation and after successful import",
+    "Late practice import leaves later home navigation intact",
+    "Same practice package can be selected again after cancellation and after successful import",
+    "No portable runtime shows manual target/command path and expandable existing-tool-Python fallback; no automatic installation",
+    "Late config preserves deliberate manual input choice and selected target, while removing mandatory-manual hint",
+    "Late config preserves deliberate manual summary choice and selected target, while removing mandatory-manual hint",
+    "Late need/error lookup does not reopen diagnostic help after returning home",
+    "Delayed teacher publication does not override later home navigation",
+    "Independent services stopped and temporary extraction/database removed on completion"
+  ],
+  "scope": "Fixed product only; delivery artifacts require separate verification."
+}
