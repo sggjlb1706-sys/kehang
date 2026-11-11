@@ -5,7 +5,7 @@
   "checks": 10,
   "product_files": {
     "web/app.js": "2b372e957c2d45510a1c0363864d67fd50abbc0eea2292d76c236a23168d5078",
-    "web/index.html": "e04056fa348770358e6e26ad338511aa124029d3f9aadd0d1ee5783cae228a6c",
+    "web/index.html": "934ee48fde8f9da05987f1be2de2effa8316e584c6dccfb5ef78528162a76308",
     "web/style.css": "758b77ad29c4f6a447c42546f5a1e51d3910975b706b678466774f57138dea7d"
   },
   "scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
@@ -14,5 +14,6 @@
     "--muted": 7.777014857689918,
     "--brand": 6.756825903433027,
     "primary_text": 7.0525398865575895
-  }
+  },
+  "post_validation_note": "Only HTML line endings normalized from CRLF to LF after browser validation; rendered markup unchanged."
 }
