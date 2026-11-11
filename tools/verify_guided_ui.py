@@ -249,6 +249,19 @@ def main():
                     slow.close()
                 checks.append('Late single/practice imports keep user on home; late runtime config selects one default route and preserves deliberate manual input')
 
+                page.click('#teacher-nav');see(page,'#teacher-form');waiting=[]
+                page.route('**/api/plan',lambda route:waiting.append(route))
+                page.locator('#teacher-form button').click()
+                for _ in range(20):
+                    if waiting:break
+                    page.wait_for_timeout(50)
+                assert waiting,'Teacher course response must reach delayed preparation phase'
+                page.click('#home-nav')
+                with page.expect_response('**/api/plan'):waiting.pop().continue_()
+                page.unroute('**/api/plan');page.wait_for_timeout(100)
+                assert page.evaluate("guided.route==='home'")
+                checks.append('Leaving teacher publication during its second preparation request keeps home; no navigation-epoch arithmetic guess')
+
                 for width in [390,768,1360]:
                     page.set_viewport_size(dict(width=width, height=900))
                     page.click('#home-nav')

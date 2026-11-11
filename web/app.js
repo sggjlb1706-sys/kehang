@@ -81,6 +81,7 @@ async function chooseTask(loader,course=null){
   if(epoch===state.epoch&&navigationEpoch===guided.navigationEpoch){
     guided.courseVisited=1;showRoute('course',1);
     syncCollector();
+    return true;
   }
 }
 async function guidance(){
@@ -119,8 +120,8 @@ $('teacher-form').addEventListener('submit',e=>{
     const result=await api('/api/course',{title:$('teacher-title').value,scenario:$('teacher-goal').value,python_min:$('python-min').value,python_max:$('python-max').value,requests_min:$('requests-min').value});
     if(epoch!==state.epoch||serial!==state.teacherEpoch||navigationEpoch!==guided.navigationEpoch)return;
     $('published').textContent=`课程码 ${result.code} · 本机入口 ${location.origin}/?course=${result.code}`;
-    await chooseTask(async()=>result.task,result.code);
-    if(guided.navigationEpoch===navigationEpoch+1&&state.course===result.code)showRoute('teacher');
+    const navigated=await chooseTask(async()=>result.task,result.code);
+    if(navigated&&state.course===result.code)showRoute('teacher');
   });
 });
 $('teacher-form').addEventListener('input',()=>{state.teacherEpoch++;});
