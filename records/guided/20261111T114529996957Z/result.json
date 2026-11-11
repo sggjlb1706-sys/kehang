@@ -1,0 +1,65 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher",
+    "Invalid sharing report rejected; real A followed by single B preserves baseline and passes comparison; mode changes preserve facts",
+    "Changing goal clears reports and review access; GPU has one download and an open explicit-target collection form",
+    "All 13 existing course selections reach compatible task-specific guidance and collection controls",
+    "Practice supports returning from component environment; materials complete; constructed wrong and correct results retained; no invented environment pass",
+    "Teacher can publish and export single course without collecting a student report; original course package imports into guided flow",
+    "Teacher tools separate from student start; publish/export/import and completion recheck work; invalid import clears stale success",
+    "Delayed task preparation does not navigate away from home after the user leaves",
+    "Late single/practice imports keep user on home; late runtime config selects one default route and preserves deliberate manual input",
+    "Leaving teacher publication during its second preparation request keeps home; no navigation-epoch arithmetic guess",
+    "Late need lookup cannot reopen/scroll help on home; late candidate cannot navigate; deliberate later candidate selection still works",
+    "390/768/1360 layouts have no horizontal overflow; reduced motion and keyboard activation/focus work"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261111T114529996957Z/01-home-desktop.png",
+      "sha256": "3e7d627e7392d65995f98b5cd43395745a5577105a60fa13573773949a305d46"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/02-python-prepare.png",
+      "sha256": "2803f7f3da813d8e8ea7c57bb4410dc6d9bc4469f43b11a0ba50566f901fdb9b"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/03-python-collect.png",
+      "sha256": "82bc08abdb496ed079ee9a41554d5b2856dcac0370100475264431e03bec55d9"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/04-python-reviewed.png",
+      "sha256": "000753cd276fffcdf11fffac8fe002072e6289b20b7ca34d189ecc9a72218028"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/05-gpu-collect.png",
+      "sha256": "45477ad0122e31bf00d8855a381e25d3471b17db69d632bcbd61a23c4b5cbdc5"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/06-practice-result.png",
+      "sha256": "fedeb8d1b2829dd2e7ba0346d7a3abac153f501b431716d9676a9cc3004f2b57"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/07-teacher.png",
+      "sha256": "fd1b74bb4c022ff9da3cd9c8f5d93ddd32bc92f5f2376b846b0ca4b6b259f9a5"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/08-home-mobile.png",
+      "sha256": "333ebde2ab0276103b49c7572adb4e233ba18922da9c373a1ab6e848cd0a0193"
+    },
+    {
+      "path": "records/guided/20261111T114529996957Z/09-gpu-mobile.png",
+      "sha256": "39b07bbda782f1fb108c2fd249297217dd7126247ceaf441eca91f8555663dc4"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "contrast_ratios": {
+    "--ink": 16.240741692205184,
+    "--muted": 7.777014857689918,
+    "--brand": 6.756825903433027,
+    "primary_text": 7.0525398865575895
+  },
+  "passed": true
+}

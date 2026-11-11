@@ -432,13 +432,14 @@ async function routes(){
   const summary=document.createElement('p');summary.textContent=result.summary;box.append(summary);
   for(const text of [...(result.actions||[]),...(result.alternatives||[])]){const p=document.createElement('p');p.textContent=typeof text==='string'?text:JSON.stringify(text);box.append(p);}
 }
-$('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++state.needEpoch;action(e.submitter,async()=>{
-  const text=$('need-text').value;const result=await api('/api/need',{text});if(serial!==state.needEpoch)return;
+$('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++state.needEpoch,navigationEpoch=guided.navigationEpoch;action(e.submitter,async()=>{
+  const text=$('need-text').value;const result=await api('/api/need',{text});if(serial!==state.needEpoch||navigationEpoch!==guided.navigationEpoch)return;
   const box=$('need-result');box.replaceChildren();const p=document.createElement('p');p.textContent=result.message+' '+(result.question||'');box.append(p);
   const candidates=result.candidates||[];
   if(result.scenario&&!candidates.some(x=>x.scenario===result.scenario))candidates.unshift({scenario:result.scenario,label:result.scenario});
   for(const candidate of candidates){if(!candidate.scenario)continue;const b=document.createElement('button');b.className='secondary';b.textContent='确认：'+candidate.label;b.addEventListener('click',()=>action(b,async()=>{
-    const resolved=await api('/api/need',{text,clarification:candidate.scenario});if(serial!==state.needEpoch)return;
+    const candidateNavigationEpoch=guided.navigationEpoch;
+    const resolved=await api('/api/need',{text,clarification:candidate.scenario});if(serial!==state.needEpoch||candidateNavigationEpoch!==guided.navigationEpoch)return;
     if(resolved.status!=='recognized'||!resolved.scenario){notice(resolved.message,true);return;}
     $('goal').value=resolved.scenario;await chooseTask(()=>api('/api/goal?goal='+encodeURIComponent(resolved.scenario)));
   }));box.append(b);}

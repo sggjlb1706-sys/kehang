@@ -1,10 +1,10 @@
 {
-  "browser": "records/guided/20261111T114106502403Z/result.json",
-  "browser_sha256": "c7c7acdd89354e279d1a245e032a85764d2fdcf441b40262e777e2b843007a9e",
+  "browser": "records/guided/20261111T114639611604Z/result.json",
+  "browser_sha256": "ad65e5865fa059b4dc98dcb238c0dfac39da89f0693e097195c359ec8e0994b2",
   "unit": "records/guided/unit-final.txt",
-  "checks": 12,
+  "checks": 13,
   "product_files": {
-    "web/app.js": "ff397a5259e6899214bd2f851edec6d6c10f2a6b24b91985be134b8b03678ffa",
+    "web/app.js": "fc0ac2476c88bf350bdc71335c0b9a1200fcfad8844410a914e0cc7d002614cb",
     "web/index.html": "934ee48fde8f9da05987f1be2de2effa8316e584c6dccfb5ef78528162a76308",
     "web/style.css": "758b77ad29c4f6a447c42546f5a1e51d3910975b706b678466774f57138dea7d"
   },

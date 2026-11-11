@@ -233,6 +233,17 @@ def main():
                     with page.expect_response(endpoint):waiting.pop().continue_()
                     page.unroute(endpoint);page.wait_for_timeout(100)
                     assert page.evaluate("guided.route==='home'")
+                page.click('#import-entry');waiting=[]
+                page.route('**/api/import-course',lambda route:waiting.append(route));page.set_input_files('#course-package',bad)
+                for _ in range(10):
+                    if waiting:break
+                    page.wait_for_timeout(50)
+                assert waiting
+                page.click('#home-nav')
+                with page.expect_response('**/api/import-course') as response:waiting.pop().continue_()
+                assert response.value.status==400
+                page.unroute('**/api/import-course');page.wait_for_timeout(100)
+                assert page.evaluate("guided.route==='home' && scrollY===0"),'Late rejection must not scroll the home screen'
                 for manual in [False,True]:
                     slow=context.new_page();slow.on('pageerror',lambda e:errors.append(str(e)))
                     waiting=[];slow.route('**/api/config',lambda route:waiting.append(route))
@@ -261,6 +272,31 @@ def main():
                 page.unroute('**/api/plan');page.wait_for_timeout(100)
                 assert page.evaluate("guided.route==='home'")
                 checks.append('Leaving teacher publication during its second preparation request keeps home; no navigation-epoch arithmetic guess')
+
+                page.click('#choose-course');see(page,'#need-form');page.fill('#need-text','Python 找不到解释器');waiting=[]
+                page.route('**/api/need',lambda route:waiting.append(route));page.locator('#need-form button').click()
+                for _ in range(20):
+                    if waiting:break
+                    page.wait_for_timeout(50)
+                assert waiting
+                page.click('#home-nav')
+                with page.expect_response('**/api/need'):waiting.pop().continue_()
+                page.unroute('**/api/need');page.wait_for_timeout(100)
+                assert page.evaluate("guided.route==='home' && scrollY===0") and not page.locator('#help-panel').is_visible()
+                page.click('#choose-course');see(page,'#need-form');page.fill('#need-text','我想学Python');page.locator('#need-form button').click()
+                page.locator('#need-result button').first.wait_for()
+                waiting=[];page.route('**/api/need',lambda route:waiting.append(route));page.locator('#need-result button').first.click()
+                for _ in range(20):
+                    if waiting:break
+                    page.wait_for_timeout(50)
+                assert waiting
+                page.click('#home-nav')
+                with page.expect_response('**/api/need'):waiting.pop().continue_()
+                page.unroute('**/api/need');page.wait_for_timeout(100)
+                assert page.evaluate("guided.route==='home' && scrollY===0")
+                page.click('#choose-course');page.locator('#need-result button').first.click()
+                page.wait_for_function("()=>guided.courseStep===1&&state.task?.scenario==='python-basics'")
+                checks.append('Late need lookup cannot reopen/scroll help on home; late candidate cannot navigate; deliberate later candidate selection still works')
 
                 for width in [390,768,1360]:
                     page.set_viewport_size(dict(width=width, height=900))
