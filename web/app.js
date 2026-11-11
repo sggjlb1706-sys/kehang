@@ -424,6 +424,9 @@ $('practice-export-package').addEventListener('click',()=>{
 });
 $('practice-package').addEventListener('change',e=>action(null,async()=>{
   const epoch=++practiceState.epoch,file=e.target.files[0];
+  practiceState.reviewEpoch++;
+  $('practice-teacher-review').replaceChildren();
+  $('practice-completion-file').value='';
   practiceState.practice=null;practiceState.package=null;practiceState.courses=null;practiceState.environment={};practiceState.submission=null;practiceState.submissionEpoch++;
   $('practice-read').checked=false;$('practice-submission').value='';$('practice-result').textContent='';$('practice-published').textContent='尚未取得有效实训包';
   for(const id of ['practice-notebook','practice-sqlite','practice-export-package','practice-check','practice-completion'])$(id).disabled=true;
@@ -455,7 +458,8 @@ $('practice-check').addEventListener('click',e=>action(e.target,async()=>{
   practiceState.attempts.push(attempt);practiceState.submission=submission;
   const item=document.createElement('li');item.textContent='第'+practiceState.session+'轮 · '+(result.checked_at||new Date().toISOString())+' · '+(practiceLabels[result.status]||result.status)+' · '+result.next_step;
   $('practice-attempts').append(item);$('practice-attempts-panel').hidden=false;
-  $('practice-result').textContent=(practiceLabels[result.status]||result.status)+'。'+result.next_step;
+  const componentStates=Object.entries(result.components).map(([key,c])=>(key==='notebook'?'Notebook':'SQLite')+'：'+practiceLabels[c.status]);
+  $('practice-result').textContent=[(practiceLabels[result.status]||result.status)+'。'+result.next_step,...componentStates].join(' ');
   $('practice-result').className=result.passed?'state-pass':'state-mismatch';renderPracticeStates();
 }));
 $('practice-completion').addEventListener('click',()=>{

@@ -106,7 +106,7 @@ def check(spec,submission):
         return state('invalid','SQLite结果须为[组名,整数计数,整数合计]的行数组，请按原模板重新导出。')
     for key,value,expected in [('notebook',nb,EXPECTED),('sqlite',sql,ROWS)]:
         status='missing' if value is None else ('pass' if value==expected else 'mismatch')
-        result['components'][key]=dict(status=status,expected=expected,submitted=value,
+        result['components'][key]=dict(status=status,expected=expected,
             next_step={'missing':'先完成该项实际操作并导出结果。','mismatch':'回该项模板检查CSV、分组/排序和数值，复算后重新提交；保留本次记录。',
                        'pass':'本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。'}[status])
     statuses=[item['status'] for item in result['components'].values()]

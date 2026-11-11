@@ -53,6 +53,14 @@ class PracticeTest(unittest.TestCase):
         self.assertIn('原创',result['scope'])
         self.assertNotIn('environment_passed',result)
 
+    def test_result_does_not_echo_unrecognized_group_names(self):
+        sample = deepcopy(self.good)
+        sample['notebook']['group_totals']['PRIVATE-GROUP-TEST'] = 5
+        sample['sqlite'][0][0] = 'PRIVATE-GROUP-TEST'
+        result = practice.check(self.spec, sample)
+        self.assertEqual(result['status'], 'mismatch')
+        self.assertNotIn('PRIVATE-GROUP-TEST', json.dumps(result))
+
     def test_stale_task_material_and_tampered_data_distinguished(self):
         for key,value in [('practice_id','0'*64),('material_version','2025-v0'),
                           ('dataset_sha256','0'*64),('component_task_ids',{'notebook':'0'*64,'sqlite':'0'*64})]:
