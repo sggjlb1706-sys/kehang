@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
 const practiceState={practice:null,package:null,courses:null,epoch:0,session:0,submissionEpoch:0,reviewEpoch:0,submission:null,attempts:[],environment:{}};
-const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0};
+const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0,manualCollectorChosen:false};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
 const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
@@ -42,7 +42,7 @@ function clearReports(){
 function clearTask(){
   state.epoch++;clearReports();state.task=null;state.course=null;$('task-panel').hidden=true;$('empty-state').hidden=false;$('command').textContent='';$('remediation').replaceChildren();
   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
-  guided.courseStep=0;guided.courseVisited=0;renderGuide();
+  guided.courseStep=0;guided.courseVisited=0;guided.manualCollectorChosen=false;renderGuide();
 }
 async function chooseTask(loader,course=null){
   const navigationEpoch=guided.navigationEpoch;
@@ -75,14 +75,12 @@ async function chooseTask(loader,course=null){
   $('torch-options').hidden=spec.scenario!=='pytorch-gpu';$('gpu-run').checked=false;$('vm-options').hidden=!vm;
   for(const [id,visible] of [['notebook-options',spec.scenario==='notebook-data'],['sqlite-options',spec.scenario==='sqlite-basics'],['web-learning-options',spec.scenario==='ai-web-deepseek'],['api-learning-options',spec.scenario==='deepseek-api'],['dsh-options',spec.scenario.startsWith('dsh-')]])$(id).hidden=!visible;
   $('dsh-package-options').hidden=spec.scenario!=='dsh-cli';
-  $('simple-collector').hidden=!['python-basics','notebook-data'].includes(spec.scenario)||!state.config?.portable_available;
+  syncCollector();
   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
   await guidance();await routes();progress();notice('任务已确定。先查看步骤，再到目标电脑手动采集报告。');
   if(epoch===state.epoch&&navigationEpoch===guided.navigationEpoch){
     guided.courseVisited=1;showRoute('course',1);
-    const simple=['python-basics','notebook-data'].includes(spec.scenario)&&state.config?.portable_available;
-    $('command-panel').open=!simple;
-    $('command-panel').querySelector('summary').textContent=simple?'无法双击运行？使用手动采集入口':'填写本次检测要用的路径';
+    syncCollector();
   }
 }
 async function guidance(){
@@ -283,6 +281,13 @@ function renderPreparation(plan){
   for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
 }
 
+function syncCollector(){
+  const simple=!!state.task&&['python-basics','notebook-data'].includes(state.task.scenario)&&!!state.config?.portable_available;
+  $('simple-collector').hidden=!simple;
+  $('command-panel').open=!simple||guided.manualCollectorChosen;
+  $('command-panel').querySelector('summary').textContent=simple?'无法双击运行？使用手动采集入口':'填写本次检测要用的路径';
+}
+
 function showRoute(route,step=0){
   guided.navigationEpoch++;guided.route=route;
   if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
@@ -367,6 +372,8 @@ teacherShare.id='teacher-share-slot';teacherTask.id='teacher-current-task';teach
 const runtimeFallback=document.createElement('details'),runtimeSummary=document.createElement('summary');
 runtimeSummary.textContent='工具包没有运行时？使用已有工具 Python';runtimeFallback.append(runtimeSummary);
 const runtimeLabel=$('tool-python').labels[0];runtimeLabel.before(runtimeFallback);runtimeFallback.append(runtimeLabel,$('tool-python'));
+$('command-panel').querySelector('summary').addEventListener('click',()=>{guided.manualCollectorChosen=!$('command-panel').open;});
+$('command-panel').addEventListener('focusin',e=>{if(e.target.tagName!=='SUMMARY')guided.manualCollectorChosen=true;});
 renderGuide();
 /* Educates clickable-action.html / examiner-execute-test.html adaptation.
  * Copyright The Educates Authors. Apache-2.0; docs/third-party/educates/NOTICE.
@@ -438,10 +445,10 @@ $('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++s
 });});
 $('need-text').addEventListener('input',()=>{state.needEpoch++;$('need-result').replaceChildren();});
 $('course-package').addEventListener('change',e=>action(null,async()=>{
-  clearTask();const epoch=state.epoch;
-  const file=e.target.files[0];if(!file||file.size>100000)throw Error('课程包须小于100KB');const packageValue=JSON.parse(await file.text());
+  clearTask();const epoch=state.epoch,navigationEpoch=guided.navigationEpoch;
+  const file=e.target.files[0];e.target.value='';if(!file||file.size>100000)throw Error('课程包须小于100KB');const packageValue=JSON.parse(await file.text());
   const result=await api('/api/import-course',{package:packageValue});
-  if(epoch!==state.epoch)return;
+  if(epoch!==state.epoch||navigationEpoch!==guided.navigationEpoch){if(epoch===state.epoch)e.target.value='';return;}
   await chooseTask(async()=>result.task,result.code);notice('课程包已导入。请向教师核对任务摘要；摘要一致性不证明发布人身份。');
 }));
 $('export-course').addEventListener('click',e=>action(e.target,async()=>save('Kehang-course.json',await api('/api/package',{task:state.task}))));
@@ -539,7 +546,8 @@ $('practice-export-package').addEventListener('click',()=>{
   if(practiceState.package)save('practice-course.json',practiceState.package);
 });
 $('practice-package').addEventListener('change',e=>action(null,async()=>{
-  const epoch=++practiceState.epoch,file=e.target.files[0];
+  const epoch=++practiceState.epoch,file=e.target.files[0],navigationEpoch=guided.navigationEpoch;
+  e.target.value='';
   practiceState.reviewEpoch++;
   $('practice-teacher-review').replaceChildren();
   $('practice-completion-file').value='';
@@ -549,7 +557,10 @@ $('practice-package').addEventListener('change',e=>action(null,async()=>{
   $('practice-description').textContent='正在核对资料包。旧实训结果已隔离；原提交记录可在本次会话中保留。';renderPracticeStates();
   if(!file||file.size>100000)throw Error('实训课程包须小于100KB');
   const value=await api('/api/practice/import',{package:JSON.parse(await file.text())});
-  if(epoch!==practiceState.epoch)return;
+  if(epoch!==practiceState.epoch||navigationEpoch!==guided.navigationEpoch){
+    if(epoch===practiceState.epoch){e.target.value='';$('practice-description').textContent='已离开资料导入步骤。请重新导入资料；也可刷新页面恢复示例实训。';}
+    return;
+  }
   renderPractice(value);$('practice-published').textContent='当前固定资料已导入本机。请通过可信渠道向教师核对实训和两项任务摘要。';
   showRoute('practice',0);
 }));
@@ -609,5 +620,5 @@ $('practice-completion-file').addEventListener('change',e=>action(null,async()=>
 api('/api/practice').then(value=>{if(practiceState.epoch===0)renderPractice(value);}).catch(e=>{if(practiceState.epoch===0){$('practice-description').textContent='实训资料读取失败，请重新打开本页。';notice(e.message,true);}});
 Object.assign(names,{'torch:import':'PyTorch 实际导入','torch:cpu':'固定 CPU 张量','torch:cuda-build':'框架 CUDA 构建','torch:gpu-available':'GPU 可用性','torch:gpu-identity':'GPU 设备身份','torch:gpu-run':'实际 GPU 张量','host:virtualization':'宿主虚拟化条件','vm:software':'所选虚拟化软件','vm:instance':'所选虚拟机实例','vm:running':'实例运行证据','guest:identity':'来宾身份','guest:linux':'Linux 系统证据','guest:run':'来宾固定程序'});
 api('/api/catalog').then(catalog=>{for(const item of catalog){const d=document.createElement('div');d.className='catalog-item';const h=document.createElement('h3');h.textContent=item.label;const p=document.createElement('p');p.textContent=item.status+' · '+item.extension;d.append(h,p);if(item.source.startsWith('https://')){const a=document.createElement('a');a.textContent='课程来源';a.href=item.source;a.target='_blank';a.rel='noopener noreferrer';d.append(a);}$('catalog').append(d);}}).catch(e=>notice(e.message,true));
-api('/api/config').then(config=>{state.config=config;if(state.task)$('simple-collector').hidden=!['python-basics','notebook-data'].includes(state.task.scenario)||!config.portable_available;}).catch(e=>notice(e.message,true));
+api('/api/config').then(config=>{state.config=config;if(state.task)syncCollector();renderGuide();}).catch(e=>notice(e.message,true));
 const courseFromURL=new URLSearchParams(location.search).get('course');if(courseFromURL){$('course-code').value=courseFromURL;$('course-form').requestSubmit();}

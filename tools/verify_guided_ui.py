@@ -220,6 +220,35 @@ def main():
                 assert page.evaluate("guided.route==='home'") and page.locator('#home-screen').is_visible()
                 checks.append('Delayed task preparation does not navigate away from home after the user leaves')
 
+                for selector, endpoint, package in [('#course-package','**/api/import-course',folder/'single-course.json'),('#practice-package','**/api/practice/import',folder/'practice-course.json')]:
+                    page.click('#home-nav');page.click('#import-entry')
+                    waiting=[]
+                    page.route(endpoint,lambda route:waiting.append(route))
+                    page.set_input_files(selector,package)
+                    for _ in range(10):
+                        if waiting:break
+                        page.wait_for_timeout(50)
+                    assert waiting
+                    page.click('#home-nav')
+                    with page.expect_response(endpoint):waiting.pop().continue_()
+                    page.unroute(endpoint);page.wait_for_timeout(100)
+                    assert page.evaluate("guided.route==='home'")
+                for manual in [False,True]:
+                    slow=context.new_page();slow.on('pageerror',lambda e:errors.append(str(e)))
+                    waiting=[];slow.route('**/api/config',lambda route:waiting.append(route))
+                    slow.goto(origin);slow.wait_for_function('()=>!!practiceState.practice')
+                    slow.click('#start-python');slow.wait_for_function('()=>guided.courseStep===1');slow.click('#guide-next')
+                    assert slow.locator('#command-panel').get_attribute('open') is not None
+                    if manual:slow.fill('#target','D:\\Course\\python.exe')
+                    assert waiting
+                    with slow.expect_response('**/api/config'):waiting.pop().continue_()
+                    slow.wait_for_function('()=>!!state.config');slow.unroute('**/api/config')
+                    assert slow.locator('#simple-collector').is_visible() and not slow.locator('#command-entry-hint').is_visible()
+                    assert (slow.locator('#command-panel').get_attribute('open') is not None)==manual
+                    if manual:assert slow.locator('#target').input_value()=='D:\\Course\\python.exe'
+                    slow.close()
+                checks.append('Late single/practice imports keep user on home; late runtime config selects one default route and preserves deliberate manual input')
+
                 for width in [390,768,1360]:
                     page.set_viewport_size(dict(width=width, height=900))
                     page.click('#home-nav')

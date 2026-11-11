@@ -1,10 +1,10 @@
 {
-  "browser": "records/guided/20261111T112430207843Z/result.json",
-  "browser_sha256": "6b098e337147d2735e27d57f13613cf2a5bf3a9c2f728f1cc951573f12928829",
+  "browser": "records/guided/20261111T113647467768Z/result.json",
+  "browser_sha256": "c1598af2afb847d0b94408d9fd78ad0c6ec6828650b8d6f125dbb1fa790f4f4b",
   "unit": "records/guided/unit-final.txt",
-  "checks": 10,
+  "checks": 11,
   "product_files": {
-    "web/app.js": "2b372e957c2d45510a1c0363864d67fd50abbc0eea2292d76c236a23168d5078",
+    "web/app.js": "41463217f8a5e33453f5b8cfa753e5d66ae2e6ef344be39ef51961a8f6bf6f33",
     "web/index.html": "934ee48fde8f9da05987f1be2de2effa8316e584c6dccfb5ef78528162a76308",
     "web/style.css": "758b77ad29c4f6a447c42546f5a1e51d3910975b706b678466774f57138dea7d"
   },
@@ -14,6 +14,5 @@
     "--muted": 7.777014857689918,
     "--brand": 6.756825903433027,
     "primary_text": 7.0525398865575895
-  },
-  "post_validation_note": "Only HTML line endings normalized from CRLF to LF after browser validation; rendered markup unchanged."
+  }
 }
