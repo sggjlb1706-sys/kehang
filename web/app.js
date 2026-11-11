@@ -2,6 +2,7 @@
 const $ = id => document.getElementById(id);
 const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
 const practiceState={practice:null,package:null,courses:null,epoch:0,session:0,submissionEpoch:0,reviewEpoch:0,submission:null,attempts:[],environment:{}};
+const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
 const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
@@ -17,7 +18,7 @@ async function api(path,body){
   const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});
   const data=await r.json(); if(!r.ok)throw Error(data.error||'请求失败'); return data;
 }
-function notice(text,error=false){$('notice').textContent=text;$('notice').classList.toggle('error',error);}
+function notice(text,error=false){$('notice').textContent=text;$('notice').hidden=false;$('notice').classList.toggle('error',error);if(error)$('notice').scrollIntoView({block:'nearest'});}
 async function action(button,fn){if(button)button.disabled=true;try{await fn();}catch(e){notice(e.message,true);}finally{if(button)button.disabled=false;}}
 function save(name,obj,type='application/json'){
   const text=typeof obj==='string'?obj:JSON.stringify(obj,null,2);
@@ -30,6 +31,7 @@ function clearAI(){
 }
 function clearReports(){
   state.importEpoch++; Object.assign(state,{before:null,after:null,analysis:null});
+  $('report-stage').value='A';
   $('results').replaceChildren();$('comparison').textContent='';$('before-file').value='';$('after-file').value='';$('report-files').value='';
   $('remediation').replaceChildren();
   $('lesson-panel').hidden=true;$('lesson-checks').replaceChildren();$('api-send').checked=false;
@@ -40,8 +42,10 @@ function clearReports(){
 function clearTask(){
   state.epoch++;clearReports();state.task=null;state.course=null;$('task-panel').hidden=true;$('empty-state').hidden=false;$('command').textContent='';$('remediation').replaceChildren();
   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
+  guided.courseStep=0;guided.courseVisited=0;renderGuide();
 }
 async function chooseTask(loader,course=null){
+  const navigationEpoch=guided.navigationEpoch;
   clearTask();const epoch=state.epoch; const spec=await loader();if(epoch!==state.epoch)return;
   state.task=spec;state.course=course;$('task-panel').hidden=false;$('empty-state').hidden=true;
   if(newCourses[spec.scenario])$('target').value='';
@@ -74,7 +78,12 @@ async function chooseTask(loader,course=null){
   $('simple-collector').hidden=!['python-basics','notebook-data'].includes(spec.scenario)||!state.config?.portable_available;
   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
   await guidance();await routes();progress();notice('任务已确定。先查看步骤，再到目标电脑手动采集报告。');
-  if(innerWidth<760&&epoch===state.epoch)$('task-panel').scrollIntoView({block:'start'});
+  if(epoch===state.epoch&&navigationEpoch===guided.navigationEpoch){
+    guided.courseVisited=1;showRoute('course',1);
+    const simple=['python-basics','notebook-data'].includes(spec.scenario)&&state.config?.portable_available;
+    $('command-panel').open=!simple;
+    $('command-panel').querySelector('summary').textContent=simple?'无法双击运行？使用手动采集入口':'填写本次检测要用的路径';
+  }
 }
 async function guidance(){
   if(!state.task)return;
@@ -88,13 +97,14 @@ async function guidance(){
   const links=document.createElement('div');links.className='official-links';
   for(const link of data.links){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a);}
   $('guidance').append(links);
+  renderPreparation(data);
   if(data.preparation){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='从未准备到固定本地推理';d.append(s);for(const text of data.preparation){const p=document.createElement('p');p.textContent=text;d.append(p);}$('guidance').append(d);}
   $('remediation').replaceChildren();
   if(data.remediation?.length){const h=document.createElement('h3');h.textContent='按差异处理';$('remediation').append(h);}
   for(const step of data.remediation||[]){const d=document.createElement('div');d.className='remedy';const h=document.createElement('h3');h.textContent=step.title;const p=document.createElement('p');p.textContent=step.body;const v=document.createElement('p');v.className='muted';v.textContent=step.verify;d.append(h,p,v);$('remediation').append(d);}
   $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再生成只读采集命令。':'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
 }
-$('goal').addEventListener('change',()=>{clearTask();notice('目标已更换，请确认新的任务。');});
+$('goal').addEventListener('change',()=>{guided.fromPractice=false;clearTask();notice('目标已更换，请确认新的任务。');});
 $('course-code').addEventListener('input',()=>{if(state.course)clearTask();});
 $('goal-form').addEventListener('submit',e=>{e.preventDefault();action(e.submitter,()=>chooseTask(()=>api(`/api/goal?goal=${encodeURIComponent($('goal').value)}`)));});
 $('course-form').addEventListener('submit',e=>{e.preventDefault();const code=$('course-code').value.trim().toUpperCase();action(e.submitter,()=>chooseTask(()=>api('/api/course/'+encodeURIComponent(code)),code));});
@@ -107,11 +117,12 @@ $('teacher-goal').addEventListener('change',()=>{
 });
 $('teacher-form').addEventListener('submit',e=>{
   e.preventDefault();action(e.submitter,async()=>{
-    const epoch=state.epoch,serial=state.teacherEpoch;
+    const epoch=state.epoch,serial=state.teacherEpoch,navigationEpoch=guided.navigationEpoch;
     const result=await api('/api/course',{title:$('teacher-title').value,scenario:$('teacher-goal').value,python_min:$('python-min').value,python_max:$('python-max').value,requests_min:$('requests-min').value});
-    if(epoch!==state.epoch||serial!==state.teacherEpoch)return;
+    if(epoch!==state.epoch||serial!==state.teacherEpoch||navigationEpoch!==guided.navigationEpoch)return;
     $('published').textContent=`课程码 ${result.code} · 本机入口 ${location.origin}/?course=${result.code}`;
     await chooseTask(async()=>result.task,result.code);
+    if(guided.navigationEpoch===navigationEpoch+1&&state.course===result.code)showRoute('teacher');
   });
 });
 $('teacher-form').addEventListener('input',()=>{state.teacherEpoch++;});
@@ -207,7 +218,7 @@ async function importReport(which,file){
 for(const [id,which] of [['before-file','before'],['after-file','after']])$(id).addEventListener('change',async e=>{try{await importReport(which,e.target.files[0]);}catch(error){e.target.value='';notice(error.message,true);}});
 $('report-files').addEventListener('change',e=>action(null,async()=>{
   const files=[...e.target.files];
-  if(files.length===1){await importReport('before',files[0]);return;}
+  if(files.length===1){await importReport(state.before&&$('report-stage').value==='B'?'after':'before',files[0]);return;}
   invalidatePracticeEnvironment();clearReports();
   if(!state.task)throw Error('请先选择任务');
   if(files.length!==2||files.some(f=>f.size>200000))throw Error('请一次选择1—2份小于200KB的原始JSON报告');
@@ -253,7 +264,110 @@ $('save-export').addEventListener('click',()=>{try{JSON.parse($('export-preview'
 function progress(){
   $('progress-evidence').textContent=state.before?'② 已有初检事实':'② 准备并采集';
   $('progress-recheck').textContent=state.after?(state.analysis?.passed?'③ 复检全部通过':'③ 复检仍有差异'):'③ 等待同目标复检';
+  renderGuide();
 }
+
+function renderPreparation(plan){
+  if(!state.task)return;
+  const box=$('prepare-summary'),spec=state.task;
+  const requirements=['使用 Windows 电脑完成本次检测'];
+  if(spec.python)requirements.push(`课程 Python：${spec.python.min} 至 ${spec.python.max_exclusive}（不含上限）`);
+  if(spec.node)requirements.push(`课程 Node.js：${spec.node.min} 至 ${spec.node.max_exclusive}（不含上限）`);
+  if(spec.packages&&Object.keys(spec.packages).length)requirements.push('需要的依赖：'+Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('、'));
+  if(!spec.python&&!spec.node)requirements.push($('task-summary').textContent);
+  const list=document.createElement('ul');
+  for(const text of requirements){const li=document.createElement('li');li.textContent=text;list.append(li);}box.replaceChildren(list);
+  const help=$('prepare-help');help.replaceChildren();
+  const step=plan.steps[Math.min(1,plan.steps.length-1)];
+  if(step){const title=document.createElement('strong'),body=document.createElement('p');title.textContent=step.title;body.textContent=step.body;help.append(title,body);}
+  for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
+}
+
+function showRoute(route,step=0){
+  guided.navigationEpoch++;guided.route=route;
+  if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
+  if(route==='practice'){guided.practiceStep=step;guided.practiceVisited=Math.max(guided.practiceVisited,step);}
+  $('notice').hidden=true;renderGuide();
+  const title=route==='home'?$('welcome-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
+  title.tabIndex=-1;title.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
+}
+
+function renderGuide(){
+  const course=guided.route==='course',practice=guided.route==='practice',teacher=guided.route==='teacher';
+  document.body.classList.toggle('in-flow',course||practice);
+  const shareSlot=$('teacher-share-slot');
+  (teacher?shareSlot:$('review-stage')).append($('course-sharing'));
+  shareSlot.hidden=!teacher||!state.task;
+  $('teacher-current-task').textContent=state.task?'当前任务：'+state.task.title:'';
+  $('home-screen').hidden=guided.route!=='home';$('guide-shell').hidden=!course&&!practice;
+  $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
+  $('help-panel').hidden=!course;
+  $('back-practice').hidden=!course||!guided.fromPractice;
+  if(course&&!state.task){guided.courseStep=0;guided.courseVisited=0;}
+  if(course&&guided.courseStep===3&&!state.before){guided.courseStep=2;guided.courseVisited=Math.min(guided.courseVisited,2);}
+  const index=course?guided.courseStep:guided.practiceStep;
+  $('course-choice').hidden=!course||index!==0;
+  $('task-panel').hidden=!course||!state.task||index===0;$('empty-state').hidden=true;
+  $('preparation').hidden=!course||index!==1;$('collect-stage').hidden=!course||index!==2;$('review-stage').hidden=!course||index!==3;
+  for(const [i,id] of ['practice-intro','practice-prepare','practice-work','practice-submit'].entries())$(id).hidden=!practice||index!==i;
+  $('guide-context').textContent=course?'课程环境准备':'Notebook ＋ SQLite 连续实训';
+  const labels=course?['选择课程','准备环境','运行检测','查看与复检']:['了解任务','准备环境','跟做练习','提交成果'];
+  const titles=course?['选择你要学习的课程','准备好，再开始检测','在你的电脑上运行检测','查看结果，完成同目标复检']:['先了解这堂实训','确认实训需要的环境','下载资料，开始动手练习','提交结果，保留完成记录'];
+  $('guide-title').textContent=titles[index];$('guide-count').textContent=`第 ${index+1} 步 / 共 4 步`;
+  const nav=$('guide-progress').querySelector('ol');
+  if(!nav.children.length)for(let i=0;i<4;i++){
+    const li=document.createElement('li'),button=document.createElement('button');button.type='button';
+    button.addEventListener('click',()=>showRoute(guided.route,i));li.append(button);nav.append(li);
+  }
+  [...nav.children].forEach((li,i)=>{
+    const button=li.firstChild,num=document.createElement('span'),name=document.createElement('span');
+    num.className='nav-number';num.textContent=i+1;name.textContent=labels[i];button.replaceChildren(num,name);
+    button.disabled=i>(course?guided.courseVisited:guided.practiceVisited)||(course&&i>0&&!state.task)||(course&&i===3&&!state.before);
+    if(i===index)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');
+  });
+  const next=$('guide-next');next.hidden=course&&index===0;next.disabled=false;
+  $('guide-prev').hidden=index===0;
+  $('guide-footnote').textContent=course?'步骤位置只表示浏览进度；环境结论以实际报告为准。':'环境报告、阅读声明与成果核验分别记录。';
+  if(course){
+    const recheck=$('report-stage').value==='B'&&!!state.before;
+    $('collect-title').textContent=recheck?'保持同一目标，再检测一次':'下载工具，做一次检测';
+    $('collect-intro').textContent=recheck?'用原来的任务和目标采集较晚的复检 B。不要覆盖初检报告；更换目标需要重新初检。':'检测工具会生成一份报告，帮你确认课程环境是否准备好了。';
+    $('collector-stage-hint').textContent=recheck?'这次选择 B，得到 report-B.json。保持同一课程 Python 和内核，原报告不覆盖。':'第一次检测选 A，得到 report-A.json。包内 runtime 只是检测工具，不是课程 Python。';
+    $('report-files').labels[0].textContent=recheck?'选择复检报告 B，或一次选取原始 A / B 两份':'选择生成的 report-A.json（也可一次选择原始 A / B 两份）';
+    $('report-ready').textContent=state.after?'两份报告已读取，可以进入下一步核对复检结论。':state.before?(recheck?'已保留初检；导入有效 B 后可查看复检结果。':'初检报告已读取，点击“下一步”查看结果。'):'';
+    $('review-hint').textContent=state.after?(state.analysis?.passed?'本次同目标复检全部通过。可以预览分享报告，或返回学习首页。':'复检仍有缺失、不符合或未知。按下面的差异处理，再采集新的复检报告。'):state.analysis?.passed?'初检全部通过。还需保持同一目标采集较晚的 B，才能形成复检结论。':'查看下面的具体差异。由你决定如何处理，再保持同一目标采集复检 B。';
+    $('command-entry-hint').hidden=!$('simple-collector').hidden;
+    next.textContent=index===1?'准备好了，去检测 →':index===2?'下一步：查看结果 →':state.after&&state.analysis?.passed?'返回学习首页':'去采集复检报告 →';
+    next.disabled=(index>0&&!state.task)||(index===2&&(!state.before||!state.analysis));
+    if(index===2&&!state.before)$('guide-footnote').textContent='运行后导入有效报告，即可查看检测结果；下载工具不会让环境变成通过。';
+  }else if(practice){
+    next.textContent=['下一步：准备环境 →','下一步：下载并跟做 →','下一步：提交成果 →','返回学习首页'][index];
+    next.disabled=index<3&&!practiceState.practice;
+  }
+}
+
+$('guide-prev').addEventListener('click',()=>showRoute(guided.route,(guided.route==='course'?guided.courseStep:guided.practiceStep)-1));
+$('guide-next').addEventListener('click',()=>{
+  if(guided.route==='practice'){
+    if(guided.practiceStep===3)showRoute('home');else showRoute('practice',guided.practiceStep+1);
+  }else if(guided.courseStep===3){
+    if(state.after&&state.analysis?.passed)showRoute('home');
+    else{$('report-stage').value='B';$('command').textContent='';showRoute('course',2);}
+  }else showRoute('course',guided.courseStep+1);
+});
+for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
+$('teacher-nav').addEventListener('click',()=>{guided.fromPractice=false;showRoute('teacher');});
+$('choose-course').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);});
+$('start-python').addEventListener('click',e=>action(e.target,async()=>{guided.fromPractice=false;showRoute('course',0);$('goal').value='python-basics';await chooseTask(()=>api('/api/goal?goal=python-basics'));}));
+$('start-practice').addEventListener('click',()=>showRoute('practice',0));
+$('back-practice').addEventListener('click',()=>showRoute('practice',1));
+$('import-entry').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);$('student-import').open=true;$('student-import').scrollIntoView({block:'nearest'});});
+const teacherShare=document.createElement('section'),teacherTask=document.createElement('h3');
+teacherShare.id='teacher-share-slot';teacherTask.id='teacher-current-task';teacherShare.append(teacherTask);$('teacher-course-panel').before(teacherShare);
+const runtimeFallback=document.createElement('details'),runtimeSummary=document.createElement('summary');
+runtimeSummary.textContent='工具包没有运行时？使用已有工具 Python';runtimeFallback.append(runtimeSummary);
+const runtimeLabel=$('tool-python').labels[0];runtimeLabel.before(runtimeFallback);runtimeFallback.append(runtimeLabel,$('tool-python'));
+renderGuide();
 /* Educates clickable-action.html / examiner-execute-test.html adaptation.
  * Copyright The Educates Authors. Apache-2.0; docs/third-party/educates/NOTICE.
  * Preserves header/title/body action structure; fixed reports replace remote examiner dispatch.
@@ -279,6 +393,7 @@ $('lesson-retry').addEventListener('click',()=>{
   $('report-stage').value='B';$('command').textContent='';$('command-panel').open=true;
   $('make-command').focus();notice('保持同一任务与组件，手动采集较晚B后导入。检查状态来自新报告。');
   const button=$('lesson-retry');button.disabled=true;setTimeout(()=>{button.disabled=false;},3000);
+  showRoute('course',2);
 });
 $('learning-preview').addEventListener('click',e=>action(e.target,async()=>{
   const epoch=state.epoch;clearReports();const value=await api('/api/learning-preview',{task:state.task});
@@ -319,7 +434,7 @@ $('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++s
     if(resolved.status!=='recognized'||!resolved.scenario){notice(resolved.message,true);return;}
     $('goal').value=resolved.scenario;await chooseTask(()=>api('/api/goal?goal='+encodeURIComponent(resolved.scenario)));
   }));box.append(b);}
-  if(result.error_help){$('user-error').value=text;$('diagnosis').scrollIntoView({block:'nearest'});}
+  if(result.error_help){$('user-error').value=text;$('help-panel').hidden=false;$('help-panel').open=true;$('diagnosis').scrollIntoView({block:'nearest'});}
 });});
 $('need-text').addEventListener('input',()=>{state.needEpoch++;$('need-result').replaceChildren();});
 $('course-package').addEventListener('change',e=>action(null,async()=>{
@@ -379,6 +494,7 @@ function renderPracticeStates(){
   const latest=practiceState.attempts.filter(a=>a.practice_id===practiceState.practice?.id&&a.session===practiceState.session).at(-1);
   $('practice-artifact-status').textContent='实训成果 · '+(latest?practiceLabels[latest.result.status]||'未通过':'尚未提交');
   $('practice-completion').disabled=!practiceState.practice||!latest;
+  renderGuide();
 }
 function renderPractice(value){
   practiceState.session++;
@@ -407,9 +523,9 @@ for(const [id,key,scenario] of [['practice-notebook','notebook','notebook-data']
   $(id).addEventListener('click',e=>action(e.target,async()=>{
     if(!practiceState.practice)throw Error('请先导入当前实训资料');
     const course=practiceState.courses?.[key];
+    guided.fromPractice=true;showRoute('course',0);
     $('goal').value=scenario;
     await chooseTask(()=>course?Promise.resolve(course.task):api('/api/goal?goal='+scenario),course?.code||null);
-    $('task-panel').scrollIntoView({block:'start'});
   }));
 }
 $('practice-publish').addEventListener('click',e=>action(e.target,async()=>{
@@ -435,6 +551,7 @@ $('practice-package').addEventListener('change',e=>action(null,async()=>{
   const value=await api('/api/practice/import',{package:JSON.parse(await file.text())});
   if(epoch!==practiceState.epoch)return;
   renderPractice(value);$('practice-published').textContent='当前固定资料已导入本机。请通过可信渠道向教师核对实训和两项任务摘要。';
+  showRoute('practice',0);
 }));
 $('practice-submission').addEventListener('change',()=>{
   practiceState.submissionEpoch++;practiceState.submission=null;$('practice-result').textContent='已选择新文件，等待本次核验。';

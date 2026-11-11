@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261111T112048853752Z/01-home-desktop.png",
+      "sha256": "3e7d627e7392d65995f98b5cd43395745a5577105a60fa13573773949a305d46"
+    },
+    {
+      "path": "records/guided/20261111T112048853752Z/02-python-prepare.png",
+      "sha256": "df7fe961602daea4a3115c3bfeda2b45cf3a833a677218e5d5da918970f97841"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-guided-20261111\\tools\\verify_guided_ui.py\", line 77, in main\n    assert page.locator('#guide-next').bounding_box()['y'] < page.viewport_size['height'], 'Next action must be visible without hunting at the bottom'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Next action must be visible without hunting at the bottom\n"
+}

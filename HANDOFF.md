@@ -1,4 +1,10 @@
-# 课航实训闭环版交接
+# 课航新手引导版交接
+
+当前开发目录为work/kehang-guided-20261111，分支codex/kehang-guided-20261111，继承实训版451d7b9全部历史。首页、单项课程四步、连续实训四步和独立教师工作台已实现；新入口以本版README为准。浏览器验收入口records/guided/acceptance.json；产品候选提交及只读审查以本版REVIEW和新交付回执为准。
+
+下一步按钮保持可见；新课程与换目标回到初检A；初检后进入复检导入单份B保留A。教师无需学生报告即可发布/导出单项课程。原API/DSH授权、外部设备和赛事提交缺口未被本轮UI变更自动补齐。继承PDF/MP4对应上一版界面，本轮仅更新可运行UI、截图与文档。
+
+以下为继承实训能力的适用说明，不代替本轮UI验收。
 
 启动与代表任务见 README.md。当前完整包包含 Notebook 与 SQLite 实训资料、可重算的限定成果、包内 Python/Notebook 主动入口和一次选择 A/B。课堂实测证据在 records/practice/lab-run，浏览器完成物在 records/practice/completion-local.json。真实模板结果为总分 42、A 组 2 行 30 分、B 组 1 行 12 分。
 

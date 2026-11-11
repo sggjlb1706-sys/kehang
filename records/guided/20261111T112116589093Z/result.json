@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher",
+    "Invalid sharing report rejected; real A followed by single B preserves baseline and passes comparison; mode changes preserve facts"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261111T112116589093Z/01-home-desktop.png",
+      "sha256": "3e7d627e7392d65995f98b5cd43395745a5577105a60fa13573773949a305d46"
+    },
+    {
+      "path": "records/guided/20261111T112116589093Z/02-python-prepare.png",
+      "sha256": "2803f7f3da813d8e8ea7c57bb4410dc6d9bc4469f43b11a0ba50566f901fdb9b"
+    },
+    {
+      "path": "records/guided/20261111T112116589093Z/03-python-collect.png",
+      "sha256": "82bc08abdb496ed079ee9a41554d5b2856dcac0370100475264431e03bec55d9"
+    },
+    {
+      "path": "records/guided/20261111T112116589093Z/04-python-reviewed.png",
+      "sha256": "f8653a0cd114129f663a61477e063160478b3f0b1bfd7020275f3fb7147ee587"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-guided-20261111\\tools\\verify_guided_ui.py\", line 117, in main\n    assert page.locator('#report-stage').input_value() == 'A', 'New course must start with A, not inherit previous B'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: New course must start with A, not inherit previous B\n"
+}

@@ -1,3 +1,3 @@
-# 当前任务 · 课航实训闭环
+# 当前任务 · 新手首页与分步引导
 
-本版从 a7dac52 完整继承，按 docs/requirements-practice 中用户指定的完整提示词实施。代表课程为 Notebook 与 SQLite 同源数据实训，交付和证据范围见 README、HANDOFF、REVIEW。之前各阶段原任务可用 git show a7dac52:TASK.md 查阅。
+根据2026-11-11用户真实界面反馈，解决首页信息过多、下载选项缺少指引、主流程不清楚的问题。完整继承已交付实训版451d7b9，在独立目录/分支实现清楚的开始入口和可前进/返回的学习步骤，保留原任务、环境规则、成果核验、教师功能及高级操作。验证与交付见README、HANDOFF、REVIEW。原任务可用git show 451d7b9:TASK.md查阅。

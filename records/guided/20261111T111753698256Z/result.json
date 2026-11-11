@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261111T111753698256Z/01-home-desktop.png",
+      "sha256": "3e7d627e7392d65995f98b5cd43395745a5577105a60fa13573773949a305d46"
+    },
+    {
+      "path": "records/guided/20261111T111753698256Z/02-python-prepare.png",
+      "sha256": "31d1be613627776acd5cd4c8305e75b5aafe9b8f420678c03d365c9ee5be0a80"
+    },
+    {
+      "path": "records/guided/20261111T111753698256Z/03-python-collect.png",
+      "sha256": "b5e9ec1ffd2e9c63bb0d4a2a0ebc0a796849ecf2734b5f55e9901811cc6cbf03"
+    },
+    {
+      "path": "records/guided/20261111T111753698256Z/04-python-reviewed.png",
+      "sha256": "b2d782b0e2ee6d19f339c0427ab0aec361e08d14b85d0dd0898c78e042f6190b"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-guided-20261111\\tools\\verify_guided_ui.py\", line 109, in main\n    page.select_option('#mode', mode)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 11974, in select_option\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.select_option(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<9 lines>...\n        )\n        ^\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 1060, in select_option\n    return await self._main_frame.select_option(**params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 786, in select_option\n    return await self._channel.send(\"selectOption\", self._timeout, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Page.select_option: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#mode\")\n    - locator resolved to <select id=\"mode\">…</select>\n  - attempting select option action\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n    - waiting 20ms\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n      - waiting 100ms\n    59 × waiting for element to be visible and enabled\n       - element is not visible\n     - retrying select option action\n       - waiting 500ms\n\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-guided-20261111\\tools\\verify_guided_ui.py\", line 44, in main\n    with tempfile.TemporaryDirectory(prefix='kehang-guided-ui-') as folder, ExitStack() as stack:\n                                                                            ~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 619, in __exit__\n    raise exc\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 604, in __exit__\n    if cb(*exc_details):\n       ~~^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 482, in _exit_wrapper\n    callback(*args, **kwds)\n    ~~~~~~~~^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 15992, in close\n    return mapping.from_maybe_impl(self._sync(self._impl_obj.close(reason=reason)))\n                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 104, in _sync\n    raise Error(\"Event loop is closed! Is Playwright already stopped?\")\nplaywright._impl._errors.Error: Event loop is closed! Is Playwright already stopped?\n"
+}
