@@ -1,0 +1,125 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>课航 · 历史AI协作回顾</title><style>
+body{margin:0;padding:44px 88px;background:#fff;color:#1f2927;font:25px/1.7 "Microsoft YaHei",system-ui,sans-serif}header{font-size:22px;color:#76503f;border-bottom:1px solid #d9ddda;padding-bottom:20px}h1{font-size:38px;margin:18px 0 10px}p{max-width:1250px}details{padding:24px 0;border-top:1px solid #c9d1cd}summary{font-weight:bold;cursor:pointer;font-size:27px}.quote{white-space:pre-wrap;margin:22px 0}.source{font-size:17px;color:#465750;word-break:break-all}pre{font:19px/1.7 Consolas,monospace;white-space:pre-wrap;padding:22px;background:#f3f5f4}footer{font-size:20px;color:#465750;margin-top:30px}
+</style><header>课航 · 历史AI协作回顾 · 已脱敏可见原文</header><h1>从用户意图，到实现与纠偏</h1><p>本页是本轮录制用的只读资料阅读页；回顾既有真实消息，不冒充现场生成，也不认证三条完整Prompt链。</p><details id="line-1063"><summary>AI助手原文 · 源行 1063 · 2026-11-10T00:36:26.496Z</summary><p class="quote">三项修复已通过独立复核，审查者重跑 115 项测试，未发现新增阻塞。新版技术 PDF 已生成 10 页，我正在逐页检查；之后会核对新副本、完整 Git 历史、交付 SHA、ZIP 和 Python 直启。</p><p class="source">节选，原消息摘要 F34E88F7A23FB1DE74D3B654C3300CF31D9B9F020DF6B6806E68A3BEBC256C50</p></details><details id="git-diff"><summary>打开真实提交 2c5ade2 的代码与回归差异</summary><pre>commit 2c5ade24c512a6b15c7111f808192f480627c4fb
+Date 2026-11-10T08:31:01+08:00
+Subject fix(evidence): preserve missing dependency and JDK execution facts
+
+diff --git a/campuslab/ai_probe.py b/campuslab/ai_probe.py
+index 0273e15..79945a4 100644
+--- a/campuslab/ai_probe.py
++++ b/campuslab/ai_probe.py
+@@ -4,16 +4,20 @@ from pathlib import Path
+ import platform
+ import sys
+ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+-from campuslab.ai_course import call_api, make_task
+ 
+ 
+ def main():
+     args=json.loads(sys.stdin.read())
+-    # Only these standard-library modules are required in the selected interpreter.
+-    import ssl
+-    import urllib.request
+-    run=call_api(make_task(),args[&#x27;request&#x27;],args[&#x27;key&#x27;],args[&#x27;consent&#x27;])
+-    print(json.dumps(dict(actual=sys.executable,os=platform.system(),python=platform.python_version(),stdlib=True,run=run),ensure_ascii=True))
++    result=dict(actual=sys.executable,os=platform.system(),python=platform.python_version(),stdlib=False,
++        run=dict(attempted=False,category=&#x27;dependency_missing&#x27;,http_status=None,model=None,role=None,finish_reason=None,content=&#x27;&#x27;,latency_ms=None))
++    try:
++        import ssl
++        import urllib.request
++        from campuslab.ai_course import call_api, make_task
++    except (ImportError,OSError):
++        print(json.dumps(result,ensure_ascii=True));return
++    result.update(stdlib=True,run=call_api(make_task(),args[&#x27;request&#x27;],args[&#x27;key&#x27;],args[&#x27;consent&#x27;]))
++    print(json.dumps(result,ensure_ascii=True))
+ 
+ 
+ if __name__==&#x27;__main__&#x27;: main()
+diff --git a/campuslab/java_course.py b/campuslab/java_course.py
+index 93ea147..d6bb718 100644
+--- a/campuslab/java_course.py
++++ b/campuslab/java_course.py
+@@ -67,11 +67,11 @@ def analyze(spec,report):
+     check(&#x27;os&#x27;,&#x27;unknown&#x27; if facts[&#x27;os&#x27;] is None else (&#x27;pass&#x27; if facts[&#x27;os&#x27;]==&#x27;Windows&#x27; else &#x27;mismatch&#x27;),facts[&#x27;os&#x27;],&#x27;Windows&#x27;)
+     for name,item in facts[&#x27;tools&#x27;].items():
+         state=&#x27;missing&#x27; if item[&#x27;exists&#x27;] is False else &#x27;unknown&#x27;;release=re.fullmatch(r&#x27;\d+\.\d+\.\d+&#x27;,item[&#x27;version&#x27;] or &#x27;&#x27;)
+-        if release:state=&#x27;pass&#x27; if version(&#x27;21.0&#x27;)&lt;=version(item[&#x27;version&#x27;])&lt;version(&#x27;25.0&#x27;) else &#x27;mismatch&#x27;
++        if release and item[&#x27;returncode&#x27;] is not None:state=&#x27;pass&#x27; if version(&#x27;21.0&#x27;)&lt;=version(item[&#x27;version&#x27;])&lt;version(&#x27;25.0&#x27;) else &#x27;mismatch&#x27;
+         if item[&#x27;returncode&#x27;] is not None and (item[&#x27;returncode&#x27;]!=0 or item[&#x27;error&#x27;]):state=&#x27;mismatch&#x27;
+         check(&#x27;java:&#x27;+name,state,item,&#x27;同一JDK中的 &#x27;+name+&#x27;，21.0至25.0以下&#x27;)
+     tools=list(facts[&#x27;tools&#x27;].values())
+-    same=&#x27;unknown&#x27; if any(x[&#x27;home&#x27;] is None or x[&#x27;sha256&#x27;] is None for x in tools) else (&#x27;pass&#x27; if all(absolute(x[&#x27;home&#x27;])==home for x in tools) and tools[0][&#x27;version&#x27;]==tools[1][&#x27;version&#x27;] else &#x27;mismatch&#x27;)
++    same=&#x27;unknown&#x27; if any(x[&#x27;home&#x27;] is None or x[&#x27;sha256&#x27;] is None or x[&#x27;returncode&#x27;] is None for x in tools) else (&#x27;pass&#x27; if all(absolute(x[&#x27;home&#x27;])==home and x[&#x27;returncode&#x27;]==0 and not x[&#x27;error&#x27;] for x in tools) and tools[0][&#x27;version&#x27;]==tools[1][&#x27;version&#x27;] else &#x27;mismatch&#x27;)
+     check(&#x27;java:identity&#x27;,same,[dict(path=x[&#x27;path&#x27;],home=x[&#x27;home&#x27;],sha256=x[&#x27;sha256&#x27;]) for x in tools],&#x27;java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存&#x27;)
+     compiled=facts[&#x27;compile&#x27;];run=facts[&#x27;run&#x27;]
+     check(&#x27;java:compile&#x27;,&#x27;unknown&#x27; if compiled[&#x27;returncode&#x27;] is None else (&#x27;pass&#x27; if compiled[&#x27;returncode&#x27;]==0 and not compiled[&#x27;error&#x27;] else &#x27;mismatch&#x27;),compiled,&#x27;固定源码在专用临时目录由所选javac编译，退出0&#x27;)
+@@ -126,5 +126,7 @@ def collect(spec,target):
+                     if compiled.returncode==0:
+                         run=execute([tools[&#x27;java&#x27;][&#x27;path&#x27;],&#x27;-cp&#x27;,temporary,&#x27;CampusLabFixed&#x27;],temporary);lines=run.stdout.splitlines()
+                         report[&#x27;facts&#x27;][&#x27;run&#x27;]=dict(returncode=run.returncode,stdout=run.stdout,error=run.stderr[-1500:],home=lines[1] if len(lines)==2 else None)
+-                except (OSError,subprocess.TimeoutExpired) as exc:report[&#x27;facts&#x27;][&#x27;compile&#x27;][&#x27;error&#x27;]=type(exc).__name__+&#x27;: &#x27;+str(exc)[:300]
++                except (OSError,subprocess.TimeoutExpired) as exc:
++                    stage=&#x27;run&#x27; if report[&#x27;facts&#x27;][&#x27;compile&#x27;][&#x27;returncode&#x27;]==0 else &#x27;compile&#x27;
++                    report[&#x27;facts&#x27;][stage][&#x27;error&#x27;]=type(exc).__name__+&#x27;: &#x27;+str(exc)[:300]
+     report[&#x27;collected_at&#x27;]=datetime.now(timezone.utc).isoformat();analyze(spec,report);return report
+diff --git a/tests/test_ai_course.py b/tests/test_ai_course.py
+index e337254..0bc7b24 100644
+--- a/tests/test_ai_course.py
++++ b/tests/test_ai_course.py
+@@ -101,5 +101,20 @@ class AICourseTests(unittest.TestCase):
+                 self.assertEqual(ai.call_api(ai.make_task(),ai.preview(ai.make_task()),&#x27;x&#x27;,True)[&#x27;category&#x27;],category)
+         self.assertEqual(ai.call_api(ai.make_task(),ai.preview(ai.make_task()),&#x27;&#x27;,True)[&#x27;category&#x27;],&#x27;unconfigured&#x27;)
+ 
++    def test_probe_preserves_identity_when_ssl_dependency_missing(self):
++        import builtins,contextlib,io,runpy,sys
++        original=builtins.__import__
++        def without_ssl(name,*args,**kwargs):
++            if name==&#x27;ssl&#x27;:raise ModuleNotFoundError(&#x27;No module named ssl&#x27;)
++            return original(name,*args,**kwargs)
++        output=io.StringIO()
++        with patch(&#x27;builtins.__import__&#x27;,side_effect=without_ssl),patch(&#x27;sys.stdin&#x27;,io.StringIO(&#x27;{}&#x27;)),contextlib.redirect_stdout(output):
++            runpy.run_path(str(ai.Path(ai.__file__).with_name(&#x27;ai_probe.py&#x27;)),run_name=&#x27;__main__&#x27;)
++        result=json.loads(output.getvalue())
++        self.assertEqual(result[&#x27;actual&#x27;],sys.executable)
++        self.assertFalse(result[&#x27;stdlib&#x27;])
++        self.assertEqual(result[&#x27;run&#x27;][&#x27;category&#x27;],&#x27;dependency_missing&#x27;)
++        self.assertFalse(result[&#x27;run&#x27;][&#x27;attempted&#x27;])
++
+ 
+ if __name__==&#x27;__main__&#x27;: unittest.main()
+diff --git a/tests/test_java_course.py b/tests/test_java_course.py
+index 1e4a77f..ab655ac 100644
+--- a/tests/test_java_course.py
++++ b/tests/test_java_course.py
+@@ -15,6 +15,30 @@ def evidence():
+ 
+ 
+ class JavaCourseTest(unittest.TestCase):
++    def test_unobserved_version_exit_never_passes(self):
++        for name in (&#x27;java&#x27;,&#x27;javac&#x27;):
++            spec,report=evidence();report[&#x27;facts&#x27;][&#x27;tools&#x27;][name][&#x27;returncode&#x27;]=None
++            result=analyze(spec,report)
++            self.assertFalse(result[&#x27;passed&#x27;])
++            states={c[&#x27;id&#x27;]:c[&#x27;status&#x27;] for c in result[&#x27;checks&#x27;]}
++            self.assertEqual(states[&#x27;java:&#x27;+name],&#x27;unknown&#x27;)
++            self.assertEqual(states[&#x27;java:identity&#x27;],&#x27;unknown&#x27;)
++
++    def test_runtime_timeout_preserves_completed_compile(self):
++        from pathlib import Path
++        from subprocess import CompletedProcess,TimeoutExpired
++        import tempfile
++        from unittest.mock import patch
++        with tempfile.TemporaryDirectory() as folder:
++            home=Path(folder);(home/&#x27;bin&#x27;).mkdir()
++            for name in (&#x27;java&#x27;,&#x27;javac&#x27;):(home/&#x27;bin&#x27;/(name+&#x27;.exe&#x27;)).write_bytes(b&#x27;constructed&#x27;)
++            versions=[CompletedProcess([],0,&#x27;&#x27;,f&#x27;java.home = {home}\n&#x27;+text) for text in (&#x27;openjdk version &quot;21.0.1&quot;&#x27;,&#x27;javac 21.0.1&#x27;)]
++            with patch(&#x27;campuslab.java_course.subprocess.run&#x27;,side_effect=versions+[CompletedProcess([],0,&#x27;&#x27;,&#x27;&#x27;),TimeoutExpired(&#x27;java&#x27;,25)]):
++                report=collect(make_task(),str(home))
++            self.assertEqual(report[&#x27;facts&#x27;][&#x27;compile&#x27;][&#x27;returncode&#x27;],0)
++            self.assertEqual(report[&#x27;facts&#x27;][&#x27;compile&#x27;][&#x27;error&#x27;],&#x27;&#x27;)
++            self.assertIn(&#x27;TimeoutExpired&#x27;,report[&#x27;facts&#x27;][&#x27;run&#x27;][&#x27;error&#x27;])
++
+     def test_complete_fixed_compile_and_run(self):
+         spec,r=evidence();self.assertTrue(analyze(spec,r)[&#x27;passed&#x27;])
+         spec[&#x27;verify&#x27;]=&#x27;anything&#x27;;
+</pre></details><footer>来源：records/brand/prompts/01a1be86-7c96-7200-860a-ff272f5c3bb1.json。源行号来自归档索引；未读取完整原会话、凭据或隐藏内容。独立审查发现保持审查者身份。</footer></html>

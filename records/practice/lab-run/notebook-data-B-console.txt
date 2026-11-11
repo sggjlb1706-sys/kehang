@@ -1,0 +1,11 @@
+课航 · 本人主动采集。不会安装软件，不会修改环境。
+工具目录：C:\Users\DELL\AppData\Local\Temp\课航 固定 实训 p90w_vzl\notebook-data 中文 空格 工具
+固定任务：Notebook 数据分析 · 固定内核演示任务
+任务摘要：4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14
+课程 Python 完整路径（不是包内 runtime）：该 Python 对应的已有 kernel.json 完整路径：Notebook 将启动一个临时内核，只执行包内固定演示程序，再关闭该内核。
+保存初检 A 还是复检 B？请输入 A 或 B：课程目标：D:\ANACONDA\python.exe
+所选内核：D:\ANACONDA\share\jupyter\kernels\python3\kernel.json
+报告保存：C:\Users\DELL\AppData\Local\Temp\课航 固定 实训 p90w_vzl\notebook-data 中文 空格 工具\report-B.json
+核对任务和目标后，输入 START 开始本次固定采集；其他输入取消：报告已保存：C:\Users\DELL\AppData\Local\Temp\课航 固定 实训 p90w_vzl\notebook-data 中文 空格 工具\report-B.json
+回到课航，选择此报告；初检与复检也可一次选择。结果以网页规则核验为准。
+Press any key to continue . . . 

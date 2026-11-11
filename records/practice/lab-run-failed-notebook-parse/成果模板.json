@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "kehang-practice-result",
+  "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+  "material_version": "scores-20261110-v1",
+  "dataset_sha256": "37039948a897bcc319d0ca03d3c775fd1c09bb1a82a33adf43c0ad02baf51e7d",
+  "component_task_ids": {
+    "notebook": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+    "sqlite": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c"
+  },
+  "notebook": null,
+  "sqlite": null
+}

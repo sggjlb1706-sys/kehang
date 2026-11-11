@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": [
+    "missing/invalid/constructed-wrong/correct submissions retain four attempts and separate environment/reading states",
+    "completion excludes arbitrary private extra fields and retains deterministic rejection plus source digest",
+    "teacher rechecks retained historical submissions and rejects a forged stored pass verdict",
+    "one A/B selection orders archived Notebook reports by evidence time and preserves component identity",
+    "ambiguous equal-time reports clear current evidence and cannot reuse old success",
+    "390px simulated mobile stays within viewport and keyboard focus remains available"
+  ],
+  "page_errors": [],
+  "external_http_requests": [],
+  "scope": "Agent browser operations; constructed result negatives and archive report re-analysis, not independent student or second-device evidence",
+  "source_sha256": {
+    "web/app.js": "0a5573f40342e6d6d001f9540962b6aad5e786357b519818a2ca59c78151c508",
+    "web/index.html": "6aaf389ecc8750b9d4339955124a1d4e1e67457926f9087596ffbd5de67bd8ed",
+    "web/style.css": "0c572c240dc416bdd8b988be81587a624ffd65eb994026c740bd0c204210572e",
+    "campuslab/launcher.py": "c61242093b845ade1238b3a7b98412bf2bdc0b73923833485b111b6bec9fc9cf"
+  }
+}

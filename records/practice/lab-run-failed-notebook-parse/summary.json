@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-11-10T09:06:08.500883+00:00",
+  "actor": "代理在同一电脑的隔离目录执行固定练习；不是学生用户研究、独立新手或第二设备。",
+  "python": "D:\\ANACONDA\\python.exe",
+  "kernel_spec": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+  "commands": [],
+  "complete": false,
+  "same_computer_libraries": [
+    {
+      "port": 60681,
+      "database": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 6j06jp6y\\library-0.sqlite"
+    },
+    {
+      "port": 60682,
+      "database": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 6j06jp6y\\library-1.sqlite"
+    }
+  ],
+  "ended_at": "2026-11-10T09:06:12.618815+00:00"
+}

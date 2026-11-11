@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-11-10T09:02:35.208052+00:00",
+  "baseline": "D:\\传智杯\\versions\\kehang-20261110",
+  "new_working_copy": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110",
+  "head": "a7dac52bfacf379dd13f1fe1a2d3120570e05532",
+  "branch": "codex/kehang-brand-20261110",
+  "new_branch": "codex/kehang-practice-20261110",
+  "manifest_sha256": "328A7800C44BF89D4B835138491B1E9827CEEF8A42E8E9520E3F874A2981E428",
+  "manifest_files": 1844,
+  "tracked_files": 1843,
+  "all_manifest_sha256_match": true,
+  "baseline_git_clean": true,
+  "git_fsck": true,
+  "inherited_commits": 39,
+  "full_history_preserved": true,
+  "inherited_tree_equal": true,
+  "runtime_sha256": "9E35319BFFEDAB8B36AD44D8F377CB4F1733BCEC257A0B6D04D94F01486DDB38",
+  "ignored_private_data_read": false,
+  "baseline_files_written": false,
+  "scope": "Current baseline owning files and exact manifest only; new copy may be under active implementation."
+}

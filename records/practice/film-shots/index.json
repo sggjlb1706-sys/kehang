@@ -1,0 +1,645 @@
+{
+  "started_at": "2026-11-11T02:29:53.169156+00:00",
+  "ended_at": "2026-11-11T02:29:59.800722+00:00",
+  "width": 1920,
+  "height": 1080,
+  "actor": "代理实际操作同一电脑上新启动的两个独立本机实例；不是独立新手或第二设备。",
+  "history_scope": "本轮录制的资料阅读动作；内容来自已脱敏真实可见消息与真实git diff，清楚标明历史回顾，不冒充历史聊天原屏幕或现场模型生成。",
+  "negative_scope": "章节05的合计41为代理构造负例；章节06正确成果及环境A/B来自本轮实际执行归档。录制本身只导入/分析报告，不重新运行内核。",
+  "original_session_read": false,
+  "ai_requests": 0,
+  "desktop_capture": false,
+  "page_errors": [],
+  "external_requests": [],
+  "source_prompt_sha256": "e4eab4975a0b8166c0c364c4f6a51eed68fdf6f16a2cbbf9eb0533f00d692e2e",
+  "shots": [
+    {
+      "chapter": "00",
+      "file": "records/practice/film-shots/00/01.jpg",
+      "action": "新启动的本机教师实例首页；固定实训概览",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.118163+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "41e20483e738ad3a0298f359c9071e632a9a72b87470bdcfbdbc73b2f12e1d23"
+    },
+    {
+      "chapter": "00",
+      "file": "records/practice/film-shots/00/02.jpg",
+      "action": "展开真实学习目标与前置条件",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.194631+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8be74703ccf1fd01de5493e6ba011d2047a964d3cb195ff0c2abf9d6119ef028"
+    },
+    {
+      "chapter": "00",
+      "file": "records/practice/film-shots/00/03.jpg",
+      "action": "滚动读取已有环境与明确内核要求",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.255060+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8be74703ccf1fd01de5493e6ba011d2047a964d3cb195ff0c2abf9d6119ef028"
+    },
+    {
+      "chapter": "00",
+      "file": "records/practice/film-shots/00/04.jpg",
+      "action": "折叠步骤回到环境/阅读/成果三条状态",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.309560+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "41e20483e738ad3a0298f359c9071e632a9a72b87470bdcfbdbc73b2f12e1d23"
+    },
+    {
+      "chapter": "01",
+      "file": "records/practice/film-shots/01/01.jpg",
+      "action": "展开本机教师发布入口",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.377055+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "e3782455ba01ea0af50414b64916f9ae3bf2dd80249305ebf71e1f3b920b1373"
+    },
+    {
+      "chapter": "01",
+      "file": "records/practice/film-shots/01/02.jpg",
+      "action": "教师实际发布，两组件分别取得本机课程码",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.442939+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "70a7c81f1188e0d9f73e0a541827486d4fa184d59fbbc866a361ba7efd2ba7f5"
+    },
+    {
+      "chapter": "01",
+      "file": "records/practice/film-shots/01/03.jpg",
+      "action": "实际点击下载完整实训资料",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.626885+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "52798bba62c3644c5b1bf49b41065ffc1f45b912ca04c442aa0077a7e9d32b42"
+    },
+    {
+      "chapter": "01",
+      "file": "records/practice/film-shots/01/04.jpg",
+      "action": "实际导出课堂资料包；供另一独立本机实例导入",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.737885+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "36999839f8269fb8b244306e29ece9c4657fb9480b16215c21ce0c49490c9382"
+    },
+    {
+      "chapter": "02",
+      "file": "records/practice/film-shots/02/01.jpg",
+      "action": "第二个独立本机服务与空课程库；仍为同一电脑",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:54.917421+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "41e20483e738ad3a0298f359c9071e632a9a72b87470bdcfbdbc73b2f12e1d23"
+    },
+    {
+      "chapter": "02",
+      "file": "records/practice/film-shots/02/02.jpg",
+      "action": "实际导入教师资料包；分别发布同摘要组件任务",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.010162+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4afe11dd43cce3ef5269321bcaa3a33e28d32bb403d4712bdd8d1e572748ca23"
+    },
+    {
+      "chapter": "02",
+      "file": "records/practice/film-shots/02/03.jpg",
+      "action": "展开完整跟做步骤与预期结果",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.078138+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8be74703ccf1fd01de5493e6ba011d2047a964d3cb195ff0c2abf9d6119ef028"
+    },
+    {
+      "chapter": "02",
+      "file": "records/practice/film-shots/02/04.jpg",
+      "action": "读取Notebook填写与真实内核运行要求",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.140420+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "938a7ab1c42b569f5884576a83f418c0857febc883f407c6ab592ebc31367466"
+    },
+    {
+      "chapter": "02",
+      "file": "records/practice/film-shots/02/05.jpg",
+      "action": "本人阅读声明单独记录；不改变环境及成果结论",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.217861+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "1d9505d23d55252523a2adb66f5ef3882b1fbe6f4cd417b6f8ebc4ca7245ff40"
+    },
+    {
+      "chapter": "05",
+      "file": "records/practice/film-shots/05/01.jpg",
+      "action": "成果提交入口；以下错误是代理构造验证负例",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.282327+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "3f201dc2df3d9361c74cd06135803b66d716d34068238290d8cc88abb1fc7ea8"
+    },
+    {
+      "chapter": "05",
+      "file": "records/practice/film-shots/05/02.jpg",
+      "action": "实际选择构造错误成果文件，尚未核验",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.326690+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "26bdc540307d8f984cdc37d1c2490973862b2a3daba39b3be2d327864081d4cc"
+    },
+    {
+      "chapter": "05",
+      "file": "records/practice/film-shots/05/03.jpg",
+      "action": "确定性核验实际拒绝41；提示重新计算",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.387469+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6afe66fbceed7b38c31510332a9b5c771ba999eae72bccd9354af80173da0561"
+    },
+    {
+      "chapter": "05",
+      "file": "records/practice/film-shots/05/04.jpg",
+      "action": "保留错误提交实际记录，不冒充学生错误",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.454724+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5724cae9d1edc4ec6e7f256fca2bda2b4c2caf15110fbfdf4ef599cf0c061463"
+    },
+    {
+      "chapter": "06",
+      "file": "records/practice/film-shots/06/01.jpg",
+      "action": "核验本轮实际执行固定练习生成的正确成果",
+      "source": "records\\practice\\lab-run\\实训成果.json",
+      "captured_at": "2026-11-11T02:29:55.551878+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "deb906bce4db5fd907a07d1dda7c8544ce1a295a79c0809c2b5dccd3da5e4c05"
+    },
+    {
+      "chapter": "06",
+      "file": "records/practice/film-shots/06/02.jpg",
+      "action": "实际一次导入本轮Notebook原始A/B；此处为报告分析，非重新运行内核",
+      "source": "records/practice/lab-run/notebook-data-{A,B}.json",
+      "captured_at": "2026-11-11T02:29:55.693676+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "282049727feff1be49afef4f41ab081b1793bf71627c7caff6c2bcbfcddb5e34"
+    },
+    {
+      "chapter": "06",
+      "file": "records/practice/film-shots/06/03.jpg",
+      "action": "实际导入本轮SQLite原始A/B；与Notebook独立身份核对",
+      "source": "records/practice/lab-run/sqlite-basics-{A,B}.json",
+      "captured_at": "2026-11-11T02:29:55.798438+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6f7c621bacf8370fac536b15ecee1c70562b31dabeeeec3c9ecda9c8c2420e31"
+    },
+    {
+      "chapter": "06",
+      "file": "records/practice/film-shots/06/04.jpg",
+      "action": "两个固定环境复检、阅读声明和成果结论分别显示",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.860474+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "0bd7cc2cdb3c9630e1a614194579b36e945c1a3aa14f794743604111c4c973d7"
+    },
+    {
+      "chapter": "07",
+      "file": "records/practice/film-shots/07/01.jpg",
+      "action": "回到成果与历史尝试记录，准备导出",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:55.920961+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "3119a48d6bc9425638b2b76f60cdc43b8975434a28aa39095a265de26e9c9cf5"
+    },
+    {
+      "chapter": "07",
+      "file": "records/practice/film-shots/07/02.jpg",
+      "action": "实际导出完成物与错误→正确两次记录",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:56.031172+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "3119a48d6bc9425638b2b76f60cdc43b8975434a28aa39095a265de26e9c9cf5"
+    },
+    {
+      "chapter": "07",
+      "file": "records/practice/film-shots/07/03.jpg",
+      "action": "教师展开重新核验入口，不信任文件中的通过字段",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:56.098700+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4e1d9f931aa5f2176cdd90bb47c733aca0b0c78de0ad7918bebcac9e86adec0d"
+    },
+    {
+      "chapter": "07",
+      "file": "records/practice/film-shots/07/04.jpg",
+      "action": "教师实际重核两次成果：错误仍拒绝，正确通过",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:57.166678+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "40fb62ca35f48004e345c596e1734dec8f693e8f0715af9303794978519549da"
+    },
+    {
+      "chapter": "08",
+      "file": "records/practice/film-shots/08/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          17,
+          29
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:57.277262+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "96cfafc25ac717c9ad94f9dda5d9e538b4fbe7c1a6deef1fc7f290eb52e70ef9"
+    },
+    {
+      "chapter": "08",
+      "file": "records/practice/film-shots/08/02.jpg",
+      "action": "实际展开真实归档消息源行 17",
+      "source": {
+        "source_line": 17
+      },
+      "captured_at": "2026-11-11T02:29:57.368163+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5ea6c576a2b9e36617c0fa858ebebf666fc4aca913b7747c7d4e31b457540571"
+    },
+    {
+      "chapter": "08",
+      "file": "records/practice/film-shots/08/03.jpg",
+      "action": "实际展开真实归档消息源行 29",
+      "source": {
+        "source_line": 29
+      },
+      "captured_at": "2026-11-11T02:29:57.451965+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "06c1285107662bfc39996e9002cefea89adbf08ca6b4695857e09a8582b0c06a"
+    },
+    {
+      "chapter": "08",
+      "file": "records/practice/film-shots/08/04.jpg",
+      "action": "在浏览器中选中最后一条真实消息原文",
+      "source": {
+        "source_line": 29
+      },
+      "captured_at": "2026-11-11T02:29:57.501562+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4dab2b3deeb0863a511488b34a2b1c2d0e8adb8716a924261f3b760380a444f0"
+    },
+    {
+      "chapter": "08",
+      "file": "records/practice/film-shots/08/05.jpg",
+      "action": "回到本段真实消息并列阅读",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:57.547401+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4dab2b3deeb0863a511488b34a2b1c2d0e8adb8716a924261f3b760380a444f0"
+    },
+    {
+      "chapter": "09",
+      "file": "records/practice/film-shots/09/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          338,
+          470
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:57.610432+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6d2c0d929b364f71a4c032df281a46ea5c295832ddfa3e3ad4c86fc1c1d2e14c"
+    },
+    {
+      "chapter": "09",
+      "file": "records/practice/film-shots/09/02.jpg",
+      "action": "实际展开真实归档消息源行 338",
+      "source": {
+        "source_line": 338
+      },
+      "captured_at": "2026-11-11T02:29:57.696006+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "00eb42cfab1cff52780684bb1e44bbdfe0a0fad041c0220ca17c626bf6acc69c"
+    },
+    {
+      "chapter": "09",
+      "file": "records/practice/film-shots/09/03.jpg",
+      "action": "实际展开真实归档消息源行 470",
+      "source": {
+        "source_line": 470
+      },
+      "captured_at": "2026-11-11T02:29:57.770091+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "e5c255af168b8aad2b4b9abb315deaf55e416a4a2f2a70f816789461f64f9f68"
+    },
+    {
+      "chapter": "09",
+      "file": "records/practice/film-shots/09/04.jpg",
+      "action": "在浏览器中选中最后一条真实消息原文",
+      "source": {
+        "source_line": 470
+      },
+      "captured_at": "2026-11-11T02:29:57.818700+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4732e537c17d4901fa89baf4c1830490f30ecea644dd39da8347f00d67cce412"
+    },
+    {
+      "chapter": "09",
+      "file": "records/practice/film-shots/09/05.jpg",
+      "action": "回到本段真实消息并列阅读",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:57.863184+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4732e537c17d4901fa89baf4c1830490f30ecea644dd39da8347f00d67cce412"
+    },
+    {
+      "chapter": "10",
+      "file": "records/practice/film-shots/10/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          565,
+          810,
+          815
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:57.922542+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "ef33cab2455141423778e97f4233a6d340f58d319099da3ed85ad3e4fabd0faa"
+    },
+    {
+      "chapter": "10",
+      "file": "records/practice/film-shots/10/02.jpg",
+      "action": "实际展开真实归档消息源行 565",
+      "source": {
+        "source_line": 565
+      },
+      "captured_at": "2026-11-11T02:29:58.005671+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "66dda48618b681cd47ff17597fffccf0df426673333bdd64d8653a4c771a9167"
+    },
+    {
+      "chapter": "10",
+      "file": "records/practice/film-shots/10/03.jpg",
+      "action": "实际展开真实归档消息源行 810",
+      "source": {
+        "source_line": 810
+      },
+      "captured_at": "2026-11-11T02:29:58.078634+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "06cde4241923d4fa09684d365006e0abfaf5979b047a97ce0253710c31f9e6c8"
+    },
+    {
+      "chapter": "10",
+      "file": "records/practice/film-shots/10/04.jpg",
+      "action": "实际展开真实归档消息源行 815",
+      "source": {
+        "source_line": 815
+      },
+      "captured_at": "2026-11-11T02:29:58.152062+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "11f15539b2b07bc696d45a15b0fa2a6f51fad8af577c7e5d52a93a74a541b12d"
+    },
+    {
+      "chapter": "10",
+      "file": "records/practice/film-shots/10/05.jpg",
+      "action": "在浏览器中选中最后一条真实消息原文",
+      "source": {
+        "source_line": 815
+      },
+      "captured_at": "2026-11-11T02:29:58.201196+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6beb85f2fb32e099ae10fdf34d5f8f14e7d68918ed94b2dc26a3ca44f32c2183"
+    },
+    {
+      "chapter": "11",
+      "file": "records/practice/film-shots/11/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          890,
+          970
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:58.261398+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5fd4569d6fde7a2c03ebde3187f4142d705f0f1521612b61c020b7540551f3f1"
+    },
+    {
+      "chapter": "11",
+      "file": "records/practice/film-shots/11/02.jpg",
+      "action": "实际展开真实归档消息源行 890",
+      "source": {
+        "source_line": 890
+      },
+      "captured_at": "2026-11-11T02:29:58.334298+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "2e782a48bf7f9415c6428d51f859a7ac37e39cf324e1a394af0c10f574a34050"
+    },
+    {
+      "chapter": "11",
+      "file": "records/practice/film-shots/11/03.jpg",
+      "action": "实际展开真实归档消息源行 970",
+      "source": {
+        "source_line": 970
+      },
+      "captured_at": "2026-11-11T02:29:58.405048+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "d805ae18364f366decc5a73e0f6f1c68a775a48034dd83d4fd555fb872ac95c5"
+    },
+    {
+      "chapter": "11",
+      "file": "records/practice/film-shots/11/04.jpg",
+      "action": "在浏览器中选中最后一条真实消息原文",
+      "source": {
+        "source_line": 970
+      },
+      "captured_at": "2026-11-11T02:29:58.451017+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b465b5f76acb0bd21744ae568056c7085ffa172220379a007401a8d7c77553e1"
+    },
+    {
+      "chapter": "11",
+      "file": "records/practice/film-shots/11/05.jpg",
+      "action": "回到本段真实消息并列阅读",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:58.495414+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b465b5f76acb0bd21744ae568056c7085ffa172220379a007401a8d7c77553e1"
+    },
+    {
+      "chapter": "12",
+      "file": "records/practice/film-shots/12/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          1063
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:58.564988+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "11ab71b1fea519a17049cb0290c5a9f391e0cfb50679b425a7d61e3a7a72ef15"
+    },
+    {
+      "chapter": "12",
+      "file": "records/practice/film-shots/12/02.jpg",
+      "action": "实际展开真实归档消息源行 1063",
+      "source": {
+        "source_line": 1063
+      },
+      "captured_at": "2026-11-11T02:29:58.637630+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8e3e17d9b687537640dc416cefe42c90ea4b352c505fa04c0b4a982dbd5f5bea"
+    },
+    {
+      "chapter": "12",
+      "file": "records/practice/film-shots/12/03.jpg",
+      "action": "打开实际git show 2c5ade2代码及回归差异",
+      "source": {
+        "commit": "2c5ade24c512a6b15c7111f808192f480627c4fb"
+      },
+      "captured_at": "2026-11-11T02:29:58.716637+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4a6e3b5323c94f76a760d7f8d0ce3a68bcb072a6e209aa7814181ee60963ac14"
+    },
+    {
+      "chapter": "12",
+      "file": "records/practice/film-shots/12/04.jpg",
+      "action": "向下滚动核对真实修复代码差异",
+      "source": null,
+      "captured_at": "2026-11-11T02:29:58.962947+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4930ab30c1138d5a42a451632e5834745296b31719bf6c41205d09a2e5e62869"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/01.jpg",
+      "action": "打开清楚标明历史回顾的只读原文阅读页",
+      "source": {
+        "file": "records\\brand\\prompts\\01a1be86-7c96-7200-860a-ff272f5c3bb1.json",
+        "source_lines": [
+          1402,
+          1456,
+          1463,
+          1466
+        ]
+      },
+      "captured_at": "2026-11-11T02:29:59.022232+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "12727f409d6f06eb33fb62124db2fcb4623bce03e3d91bc3d6d1b08e162a9e7c"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/02.jpg",
+      "action": "实际展开真实归档消息源行 1402",
+      "source": {
+        "source_line": 1402
+      },
+      "captured_at": "2026-11-11T02:29:59.095240+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "df41744e02d76aa0ef26b7cd076d9753a45ea5979b6a168d12701a44ea3e6d30"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/03.jpg",
+      "action": "实际展开真实归档消息源行 1456",
+      "source": {
+        "source_line": 1456
+      },
+      "captured_at": "2026-11-11T02:29:59.166754+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "beabe7b1bd0b6b8ad9c78b82a0354e5699fd066ba3c73d958ff1cd35e4a34d98"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/04.jpg",
+      "action": "实际展开真实归档消息源行 1463",
+      "source": {
+        "source_line": 1463
+      },
+      "captured_at": "2026-11-11T02:29:59.238841+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "1630fd453fcb8dfc136b715b980a80822a00dbb2488207c9cf251606470da260"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/05.jpg",
+      "action": "实际展开真实归档消息源行 1466",
+      "source": {
+        "source_line": 1466
+      },
+      "captured_at": "2026-11-11T02:29:59.322933+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5ae0482487fbf1321f147cab5955da313593df61f82c3cf6be8cbf972fb74cfe"
+    },
+    {
+      "chapter": "13",
+      "file": "records/practice/film-shots/13/06.jpg",
+      "action": "在浏览器中选中最后一条真实消息原文",
+      "source": {
+        "source_line": 1466
+      },
+      "captured_at": "2026-11-11T02:29:59.371720+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5ae0482487fbf1321f147cab5955da313593df61f82c3cf6be8cbf972fb74cfe"
+    }
+  ]
+}

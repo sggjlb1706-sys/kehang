@@ -1,0 +1,16 @@
+test_archive_rejects_extra_entries_changed_bytes_and_unsafe_names (tests.test_practice_delivery.DeliverySafetyTest.test_archive_rejects_extra_entries_changed_bytes_and_unsafe_names) ... ok
+test_reviewer_excludes_raw_data_and_hidden_channels_and_redacts_prompt_text (tests.test_practice_delivery.DeliverySafetyTest.test_reviewer_excludes_raw_data_and_hidden_channels_and_redacts_prompt_text) ... FAIL
+
+======================================================================
+FAIL: test_reviewer_excludes_raw_data_and_hidden_channels_and_redacts_prompt_text (tests.test_practice_delivery.DeliverySafetyTest.test_reviewer_excludes_raw_data_and_hidden_channels_and_redacts_prompt_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-practice-20261110\tests\test_practice_delivery.py", line 44, in test_reviewer_excludes_raw_data_and_hidden_channels_and_redacts_prompt_text
+    self.assertEqual(payload['campuslab/example.py'],b'# fixed code\n')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'# fixed code\r\n' != b'# fixed code\n'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.072s
+
+FAILED (failures=1)

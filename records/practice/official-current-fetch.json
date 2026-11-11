@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-11-10T09:08:04.952407+00:00",
+  "page_url": "https://www.boxuegu.com/matchTrack/detail/?id=10039",
+  "public_api_url": "https://gateway.boxuegu.com/portal-marketing/competition/track/detail?id=10039&includeDetail=true",
+  "method": "GET public rules; no credentials",
+  "status": 200,
+  "success": true,
+  "sha256": "E831FD52FCD544F824C8D28ABF91055DF7DF4EFAB28E26FD7FD501C56BA29CC6",
+  "bytes": 27046
+}

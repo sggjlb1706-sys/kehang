@@ -1,0 +1,196 @@
+{
+  "seconds": 302.0,
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "ai_history_seconds": 136,
+  "head": "87711b305e53756f05d7e67e13acb4a102adf6fc",
+  "sha256": "5d0d4206460404e33de5321d3bbe4c8db44fc61153fb0ef18c3096d62dee47ca",
+  "full_decode": true,
+  "timeline": [
+    {
+      "start": 0,
+      "seconds": 19,
+      "title": "一张表，两种算法",
+      "category": "课程现场",
+      "source": "practice",
+      "frame_sha256": "b90c81af78aaa8a502ac8e91cb172d453696a31ec4f25912ab64e81d235bcee3",
+      "caption": "教师希望核对学生交出的数据结果。打开课航，先看课堂实训的要求、两个环境任务和提交入口。",
+      "live_frames": 4
+    },
+    {
+      "start": 19,
+      "seconds": 18,
+      "title": "发布并携带要求",
+      "category": "课程现场",
+      "source": "published",
+      "frame_sha256": "c0cf2d355d18dbcface759b1bf4b5cc25b947d39550fe9b2abf66b5001522a7b",
+      "caption": "教师在本机发布课堂包，得到两个组件课程码。跨实例传递使用固定资料包，学生在另一份本机课程库导入。",
+      "live_frames": 4
+    },
+    {
+      "start": 37,
+      "seconds": 19,
+      "title": "跟着资料操作",
+      "category": "课程现场",
+      "source": "steps",
+      "frame_sha256": "bed4822c7e62108e6ed7172743f3afca3343e26ea8b051e35a3eeaba38a07b36",
+      "caption": "完整解压后，用已确认的课程内核打开 Notebook。三行数据保存在 scores.csv，先确认文件位置和每列含义。",
+      "live_frames": 5
+    },
+    {
+      "start": 56,
+      "seconds": 19,
+      "title": "计算行数与分组",
+      "category": "本轮实际执行文件",
+      "source": [
+        "学生已执行.ipynb · 已执行单元节选",
+        "实训成果.json · notebook"
+      ],
+      "frame_sha256": "0f83a7407ec0933c820b6973e11342c969c321057df034847cbda8f1fa10c13b",
+      "caption": "在已运行的 Notebook 中，按 category 汇总和直接求总和都来自读取的 CSV。内核探针另有自己的初检和复检。",
+      "live_frames": 0
+    },
+    {
+      "start": 75,
+      "seconds": 19,
+      "title": "用 SQL 交叉核对",
+      "category": "本轮实际执行文件",
+      "source": [
+        "02_SQLite练习.py · 本轮填写的固定语句",
+        "实训成果.json · sqlite"
+      ],
+      "frame_sha256": "193fb1cb0bf64aa5c7159bae4c7e1299c6c0385c5a95f42bb871b05c370e988f",
+      "caption": "在同一数据上按类别计算行数和分数合计。A 有两行，B 有一行，两组分数相加仍然是 42。",
+      "live_frames": 0
+    },
+    {
+      "start": 94,
+      "seconds": 18,
+      "title": "第一次核验总分为 41",
+      "category": "课堂操作 · 代理构造负例",
+      "source": "wrong",
+      "frame_sha256": "1c29298887e5f1afbbfa0f95a337539cf8105c40bb683ae3542bed3acccb758f",
+      "caption": "这里特意把正确总分 42 改成 41，作为代理构造的反例。SQLite 行仍然正确，学生可以直接回到 Notebook 查总分。",
+      "live_frames": 4
+    },
+    {
+      "start": 112,
+      "seconds": 19,
+      "title": "再次提交真实计算结果",
+      "category": "课程现场",
+      "source": "accepted",
+      "frame_sha256": "47e5e4459f2eb22299585348d7212d4619c8b8e4c4c44c75bfd20b6cdc102c1e",
+      "caption": "重新选取实际模板生成的成果。两部分都符合后，页面仍保留前一次错误。教师可以按同一份资料重新核对。",
+      "live_frames": 4
+    },
+    {
+      "start": 131,
+      "seconds": 18,
+      "title": "分别核对环境与成果",
+      "category": "课程现场",
+      "source": "result",
+      "frame_sha256": "f0fa920782b23d7bb33d3e5517c0898993907634cdc282317b149dc404c3c268",
+      "caption": "两份环境报告按时间和组件身份复检。阅读是本人声明，数字是否符合由规则判断。完成物保留提交次序。",
+      "live_frames": 4
+    },
+    {
+      "start": 149,
+      "seconds": 23,
+      "title": "用户怎样规定范围",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "源行 17  ·  2026-11-09",
+        "源行 29  ·  2026-11-09"
+      ],
+      "frame_sha256": "8d5e1fa66fdd25741b708e27e3035d50bf45f00c64187bf45c976331ed615f37",
+      "caption": "回看上一轮的真实可见消息。用户要求从正式基线继续，助手把 Notebook、SQLite 等任务约束成可验证的具体工作。",
+      "live_frames": 5
+    },
+    {
+      "start": 172,
+      "seconds": 23,
+      "title": "开源组件怎样落地",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "源行 338  ·  2026-11-09",
+        "源行 470  ·  2026-11-09"
+      ],
+      "frame_sha256": "0f6db02ba563fd3aa125726d07683079f100e35e56301967e720f19696ffa212",
+      "caption": "助手把 Educates 教学动作接到已有检查上。随后报告固定内核运行和只读查询，今天的连续实训复用这两项任务。",
+      "live_frames": 5
+    },
+    {
+      "start": 195,
+      "seconds": 22,
+      "title": "下载包缺什么",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "源行 565  ·  2026-11-09",
+        "源行 810  ·  2026-11-10",
+        "源行 815  ·  2026-11-10"
+      ],
+      "frame_sha256": "b595212bdf0ce1c8ebf038924a0ab395db8c8ae0a4c534d96fbe7984e80c879c",
+      "caption": "执行者在整合时发现下载包缺少固定 CSV。保留原发现者身份，用户的“继续”只表示推进原任务。",
+      "live_frames": 5
+    },
+    {
+      "start": 217,
+      "seconds": 23,
+      "title": "怎样把失败留作证据",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "源行 890  ·  2026-11-10",
+        "源行 970  ·  2026-11-10"
+      ],
+      "frame_sha256": "88da707aafd480d2fdfae44d4564458d48a7e75b8fd8a48f9aeeae229b95c7ef",
+      "caption": "这次问题由独立审查者发现。版本命令退出状态缺失时，规则曾误判通过。助手报告修复内容并安排同版本复核。",
+      "live_frames": 5
+    },
+    {
+      "start": 240,
+      "seconds": 23,
+      "title": "从消息追到代码",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "2c5ade2 · campuslab/java_course.py",
+        "源行 1063  ·  2026-11-10"
+      ],
+      "frame_sha256": "a66072dadae704946330fc10ae356c42463f731ebdd80000f13d5531143cb7cb",
+      "caption": "可以把历史对话和提交放在一起审阅。独立者重跑 115 项测试，是当时版本的核对记录。",
+      "live_frames": 4
+    },
+    {
+      "start": 263,
+      "seconds": 22,
+      "title": "用户如何纠正产品定位",
+      "category": "真实 AI 协作回顾",
+      "source": [
+        "源行 1402  ·  2026-11-10",
+        "源行 1456  ·  2026-11-10",
+        "源行 1463  ·  2026-11-10",
+        "源行 1466  ·  2026-11-10"
+      ],
+      "frame_sha256": "72d8d61ba54e49a3a02450ff016c430d690a52f1aad3f5b54d1edcc1f9566f2a",
+      "caption": "用户指出旧名称太窄，确认“课航”。对应的 Git 提交为 1eadacb。命名确认与围绕具体程序故障的用户纠偏分别记载。",
+      "live_frames": 6
+    },
+    {
+      "start": 285,
+      "seconds": 17,
+      "title": "复现与证据入口",
+      "category": "本轮交付",
+      "source": [
+        "README.md → 本机工作台",
+        "records/practice"
+      ],
+      "frame_sha256": "647c7dfe1af18fdee9017f1d346395b15863d69a12cc8bdd8d8c5919b77f6533",
+      "caption": "本片展示同一台电脑上的教师端和学生端。本轮没有取得本人真实 API 请求或 DSH 工具回合。评审访问与上传需本人办理。",
+      "live_frames": 0
+    }
+  ],
+  "actual_course_footage": "isolated browser tabs; developer-operated, plus actual lab outputs",
+  "audio": "silent; burned-in Chinese explanations"
+}

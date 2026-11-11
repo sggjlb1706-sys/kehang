@@ -1,0 +1,13 @@
+{
+  "58d05cd": {
+    "head": "58d05cd1e45e665d780d661297672ca329af7c74",
+    "count": 93,
+    "manifestSHA": "e7480c12bc9d6048bfc4689cf5eb15d7e2ebe04657ca1d0da9c6208e76d189b6"
+  },
+  "87711b3": {
+    "head": "87711b305e53756f05d7e67e13acb4a102adf6fc",
+    "count": 94,
+    "manifestSHA": "f5c66ed5197400889b5c102fd93d971d01cde5658555f36039fbd5a0a9767097"
+  },
+  "evidence": "Archived submissions/teacher completion + three real A/B pairs recalculated, read-only SQL query checked, old/new DSH A/B software-only vs entire outcome verified."
+}

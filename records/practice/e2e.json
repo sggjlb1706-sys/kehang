@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "assertions": [
+    "teacher exported fixed package + actual materials, student imported in distinct local DB",
+    "agent-constructed 41 rejected, actual completed notebook + SELECT accepted; both attempts retained",
+    "notebook-data real A/B in reverse selection order, same identity/time, 3 modes agree",
+    "sqlite-basics real A/B in reverse selection order, same identity/time, 3 modes agree",
+    "exported completion independently recalculated for each attempt; both environments retained",
+    "390px reading, no horizontal overflow",
+    "Python real launcher pair; equal timestamps and share-only report rejected"
+  ],
+  "origins": [
+    "http://127.0.0.1:65390",
+    "http://127.0.0.1:65391"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "scope": "Agent-operated, two local databases on the same Windows computer."
+}

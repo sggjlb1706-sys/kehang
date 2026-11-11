@@ -1,0 +1,61 @@
+{
+  "actor": "代理构造的测试负例，不是学生犯错",
+  "result": {
+    "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+    "checked_at": "2026-11-10T09:06:48.008676+00:00",
+    "status": "mismatch",
+    "passed": false,
+    "components": {
+      "notebook": {
+        "status": "mismatch",
+        "expected": {
+          "array_sum": 42,
+          "group_totals": {
+            "A": 30,
+            "B": 12
+          },
+          "rows": 3
+        },
+        "submitted": {
+          "rows": 3,
+          "array_sum": 43,
+          "group_totals": {
+            "A": 30,
+            "B": 12
+          }
+        },
+        "next_step": "回该项模板检查CSV、分组/排序和数值，复算后重新提交；保留本次记录。"
+      },
+      "sqlite": {
+        "status": "pass",
+        "expected": [
+          [
+            "A",
+            2,
+            30
+          ],
+          [
+            "B",
+            1,
+            12
+          ]
+        ],
+        "submitted": [
+          [
+            "A",
+            2,
+            30
+          ],
+          [
+            "B",
+            1,
+            12
+          ]
+        ],
+        "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+      }
+    },
+    "scope": "仅核对提交JSON中的固定任务、资料版本、数据摘要和数值结果；不执行上传代码，不证明实际操作、学习掌握、作品原创或未复制。环境报告、本人阅读声明和成果核验分别记录。",
+    "next_step": "结果有误：按下方对应组件重新计算并再次提交，保留本次错误记录。"
+  }
+}

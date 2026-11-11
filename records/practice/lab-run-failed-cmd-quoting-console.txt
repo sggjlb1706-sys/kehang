@@ -1,0 +1,12 @@
+D:\ANACONDA\Lib\site-packages\nbformat\__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-practice-20261110\tools\practice_lab.py", line 149, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-practice-20261110\tools\practice_lab.py", line 131, in main
+    assert completed.returncode==0,(scenario,stage,completed.stdout,completed.stderr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('python-basics', 'A', '', '\'\\".\\Start-Collect.cmd\\"\' is not recognized as an internal or external command,\noperable program or batch file.\n')

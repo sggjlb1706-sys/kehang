@@ -1,0 +1,3157 @@
+{
+  "checked_at_utc": "2026-11-10T09:02:35.860228+00:00",
+  "anchor_head": "6ea077b4423329d5d77ba3278cc04d71cb8a50a2",
+  "reachable_commits": 40,
+  "unique_blobs_scanned": 1599,
+  "matching_values_output": false,
+  "dangerous_paths": [],
+  "patterns": {
+    "credential-shaped-token": 0,
+    "private-key-material": 0,
+    "personal-user-path": 540,
+    "email-address": 8,
+    "device-identity-field": 78
+  },
+  "hits": {
+    "credential-shaped-token": [],
+    "private-key-material": [],
+    "personal-user-path": [
+      {
+        "blob": "5e639c8f3622a6523a5dbc2e9afe782957a3e006",
+        "path": "DESIGN.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "ac8393960f5b48cb731fe5ba5bb1a9bee5526dc2",
+        "path": "HANDOFF.md",
+        "occurrences": 3
+      },
+      {
+        "blob": "c1cae369d58ae74c2f09e7451fd4c290372fa6ae",
+        "path": "PLAN.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "628bac58cbbfe7b541b8741f7eec778a7dffb4b2",
+        "path": "PRODUCT.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "8b9ae4d053089f6fd0a1cd59094fca4b43cbf9c1",
+        "path": "PROVENANCE.md",
+        "occurrences": 3
+      },
+      {
+        "blob": "07a16dd9e2680f258ba279f6a033a7f3c4ea826f",
+        "path": "README.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "e9959563eb922400693637a7172fc37ccfdd9660",
+        "path": "REVIEW.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "e850bd0aa8d323d88c48cb2b6b449b19d4b7ecea",
+        "path": "TASK.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "b7d45d0828d0b14f71fa9c9fbca2107fc7c248f2",
+        "path": "docs/legacy/root/AGENTS.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "94d1bfc721548d90b77b28d8c4f900d31f8706d4",
+        "path": "docs/requirements-20261109/后续工作提示词_功能补全优先版_20261108.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "c21cb7a618cc9ef4ace9a455956ecec223fa4370",
+        "path": "docs/requirements-20261109/后续工作提示词_开源二次开发与课程AI_Agent补全版_20261109.md",
+        "occurrences": 5
+      },
+      {
+        "blob": "d3ecb8d21e6572c07a5fa411ef100672c49ed41a",
+        "path": "docs/requirements-practice/后续工作提示词_课航实训闭环与参赛完善版_20261110.md",
+        "occurrences": 4
+      },
+      {
+        "blob": "a3ba675950a1e04d7ca23495e2c48933ccce4398",
+        "path": "records/brand/browser-first.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7848665e0cab4917cfa01510a83d280ee6652102",
+        "path": "records/brand/independent/docs-check.json",
+        "occurrences": 8
+      },
+      {
+        "blob": "7a83e3ab6c8f80e861021f20e5e99c9876ceb9d7",
+        "path": "records/brand/independent/material-tools-smoke.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "95a3870b654f57d2440ba6abbe68e9a12d22d8fa",
+        "path": "records/brand/independent/materials-check.py",
+        "occurrences": 1
+      },
+      {
+        "blob": "f35bf134ac8eada672044329c9558a2bf15bc7cc",
+        "path": "records/brand/startup-preflight.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "83fdcd6e8b8ef3856a22d81b32000b03c5808f37",
+        "path": "records/browser/20261103T012146712448Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "d063d938d8a58e930bfaa4234e81f7b19fa1fd03",
+        "path": "records/browser/20261103T012146712448Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "6856aec340d20903716d1680b1afebc87cadaeda",
+        "path": "records/browser/20261103T012146712448Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "21d66ddc237dd1ce82e3c5ea5f2554ac12c7b232",
+        "path": "records/browser/20261103T012146712448Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "7d4383a406f858fbd316626a536dfc605ee53a2d",
+        "path": "records/browser/20261103T012146712448Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "6888bffb8283315dbd3348863b8ce8ceef0657bd",
+        "path": "records/browser/20261103T012237578720Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "91bf6bf0e3160a03ac771e938634ff0ae9a29877",
+        "path": "records/browser/20261103T012237578720Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "bb25462d71a85b7500a7265cb30f087cb074d035",
+        "path": "records/browser/20261103T012237578720Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "67e0c65e89635a30405fb12ce3bca9e823b7bb9a",
+        "path": "records/browser/20261103T012237578720Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "9445d22cf1c1069984331166df29ba3dabe1ad4b",
+        "path": "records/browser/20261103T012237578720Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "7bf885ee420a66cc879229381455529155291d47",
+        "path": "records/browser/20261103T012300525889Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "936022b016e5d6417dc7d6a8d1ec4601123d9c88",
+        "path": "records/browser/20261103T012300525889Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "32449264d3168acb6fe7ddd159eb27cb3301cb11",
+        "path": "records/browser/20261103T012300525889Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "1c96c109028e280d72fdd0ad078206fb8cce4557",
+        "path": "records/browser/20261103T012300525889Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "cc1c98e38330cc11e12f3750ca38742b93dd0653",
+        "path": "records/browser/20261103T012300525889Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "b8b1ae89632e8b381fbd0009b7ad4f36aa53d044",
+        "path": "records/browser/20261103T012753583646Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "4c79361c4fa9acc1f3973c0fb3c691ee3936d3b6",
+        "path": "records/browser/20261103T012753583646Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "b5467ab296a6da0a2948c9801d2c32a62890fbfb",
+        "path": "records/browser/20261103T012753583646Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "8e3ca5830276cc5762278a26bc002ee270acd92c",
+        "path": "records/browser/20261103T012753583646Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "c01ae3e35967e0a07bcb2d423a13c9ad4c7fcf8c",
+        "path": "records/browser/20261103T012753583646Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "73e7780a0f33d476545fffc32e3d8360ba74d0d2",
+        "path": "records/browser/20261103T013607390941Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "c2c1ae8254e7a2091e1fc88cd2edb8786101add9",
+        "path": "records/browser/20261103T013607390941Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "7dbae8221213d8677349de3f8580cd1d182941db",
+        "path": "records/browser/20261103T013607390941Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "3c98b1b7db7178f95c6175a41274bea40440cc5c",
+        "path": "records/browser/20261103T013607390941Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "f5b99d9b8f2e10200fb83cb670d1cadba33815e8",
+        "path": "records/browser/20261103T013607390941Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "c543bfa5d691bf8a5854aafc9d210227e9a7ef86",
+        "path": "records/browser/20261108T090333403578Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a447d99d7ae9a13c87d12ec441f62767753c76ef",
+        "path": "records/browser/20261108T090333403578Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "6fe03d16be3d610775c0eddfa63f4af84bd9ea4b",
+        "path": "records/browser/20261108T090333403578Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "824aa21e032de9d7e549d0cd028c237a6d2596f3",
+        "path": "records/browser/20261108T090333403578Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "7e02eb55a598e2c4bc7799ca6bc031908f171dda",
+        "path": "records/browser/20261108T090333403578Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f0b4a9fa2aa7cd3f8e523a8696fa4364121af44d",
+        "path": "records/browser/20261108T090333403578Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "26dc962367dd225e8e15bb376a5e342c729ea3ee",
+        "path": "records/browser/20261108T090348975120Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "1631cbb9fa057905ef041cdfffb253ce5afaa38c",
+        "path": "records/browser/20261108T090348975120Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "fac5f2c2ca12afedb3d83e830d8efe66ff4f5e5d",
+        "path": "records/browser/20261108T090348975120Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "b7f81e27723bc3c984f381213e2c6ac77a6c54d6",
+        "path": "records/browser/20261108T090348975120Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "f484a46dfeb64877608e0dab5a00fbd8f79c58bb",
+        "path": "records/browser/20261108T090348975120Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "9cb85ab0ea29730a105d1e4d159a1a13f0f8c4fd",
+        "path": "records/browser/20261108T090411006997Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "671a913e8cf953a4d8cfe93922594369981569c8",
+        "path": "records/browser/20261108T090411006997Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "625310d4cff21f5e57efb7dbfab618ac30c196f5",
+        "path": "records/browser/20261108T090411006997Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "ac8da14cc10cd60e4ee4cdd71a9c366a51b447ee",
+        "path": "records/browser/20261108T090411006997Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "0c7cd8b128982b15917266eb5cbc672bf27e7d1e",
+        "path": "records/browser/20261108T090411006997Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "e84da2e3af5ffcbb09aba0eb9bb92835a60aa75e",
+        "path": "records/browser/20261108T090411006997Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f0b6dedd04bceda8e15a55076ebc220c7629d347",
+        "path": "records/browser/20261108T091518984486Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "712736820e0ef4cf5125e0122eb44cadc6827d51",
+        "path": "records/browser/20261108T091518984486Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "c8a1abec466fb3d27361c6c2cfe4543d5effd360",
+        "path": "records/browser/20261108T091518984486Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "e87d404f3fbe97662c7c6dad9233750d6703c57e",
+        "path": "records/browser/20261108T091518984486Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f9f8f947519a1a405bf533b244ce1354d158cccc",
+        "path": "records/browser/20261108T091518984486Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "af6c5bb03415efdfcdb4be00098036856b55f75f",
+        "path": "records/browser/20261108T091518984486Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "4de9685d38056ced20834e8bbfd63c0b542e0c20",
+        "path": "records/browser/20261108T091526620608Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9662a118aa7dac59d58aabb2886116eb8da00728",
+        "path": "records/browser/20261108T091526620608Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "a532dcbfa5f8570b3a3685a9851728c57fadb184",
+        "path": "records/browser/20261108T091526620608Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "e84a35b47c7b31ce56217a8f8002ba44c62e0b27",
+        "path": "records/browser/20261108T091526620608Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "f9e3bcd6d5ef18d5ec7d588c97af57096ba9db15",
+        "path": "records/browser/20261108T091526620608Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "c0f3952becf43dc87eaa47e64e8502b635e3d5ee",
+        "path": "records/browser/20261108T100005914677Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "3347041cd5cb116b0a92b329600156b863e0b594",
+        "path": "records/browser/20261108T100005914677Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "3a45d9371831f72575ac75b1e27376a71922c5d1",
+        "path": "records/browser/20261108T100005914677Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "246b12a21a0000b101580155aad9aaf71c84be52",
+        "path": "records/browser/20261108T100005914677Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9495d37a470f0dacd85b05b142d08e1c5098b66a",
+        "path": "records/browser/20261108T100005914677Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "952f31c2b9441e36ee3ce37b6f8ff38ee8fa4a92",
+        "path": "records/browser/20261108T100005914677Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "6337de2bc20220c2808a52be39ea629abdea79d8",
+        "path": "records/browser/20261108T101214063032Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f8ec7c6f750d5b88ee331363ec51fde6aaf7008e",
+        "path": "records/browser/20261108T101214063032Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "c714f7ce36e507ae9f6c5dd7ed4fb52c63d1f520",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "901f431bb8d2e863e11dfdfaca349620783bc2ac",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "572c76053c82292dd2a2fc7177cfa189dc87b6d1",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "b2937442700482ffadd1c9f378b28f2d7e781c20",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "4cf28b546a5504450d24241a4ac18dd8f1b3057e",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f2f46c538f870cf3f77b8ebd9b51e831349e40c3",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "6694896e531dd0b9c5dc28b682cdcae1115de121",
+        "path": "records/browser/20261108T101247900904Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "d297c760cbd97048aef241f4dc7e63502903c9c3",
+        "path": "records/browser/20261108T101247900904Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "d1bd3bbc31052e4148f90bad77b6b41aa3d7ee5f",
+        "path": "records/browser/20261108T101247900904Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "fecb1264df0c8f52ee683a7074a4b2c96341e5c8",
+        "path": "records/browser/20261108T101247900904Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "c7ca483df31cf0e7af9741ba70ce46735fd3d84f",
+        "path": "records/browser/20261108T101247900904Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "58f74c7661de3ecf30bb29779115abd3d828d980",
+        "path": "records/browser/20261108T101247900904Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "6c8e8347f3c55b23f8f142ed0748e737fa8e7d67",
+        "path": "records/browser/20261108T101255933499Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "716c0a48fc003d0b4da2dbf9a41226562f22b7d6",
+        "path": "records/browser/20261108T101255933499Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "7a8255118889adf9f9a70f992b401d1de371e01f",
+        "path": "records/browser/20261108T101255933499Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f68e3e6069e5a6f37dc185371127ebf463609179",
+        "path": "records/browser/20261108T101255933499Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "02bbf56e994abaf4dbbed8e8b13e7429bb2c6d2c",
+        "path": "records/browser/20261108T101255933499Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "07e3f032cc25f8ca3dfb57f3048456748b612009",
+        "path": "records/browser/20261108T101405479251Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "dd3fbce3fb0dae3722b75ce3228559c28bd4b435",
+        "path": "records/browser/20261108T101405479251Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "f3b3f2341c2b61260dd1de5e1f11e74f6e3f9a07",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c7495249db5c28824aa4dbb3f482e2dbed5e48fc",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "6839cf0f502f77a27e56bbf1d66010baa820989a",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "44ef8a9c32a497d75257b409153dd1229bd55cbe",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9e8c58187e6941aafda970aaf3317664365c53b9",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "0688f51997b7d6a9e6bccffb487712eac138d0f2",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "98d0b057257fa30220f41ba0ee32681ba3161b5c",
+        "path": "records/browser/20261108T101444960811Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "e8688adaf32e8db7a85c29a6ca4c12e60a3bc1bf",
+        "path": "records/browser/20261108T101444960811Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "858fd9caf9796af4ebb6e6587e46995222b042f3",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "b47dcbada988d6a5a1d356cddf3bdee1c1c1492c",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "8d8eaecb41a15900a92cff581322b638dd7e655f",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "11a60c1819f1d4bf0c84d5541731f1c69b3b1131",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "64a8a11e95f308b5e27165b316c5be518777b6c7",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "52d975a8ceeda729aa1262f2791948bedb8ea302",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9f12b08dd1f554e81536436beaee0ef28c9216bb",
+        "path": "records/browser/20261108T103533580266Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "cb9231c9f2563913f4aa9e87df62a4b95a6e8590",
+        "path": "records/browser/20261108T103533580266Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "889a4a15f444a64a34a23aea239ee8ddff229242",
+        "path": "records/browser/20261108T103533580266Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "698943c42e21c4e90671e6b9ba3f08870b525cdb",
+        "path": "records/browser/20261108T103533580266Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "10dd29a50328cf3bcf76b400cfbc8a238a6ade84",
+        "path": "records/browser/20261108T103533580266Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "d97f47fd78f3f14ae86f2e9ce07d76375ac9942d",
+        "path": "records/browser/20261108T103534010672Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "05c2b7868d5110f706e47b2715de8684dc1c1191",
+        "path": "records/browser/20261108T103534010672Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "b7fc0e7d61a5a22b843a9045079fccba88c90992",
+        "path": "records/browser/20261108T103534010672Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "9754d7ca78fd6318be951abebd4dbc9a47def5c4",
+        "path": "records/browser/20261108T103534010672Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "75fbcb241c0e1d958a9bf26e7b6d8f2957dc1c35",
+        "path": "records/browser/20261108T103534010672Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "be64df12119963d64cb5160481eb1f51c6c06c33",
+        "path": "records/browser/20261108T103534010672Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f4ad8937214da1d45342b04ef99dc32d7fff4b31",
+        "path": "records/browser/20261108T104745025392Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9ef9db5330b07a6040c90157b6dbc91a260cc63c",
+        "path": "records/browser/20261108T104745025392Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "3633b2e9e33158d3dd9261d077e03d99ba9113bd",
+        "path": "records/browser/20261108T104745025392Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "3fc0036516a8f369bad97b6136ff4da2042c2f99",
+        "path": "records/browser/20261108T104745025392Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "b75e93de8283dae35f39a6135d4ab26005d75819",
+        "path": "records/browser/20261108T104745025392Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "0cf154776c0be191f784ba53df6691b7c36febe9",
+        "path": "records/browser/20261108T104745480764Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "14c4b9b2ebbf318684d0266c26af450eaa9b160c",
+        "path": "records/browser/20261108T104745480764Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "73b80959330d9030b617a7ce2181a8034bfebbd1",
+        "path": "records/browser/20261108T104745480764Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "60e59ed631009d46e0ae478e2e279f71b1431a8a",
+        "path": "records/browser/20261108T104745480764Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "8e935f23d57d551de2d9d97dd5752252f86d161e",
+        "path": "records/browser/20261108T104745480764Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "7a4c8a52052314de8c55cebbdb1b1fc2b3b8388e",
+        "path": "records/browser/20261108T104745480764Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "543756ff76c5a12fdd948e830c9527737469799f",
+        "path": "records/browser/20261108T104746040882Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "7aac0845bc509fe514f9532f362385dcfbc50be8",
+        "path": "records/browser/20261108T104746040882Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "3412b7937fc62a842ba37e31dd2d65f648dd1070",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f928883de001793082050ec0a2cb0cab3dab83fd",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a8a9b88e62f99e358f5fbdd85ec39331553e1dae",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "56cd6fb36cdaed34823d12d7861eeb818b5bba92",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "405448e78722b3c68cabcb4092bd560cd601d5d0",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "abd9aa898e1decd8a5f5df15e2cf2aba2635396c",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f67f2778cb1c0092007365680e28fe5a9978a828",
+        "path": "records/browser/20261109T081931398718Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "5c7e73039e04c4b1bcd7146eaed9f197b6e81a93",
+        "path": "records/browser/20261109T081931398718Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f6dd9e9395d08bf973ce4babbbfb5cbc72b13997",
+        "path": "records/browser/20261109T081931398718Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "fd0a145a2f2e533d905989a7a8b70dd8345e9d92",
+        "path": "records/browser/20261109T081931398718Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "6bbf87eb75b04de322f81e868bb2e05064ef26fb",
+        "path": "records/browser/20261109T081931398718Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "8b94e9fe098c7458dfcb4725d3e0c5eeba043adf",
+        "path": "records/browser/20261109T081931412298Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f088a4c4fb71bd3388087fd6733d215412a19666",
+        "path": "records/browser/20261109T081931412298Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "82967cbb9d25e1b383fe33997e869836dbce448c",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a493909c3fff599000aa6dee26568e0b19b0094f",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1d18ba23ed56d8c1fd4a60157267b991b29ae385",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "2771528cb2c579ba827e6eb65bbb2a20f31be70c",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "cb32de8aa0ad6ef770b4636c92e92e1a5033dfd3",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "126d1be57d01a44770e4cfee416942b710c19055",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "9956c98fb48849ee72388b78ae9f81251703046e",
+        "path": "records/browser/20261109T082150630170Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "4c940e19bc37bec1fc7eaca386c560b7a3a39fa4",
+        "path": "records/browser/20261109T082150630170Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "8cd967e9984e599512edda99db3e1686500c1731",
+        "path": "records/browser/20261109T082150630170Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "72e75c4a91cd1d2f5c195c26474b11a6d8a2a35c",
+        "path": "records/browser/20261109T082150630170Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "4138ead80c5522e1263f6005bd4c6fd44ea898bc",
+        "path": "records/browser/20261109T082150630170Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "0a2dfd94f1f9fdbe962945426f9f8ed43ba1f3fe",
+        "path": "records/browser/20261109T082150630170Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "7028ab9235cbf3a94aeb43c00e6b9f69d34d6005",
+        "path": "records/browser/20261109T082514365971Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "f99982965592de5804211244f5325495d8240991",
+        "path": "records/browser/20261109T082514365971Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "5bce0609d707a9cb01a73ce7f2eaae8d2aee48f0",
+        "path": "records/browser/20261109T082514365971Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "13b8180bc744e56c40d61b0ed2f2c8b0bbd2c5e4",
+        "path": "records/browser/20261109T082514365971Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "d0ad720e82d9359bc3290102ee2995b7e969f7c2",
+        "path": "records/browser/20261109T082514365971Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "f9fd571de4d52b597d1194e7eeda0ce357960443",
+        "path": "records/browser/20261109T082515110174Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "24af771f75c6c62c98c928cab837ef48f8b73744",
+        "path": "records/browser/20261109T082515110174Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "35e245cbe10281f3e79dfb905effc210d8df00de",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "9f2dec9f3cab3ff24ea07f1bf6ce210a2581d57b",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "386fc862d7a89c40058a704832f393afe332db53",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "03d62e6c3ff8d94d2134abe8e1c99ac7cde62d9b",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "4a74a7bec219e688f6aa6384414493acc0276f6e",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "a37ca2d3d3dc46f5ce761758e0a54198107b233b",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "8bc35c7ae128700bbc5e4b6bf596dc24a7b0a464",
+        "path": "records/browser/20261109T082524188235Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "61c76389c6aa9cfa265f37dd458da8c54f673e2b",
+        "path": "records/browser/20261109T082524188235Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "a9183ba7c5c614e3ad123be49652946ccffba90b",
+        "path": "records/browser/20261109T082524188235Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1b7a862e2d59f141b377d4ee74728ff7e6a0af24",
+        "path": "records/browser/20261109T082524188235Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "e07807c29518b6f30a1ea7742dbcd5d54013a413",
+        "path": "records/browser/20261109T082524188235Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "be18183fd78f01e7c3b33ea3cb65f374648622cb",
+        "path": "records/browser/20261109T082524188235Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "89f1393bd39de73da426c47cc25fe005ac7f8478",
+        "path": "records/browser/20261110T003103731709Z/actual-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "a553f3e8934694d3cc6b9efd4fe1aa580a107a4d",
+        "path": "records/browser/20261110T003103731709Z/actual-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "b785460c3031a397b0abd63516ffab69e6c6da0a",
+        "path": "records/browser/20261110T003103731709Z/missing-target.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "2fbf79dc480aaf99acae7fac47b0c0c766efc706",
+        "path": "records/browser/20261110T003103731709Z/reject-tool-runtime.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "9890d34ce85e22dd8d1b40dfc046676c9adbf208",
+        "path": "records/browser/20261110T003103731709Z/reject-tool-runtime.stderr.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "4d19454faaa1b824a31adcaac8132997102c1b07",
+        "path": "records/browser/20261110T003104245789Z-courses/actual-hardware.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "513e5a20713910f1483e7ad675e7641ce8650fa0",
+        "path": "records/browser/20261110T003104245789Z-courses/actual-hardware.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "62c4641b427320c8b2a46ba635d79c5b6816494f",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "801e6386c7a78e7309256c08c474953d00f88cba",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "36d9cfac2467fb6f26eeaedef57402c04a007fc9",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-precheck-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "8474dbfc87eca0be353b7262c6796ee1cd42cfba",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-run-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "48b22c0ad93e62bc39051a51a85aaf6f2ad49cf6",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "bf001d2f238499b614ceedd7ae8a34474c3aae68",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "2d4c2951061b0bb9a61e81ee7bbec74c930bfa8b",
+        "path": "records/browser/20261110T003116207099Z-node/actual-node-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "41a1422412121926c030a0d654a1d0cbf7d3a801",
+        "path": "records/browser/20261110T003116207099Z-node/actual-node-A.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "640e95db0bc480b098286cd7570b7cd950c0a31e",
+        "path": "records/browser/20261110T003116207099Z-node/actual-node-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "36bf1f8e08bc323ddfcb4927c98359bd87a4ebc5",
+        "path": "records/browser/20261110T003116207099Z-node/actual-node-B.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "d584fa2b568149233fec63a32f5fc5b7cc76dfab",
+        "path": "records/browser/20261110T003116207099Z-node/constructed-incomplete-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "caa8180ed90363ffc6231caac2240d5865ca2948",
+        "path": "records/browser/20261110T003116207099Z-node/constructed-other-target-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "3e31466617479b95b39fda2c6695f61bf64afbfc",
+        "path": "records/courses/browser-courses-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cdcfd49877d6fa8dcd6782cafc7d46791e2abf48",
+        "path": "records/courses/browser-courses-first.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "348246b7721e20cdeba8bcfe5be52b946539c2a9",
+        "path": "records/courses/browser-courses-review.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "9ceddd5e04e9131bc45319bde3538c09c4837932",
+        "path": "records/courses/browser-courses-ui-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "df1c768a0f35aa294cc49621db89bba1acf7ec96",
+        "path": "records/courses/browser-node-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "28cd0e41eb5786d80a87dc276d023cb364220638",
+        "path": "records/courses/browser-node-first.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "5a05b88c1ce9708a5fb1d8ba04bc618b113899cc",
+        "path": "records/courses/browser-node-release.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "e6d63e54ca094553f72d0dc8bf8705c878d51817",
+        "path": "records/courses/browser-node-review.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "9d0bc7ccde084ae324fcd50f92ba70fef7c595e2",
+        "path": "records/courses/browser-python-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7b12975d6490e93ae9aa87dee70e047f8642a764",
+        "path": "records/courses/browser-python-release.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b1836861533f949517700a913d36263c5a3bc95e",
+        "path": "records/courses/browser-python-review.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "2de99848e0f7a3f934008b416b9f963d5e93aadd",
+        "path": "records/courses/independent-findings-red.txt",
+        "occurrences": 8
+      },
+      {
+        "blob": "5149ad17234872cc91a567cfdb2b70b8b5a27c40",
+        "path": "records/courses/independent-ui-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "27202c9e1d8c9911e07b7ce00797d3b39e9e572b",
+        "path": "records/courses/independent-ui-green.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "2e8d45321f81994e589438c55abd8658e5649c53",
+        "path": "records/courses/independent-ui-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7a059b8e22b0d275f179f09daead5b38888f57bb",
+        "path": "records/courses/model-correct-target.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cb21b1a1eb480e9a1f89860aa6d9bc72d11ae9e4",
+        "path": "records/courses/model-final.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "fe1d74362bca9143f2cbd4944ba0ec00a7667d17",
+        "path": "records/courses/model/20261108T103903Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "8be49196631b3ed0b2f72b0a1c58a938d694d89b",
+        "path": "records/courses/model/20261108T103903Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e0e3709c3134502d6169cfebd3d1425f666ab269",
+        "path": "records/courses/model/20261108T103903Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e541826e1d5a59650535de357f19e3ca47586eef",
+        "path": "records/courses/model/20261108T103903Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "0254b79df7a4060be3f0155f87e4c010836c42bf",
+        "path": "records/courses/model/20261108T103903Z/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "ef2ee591bb8e32597bfdc7adb0ceace92a24aa66",
+        "path": "records/courses/model/20261108T103903Z/execution.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "d7af1b3d7ec0b7da055827428d72245814007c91",
+        "path": "records/courses/model/20261109T082149Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "75ed3221183b5e06dc302037eb51e5fbfd832af0",
+        "path": "records/courses/model/20261109T082149Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "a18d169c67accd1c5260e1f87017b10681c85072",
+        "path": "records/courses/model/20261109T082149Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "f00ff51e9d8477eb69cd17a3c890bb24fc2e92d0",
+        "path": "records/courses/model/20261109T082149Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "c8ef117d8caf0e4c0a5459f4bc2555861ff0e39c",
+        "path": "records/courses/model/20261109T082149Z/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "c613ce302cecc4f88f934a0b4ed8ddb1e9f70103",
+        "path": "records/courses/model/20261109T082149Z/execution.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a0c708e8209c863362afbf8ec1f959c6bbc1534a",
+        "path": "records/courses/model/20261109T082553Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "23798a83e4669814347d656600b1ccd133505d02",
+        "path": "records/courses/model/20261109T082553Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "01a34775140c7906d7c2131029b45061df87308e",
+        "path": "records/courses/model/20261109T082553Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e9746f80fe63d597b9aa354a1f2d75e6daefeabe",
+        "path": "records/courses/model/20261109T082553Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "bbed0183eed38483e90032bda82df01968b2fc15",
+        "path": "records/courses/model/20261109T082553Z/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "18a1eaffff829d329f773df2729ef6396ef82348",
+        "path": "records/courses/model/20261109T082553Z/execution.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f56fff31c9f167d4d3f00c4af2c4456993344583",
+        "path": "records/courses/model/20261110T003151Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "16930a4a949e00bfde24374fbc2895cbf987eb47",
+        "path": "records/courses/model/20261110T003151Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "93115ea81f8d8464f1ee69f5ea377f84c26de1fb",
+        "path": "records/courses/model/20261110T003151Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "17596be97a8eb43139f29ea4cfedc1328b03f62a",
+        "path": "records/courses/model/20261110T003151Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "9631afc9c783c2eca4e5b04702fde3baf1ef325d",
+        "path": "records/courses/model/20261110T003151Z/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "75eb89fc05eb19798cff51636b8b0c164f5659ab",
+        "path": "records/courses/model/20261110T003151Z/execution.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "ebd71fc65f8f5ee196feff3f30c92abc0faa6ef5",
+        "path": "records/courses/pdf/technical-pdf-build.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "75f50e6a5af4751f1eddce194e82587d2621e556",
+        "path": "records/courses/portable-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "ed53ad729a84abb8ad2bc8639fa90b6c9e0e2c35",
+        "path": "records/courses/preparation/unit-after-implementation.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "76d2d9abd630ee4b44a0834797dc73c8deccf6bc",
+        "path": "records/courses/preparation/unit-first-failure.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "9c4d951af12532c428e8d8d95004ff3f846f11ff",
+        "path": "records/courses/shared-first.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "c272886cdb5f00481e38cbcbb516ded2a69355f9",
+        "path": "records/courses/shared-green.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "522df98242cdcfeac40f253cbcbf6b3a933d89ff",
+        "path": "records/courses/torch/actual-base-python.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "3274ad028644b421ad462a37a4a57319e2838b33",
+        "path": "records/courses/torch/cpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "0027e7fcf964ad1c3f6a956be5dd926fe13bbcd7",
+        "path": "records/courses/torch/cpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "cc5232b1be4c8747353fab4e30c0ff9d117442e0",
+        "path": "records/courses/torch/float32-retest/cpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "41bd099ca4561511d25c3752e114a60fb6f66539",
+        "path": "records/courses/torch/float32-retest/cpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1a7aa4058dad63a78058196f471e51b0118c41e9",
+        "path": "records/courses/torch/float32-retest/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "2eca87c9ddf917deb21e063e853d3c0704e3cd5f",
+        "path": "records/courses/torch/float32-retest/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "e2ff7352734d3d96c2e9fed0cfce7f5f1c83c8a8",
+        "path": "records/courses/torch/float32-retest/real-summary.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "22edb1e0529975f4c66f3e5a7994372426b741ee",
+        "path": "records/courses/torch/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c6bc56f1f51ff4a83de778e0af9ada3ca76bf994",
+        "path": "records/courses/torch/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1ec656762ed45bc65f544a44b2751abf56ddbc1a",
+        "path": "records/courses/torch/real-float32-output.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "e8b1988326733901fe1e4fa27eb647ac7118739e",
+        "path": "records/courses/torch/real-output.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "4cdf0e1e8cb49c56533fa063b111927b5b25e469",
+        "path": "records/courses/torch/real-retry-output.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "a9ee9fcffeeca088ce85b9cda73761d6c01fac4e",
+        "path": "records/courses/torch/real-summary.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "a17d3eef4b2caf36a92b8b4292745401b51c0a11",
+        "path": "records/courses/torch/unit-first-failure.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "89914ba8cc41db6b814e3a1c72441291a43f43e5",
+        "path": "records/courses/unit-review-green.txt",
+        "occurrences": 24
+      },
+      {
+        "blob": "0cfb8c72e3713cd88756ed959f3890110c6d8081",
+        "path": "records/courses/vm/first-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "3dd36ff25bccc811c062bcf8cd72960aaeffb4fe",
+        "path": "records/iteration-2/unit-tests-first-failure.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "8ae7adc2cb7db2a202d098ba7c096dab5edc149e",
+        "path": "records/iteration-3/after.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "2493b155cfdf9cfc392219451c247e6b0cb64213",
+        "path": "records/iteration-3/before.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "8d0f87b86ecff47f38bd8df7c2232af1fe9985ad",
+        "path": "records/iteration-3/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "678045daa0bcab603ac2a162b050ddc36cd30f17",
+        "path": "records/iteration-4/unit-tests-first-failure.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "fbc10d5349694c686e01d08c4941969cb33b684d",
+        "path": "records/node/model-regression-retry/after.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e0e04fb89f91c73e4c2c72279f642141e33d2663",
+        "path": "records/node/model-regression-retry/before.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e1ece275831519c84077ea21b30f10c0d59531ff",
+        "path": "records/node/model-regression-retry/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "c05882994a08e81f19065b78cc9fce436cebddc9",
+        "path": "records/node/model-regression-retry/output.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "3d83443341442c05db59af8d1b7362b2e7982f49",
+        "path": "records/node/model-regression-retry/run.ps1",
+        "occurrences": 1
+      },
+      {
+        "blob": "5cfebb363069b21f6fcd6f93029a6d1687914643",
+        "path": "records/node/model-regression/after.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "4c194eb7e58d4180afc2cf2fe2e2c740817baa8d",
+        "path": "records/node/model-regression/before.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "d35891bae65033c281582194d4f2851b16e6c6b9",
+        "path": "records/node/model-regression/comparison.json",
+        "occurrences": 4
+      },
+      {
+        "blob": "93aa08ba3f58b43b13ff55800612e9c10c106dd1",
+        "path": "records/node/model-regression/import-timing.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "108568030bfb66bccdaf2f6d56d320729dc9a2a6",
+        "path": "records/node/model-regression/output.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "6ee48169b4e104d44dd392055aed538305a03940",
+        "path": "records/node/node-browser-after-readme.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "362aeab689b4f7d533dd71ec16f644a1575d4b8b",
+        "path": "records/node/original-delivery/deployment-receipt.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "bb656b888f7335c0eb217c2eb9d7e0c0f6ac13c7",
+        "path": "records/node/python-browser-after-readme.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "6d525e41d39980abe079a57679d7f9fcb2e8923d",
+        "path": "records/node/python-browser-run.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cf941641c5376c2ae054c844e9d9a312fae993dc",
+        "path": "records/node/tests-red.txt",
+        "occurrences": 16
+      },
+      {
+        "blob": "4b513bea4ed5764b3cdad19ab75bd644a4833aa6",
+        "path": "records/reuse-ai/ai/targeted-first-implementation-failure.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "5582ea0153c6764596e845ffcac2f2214dbf5bb8",
+        "path": "records/reuse-ai/ai/targeted-first-red.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "324c4f8200728ee6a5351339c09b17db41d86031",
+        "path": "records/reuse-ai/baseline-independent.md",
+        "occurrences": 3
+      },
+      {
+        "blob": "48aeab1177072935ea3d4219cef36ce3fafe3ed2",
+        "path": "records/reuse-ai/browser-ai-first.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "5477296cbd6e70d924dec2bbdbe9f63857da2b56",
+        "path": "records/reuse-ai/browser-ai-second.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "25afc881e695a5f44a9c597237b04ab3176958eb",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "339dd4968a08afbe67251c0e189e8c20dedf8366",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "db872b288f46b9c467124bbfb1c44076dc0e0742",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-A.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "56ff7e39974d8b7c0b5ecb1130259752bbdbc4cb",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "ce469c61d0ec419e89ca647c42af66803360f497",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "beba796b3500bca41bd7e5c3c87bae8615163742",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/ai-web-deepseek-B.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "421ee5cc105028deae39eea1b0978f2ee5c18891",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/constructed-web-report.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "f9320eb1c1735056b6ce41dc7be05b421e7f6a88",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/deepseek-api-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "21d13b9528ee9a3235994b4deaaa3ba7793ad497",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/deepseek-api-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "40b60fe134e32728f33a9b0d76bb4343bc853cbb",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "11741fa62328a3ffd2c408d343881407854a66f8",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "89bdf9687de34e0c85a3a431cc2b712502ef9af3",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "8cf976a3e56374892342444aa3437d8348cc0dfd",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "ebb479ec0c48f645f7242f9fcbc1c66c9ef29665",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "4d797a6f1eec8c220390ff9ea1f3fdc48e5e4208",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "68cc647f7e7f522f8ebae72323940d13f37f07fe",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-cli-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "06d8856525274e78326df5dfaccd2c48735a2761",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "4f7af297fdbd9b1e5c74eafc9b7ccf751f6448d1",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "5fb272d320e6ccad24127b06bdb9d3a0957e38e3",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "ae079af54a69d097c6847bfc5e7950fdee45fd83",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "94f08fec7cd3b233d7467d9ad24de058faf629c0",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "0083150efd0c04ed5f9677cea733c93867d2e912",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "635391b625fd83cd32a0990d064ac24913c04018",
+        "path": "records/reuse-ai/browser-ai/20261109T081851756191Z/dsh-desktop-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "be7d84930e8656c176bc064facd3ef8f2d9e4a3c",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "904fcc341df8adde821d2135e1feb13fb0e6be24",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "6ab47ae67f9b730e685240187936e95b224d2667",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-A.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "e13e5573caec35162a477b9d5fc14ca213cb7607",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "ee71d05c6fecc3d8232d38ef2beb0714e5f8ef34",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "9955c9970423e330280224bbfe2cc6ec12b5b357",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/ai-web-deepseek-B.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "16641ac1a08897f99b7cc2cb588b106a4b77d29e",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/constructed-web-report.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "a014a90707e4fd24a5a22871b9ed7d12b14af591",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/deepseek-api-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "ca3f8e06c7f349a36d9e5cedf9fa3fdffa03f39d",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/deepseek-api-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "3a7737557f08e60b0ba6483db3e2282359b3dc12",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "c0131174959315e53841384a87e001ce493b715c",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "c65c235c5c28d5e1f301679301da2713cd9764b7",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "4fc1ec6145f4f0e68c27da8bbb5ae19f35938b95",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "05ec718ce8982f9627cda7bf6a3fed4219147a76",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "cfac641e851a782bd5ac7c5a3a85908161a5c457",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "540b27f6d842e83afc03a310cfcaa301f0c20dc2",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-cli-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "4100849ae67613805fc8fda8404a257fe30f1fee",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "e48802d18ea4ff9b541982723724024ac720e59b",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "233b0dcc1c4998725f5771a0bb59476e5099874d",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "c161db96d3606fa1a1ed7c7edefe84243130e135",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "21cee6426b9afb1c3d9de62503d6b0602927b736",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "71ed2b5e588fb7b25c2222a6eae53b0e2b46803c",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "e1e81ecbcc5bfb1428f0ae7e46fc2d15910c7730",
+        "path": "records/reuse-ai/browser-ai/20261109T082117703550Z/dsh-desktop-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "416c06d0b7deeef4f33469e855a29b81b6d1af60",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "2bbb4eb5b3b32a557737fb1c7ca15155dd2439c2",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "3aacb1a3680521e0489aea258a852ef0d2b21958",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-A.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "7a7059518b96f473c6f907dffba36d1824719430",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "ed0f2e841189b6768efa8ebc52f8311aed5af0d7",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "4a0ee9d053950840fe561e5886ae176fdc6ea03b",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/ai-web-deepseek-B.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "e5fae86105b50f3807c9ebf7c871130fb191bbee",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/constructed-web-report.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "08fb6c27e9dfffe606c56842832180f6ffc3011e",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/deepseek-api-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "34a677a53fa322f76fb1f422f3a143bd676f31b0",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/deepseek-api-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "e157bc820374001873bc2840250400afe40ad738",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "61e8a9bf5694a7481a65fc52822f0ff79ecd6321",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "8975d9b3f9a344464a556c03549f76688891eb3b",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "38c96822fbc343ff53868d74f02464d2d22644a2",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "eedb610da908ac5bfca53ae2c15f79b746e54cbe",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "4826aaf34514ae52e42b9fe65c9dbc0f5f0ec4a8",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "40b8c2fb14bdff53f932fb131c902a5afd681c85",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-cli-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "edbd686c147b503236d9772e0677f04ac2ef6a94",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "6bfe74e9bcb8ed62e3b23f9e4eb9d613b8959c57",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "37d54ae808b3a1f39596e877405b318b6f58c93d",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "d3f0442c1ca529a254e613ada1dfe7bbb61ab6e6",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "2c82dbeb288ce17025212544d6c551a8b77bd1b2",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "de02efe41484276ebb1f89973e218e37b683278f",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "9356c830f385a3482bca773733d2bc816ad26be9",
+        "path": "records/reuse-ai/browser-ai/20261109T082513596289Z/dsh-desktop-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "cd2f4895dfaa360ba8d46c622c8c84f396cf849a",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "48c224147d2d52f962184a388e863e05c4e73a92",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "1bbd41211b9dd536c8676e1f4a8eb102c57aa348",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-A.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "aaec7ac9d11b45c426fb16780851419aacb8ddf4",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "38c04e38e460f19ca99b04c0229befdbf1959a61",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "e5618df228529d64b6ef6320a7cad38c3e2233cf",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/ai-web-deepseek-B.stdout.txt",
+        "occurrences": 4
+      },
+      {
+        "blob": "518653db119147b3b8bf2573cdb77336cfc4a83f",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/constructed-web-report.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "c49e8e5328c960be0ce69a265fd552d505cc2be3",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/deepseek-api-A.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "60664e2a408b525cbae0119ce182367aa814ee28",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/deepseek-api-B.ps1",
+        "occurrences": 2
+      },
+      {
+        "blob": "cfd515e17c5f64b961b04673f171a1b8d29f2314",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "e032384df1dfc1a97af96ed803968d3c85830af2",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "3f80ec4f443f7c4c1aa9d1287ead2ccebdcac847",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "79d643c538ea30fefdc5edb2a63418625eb280c4",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "66a835fbde60cecfc82637977f7b002008677d4e",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "99cded4bae3ac7b79993a17b2f93af2c84eb8892",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "e1f8d2956efccc5ea568b6aeceb7efaa1fde320b",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-cli-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "b2f12fc504284eb9150f5c27b1d766b61698c70f",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "cfd489275df3ef24783584c72c663621c64cdcd8",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-A.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "981957e3d1727916da57a9f97869ef1386d7c2d7",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-A.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "eb04a2b28415d2f1caeb6a01b40422b6404c5901",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "60036dcc548442d98641f77caf02cd97d05f389b",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-B.ps1",
+        "occurrences": 3
+      },
+      {
+        "blob": "db9936ce277eaea0f544ff6bd4650b1e5db495d6",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-B.stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "bd02306e8016acce8e21254625a8497a8244894d",
+        "path": "records/reuse-ai/browser-ai/20261110T003136119642Z/dsh-desktop-prepare.ps1",
+        "occurrences": 4
+      },
+      {
+        "blob": "ad1f63bf448e120b59cd8abfbd53d03d7b6ff124",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/failure.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "da7f0fd00257cc6473f15d262243d11a9d96dddc",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/java-jdk-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "9ec9b04d43927dd7e9cfe05589cf5ef2961d468e",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/java-jdk-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "594d60efbc468f4788a50be34b9a35bb7ad110b7",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/java-jdk-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "8ee1a8463f1b42a1be6945f7e7370ba04e82c93c",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/java-jdk-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "43c2721f3c963931d038e721761d481a6c6aa54e",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/notebook-data-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "d289801bf70b85e58691353908b4ed9edaaf5da5",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/notebook-data-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c502c354a300fc18c45b18852892a5e8d6907aac",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/notebook-data-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "d08f03c008e45244d59a6c3181628afdfda67234",
+        "path": "records/reuse-ai/browser-data/20261109T081815575073Z/notebook-data-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f7f1991cd2c8d360e183739828a52c18c695c6f7",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/java-jdk-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "e87ab7dfa0d0fb295094d9c74828ac72864d702e",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/java-jdk-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "d813be128547c1c9918be60618c113b968dfc0f8",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/java-jdk-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "1c7d2f048e391a3c695440958cb02d8ffca889d1",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/java-jdk-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "1c2840e848036fd1ce810afed7b4fae3927def37",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/notebook-data-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "9083c7278cc064ec667f16ef8cfb521c87f31fc8",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/notebook-data-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "557b8866c474fda8bf70e4c18d829c8da3278eee",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/notebook-data-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "15bee8d68a051c1b4b2e096141c98c99d7173e1b",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/notebook-data-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "93d8e84c9eaa055f8666a60325d7fc978bca9952",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-A-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "7e8c8f7ed5aea0e95da54d64860c799e58d47cc9",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-A-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "1d58f42cb6c3ed29c2b1e5c551f63a3b966cbcf8",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "67dfdbe3073e5a941ef7b7017272529dc83ab542",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-B-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "f00739b174df4559bffa89e9e6419e2e3bdc24ea",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-B-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "27a9af043549af3439b8b6c88a365a03cdd3ce9f",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "2dd9091148a7bda196766563f4cfe8f297861727",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-explicit-prepare-command.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "27c1b401094902fe955c19ae9689c2bc343081c4",
+        "path": "records/reuse-ai/browser-data/20261109T082023881640Z/sqlite-basics-explicit-prepare-stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7b2112788c6966c05779cf56eb333f00aaba14d0",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/java-jdk-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b0cd5fa52bc873e9d16469b9e79465969b50d7dd",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/java-jdk-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "c5441d558a2eb4cb787c8b73844db9cf566f49bf",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/java-jdk-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b2b81704a1a1951bbd7d01ac66d81625a2e0ce58",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/java-jdk-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "5b5026a9cabf0faca8ce3a31d4778152ce2cde81",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/notebook-data-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "e40fe505ae8f543abd1dbc6d5f38917de5b75a82",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/notebook-data-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "df54995130289946bd8ce43f6e9d87c07a5ddd41",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/notebook-data-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "5b4cbac3b32c2d0b9da28a940b9ae9a7126c2be5",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/notebook-data-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c17c9ffe257204fc73ae2dc5ee5cc80b9552dbad",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-A-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "7905efdc408cbf0795083af4b9fc9b1afa6344e4",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-A-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "f01a37c7474925e12befd8fb512d374f4d9c8f50",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "1bd01684ab63ed22ec6204d490732e8f93fcc82e",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-B-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "1f9cedfed4cc22028a0b95a8e0766f98522a8500",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-B-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "94d63bb72ab9fd9bfb6136d280d3196458625462",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "18b4ec0c53305a70a1f95e8019c501f3c0846e97",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-explicit-prepare-command.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "d0c9d5f3e2c51df3e59fc76a154ccbbefda932c0",
+        "path": "records/reuse-ai/browser-data/20261109T082437979050Z/sqlite-basics-explicit-prepare-stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "c94b5b8e44b7d70090002c2d12a18d191b568c91",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/java-jdk-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "592f3b92c623755a9675798ae0ee11a7f5a9fb30",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/java-jdk-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "5f36407b633ce46a1e396e465a4bed70644a0bbf",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/java-jdk-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "a6e7ef80b870820f66eac39a27c2dbf8837b2124",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/java-jdk-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "ea64f19890081d1fc2d9ffd24e5e9121385c0ca2",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/notebook-data-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "2ce5dd908ab4c9a5b2ddfe540fc4742116043a94",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/notebook-data-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "9c632aae854108e730ca4d737238a36c5feb749c",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/notebook-data-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "6f51ccb1e027bec604499e9ab7a8016f539b7cc2",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/notebook-data-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "582a891401a5885cfe62376bfc0f17753b86d649",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-A-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "77361a7312622cf5eadfd1c295fc20973a734409",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-A-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "359cfdfc4ed4e04a3c2a99d4daa42c69c2f3e517",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "2f894062759fa2a1cfe3fc1ba7968f703bf55d36",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-B-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "ab5728a3ba7bdc6cc071746d9a907b3824839a5a",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-B-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "e3433a033999cce29858d7a580919ff301abab07",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "c6e00c5708332ec19cb58c37570449c00d4b6ea8",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-explicit-prepare-command.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "8685032206da72e97d855baf252e01bd397ba255",
+        "path": "records/reuse-ai/browser-data/20261109T082545764681Z/sqlite-basics-explicit-prepare-stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cb6648ca37be2f7c060f66813a9de0c2a37e5d40",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/java-jdk-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b6d7f293ff187875e3794e6c19edb774b815ce39",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/java-jdk-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "9e20e9e29926359e0bd48f3c79f5d9e392efe7c8",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/java-jdk-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "c45153a56d70e8970ca585c1de6f9062fc5765be",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/java-jdk-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "21814e4404e01b9e87a250c0de15f0e16e843d96",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/notebook-data-A-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7eef220e740465471f5aacd1dcffccf3870829bb",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/notebook-data-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "818ebe26116c92dc5a328e0a850f74e65ace2039",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/notebook-data-B-command.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "f224c2d96b20d534d481c1852bcbab850b4462e9",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/notebook-data-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "8dea41a18e2243120b938464454684d670a976c1",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-A-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "58cb213df0de9fcdedd472309a625757cc7f26ee",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-A-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "1f379a47398222ed8a212a0453f627be4ace449d",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "db296444a665808b2667bcc5e464b7490e5c8533",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-B-command.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "21cc0126aa57f12dce834e82b109d56d26ef7a1e",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-B-stdout.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "b69f801981eb8b17f5ec376c9fe56048b050b5b9",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "b50cc2d52143c766adbe9b753e5fb8bacebecbc5",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-explicit-prepare-command.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "9bbbfcdd60f966a2fb6fec57a6a61151517731fb",
+        "path": "records/reuse-ai/browser-data/20261110T003103340935Z/sqlite-basics-explicit-prepare-stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cc37c09bcc5b1f5d8e8e75e3dd2397ac2ccf5263",
+        "path": "records/reuse-ai/dsh/targeted-first-red.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "e30f6c35ec56b3b7f0a068b0dcffb30b70111174",
+        "path": "records/reuse-ai/final-ai.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "1caf78b64177b3b09308ea8701fc8c228566de53",
+        "path": "records/reuse-ai/final-courses.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "425c3e0ce7015034eb48c65beaad668791617f2b",
+        "path": "records/reuse-ai/final-original.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "426d5f5c09cad7591cbac097e80579b2ede294c8",
+        "path": "records/reuse-ai/java/20261109T080945725345Z/A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "f438b359cf94a26ce38aca1fdc9ab1a4beb71e2e",
+        "path": "records/reuse-ai/java/20261109T080945725345Z/B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "a25f9ae6fe09be18e516d8c6593694f01e9414b1",
+        "path": "records/reuse-ai/java/20261109T081437466284Z/A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "1f0c4c1221c201e9fb295855e0a3b34c657c06e7",
+        "path": "records/reuse-ai/java/20261109T081437466284Z/B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "529c6b1d8dd1b977fc8b7bf1e715048eda1f71e8",
+        "path": "records/reuse-ai/java/20261109T082430131236Z/A.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "f990259bde250c4a3589f3a246b4e87f5cd5e18e",
+        "path": "records/reuse-ai/java/20261109T082430131236Z/B.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "49d798b053d0d0d5e201ab939c7c5444d4a56e8e",
+        "path": "records/reuse-ai/java/review-exit-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "69c5296bda3c76f84876873b651a6acc66a1c3d4",
+        "path": "records/reuse-ai/java/targeted-first-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "35eda3223fc20351353570636baf6bc5d105df09",
+        "path": "records/reuse-ai/java/targeted-red-after-test-syntax-fix.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "36e50f2b5bd618d136fdfb31d9df981425c18ac7",
+        "path": "records/reuse-ai/legacy-browser-courses.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "2c0696c9b7e2e8b8ca3b4331e5aa0f51875fe062",
+        "path": "records/reuse-ai/legacy-browser-node.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "f5ae96c63ffa35d73fb2bacd1c82e9ae58b814f3",
+        "path": "records/reuse-ai/legacy-browser-rebuild.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "46bbe4f55daad22dfd54345c62728a9d49c58f61",
+        "path": "records/reuse-ai/legacy-ui-regressions.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "c18694cce289aa68dc99c1584a58f4da898dd848",
+        "path": "records/reuse-ai/notebook/20261109T080945725345Z/A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "64ad4c638d4b03312dced803e439ea4e3a2a8378",
+        "path": "records/reuse-ai/notebook/20261109T080945725345Z/B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "34bcb8f6db18136d2a1ca4f9cf212842be0ae98a",
+        "path": "records/reuse-ai/notebook/20261109T080945725345Z/deliberately-mismatched-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "d8524bce56aec8a5615e1059bd6c8bcd1f25915d",
+        "path": "records/reuse-ai/notebook/20261109T080945725345Z/deliberately-mismatched-kernel.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "553e7a28369f2ef318994adf64ff3bb4fb2b257e",
+        "path": "records/reuse-ai/notebook/20261109T081437466284Z/A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "5185b46eeb05cc8e15f87b3aa40a2f2c3f0ec738",
+        "path": "records/reuse-ai/notebook/20261109T081437466284Z/B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "2d44c3a21b5e912fcfa6d8d5107ba3a674df6c3e",
+        "path": "records/reuse-ai/notebook/20261109T081437466284Z/deliberately-mismatched-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "efb610478fbd1ff918c90a3f59c9cfc8ab7f5650",
+        "path": "records/reuse-ai/notebook/20261109T081437466284Z/deliberately-mismatched-kernel.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "7fb0d64c4210d5d231ff45aed52df483d585933d",
+        "path": "records/reuse-ai/notebook/20261109T082430131236Z/A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "55528970866cbeac5009d9ab67945f495c8e8804",
+        "path": "records/reuse-ai/notebook/20261109T082430131236Z/B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "006d519e25a3468834225d3eac15b10a847d27ff",
+        "path": "records/reuse-ai/notebook/20261109T082430131236Z/deliberately-mismatched-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "b33278b6c35a619aaf22bd067f982c7a324586f1",
+        "path": "records/reuse-ai/notebook/20261109T082430131236Z/deliberately-mismatched-kernel.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "e9bb22fb092095171eee749e6eb200ea886de09a",
+        "path": "records/reuse-ai/notebook/pandas-missing-real-20261109T081140879259Z/analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "95df15a312a9a9971fa51d86dcd7313f05f3287a",
+        "path": "records/reuse-ai/notebook/pandas-missing-real-20261109T081140879259Z/report.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "e5b399bebf854a88b26b6efe08168c539b7e00c0",
+        "path": "records/reuse-ai/notebook/real-after-script-syntax-fix.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "c45b3fc3a26d462ec7887741c30417c9437990fb",
+        "path": "records/reuse-ai/notebook/real-final-parent-cleanup-run.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "3b669b586e11b54d2170ce24f374df86beeeb0af",
+        "path": "records/reuse-ai/notebook/real-first-run.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "c417c55fe22587c68abb2986bb6a33544d4578a2",
+        "path": "records/reuse-ai/notebook/real-frozen-final-run.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "e97ea755f67b81846046f0f63825cb4c35d15d2c",
+        "path": "records/reuse-ai/notebook/real-summary-20261109T080945725345Z.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "f645aee11e602468dcf4aee7ff6d7d33e059f0bc",
+        "path": "records/reuse-ai/notebook/real-summary-20261109T081437466284Z.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "0e42bda7c6ca5fdf0b8a4ccef810eec8fa71777b",
+        "path": "records/reuse-ai/notebook/real-summary-20261109T082430131236Z.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "e57a1b8f260c33cd9d42f24bad0b6bad26ca03dd",
+        "path": "records/reuse-ai/notebook/targeted-first-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "0c42c75a774a4b698333a4748b3eb625b445641a",
+        "path": "records/reuse-ai/post-review-courses.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "fa462fd3da53ad8fc526be9de9249a129a59d9d4",
+        "path": "records/reuse-ai/post-review-new.txt",
+        "occurrences": 2
+      },
+      {
+        "blob": "aed9f92cd0fd9140f87e522f2423cccc12be3d12",
+        "path": "records/reuse-ai/post-review-original.txt",
+        "occurrences": 3
+      },
+      {
+        "blob": "1997d77229b7adf852d7696363ccb604fc616ee3",
+        "path": "records/reuse-ai/qwen-correct-target.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "3cdb2b058f82d940df9abcce72bdf75fe4516f71",
+        "path": "records/reuse-ai/qwen-real-retest.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "07aac820aa9e27bd6a1a14a4996d262aa346bb9b",
+        "path": "records/reuse-ai/review-remaining-red.txt",
+        "occurrences": 5
+      },
+      {
+        "blob": "9a9e845930fb61e143724eb639023c9932fba3cf",
+        "path": "records/reuse-ai/sqlite/20261109T080945725345Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "5f6b3c569921c51c2e1ba1003e52fd272604fca0",
+        "path": "records/reuse-ai/sqlite/20261109T080945725345Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "7724583901148eb2530680d47c054df6c3b4f413",
+        "path": "records/reuse-ai/sqlite/20261109T080945725345Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "363bcedac1142a118045d1a1aca6528f591711ad",
+        "path": "records/reuse-ai/sqlite/20261109T080945725345Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "a443d12bf8c6f9d8e8dd128b9c580fbeac27fa5b",
+        "path": "records/reuse-ai/sqlite/20261109T081437466284Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "1e284ee4dc8dca6a404b962d7a2ef8ea58a436e3",
+        "path": "records/reuse-ai/sqlite/20261109T081437466284Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "07766396b30e5f9921d53a6cb6423f9df516921a",
+        "path": "records/reuse-ai/sqlite/20261109T081437466284Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "15da38bb271e49eafc5a9771f5c4934bf0af7223",
+        "path": "records/reuse-ai/sqlite/20261109T081437466284Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "b2083afaa5ea9517f6a392384f820e48dbfc609c",
+        "path": "records/reuse-ai/sqlite/20261109T082430131236Z/A-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "411c8df90b67546448215b205b44baf5ea3bc89c",
+        "path": "records/reuse-ai/sqlite/20261109T082430131236Z/A.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "3006fbef3d490cc50f9df6b03382ffcf46c3c7b0",
+        "path": "records/reuse-ai/sqlite/20261109T082430131236Z/B-analysis.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "4ba4e745748a1fbc195ced503c8a40002fb9b605",
+        "path": "records/reuse-ai/sqlite/20261109T082430131236Z/B.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "370128a2b6e4224d1729ff190d6c86ea3a33001a",
+        "path": "records/reuse-ai/sqlite/targeted-first-red.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "a95641cf0fe4df63858ca275b649032fb552d322",
+        "path": "records/reuse-ai/unit-first-integration.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "1f5c842fd8b5795f9e4aba1f41a8bb99ab05f6d5",
+        "path": "records/reuse-ai/upstream-manifest-first-failure.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b27a3d593fa1c400cf6f78f9b9c106d1717804e4",
+        "path": "records/review/courses-independent-code.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "2a6c27934d6a98e2fe577effa79ca6507468abc9",
+        "path": "records/review/courses-independent-delta.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "09436dd736ae21c12e5c34c7e198814dfa7742da",
+        "path": "records/review/courses-independent-evidence.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "134099af2fdc8394cf6f707d7edae5a724503747",
+        "path": "records/review/independent-delta.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "8aa921e423ea221fd53f29a81bad97eeb64e0b53",
+        "path": "records/review/independent-original.md",
+        "occurrences": 3
+      },
+      {
+        "blob": "8f585479bb72c07e46cf27b5530c8a3efd8d5df1",
+        "path": "records/review/kehang-independent-product.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "87c7d914ad585370f5665608411e26cfccafdbb7",
+        "path": "records/review/node-independent-delta.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "07cd2a1485819091c1d36d96dd0a6f78a7937882",
+        "path": "records/review/node-independent-original.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "b3837266872b771ce35cc3f5efe68b8d4691d3aa",
+        "path": "records/review/reuse-ai-independent-delta.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "31906e6d7389fddd6a06147dc8211517175ebb44",
+        "path": "records/review/reuse-ai-independent-product.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "edcb1c2044d39211f373050a3003b0d4020c0d3b",
+        "path": "records/review/reuse-ai-materials-tools-smoke.json",
+        "occurrences": 3
+      },
+      {
+        "blob": "f7f3fd1334bf96934cc271cd0031b6feb296741c",
+        "path": "records/review/reuse-ai-product-review/java-runtime-timeout.json",
+        "occurrences": 5
+      },
+      {
+        "blob": "33f13ca4b4e0facdca730bb03b00eef1bffbd104",
+        "path": "records/review/reuse-ai-product-review/reanalysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "07f2b497ed86be131044ce379c35d1b31376eb05",
+        "path": "tests/browser_reuse_ai.py",
+        "occurrences": 1
+      },
+      {
+        "blob": "06b9cec20be28b8465799252ea613dddf2ac20c6",
+        "path": "HANDOFF.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "2b843bdd2010ef853d7f1ef68b651f1a3ecfcd0e",
+        "path": "PROVENANCE.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "cfde3bc8cd9a5381cf4c4ebb057c91108a67c8cf",
+        "path": "HANDOFF.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "9a80193d60b12a8f41707e4d213e44ea72610358",
+        "path": "PROVENANCE.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "aaf9cbd93f21ecaa02a28f49850a2619ba26f6db",
+        "path": "PROVENANCE.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "9be6b5661053e668d466d625a6b8773732fc8543",
+        "path": "HANDOFF.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "06a68c5df603fbb757c8ad7b72726937b5c060ba",
+        "path": "PROVENANCE.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "8f332c18b70b1697d0950e0ef2590eb4163d0e5b",
+        "path": "HANDOFF.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "0f3e65c2a73ea9fc00348ac447f1d1c18b3f51be",
+        "path": "HANDOFF.md",
+        "occurrences": 2
+      },
+      {
+        "blob": "06d3967aea0df3ef32dbd54709ae570924461131",
+        "path": "HANDOFF.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "3ffd2439b7751f7b18474e3a8746173d5402c67a",
+        "path": "HANDOFF.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "db2f9f823fbee49569b94bbfe03aaf80facc8e99",
+        "path": "docs/legacy/root/AGENTS.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "b2ae9cd486da70c5080faf99664cefa0da46ba6c",
+        "path": "HANDOFF.md",
+        "occurrences": 1
+      },
+      {
+        "blob": "d3a2d031b9b25777c4994c8f8d4b392d74529a84",
+        "path": "HANDOFF.md",
+        "occurrences": 1
+      }
+    ],
+    "email-address": [
+      {
+        "blob": "d5f8651bb1211c7511898a6f25ca891c07d4bc11",
+        "path": "docs/legacy/index.json",
+        "occurrences": 2
+      },
+      {
+        "blob": "5111c28d1bfd45325a7695f35d0577189584f4b6",
+        "path": "output/pdf/AI实验环境管家_开源AI_Agent版_技术文档.pdf",
+        "occurrences": 2
+      },
+      {
+        "blob": "b2f6e34faba8ead99535d1f7c4e73e3308e1f2e3",
+        "path": "output/pdf/AI实验环境管家_课程能力版_技术文档.pdf",
+        "occurrences": 4
+      },
+      {
+        "blob": "44d8dbb8cae67bd479eb0f5a2a083079a3ba6975",
+        "path": "output/pdf/课航_技术文档.pdf",
+        "occurrences": 5
+      },
+      {
+        "blob": "b1f0d6842dce0bd652defa013d44742ab2ac5ceb",
+        "path": "records/competition/official-homepage.html",
+        "occurrences": 2
+      },
+      {
+        "blob": "cb93ce126a271d80c1c6593bef22d8cfdbb57d73",
+        "path": "tests/test_course_flow.py",
+        "occurrences": 2
+      },
+      {
+        "blob": "f9ae3c319ec157a9c88b616cd477da19c22cfc76",
+        "path": "tests/test_diagnosis.py",
+        "occurrences": 2
+      },
+      {
+        "blob": "9986c75eb12b2dba148fe46884af876f475ca679",
+        "path": "docs/legacy/index.json",
+        "occurrences": 2
+      }
+    ],
+    "device-identity-field": [
+      {
+        "blob": "c714f7ce36e507ae9f6c5dd7ed4fb52c63d1f520",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "901f431bb8d2e863e11dfdfaca349620783bc2ac",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "76003efc2d4e0f06cf4b4172fd9c1562046172f4",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "b54038b2f4ddab6427fa4302bee3371a1776fba7",
+        "path": "records/browser/20261108T101214063032Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "0607281e01cf925906dd6638eb6723dc57712cf4",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "5f0796d32ab79a8214fd51535b5b205d6aac8d05",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "ff13a14fb6d0926c1c9f0199fe933aa3102d850b",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "326ae11101a90313166bb068bff62b62a7fe6f7e",
+        "path": "records/browser/20261108T101214063032Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "f3b3f2341c2b61260dd1de5e1f11e74f6e3f9a07",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c7495249db5c28824aa4dbb3f482e2dbed5e48fc",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "91de100ffd2479d943649d8eba8d3d142b6ff4da",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "e5a8e63ac378bee84aea79921bc0985963d6bef0",
+        "path": "records/browser/20261108T101405479251Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "ab81d50faa6b6923b54bcce4c21a5bfe528a5d4e",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a0d819fbb13b9fda7ac9487130c0d4056c739117",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "937a9114577312c80281c153e6db0ab939ba9fd1",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "10a5658952a1dd3fddf880769c64d44398b126c1",
+        "path": "records/browser/20261108T101405479251Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "858fd9caf9796af4ebb6e6587e46995222b042f3",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "b47dcbada988d6a5a1d356cddf3bdee1c1c1492c",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "12f559498debc4252596059051f77d6690550c24",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "ce7857cd41133170c9ca4a8b89599195096353ce",
+        "path": "records/browser/20261108T101444960811Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "903599023ecc38790f18945ec73480e7e596df39",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c86409eb438f41704dc8b75872942bef8268cb17",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "37b73c45e0f708fee4bb7508a9fc6d19bcf9c930",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "6fb523a78326239119e67b258585632a515e472e",
+        "path": "records/browser/20261108T101444960811Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "3412b7937fc62a842ba37e31dd2d65f648dd1070",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f928883de001793082050ec0a2cb0cab3dab83fd",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "57ba7c17881c859706a53de082cb10432606f9d6",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "5b44f5ce683df8e9f23841cd560e228a3ff3def4",
+        "path": "records/browser/20261108T104746040882Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7b109cceb95cd31fe585f855342f6100f4c48756",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "9464436a692d9659cca10c76fe9d63eaf8650376",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "7fbb7b9bc9fa2ce2d215beafce3ec71cc398ce88",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "bc7768c005c272df742e945444bdaed37ec921d0",
+        "path": "records/browser/20261108T104746040882Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "82967cbb9d25e1b383fe33997e869836dbce448c",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a493909c3fff599000aa6dee26568e0b19b0094f",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "e16d715a64e46e7a84313515611098986ff8adf5",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "3a6e8796d653aa56e04de046dc1e461d857944a9",
+        "path": "records/browser/20261109T081931412298Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "cf54813f9ed98b495e09301cdacc295b19ce9793",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "0f9da260a6b0bac77df9924dcb608459d0047786",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "a1dfc564b63fc94e01977c8a7edfe76a39c159da",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "602c86cf78fdbf622adea9b034542c1c73f0cf23",
+        "path": "records/browser/20261109T081931412298Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "35e245cbe10281f3e79dfb905effc210d8df00de",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "9f2dec9f3cab3ff24ea07f1bf6ce210a2581d57b",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "001260fe3762aeb8042c7f1f998d7e1fb409967a",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "590aca30c86f6512aaf0aa084856fa6790984961",
+        "path": "records/browser/20261109T082515110174Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "c5af8671653f8f12e5d5f4ecf4c2290415ce164f",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "8cbc14fc50e444f523877627ff589cd8fefff092",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "aeae77744cea98765ad3d0a80aa9d2828b322366",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "b6f3e476208d2d87e486a2755498364b42ab29ee",
+        "path": "records/browser/20261109T082515110174Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "62c4641b427320c8b2a46ba635d79c5b6816494f",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "801e6386c7a78e7309256c08c474953d00f88cba",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "42c400cd17839b44da90b8c806b200943207914c",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-precheck-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "72a98d44a147e41668425bf4ff60691439c85fec",
+        "path": "records/browser/20261110T003104245789Z-courses/gpu-run-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "8b8af30217045eabb7991277a380251cad6a42df",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "480d8404dd9986bc4fbbc733e11fd6f87a1d6c71",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-A.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "06671cfb4dd13d39191e7bb22701ec8e37b4d5aa",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "8eb82887d5c3b1769643768180f0f9f05b34ab98",
+        "path": "records/browser/20261110T003104245789Z-courses/vm-B.stdout.txt",
+        "occurrences": 1
+      },
+      {
+        "blob": "3274ad028644b421ad462a37a4a57319e2838b33",
+        "path": "records/courses/torch/cpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "0027e7fcf964ad1c3f6a956be5dd926fe13bbcd7",
+        "path": "records/courses/torch/cpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "cc5232b1be4c8747353fab4e30c0ff9d117442e0",
+        "path": "records/courses/torch/float32-retest/cpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "41bd099ca4561511d25c3752e114a60fb6f66539",
+        "path": "records/courses/torch/float32-retest/cpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "3f987bb25edb8d8a41152b9bb3bf0ccfa549b7b5",
+        "path": "records/courses/torch/float32-retest/gpu-A-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1a7aa4058dad63a78058196f471e51b0118c41e9",
+        "path": "records/courses/torch/float32-retest/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "a1c54b0ae5bff0232d50bb9d94b325096536bea3",
+        "path": "records/courses/torch/float32-retest/gpu-B-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "2eca87c9ddf917deb21e063e853d3c0704e3cd5f",
+        "path": "records/courses/torch/float32-retest/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "ff73ad943946d518bcbc4f29ac0697a406233eb9",
+        "path": "records/courses/torch/gpu-A-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "22edb1e0529975f4c66f3e5a7994372426b741ee",
+        "path": "records/courses/torch/gpu-A.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "ed3a51594442fae62b795774d36241781b3d03a3",
+        "path": "records/courses/torch/gpu-B-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c6bc56f1f51ff4a83de778e0af9ada3ca76bf994",
+        "path": "records/courses/torch/gpu-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "3c5263a7aa18f6c9924a7be630928658c9bf7d98",
+        "path": "records/courses/vm/virtualbox-actual-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "55aebacf316c29a3e1cdac34f6c3f2188549f22f",
+        "path": "records/courses/vm/virtualbox-actual-elevated-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "1b98a30b2d9c0720afbf32cebbb919e9dd315491",
+        "path": "records/courses/vm/virtualbox-actual-elevated-host.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f6a75696c3083f5f32bdc5e61acc2315098ec664",
+        "path": "records/courses/vm/virtualbox-actual-host.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "16e757b685d19a262722c482af8dc0d37f187bdc",
+        "path": "records/courses/vm/vmware-actual-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "2b8cce261ba772d732b4788e838fd9f7c6421014",
+        "path": "records/courses/vm/vmware-actual-elevated-analysis.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "f56715320ba474aadad5186c7cdeb514b01b1e38",
+        "path": "records/courses/vm/vmware-actual-elevated-host.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "c7a594097bef4948a601d9f1377766a4c2eebf9f",
+        "path": "records/courses/vm/vmware-actual-host.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "603d778bb2c8c66917cb9a2af4e7f899fe400154",
+        "path": "records/courses/vm/vmware-actual-retest-B.json",
+        "occurrences": 1
+      },
+      {
+        "blob": "35952be80f025201fa0a768461740db1ee0ecad0",
+        "path": "records/courses/vm/vmware-actual-retest-comparison.json",
+        "occurrences": 2
+      }
+    ]
+  },
+  "conclusion": "Local review only. Personal paths/device evidence are present in complete history; do not publicly push this history without explicit review and authorization.",
+  "limitations": "Pattern-based static scan cannot prove absence of every secret. Example tokens, upstream authors and synthetic identities need classification. Ignored .env/private/course databases were not opened."
+}

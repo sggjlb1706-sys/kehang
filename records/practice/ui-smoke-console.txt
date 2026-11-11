@@ -1,0 +1,7 @@
+PASS missing/invalid/constructed-wrong/correct submissions retain four attempts and separate environment/reading states
+PASS completion excludes arbitrary private extra fields and retains deterministic rejection plus source digest
+PASS teacher rechecks retained historical submissions and rejects a forged stored pass verdict
+PASS one A/B selection orders archived Notebook reports by evidence time and preserves component identity
+PASS ambiguous equal-time reports clear current evidence and cannot reuse old success
+PASS 390px simulated mobile stays within viewport and keyboard focus remains available
+C:\Users\DELL\Documents\ChatGPT\传智杯\work\kehang-practice-20261110\records\practice\ui\20261110T091037Z

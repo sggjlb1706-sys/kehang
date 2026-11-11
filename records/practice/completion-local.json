@@ -1,0 +1,700 @@
+{
+  "schema": 1,
+  "kind": "kehang-practice-completion",
+  "exported_at": "2026-11-11T02:26:14.553Z",
+  "practice": {
+    "schema": 1,
+    "kind": "kehang-practice",
+    "material_version": "scores-20261110-v1",
+    "title": "从CSV到SQL：同源成绩数据分析",
+    "objectives": [
+      "用明确选择的Notebook内核读取CSV并计算分组统计。",
+      "把同源CSV导入专用SQLite文件，以SELECT复算分组结果。",
+      "提交限定JSON，核对两条路径的成果并保留修订记录。"
+    ],
+    "prerequisites": [
+      "Windows；已有Python 3.10—3.14、Jupyter/ipykernel、NumPy≥1.24、Pandas≥2.0。不会自动安装。",
+      "明确选择课程Python及其kernel.json；SQLite练习使用同一已有Python的标准库。",
+      "将全部资料解压至新的专用目录；不要放入私人课程库或覆盖已有数据库。"
+    ],
+    "dataset_sha256": "37039948a897bcc319d0ca03d3c775fd1c09bb1a82a33adf43c0ad02baf51e7d",
+    "component_task_ids": {
+      "notebook": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+      "sqlite": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c"
+    },
+    "expected": {
+      "notebook": {
+        "array_sum": 42,
+        "group_totals": {
+          "A": 30,
+          "B": 12
+        },
+        "rows": 3
+      },
+      "sqlite": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "title": "1. 准备并分别检查两个环境任务",
+        "body": "下载全部资料。教师发布后分别给出Notebook与SQLite课程码；先选Notebook任务，明确课程Python和kernel.json并手动采集。SQLite文件将在第3步由本人显式创建。",
+        "expected": "资料目录包含README、CSV、Notebook、SQLite模板、成果模板和课堂资料包；环境检查与成果状态独立。",
+        "recovery": "缺依赖/错内核时按Notebook环境差异手动处理；没有SQLite文件时先完成第3步，不将缺失当通过。"
+      },
+      {
+        "title": "2. 在Notebook中计算并导出中间结果",
+        "body": "在已有Jupyter打开01_Notebook练习.ipynb，选择已确认的课程内核。按提示填三处TODO并从头逐格运行，保存Notebook及notebook-result.json。",
+        "expected": "3行，score合计42，A组30、B组12。",
+        "recovery": "先运行第一格确认工作目录及sys.executable；找不到CSV时把Notebook与CSV放在同一解压目录。None/TODO不是完成成果。"
+      },
+      {
+        "title": "3. 用SQLite复算并形成提交文件",
+        "body": "编辑02_SQLite练习.py中的QUERY，填入按category分组、计算COUNT与SUM并排序的SELECT。用同一课程Python在终端主动运行该文件。它仅在scores.sqlite不存在时创建专用演示库，再只读查询。",
+        "expected": "查询行A/2/30、B/1/12；生成实训成果.json，原notebook-result.json保留。",
+        "recovery": "SQL出错后修改QUERY再运行；不要删除首次错误日志。缺Notebook结果先回第2步。数据库结构/内容不符时换新专用目录，不覆盖私人文件。"
+      },
+      {
+        "title": "4. 提交、复检并导出完成物",
+        "body": "上传实训成果.json，保留首次错误和后续正确的核验记录。分别选择Notebook与SQLite环境任务，导入各自初检/较晚同目标复检。导出完成物并保存本人Notebook。",
+        "expected": "两项成果数值符合固定要求；两个环境任务分别有自己的报告/复检。",
+        "recovery": "旧任务/旧资料请重新下载当前包并实际重做；错误数值回对应模板复算后再次提交。相同正确结果不能证明未复制。"
+      }
+    ],
+    "scope": "仅核对提交JSON中的固定任务、资料版本、数据摘要和数值结果；不执行上传代码，不证明实际操作、学习掌握、作品原创或未复制。环境报告、本人阅读声明和成果核验分别记录。",
+    "id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b"
+  },
+  "current_session": 2,
+  "reading_self_declared": true,
+  "environment": {
+    "notebook": {
+      "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+      "before": {
+        "schema": 1,
+        "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+        "collected_at": "2026-11-10T09:07:23.124585+00:00",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "facts": {
+          "os": "Windows",
+          "python": "3.13.9",
+          "dependencies": {
+            "jupyter_client": {
+              "installed": true,
+              "version": "8.6.3",
+              "error": ""
+            },
+            "ipykernel": {
+              "installed": true,
+              "version": "6.30.1",
+              "error": ""
+            }
+          },
+          "kernel": {
+            "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+            "exists": true,
+            "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+            "argv": [
+              "D:/ANACONDA\\python.exe",
+              "-Xfrozen_modules=off",
+              "-m",
+              "ipykernel_launcher",
+              "-f",
+              "{connection_file}"
+            ],
+            "validated": true,
+            "started": true,
+            "actual": "D:\\ANACONDA\\python.exe",
+            "python": "3.13.9",
+            "error": ""
+          },
+          "packages": {
+            "numpy": {
+              "installed": true,
+              "version": "2.3.4",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+              "error": ""
+            },
+            "pandas": {
+              "installed": true,
+              "version": "3.0.3",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+              "error": ""
+            }
+          },
+          "run": {
+            "returncode": 0,
+            "result": {
+              "array_sum": 42,
+              "group_totals": {
+                "A": 30,
+                "B": 12
+              },
+              "rows": 3
+            },
+            "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+            "error": "",
+            "executed_at": "2026-11-10T09:07:22.481467+00:00"
+          },
+          "cleanup": {
+            "kernel_stopped": true,
+            "channels_stopped": true,
+            "error": ""
+          }
+        },
+        "commands": [
+          [
+            "D:\\ANACONDA\\python.exe",
+            "-B",
+            "-I",
+            "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\notebook-data 中文 空格 工具\\campuslab\\notebook_probe.py",
+            "--kernel-spec",
+            "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json"
+          ]
+        ],
+        "probe_exit": 0
+      },
+      "after": {
+        "schema": 1,
+        "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+        "collected_at": "2026-11-10T09:07:25.827254+00:00",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "facts": {
+          "os": "Windows",
+          "python": "3.13.9",
+          "dependencies": {
+            "jupyter_client": {
+              "installed": true,
+              "version": "8.6.3",
+              "error": ""
+            },
+            "ipykernel": {
+              "installed": true,
+              "version": "6.30.1",
+              "error": ""
+            }
+          },
+          "kernel": {
+            "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+            "exists": true,
+            "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+            "argv": [
+              "D:/ANACONDA\\python.exe",
+              "-Xfrozen_modules=off",
+              "-m",
+              "ipykernel_launcher",
+              "-f",
+              "{connection_file}"
+            ],
+            "validated": true,
+            "started": true,
+            "actual": "D:\\ANACONDA\\python.exe",
+            "python": "3.13.9",
+            "error": ""
+          },
+          "packages": {
+            "numpy": {
+              "installed": true,
+              "version": "2.3.4",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+              "error": ""
+            },
+            "pandas": {
+              "installed": true,
+              "version": "3.0.3",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+              "error": ""
+            }
+          },
+          "run": {
+            "returncode": 0,
+            "result": {
+              "array_sum": 42,
+              "group_totals": {
+                "A": 30,
+                "B": 12
+              },
+              "rows": 3
+            },
+            "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+            "error": "",
+            "executed_at": "2026-11-10T09:07:25.041949+00:00"
+          },
+          "cleanup": {
+            "kernel_stopped": true,
+            "channels_stopped": true,
+            "error": ""
+          }
+        },
+        "commands": [
+          [
+            "D:\\ANACONDA\\python.exe",
+            "-B",
+            "-I",
+            "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\notebook-data 中文 空格 工具\\campuslab\\notebook_probe.py",
+            "--kernel-spec",
+            "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json"
+          ]
+        ],
+        "probe_exit": 0
+      },
+      "analysis": {
+        "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-10T09:07:25.827254+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:jupyter_client",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "8.6.3",
+              "error": ""
+            },
+            "requirement": ">=8.0，来自所选课程Python"
+          },
+          {
+            "id": "package:ipykernel",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "6.30.1",
+              "error": ""
+            },
+            "requirement": ">=6.0，来自所选课程Python"
+          },
+          {
+            "id": "notebook:spec",
+            "status": "pass",
+            "observed": {
+              "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+              "exists": true,
+              "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+              "argv": [
+                "D:/ANACONDA\\python.exe",
+                "-Xfrozen_modules=off",
+                "-m",
+                "ipykernel_launcher",
+                "-f",
+                "{connection_file}"
+              ],
+              "validated": true,
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9",
+              "error": ""
+            },
+            "requirement": "明确选择受支持ipykernel的kernel.json，argv绑定课程Python"
+          },
+          {
+            "id": "notebook:identity",
+            "status": "pass",
+            "observed": {
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9"
+            },
+            "requirement": "真实内核sys.executable及Python版本与课程Python一致"
+          },
+          {
+            "id": "package:numpy",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "2.3.4",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 numpy>=1.24"
+          },
+          {
+            "id": "package:pandas",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "3.0.3",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 pandas>=2.0"
+          },
+          {
+            "id": "notebook:run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "result": {
+                "array_sum": 42,
+                "group_totals": {
+                  "A": 30,
+                  "B": 12
+                },
+                "rows": 3
+              },
+              "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+              "error": "",
+              "executed_at": "2026-11-10T09:07:25.041949+00:00"
+            },
+            "requirement": "固定CSV分组A=30/B=12、数组和42、3行；真实内核执行"
+          },
+          {
+            "id": "notebook:cleanup",
+            "status": "pass",
+            "observed": {
+              "kernel_stopped": true,
+              "channels_stopped": true,
+              "error": ""
+            },
+            "requirement": "仅关闭本次创建的临时内核及通道"
+          }
+        ],
+        "passed": true
+      }
+    },
+    "sqlite": {
+      "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+      "before": {
+        "schema": 1,
+        "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+        "collected_at": "2026-11-10T09:07:27.455790+00:00",
+        "target": {
+          "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "exists": true
+        },
+        "facts": {
+          "os": "Windows",
+          "sqlite": "3.50.4",
+          "tool_runtime": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe",
+          "database": {
+            "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+            "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+            "header_valid": true,
+            "error": ""
+          },
+          "query": {
+            "read_only": true,
+            "returncode": 0,
+            "rows": [
+              [
+                "A",
+                2,
+                30
+              ],
+              [
+                "B",
+                1,
+                12
+              ]
+            ],
+            "error": ""
+          }
+        }
+      },
+      "after": {
+        "schema": 1,
+        "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+        "collected_at": "2026-11-10T09:07:27.575457+00:00",
+        "target": {
+          "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "exists": true
+        },
+        "facts": {
+          "os": "Windows",
+          "sqlite": "3.50.4",
+          "tool_runtime": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe",
+          "database": {
+            "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+            "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+            "header_valid": true,
+            "error": ""
+          },
+          "query": {
+            "read_only": true,
+            "returncode": 0,
+            "rows": [
+              [
+                "A",
+                2,
+                30
+              ],
+              [
+                "B",
+                1,
+                12
+              ]
+            ],
+            "error": ""
+          }
+        }
+      },
+      "analysis": {
+        "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+        "target": {
+          "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+          "exists": true
+        },
+        "collected_at": "2026-11-10T09:07:27.575457+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "sqlite:runtime",
+            "status": "pass",
+            "observed": {
+              "version": "3.50.4",
+              "tool_runtime": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe"
+            },
+            "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+          },
+          {
+            "id": "sqlite:database",
+            "status": "pass",
+            "observed": {
+              "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "header_valid": true,
+              "error": ""
+            },
+            "requirement": "明确SQLite文件、有效文件头与内容摘要"
+          },
+          {
+            "id": "sqlite:readonly",
+            "status": "pass",
+            "observed": {
+              "mode_ro": true,
+              "before": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "after": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9"
+            },
+            "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+          },
+          {
+            "id": "sqlite:query",
+            "status": "pass",
+            "observed": {
+              "read_only": true,
+              "returncode": 0,
+              "rows": [
+                [
+                  "A",
+                  2,
+                  30
+                ],
+                [
+                  "B",
+                  1,
+                  12
+                ]
+              ],
+              "error": ""
+            },
+            "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+          }
+        ],
+        "passed": true
+      }
+    }
+  },
+  "attempts": [
+    {
+      "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+      "session": 2,
+      "source_sha256": "828a020210eee918a1dc020e7074f7923f80b19d876408a5f4cd55c108061555",
+      "file_error": null,
+      "submission": {
+        "schema": 1,
+        "kind": "kehang-practice-result",
+        "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+        "material_version": "scores-20261110-v1",
+        "dataset_sha256": "37039948a897bcc319d0ca03d3c775fd1c09bb1a82a33adf43c0ad02baf51e7d",
+        "component_task_ids": {
+          "notebook": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+          "sqlite": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c"
+        },
+        "notebook": {
+          "rows": 3,
+          "array_sum": 41,
+          "group_totals": {
+            "A": 30,
+            "B": 12
+          }
+        },
+        "sqlite": [
+          [
+            "A",
+            2,
+            30
+          ],
+          [
+            "B",
+            1,
+            12
+          ]
+        ]
+      },
+      "submission_omitted": false,
+      "result": {
+        "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+        "checked_at": "2026-11-11T02:26:12.725717+00:00",
+        "status": "mismatch",
+        "passed": false,
+        "components": {
+          "notebook": {
+            "status": "mismatch",
+            "expected": {
+              "array_sum": 42,
+              "group_totals": {
+                "A": 30,
+                "B": 12
+              },
+              "rows": 3
+            },
+            "next_step": "回该项模板检查CSV、分组/排序和数值，复算后重新提交；保留本次记录。"
+          },
+          "sqlite": {
+            "status": "pass",
+            "expected": [
+              [
+                "A",
+                2,
+                30
+              ],
+              [
+                "B",
+                1,
+                12
+              ]
+            ],
+            "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+          }
+        },
+        "scope": "仅核对提交JSON中的固定任务、资料版本、数据摘要和数值结果；不执行上传代码，不证明实际操作、学习掌握、作品原创或未复制。环境报告、本人阅读声明和成果核验分别记录。",
+        "next_step": "结果有误：按下方对应组件重新计算并再次提交，保留本次错误记录。"
+      }
+    },
+    {
+      "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+      "session": 2,
+      "source_sha256": "2d82d22f0a2e4caec2ad2695141bf626b9afea130d548c64fe1337682a04a209",
+      "file_error": null,
+      "submission": {
+        "schema": 1,
+        "kind": "kehang-practice-result",
+        "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+        "material_version": "scores-20261110-v1",
+        "dataset_sha256": "37039948a897bcc319d0ca03d3c775fd1c09bb1a82a33adf43c0ad02baf51e7d",
+        "component_task_ids": {
+          "notebook": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+          "sqlite": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c"
+        },
+        "notebook": {
+          "rows": 3,
+          "array_sum": 42,
+          "group_totals": {
+            "A": 30,
+            "B": 12
+          }
+        },
+        "sqlite": [
+          [
+            "A",
+            2,
+            30
+          ],
+          [
+            "B",
+            1,
+            12
+          ]
+        ]
+      },
+      "submission_omitted": false,
+      "result": {
+        "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+        "checked_at": "2026-11-11T02:26:13.013907+00:00",
+        "status": "pass",
+        "passed": true,
+        "components": {
+          "notebook": {
+            "status": "pass",
+            "expected": {
+              "array_sum": 42,
+              "group_totals": {
+                "A": 30,
+                "B": 12
+              },
+              "rows": 3
+            },
+            "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+          },
+          "sqlite": {
+            "status": "pass",
+            "expected": [
+              [
+                "A",
+                2,
+                30
+              ],
+              [
+                "B",
+                1,
+                12
+              ]
+            ],
+            "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+          }
+        },
+        "scope": "仅核对提交JSON中的固定任务、资料版本、数据摘要和数值结果；不执行上传代码，不证明实际操作、学习掌握、作品原创或未复制。环境报告、本人阅读声明和成果核验分别记录。",
+        "next_step": "两项成果数值符合要求。保存Notebook、CSV、SQLite文件和全部提交记录；分别完成两组件同目标环境复检后导出完成物。"
+      }
+    }
+  ],
+  "scope": "本次会话记录；教师须重新核验限定成果，不信任已保存的passed结论。无效/旧资料原内容仅保留摘要，需原件才能重核。环境探针、阅读声明和成果核验各自独立。不证明本人完成操作、学习掌握或作品原创。含本机原始报告路径，分享前请检查。"
+}

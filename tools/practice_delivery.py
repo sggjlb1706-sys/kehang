@@ -183,7 +183,8 @@ def reviewer_payload(root,names):
         messages=[]
         for message in group['messages']:
             if message['role'] not in ('user','assistant') or message.get('channel') not in (None,'final','commentary'):continue
-            text=redact_value(message['text'])
+            excerpt, marker, _ = message['text'].partition('<oai-mem-citation>')
+            text=redact_value(excerpt.rstrip()) + ('\n[已省略内部引用]' if marker else '')
             messages.append(dict(role=message['role'],source_line=message['source_line'],timestamp=message.get('timestamp'),
                                  original_text_sha256=message.get('original_text_sha256'),text=text,shared_text_sha256=digest(text.encode())))
         public.append(dict(source=group['source'],messages=messages))

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+  "collected_at": "2026-11-10T09:07:27.455790+00:00",
+  "target": {
+    "requested": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+    "actual": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "sqlite": "3.50.4",
+    "tool_runtime": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe",
+    "database": {
+      "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "header_valid": true,
+      "error": ""
+    },
+    "query": {
+      "read_only": true,
+      "returncode": 0,
+      "rows": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "error": ""
+    }
+  }
+}

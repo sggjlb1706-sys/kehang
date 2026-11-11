@@ -1,0 +1,58 @@
+{
+  "practice_id": "b770cc85e9d5f426a7f0eaa513e88a53d97b2bceda366928e8ab083b7f1c4c8b",
+  "checked_at": "2026-11-10T09:06:48.007117+00:00",
+  "status": "pass",
+  "passed": true,
+  "components": {
+    "notebook": {
+      "status": "pass",
+      "expected": {
+        "array_sum": 42,
+        "group_totals": {
+          "A": 30,
+          "B": 12
+        },
+        "rows": 3
+      },
+      "submitted": {
+        "rows": 3,
+        "array_sum": 42,
+        "group_totals": {
+          "A": 30,
+          "B": 12
+        }
+      },
+      "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+    },
+    "sqlite": {
+      "status": "pass",
+      "expected": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "submitted": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "next_step": "本项提交数值符合固定要求；另外保存实际操作文件及独立环境证据。"
+    }
+  },
+  "scope": "仅核对提交JSON中的固定任务、资料版本、数据摘要和数值结果；不执行上传代码，不证明实际操作、学习掌握、作品原创或未复制。环境报告、本人阅读声明和成果核验分别记录。",
+  "next_step": "两项成果数值符合要求。保存Notebook、CSV、SQLite文件和全部提交记录；分别完成两组件同目标环境复检后导出完成物。"
+}

@@ -1,0 +1,137 @@
+{
+  "started_at": "2026-11-10T09:06:42.332346+00:00",
+  "actor": "代理在同一电脑的隔离目录执行固定练习；不是学生用户研究、独立新手或第二设备。",
+  "python": "D:\\ANACONDA\\python.exe",
+  "kernel_spec": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+  "commands": [
+    [
+      "D:\\ANACONDA\\python.exe",
+      "-X",
+      "utf8",
+      "-B",
+      "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\02_SQLite练习.py"
+    ],
+    {
+      "scenario": "python-basics",
+      "stage": "A",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "call \".\\Start-Collect.cmd\""
+      ],
+      "input_note": "明确课程Python/内核、A或B、START及pause回车；代理输入，仅验证主动入口",
+      "returncode": 1
+    },
+    {
+      "scenario": "python-basics",
+      "stage": "A",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "Start-Collect.cmd"
+      ],
+      "input_note": "明确课程Python/内核、A或B、START及pause回车；代理输入，仅验证主动入口",
+      "returncode": 0
+    },
+    {
+      "scenario": "python-basics",
+      "stage": "B",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "Start-Collect.cmd"
+      ],
+      "input_note": "明确课程Python/内核、A或B、START及pause回车；代理输入，仅验证主动入口",
+      "returncode": 0
+    },
+    {
+      "scenario": "notebook-data",
+      "stage": "A",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "Start-Collect.cmd"
+      ],
+      "input_note": "明确课程Python/内核、A或B、START及pause回车；代理输入，仅验证主动入口",
+      "returncode": 0
+    },
+    {
+      "scenario": "notebook-data",
+      "stage": "B",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "Start-Collect.cmd"
+      ],
+      "input_note": "明确课程Python/内核、A或B、START及pause回车；代理输入，仅验证主动入口",
+      "returncode": 0
+    },
+    {
+      "scenario": "sqlite-basics",
+      "stage": "A",
+      "argv": [
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "campuslab.collect",
+        "--task",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\task.json",
+        "--target",
+        "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+        "--output",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\report-A.json"
+      ],
+      "input_note": "无交互；固定所选SQLite文件",
+      "returncode": 0
+    },
+    {
+      "scenario": "sqlite-basics",
+      "stage": "B",
+      "argv": [
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\runtime\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "campuslab.collect",
+        "--task",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\task.json",
+        "--target",
+        "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-practice-20261110\\records\\practice\\lab-run\\scores.sqlite",
+        "--output",
+        "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 p90w_vzl\\sqlite-basics 中文 空格 工具\\report-B.json"
+      ],
+      "input_note": "无交互；固定所选SQLite文件",
+      "returncode": 0
+    }
+  ],
+  "complete": true,
+  "same_computer_libraries": [
+    {
+      "port": 59614,
+      "database": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 c4xpjha3\\library-0.sqlite"
+    },
+    {
+      "port": 59615,
+      "database": "C:\\Users\\DELL\\AppData\\Local\\Temp\\课航 固定 实训 c4xpjha3\\library-1.sqlite"
+    }
+  ],
+  "ended_at": "2026-11-10T09:07:28.267949+00:00",
+  "resumed_at": "2026-11-10T09:07:15.955299+00:00",
+  "scope": "两本机实例传递；模板由代理填写固定表达式并真实执行，三课程A/B为同目标稳定复检；错误成果仅构造负例。没有安装、真实AI请求、DSH/VM或其他设备。",
+  "source_sha256": {
+    "campuslab\\practice.py": "dccbf9ed6c98ba50f7b8ef7fb1dbdf84df41ab7c598055965337c2f68e1bb953",
+    "campuslab\\launcher.py": "c61242093b845ade1238b3a7b98412bf2bdc0b73923833485b111b6bec9fc9cf",
+    "campuslab\\web.py": "1a4b46f2041b52eb24cf32617d6067d987f058bdb7ee9a82b0fcb67b0e47cc29",
+    "campuslab\\data\\practice\\01_Notebook练习.ipynb": "769224ae5d3c30e74530dfe1ec7d0990a88a10cbea4b67260abe6015864ec951",
+    "campuslab\\data\\practice\\02_SQLite练习.py": "7a979bda6fffc11ff5f24069d2be80ace842dd8a4ede475b1b65b7817cc2a16c",
+    "campuslab\\data\\practice\\README.md": "54b56976f2c5dc1b19f5e79ef58f9eac958970e78bcc5e51ec005602f8c80700"
+  }
+}
