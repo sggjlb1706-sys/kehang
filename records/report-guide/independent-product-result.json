@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "reviewer": "Independent read-only agent; did not participate in implementation",
+  "candidate": "5d63f6b265ca773bb62d0e4a228fc2b3520b438a",
+  "baseline": "f398ad5c006f9ef177589831f31bb7693561c129",
+  "scope": "Report-finding guidance and preserved contracts, fixed git archive plus matching existing embedded runtime; same-computer Edge verification, not independent novice or device acceptance.",
+  "reviewed_at_utc": "2026-11-12T09:10:32.258588+00:00",
+  "passed": true,
+  "blocking_findings": 0,
+  "actionable_findings": [],
+  "source_status_porcelain": "",
+  "frozen_product_files": 50,
+  "frozen_product_mismatches": [],
+  "old_D_delivery_files": 2410,
+  "old_D_delivery_mismatches": [],
+  "old_D_manifest_sha256": "4E0E5E04CF0E261DD9FB452EAB3AB8FA268887848026EE121C5A07AA0FE62F44",
+  "runtime_sha256": "9E35319BFFEDAB8B36AD44D8F377CB4F1733BCEC257A0B6D04D94F01486DDB38",
+  "checks": {
+    "unit_tests": 153,
+    "report_guide_groups": 8,
+    "guided_ui_groups": 13,
+    "local_check_groups": 7,
+    "supplemental_groups": 9
+  },
+  "visual_inspection": [
+    "records/report-guide/20261112T090454322842Z/report-steps-B.png",
+    "records/report-guide/20261112T090454322842Z/04-node-report-B-mobile.png"
+  ],
+  "evidence": {
+    "unit_tests": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\unit-tests.log",
+      "sha256": "C3723C7AAAFED48FBA76A47DB2445B19F5E4900C55A1BE934882EDC7A39BFEF3"
+    },
+    "report_guide": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\report-guide\\20261112T090454322842Z\\result.json",
+      "sha256": "D0CFEF84E2B78FA2DC2FDFAAF6718E333091BABDAF8BD142C4CBCE26C071E52D"
+    },
+    "guided_ui": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\guided\\20261112T090507943088Z\\result.json",
+      "sha256": "698BDF8B4B00EC9022A75DDBA60126B7C5F411652A0C55C9602032169AE594CE"
+    },
+    "local_check": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\local-check\\20261112T090458739940Z\\result.json",
+      "sha256": "61029A1BC2E47D6D2390DE94AA365DE42709AF07E01351653BABDB64E5E72C20"
+    },
+    "supplemental": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\supplemental-result.json",
+      "sha256": "61D03DBAF19388BEC6EACC66E34D6F550033AE1BF1DFA94B892F9E8CBCB1CD40"
+    },
+    "fresh_node_A": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\report-guide\\20261112T090454322842Z\\real-node\\report-A.json",
+      "sha256": "23FD2C450AB513D521E8C70F208439BB7D893438E082EEF17FE7D8E1F37729B4"
+    },
+    "fresh_node_B": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\report-guide\\20261112T090454322842Z\\real-node\\report-B.json",
+      "sha256": "2136B8CDC0E25415D296BD2CD5AB3E6094E29A573522D496A41755A1B7A55C03"
+    },
+    "fresh_python_A": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\local-check\\20261112T090458739940Z\\real\\report-A.json",
+      "sha256": "86176F60BAB734499B10B25B2F43E2EBF75516BB69B2A3E16C8876714780C4A5"
+    },
+    "fresh_python_B": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\snapshot\\records\\local-check\\20261112T090458739940Z\\real\\report-B.json",
+      "sha256": "44CC8DB4ED0563E7BB7D09A2482C2164FB91814CBCF2FF5969F89EE631047448"
+    },
+    "accessible_tree": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\accessible-report-guide.txt",
+      "sha256": "2049C50F30A95521517A438FAF79261489E5AE324B12C8E419BEA934DB69E923"
+    },
+    "downloaded_tool": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\downloaded-notebook-tool.zip",
+      "sha256": "9F7396A38A6E6D3A129F252AC3BF4EC2206066BF5A8726F80630877037CCBF6A"
+    },
+    "fixed_archive": {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航报告图示-20261112\\independent-product-evidence-5d63f6b\\fixed-5d63f6b.tar",
+      "sha256": "E7EA8AAA32C6C87B6D0F2C0F30D8D889C597C7AF90FB105F79BFC81B37739536"
+    }
+  },
+  "limitations": [
+    "One computer; responsive viewports are browser simulations, not physical phone or independent novice testing.",
+    "Fresh Node A/B stable-pass is not fault-repair evidence; archived Python originals are reanalysis evidence.",
+    "Clipboard denial, delayed denial, renamed executable path and malformed A/B are controlled cases; malformed paths are not claims about installed programs.",
+    "Accessibility proof covers keyboard, accessible names/status roles, focus, contrast variables and reflow, not a real screen reader session.",
+    "No installation, model/API request, other-course one-click detection or public deployment.",
+    "Final delivered directory/ZIP not part of this fixed-candidate review."
+  ],
+  "harness_note": "First supplemental run completed assertions but failed only in reviewer harness cleanup order. Failed result/log retained; corrected reviewer harness passed. Product code was unchanged."
+}

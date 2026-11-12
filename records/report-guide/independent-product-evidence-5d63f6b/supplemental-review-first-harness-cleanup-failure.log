@@ -1,0 +1,127 @@
+{
+  "candidate": "5d63f6b265ca773bb62d0e4a228fc2b3520b438a",
+  "checks": [
+    {
+      "name": "frozen_product_hashes",
+      "passed": true,
+      "detail": {
+        "count": 50,
+        "mismatch": []
+      }
+    },
+    {
+      "name": "old_D_delivery_unchanged",
+      "passed": true,
+      "detail": {
+        "files": 2410,
+        "manifest_sha256": "4E0E5E04CF0E261DD9FB452EAB3AB8FA268887848026EE121C5A07AA0FE62F44",
+        "mismatch": []
+      }
+    },
+    {
+      "name": "real_A_B_and_constructed_time_identity_negatives",
+      "passed": true,
+      "detail": {
+        "outcome": "stable-pass",
+        "negative_cases": [
+          {
+            "case": "same_time",
+            "error": "复检时间必须晚于初检"
+          },
+          {
+            "case": "reversed_time",
+            "error": "复检时间必须晚于初检"
+          },
+          {
+            "case": "different_target_constructed",
+            "error": "npm必须属于所选Node目录，拒绝混入其他环境"
+          }
+        ]
+      }
+    },
+    {
+      "name": "keyboard_accessible_names_long_path_and_reflow",
+      "passed": true,
+      "detail": {
+        "widths": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "path_characters": 219,
+        "focus": {
+          "style": "solid",
+          "width": "3px"
+        },
+        "clipboard": "actual API success; full path preserved"
+      }
+    },
+    {
+      "name": "node_path_form_validation",
+      "passed": true,
+      "detail": {
+        "folder_lnk_relative_rejected": true,
+        "different_exe_name_allowed": true,
+        "surrounding_double_quotes_normalized": true,
+        "real_executable_acceptance": "real Node A/B held separately"
+      }
+    },
+    {
+      "name": "powershell_assignment_literals",
+      "passed": true,
+      "detail": {
+        "constructed_metacharacters": "dollar subexpression, backtick, double quote and spaces",
+        "evaluated_scope": "only generated assignments; exact literal round trip; no collector execution"
+      }
+    },
+    {
+      "name": "delayed_clipboard_rejection_after_task_switch",
+      "passed": true,
+      "detail": {
+        "constructed_denial": true,
+        "old_directory_status_and_focus_not_restored": true
+      }
+    },
+    {
+      "name": "downloaded_tool_readme",
+      "passed": true,
+      "detail": {
+        "zip_sha256": "AB02ABE2485076351B0EC99211196BA2DA5D8B5DF7571F0EBF2E6468A7F1E294",
+        "default_A_and_keep_A_for_B": true
+      }
+    },
+    {
+      "name": "network_and_browser_error_scope",
+      "passed": true,
+      "detail": {
+        "page_errors": [],
+        "remote_requests": [],
+        "model_requests": 0,
+        "installs": 0
+      }
+    }
+  ],
+  "scope": "Independent same-computer agent review; constructed boundary cases are not installed environments or novice/device acceptance.",
+  "passed": false,
+  "error": "Error('Event loop is closed! Is Playwright already stopped?')",
+  "finished_at_utc": "2026-11-12T09:07:41.307545+00:00"
+}
+Traceback (most recent call last):
+  File "C:\Users\DELL\Documents\ChatGPT\传智杯\交付\课航报告图示-20261112\independent-product-evidence-5d63f6b\supplemental_review.py", line 63, in <module>
+    with tempfile.TemporaryDirectory(prefix='kehang-independent-report-') as temporary, ExitStack() as stack:
+                                                                                        ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\contextlib.py", line 619, in __exit__
+    raise exc
+  File "D:\ANACONDA\Lib\contextlib.py", line 604, in __exit__
+    if cb(*exc_details):
+       ~~^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\contextlib.py", line 482, in _exit_wrapper
+    callback(*args, **kwds)
+    ~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\sync_api\_generated.py", line 15992, in close
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.close(reason=reason)))
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_sync_base.py", line 104, in _sync
+    raise Error("Event loop is closed! Is Playwright already stopped?")
+playwright._impl._errors.Error: Event loop is closed! Is Playwright already stopped?
