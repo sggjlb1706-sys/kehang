@@ -1,3 +1,9 @@
+# 报告位置图示版交接
+
+当前目录work/kehang-report-guide-20261112，分支codex/kehang-report-guide-20261112，完整承接f398ad5。本轮仅针对报告查找/选择图示和Node路径误选提示，Python一键与其他课程手动方式不变。验收records/report-guide/acceptance.json，当前独立结论REVIEW.md，新实物以仓库外“交付/课航报告图示-20261112”回执为准。旧服务保留，新网页地址以新交付说明为准。
+
+以下为历史交接。
+
 # 课航一键本机检测版交接
 
 当前开发目录work/kehang-local-check-20261112，分支codex/kehang-local-check-20261112，从正式路径引导版3b595f47完整继承。首页一键自动发现/检查Python基础环境，结果直接返回，支持独立环境选择与同目标复检；不自动发AI请求。入口README，验收records/local-check/acceptance.json，独立审查与最终新目录/包以本版REVIEW和仓库外“交付/课航本机检测-20261112”回执为准。旧版本服务不会热更新，需打开新交付预览或重启新目录服务。

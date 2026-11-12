@@ -1,0 +1,34 @@
+{
+  "checks": [
+    "Manual Node flow has a three-step labelled visual guide; unknown extraction directory is not fabricated and opens no local detection job",
+    "Actual clipboard copy preserves the entered directory; the reported Start Menu folder cannot generate a misleading Node collector command",
+    "A quoted real node.exe is accepted; generated manual command names the same A output and prints its location only after successful collection",
+    "Fresh actual Node A/B imports preserve original baseline and identity; B guide highlights the new file while retaining the A example",
+    "Switching to Notebook removes stale directory/B guidance and Node hints; simple launcher users see the honest extraction-folder example",
+    "Clipboard denial leaves the current guide intact and selects the exact address for Ctrl+C",
+    "The illustrated chooser retains real report validation: sharing-only input rejected, existing valid original accepted",
+    "390/768/1440 layouts preserve all three steps, selected B filename and long-path copy without horizontal overflow"
+  ],
+  "screenshots": [
+    {
+      "path": "records/report-guide/20261112T084457107345Z/01-node-report-A-desktop.png",
+      "sha256": "6ec2fb8ffa632aae4306c4ed8eaf2af095bc3795cf2626c4f295c6b5605c143d"
+    },
+    {
+      "path": "records/report-guide/20261112T084457107345Z/02-node-report-B-desktop.png",
+      "sha256": "8d6ee1cedc9980f304f423bb3398b8cb14b046996242783fbcc9dc806dae1532"
+    },
+    {
+      "path": "records/report-guide/20261112T084457107345Z/03-notebook-no-directory.png",
+      "sha256": "8760c5485eac2b811b13f7e36716baadcae7cc2c91f77a650f92d045c4bf4d5a"
+    },
+    {
+      "path": "records/report-guide/20261112T084457107345Z/04-node-report-B-mobile.png",
+      "sha256": "7b269dada3917520e1573ccc463a1db7645b8e3d757d05cf56535f6feb01979f"
+    }
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "scope": "Same-computer agent browser; real Node A/B when available, archived real Python reports for compatibility. Guidance drawings are labelled examples, not filesystem discovery. No model request or installation.",
+  "passed": true
+}

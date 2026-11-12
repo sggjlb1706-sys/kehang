@@ -45,6 +45,7 @@ function clearTask(){
   state.epoch++;clearReports();state.task=null;state.course=null;$('task-panel').hidden=true;$('empty-state').hidden=false;$('command').textContent='';$('remediation').replaceChildren();
   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
   guided.courseStep=0;guided.courseVisited=0;guided.manualCollectorChosen=false;renderGuide();
+  $('tool-dir').value='';updateReportGuide();
 }
 async function chooseTask(loader,course=null){
   const navigationEpoch=guided.navigationEpoch;
@@ -53,6 +54,7 @@ async function chooseTask(loader,course=null){
   if(newCourses[spec.scenario])$('target').value='';
   $('task-title').textContent=spec.title;
   const node=spec.scenario==='node-basics', vm=spec.scenario==='vm-linux';
+  $('node-target-guide').hidden=!node;
   const summaries={'notebook-data':'所选Python + 已有kernelspec → 真内核身份 → NumPy/Pandas固定计算',
     'java-jdk':'显式JDK目录 → 同源java/javac → 临时固定源码编译运行',
     'sqlite-basics':'SQLite单机入门 → 明确数据库文件 → 只读固定SELECT；不代表MySQL/PostgreSQL',
@@ -132,10 +134,17 @@ for(const id of ['mode','prepared'])$(id).addEventListener('change',()=>{clearAI
 
 const ps = value => '"'+value.replace(/[`"$\u2018-\u201f]/g,character=>'`'+character)+'"';
 function requirePath(value,label){if(!/^[a-zA-Z]:[\\/]/.test(value)||/[\r\n\0]/.test(value))throw Error(label+'须填写完整的Windows路径');return value;}
+function requireNodeFile(value){
+  if(value.startsWith('"')&&value.endsWith('"'))value=value.slice(1,-1);
+  const path=requirePath(value,'课程 Node.js');
+  if(!/\.exe$/i.test(path))throw Error('请选择 node.exe 程序文件，不是开始菜单的 Node.js 文件夹或快捷方式。按路径输入框下方的图示查找。');
+  return path;
+}
 $('make-command').addEventListener('click',()=>{
   try{
     if(!state.task)throw Error('请先确定任务');
-    const root=requirePath($('tool-dir').value.trim(),'工具目录');const target=requirePath($('target').value.trim(),state.task.scenario==='node-basics'?'课程 Node.js':'课程解释器');
+    const root=requirePath($('tool-dir').value.trim(),'工具目录');const target=state.task.scenario==='node-basics'?requireNodeFile($('target').value.trim()):requirePath($('target').value.trim(),'课程解释器');
+    if(state.task.scenario==='node-basics')$('target').value=target;
     const toolPython=$('tool-python').value.trim();if(toolPython)requirePath(toolPython,'工具Python');
     if(!toolPython&&!state.config?.portable_available)throw Error('当前工具包未配置独立运行时，请填写已有工具Python；工具Python不代表课程环境。');
     const stage=$('report-stage').value;const lines=["$ErrorActionPreference = 'Stop'",`$taskToolRoot = ${ps(root)}`,`$taskTarget = ${ps(target)}`,"if (!(Test-Path -LiteralPath $taskToolRoot -PathType Container)) { throw '工具目录不存在，请完整解压' }",'$taskSnapshot = Join-Path $taskToolRoot '+ps('task.json'),"if (!(Test-Path -LiteralPath $taskSnapshot -PathType Leaf)) { throw '缺少task.json，请完整解压本任务工具' }",`if ((Get-Content -LiteralPath $taskSnapshot -Raw -Encoding UTF8 | ConvertFrom-Json).id -ne ${ps(state.task.id)}) { throw '工具任务与网页任务不一致，请重新下载' }`,`$taskRunner = ${toolPython?ps(toolPython):'Join-Path $taskToolRoot '+ps('runtime\\python.exe')}`,"if (!(Test-Path -LiteralPath $taskRunner -PathType Leaf)) { throw '工具Python不存在' }",'Set-Location -LiteralPath $taskToolRoot'];
@@ -161,10 +170,34 @@ $('make-command').addEventListener('click',()=>{
       if($('dsh-evidence').value.trim())command+=' --agent-evidence '+ps(requirePath($('dsh-evidence').value.trim(),'必要工具摘要'));
     }
     lines.push(command,"if ($LASTEXITCODE -ne 0) { throw '采集未完成；请查看错误，不要把旧报告当作本次结果' }");
+    lines.push(`Write-Host ('报告已保存：' + (Join-Path $taskToolRoot ${ps('report-'+stage+'.json')}))`,"Write-Host '回到课航，按图选择这份报告。'");
     $('command').textContent=lines.join('\n');notice('已生成命令。先检查路径和操作内容，再由本人到目标电脑运行。');
   }catch(e){$('command').textContent='';notice(e.message,true);}
 });
 for(const id of ['tool-dir','target','tool-python','model-dir','infer','report-stage','gpu-run','vm-id','guest-path'])$(id).addEventListener('input',()=>{$('command').textContent='';if(['target','model-dir','vm-id'].includes(id)){invalidatePracticeEnvironment();clearReports();}});
+for(const id of ['tool-dir','report-stage'])$(id).addEventListener('input',updateReportGuide);
+function updateReportGuide(){
+  const stage=$('report-stage').value==='B'?'B':'A',filename='report-'+stage+'.json';
+  const root=$('tool-dir').value.trim(),known=/^[a-zA-Z]:[\\/]/.test(root)&&!/[\r\n\0]/.test(root);
+  $('report-example-file').textContent=filename;
+  $('report-earlier-file').hidden=stage!=='B';
+  $('report-filename-hint').textContent=stage==='B'?'这次找 report-B.json，保留原来的 A。':'初检通常保存为 report-A.json。';
+  $('report-upload-label').textContent='选择 '+filename;
+  $('report-folder-address').value=known?root:'你解压的课航工具文件夹';
+  $('copy-report-folder').hidden=!known;
+  $('report-folder-tip').textContent=known?'复制后，粘贴到文件资源管理器顶部地址栏，按回车。':'就是放着 task.json 的解压文件夹。';
+  $('report-copy-status').textContent='';
+}
+$('copy-report-folder').addEventListener('click',async()=>{
+  const address=$('report-folder-address'),value=address.value,epoch=state.epoch;
+  try{
+    if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');
+    await navigator.clipboard.writeText(value);
+    if(epoch===state.epoch&&address.value===value)$('report-copy-status').textContent='地址已复制。按 Win + E，在顶部地址栏粘贴后回车。';
+  }catch(error){
+    if(epoch===state.epoch&&address.value===value){address.focus();address.select();$('report-copy-status').textContent='请按 Ctrl + C 复制已选中的地址。';}
+  }
+});
 for(const id of ['kernel-spec','dsh-package','dsh-workspace','dsh-provider','dsh-model','dsh-evidence','learning-record','api-preview-path','learning-preview-text'])$(id).addEventListener('input',()=>{invalidatePracticeEnvironment();clearReports();});
 $('api-send').addEventListener('change',()=>{$('command').textContent='';});
 
@@ -450,7 +483,7 @@ function renderGuide(){
     $('collect-title').textContent=recheck?'保持同一目标，再检测一次':'下载工具，做一次检测';
     $('collect-intro').textContent=recheck?'用原来的任务和目标采集较晚的复检 B。不要覆盖初检报告；更换目标需要重新初检。':'检测工具会生成一份报告，帮你确认课程环境是否准备好了。';
     $('collector-stage-hint').textContent=recheck?'这次选择 B，得到 report-B.json。保持同一课程 Python 和内核，原报告不覆盖。':'第一次检测选 A，得到 report-A.json。包内 runtime 只是检测工具，不是课程 Python。';
-    $('report-files').labels[0].textContent=recheck?'选择复检报告 B，或一次选取原始 A / B 两份':'选择生成的 report-A.json（也可一次选择原始 A / B 两份）';
+    updateReportGuide();
     $('report-ready').textContent=state.after?'两份报告已读取，可以进入下一步核对复检结论。':state.before?(recheck?'已保留初检；导入有效 B 后可查看复检结果。':'初检报告已读取，点击“下一步”查看结果。'):'';
     $('review-hint').textContent=state.after?(state.analysis?.passed?'本次同目标复检全部通过。可以预览分享报告，或返回学习首页。':'复检仍有缺失、不符合或未知。按下面的差异处理，再采集新的复检报告。'):state.analysis?.passed?'初检全部通过。还需保持同一目标采集较晚的 B，才能形成复检结论。':'查看下面的具体差异。由你决定如何处理，再保持同一目标采集复检 B。';
     $('command-entry-hint').hidden=!$('simple-collector').hidden;
@@ -480,7 +513,7 @@ $('guide-next').addEventListener('click',()=>{
   }else if(guided.courseStep===3){
     if(localState.selected){showRoute('home');return;}
     if(state.after&&state.analysis?.passed)showRoute('home');
-    else{$('report-stage').value='B';$('command').textContent='';showRoute('course',2);}
+    else{$('report-stage').value='B';$('command').textContent='';$('report-files').value='';showRoute('course',2);}
   }else showRoute('course',guided.courseStep+1);
 });
 for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
@@ -529,7 +562,7 @@ async function lesson(){
 }
 $('lesson-retry').addEventListener('click',()=>{
   if(!state.before)return;
-  $('report-stage').value='B';$('command').textContent='';$('command-panel').open=true;
+  $('report-stage').value='B';$('command').textContent='';$('report-files').value='';$('command-panel').open=true;
   $('make-command').focus();notice('保持同一任务与组件，手动采集较晚B后导入。检查状态来自新报告。');
   const button=$('lesson-retry');button.disabled=true;setTimeout(()=>{button.disabled=false;},3000);
   showRoute('course',2);

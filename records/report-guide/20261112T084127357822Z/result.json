@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "Manual Node flow has a three-step labelled visual guide; unknown extraction directory is not fabricated and opens no local detection job",
+    "Actual clipboard copy preserves the entered directory; the reported Start Menu folder cannot generate a misleading Node collector command",
+    "A quoted real node.exe is accepted; generated manual command names the same A output and prints its location only after successful collection"
+  ],
+  "screenshots": [
+    {
+      "path": "records/report-guide/20261112T084127357822Z/01-node-report-A-desktop.png",
+      "sha256": "ec573d6a9d4c9a99df231f90ea384ce4506ccc042587cb5611aec90e7f022097"
+    }
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "scope": "Same-computer agent browser; real Node A/B when available, archived real Python reports for compatibility. Guidance drawings are labelled examples, not filesystem discovery. No model request or installation.",
+  "passed": false,
+  "error": "TimeoutError('Page.wait_for_function: Timeout 30000ms exceeded.')"
+}

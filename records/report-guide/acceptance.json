@@ -1,0 +1,31 @@
+{
+  "baseline": {
+    "head": "f398ad5c006f9ef177589831f31bb7693561c129",
+    "manifest_files": 2410,
+    "manifest_sha256": "4E0E5E04CF0E261DD9FB452EAB3AB8FA268887848026EE121C5A07AA0FE62F44",
+    "unchanged": true,
+    "inherited_commits": 56
+  },
+  "unit_tests": {
+    "passed": true,
+    "count": 153,
+    "path": "records/report-guide/unit-tests.log"
+  },
+  "report_browser": {
+    "passed": true,
+    "groups": 8,
+    "path": "records/report-guide/20261112T085748710476Z/result.json"
+  },
+  "legacy_browser": {
+    "passed": true,
+    "groups": 13,
+    "path": "records/guided/20261112T085126923022Z/result.json"
+  },
+  "local_browser": {
+    "passed": true,
+    "groups": 7,
+    "path": "records/local-check/20261112T085137665593Z/result.json"
+  },
+  "real_evidence": "records/report-guide/20261112T085748710476Z/real-node",
+  "scope": "Same-computer agent verification: freshly collected Node A/B; existing Python originals reanalysed; clipboard denial constructed; responsive browser simulation only. Not independent novice/device/model acceptance."
+}

@@ -179,7 +179,7 @@ def run(root,ask=input,tell=print):
     report=collect(spec,target,**options)
     with output.open('x',encoding='utf-8') as stream:
         json.dump(report,stream,ensure_ascii=False,indent=2)
-    tell('报告已保存：'+str(output)+'\n回到课航，选择此报告；初检与复检也可一次选择。结果以网页规则核验为准。')
+    tell('报告已保存：'+str(output)+'\n找报告：打开上面的工具目录，在 task.json 旁找到 '+output.name+'，回到课航选择它。结果以网页规则核验为准。')
     return output
 
 
