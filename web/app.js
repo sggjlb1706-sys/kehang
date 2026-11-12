@@ -3,6 +3,7 @@ const $ = id => document.getElementById(id);
 const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
 const practiceState={practice:null,package:null,courses:null,epoch:0,session:0,submissionEpoch:0,reviewEpoch:0,submission:null,attempts:[],environment:{}};
 const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0,manualCollectorChosen:false};
+const localState={epoch:0,job:null,running:false,items:[],selected:null,limited:false};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
 const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
@@ -19,7 +20,7 @@ async function api(path,body){
   const data=await r.json(); if(!r.ok)throw Error(data.error||'请求失败'); return data;
 }
 function notice(text,error=false){$('notice').textContent=text;$('notice').hidden=false;$('notice').classList.toggle('error',error);if(error)$('notice').scrollIntoView({block:'nearest'});}
-async function action(button,fn){if(button)button.disabled=true;try{await fn();}catch(e){notice(e.message,true);}finally{if(button)button.disabled=false;}}
+async function action(button,fn){const navigationEpoch=guided.navigationEpoch;if(button)button.disabled=true;try{await fn();}catch(e){if(navigationEpoch===guided.navigationEpoch)notice(e.message,true);}finally{if(button)button.disabled=false;}}
 function save(name,obj,type='application/json'){
   const text=typeof obj==='string'?obj:JSON.stringify(obj,null,2);
   const u=URL.createObjectURL(new Blob([text],{type}));
@@ -29,7 +30,8 @@ function clearAI(){
   $('ai-preview-panel').hidden=true;$('ai-consent').checked=false;$('send-ai').disabled=true;
   $('ai-preview').value='';$('ai-output').textContent='';
 }
-function clearReports(){
+function clearReports(keepLocal=false){
+  if(!keepLocal)resetLocal();
   state.importEpoch++; Object.assign(state,{before:null,after:null,analysis:null});
   $('report-stage').value='A';
   $('results').replaceChildren();$('comparison').textContent='';$('before-file').value='';$('after-file').value='';$('report-files').value='';
@@ -170,7 +172,7 @@ function render(a){
   state.analysis=a;$('results').replaceChildren();
   const identity=document.createElement('p');identity.textContent=`本次目标：${a.target.requested} · ${a.collected_at}`;$('results').append(identity);
   const next=document.createElement('p');next.className='result-summary';const counts=Object.fromEntries(Object.keys(labels).map(key=>[key,a.checks.filter(x=>x.status===key).length]));
-  next.textContent=`通过 ${counts.pass} · 缺失 ${counts.missing} · 不符合 ${counts.mismatch} · 未知 ${counts.unknown}。`+(a.passed?(state.after?'核对同目标复检结论。':'初检已通过，保留原件后采集较晚的B。'):'查看“按差异处理”的下一步，手动处理后复检。');$('results').append(next);
+  next.textContent=`通过 ${counts.pass} · 缺失 ${counts.missing} · 不符合 ${counts.mismatch} · 未知 ${counts.unknown}。`+(a.passed?(state.after?'核对同目标复检结论。':localState.selected?'本次课程检查已通过。':'初检已通过，保留原件后采集较晚的B。'):'查看“按差异处理”的下一步，手动处理后复检。');$('results').append(next);
   if(a.learning_completed){const p=document.createElement('p');p.className='notice';p.textContent='本人学习记录与固定数字成果已核对；登录/远端连接仍为未知。';$('results').append(p);}
   for(const c of a.checks){
     const row=document.createElement('div');row.className='check';const name=document.createElement('strong');name.textContent=names[c.id]||c.id;
@@ -191,6 +193,7 @@ function validateSelectedReport(spec,report){
   if(spec.scenario.startsWith('dsh-'))for(const id of ['provider','model'])if($('dsh-'+id).value.trim()&&$('dsh-'+id).value.trim()!==report.facts?.model?.[id])throw Error('报告与当前提供方/模型不同，请重新初检');
 }
 async function importReport(which,file){
+  resetLocal();
   if(!state.task)throw Error('请先选择任务');
   if(which==='after'&&!state.before)throw Error('请先导入有效初检报告A');
   const epoch=state.epoch, serial=++state.importEpoch, spec=state.task;
@@ -282,15 +285,120 @@ function renderPreparation(plan){
   for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
 }
 
+function localReady(){return state.task?.scenario==='python-basics'&&state.config?.local_check?.available;}
+async function localAPI(path,body){
+  const response=await fetch(path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},...(body?{body:JSON.stringify(body)}:{})});
+  const result=await response.json();if(!response.ok)throw Error(result.error||'本机检测请求失败，请刷新后重试');return result;
+}
+function resetLocal(){
+  const job=localState.job,running=localState.running;
+  Object.assign(localState,{epoch:localState.epoch+1,job:null,running:false,items:[],selected:null,limited:false});
+  if(running&&job)localAPI('/api/local-check/cancel',{id:job.id}).catch(()=>{});
+  $('local-result-panel').hidden=true;$('local-environments').replaceChildren();$('local-current').textContent='';
+  $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-prepare').hidden=true;
+  $('local-status').textContent='点击开始后，结果会自动显示在这里。';
+  $('manual-collection').open=!localReady();
+}
+function renderLocalEnvironments(){
+  $('local-result-panel').hidden=!localState.items.length;
+  $('local-result-summary').textContent=`本次检查了 ${localState.items.length} 个环境。`+(localState.limited?'候选超过 8 个，仅检查前 8 个。':'')+(localState.items.length===1?'已为你展示检测结果。':'请选择这门课实际使用的环境查看结果。');
+  $('local-environments').replaceChildren();
+  for(const item of localState.items){
+    const row=document.createElement('div');row.className='local-environment';
+    const path=document.createElement('strong');path.textContent=item.target;
+    const status=document.createElement('span');status.textContent=item.error?'未完成 · 未知':item.analysis.passed?'本课程检查通过':'需要处理或确认';
+    status.className=item.analysis?.passed?'state-pass':'state-unknown';
+    const button=document.createElement('button');button.className='secondary';button.textContent=item.id===localState.selected?.id?'当前查看':'查看这个环境';
+    button.disabled=localState.running;button.setAttribute('aria-pressed',String(item.id===localState.selected?.id));
+    button.addEventListener('click',()=>action(button,()=>selectLocal(item)));
+    row.append(path,status,button);$('local-environments').append(row);
+  }
+  $('local-recheck').disabled=!localState.selected?.report||localState.running;
+  $('local-ai').disabled=!localState.selected?.report||localState.running;
+  $('local-save').disabled=!localState.selected?.report||localState.running;
+}
+async function selectLocal(item){
+  const epoch=localState.epoch,taskEpoch=state.epoch;
+  clearReports(true);localState.selected=item;
+  if(item.report){
+    state.before=item.before||item.report;state.after=item.before?item.report:null;
+    render(item.analysis);$('after-file').disabled=false;
+    if(item.comparison)$('comparison').textContent=({'stable-pass':'同一目标稳定复检通过；两次均通过。',repaired:'同一目标从存在缺失或不符合改善为通过。',verified:'同一目标补齐实际运行证据后通过。',incomplete:'同一目标复检仍未全部通过。'})[item.comparison.outcome];
+  }
+  renderLocalEnvironments();
+  if(item.report){showRoute('course',3);await guidance();if(epoch!==localState.epoch||taskEpoch!==state.epoch)return;await lesson();}
+  else{showRoute('course',2);$('local-status').textContent=item.error;notice(item.error,true);}
+}
+async function startLocal(recheck=false){
+  if(!localReady()||localState.running)return;
+  const previous=localState.selected,previousJob=localState.job;
+  if(recheck&&(!previous?.report||!previousJob))throw Error('请先完成本机初检');
+  const body={task:state.task,consent:true};
+  if(recheck)Object.assign(body,{previous_job:previous.job,target_id:previous.id});
+  const retained=recheck?localState.items:[],limited=localState.limited;
+  resetLocal();clearReports(true);
+  localState.items=retained;localState.limited=limited;
+  showRoute('course',2);localState.running=true;
+  const epoch=localState.epoch,taskEpoch=state.epoch;
+  $('manual-collection').open=false;$('local-start').disabled=true;$('local-cancel').hidden=false;
+  $('local-status').textContent='正在查找并检查 Python，请稍候……';renderGuide();
+  const current=()=>epoch===localState.epoch&&taskEpoch===state.epoch&&guided.route==='course'&&guided.courseStep===2;
+  try{
+    let job=await localAPI('/api/local-check',body);
+    if(!current()){await localAPI('/api/local-check/cancel',{id:job.id});return;}
+    localState.job=job;
+    while(['running','cancelling'].includes(job.state)){
+      $('local-status').textContent=job.total?`正在检测：已完成 ${job.completed} / ${job.total} 个环境。`:'正在查找本机已登记的 Python……';
+      $('local-current').textContent=job.current;
+      await new Promise(resolve=>setTimeout(resolve,400));
+      if(!current())return;
+      job=await localAPI('/api/local-check/jobs/'+encodeURIComponent(job.id));
+      if(!current())return;
+    }
+    localState.running=false;localState.job=job;
+    $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-current').textContent='';
+    if(job.state!=='done'){$('local-status').textContent=job.error||'本次检测已取消，未形成完整检测结论。';return;}
+    localState.limited=recheck?limited:job.limited;
+    // Each result keeps its owning job for a later same-target recheck.
+    for(const item of job.results)item.job=job.id;
+    localState.items=recheck?retained.map(item=>item.id===previous.id?job.results[0]:item):job.results;
+    if(!job.results.length){
+      $('local-status').textContent='没有找到可检测的 Python。这不代表没有安装；可以查看准备指引，或展开手动工具选择课程环境。';
+      $('local-prepare').hidden=false;return;
+    }
+    $('local-status').textContent='检测完成，报告已自动返回。';
+    const item=job.results.find(item=>item.report)||job.results[0];
+    await selectLocal(item);
+  }catch(error){
+    if(current()){
+      if(localState.job)localAPI('/api/local-check/cancel',{id:localState.job.id}).catch(()=>{});
+      localState.running=false;$('local-start').disabled=false;$('local-cancel').hidden=true;
+      $('local-status').textContent='未完成检测，请重试或展开手动工具。';notice(error.message,true);
+    }
+  }finally{if(current())renderGuide();}
+}
+$('local-start').addEventListener('click',()=>action(null,()=>startLocal()));
+$('local-recheck').addEventListener('click',()=>action(null,()=>startLocal(true)));
+$('local-cancel').addEventListener('click',()=>{resetLocal();$('local-status').textContent='已请求取消检测；正在结束本次固定检查。可稍后重新开始。';renderGuide();});
+$('local-prepare').addEventListener('click',()=>{showRoute('course',1);$('prepared').value='missing';guidance().catch(e=>notice(e.message,true));});
+$('local-ai').addEventListener('click',()=>{$('help-panel').open=true;$('prepare-ai').click();$('help-panel').scrollIntoView({block:'start'});});
+$('local-save').addEventListener('click',()=>{if(localState.selected?.report)save('Kehang-local-report.json',localState.selected.report);});
+window.addEventListener('pagehide',()=>{if(localState.running&&localState.job)fetch('/api/local-check/cancel',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},body:JSON.stringify({id:localState.job.id})}).catch(()=>{});});
+
 function syncCollector(){
   const simple=!!state.task&&['python-basics','notebook-data'].includes(state.task.scenario)&&!!state.config?.portable_available;
   $('simple-collector').hidden=!simple;
   $('kernel-path-help').hidden=state.task?.scenario!=='notebook-data';
   $('command-panel').open=!simple||guided.manualCollectorChosen;
   $('command-panel').querySelector('summary').textContent=simple?'无法双击运行？使用手动采集入口':'填写本次检测要用的路径';
+  const local=localReady();
+  $('local-check-panel').hidden=!local;
+  $('manual-collection').classList.toggle('manual-only',!local);
+  if(!local)$('manual-collection').open=true;
 }
 
 function showRoute(route,step=0){
+  if(localState.running&&(route!=='course'||step!==2))resetLocal();
   guided.navigationEpoch++;guided.route=route;
   if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
   if(route==='practice'){guided.practiceStep=step;guided.practiceVisited=Math.max(guided.practiceVisited,step);}
@@ -316,6 +424,7 @@ function renderGuide(){
   $('course-choice').hidden=!course||index!==0;
   $('task-panel').hidden=!course||!state.task||index===0;$('empty-state').hidden=true;
   $('preparation').hidden=!course||index!==1;$('collect-stage').hidden=!course||index!==2;$('review-stage').hidden=!course||index!==3;
+  $('local-result-panel').hidden=!course||localState.running||!localState.items.length||![2,3].includes(index);
   for(const [i,id] of ['practice-intro','practice-prepare','practice-work','practice-submit'].entries())$(id).hidden=!practice||index!==i;
   $('guide-context').textContent=course?'课程环境准备':'Notebook ＋ SQLite 连续实训';
   const labels=course?['选择课程','准备环境','运行检测','查看与复检']:['了解任务','准备环境','跟做练习','提交成果'];
@@ -347,6 +456,16 @@ function renderGuide(){
     next.textContent=index===1?'准备好了，去检测 →':index===2?'下一步：查看结果 →':state.after&&state.analysis?.passed?'返回学习首页':'去采集复检报告 →';
     next.disabled=(index>0&&!state.task)||(index===2&&(!state.before||!state.analysis));
     if(index===2&&!state.before)$('guide-footnote').textContent='运行后导入有效报告，即可查看检测结果；下载工具不会让环境变成通过。';
+    if(localReady()){
+      $('collect-title').textContent=localState.running?'正在检测本机 Python':'直接检测，不用找路径';
+      $('collect-intro').textContent='在运行课航本地服务的这台电脑完成固定检查，结果自动回到网页。';
+      if(index===2)$('guide-footnote').textContent=localState.running?'检测进行中；离开本步骤会取消。':'点击“开始本机检测”；也可展开手动工具，检测另一台电脑。';
+    }
+    if(localState.selected){
+      $('guide-title').textContent=index===3?'本机检测结果':titles[index];
+      $('review-hint').textContent=state.after?'已对同一环境再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次 Python 基础课要求，可以开始学习。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
+      if(index===3)next.textContent='返回学习首页';
+    }
   }else if(practice){
     next.textContent=['下一步：准备环境 →','下一步：下载并跟做 →','下一步：提交成果 →','返回学习首页'][index];
     next.disabled=index<3&&!practiceState.practice;
@@ -358,6 +477,7 @@ $('guide-next').addEventListener('click',()=>{
   if(guided.route==='practice'){
     if(guided.practiceStep===3)showRoute('home');else showRoute('practice',guided.practiceStep+1);
   }else if(guided.courseStep===3){
+    if(localState.selected){showRoute('home');return;}
     if(state.after&&state.analysis?.passed)showRoute('home');
     else{$('report-stage').value='B';$('command').textContent='';showRoute('course',2);}
   }else showRoute('course',guided.courseStep+1);
@@ -365,7 +485,16 @@ $('guide-next').addEventListener('click',()=>{
 for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
 $('teacher-nav').addEventListener('click',()=>{guided.fromPractice=false;showRoute('teacher');});
 $('choose-course').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);});
-$('start-python').addEventListener('click',e=>action(e.target,async()=>{guided.fromPractice=false;showRoute('course',0);$('goal').value='python-basics';await chooseTask(()=>api('/api/goal?goal=python-basics'));}));
+$('start-python').addEventListener('click',e=>action(e.target,async()=>{
+  guided.fromPractice=false;showRoute('course',0);$('goal').value='python-basics';
+  if(await chooseTask(()=>api('/api/goal?goal=python-basics'))){
+    const taskEpoch=state.epoch,navigationEpoch=guided.navigationEpoch;
+    if(!state.config)state.config=await api('/api/config');
+    if(taskEpoch!==state.epoch||navigationEpoch!==guided.navigationEpoch)return;
+    syncCollector();
+    if(localReady())await startLocal();else notice('本机一键检测需要在 Windows 电脑上启动本地课航。可继续使用手动工具。',true);
+  }
+}));
 $('start-practice').addEventListener('click',()=>showRoute('practice',0));
 $('back-practice').addEventListener('click',()=>showRoute('practice',1));
 $('import-entry').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);$('student-import').open=true;$('student-import').scrollIntoView({block:'nearest'});});

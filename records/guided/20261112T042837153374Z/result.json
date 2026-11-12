@@ -1,0 +1,65 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher",
+    "Invalid sharing report rejected; real A followed by single B preserves baseline and passes comparison; mode changes preserve facts",
+    "Changing goal clears reports and review access; GPU has one download and an open explicit-target collection form",
+    "All 13 existing course selections reach compatible task-specific guidance and collection controls",
+    "Practice supports returning from component environment; materials complete; constructed wrong and correct results retained; no invented environment pass",
+    "Teacher can publish and export single course without collecting a student report; original course package imports into guided flow",
+    "Teacher tools separate from student start; publish/export/import and completion recheck work; invalid import clears stale success",
+    "Delayed task preparation does not navigate away from home after the user leaves",
+    "Late single/practice imports keep user on home; late runtime config selects one default route and preserves deliberate manual input",
+    "Leaving teacher publication during its second preparation request keeps home; no navigation-epoch arithmetic guess",
+    "Late need lookup cannot reopen/scroll help on home; late candidate cannot navigate; deliberate later candidate selection still works"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261112T042837153374Z/01-home-desktop.png",
+      "sha256": "7d1085a0751970ea2b5b00abb52a7cf5a878f6b2ae3714cc753d0023c6b508ca"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/02-python-prepare.png",
+      "sha256": "7ac6a7e557b861ab75482db6957cbc4b22a0c10f7110745215dc256bad05e978"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/03-python-collect.png",
+      "sha256": "ba39b7119bc2dc7e3e38635195e672bf06eab99db3e6d67476cbc2c02c91fea8"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/04-python-reviewed.png",
+      "sha256": "2b4d54dd15b683b59c9158c6a01768c596c6d7549cc22d01ef59343b27d522af"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/05-gpu-collect.png",
+      "sha256": "850d28de8287905dcddb80761557b7c1f4e0d2fbce49801be05b46556a96fba2"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/06-practice-result.png",
+      "sha256": "fedeb8d1b2829dd2e7ba0346d7a3abac153f501b431716d9676a9cc3004f2b57"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/07-teacher.png",
+      "sha256": "4bee62a7d7e9b3bcd8a28f941d680304b83ad8c5868cb6f397103ace7c38d4dc"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/08-home-mobile.png",
+      "sha256": "127c9554368b24e8572f87a01e7d939e56ffa13828020016dfbe6b9910688428"
+    },
+    {
+      "path": "records/guided/20261112T042837153374Z/09-gpu-mobile.png",
+      "sha256": "04ae5c23cf1dd56a801530ccb492481f74d9edf2d52194a83454a6fb4190bb17"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "contrast_ratios": {
+    "--ink": 16.240741692205184,
+    "--muted": 7.777014857689918,
+    "--brand": 6.756825903433027,
+    "primary_text": 7.0525398865575895
+  },
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-local-check-20261112\\tools\\verify_guided_ui.py\", line 322, in main\n    page.wait_for_function(\"()=>guided.courseStep===1\")\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 12436, in wait_for_function\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.wait_for_function(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        )\n        ^\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 1136, in wait_for_function\n    return await self._main_frame.wait_for_function(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 910, in wait_for_function\n    await self._channel.send(\"waitForFunction\", self._timeout, params)\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 30000ms exceeded.\n"
+}

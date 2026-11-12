@@ -1,0 +1,54 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher",
+    "Invalid sharing report rejected; real A followed by single B preserves baseline and passes comparison; mode changes preserve facts",
+    "Changing goal clears reports and review access; GPU has one download and an open explicit-target collection form",
+    "All 13 existing course selections reach compatible task-specific guidance and collection controls",
+    "Practice supports returning from component environment; materials complete; constructed wrong and correct results retained; no invented environment pass",
+    "Teacher can publish and export single course without collecting a student report; original course package imports into guided flow",
+    "Teacher tools separate from student start; publish/export/import and completion recheck work; invalid import clears stale success",
+    "Delayed task preparation does not navigate away from home after the user leaves"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261112T042519983271Z/01-home-desktop.png",
+      "sha256": "7d1085a0751970ea2b5b00abb52a7cf5a878f6b2ae3714cc753d0023c6b508ca"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/02-python-prepare.png",
+      "sha256": "7ac6a7e557b861ab75482db6957cbc4b22a0c10f7110745215dc256bad05e978"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/03-python-collect.png",
+      "sha256": "ba39b7119bc2dc7e3e38635195e672bf06eab99db3e6d67476cbc2c02c91fea8"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/04-python-reviewed.png",
+      "sha256": "2b4d54dd15b683b59c9158c6a01768c596c6d7549cc22d01ef59343b27d522af"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/05-gpu-collect.png",
+      "sha256": "3e4d70c66229873d840cdd1caaf31b9493c6e9ed7cd64117c16c92f3b020de07"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/06-practice-result.png",
+      "sha256": "fedeb8d1b2829dd2e7ba0346d7a3abac153f501b431716d9676a9cc3004f2b57"
+    },
+    {
+      "path": "records/guided/20261112T042519983271Z/07-teacher.png",
+      "sha256": "801032ee185a9d3ad7a2b8c55e11de8d5d7c3e9de141dc71581f8c576d74f459"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "contrast_ratios": {
+    "--ink": 16.240741692205184,
+    "--muted": 7.777014857689918,
+    "--brand": 6.756825903433027,
+    "primary_text": 7.0525398865575895
+  },
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-local-check-20261112\\tools\\verify_guided_ui.py\", line 247, in main\n    assert page.evaluate(\"guided.route==='home' && scrollY===0\"),'Late rejection must not scroll the home screen'\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Late rejection must not scroll the home screen\n"
+}

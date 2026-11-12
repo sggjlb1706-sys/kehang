@@ -72,7 +72,8 @@ def main():
                 capture(page, '01-home-desktop')
                 checks.append('Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed')
 
-                page.click('#start-python')
+                # One-click homepage is covered by verify_local_check; exercise the retained manual route here.
+                page.click('#choose-course');page.select_option('#goal','python-basics');page.locator('#goal-form button').click()
                 page.wait_for_function("()=>state.task?.scenario==='python-basics' && guided.courseStep===1")
                 assert page.locator('#preparation').is_visible() and not page.locator('#collect-stage').is_visible()
                 assert not page.locator('#download-tool').is_visible()
@@ -248,7 +249,7 @@ def main():
                     slow=context.new_page();slow.on('pageerror',lambda e:errors.append(str(e)))
                     waiting=[];slow.route('**/api/config',lambda route:waiting.append(route))
                     slow.goto(origin);slow.wait_for_function('()=>!!practiceState.practice')
-                    slow.click('#start-python');slow.wait_for_function('()=>guided.courseStep===1');slow.click('#guide-next')
+                    slow.click('#choose-course');slow.select_option('#goal','python-basics');slow.locator('#goal-form button').click();slow.wait_for_function('()=>guided.courseStep===1');slow.click('#guide-next')
                     assert slow.locator('#command-panel').get_attribute('open') is not None
                     if manual:slow.fill('#target','D:\\Course\\python.exe')
                     assert waiting
@@ -316,9 +317,9 @@ def main():
                         capture(page, '09-gpu-mobile')
                 page.emulate_media(reduced_motion='reduce')
                 page.click('#home-nav')
-                page.locator('#start-python').focus()
+                page.locator('#choose-course').focus()
                 page.keyboard.press('Enter')
-                page.wait_for_function("()=>guided.courseStep===1")
+                page.wait_for_function("()=>guided.route==='course'&&guided.courseStep===0")
                 assert page.locator('#guide-title').evaluate('e=>e===document.activeElement')
                 checks.append('390/768/1360 layouts have no horizontal overflow; reduced motion and keyboard activation/focus work')
                 assert not errors and not remote, (errors, remote)

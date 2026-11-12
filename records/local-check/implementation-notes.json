@@ -1,0 +1,25 @@
+{
+  "kind": "Agent execution record summary, not original terminal log",
+  "failures": [
+    {
+      "stage": "owned tree unit regression",
+      "observation": "taskkill exited 1: ERROR: Access denied; child remained active",
+      "change": "Private Windows Job with wrapper stdin handshake; same owned-tree assertion now passes, unrelated process retained"
+    },
+    {
+      "stage": "legacy browser",
+      "observation": "Delayed invalid course response scrolled the taller new home page",
+      "change": "Error notification guarded by navigation identity; original late response regression now passes"
+    },
+    {
+      "stage": "browser harness",
+      "observation": "Playwright close callback was outside its event loop lifetime",
+      "change": "Browser exit stack moved inside Playwright context"
+    },
+    {
+      "stage": "legacy keyboard test",
+      "observation": "Old homepage expectation waited for preparation; new primary completes a real check",
+      "change": "Retained manual choice keyboard covered separately; new primary keyboard and focus tested in local browser"
+    }
+  ]
+}

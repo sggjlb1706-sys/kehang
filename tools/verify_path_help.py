@@ -146,7 +146,7 @@ def main(dialog=False):
                     page.on('pageerror',lambda e:result['page_errors'].append(str(e)))
                     page.on('request',lambda r:result['remote_requests'].append(r.url) if r.url.startswith(('http://','https://')) and not r.url.startswith(origin+'/') else None)
                     page.goto(origin);page.wait_for_function('()=>!!state.config&&!!practiceState.practice')
-                    page.click('#start-python');page.wait_for_function('()=>guided.courseStep===1');page.click('#guide-next')
+                    page.click('#choose-course');page.select_option('#goal','python-basics');page.locator('#goal-form button').click();page.wait_for_function('()=>guided.courseStep===1');page.click('#guide-next')
                     assert page.locator('#python-path-help').is_visible() and not page.locator('#kernel-path-help').is_visible()
                     page.locator('#python-location-help summary').click()
                     assert page.locator('#python-location-help pre').inner_text()=='python -c "import sys; print(sys.executable)"'

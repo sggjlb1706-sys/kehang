@@ -1,0 +1,26 @@
+{
+  "baseline": {
+    "path": "D:\\传智杯\\versions\\kehang-path-help-20261111",
+    "head": "3b595f476c89a8390396cb3a78beb3fb27aca50d",
+    "manifest_files": 2236,
+    "manifest_sha256": "33202584E8D0C0B93078DB3BFC147E067F327F7AA4152F2BF1BD65FB87EC9C30",
+    "unchanged": true
+  },
+  "unit_tests": {
+    "passed": true,
+    "count": 153,
+    "path": "records/local-check/unit-tests.log"
+  },
+  "local_browser": {
+    "passed": true,
+    "groups": 7,
+    "path": "records/local-check/20261112T043335330559Z/result.json"
+  },
+  "legacy_browser": {
+    "passed": true,
+    "groups": 13,
+    "path": "records/guided/20261112T043019364434Z/result.json"
+  },
+  "real_evidence": "records/local-check/20261112T043335330559Z/real",
+  "scope": "same-computer agent validation; actual Python A/B separated from controlled fixtures; no model request, installation, automatic repair, external-device or novice-user acceptance"
+}

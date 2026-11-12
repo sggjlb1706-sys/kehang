@@ -1,0 +1,41 @@
+{
+  "checks": [
+    "Fresh real one-click A and same-target B returned directly to the page, without path entry, download, JSON import or AI request",
+    "AI action generates an editable/redacted preview only; explicit single-send consent remains required",
+    "Controlled two-environment results stay separate, retest uses each owning job/target, and all explanation modes preserve facts",
+    "No candidate keeps evidence unknown and offers preparation/manual guidance",
+    "Leaving an active check cancels its owned job and late results cannot navigate back or populate reports",
+    "Delayed start response is cancelled after navigation; no stale report is attached",
+    "390px home and results have no horizontal overflow and retain clear primary actions"
+  ],
+  "screenshots": [
+    {
+      "path": "records/local-check/20261112T042407014433Z/01-home.png",
+      "sha256": "7d1085a0751970ea2b5b00abb52a7cf5a878f6b2ae3714cc753d0023c6b508ca"
+    },
+    {
+      "path": "records/local-check/20261112T042407014433Z/02-real-result.png",
+      "sha256": "f618d506a9eaa0a221ac2e971a88dfa53eea4bd1ebbac6bf9bd9d0ede111a671"
+    },
+    {
+      "path": "records/local-check/20261112T042407014433Z/03-real-recheck.png",
+      "sha256": "d00ffeec22ec5618736ed0c99ca1472ff198efebb65d93ca85b52f7b2bdd37ba"
+    },
+    {
+      "path": "records/local-check/20261112T042407014433Z/04-no-candidate.png",
+      "sha256": "d35cbb155b6bb6d78264b6d0b1b370364e8fc906966bab01401ed10e70e08893"
+    },
+    {
+      "path": "records/local-check/20261112T042407014433Z/05-home-mobile.png",
+      "sha256": "b02e18921d4fc652ba769ba8cc99b07895b6cd55bb00ba06ea48930bbddb9dea"
+    },
+    {
+      "path": "records/local-check/20261112T042407014433Z/06-result-mobile.png",
+      "sha256": "44106e32384c0878782cda7f7364d4fb1bf1bf8669afba12174cddf604f65ec6"
+    }
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "scope": "Same-computer agent browser. real/ holds freshly collected original A/B. Controlled cases are fixtures, not installed environments; no AI request.",
+  "passed": true
+}

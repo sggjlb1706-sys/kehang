@@ -1,4 +1,4 @@
-"""Loopback application. No endpoint executes commands on behalf of students."""
+"""Loopback application with a user-clicked, fixed Python checker."""
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from io import BytesIO
@@ -12,6 +12,7 @@ from .diagnosis import configuration, diagnose, redact_value
 from .guidance import plan
 from .rules import analyze, compare, task, validate_task
 from .portable import export_package, import_package, guide_html
+from .local_check import LocalCheckService
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,6 +24,11 @@ class AppServer(ThreadingHTTPServer):
         super().__init__(('127.0.0.1', port), Handler)
         self.store = CourseStore(database or ROOT / 'data/courses.sqlite')
         self.runtime_zip = Path(runtime_zip) if runtime_zip else None
+        self.local_check = LocalCheckService()
+
+    def server_close(self):
+        self.local_check.close()
+        super().server_close()
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -53,6 +59,11 @@ class Handler(BaseHTTPRequestHandler):
         if origin is not None and origin not in {'http://' + h for h in hosts}:
             raise ValueError('拒绝跨来源请求')
 
+    def check_local_token(self):
+        if len(self.headers.get_all('X-Kehang-Local', [])) != 1:
+            raise ValueError('缺少本次本机页面身份')
+        self.server.local_check.authorize(self.headers.get('X-Kehang-Local'))
+
     def do_GET(self):
         try:
             self.check_origin()
@@ -78,7 +89,10 @@ class Handler(BaseHTTPRequestHandler):
                 spec = self.server.store.get(parse_qs(path.query)['course'][0]) if 'course' in parse_qs(path.query) else task(parse_qs(path.query).get('goal',['python-basics'])[0])
                 self.send(200, self.tool_zip(spec), 'application/zip', 'Kehang-tool.zip')
             elif path.path == '/api/config':
-                self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai=configuration()))
+                self.send(200, dict(local_only=True, portable_available=bool(self.server.runtime_zip and self.server.runtime_zip.is_file()), ai=configuration(), local_check=self.server.local_check.configuration()))
+            elif path.path.startswith('/api/local-check/jobs/'):
+                self.check_local_token()
+                self.send(200, self.server.local_check.status(path.path.rsplit('/', 1)[1], heartbeat=True))
             elif path.path == '/api/catalog':
                 from .preparation import CATALOG
                 self.send(200,CATALOG)
@@ -167,7 +181,15 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(body, dict):
                 raise ValueError('请求须为对象')
             self.check_origin()
-            if self.path in ('/api/practice/publish', '/api/practice/import'):
+            if self.path == '/api/local-check':
+                self.check_local_token()
+                self.send(202, self.server.local_check.start(body))
+            elif self.path == '/api/local-check/cancel':
+                self.check_local_token()
+                if set(body) != {'id'}:
+                    raise ValueError('取消检测只接受检测编号')
+                self.send(200, self.server.local_check.cancel(body['id']))
+            elif self.path in ('/api/practice/publish', '/api/practice/import'):
                 from .practice import make_practice, import_package as practice_import, publish as practice_publish
                 spec = practice_import(body['package']) if self.path.endswith('/import') else make_practice()
                 self.send(200, practice_publish(self.server.store,spec))

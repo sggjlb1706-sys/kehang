@@ -1,4 +1,8 @@
-# 路径引导版独立审查
+# 一键本机检测版审查
+
+本轮候选代码冻结后交由未参与实现的代理只读审查，状态与实际固定提交在records/local-check/独立产品审查.md记录。交付新目录/ZIP另行核验；原路径引导报告只适用于其所标提交，不作为本轮通过结论。
+
+以下为继承的历史审查。
 
 固定产品cd6632315677851080f5b74a03de6747ccbf44a9独立审查通过，范围内0阻断。报告records/path-help/独立产品审查.md；33项产品摘要product.json；新鲜字节复核independent-product-reverification.json；此前独立实跑结果independent-original-result.json。独立完整脚本及原始日志保留于仓库外“交付/课航路径引导-20261111”。
 

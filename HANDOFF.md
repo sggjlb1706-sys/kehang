@@ -1,4 +1,8 @@
-# 课航路径选择引导版交接
+# 课航一键本机检测版交接
+
+当前开发目录work/kehang-local-check-20261112，分支codex/kehang-local-check-20261112，从正式路径引导版3b595f47完整继承。首页一键自动发现/检查Python基础环境，结果直接返回，支持独立环境选择与同目标复检；不自动发AI请求。入口README，验收records/local-check/acceptance.json，独立审查与最终新目录/包以本版REVIEW和仓库外“交付/课航本机检测-20261112”回执为准。旧版本服务不会热更新，需打开新交付预览或重启新目录服务。
+
+以下为继承的历史版本交接，不代替当前验收。
 
 当前目录work/kehang-path-help-20261111，分支codex/kehang-path-help-20261111，从ffdeca59完整继承。新包的Start-Collect.cmd启动路径选择向导；旧解压目录不自动更新，需从新网页重新下载并解压到新目录。验收入口records/path-help/acceptance.json，新审查与交付以当前REVIEW及仓库外“交付/课航路径引导-20261111”回执为准。以下为继承的上一轮说明，只对其标明版本有效。
 
