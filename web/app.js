@@ -395,6 +395,7 @@ function syncCollector(){
   $('local-check-panel').hidden=!local;
   $('manual-collection').classList.toggle('manual-only',!local);
   if(!local)$('manual-collection').open=true;
+  else if(!guided.manualCollectorChosen)$('manual-collection').open=false;
 }
 
 function showRoute(route,step=0){

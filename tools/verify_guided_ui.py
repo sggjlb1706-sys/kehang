@@ -81,6 +81,8 @@ def main():
                 capture(page, '02-python-prepare')
                 page.click('#guide-next')
                 assert page.locator('#collect-stage').is_visible() and page.locator('#guide-next').is_disabled()
+                assert page.locator('#local-start').is_visible() and not page.locator('#manual-collection').get_attribute('open')
+                page.locator('#manual-collection > summary').click()
                 assert page.locator('#guide-next').bounding_box()['y'] < page.viewport_size['height'], 'Next action must be visible without hunting at the bottom'
                 assert page.locator('#simple-collector').is_visible() and not page.locator('#command-panel').get_attribute('open')
                 assert page.locator('#download-tool').is_visible() and not page.locator('#export-course').is_visible()
@@ -255,7 +257,8 @@ def main():
                     assert waiting
                     with slow.expect_response('**/api/config'):waiting.pop().continue_()
                     slow.wait_for_function('()=>!!state.config');slow.unroute('**/api/config')
-                    assert slow.locator('#simple-collector').is_visible() and not slow.locator('#command-entry-hint').is_visible()
+                    assert slow.locator('#local-start').is_visible() and not slow.locator('#command-entry-hint').is_visible()
+                    assert slow.locator('#simple-collector').is_visible()==manual
                     assert (slow.locator('#command-panel').get_attribute('open') is not None)==manual
                     if manual:assert slow.locator('#target').input_value()=='D:\\Course\\python.exe'
                     slow.close()

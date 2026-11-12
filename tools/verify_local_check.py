@@ -81,7 +81,10 @@ def main():
                 assert not remote
                 checks.append('AI action generates an editable/redacted preview only; explicit single-send consent remains required')
                 replace([(r'C:\Good\python.exe','controlled fixture'), (r'C:\Old\python.exe','controlled fixture')])
-                page.click('#start-python'); page.wait_for_function('()=>localState.items.length===2&&!!state.analysis')
+                page.click('#choose-course');page.select_option('#goal','python-basics');page.locator('#goal-form button').click()
+                page.wait_for_function('()=>guided.courseStep===1');page.click('#guide-next')
+                assert page.locator('#local-start').is_visible() and not page.locator('#download-tool').is_visible()
+                page.click('#local-start'); page.wait_for_function('()=>localState.items.length===2&&!!state.analysis')
                 assert page.evaluate('state.analysis.passed')
                 page.locator('.local-environment button').nth(1).click()
                 page.wait_for_function('()=>state.analysis&&!state.analysis.passed')

@@ -14,13 +14,14 @@
   "local_browser": {
     "passed": true,
     "groups": 7,
-    "path": "records/local-check/20261112T043335330559Z/result.json"
+    "path": "records/local-check/20261112T044203481306Z/result.json"
   },
   "legacy_browser": {
     "passed": true,
     "groups": 13,
-    "path": "records/guided/20261112T043019364434Z/result.json"
+    "path": "records/guided/20261112T044203939825Z/result.json"
   },
-  "real_evidence": "records/local-check/20261112T043335330559Z/real",
-  "scope": "same-computer agent validation; actual Python A/B separated from controlled fixtures; no model request, installation, automatic repair, external-device or novice-user acceptance"
+  "real_evidence": "records/local-check/20261112T044203481306Z/real",
+  "scope": "same-computer agent validation; actual Python A/B separated from controlled fixtures; no model request, installation, automatic repair, external-device or novice-user acceptance",
+  "revision": "Independent P2 default manual-collection expansion fixed; 7+13 browser groups rerun. Backend and 153 tested unit cases unchanged."
 }
