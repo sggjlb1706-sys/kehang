@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "groups": 3,
+  "checks": [
+    "A controlled failed Good recheck clears rule/report state and disables retest/AI/save, while Old keeps its separate source job",
+    "Switching from failed Good to Old and retesting resolves Old owning job, preserves Old baseline and retains its negative version result",
+    "Cancelling Old recheck removes page report/analysis/selection and cancels only its job; no earlier result becomes the cancelled result"
+  ],
+  "target_calls": [
+    "C:\\Good\\python.exe",
+    "C:\\Old\\python.exe",
+    "C:\\Good\\python.exe",
+    "C:\\Old\\python.exe",
+    "C:\\Old\\python.exe"
+  ],
+  "scope": "Controlled same-machine UI fixtures, not installed environment evidence",
+  "candidate": "acd59a0723e4d52cd66a9715fc5e1bc15ada9947"
+}

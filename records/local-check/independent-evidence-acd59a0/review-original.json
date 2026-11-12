@@ -1,0 +1,149 @@
+{
+  "reviewed_at": "2026-11-12T12:40:39.12118+08:00",
+  "reviewer_role": "Independent read-only subagent; did not implement reviewed code",
+  "candidate_sha": "acd59a0723e4d52cd66a9715fc5e1bc15ada9947",
+  "baseline_sha": "3b595f476c89a8390396cb3a78beb3fb27aca50d",
+  "source_repository": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-local-check-20261112",
+  "execution_copy": "C:\\Users\\DELL\\AppData\\Local\\Temp\\kehang-independent-acd59a0-a33e5415cb3a4243bf6abe2336ca4be6\\candidate",
+  "snapshot_method": "git archive fixed candidate; ignored vendor runtime copied and hashed",
+  "python": {
+    "path": "D:\\ANACONDA\\python.exe",
+    "version": "3.13.9"
+  },
+  "vendor_sha256": "9E35319BFFEDAB8B36AD44D8F377CB4F1733BCEC257A0B6D04D94F01486DDB38",
+  "unit_tests": {
+    "passed": true,
+    "count": 153,
+    "log": "independent-evidence-acd59a0/unit-tests.log"
+  },
+  "local_browser": {
+    "passed": true,
+    "groups": 7,
+    "page_errors": [],
+    "remote_requests": [],
+    "result": "independent-evidence-acd59a0/local-check/result.json"
+  },
+  "legacy_browser": {
+    "passed": true,
+    "groups": 13,
+    "page_errors": [],
+    "remote_requests": [],
+    "result": "independent-evidence-acd59a0/guided/result.json"
+  },
+  "real_ab": {
+    "scope": "Fresh A/B collected on the same Windows computer by agent; not external-device or novice-user acceptance",
+    "target": "D:\\ANACONDA\\python.exe",
+    "a_time": "2026-11-12T12:36:57.412766+08:00",
+    "b_time": "2026-11-12T12:36:58.747157+08:00",
+    "same_task": true,
+    "same_target": true,
+    "outcome": "stable-pass"
+  },
+  "lease": {
+    "state": "cancelled",
+    "elapsed_seconds": 15.202,
+    "results": 0,
+    "kind": "controlled service fixture, not installed environment"
+  },
+  "product_index": {
+    "match": true,
+    "count": 48,
+    "files": {
+      "campuslab/ai_course.py": "D1472C60B8699BA4D2066052FA5F60C2BD042936687936514BF138A4C4026979",
+      "campuslab/ai_probe.py": "8E2F544D8D66AEB4194B12B908E01D4843B2FAF562037AF687A520B6BEEEEBCA",
+      "campuslab/collect.py": "A8F4567C39AD58F993C46546BAFEEA8E51CF51134820FA4C9679A9967090BF3A",
+      "campuslab/courses.py": "B53FE99ECDB91AB7D99845D665DB892DAA7809089224025972F3DABDC4C59690",
+      "campuslab/diagnosis.py": "0E833B62314897237A049B57C590FB92CE7FD883005AB8259D1BDCCD69549E6A",
+      "campuslab/dsh_course.py": "F472EC7872A108F25D694BCE02073D0AD2C6B861C71F5AB88F8DC5F3E4DB60AF",
+      "campuslab/guest_probe.py": "EDABE7C83BB2B9584B4B886E4F2420BB542E961A2F1A7F36D9C44D460B5B24F6",
+      "campuslab/guidance.py": "340494B33A179B16D5E104705DC6ECC581A192BC5FE47CDC18A5CEBBEE579A84",
+      "campuslab/java_course.py": "B60A785485918CD9D1AADEC2FC1188FF574D0F29FE7704D555C1579A32E31178",
+      "campuslab/launcher.py": "F98A0A20144DF26BEC66DD006E686ECAF57C0C568B40AE4025FB0213848A0F80",
+      "campuslab/local_check.py": "69322D5740E1FD647D9D07A25955FD817DA36AE85FDBA4C5DFB22FE92677E544",
+      "campuslab/local_runner.py": "84C6CB4336EDD53497DF455DC8120336BB3882FB12626272DBFBE96F7F79A395",
+      "campuslab/node_collect.py": "806BB5B6C69A2440331F4A3CE77B947C028C4670FBDE54F8BE7C30F9775DF09A",
+      "campuslab/node_probe.js": "08CACCBACAFF7D5E4DD7DF31F323B118EE38935227BB1A115BBB60F25AC5F7ED",
+      "campuslab/notebook_course.py": "E37C7DEA02D88E07A54E538CD58635D41EEC36DEEB4EF4723B364660784FD994",
+      "campuslab/notebook_probe.py": "ADEE144B7DC81DE4442D9A8B24547B0323557C6075B3B384B37D0DD7857FDC44",
+      "campuslab/owned_process.py": "39D6690C6232DB2CB6ABA4BC495C3FC97718AE9511950608AF00D58E50D69675",
+      "campuslab/portable.py": "516E63381E4F279F89C7BB0B97D62251700EBD3BEBE16F78C31D0D66B9155EE3",
+      "campuslab/practice.py": "7D132F1072779348C076A6FCB3282420F21F289369E6C5316DD9DE070B96E2CC",
+      "campuslab/preparation.py": "555BE8DB7D8ADE705C0034CFE376CAFD13EFA0E2BBC6537EB897992AA2239EC9",
+      "campuslab/probe.py": "C656051B79CB8AF756505C768758E966A332321403AFFD23DF2BB773D364F079",
+      "campuslab/rules.py": "41F95844C39CB3BB74F5B222033AB5E46AB8E8B56877A521E0C22D53CE767603",
+      "campuslab/sqlite_course.py": "6BF49C5DB6CDE5068DDCB300E6F80C3C156AE15A3E1C949D7E39B66E415D4F8E",
+      "campuslab/teaching.py": "1D604CF293ADEBFC070EC34B8EA61B4EA1FAA06CBB12A705F2BD184E7DFA552A",
+      "campuslab/torch_course.py": "49370EA0E27D9D723E1C60726129628E62B64074261381D4C2BEE66771528CCB",
+      "campuslab/torch_probe.py": "3786426242F9E31CF442F08EF46DAE9804E9C26F30441A3EF249151C7313B028",
+      "campuslab/vm_course.py": "B5EC7DF93EA22E86ABE6492A96BD126E3C3F197A4E6FC5075A0E5246BFE2F6A0",
+      "campuslab/web.py": "271AFD2947F16D00AC22C20D12CB5C557F66BD1B9C3545133CE81F72D055DAF5",
+      "campuslab/__init__.py": "3CBE4563EC75AE5207D8D0F01D1F512EAEB749B460C8DA7D6D40D2C2ED1751CB",
+      "campuslab/data/notebook_scores.csv": "37039948A897BCC319D0CA03D3C775FD1C09BB1A82A33ADF43C0AD02BAF51E7D",
+      "campuslab/data/practice/01_Notebook练习.ipynb": "769224AE5D3C30E74530DFE1EC7D0990A88A10CBEA4B67260ABE6015864EC951",
+      "campuslab/data/practice/02_SQLite练习.py": "7A979BDA6FFFC11FF5F24069D2BE80ACE842DD8A4EDE475B1B65B7817CC2A16C",
+      "campuslab/data/practice/README.md": "54B56976F2C5DC1B19F5E79EF58F9EAC958970E78BCC5E51EC005602F8C80700",
+      "web/app.js": "9C45705FE6550E9D774606E75334F87C41B0B22E457108C1026A238017FC8EB4",
+      "web/index.html": "080901EC33D2043F1BD7B4C5210C40BD96119A7BF06F8B101BC07B170D98BC87",
+      "web/style.css": "7493AB2FDB87831BCAD095099AC38EBFD7274A92FEDBD761215514F2A367721B",
+      "AGENTS.md": "B6942A8E99FD2346A3A42CDE028CBF645801F84E328DFD8D1AAA3A1FE8C858CD",
+      "TASK.md": "8C2E7B21DAB3724D102AC64881B99F222727AF203FBBAC37D913CC88171CE97F",
+      "PLAN.md": "C8D8694B16EEE3237D1F519B496A52EF4499153458470D9DC8FFE2FA5485C892",
+      "PRODUCT.md": "6B1273D7A55A6C9D8F0DD74756AE4CEDC4FC73DC0649D22D7031C28A00EC5886",
+      "DESIGN.md": "CFFEC0B4F0F4D97A782D02D79B91EA2F821DA0C7A11D1BBFB56C9C036B2EBDFB",
+      "README.md": "151E8F2DA6D38B73BC21F5D7E9E615D2BBFD2FD4753AAB49F1E9364D15E3FBF0",
+      "PROVENANCE.md": "C6AA59D78F060AE50D069C9231292C7046CB7FA4DC39DC2B90FE22426D79433E",
+      "tests/test_local_check.py": "89E3B06530185074B1C795FDFBE56F54FF9556D4F14DB733D8309E87616F3199",
+      "tools/verify_local_check.py": "941044528FC72FF487681CE1383D7153EB6B2999CEB71D92A6BF3B27CA14D4A9",
+      "tools/verify_guided_ui.py": "CE8093707A633A24F721C13C117656C50076D87155AB86DC948FFAA56BFC9361",
+      "tools/verify_path_help.py": "8E6BD58340DA4808DFD15DDDD68184432AAF841F1DE2591877402D41E9579F24",
+      "docs/一键本机检测与验收.md": "E34410A3B5B89961D601E6AE795760627B34CCE5CB3907D123F0BED25EEF2467"
+    }
+  },
+  "rules_unchanged_from_baseline": true,
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "blocking": false,
+      "file": "web/app.js",
+      "start": 394,
+      "end": 397,
+      "title": "Selecting Python via other-courses route leaves manual download/import expanded",
+      "reproduction": "Fresh home -> other courses -> Python -> confirm task -> ready to detect. local-start, download-tool and report-files are all visible; no detection is triggered before click.",
+      "impact": "Makes the secondary route retain the old choice burden; primary homepage one-click works.",
+      "evidence": "independent-evidence-acd59a0/manual-route-expanded.json",
+      "status": "Open in fixed candidate; parent informed and preparing narrow fix"
+    }
+  ],
+  "p0": 0,
+  "p1": 0,
+  "p2": 1,
+  "zero_blockers": true,
+  "disposition": "No P0/P1 blockers found in scoped fixed candidate; one nonblocking P2 must not be described as zero findings. This verdict does not cover later changes or delivery archive bytes.",
+  "limits": [
+    "Same-machine agent replay only",
+    "Constructed multiple-environment/no-candidate/slow-response cases are fixtures",
+    "Legacy practice A/B reanalysed archived records, not recollected",
+    "No actual AI/model request",
+    "No installation or automatic repair",
+    "Delivery directory and ZIP not yet reviewed"
+  ],
+  "failed_recheck_cancel": {
+    "passed": true,
+    "groups": 3,
+    "checks": [
+      "A controlled failed Good recheck clears rule/report state and disables retest/AI/save, while Old keeps its separate source job",
+      "Switching from failed Good to Old and retesting resolves Old owning job, preserves Old baseline and retains its negative version result",
+      "Cancelling Old recheck removes page report/analysis/selection and cancels only its job; no earlier result becomes the cancelled result"
+    ],
+    "target_calls": [
+      "C:\\Good\\python.exe",
+      "C:\\Old\\python.exe",
+      "C:\\Good\\python.exe",
+      "C:\\Old\\python.exe",
+      "C:\\Old\\python.exe"
+    ],
+    "scope": "Controlled same-machine UI fixtures, not installed environment evidence",
+    "candidate": "acd59a0723e4d52cd66a9715fc5e1bc15ada9947"
+  }
+}

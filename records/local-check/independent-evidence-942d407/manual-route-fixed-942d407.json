@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "candidate": "942d407ee44676a1f5070932d0b54b00fcce0fc9",
+  "groups": 3,
+  "cases": [
+    {
+      "late_config": false,
+      "deliberate_manual_input": false,
+      "local_start_visible": true,
+      "manual_collection_open": false,
+      "download_visible": false,
+      "report_import_visible": false,
+      "target": "",
+      "jobs_started": 0
+    },
+    {
+      "late_config": true,
+      "deliberate_manual_input": false,
+      "local_start_visible": true,
+      "manual_collection_open": false,
+      "download_visible": false,
+      "report_import_visible": false,
+      "target": "",
+      "jobs_started": 0
+    },
+    {
+      "late_config": true,
+      "deliberate_manual_input": true,
+      "local_start_visible": true,
+      "manual_collection_open": true,
+      "download_visible": true,
+      "report_import_visible": true,
+      "target": "D:\\Controlled\\python.exe",
+      "jobs_started": 0
+    }
+  ],
+  "scope": "Controlled UI state and delayed config; no installed Python executed"
+}

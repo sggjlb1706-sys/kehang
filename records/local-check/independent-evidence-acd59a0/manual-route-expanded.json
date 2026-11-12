@@ -1,0 +1,12 @@
+{
+  "route": "course",
+  "step": 2,
+  "local_start_visible": true,
+  "manual_collection_open": true,
+  "download_visible": true,
+  "report_import_visible": true,
+  "jobs_started": 0,
+  "fixed_commit": "acd59a0723e4d52cd66a9715fc5e1bc15ada9947",
+  "finding": "P2 manual route expanded beside primary one-click route",
+  "source": "web/app.js:397"
+}
