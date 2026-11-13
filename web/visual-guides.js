@@ -59,7 +59,7 @@ window.KehangVisuals=(()=>{
       win.append(text,make('div','win11-terminal-footer','这里不会执行命令，也没有产生检测结果'));return win;
     }
     if(step.kind==='properties'){
-      const win=explorer({title:'程序快捷方式',path:'开始菜单中的程序快捷方式',rows:[{name:step.shortcut||'Python 快捷方式',kind:'shortcut',selected:true}]});
+      const win=explorer({title:'程序快捷方式',path:'通过“打开文件所在的位置”进入的快捷方式文件夹',rows:[{name:step.shortcut||'Python 快捷方式',kind:'shortcut',selected:true}]});
       win.classList.add('win11-property-window');
       const property=make('div','win11-properties');property.append(make('strong','', '属性 · 快捷方式'),make('div','win11-property-tabs','常规　 快捷方式　 兼容性'),make('span','win11-property-label','目标（T）：'),make('div','win11-property-value',entered||step.example),make('p','', '复制程序路径，回到课航粘贴。'));
       const buttons=make('div','win11-property-buttons');for(const label of ['确定','取消','应用'])buttons.append(make('span','',label));property.append(buttons);
@@ -92,7 +92,7 @@ window.KehangVisuals=(()=>{
   }
   const row=(name,kind='file',selected=false)=>({name,kind,selected});
   const python=()=>({title:'找到课程 Python',tip:'打开这门课使用的 Python 安装目录，选 python.exe。包内 runtime 是工具，不是课程环境。',path:'C:\\课程Python',rows:[row('Lib','folder'),row('Scripts','folder'),row('python.exe','exe',true)],field:'target',bind:'file'});
-  const shortcut=(program,example)=>({title:'从快捷方式找程序',tip:'开始菜单右键程序快捷方式，打开“属性”，看“目标”里的完整程序路径。',kind:'properties',shortcut:program+' 快捷方式',example,field:'target'});
+  const shortcut=(program,example)=>({title:'从快捷方式找程序',tip:'开始菜单右键程序 → 更多／打开文件所在的位置 → 在打开的文件夹里右键快捷方式 → 属性。复制“目标”中的程序路径。',kind:'properties',shortcut:program+' 快捷方式',example,field:'target'});
   const run=(title,lines,field='make-command')=>({title,tip:'按本页生成的固定命令，由你在目标电脑手动运行。图中不是实际执行结果。',kind:'terminal',lines,field,action:'找到本页的操作按钮'});
   const notebook=[python(),{title:'找到所用内核',tip:'用本页选中的课程 Python 完整路径查看内核目录，避免误用 PATH 中另一份 Python。',kind:'terminal',lines:fields=>['PS> & '+(fields.pythonCommand||'"C:\\课程Python\\python.exe"')+' -m jupyter kernelspec list','查看你自己的输出目录，再打开其中的 kernel.json。','仅列出内核不能证明实际运行通过。'],field:'kernel-spec'}, {title:'选择 kernel.json',tip:'选内核定义文件 kernel.json，不能把 python.exe 当作内核文件。',path:'C:\\课程Python\\share\\jupyter\\kernels\\python3',rows:[row('kernel.json','json',true),row('logo-32x32.png')],field:'kernel-spec',bind:'file'}];
   const work=()=>({title:'使用专用练习目录',tip:'填写尚不存在的新练习目录，再点本页的准备按钮。已有私人目录不会被覆盖。',path:'D:\\CoursePractice',rows:[row('DSH-summary','folder',true)],field:'dsh-workspace',bind:'folder'});

@@ -15,7 +15,7 @@
   },
   "visual_browser": {
     "passed": true,
-    "path": "records/win11-guides/20261113T040240076235Z/result.json",
+    "path": "records/win11-guides/20261113T041315491263Z/result.json",
     "groups": 18
   },
   "legacy_browser": {
@@ -33,5 +33,6 @@
     "path": "records/local-check/20261113T035252900426Z/result.json",
     "groups": 7
   },
-  "scope": "Same-computer agent browser illustrations, controls and contract checks; actual Node/Python A/B in corresponding compatibility logs only. No all-course execution/model call/independent novice or physical phone acceptance."
+  "scope": "Same-computer agent browser illustrations, controls and contract checks; actual Node/Python A/B in corresponding compatibility logs only. No all-course execution/model call/independent novice or physical phone acceptance.",
+  "revision": "Independent P2 fixed: Start menu -> open file location -> Explorer shortcut properties. Only two visual text strings changed; 18-group visual checks rerun."
 }
