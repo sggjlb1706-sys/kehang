@@ -1,0 +1,99 @@
+{
+  "id": "45aeadf52baf47bebdf8175e4ec7f830",
+  "task": {
+    "schema": 1,
+    "title": "Python基础环境 · 演示任务",
+    "scenario": "python-basics",
+    "source": "演示课程要求，非学校既定要求",
+    "os": "Windows",
+    "python": {
+      "min": "3.10",
+      "max_exclusive": "3.15"
+    },
+    "packages": {
+      "requests": "2.31"
+    },
+    "verify": "import-requests",
+    "id": "650987735f0967cf32ca46df53d025461d8d3d33fc8aa6181017252739794bae"
+  },
+  "state": "done",
+  "results": [
+    {
+      "id": "97217d2d4cf201a4514b4ace",
+      "target": "D:\\ANACONDA\\python.exe",
+      "source": "PATH 候选",
+      "error": "",
+      "report": {
+        "schema": 1,
+        "task_id": "650987735f0967cf32ca46df53d025461d8d3d33fc8aa6181017252739794bae",
+        "collected_at": "2026-11-13T03:52:54.707226+00:00",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "facts": {
+          "os": "Windows",
+          "python": "3.13.9",
+          "packages": {
+            "requests": "2.32.5"
+          },
+          "verification": {
+            "returncode": 0,
+            "stdout": "OK\n",
+            "error": ""
+          }
+        }
+      },
+      "analysis": {
+        "task_id": "650987735f0967cf32ca46df53d025461d8d3d33fc8aa6181017252739794bae",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-13T03:52:54.707226+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:requests",
+            "status": "pass",
+            "observed": "2.32.5",
+            "requirement": ">=2.31"
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "固定导入程序退出0且输出OK"
+          }
+        ],
+        "passed": true
+      },
+      "job": "45aeadf52baf47bebdf8175e4ec7f830"
+    }
+  ],
+  "total": 1,
+  "completed": 1,
+  "limited": false,
+  "current": "",
+  "error": ""
+}

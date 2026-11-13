@@ -1,0 +1,145 @@
+{
+  "checks": [
+    {
+      "course": "python-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "node-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "notebook-data",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "java-jdk",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "sqlite-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-cpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-gpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "local-qwen",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "vm-linux",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "ai-web-deepseek",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "deepseek-api",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-desktop",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-cli",
+      "steps": 4,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "case": "Live entered path, literal-safe text, B report and Windows11 extension help",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/python-basics-desktop.png",
+      "sha256": "aea6ca9aee764a201a9e08284c334ce97e8bb6e30077f6da4d95f5a6aef47fac"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/node-basics-desktop.png",
+      "sha256": "628808d47f1475d0881fdb5ab65831a45a3be002e25bb6e89293e06ac3231df2"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/notebook-data-desktop.png",
+      "sha256": "69d0d47d30ab2b201b597d2ccc74436b1efc5a2e54f0b3f73127b2ee04ce9ce7"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/java-jdk-desktop.png",
+      "sha256": "6d89e2f5bb9b3e726d8fd873efe6a1b8bfc0d051f6e69c2308583871271f4e74"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/sqlite-basics-desktop.png",
+      "sha256": "a62a541c72754b2816a2b37e8015dd760cd91fbf3ce18f81c784d82b05e1f9f0"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/pytorch-cpu-desktop.png",
+      "sha256": "5050f046764652802571acd72159e9d26264a0100b6d1c633d078541f28978c8"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/pytorch-gpu-desktop.png",
+      "sha256": "281dc58178c2e559fc051a71d6087e6aaaf44a8025432e794e7b5541d11b812a"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/local-qwen-desktop.png",
+      "sha256": "3f1f359385db0616a0282b26dbc4f3fb9ec6c65d12e09fc437827130b5320071"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/vm-linux-desktop.png",
+      "sha256": "a022a46acf523acc08b52cedbe7b61a1b8632c80ad682e7de109e410cd7e4fdb"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/ai-web-deepseek-desktop.png",
+      "sha256": "767480d54dec2fb0e4c080bbdaf09b648711bd7b40aeb470b6c4295e79d93c4f"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/deepseek-api-desktop.png",
+      "sha256": "74caa04bdd4579554f1f987a8aa99862a61da5d974f99a2e0675821e011a42e0"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/dsh-desktop-desktop.png",
+      "sha256": "eb9d745e78102f69b112e3d9067589c9f64f51701c48536e62f3e50ba6c4836b"
+    },
+    {
+      "path": "records/win11-guides/20261113T035124581664Z/dsh-cli-desktop.png",
+      "sha256": "7acdbd64032bad3bcc3abd7287061688348a302398a4b7f9934bb57fe7ba80af"
+    }
+  ],
+  "page_errors": [],
+  "side_effect_requests": [],
+  "scope": "Same-computer agent browser, illustrated workflow/keyboard/reflow/contract verification only; no course collector, installation, real model request or external-device acceptance.",
+  "passed": false,
+  "error": "TimeoutError('Page.fill: Timeout 30000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#target\")\\n    - locator resolved to <input id=\"target\" placeholder=\"例如 C:\\\\CoursePython\\\\python.exe\"/>\\n    - fill(\"D:\\\\课程 Python\\\\python.exe\")\\n  - attempting fill action\\n    2 × waiting for element to be visible, enabled and editable\\n      - element is not visible\\n    - retrying fill action\\n    - waiting 20ms\\n    2 × waiting for element to be visible, enabled and editable\\n      - element is not visible\\n    - retrying fill action\\n      - waiting 100ms\\n    59 × waiting for element to be visible, enabled and editable\\n       - element is not visible\\n     - retrying fill action\\n       - waiting 500ms\\n')"
+}

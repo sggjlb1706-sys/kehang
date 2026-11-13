@@ -1,0 +1,151 @@
+{
+  "before": {
+    "schema": 1,
+    "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+    "collected_at": "2026-11-13T03:44:16.389326+00:00",
+    "target": {
+      "requested": "D:\\Program Files\\nodejs\\node.exe",
+      "actual": "D:\\Program Files\\nodejs\\node.exe",
+      "exists": true
+    },
+    "facts": {
+      "os": "Windows",
+      "node": "24.21.0",
+      "npm": {
+        "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "node": "D:\\Program Files\\nodejs\\node.exe",
+        "exists": true,
+        "version": "11.19.0",
+        "returncode": 0,
+        "error": ""
+      },
+      "verification": {
+        "returncode": 0,
+        "stdout": "OK\n",
+        "error": ""
+      }
+    },
+    "commands": [
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-win11-guides-20261113\\campuslab\\node_probe.js"
+      ],
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version",
+        "--offline",
+        "--ignore-scripts",
+        "--no-update-notifier",
+        "--userconfig=NUL"
+      ],
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "--input-type=commonjs",
+        "-e",
+        "require('node:assert/strict').equal([1,2,3].map(n=>n*2).join(','),'2,4,6'); console.log('OK')"
+      ]
+    ]
+  },
+  "after": {
+    "schema": 1,
+    "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+    "collected_at": "2026-11-13T03:44:18.161875+00:00",
+    "target": {
+      "requested": "D:\\Program Files\\nodejs\\node.exe",
+      "actual": "D:\\Program Files\\nodejs\\node.exe",
+      "exists": true
+    },
+    "facts": {
+      "os": "Windows",
+      "node": "24.21.0",
+      "npm": {
+        "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "node": "D:\\Program Files\\nodejs\\node.exe",
+        "exists": true,
+        "version": "11.19.0",
+        "returncode": 0,
+        "error": ""
+      },
+      "verification": {
+        "returncode": 0,
+        "stdout": "OK\n",
+        "error": ""
+      }
+    },
+    "commands": [
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-win11-guides-20261113\\campuslab\\node_probe.js"
+      ],
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version",
+        "--offline",
+        "--ignore-scripts",
+        "--no-update-notifier",
+        "--userconfig=NUL"
+      ],
+      [
+        "D:\\Program Files\\nodejs\\node.exe",
+        "--input-type=commonjs",
+        "-e",
+        "require('node:assert/strict').equal([1,2,3].map(n=>n*2).join(','),'2,4,6'); console.log('OK')"
+      ]
+    ]
+  },
+  "analysis": {
+    "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+    "target": {
+      "requested": "D:\\Program Files\\nodejs\\node.exe",
+      "actual": "D:\\Program Files\\nodejs\\node.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-13T03:44:18.161875+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "node",
+        "status": "pass",
+        "observed": "24.21.0",
+        "requirement": {
+          "min": "22.0",
+          "max_exclusive": "25.0"
+        }
+      },
+      {
+        "id": "npm",
+        "status": "pass",
+        "observed": {
+          "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "node": "D:\\Program Files\\nodejs\\node.exe",
+          "exists": true,
+          "version": "11.19.0",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": {
+          "min": "10.0",
+          "max_exclusive": "12.0"
+        }
+      },
+      {
+        "id": "run",
+        "status": "pass",
+        "observed": {
+          "returncode": 0,
+          "stdout": "OK\n",
+          "error": ""
+        },
+        "requirement": "所选Node固定程序退出0、输出OK且无错误"
+      }
+    ],
+    "passed": true
+  }
+}

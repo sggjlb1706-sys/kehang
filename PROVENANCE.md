@@ -1,5 +1,8 @@
 # 本版来源
 
+Windows11全课程图示版从11e52b4f7361dd4efd1453b3b47240650fb74225完整克隆，58个已有可达提交，分支codex/kehang-win11-guides-20261113。用户本次原文见records/win11-guides/feedback.txt。参考[Microsoft文件资源管理器说明](https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows)及[Windows可访问性说明](https://learn.microsoft.com/en-us/windows/apps/develop/accessibility)，在2026-11-13核对导航/查看扩展名与键盘原则；所有产品图示、文件图标和布局由本版HTML/CSS自制，无第三方截图/图标再分发。官方参考图仅放仓库外交付目录reference供核对，不打入产品和评审包。沿用impeccable的产品界面/上下文引导工作流，没有新依赖或云端素材调用。
+
+
 报告位置图示版从f398ad5c006f9ef177589831f31bb7693561c129完整克隆，继承56个可达提交，分支codex/kehang-report-guide-20261112。依据用户2026-11-12本次原文与三张附件（records/report-guide/feedback）做局部引导修改。图示为课航HTML/CSS自制的地址栏/文件列表，并非用户文件系统扫描或现场截图；用户截图原件未改写。没有采用新第三方资源或安装。延用impeccable产品界面和上下文引导原则，实际测试区分本机真实Node A/B、旧Python原件与受控剪贴板拒绝。独立审查发现不得改写为用户首先发现。
 
 一键本机检测版从正式路径引导版3b595f476c89a8390396cb3a78beb3fb27aca50d完整克隆，继承53个可达提交；独立分支codex/kehang-local-check-20261112。依据用户“想让AI直接进行本地检测”及明确选择“改成课航内一键本机检测”，将原手动限制仅在Python基础固定检查处调整，见AGENTS.md。没有重新开发规则、课程或实训；复用原PEP514/PATH发现、collect/probe、analyze/compare和AI预览同意流程。

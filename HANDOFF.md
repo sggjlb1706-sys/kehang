@@ -1,3 +1,9 @@
+# Windows 11 全课程图示版交接
+
+当前work/kehang-win11-guides-20261113，分支codex/kehang-win11-guides-20261113，从正式11e52b4完整继承。13类课程、实训及报告图示已接入，纯展示引导，不改变检测或AI范围。验收records/win11-guides/acceptance.json；固定独立结论REVIEW.md，新目录/两ZIP以仓库外“交付/课航Windows11图示-20261113”回执为准。旧预览保留，新预览由新交付说明给出。
+
+以下为历史交接。
+
 # 报告位置图示版交接
 
 当前目录work/kehang-report-guide-20261112，分支codex/kehang-report-guide-20261112，完整承接f398ad5。本轮仅针对报告查找/选择图示和Node路径误选提示，Python一键与其他课程手动方式不变。验收records/report-guide/acceptance.json，当前独立结论REVIEW.md，新实物以仓库外“交付/课航报告图示-20261112”回执为准。旧服务保留，新网页地址以新交付说明为准。

@@ -148,7 +148,7 @@ class LocalCheckTest(unittest.TestCase):
         try:
             with tempfile.TemporaryDirectory(prefix='kehang-process-test-') as folder:
                 pidfile = Path(folder) / 'child.txt'
-                script = 'import subprocess,sys,time;from pathlib import Path;sys.stdin.buffer.read(1);p=subprocess.Popen([sys.executable,"-B","-I","-c","import time;time.sleep(30)"]);Path(sys.argv[1]).write_text(str(p.pid));time.sleep(30)'
+                script = 'import subprocess,sys,time;from pathlib import Path;sys.stdin.buffer.read(1);p=subprocess.Popen([sys.executable,"-B","-I","-c","import time;time.sleep(30)"]);ready=Path(sys.argv[1]);pending=ready.with_suffix(".pending");pending.write_text(str(p.pid));pending.replace(ready);time.sleep(30)'
                 owned = OwnedProcess([sys.executable,'-B','-I','-c',script,str(pidfile)])
                 try:
                     deadline = time.monotonic()+5

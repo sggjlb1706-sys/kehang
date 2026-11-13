@@ -1,0 +1,174 @@
+{
+  "checks": [
+    {
+      "course": "python-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "node-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "notebook-data",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "java-jdk",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "sqlite-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-cpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-gpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "local-qwen",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "vm-linux",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "ai-web-deepseek",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "deepseek-api",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-desktop",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-cli",
+      "steps": 4,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "case": "Live entered path, literal-safe text, B report and Windows11 extension help",
+      "passed": true
+    },
+    {
+      "case": "320/390/768/1440 reflow across long multi-step courses",
+      "passed": true
+    },
+    {
+      "case": "Keyboard guide activation, reduced motion and actual control focus",
+      "passed": true
+    },
+    {
+      "case": "Continuous practice material and submission illustrations do not set declaration or completion",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/python-basics-desktop.png",
+      "sha256": "4ac1d405b8a3ca40939b52b512d633c809c75e19c0c5340ab7f0b66b8f89c87a"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/node-basics-desktop.png",
+      "sha256": "6a73ae58bab5b5dcaceeddad0d2e6dbcf07e71b9eb6c5b017f6e0889847faf3b"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/notebook-data-desktop.png",
+      "sha256": "1864f6b8c7a625409d953bf2b67e136a4e1440ba99d0c376a77b3de65629935b"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/java-jdk-desktop.png",
+      "sha256": "04a9339cee550a2d248649a65c6c9216808e163c2424fee79db84e005e240852"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/sqlite-basics-desktop.png",
+      "sha256": "d5c17da944925accff446c076fb5c4f8f30cd54a5e89bd6727192994d3567901"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/pytorch-cpu-desktop.png",
+      "sha256": "00e77f0c1bcb8af6e1cb3f789b9ce6cfecc08cbc610ad9bf0905422420be766c"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/pytorch-gpu-desktop.png",
+      "sha256": "80521c07daa543121ebeae50458478dc1094ce09023654a131f9c7120bb869b6"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/local-qwen-desktop.png",
+      "sha256": "befab19df70237e6d836f0093bd497df01aae70ec8f66996851d301d3bf60e4e"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/vm-linux-desktop.png",
+      "sha256": "8bda11b6bebae20363eb56b9c6ca1e0a6c107973e159e722b3d35a6691b6fe55"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/ai-web-deepseek-desktop.png",
+      "sha256": "74f65d65d079802ac5a834bc15e016b3522593d8d947bbffa404fef1a719eaf3"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/deepseek-api-desktop.png",
+      "sha256": "519c39f11d3bce6160100024c8f09aefe069515435b80974520c4c63caa36bf1"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/dsh-desktop-desktop.png",
+      "sha256": "1220661c981e0cce139557889cd08dc74ec4de6790b927cb3e1b8b75100e93ea"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/dsh-cli-desktop.png",
+      "sha256": "7acdbd64032bad3bcc3abd7287061688348a302398a4b7f9934bb57fe7ba80af"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/report-B-desktop.png",
+      "sha256": "e61400265acf0956972ea7be20124f3517e722531a192421c21df51ca020bdbc"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/dsh-cli-mobile.png",
+      "sha256": "9417145f8d58fa87ad6478a650e399d9e70321b9ee7c41b1c4cce881ceb44e27"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/practice-files-desktop.png",
+      "sha256": "3988e2d5b8c45c264613a6cc1f6f8c889bb1b831eb0a34b1c6957b3b2a8a0697"
+    },
+    {
+      "path": "records/win11-guides/20261113T034804176262Z/practice-submit-desktop.png",
+      "sha256": "f724e410cce37b0e41160d9434a53526f88468c723b0b8edf8ce09f306d1a81d"
+    }
+  ],
+  "page_errors": [],
+  "side_effect_requests": [],
+  "scope": "Same-computer agent browser, illustrated workflow/keyboard/reflow/contract verification only; no course collector, installation, real model request or external-device acceptance.",
+  "passed": true,
+  "courses": 13,
+  "total_groups": 17
+}

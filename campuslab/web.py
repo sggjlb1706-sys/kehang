@@ -68,7 +68,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             self.check_origin()
             path = urlsplit(self.path)
-            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css'}
+            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css'}
             if path.path in assets:
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]

@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "head": "11e52b4f7361dd4efd1453b3b47240650fb74225",
+    "manifest_files": 2529,
+    "manifest_sha256": "AFF351EEA7C94062B235420CE597F410B0E3344F00BDF34962F659DFDA67C8D6",
+    "unchanged": true,
+    "inherited_commits": 58
+  },
+  "courses": 13,
+  "continuous_practice": true,
+  "unit_tests": {
+    "passed": true,
+    "count": 153,
+    "path": "records/win11-guides/unit-tests.log"
+  },
+  "visual_browser": {
+    "passed": true,
+    "path": "records/win11-guides/20261113T040240076235Z/result.json",
+    "groups": 18
+  },
+  "legacy_browser": {
+    "passed": true,
+    "path": "records/guided/20261113T035817401556Z/result.json",
+    "groups": 13
+  },
+  "report_browser": {
+    "passed": true,
+    "path": "records/report-guide/20261113T035816330385Z/result.json",
+    "groups": 8
+  },
+  "local_browser": {
+    "passed": true,
+    "path": "records/local-check/20261113T035252900426Z/result.json",
+    "groups": 7
+  },
+  "scope": "Same-computer agent browser illustrations, controls and contract checks; actual Node/Python A/B in corresponding compatibility logs only. No all-course execution/model call/independent novice or physical phone acceptance."
+}

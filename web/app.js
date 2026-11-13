@@ -46,6 +46,7 @@ function clearTask(){
   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
   guided.courseStep=0;guided.courseVisited=0;guided.manualCollectorChosen=false;renderGuide();
   $('tool-dir').value='';updateReportGuide();
+  for(const id of ['target','kernel-spec','model-dir','vm-id','guest-path','dsh-package','dsh-workspace','dsh-evidence','api-preview-path','learning-record'])$(id).value='';
 }
 async function chooseTask(loader,course=null){
   const navigationEpoch=guided.navigationEpoch;
@@ -187,6 +188,7 @@ function updateReportGuide(){
   $('copy-report-folder').hidden=!known;
   $('report-folder-tip').textContent=known?'复制后，粘贴到文件资源管理器顶部地址栏，按回车。':'就是放着 task.json 的解压文件夹。';
   $('report-copy-status').textContent='';
+  KehangVisuals.reportPath($('report-explorer-window'),known?root:null,stage);
 }
 $('copy-report-folder').addEventListener('click',async()=>{
   const address=$('report-folder-address'),value=address.value,epoch=state.epoch;
@@ -442,6 +444,7 @@ function showRoute(route,step=0){
 }
 
 function renderGuide(){
+  updateCourseVisualGuide();
   const course=guided.route==='course',practice=guided.route==='practice',teacher=guided.route==='teacher';
   document.body.classList.toggle('in-flow',course||practice);
   const shareSlot=$('teacher-share-slot');
@@ -505,6 +508,15 @@ function renderGuide(){
     next.disabled=index<3&&!practiceState.practice;
   }
 }
+
+function updateCourseVisualGuide(){
+  const host=$('course-visual-guide');
+  if(!state.task){host.hidden=true;return;}
+  const fields=Object.fromEntries(['target','kernel-spec','model-dir','dsh-workspace','dsh-evidence','dsh-package','api-preview-path','learning-record'].map(id=>[id,$(id).value]));
+  fields.pythonCommand=ps($('target').value.trim().replace(/^"(.*)"$/,'$1')||'C:\\课程Python\\python.exe');
+  KehangVisuals.course(host,state.task.scenario,fields,state.epoch);
+}
+for(const id of ['target','kernel-spec','model-dir','dsh-workspace','dsh-evidence','dsh-package','api-preview-path','learning-record'])$(id).addEventListener('input',updateCourseVisualGuide);
 
 $('guide-prev').addEventListener('click',()=>showRoute(guided.route,(guided.route==='course'?guided.courseStep:guided.practiceStep)-1));
 $('guide-next').addEventListener('click',()=>{

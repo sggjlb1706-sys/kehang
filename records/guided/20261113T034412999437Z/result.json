@@ -1,0 +1,42 @@
+{
+  "checks": [
+    "Home shows the recommended start and contextual alternatives, with no upload/download/technical workflow exposed",
+    "Python preparation and collection are separate; only current tool is offered; download ZIP contains selected task and launcher",
+    "Invalid sharing report rejected; real A followed by single B preserves baseline and passes comparison; mode changes preserve facts",
+    "Changing goal clears reports and review access; GPU has one download and an open explicit-target collection form",
+    "All 13 existing course selections reach compatible task-specific guidance and collection controls"
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "records/guided/20261113T034412999437Z/01-home-desktop.png",
+      "sha256": "7d1085a0751970ea2b5b00abb52a7cf5a878f6b2ae3714cc753d0023c6b508ca"
+    },
+    {
+      "path": "records/guided/20261113T034412999437Z/02-python-prepare.png",
+      "sha256": "091e887b1da91857eb6f22863c6f006e344c6c6e3e6c726d0fa11126cdd9f706"
+    },
+    {
+      "path": "records/guided/20261113T034412999437Z/03-python-collect.png",
+      "sha256": "3801c3dd294cddf5664e9e8d3dc8dffa4d2c73c402e57e75bc275553fb1b32e3"
+    },
+    {
+      "path": "records/guided/20261113T034412999437Z/04-python-reviewed.png",
+      "sha256": "f51a9c7b319d9b8d163e726565a9e6e2be8f5485a032931f4c26970e34279807"
+    },
+    {
+      "path": "records/guided/20261113T034412999437Z/05-gpu-collect.png",
+      "sha256": "2fb7034f30b0415cf30a93ae653a0096249d5f2a3cfe008080908dc58542746a"
+    }
+  ],
+  "execution_scope": "Agent-operated browser on one computer; archived real A/B reanalysed, not recollected; constructed 41 negative identified.",
+  "contrast_ratios": {
+    "--ink": 16.240741692205184,
+    "--muted": 7.777014857689918,
+    "--brand": 6.756825903433027,
+    "primary_text": 7.0525398865575895
+  },
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\work\\kehang-win11-guides-20261113\\tools\\verify_guided_ui.py\", line 158, in main\n    page.check('#practice-read')\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 12270, in check\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.check(\n        ^^^^^^^^^^^^^^^^^^^^^\n    ...<7 lines>...\n        )\n        ^\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 1112, in check\n    return await self._main_frame.check(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 879, in check\n    await self._channel.send(\"check\", self._timeout, locals_to_params(locals()))\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Page.check: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#practice-read\")\n    - locator resolved to <input type=\"checkbox\" id=\"practice-read\"/>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    59 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n\n"
+}
