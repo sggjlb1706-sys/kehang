@@ -1,0 +1,56 @@
+{
+  "candidate": "b431ccb1ca58750fdbc78d5ab2f69d272b793701",
+  "initial_candidate": "db23650271ff580afc0960839cddf98bcf32e0dd",
+  "checks": [
+    {
+      "name": "54 final frozen files match Git/archive/worktree; 53 unchanged; backend, tests and verification tools byte-identical",
+      "passed": true,
+      "frozen_files": 54,
+      "unchanged_frozen_files": 53
+    },
+    {
+      "name": "The only product edits are the two accepted shortcut instructions; W11-01 source fix verified",
+      "passed": true
+    },
+    {
+      "name": "Final Python/Node first scene, current step and focus at 320/390/1440; Enter/Space jump remains focus-only",
+      "passed": true,
+      "field_activations": 12
+    },
+    {
+      "name": "No browser error or remote request in the final incremental run",
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "screenshots": [
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\python-basics-320.png",
+      "sha256": "94744ED2724AB9FDE83C282FB8D2A25C5C11ACBE31AB3A8E34B00F1BEB397F79"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\python-basics-390.png",
+      "sha256": "EBA39E6F5B194F58C966F9E44FE98E6599283E92C20DB3E82733B4CE2DC78A3A"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\python-basics-1440.png",
+      "sha256": "50E073CE83A179AD63564FF1B11F8903C32E14D9CF6770317F84BCE1BA903BE7"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\node-basics-320.png",
+      "sha256": "8466A5509CC2807473A9D2CF82E2D556A986D0DB0AEB51D9FF4F71D414E260F5"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\node-basics-390.png",
+      "sha256": "7B65EA55DE4E6E2EDF68DC8253E470868A853F5DC6134D93B6287E4593B0763C"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-b431ccb\\node-basics-1440.png",
+      "sha256": "C1BD007F9108DEFE079DB4A7A9698ED50546831B202D9CB0E1EB965BF53D0680"
+    }
+  ],
+  "passed": true,
+  "finding_W11_01": "closed",
+  "unresolved_count": 0
+}

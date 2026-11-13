@@ -1,0 +1,289 @@
+{
+  "passed": true,
+  "text_samples": 1841,
+  "minimum_ratio": 5.197,
+  "failures": [],
+  "lowest_samples": [
+    {
+      "course": "python-basics",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "python-basics",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "node-basics",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "node-basics",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "notebook-data",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "notebook-data",
+      "step": 3,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "java-jdk",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "java-jdk",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "sqlite-basics",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "pytorch-cpu",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "pytorch-gpu",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "local-qwen",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "local-qwen",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "local-qwen",
+      "step": 3,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "vm-linux",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "ai-web-deepseek",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "ai-web-deepseek",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "deepseek-api",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "deepseek-api",
+      "step": 2,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    },
+    {
+      "course": "dsh-desktop",
+      "step": 1,
+      "class": "win11-file-date",
+      "text": "—",
+      "ratio": 5.197,
+      "threshold": 4.5,
+      "color": "rgb(100, 100, 100)",
+      "background": [
+        228,
+        242,
+        255
+      ]
+    }
+  ],
+  "scope": "Computed Chromium CSS text/background contrast in new guides at default 1440 viewport; decorative aria-hidden icons and disabled controls excluded. This is not a full WCAG or assistive-technology certification."
+}

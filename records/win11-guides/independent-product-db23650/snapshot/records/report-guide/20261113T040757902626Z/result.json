@@ -1,0 +1,38 @@
+{
+  "checks": [
+    "Manual Node flow has a three-step labelled visual guide; unknown extraction directory is not fabricated and opens no local detection job",
+    "Actual clipboard copy preserves the entered directory; the reported Start Menu folder cannot generate a misleading Node collector command",
+    "A quoted real node.exe is accepted; generated manual command names the same A output and prints its location only after successful collection",
+    "Fresh actual Node A/B imports preserve original baseline and identity; B guide clears old file selection and highlights the new file while retaining the A example",
+    "Switching to Notebook removes stale directory/B guidance and Node hints; simple launcher users see the honest extraction-folder example",
+    "Clipboard denial leaves the current guide intact and selects the exact address for Ctrl+C",
+    "The illustrated chooser retains real report validation: sharing-only input rejected, existing valid original accepted",
+    "390/768/1440 layouts preserve all three steps, selected B filename and long-path copy without horizontal overflow"
+  ],
+  "screenshots": [
+    {
+      "path": "records/report-guide/20261113T040757902626Z/01-node-report-A-desktop.png",
+      "sha256": "ceb2d90995f7e11082b3aed4ee33bf93a3312650e861106205cfb4f58636b183"
+    },
+    {
+      "path": "records/report-guide/20261113T040757902626Z/02-node-report-B-desktop.png",
+      "sha256": "dbb84c46996d9c4206222898cdd597bfcb72c88ae26b1eea4f11c2d736d36248"
+    },
+    {
+      "path": "records/report-guide/20261113T040757902626Z/report-steps-B.png",
+      "sha256": "de45ce559502917b1a566f762be2e72385d9ed4683e8bbdbe41c8f6ebc2f9eec"
+    },
+    {
+      "path": "records/report-guide/20261113T040757902626Z/03-notebook-no-directory.png",
+      "sha256": "23a07640d7aa1d2d2e4da5ee4b4f702e2cd5e889c0b3533e6997694d84e0fb9a"
+    },
+    {
+      "path": "records/report-guide/20261113T040757902626Z/04-node-report-B-mobile.png",
+      "sha256": "3dab5af36ddbe854d282fb33d048441964dceebfb3dc6d231ca15828f5e5c591"
+    }
+  ],
+  "page_errors": [],
+  "remote_requests": [],
+  "scope": "Same-computer agent browser; real Node A/B when available, archived real Python reports for compatibility. Guidance drawings are labelled examples, not filesystem discovery. No model request or installation.",
+  "passed": true
+}

@@ -1,0 +1,409 @@
+{
+  "candidate": "db23650271ff580afc0960839cddf98bcf32e0dd",
+  "baseline": "11e52b4f7361dd4efd1453b3b47240650fb74225",
+  "independent_read_only": true,
+  "passed": false,
+  "unresolved_count": 1,
+  "findings": [
+    {
+      "id": "W11-01",
+      "priority": "P2",
+      "file": "web/visual-guides.js",
+      "line": 95,
+      "summary": "Start menu shortcut instructions omit Open file location before File Explorer shortcut Properties",
+      "status": "accepted; awaiting fix"
+    }
+  ],
+  "unit_tests": {
+    "passed": true,
+    "count": 153
+  },
+  "browser_groups": {
+    "win11": 18,
+    "guided": 13,
+    "report": 8,
+    "local_check": 7
+  },
+  "supplemental": {
+    "candidate": "db23650271ff580afc0960839cddf98bcf32e0dd",
+    "baseline": "11e52b4f7361dd4efd1453b3b47240650fb74225",
+    "started_at": "2026-11-13T04:11:02.609196+00:00",
+    "groups": [
+      {
+        "name": "Fixed Git archive, UTF-8 extraction and frozen file index",
+        "passed": true,
+        "frozen_files": 54,
+        "tracked_files": 2693
+      },
+      {
+        "name": "Old delivery 2529 manifest entries remain unchanged; backend changes limited to fixed assets",
+        "passed": true,
+        "old_files": 2529
+      },
+      {
+        "name": "Every step jump mouse/Enter/Space focuses exact real field without consent, commands or requests",
+        "passed": true,
+        "activations": 105,
+        "courses": 13
+      },
+      {
+        "name": "All ten old path inputs cleared on every new course selection",
+        "passed": true,
+        "courses": 13
+      },
+      {
+        "name": "JDK bin illustration retains root; Qwen weights illustration retains whole directory; SQLite prepare distinguishes standalone/practice",
+        "passed": true
+      },
+      {
+        "name": "Notebook command uses existing PowerShell literal encoder; arbitrary entered text remains literal DOM text",
+        "passed": true
+      },
+      {
+        "name": "All 13 courses and every step at 320/390/768/1440; report extension menu and practice reflow",
+        "passed": true,
+        "course_step_views": 140,
+        "widths": [
+          320,
+          390,
+          768,
+          1440
+        ]
+      },
+      {
+        "name": "Keyboard focus outline and single current step",
+        "passed": true,
+        "focus": {
+          "visible": true,
+          "outline": "solid",
+          "width": "3px"
+        }
+      },
+      {
+        "name": "No page error, remote request, local-check job, or evidence fabrication in supplemental illustration navigation",
+        "passed": true
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-java-root-bin.png",
+        "sha256": "A3ED4E16D8B612C62A64F19E2F25A28371FCA715F277ADD8F9F6BBF021CA6570"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-qwen-directory-weights.png",
+        "sha256": "052032DD81ED10340C1DD7A44068300277919A0599F8369BFC787C1F419DD3F0"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-notebook-literal.png",
+        "sha256": "6894437FAF936234E543484CE005AAEFBE2DCBAD20DBF68AA3D42DD682EA119E"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-report-320.png",
+        "sha256": "86D1109CB5789E067842059C7886E3934A10FB4D0494D8C83210D47F7F5B642A"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-practice-390.png",
+        "sha256": "E69B6BF137FB82DC6FE8F7E84BFCE75E6BE74E47563A8481CF76DF2CE8F04C8A"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\ChatGPT\\传智杯\\交付\\课航Windows11图示-20261113\\independent-product-db23650\\extra-python-properties.png",
+        "sha256": "53481F201B219B744A0D1ADC1A66108F427ECE99B7F81C3EA4B9ABC3FB3101A0"
+      }
+    ],
+    "page_errors": [],
+    "remote_requests": [],
+    "passed": true,
+    "finished_at": "2026-11-13T04:11:52.085158+00:00"
+  },
+  "contrast": {
+    "passed": true,
+    "text_samples": 1841,
+    "minimum_ratio": 5.197,
+    "failures": [],
+    "lowest_samples": [
+      {
+        "course": "python-basics",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "python-basics",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "node-basics",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "node-basics",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "notebook-data",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "notebook-data",
+        "step": 3,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "java-jdk",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "java-jdk",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "sqlite-basics",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "pytorch-cpu",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "pytorch-gpu",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "local-qwen",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "local-qwen",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "local-qwen",
+        "step": 3,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "vm-linux",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "ai-web-deepseek",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "ai-web-deepseek",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "deepseek-api",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "deepseek-api",
+        "step": 2,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      },
+      {
+        "course": "dsh-desktop",
+        "step": 1,
+        "class": "win11-file-date",
+        "text": "—",
+        "ratio": 5.197,
+        "threshold": 4.5,
+        "color": "rgb(100, 100, 100)",
+        "background": [
+          228,
+          242,
+          255
+        ]
+      }
+    ],
+    "scope": "Computed Chromium CSS text/background contrast in new guides at default 1440 viewport; decorative aria-hidden icons and disabled controls excluded. This is not a full WCAG or assistive-technology certification."
+  },
+  "report": "初审产品审查-db23650.md",
+  "scope": "Same-computer independent agent; real Node/Python A/B only; no model call, installation or external-device acceptance; final delivery verification pending"
+}
