@@ -77,9 +77,9 @@ class LocalCheckService:
             raise ValueError('请刷新本机页面后再检测')
 
     def start(self, body):
-        if set(body) not in ({'task', 'consent'}, {'task', 'consent', 'selections', 'options'},
-                             {'task', 'consent', 'previous_job', 'target_id'},
-                             {'task', 'consent', 'previous_job', 'target_id', 'execution_consent'}):
+        recheck_fields = {'task', 'consent', 'previous_job', 'target_id'}
+        recheck_body = recheck_fields <= set(body) <= recheck_fields | {'execution_consent', 'execution'}
+        if set(body) not in ({'task', 'consent'}, {'task', 'consent', 'selections', 'options'}) and not recheck_body:
             raise ValueError('本机检测只接受固定任务和本次点击同意')
         spec = deepcopy(validate_task(body['task']))
         if spec['scenario'] not in FIELDS or body['consent'] is not True or not self.available:
@@ -99,6 +99,12 @@ class LocalCheckService:
                                  if item['id'] == body['target_id'] and item.get('report')), None)
                 if previous is None:
                     raise ValueError('未找到可复检的原环境，请重新初检')
+                if 'execution' in body:
+                    key = {'pytorch-gpu': 'gpu_run', 'local-qwen': 'infer'}.get(spec['scenario'])
+                    execution = body['execution']
+                    if not key or not isinstance(execution, dict) or set(execution) != {key} or execution[key] is not True:
+                        raise ValueError('复检只允许当前课程固定实际运行，不能更换目标或目录')
+                    previous['options'] = dict(previous.get('options', {}), **execution)
                 if any(previous.get('options', {}).get(k) for k in ('gpu_run', 'infer')) and body.get('execution_consent') is not True:
                     raise ValueError('本次复检需要重新同意实际 GPU 计算或模型推理')
             elif 'selections' in body:

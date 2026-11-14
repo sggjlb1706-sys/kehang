@@ -92,6 +92,47 @@ class TargetSelectionTest(unittest.TestCase):
         self.assertEqual(len(value['fields']['target']['choices']), 1)
         self.assertEqual(value['fields']['kernel_spec']['choices'], [])
 
+    def test_actual_gpu_recheck_requires_fresh_execution_consent(self):
+        from test_torch_course import evidence
+        spec, observed = evidence(True)
+        def fixed_report(spec, target, cancelled):
+            from copy import deepcopy
+            from datetime import datetime, timezone
+            value = deepcopy(observed);value['target'].update(requested=target, actual=target)
+            value['collected_at'] = datetime.now(timezone.utc).isoformat()
+            return value
+        service = LocalCheckService(runner=fixed_report);service.available = True;service.targets = self.store
+        self.addCleanup(service.close)
+        first = finished(service, service.start(dict(task=spec, consent=True, selections={'target':self.selected(spec)}, options={'gpu_run':True}))['id'])
+        body = dict(task=spec, consent=True, previous_job=first['id'], target_id=first['results'][0]['id'])
+        with self.assertRaises(ValueError):service.start(body)
+        with self.assertRaises(ValueError):service.start(dict(body,execution_consent=False))
+        second = finished(service, service.start(dict(body, execution_consent=True))['id'])
+        self.assertTrue(second['results'][0]['options']['gpu_run'])
+
+    def test_prepare_then_actual_recheck_preserves_target_and_original(self):
+        from test_torch_course import evidence
+        from copy import deepcopy
+        from datetime import datetime, timezone
+        spec, observed = evidence(True)
+        observed['facts']['gpu']['run'].update(requested=False,returncode=None,result=None,device=None,device_uuid=None)
+        def fixed_report(spec, target, cancelled):
+            value=deepcopy(observed);value['target'].update(requested=target,actual=target)
+            value['collected_at']=datetime.now(timezone.utc).isoformat();return value
+        service=LocalCheckService(runner=fixed_report);service.available=True;service.targets=self.store;self.addCleanup(service.close)
+        first=finished(service,service.start(dict(task=spec,consent=True,selections={'target':self.selected(spec)},options={'gpu_run':False}))['id'])
+        original=first['results'][0]
+        body=dict(task=spec,consent=True,previous_job=first['id'],target_id=original['id'],execution={'gpu_run':True})
+        with self.assertRaises(ValueError):service.start(body)
+        for execution in ({'gpu_run':False},{'infer':True},{'gpu_run':True,'target':'other'}):
+            with self.assertRaises(ValueError):service.start(dict(body,execution=execution,execution_consent=True))
+        observed['facts']['gpu']['run']=evidence(True)[1]['facts']['gpu']['run']
+        second=finished(service,service.start(dict(body,execution_consent=True))['id'])['results'][0]
+        self.assertEqual(second['before'],original['report'])
+        self.assertEqual(second['target'],original['target'])
+        self.assertTrue(second['options']['gpu_run'])
+        self.assertEqual(second['comparison']['outcome'],'verified')
+
     def test_native_picker_and_discovery_http_require_page_identity(self):
         from campuslab.web import AppServer
         from urllib.request import Request, urlopen

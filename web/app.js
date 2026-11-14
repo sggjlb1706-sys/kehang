@@ -355,10 +355,14 @@ function renderLocalEnvironments(){
   $('local-save').disabled=!localState.selected?.report||localState.running;
   $('local-save-before').hidden=!localState.selected?.before;
   $('local-save-before').disabled=localState.running;
+  const executeKey={'pytorch-gpu':'gpu_run','local-qwen':'infer'}[state.task?.scenario];
+  $('local-recheck-execution-option').hidden=!localState.selected?.report||!executeKey||!!localState.selected.options?.[executeKey];
+  $('local-recheck-execution-label').textContent=executeKey==='gpu_run'?'本次复检同时执行固定 GPU 张量运算':'本次复检同时加载本地权重并执行固定离线推理';
 }
 async function selectLocal(item){
   const epoch=localState.epoch,taskEpoch=state.epoch;
   clearReports(true);localState.selected=item;
+  $('local-recheck-execution').checked=false;
   if(item.report){
     state.before=item.before||item.report;state.after=item.before?item.report:null;
     render(item.analysis);$('after-file').disabled=false;
@@ -375,9 +379,11 @@ async function startLocal(recheck=false){
   const body={task:state.task,consent:true};
   if(recheck){
     Object.assign(body,{previous_job:previous.job,target_id:previous.id});
-    if(previous.options?.gpu_run||previous.options?.infer){
-      if(!window.confirm(previous.options.gpu_run?'本次复检将再次执行固定 GPU 张量运算。是否同意？':'本次复检将再次加载本地模型权重并执行固定离线推理。是否同意？'))return;
+    const key={'pytorch-gpu':'gpu_run','local-qwen':'infer'}[state.task.scenario];
+    if(key&&(previous.options?.[key]||$('local-recheck-execution').checked)){
+      if(!window.confirm(key==='gpu_run'?'本次复检将执行固定 GPU 张量运算，保留初检和同一目标。是否同意？':'本次复检将加载本地模型权重并执行固定离线推理，保留初检和同一目标。是否同意？'))return;
       body.execution_consent=true;
+      body.execution={[key]:true};
     }
   }else Object.assign(body,KehangTargets.request());
   const retained=recheck?localState.items:[],limited=localState.limited;

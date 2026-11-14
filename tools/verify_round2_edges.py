@@ -76,6 +76,31 @@ def main():
                 page.fill('#target',r'D:\课程 环境\node.exe')
                 assert page.locator('#manual-collection').get_attribute('open') is not None
                 result['checks'].append('Responsive policy cannot undo an explicit chat click; manual target editing leaves the fallback open.')
+
+                from copy import deepcopy
+                from tests.test_torch_course import evidence
+                spec,fixture=evidence(True)
+                fixture['facts']['gpu']['run'].update(requested=False,returncode=None,result=None,device=None,device_uuid=None)
+                def controlled_gpu(spec,target,cancel):
+                    value=deepcopy(fixture);value['target'].update(requested=target,actual=target)
+                    value['collected_at']=datetime.now(timezone.utc).isoformat();return value
+                server.local_check.runner=controlled_gpu
+                page.click('#home-nav');page.click('[data-scenario="pytorch-gpu"]');page.wait_for_function('()=>guided.courseStep===1');page.click('#guide-next')
+                page.wait_for_selector('#local-field-target');page.click('#local-discover');page.wait_for_function('()=>document.querySelector("#local-field-target").options.length>1')
+                choice=page.locator('#local-field-target option').nth(1).get_attribute('value');page.select_option('#local-field-target',choice)
+                page.click('#local-start');page.wait_for_function('()=>!!state.before&&!localState.running')
+                preparation=page.evaluate('state.before');assert not preparation['facts']['gpu']['run']['requested']
+                page.check('#local-recheck-execution')
+                page.once('dialog',lambda dialog:dialog.dismiss());count=len(server.local_check.jobs);page.click('#local-recheck')
+                assert len(server.local_check.jobs)==count and page.evaluate('state.before')==preparation
+                fixture['facts']['gpu']['run']=evidence(True)[1]['facts']['gpu']['run']
+                page.once('dialog',lambda dialog:dialog.accept())
+                with page.expect_request('**/api/local-check') as request:page.click('#local-recheck')
+                assert request.value.post_data_json['execution']=={'gpu_run':True} and request.value.post_data_json['execution_consent'] is True
+                page.wait_for_function('()=>!!state.after&&!localState.running')
+                assert page.evaluate('localState.selected.before')==preparation
+                assert page.evaluate('localState.selected.comparison.outcome')=='verified'
+                result['checks'].append('Controlled GPU preparation A upgrades to explicitly confirmed execution B; dismiss sends no job; target and original preserved. No GPU was actually executed.')
                 browser.close();result['passed']=True
     except Exception as error:
         result.update(passed=False,error=repr(error));raise

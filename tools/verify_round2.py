@@ -77,6 +77,7 @@ def native_control(path=None):
                              input=json.dumps(dict(process=child.pid, title=settings['label'], path=str(path or ''), cancel=path is None), ensure_ascii=False).encode(),
                              capture_output=True, timeout=25, creationflags=subprocess.CREATE_NO_WINDOW)
             result.append(value)
+            OUT.mkdir(parents=True, exist_ok=True)
             (OUT / 'native-controller.stderr.txt').write_bytes(value.stderr)
             (OUT / 'native-controller.stdout.txt').write_bytes(value.stdout)
         helper = threading.Thread(target=control); helper.start()
