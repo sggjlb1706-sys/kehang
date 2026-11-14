@@ -457,7 +457,9 @@ function renderGuide(){
   $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
   $('help-panel').hidden=!course||guided.courseStep!==3;
   $('python-quick-check').hidden=!course||state.task?.scenario!=='python-basics'||!localReady();
-  $('home-nav').toggleAttribute('aria-current',guided.route==='home');
+  for(const [id,current] of [['home-nav',guided.route==='home'],['teacher-nav',teacher]]){
+    if(current)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current');
+  }
   $('back-practice').hidden=!course||!guided.fromPractice;
   if(course&&!state.task){guided.courseStep=0;guided.courseVisited=0;}
   if(course&&guided.courseStep===3&&!state.before){guided.courseStep=2;guided.courseVisited=Math.min(guided.courseVisited,2);}
@@ -538,16 +540,7 @@ $('guide-next').addEventListener('click',()=>{
 for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
 $('teacher-nav').addEventListener('click',()=>{guided.fromPractice=false;showRoute('teacher');});
 $('choose-course').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);});
-$('start-python').addEventListener('click',e=>action(e.target,async()=>{
-  guided.fromPractice=false;showRoute('course',0);$('goal').value='python-basics';
-  if(await chooseTask(()=>api('/api/goal?goal=python-basics'))){
-    const taskEpoch=state.epoch,navigationEpoch=guided.navigationEpoch;
-    if(!state.config)state.config=await api('/api/config');
-    if(taskEpoch!==state.epoch||navigationEpoch!==guided.navigationEpoch)return;
-    syncCollector();
-    if(localReady())await startLocal();else notice('本机一键检测需要在 Windows 电脑上启动本地课航。可继续使用手动工具。',true);
-  }
-}));
+$('start-python').addEventListener('click',e=>action(e.target,()=>startLocal()));
 $('start-practice').addEventListener('click',()=>showRoute('practice',0));
 $('back-practice').addEventListener('click',()=>showRoute('practice',1));
 $('import-entry').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);$('student-import').open=true;$('student-import').scrollIntoView({block:'nearest'});});

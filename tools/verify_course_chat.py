@@ -114,6 +114,15 @@ def main():
                 page.click('#chat-preview-button');page.wait_for_selector('#chat-preview-panel:visible')
                 page.click('#guide-prev')
                 assert not page.locator('#chat-preview-panel').is_visible()
+                page.click('#home-nav');page.click('#choose-course')
+                assert page.locator('.chat-message').count()==0 and not page.locator('#chat-input').input_value()
+                assert 'Java' not in page.locator('#chat-context').inner_text()
+                page.fill('#chat-input','我该选择什么课程？');page.click('#chat-preview-button')
+                page.wait_for_selector('#chat-preview-panel:visible')
+                selection_preview=list(server.chat.pending.values())[-1]['preview']
+                assert selection_preview['context']['course'] is None
+                assert len(selection_preview['context']['supported_courses'])==13
+                page.click('#chat-cancel')
                 page.click('#home-nav');page.click('.course-card[data-scenario="sqlite-basics"]')
                 page.wait_for_function('()=>state.task?.scenario==="sqlite-basics"&&guided.courseStep===1')
                 assert page.locator('.chat-message').count() == 0 and page.locator('#chat-input').input_value() == ''
@@ -207,9 +216,44 @@ def main():
                 (OUT / 'real-report-B.json').write_text(json.dumps(page.evaluate('state.after'), ensure_ascii=False, indent=2), encoding='utf8')
                 checks.append('Fresh real Python A/B collection works from the course flow; result chat preview uses the validated selected report.')
 
+                page.click('#teacher-nav')
+                if page.locator('#teacher-course-panel').get_attribute('open') is None:
+                    page.locator('#teacher-course-panel > summary').click()
+                page.select_option('#teacher-goal','python-basics');page.fill('#teacher-title','自定义 Python 3.14 课程')
+                page.fill('#python-min','3.14');page.fill('#python-max','3.15');page.locator('#teacher-form button').click()
+                page.wait_for_function('()=>guided.route==="teacher"&&state.task?.python?.min==="3.14"')
+                if page.locator('#course-sharing').get_attribute('open') is None:
+                    page.locator('#course-sharing > summary').click()
+                with page.expect_download() as download:
+                    page.click('#export-course')
+                download.value.save_as(folder/'custom-python.json')
+                page.click('#home-nav');page.click('#import-entry');page.set_input_files('#course-package',folder/'custom-python.json')
+                page.wait_for_function('()=>guided.route==="course"&&guided.courseStep===1&&state.task?.python?.min==="3.14"')
+                custom_id=page.evaluate('state.task.id');custom_code=page.evaluate('state.course')
+                with page.expect_request('**/api/local-check') as request:
+                    page.click('#start-python')
+                assert request.value.post_data_json['task']['id']==custom_id
+                assert request.value.post_data_json['task']['python']['min']=='3.14'
+                page.wait_for_function('()=>!!localState.selected?.report&&!localState.running',timeout=120000)
+                assert page.evaluate('state.task.id')==custom_id and page.evaluate('state.course')==custom_code
+                assert page.evaluate('state.before.task_id')==custom_id
+                checks.append('Imported custom Python requirements and course identity survive the preparation-page one-click check.')
+
                 page.set_viewport_size(dict(width=768, height=900))
-                assert not page.locator('#learning-chat').is_visible()
+                page.wait_for_selector('#learning-chat', state='hidden')
                 checks.append('Shrinking desktop to tablet automatically collapses the chat, leaving course controls reachable.')
+                page.set_viewport_size(dict(width=390, height=700));page.click('#chat-toggle')
+                page.fill('#chat-input', '小屏发送预览');page.click('#chat-preview-button')
+                page.wait_for_selector('#chat-preview-panel:visible')
+                if page.locator('#chat-preview-panel > details').get_attribute('open') is None:
+                    page.locator('#chat-preview-panel > details > summary').click()
+                page.locator('#chat-send').scroll_into_view_if_needed()
+                panel=page.locator('#learning-chat').bounding_box();send_box=page.locator('#chat-send').bounding_box();close_box=page.locator('#chat-close').bounding_box()
+                assert send_box['y']>=panel['y'] and send_box['y']+send_box['height']<=panel['y']+panel['height']
+                assert close_box['y']>=panel['y'] and close_box['y']+close_box['height']<=panel['y']+panel['height']
+                page.screenshot(path=OUT / '06-chat-mobile-preview.png')
+                page.click('#chat-close');assert not page.locator('#learning-chat').is_visible()
+                checks.append('390x700 chat preview can scroll to confirmation while keeping the close control visible.')
                 for width in [320, 390, 768, 1120, 1280, 1440]:
                     page.set_viewport_size(dict(width=width, height=900))
                     page.click('#chat-close') if page.locator('#chat-close').is_visible() else None

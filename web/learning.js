@@ -46,7 +46,7 @@ const KehangChat = (()=>{
   const conversations=new Map();
   let scope='',fingerprint='',preview=null,busy=false,epoch=0,lastTrigger=null;
   function currentContext(){
-    const course=guided.route==='course';
+    const course=guided.route==='course'&&guided.courseStep>0;
     return {route:guided.route,step:course?guided.courseStep:guided.route==='practice'?guided.practiceStep:0,task:course?state.task:null,report:course?(state.after||state.before):null};
   }
   function conversation(){return conversations.get(scope);}
@@ -62,7 +62,7 @@ const KehangChat = (()=>{
   function renderMessages(){
     const box=$('chat-messages');box.replaceChildren();
     if(!conversation().messages.length){
-      const welcome=document.createElement('p');welcome.className='chat-welcome';welcome.textContent=guided.route==='home'?'想学什么，或者卡在哪一步了？告诉我你的目标，我们从这里开始。':'可以问我当前这一步，也可以粘贴看不懂的报错。';box.append(welcome);
+      const welcome=document.createElement('p');welcome.className='chat-welcome';welcome.textContent=guided.route==='home'||(guided.route==='course'&&guided.courseStep===0)?'想学什么，或者卡在哪一步了？告诉我你的目标，我们从这里开始。':'可以问我当前这一步，也可以粘贴看不懂的报错。';box.append(welcome);
     }
     for(const message of conversation().messages){
       const item=document.createElement('div');item.className='chat-message chat-'+message.role;
@@ -84,7 +84,7 @@ const KehangChat = (()=>{
     const configured=state.config?.ai.configured;
     $('chat-connection').textContent=!state.config?'正在读取连接状态…':configured?'已配置 · '+state.config.ai.model:'尚未连接模型';
     $('chat-setup').hidden=!state.config||configured;
-    const suggestions=value.route==='home'?['我刚入门，应该选哪门课？','Notebook 和 Python 有什么区别？']:value.step===3&&value.route==='course'?['这个结果意味着什么？','下一步该怎么做？']:['这一步我要准备什么？','我找不到需要的文件，怎么办？'];
+    const suggestions=value.route==='home'||(value.route==='course'&&value.step===0)?['我刚入门，应该选哪门课？','Notebook 和 Python 有什么区别？']:value.step===3&&value.route==='course'?['这个结果意味着什么？','下一步该怎么做？']:['这一步我要准备什么？','我找不到需要的文件，怎么办？'];
     const box=$('chat-suggestions');box.replaceChildren();
     for(const question of suggestions){const button=document.createElement('button');button.type='button';button.className='text-button';button.textContent=question;button.addEventListener('click',()=>open(question));box.append(button);}
     updateButtons();
@@ -133,7 +133,11 @@ const KehangChat = (()=>{
     finally{if(requestEpoch===epoch){busy=false;updateButtons();}}
   });
   const desktop=window.matchMedia('(min-width: 1120px)');
-  desktop.addEventListener('change',()=>{if(!desktop.matches&&window.innerWidth<1120)setOpen(false);});
+  let resizeTimer;
+  desktop.addEventListener('change',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{if(!desktop.matches)setOpen(false);},200);
+  });
   renderContext();setOpen(desktop.matches);
   return Object.freeze({open});
 })();
