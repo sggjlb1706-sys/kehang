@@ -1,0 +1,744 @@
+diff --git a/campuslab/guidance.py b/campuslab/guidance.py
+index 0052b3e..a303165 100644
+--- a/campuslab/guidance.py
++++ b/campuslab/guidance.py
+@@ -2,12 +2,18 @@
+ from .rules import validate_task
+ 
+ 
+-def plan(spec, mode='novice', resources=None, report=None):
++def plan(spec, mode='novice', resources=None, report=None, prepared='unsure'):
+     validate_task(spec)
+     if mode not in ('novice','standard','quick'):
+         raise ValueError('指导模式无效')
++    if prepared not in ('unsure', 'missing', 'installed'):
++        raise ValueError('准备说明无效')
+     from .rules import NEW_COURSES
+-    if spec['scenario'] in NEW_COURSES: return learning_plan(spec,mode,report)
++    if spec['scenario'] in NEW_COURSES:
++        result = learning_plan(spec,mode,report)
++        if spec['scenario'] in ('deepseek-api','dsh-desktop','dsh-cli'):
++            result['contextual'] = contextual_guidance(spec, report, prepared)
++        return result
+     if spec['scenario'] in ('pytorch-cpu','pytorch-gpu','vm-linux'):
+         return course_plan(spec,mode,report)
+     local = spec['scenario'] == 'local-qwen'
+@@ -115,12 +121,102 @@ def learning_plan(spec,mode,report):
+         from .rules import analyze
+         for c in analyze(spec,report)['checks']:
+             if c['status']=='pass': continue
+-            actions.append(dict(id=c['id'],status=c['status'],title=c['id']+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[c['status']],
+-                body='所选目标：'+report['target']['requested']+'。'+({'missing':'先确认组件路径并按任务要求手动准备。','mismatch':'展开本项原始事实与错误，核对固定要求后手动处理。','unknown':'先补充本项证据；其他组件或本人勾选不能替代。'}[c['status']]),
++            specific = check_guidance(spec, c['id']) if scenario in ('deepseek-api','dsh-desktop','dsh-cli') else None
++            actions.append(dict(id=c['id'],status=c['status'],title=(specific[0] if specific else c['id'])+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[c['status']],
++                body=specific[1] if specific else '所选目标：'+report['target']['requested']+'。'+({'missing':'先确认组件路径并按任务要求手动准备。','mismatch':'展开本项原始事实与错误，核对固定要求后手动处理。','unknown':'先补充本项证据；其他组件或本人勾选不能替代。'}[c['status']]),
+                 verify=full[-1][1]+' 保留原A，采集较晚B；不同目标重新初检。'))
+     return dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=None,remediation=actions)
+ 
+ 
++def check_guidance(spec, key):
++    """Explanations of existing fixed checks, never an alternate acceptance rule."""
++    if spec['scenario'] == 'deepseek-api':
++        messages = {
++            'os': ('运行电脑', '在运行课航服务的Windows电脑检查；另一台电脑使用手动工具，不能共用环境结论。'),
++            'python': ('课程Python', '先确认本课实际使用的Python及任务版本范围，再检测同一目标；准备API不要求安装DSH或本地模型。'),
++            'api:dependency': ('API编程依赖', '只需本任务Python的urllib.request、ssl、json标准库。先展开导入错误，不据此要求另装SDK。'),
++            'api:request': ('发送内容', '核对任务固定目的地、模型与演示数据。改变提供方、模型或问题后不能沿用原任务的成功结论。'),
++            'api:protocol': ('实际API响应', '网页检测只做未调用预检。若决定实际调用，在手动工具中预览完整请求、确认费用并进行终端单次授权，密钥仅在终端隐藏输入；没有响应证据时保留未知。'),
++            'api:exercise': ('数据练习结果', '实际调用后再核对total=42、count=3、mean=14及完整JSON。HTTP200、普通聊天和课航AI解释均不能代替本项。'),
++        }
++    else:
++        desktop = spec['scenario'] == 'dsh-desktop'
++        messages = {
++            'os': ('运行电脑', '这份DSH任务面向Windows；静态程序检查和真实Agent任务证据分别核对。'),
++            'dsh:software': ('DSH桌面程序' if desktop else 'DSH CLI包',
++                ('核对所选桌面exe及相邻公开包元数据。桌面自带运行时，不要求系统Python或PATH中的dsh。' if desktop else '核对所选@deepseek-ai/dsh的package.json及固定入口元数据；网页不会执行包入口。') + ' 本任务固定版本为'+spec['software_version']+'，不表示官方最新版；版本不符先与课程要求核对。'),
++            'dsh:node': ('CLI运行时', '确认本课所选Node满足'+str(spec['node_min'])+'及包要求。另一份Node或普通Node课程通过不能代替；桌面路线不要求本项。'),
++            'dsh:workspace': ('专用练习目录', '先选择已有的本任务专用目录；没有时，在手动备用入口生成准备命令，由本人新建目录，已有文件不覆盖。固定任务只读input.csv、只写summary.json。'),
++            'dsh:model': ('DSH任务的模型接入', '按所选DSH版本的官方模型配置指南，在DSH中由本人配置并选择提供方和模型。课航不读取密钥；未取得真实任务摘要时无法验证连接，不等于部署失败。课航右侧AI是另一套可选连接。'),
++            'dsh:permission': ('本次工具授权', '在DSH运行前审查本次固定read/write权限：只读input.csv、只写summary.json。不扩大到其他文件；课航中的勾选不代表DSH已实际授权。'),
++            'dsh:tools': ('Agent工具步骤', '在本人已选DSH及专用目录完成固定CSV任务，保留必要的读/写工具摘要、实际时间和错误。普通聊天、安装版本和静态检查均不能证明Agent已执行。'),
++            'dsh:artifact': ('固定任务产物', '核对同一专用目录的summary.json：整数count=3、sum=42。内容不符先查看实际产物；产物单独正确也不证明是本次Agent生成。'),
++        }
++    return messages.get(key, ('课程证据', '展开本项真实证据与错误，按原任务要求处理；不以指导文本替代检测。'))
++
++
++def contextual_guidance(spec, report, prepared):
++    """Choose the current route and next step from the validated task/report."""
++    from .rules import analyze
++    api = spec['scenario'] == 'deepseek-api'
++    desktop = spec['scenario'] == 'dsh-desktop'
++    checks = analyze(spec, report)['checks'] if report is not None else []
++    states = {item['id']: item['status'] for item in checks}
++    declaration = {'unsure':'本人尚不确定准备情况', 'missing':'本人说明尚未准备', 'installed':'本人说明已经准备'}[prepared]
++    if api:
++        title, intro = '准备API编程与一次固定练习', '先检查Python与请求准备，再由本人决定是否实际调用DeepSeek API'
++        requirements = [f"Python {spec['python']['min']} 至 {spec['python']['max_exclusive']}（不含上限），使用urllib / ssl / json标准库",
++                        '本任务模型：'+spec['api']['model']+'；目的地：'+spec['api']['endpoint'],
++                        '固定结果：total=42、count=3、mean=14；无需安装DSH或加载本地权重']
++        boundary = '网页本机检测不发送API、不读取密钥；课航AI聊天配置与本课API调用分别管理'
++        first = 'python'
++        order = ['os','python','api:dependency','api:request','api:protocol','api:exercise']
++        links = [dict(title='DeepSeek API官方入门',url='https://api-docs.deepseek.com/'), dict(title='官方错误码',url='https://api-docs.deepseek.com/quick_start/error_codes/')]
++        selection_hint = '选择本课Python；此项只调整准备指引，不表示API已连接'
++    else:
++        title = '准备DSH桌面任务' if desktop else '准备DSH CLI任务'
++        intro = '先确认当前工具，再分别核对工作区、模型、工具授权与固定产物'
++        requirements = [('Windows桌面程序，自带运行时；系统Python或Node不是本路线前置条件' if desktop else '本课Node ≥ '+str(spec['node_min'])+'，以及@deepseek-ai/dsh的package.json'),
++                        '本任务固定DSH版本：'+spec['software_version']+'（不是官方最新版本声明）',
++                        '专用目录中的input.csv → summary.json，固定结果count=3、sum=42']
++        boundary = '网页只读核对所选工具与可选目录；不启动DSH、不配置模型、不授予工具权限，也不代做Agent任务'
++        first = 'dsh:software'
++        order = ['os','dsh:node','dsh:software','dsh:workspace','dsh:model','dsh:permission','dsh:tools','dsh:artifact']
++        links = [dict(title='DSH官方下载与说明',url='https://www.deepseek.com/harness/'), dict(title='官方模型配置指南',url='https://deepseek-harness.github.io/deepseek-harness/en/guide/providers')]
++        selection_hint = '选择当前DSH路线的准备情况；安装声明不代表模型或任务已完成'
++    if report is None:
++        status = '尚无检测报告；'+declaration+'，不是已验证事实'
++        if prepared == 'missing':
++            next_title = '先准备本课Python' if api else ('先准备DSH桌面程序' if desktop else '先准备本课Node与DSH CLI包')
++            next_body = check_guidance(spec, first)[1]
++            if api:
++                next_body += ' 尚未安装时，按任务版本范围从Python官方渠道自行准备。'
++                links.append(dict(title='Python官方下载',url='https://www.python.org/downloads/windows/'))
++        else:
++            next_title = '先完成API编程预检' if api else ('先核对桌面程序身份' if desktop else '先核对Node与CLI包身份')
++            next_body = '点击“选择目标并检测”，确认'+('本课Python；结果只说明准备检查，不说明API调用成功。' if api else '本路线程序或包；静态软件证据与后续Agent任务分别显示。')
++    else:
++        first_missing = next((key for key in order if states.get(key) not in (None, 'pass')), None)
++        passed = [check_guidance(spec, item['id'])[0] for item in checks if item['status'] == 'pass' and item['id'] != 'os']
++        status = '已有检测报告；已核对：'+('、'.join(passed) if passed else '暂无通过项')
++        if first_missing:
++            next_title, next_body = check_guidance(spec, first_missing)
++        else:
++            next_title, next_body = '保留原始结果，同目标复检', '本固定任务现有检查均通过。保留原A与实际产物；复检使用同一任务、目标及已确认组件，变更组件后重新初检。'
++        if api:
++            run = report['facts']['run']
++            if not run['attempted']:
++                status += '；没有实际API响应证据，不判断账号、密钥或服务是否可用'
++            elif first_missing == 'api:protocol':
++                reasons = {'authentication':'认证', 'balance':'余额', 'rate_limit':'限流', 'timeout':'超时', 'network':'网络', 'model_or_protocol':'模型或协议', 'protocol':'协议', 'server':'服务端', 'runtime':'运行时'}
++                next_title = '核对本次调用的'+reasons.get(run['category'], '响应')+'问题'
++                next_body = '这来自本次报告，不能与“未调用”混同。先查看原始状态码与错误，再由本人决定是否重试；重试仍要预览并单次确认。'
++        elif report['facts']['agent'] is None:
++            status += '；尚无真实DSH任务摘要，模型连接与Agent执行保留未知'
++    return dict(title=title,intro=intro,requirements=requirements,status=status,
++                next_title=next_title,next_body=next_body,boundary=boundary,links=links,selection_hint=selection_hint)
++
++
+ def remediation(spec,report,mode):
+     if report is None:
+         return []
+diff --git a/campuslab/web.py b/campuslab/web.py
+index 6cc87ba..4acfff8 100644
+--- a/campuslab/web.py
++++ b/campuslab/web.py
+@@ -71,6 +71,7 @@ class Handler(BaseHTTPRequestHandler):
+             self.check_origin()
+             path = urlsplit(self.path)
+             assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css', '/local-selection.js':'local-selection.js'}
++            assets['/product.css'] = 'product.css'
+             if path.path in assets:
+                 name = assets[path.path]
+                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
+@@ -215,7 +216,7 @@ class Handler(BaseHTTPRequestHandler):
+             elif self.path == '/api/compare':
+                 self.send(200, compare(body['task'], body['before'], body['after']))
+             elif self.path == '/api/plan':
+-                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report')))
++                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report'),body.get('prepared','unsure')))
+             elif self.path == '/api/lesson':
+                 from .teaching import lesson_checks
+                 self.send(200,lesson_checks(analyze(body['task'],body['report'])))
+diff --git a/web/app.js b/web/app.js
+index e04ab0b..53e5692 100644
+--- a/web/app.js
++++ b/web/app.js
+@@ -42,6 +42,7 @@ function clearReports(keepLocal=false){
+   $('diagnosis').hidden=false;clearAI();progress();
+ }
+ function clearTask(){
++  $('prepared').value='unsure';
+   state.epoch++;clearReports();state.task=null;state.course=null;$('task-panel').hidden=true;$('empty-state').hidden=false;$('command').textContent='';$('remediation').replaceChildren();
+   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
+   guided.courseStep=0;guided.courseVisited=0;guided.manualCollectorChosen=false;renderGuide();
+@@ -92,8 +93,9 @@ async function chooseTask(loader,course=null){
+ async function guidance(){
+   if(!state.task)return;
+   const epoch=state.epoch,serial=state.importEpoch;const mode=$('mode').value;
+-  const data=await api('/api/plan',{task:state.task,mode,resources:(state.after||state.before)?.resources,report:state.after||state.before});
+-  if(epoch!==state.epoch||serial!==state.importEpoch||mode!==$('mode').value)return;
++  const prepared=$('prepared').value;
++  const data=await api('/api/plan',{task:state.task,mode,prepared,resources:(state.after||state.before)?.resources,report:state.after||state.before});
++  if(epoch!==state.epoch||serial!==state.importEpoch||mode!==$('mode').value||prepared!==$('prepared').value)return;
+   const list=document.createElement('ol');list.className='steps';
+   for(const step of data.steps){const item=document.createElement('li');const title=document.createElement('strong');title.textContent=step.title;const body=document.createElement('p');body.textContent=step.body;item.append(title,body);list.append(item);}
+   $('guidance').replaceChildren(list);
+@@ -106,7 +108,9 @@ async function guidance(){
+   $('remediation').replaceChildren();
+   if(data.remediation?.length){const h=document.createElement('h3');h.textContent='按差异处理';$('remediation').append(h);}
+   for(const step of data.remediation||[]){const d=document.createElement('div');d.className='remedy';const h=document.createElement('h3');h.textContent=step.title;const p=document.createElement('p');p.textContent=step.body;const v=document.createElement('p');v.className='muted';v.textContent=step.verify;d.append(h,p,v);$('remediation').append(d);}
+-  $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再生成只读采集命令。':'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
++  if(!data.contextual)$('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再检测。':'确认本课程使用的程序或文件，再检测。'}[$('prepared').value];
++  $('remediation-details').hidden=!data.remediation?.length;
++  $('remediation-details').open=!data.contextual&&!!data.remediation?.length;
+ }
+ $('goal').addEventListener('change',()=>{guided.fromPractice=false;clearTask();notice('目标已更换，请确认新的任务。');});
+ $('course-code').addEventListener('input',()=>{if(state.course)clearTask();});
+@@ -308,18 +312,32 @@ function progress(){
+ 
+ function renderPreparation(plan){
+   if(!state.task)return;
+-  const box=$('prepare-summary'),spec=state.task;
+-  const requirements=['使用 Windows 电脑完成本次检测'];
+-  if(spec.python)requirements.push(`课程 Python：${spec.python.min} 至 ${spec.python.max_exclusive}（不含上限）`);
+-  if(spec.node)requirements.push(`课程 Node.js：${spec.node.min} 至 ${spec.node.max_exclusive}（不含上限）`);
+-  if(spec.packages&&Object.keys(spec.packages).length)requirements.push('需要的依赖：'+Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('、'));
+-  if(!spec.python&&!spec.node)requirements.push($('task-summary').textContent);
++  const box=$('prepare-summary'),spec=state.task,context=plan.contextual;
++  const requirements=context?[...context.requirements]:['使用 Windows 电脑完成本次检测'];
++  if(!context){
++    if(spec.python)requirements.push(`课程 Python：${spec.python.min} 至 ${spec.python.max_exclusive}（不含上限）`);
++    if(spec.node)requirements.push(`课程 Node.js：${spec.node.min} 至 ${spec.node.max_exclusive}（不含上限）`);
++    if(spec.packages&&Object.keys(spec.packages).length)requirements.push('需要的依赖：'+Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('、'));
++    if(!spec.python&&!spec.node)requirements.push($('task-summary').textContent);
++  }
++  $('prepare-title').textContent=context?.next_title||'准备本课使用的环境';
++  $('prepare-intro').textContent=context?.next_body||'按课程要求准备，再检查实际使用的环境';
++  const readyOptions=context?(spec.scenario==='deepseek-api'?['不确定Python是否已准备','尚未准备课程Python','已有Python，准备检查']:['不确定当前DSH路线是否已准备','尚未准备本路线工具','已准备本路线工具，准备核对']):['不确定，先看看需要什么','还没安装，需要操作指引','已经安装，准备检测'];
++  [...$('prepared').options].forEach((option,i)=>option.textContent=readyOptions[i]);
++  $('prepared').labels[0].textContent=context?(spec.scenario==='deepseek-api'?'Python准备情况（本人说明）':'当前DSH路线准备情况（本人说明）'):'你的电脑准备到哪一步了？';
+   const list=document.createElement('ul');
+   for(const text of requirements){const li=document.createElement('li');li.textContent=text;list.append(li);}box.replaceChildren(list);
+   const help=$('prepare-help');help.replaceChildren();
+-  const step=plan.steps[Math.min(1,plan.steps.length-1)];
+-  if(step){const title=document.createElement('strong'),body=document.createElement('p');title.textContent=step.title;body.textContent=step.body;help.append(title,body);}
+-  for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
++  const step=context?{title:context.next_title,body:context.next_body}:plan.steps[Math.min(1,plan.steps.length-1)];
++  if(context){const evidence=document.createElement('p');evidence.className='course-evidence';evidence.textContent=context.status;help.append(evidence);$('prepared-hint').textContent=context.selection_hint;}
++  if(step&&!context){const title=document.createElement('strong'),body=document.createElement('p');title.textContent=step.title;body.textContent=step.body;help.append(title,body);}
++  if(context){const boundary=document.createElement('p');boundary.className='course-boundary';boundary.textContent=context.boundary;help.append(boundary);}
++  for(const link of (context?.links||plan.links).slice(0,3)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
++  const next=$('course-next-guidance');next.replaceChildren();next.hidden=!context;
++  if(context){
++    const title=document.createElement('h3'),body=document.createElement('p'),evidence=document.createElement('p');
++    title.textContent=context.next_title;body.textContent=context.next_body;evidence.className='course-evidence';evidence.textContent=context.status;next.append(title,body,evidence);
++  }
+ }
+ 
+ function localReady(){return !!state.task&&state.config?.local_check?.available&&state.config.local_check.scenarios.includes(state.task.scenario);}
+@@ -501,7 +519,7 @@ function renderGuide(){
+   $('guide-context').textContent=course?'课程环境准备':'Notebook ＋ SQLite 连续实训';
+   const labels=course?['选择课程','准备环境','运行检测','查看与复检']:['了解任务','准备环境','跟做练习','提交成果'];
+   const titles=course?['选择你要学习的课程','准备好，再开始检测','在你的电脑上运行检测','查看结果，完成同目标复检']:['先了解这堂实训','确认实训需要的环境','下载资料，开始动手练习','提交结果，保留完成记录'];
+-  $('guide-title').textContent=titles[index];$('guide-count').textContent=`第 ${index+1} 步 / 共 4 步`;
++  $('guide-title').textContent=course&&index>0?state.task?.title:titles[index];$('guide-count').textContent=`第 ${index+1} 步 / 共 4 步`;
+   const nav=$('guide-progress').querySelector('ol');
+   if(!nav.children.length)for(let i=0;i<4;i++){
+     const li=document.createElement('li'),button=document.createElement('button');button.type='button';
+@@ -534,7 +552,7 @@ function renderGuide(){
+       if(index===2)$('guide-footnote').textContent=localState.running?'检测进行中；离开本步骤会取消。':'点击“开始本机检测”；也可展开手动工具，检测另一台电脑。';
+     }
+     if(localState.selected){
+-      $('guide-title').textContent=index===3?'本机检测结果':titles[index];
++      $('guide-title').textContent=state.task?.title||titles[index];
+       $('review-hint').textContent=state.after?'已对同一目标再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次课程检查要求。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
+       if(index===3)next.textContent='返回学习首页';
+     }
+diff --git a/web/index.html b/web/index.html
+index 96d2fd2..e5e63c4 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -1,121 +1,121 @@
+-<!doctype html>
+-<html lang="zh-CN">
+-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+-<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/local-selection.js" defer></script><script src="/learning.js" defer></script></head>
+-<body class="welcome-page">
+-<a class="skip-link" href="#main-content">跳到主要内容</a>
+-<header><a class="brand" id="home-link" href="/" aria-label="课航首页">课航<span>KEHANG</span></a>
+-<span class="header-caption">课程学习与实训助手</span><nav aria-label="主要导航"><button id="home-nav" class="text-button">课程</button><button id="teacher-nav" class="text-button">教师工作台</button><button id="chat-toggle" class="secondary" aria-controls="learning-chat" aria-expanded="false">问 AI</button></nav></header>
+-<div class="learning-layout">
+-<main id="main-content">
+-<section id="home-screen" aria-labelledby="welcome-title">
+-  <div class="welcome-scene"><h1 id="welcome-title">课航</h1><button id="welcome-start">开始 <span aria-hidden="true">→</span></button></div>
+-</section>
+-<section id="selection-screen" hidden aria-labelledby="selection-title">
+-  <button id="selection-home" class="text-button">← 返回首页</button>
+-  <div class="course-welcome"><h1 id="selection-title">选择你的课程</h1></div>
+-  <section class="course-library" aria-labelledby="course-library-title"><div class="library-heading"><h2 id="course-library-title">你想学什么？</h2><button id="choose-course" class="text-button">导入课程 / 更多路线 →</button></div><div id="course-filters" class="course-filters" role="group" aria-label="按学习方向筛选"></div><div id="course-grid" class="course-grid" aria-label="支持的课程"></div><p id="course-selection-status" role="status" class="muted"></p></section>
+-  <div class="home-options"><button id="start-practice" class="option-row"><span><strong>把所学连起来，做一堂数据分析实训</strong><small>Notebook ＋ SQLite · 分析同一份数据，提交你的成果</small></span><span aria-hidden="true">→</span></button><button id="import-entry" class="option-row"><span><strong>已有老师发来的课程资料</strong><small>导入课程文件，按课堂要求开始</small></span><span aria-hidden="true">→</span></button></div>
+-  <p class="home-footnote">13 类课程 · 本机学习，无需注册 <button id="home-chat" class="text-button">不知道怎么选？问 AI →</button></p>
+-</section>
+-<section id="guide-shell" hidden aria-labelledby="guide-title">
+-  <div class="guide-topline"><button id="back-home" class="text-button">← 返回首页</button><button id="back-selection" class="text-button">选择其他课程</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
+-  <div class="guide-heading"><div><p id="guide-context" class="context">课程环境准备</p><h1 id="guide-title" tabindex="-1">选择你要学习的课程</h1></div><p id="guide-count" class="step-count"></p></div>
+-  <nav id="guide-progress" aria-label="学习步骤"><ol></ol></nav>
+-  <div class="workspace" id="course-screen" hidden>
+-    <aside class="entry-panel" id="course-choice"><section><h2>你想学什么？</h2><p class="muted">选一门课，再进入下一步。课程不同，需要准备的软件也不同。</p>
+-      <form id="goal-form"><label for="goal">选择课程</label><select id="goal"><option value="python-basics">Python 基础课程</option><option value="node-basics">Node.js/npm 示例课程</option><option value="pytorch-cpu">PyTorch · CPU 课程</option><option value="pytorch-gpu">PyTorch · GPU 课程</option><option value="vm-linux">虚拟机 / Linux 课程</option><option value="local-qwen">固定本地模型入门</option><option value="other">其他目标（查看目录）</option></select><button>下一步：准备环境 →</button></form>
+-      <details><summary>不知道怎么选？说说你的学习目标</summary><form id="need-form"><label for="need-text">你想完成什么？</label><textarea id="need-text" rows="3" maxlength="2000" placeholder="例如：深度学习课要求用 GPU 运行 PyTorch"></textarea><button class="secondary">帮我找课程</button></form><div id="need-result" aria-live="polite"></div></details>
+-      <details id="student-import"><summary>导入老师发来的课程</summary><label for="course-package">单项课程包（Kehang-course.json）</label><input id="course-package" type="file" accept=".json,application/json"><label for="practice-package">连续实训包（practice-course.json）</label><input id="practice-package" type="file" accept=".json,application/json"><form id="course-form"><label for="course-code">或输入当前电脑的课程码</label><div class="inline"><input id="course-code" maxlength="10" autocomplete="off" placeholder="10位课程码"><button class="secondary">进入课程</button></div></form><p class="muted">文件可以携带到其他电脑；课程码只在发布它的电脑有效。请向老师核对资料。</p></details>
+-      <details id="catalog-panel"><summary>查看课程支持范围</summary><div id="catalog"></div></details>
+-    </section></aside>
+-    <article id="task-panel" hidden>
+-      <section class="task-overview"><p class="context">本次课程</p><h2 id="task-title"></h2><details><summary>课程要求与任务详情</summary><p id="task-summary"></p><p class="muted" id="task-source"></p><p class="muted" id="task-id"></p><button id="download-task" class="secondary">保存任务快照</button></details></section>
+-      <nav class="progress" hidden aria-label="检测证据状态"><span id="progress-task">已确认任务</span><span id="progress-evidence"></span><span id="progress-recheck"></span></nav>
+-      <section id="preparation"><h2>先准备好要用的软件</h2><p>按课程要求准备，再检查实际使用的环境。</p><div id="prepare-summary" class="requirements"></div>
+-        <div id="python-quick-check" class="python-quick-check" hidden><div><strong>已经装好 Python？</strong><p>直接检查本机版本和基础依赖，结果会自动回到这里。</p></div><button id="start-python">检测本机 Python →</button></div>
+-        <button id="local-course-entry" hidden>选择目标并检测 →</button>
+-        <p id="web-course-note" class="muted" hidden>这门课是网页提问练习，没有适用的本机环境检测。请按下方学习步骤进入 DeepSeek 官方网页；本人记录与成果核对不代表登录或模型连接证明。</p>
+-        <label for="prepared">你的电脑准备到哪一步了？</label><select id="prepared"><option value="unsure">不确定，先看看需要什么</option><option value="missing">还没安装，需要操作指引</option><option value="installed">已经安装，准备检测</option></select><p id="prepared-hint" class="muted"></p>
+-        <div id="prepare-help"></div>
+-        <details id="full-guidance"><summary>查看完整步骤与官方下载来源</summary><label for="mode">说明详细程度</label><select id="mode"><option value="novice">新手：详细说明</option><option value="standard">标准：关键步骤</option><option value="quick">快捷：精简说明</option></select><div id="guidance"></div></details>
+-        <details><summary>设备预检与准备建议（可选）</summary><details id="hardware-panel"><summary>手动收集设备信息</summary><p>先在检测步骤下载并解压工具，再在高级入口填写工具目录。本机主动运行，不自动扫描。</p><button id="hardware-command" class="secondary">生成硬件预检命令</button><pre id="hardware-script" tabindex="0"></pre><label for="hardware-file">选择 hardware.json</label><input id="hardware-file" type="file" accept=".json,application/json"><div id="hardware-results"></div></details><div id="route-advice" aria-live="polite"></div></details>
+-      </section>
+-      <div id="local-result-panel" hidden><details id="local-environment-details"><summary>查看检测环境与原始报告</summary><p id="local-result-summary"></p><div id="local-environments" aria-label="本次检测到的环境"></div><button id="local-save" class="text-button">保存本次原始报告</button><button id="local-save-before" class="text-button" hidden>保存初检报告 A</button></details><label id="local-recheck-execution-option" class="checkbox" hidden><input id="local-recheck-execution" type="checkbox"><span id="local-recheck-execution-label"></span></label><div class="toolbar"><button id="local-ai" class="secondary">问 AI：这个结果意味着什么？</button><button id="local-recheck" class="text-button">重新检测当前环境</button></div></div>
+-      <section class="collection" id="collect-stage"><h2 id="collect-title">下载工具，做一次检测</h2><p id="collect-intro">检测工具会生成一份报告，帮你确认课程环境是否准备好了。</p>
+-        <div id="local-check-panel" hidden>
+-          <p id="local-scope" class="muted"></p>
+-          <button id="local-discover" class="secondary">查找本机候选</button><p id="local-target-status" role="status"></p><div id="local-target-fields"></div>
+-          <label id="local-gpu-option" class="checkbox" hidden><input id="local-gpu" type="checkbox"> 本次同意执行固定 GPU 张量运算</label>
+-          <label id="local-infer-option" class="checkbox" hidden><input id="local-infer" type="checkbox"> 本次同意加载本地权重，执行固定离线推理</label>
+-          <div id="local-vm-option" hidden><label>VirtualBox 实例 UUID（选择 .vmx 时留空）<input id="local-vm-uuid" autocomplete="off"></label><label class="checkbox"><input id="local-host-only" type="checkbox"> 尚未选择实例，本次仅检测宿主与虚拟化软件</label></div>
+-          <div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看准备指引</button>
+-        </div>
+-        <details id="manual-collection" open><summary>改用手动工具 / 检测另一台电脑</summary>
+-        <div class="download-action"><div><strong>先下载当前课程的检测工具</strong><p class="muted">这是这一步需要的下载文件。请完整解压，不要在 ZIP 中直接运行。</p></div><a id="download-tool" class="button" href="/api/tool">下载检测工具 ↓</a></div>
+-        <div id="simple-collector" hidden><h3>解压后，双击 Start-Collect.cmd</h3><p>窗口会带你选择课程 Python，不需要先记住完整路径。按下面的方法选择，最后核对目标并输入 START。</p>
+-        <details class="path-guide" id="python-path-help"><summary>终端查找帮助（备用）</summary><h4>窗口问 Python 在哪里？这样选</h4><ol><li><strong>直接按回车</strong>，查看已登记的 Python 候选；工具只读取安装登记与 PATH 位置，不运行候选。</li><li><strong>输入编号</strong>，选择这门课实际使用的 Python。有多个时，对照老师要求或编辑器已选的环境；列表不代表已检测通过。</li><li><strong>列表没有就输入 F</strong>，在文件窗口选择安装目录里的 <code>python.exe</code>。也可以粘贴路径或把文件拖入终端，带双引号也可以。</li></ol>
+-        <details id="python-location-help"><summary>列表没有，安装目录也找不到？</summary><p><strong>普通 Python：</strong>在开始菜单搜索 Python → 右键“打开文件所在的位置”。如果看到的是快捷方式，再右键“属性”查看“目标”，进入对应安装目录，选里面的 <code>python.exe</code>，不要选文件夹、快捷方式或 <code>pythonw.exe</code>。</p><p><strong>Anaconda：</strong>打开这门课使用的 Anaconda Prompt，在该终端手动输入下面一行，把输出的整行路径复制回检测窗口：</p><pre>python -c "import sys; print(sys.executable)"</pre><p>如果还没有安装 Python，请返回上一步选择“还没安装”，按官方准备指引处理。候选列表为空不代表电脑没有安装。</p></details>
+-        <details id="kernel-path-help" hidden><summary>Notebook 的 kernel.json 怎么找？</summary><p>先确认笔记本当前选择的内核名称。在课程 Python 对应的终端手动输入：</p><pre>python -m jupyter kernelspec list</pre><p>找到与所选内核对应的目录；回到采集窗口按 F，选择这个目录中的 <code>kernel.json</code>。它是内核定义文件，不是 <code>python.exe</code>；最终由固定检测确认内核是否匹配。</p></details>
+-        <p class="muted">误选了包内 runtime、文件夹或不存在的位置，会提示重新选，不会因此通过。终端输入 ? 查看完整帮助，Q 退出。</p></details>
+-        <p id="collector-stage-hint" class="muted">第一次检测选 A，得到 report-A.json。包内 runtime 只是检测工具，不是课程 Python。</p><p class="muted">如果窗口仍只要求粘贴完整路径，说明是旧工具：请重新下载本页工具，完整解压到新文件夹后再打开。</p></div>
+-        <section id="course-visual-guide" hidden aria-label="当前课程的Windows 11图示引导"></section>
+-        <p id="command-entry-hint" hidden>这门课需要明确选择软件或文件路径。请按下面展开的采集入口填写，检查命令后由你手动运行。</p>
+-        <details id="command-panel"><summary>高级入口：填写路径，生成手动采集命令</summary><p>以下输入只生成命令，由本人检查后在目标电脑运行。</p><label for="tool-dir">完整解压后的工具目录</label><input id="tool-dir" placeholder="例如 D:\课航工具"><label id="target-label" for="target">课程解释器完整路径</label><input id="target" placeholder="例如 C:\CoursePython\python.exe"><p id="node-target-guide" class="muted" hidden>按上方图示选择 node.exe 程序文件，不选开始菜单文件夹或快捷方式。</p><label for="tool-python">工具 Python（包内没有 runtime 时填写）</label><input id="tool-python" placeholder="已有的工具Python完整路径">
+-<div id="notebook-options" hidden><label for="kernel-spec">所选内核的 kernel.json 完整路径</label><input id="kernel-spec" placeholder="例如 D:\ANACONDA\share\jupyter\kernels\python3\kernel.json"><p class="muted">固定程序会真实启动该内核并核对解释器；仅支持已审查的 ipykernel 启动格式。</p></div>
+-<div id="sqlite-options" hidden><p>先在新文件创建演示数据，再只读采集。</p><button type="button" id="prepare-sqlite" class="secondary">生成创建演示数据库命令</button></div>
+-<div id="web-learning-options" hidden><label for="learning-record">本人填写的 web-record.json 完整路径（可空）</label><input id="learning-record" placeholder="例如 D:\课航工具\web-record.json"><p class="muted">本人完成记录与数字成果分别核对；本工具不认证登录或模型连接。</p></div>
+-<div id="api-learning-options" hidden><p>固定 DeepSeek API 学习任务。密钥仅在本人终端隐藏输入。</p><button type="button" id="learning-preview" class="secondary">展开实际请求预览</button><div id="learning-preview-panel" hidden><label for="learning-preview-text">目的地、模型、系统说明及实际内容（可编辑消息）</label><textarea id="learning-preview-text" rows="12" aria-describedby="api-preview-hint"></textarea><p id="api-preview-hint" class="muted">保存为工具目录的 api-preview.json。内容改变会清除旧报告和发送选择；改变练习问题不能完成原任务。</p><button type="button" id="save-learning-preview" class="secondary">保存请求预览 JSON</button></div><label for="api-preview-path">api-preview.json 完整路径（可空，空时使用任务固定内容）</label><input id="api-preview-path" placeholder="例如 D:\课航工具\api-preview.json"><label class="checkbox"><input type="checkbox" id="api-send"> 本次进入终端单次发送确认（可能产生费用；此处不会发送）</label></div>
+-<div id="dsh-options" hidden><div id="dsh-package-options"><label for="dsh-package">所选 @deepseek-ai/dsh 的 package.json 完整路径</label><input id="dsh-package" placeholder="例如 D:\DSH\node_modules\@deepseek-ai\dsh\package.json"></div><label for="dsh-workspace">本次专用练习目录</label><input id="dsh-workspace" placeholder="例如 D:\CoursePractice\DSH-summary"><div class="inline"><label for="dsh-provider">模型提供方公开标识<input id="dsh-provider" placeholder="例如 deepseek"></label><label for="dsh-model">模型公开标识<input id="dsh-model" placeholder="例如 deepseek-flash"></label></div><label for="dsh-evidence">本人必要工具摘要 JSON 完整路径（可空）</label><input id="dsh-evidence" placeholder="例如 D:\CoursePractice\DSH-summary\evidence.json"><button type="button" id="prepare-dsh" class="secondary">生成专用练习准备命令</button><p class="muted">仅准备新目录和固定练习文件。本人另行在DSH授权任务；本工具不启动DSH，不读其凭据。</p></div>
+-<pre id="prepare-script" tabindex="0" aria-label="本人审查后运行的准备命令"></pre>
+-<div id="model-options" hidden><label for="model-dir">课程固定模型本地目录</label><input id="model-dir" placeholder="例如 D:\Models\Qwen2.5-0.5B-Instruct"><label class="checkbox"><input type="checkbox" id="infer"> 本次执行固定离线推理，实际加载本地权重</label></div>
+-<div id="torch-options" hidden><label class="checkbox"><input type="checkbox" id="gpu-run"> 本次主动执行固定 GPU 张量运算</label></div>
+-<div id="vm-options" hidden><label for="vm-id">实例：VirtualBox UUID 或 VMware .vmx 完整路径</label><input id="vm-id" placeholder="UUID 或 D:\Virtual Machines\course\course.vmx"><label for="guest-path">手动取得的来宾 JSON 路径（可空）</label><input id="guest-path" placeholder="例如 D:\课航工具\guest.json"><p class="muted">在已由本人启动的Linux来宾运行根目录guest_probe.py，使用当前任务摘要和实例标识。先用 --help 查看参数；无来宾证据保留未知。</p></div>
+-<label for="report-stage">保存哪次检测</label><select id="report-stage"><option value="A">初检 A</option><option value="B">复检 B</option></select><button id="make-command" class="secondary">生成手动命令</button><pre id="command" tabindex="0"></pre><details><summary>这一步遇到问题</summary><p><span id="target-help"></span> 检查完整解压、路径及task.json。原报告不覆盖；复检选择B，新一轮使用新目录。安装与修复由本人决定。</p></details></details>
+-        <section class="report-upload" aria-labelledby="report-upload-title">
+-          <h3 id="report-upload-title">找到报告，带回课航</h3><p class="muted">运行检测后，照着这三步选文件。</p>
+-          <ol class="report-steps">
+-            <li><h4><span>1</span> 打开工具文件夹</h4><p class="report-key-hint"><kbd>Win</kbd> + <kbd>E</kbd> 打开文件资源管理器</p>
+-              <div class="folder-preview"><span class="guide-folder-icon" aria-hidden="true"></span><input id="report-folder-address" readonly aria-label="报告所在的工具文件夹" value="你解压的课航工具文件夹"></div>
+-              <button id="copy-report-folder" type="button" class="secondary" hidden>复制文件夹地址</button><p id="report-folder-tip" class="muted">就是放着 task.json 的解压文件夹。</p><p id="report-copy-status" role="status"></p>
+-            </li>
+-            <li><h4><span>2</span> 找到这份报告</h4><div id="report-explorer-window" class="report-explorer-window"></div><p id="report-filename-hint" class="muted">初检通常保存为 report-A.json。</p></li>
+-            <li><h4><span>3</span> 回到这里，选择报告</h4><label id="report-upload-label" for="report-files">选择 report-A.json</label><input id="report-files" type="file" accept=".json,application/json" multiple><p class="muted">在文件窗口打开同一个工具文件夹，选中报告后点“打开”。</p></li>
+-          </ol>
+-          <details id="report-extension-help"><summary>看不到 .json / .exe 文件后缀？</summary><p>在资源管理器选择“查看 → 显示 → 文件扩展名”。</p><div id="report-extension-window"></div></details>
+-          <details id="report-missing-help"><summary>文件夹里没有报告？</summary><ul><li>先运行检测。下载工具、生成命令都不会生成报告。</li><li>去完整解压后的工具文件夹找，不是 ZIP 内或 Python／Node.js 安装目录。</li><li>若终端提示失败或报告已存在，先核对提示；复检生成 B，保留原来的 A。</li></ul></details>
+-          <details><summary>报告校验与批量导入说明</summary><p class="muted">也可一次选择原始 A／B 两份。按报告内的采集时间确定先后，再核对同任务、同目标及组件身份；文件名不作为通过依据。时间相同或身份冲突时请核对原件，脱敏分享副本不可导入。</p></details>
+-          <details id="individual-reports"><summary>分别导入 A / B</summary><div class="reports"><label>导入初检报告 A<input id="before-file" type="file" accept=".json,application/json"></label><label>导入复检报告 B<input id="after-file" type="file" accept=".json,application/json" disabled></label></div></details><p id="report-ready" role="status"></p>
+-        </section>
+-      </details></section>
+-      <section id="review-stage"><h2 id="review-title">看看检测结果，决定下一步</h2><p id="review-hint"></p><div id="remediation"></div><p id="comparison" role="status"></p><div id="results"></div><details id="lesson-panel" hidden><summary>教学检查与重试</summary><p class="muted">由 Educates 教学动作模板适配；检查来自当前报告。本人采集新报告后更新，阅读步骤不改变事实。</p><div id="lesson-checks"></div><button id="lesson-retry" type="button" class="secondary">前往同目标复检</button></details><button id="export" class="secondary" disabled>预览脱敏分享报告</button><textarea id="export-preview" hidden rows="10" aria-label="分享前可编辑报告"></textarea><button id="save-export" hidden>保存已编辑报告</button>
+-      <details id="course-sharing"><summary>要发给老师或同学？导出课程资料</summary><p class="muted">这些用于传递课程要求，不是检测前必须下载的文件。</p><div class="toolbar"><button id="export-course" class="secondary">导出课程包</button><button id="export-guide" class="secondary">下载离线指导</button></div></details>
+-    </article><section id="empty-state" hidden></section>
+-  </div>
+-  <section id="practice-panel" class="practice-panel" hidden aria-labelledby="practice-heading">
+-    <div class="practice-heading"><h2 id="practice-heading">Notebook ＋ SQLite 连续实训</h2><p id="practice-description">正在读取实训资料…</p></div>
+-    <section id="practice-intro"><h3>这一堂课，你会做什么？</h3><p>先用 Notebook 分析一份成绩表，再用 SQLite 查询同一份数据，最后提交结果供老师核对。</p><ul class="requirements"><li>需要已有 Jupyter 与课程 Python 内核、NumPy、Pandas。</li><li>SQLite 练习使用 Python 标准库，不需要另装数据库服务。</li><li>课堂成果、环境检测和阅读确认分别记录。</li></ul><p>接下来先确认环境，再下载资料跟做。你可以随时返回前面的步骤。</p></section>
+-    <section id="practice-prepare"><h3>分别准备两项环境</h3><p>点击一项进入环境向导。做完后，使用页面上方“返回实训”继续另一项。</p><div class="component-row"><div><strong>Notebook 数据分析</strong><p>确认课程 Python、内核和数据分析依赖。</p></div><button id="practice-notebook" class="secondary" disabled>准备 Notebook →</button></div><div class="component-row"><div><strong>SQLite 查询</strong><p>跟做资料时生成 scores.sqlite，再对该文件采集与复检。</p></div><button id="practice-sqlite" class="secondary" disabled>准备 SQLite →</button></div><p id="practice-environment" class="muted" aria-live="polite"></p><p class="muted">没有报告仍可查看后续练习，但不会显示环境通过。</p></section>
+-    <section id="practice-work"><h3>下载资料，按步骤完成练习</h3><p>把资料完整解压到一个新文件夹。先完成 Notebook，再使用同一份 CSV 做 SQLite 练习。</p><a class="button" id="practice-materials" href="/api/practice/materials">下载完整实训资料 ↓</a><section id="practice-visual-guide" aria-label="连续实训图示"></section><details id="practice-instructions"><summary>跟着做：目标、准备条件和操作步骤</summary><div id="practice-steps"></div></details><label class="checkbox"><input id="practice-read" type="checkbox"> 我已阅读当前步骤（仅记录本人声明）</label><p id="practice-reading-status" class="muted"></p></section>
+-    <section class="practice-submission" id="practice-submit"><h3>把你的实训结果交回来</h3><p>完成资料中的练习后，选择生成的“实训成果.json”。核验发现错误时，可以修改后重新提交。</p><section id="practice-submit-guide" aria-label="实训成果位置图示"></section><label for="practice-submission">选择 实训成果.json</label><input id="practice-submission" type="file" accept=".json,application/json"><div class="toolbar"><button id="practice-check" disabled>核验这份成果</button><button id="practice-completion" class="secondary" disabled>导出完成物与尝试记录</button></div><p id="practice-artifact-status" class="muted"></p><p id="practice-result" role="status"></p><details id="practice-attempts-panel" hidden><summary>查看提交记录，包括错误和重新提交</summary><ol id="practice-attempts"></ol></details><p class="muted">关闭或刷新前请导出。这里只核对限定的数据结果，不执行上传代码，不能证明原创或学习掌握。完成物含本机报告，分享前请检查隐私。</p></section>
+-  </section>
+-  <div class="flow-footer" id="flow-footer"><button id="guide-prev" class="secondary">← 上一步</button><p id="guide-footnote"></p><button id="guide-next">下一步 →</button></div>
+-</section>
+-<section id="teacher-screen" hidden aria-labelledby="teacher-heading"><button id="teacher-home" class="text-button">← 返回学习首页</button><h1 id="teacher-heading" tabindex="-1">教师工作台</h1><p>发布固定要求、传递课程文件，或重新核对学生提交的结果。</p><details id="practice-publish-panel" open><summary>发布 Notebook ＋ SQLite 连续实训</summary><p>课堂包固定资料与两项组件身份。课程码只在当前电脑有效，跨电脑请传递文件。</p><div class="toolbar"><button id="practice-publish">在本机发布实训</button><button id="practice-export-package" class="secondary" disabled>导出实训课程包</button></div><p id="practice-published" role="status"></p></details>
+-<details id="teacher-review-panel"><summary>核对学生完成物</summary><p>选择学生导出的 Kehang-practice-completion.json，会重新核验其中保留的每次限定数据成果。学生文件中的“通过”字段不会作为核验依据；格式无效或旧资料的原内容未随完成物保存，需学生提供原件另行核对。</p><label for="practice-completion-file">选择完成物重新核验</label><input id="practice-completion-file" type="file" accept=".json,application/json"><div id="practice-teacher-review" role="status"></div></details>
+-<details id="teacher-course-panel"><summary>发布单项课程任务</summary><form id="teacher-form"><label for="teacher-title">课程名称</label><input id="teacher-title" value="Python 基础实验" maxlength="100"><label for="teacher-goal">任务场景</label><select id="teacher-goal"><option value="python-basics">Python 基础</option><option value="node-basics">Node.js/npm 示例</option><option value="pytorch-cpu">PyTorch CPU</option><option value="pytorch-gpu">PyTorch GPU</option><option value="vm-linux">虚拟机 / Linux</option><option value="local-qwen">固定本地模型</option></select><p id="teacher-node-requirements" class="muted" hidden>固定演示要求：Windows、Node.js ≥22.0 且 &lt;25.0、npm ≥10.0 且 &lt;12.0；不代表学校既定要求。</p><p id="teacher-fixed-requirements" class="muted" hidden>此场景使用固定演示检测。更改名称形成新快照，检测类型不接受任意代码。</p><div id="teacher-python-options"><div class="inline"><label>Python 最低版本<input id="python-min" value="3.10"></label><label>最高版本（不含）<input id="python-max" value="3.15"></label></div><label for="requests-min">requests 最低版本（Python任务）</label><input id="requests-min" value="2.31"></div><button class="secondary">发布新任务</button></form><p id="published" role="status"></p></details></section>
+-<details id="help-panel" hidden><summary>高级：单次报错诊断与发送预览</summary><section id="diagnosis"><h2>文字报错与证据解释</h2><p id="ai-status">没有检测报告时，诊断会明确列出证据缺口。规则结果独立保留。</p><label for="user-error">粘贴准备或运行阶段的报错</label><textarea id="user-error" rows="3" maxlength="8000" placeholder="先删除账号、密钥与无关日志"></textarea><button id="prepare-ai" class="secondary">生成脱敏发送预览</button><div id="ai-preview-panel" hidden><p id="ai-destination"></p><details><summary>同时发送的固定系统说明</summary><p id="ai-system"></p></details><label for="ai-preview">将发送的消息（可编辑）</label><textarea id="ai-preview" rows="10" maxlength="10000"></textarea><label class="checkbox"><input type="checkbox" id="ai-consent"> 我已核对目的地和内容，同意发送这一次请求</label><button id="send-ai" disabled>发送一次诊断请求</button></div><pre id="ai-output" aria-live="polite"></pre><p class="muted">建议由本人审查执行。手动处理后，用同一任务和目标采集B；AI回复成功不代表环境通过。</p></section></details>
+-<p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+-</main>
+-<aside id="learning-chat" class="learning-chat" aria-labelledby="chat-heading" hidden>
+-  <div class="chat-heading"><div><h2 id="chat-heading">课航 AI</h2><p id="chat-connection" role="status">正在读取连接状态…</p></div><button id="chat-close" class="text-button" aria-label="收起 AI 聊天">收起</button></div>
+-  <p id="chat-context" class="chat-context"></p>
+-  <div id="chat-messages" class="chat-messages" role="log" aria-label="与课航 AI 的对话" aria-live="polite" aria-relevant="additions text"></div>
+-  <div id="chat-suggestions" class="chat-suggestions" aria-label="你可以这样问"></div>
+-  <p id="chat-status" role="status" class="chat-status"></p>
+-  <form id="chat-form"><label for="chat-input">有什么不明白的？</label><textarea id="chat-input" rows="3" maxlength="2000" placeholder="直接提问，也可以接着上次的回答追问…" required></textarea><div class="chat-compose-actions"><button id="chat-clear" type="button" class="text-button">新对话</button><button id="chat-preview-button" type="submit">预览发送 →</button></div></form>
+-  <section id="chat-preview-panel" class="chat-preview-panel" aria-label="本次聊天发送预览" hidden><p id="chat-destination"></p><details><summary>查看本次上下文和对话记录</summary><pre id="chat-preview"></pre><details><summary>系统说明</summary><p id="chat-system"></p></details></details><p class="muted">将发送上面的内容；每次请求可能产生模型费用。</p><div class="chat-confirm-actions"><button id="chat-cancel" class="text-button">返回编辑</button><button id="chat-send">同意并发送这条</button></div></section>
+-  <details id="chat-setup" hidden><summary>如何连接 AI</summary><p>在启动课航的终端中设置 <code>CAMPUSLAB_AI_URL</code>、<code>CAMPUSLAB_AI_MODEL</code>，需要认证时再设置 <code>CAMPUSLAB_AI_KEY</code>，然后重启服务。接口需兼容 Chat Completions。</p><p>配置方式见项目 <code>.env.example</code>；课航不会自动读取这个文件。连接前仍可使用课程指引和检测。</p></details>
+-  <p class="chat-note">对话仅保留在当前页面。AI 提供解释，检测结论以报告为准。</p>
+-</aside></div><footer>课航 · 课程学习与实训助手</footer>
+-</body></html>
++<!doctype html>
++<html lang="zh-CN">
++<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
++<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><link rel="stylesheet" href="/product.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/local-selection.js" defer></script><script src="/learning.js" defer></script></head>
++<body class="welcome-page">
++<a class="skip-link" href="#main-content">跳到主要内容</a>
++<header><a class="brand" id="home-link" href="/" aria-label="课航首页">课航<span>KEHANG</span></a>
++<span class="header-caption">课程学习与实训助手</span><nav aria-label="主要导航"><button id="home-nav" class="text-button">课程</button><button id="teacher-nav" class="text-button">教师工作台</button><button id="chat-toggle" class="secondary" aria-controls="learning-chat" aria-expanded="false">问 AI</button></nav></header>
++<div class="learning-layout">
++<main id="main-content">
++<section id="home-screen" aria-labelledby="welcome-title">
++  <div class="welcome-scene"><h1 id="welcome-title">课航</h1><button id="welcome-start">开始 <span aria-hidden="true">→</span></button></div>
++</section>
++<section id="selection-screen" hidden aria-labelledby="selection-title">
++  <button id="selection-home" class="text-button">← 返回首页</button>
++  <div class="course-welcome"><h1 id="selection-title">选择你的课程</h1></div>
++  <section class="course-library" aria-labelledby="course-library-title"><div class="library-heading"><h2 id="course-library-title">你想学什么？</h2><button id="choose-course" class="text-button">导入课程 / 更多路线 →</button></div><div id="course-filters" class="course-filters" role="group" aria-label="按学习方向筛选"></div><div id="course-grid" class="course-grid" aria-label="支持的课程"></div><p id="course-selection-status" role="status" class="muted"></p></section>
++  <div class="home-options"><button id="start-practice" class="option-row"><span><strong>把所学连起来，做一堂数据分析实训</strong><small>Notebook ＋ SQLite · 分析同一份数据，提交你的成果</small></span><span aria-hidden="true">→</span></button><button id="import-entry" class="option-row"><span><strong>已有老师发来的课程资料</strong><small>导入课程文件，按课堂要求开始</small></span><span aria-hidden="true">→</span></button></div>
++  <p class="home-footnote">13 类课程 · 本机学习，无需注册 <button id="home-chat" class="text-button">不知道怎么选？问 AI →</button></p>
++</section>
++<section id="guide-shell" hidden aria-labelledby="guide-title">
++  <div class="guide-topline"><button id="back-home" class="text-button">← 返回首页</button><button id="back-selection" class="text-button">选择其他课程</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
++  <div class="guide-heading"><div><p id="guide-context" class="context">课程环境准备</p><h1 id="guide-title" tabindex="-1">选择你要学习的课程</h1></div><p id="guide-count" class="step-count"></p></div>
++  <nav id="guide-progress" aria-label="学习步骤"><ol></ol></nav>
++  <div class="workspace" id="course-screen" hidden>
++    <aside class="entry-panel" id="course-choice"><section><h2>你想学什么？</h2><p class="muted">选一门课，再进入下一步。课程不同，需要准备的软件也不同。</p>
++      <form id="goal-form"><label for="goal">选择课程</label><select id="goal"><option value="python-basics">Python 基础课程</option><option value="node-basics">Node.js/npm 示例课程</option><option value="pytorch-cpu">PyTorch · CPU 课程</option><option value="pytorch-gpu">PyTorch · GPU 课程</option><option value="vm-linux">虚拟机 / Linux 课程</option><option value="local-qwen">固定本地模型入门</option><option value="other">其他目标（查看目录）</option></select><button>下一步：准备环境 →</button></form>
++      <details><summary>不知道怎么选？说说你的学习目标</summary><form id="need-form"><label for="need-text">你想完成什么？</label><textarea id="need-text" rows="3" maxlength="2000" placeholder="例如：深度学习课要求用 GPU 运行 PyTorch"></textarea><button class="secondary">帮我找课程</button></form><div id="need-result" aria-live="polite"></div></details>
++      <details id="student-import"><summary>导入老师发来的课程</summary><label for="course-package">单项课程包（Kehang-course.json）</label><input id="course-package" type="file" accept=".json,application/json"><label for="practice-package">连续实训包（practice-course.json）</label><input id="practice-package" type="file" accept=".json,application/json"><form id="course-form"><label for="course-code">或输入当前电脑的课程码</label><div class="inline"><input id="course-code" maxlength="10" autocomplete="off" placeholder="10位课程码"><button class="secondary">进入课程</button></div></form><p class="muted">文件可以携带到其他电脑；课程码只在发布它的电脑有效。请向老师核对资料。</p></details>
++      <details id="catalog-panel"><summary>查看课程支持范围</summary><div id="catalog"></div></details>
++    </section></aside>
++    <article id="task-panel" hidden>
++      <section class="task-overview"><p class="context">本次课程</p><h2 id="task-title"></h2><details><summary>课程要求与任务详情</summary><p id="task-summary"></p><p class="muted" id="task-source"></p><p class="muted" id="task-id"></p><button id="download-task" class="secondary">保存任务快照</button></details></section>
++      <nav class="progress" hidden aria-label="检测证据状态"><span id="progress-task">已确认任务</span><span id="progress-evidence"></span><span id="progress-recheck"></span></nav>
++      <section id="preparation"><h2 id="prepare-title">先准备好要用的软件</h2><p id="prepare-intro">按课程要求准备，再检查实际使用的环境。</p><div id="prepare-summary" class="requirements"></div>
++        <div id="python-quick-check" class="python-quick-check" hidden><div><strong>已经装好 Python？</strong><p>直接检查本机版本和基础依赖，结果会自动回到这里。</p></div><button id="start-python">检测本机 Python →</button></div>
++        <button id="local-course-entry" hidden>选择目标并检测 →</button>
++        <p id="web-course-note" class="muted" hidden>这门课是网页提问练习，没有适用的本机环境检测。请按下方学习步骤进入 DeepSeek 官方网页；本人记录与成果核对不代表登录或模型连接证明。</p>
++        <label for="prepared">你的电脑准备到哪一步了？</label><select id="prepared"><option value="unsure">不确定，先看看需要什么</option><option value="missing">还没安装，需要操作指引</option><option value="installed">已经安装，准备检测</option></select><p id="prepared-hint" class="muted"></p>
++        <div id="prepare-help"></div>
++        <details id="full-guidance"><summary>查看完整步骤与官方下载来源</summary><label for="mode">说明详细程度</label><select id="mode"><option value="novice">新手：详细说明</option><option value="standard">标准：关键步骤</option><option value="quick">快捷：精简说明</option></select><div id="guidance"></div></details>
++        <details><summary>设备预检与准备建议（可选）</summary><details id="hardware-panel"><summary>手动收集设备信息</summary><p>先在检测步骤下载并解压工具，再在高级入口填写工具目录。本机主动运行，不自动扫描。</p><button id="hardware-command" class="secondary">生成硬件预检命令</button><pre id="hardware-script" tabindex="0"></pre><label for="hardware-file">选择 hardware.json</label><input id="hardware-file" type="file" accept=".json,application/json"><div id="hardware-results"></div></details><div id="route-advice" aria-live="polite"></div></details>
++      </section>
++      <div id="local-result-panel" hidden><details id="local-environment-details"><summary>查看检测环境与原始报告</summary><p id="local-result-summary"></p><div id="local-environments" aria-label="本次检测到的环境"></div><button id="local-save" class="text-button">保存本次原始报告</button><button id="local-save-before" class="text-button" hidden>保存初检报告 A</button></details><label id="local-recheck-execution-option" class="checkbox" hidden><input id="local-recheck-execution" type="checkbox"><span id="local-recheck-execution-label"></span></label><div class="toolbar"><button id="local-ai" class="secondary">问 AI：这个结果意味着什么？</button><button id="local-recheck" class="text-button">重新检测当前环境</button></div></div>
++      <section class="collection" id="collect-stage"><h2 id="collect-title">下载工具，做一次检测</h2><p id="collect-intro">检测工具会生成一份报告，帮你确认课程环境是否准备好了。</p>
++        <div id="local-check-panel" hidden>
++          <p id="local-scope" class="muted"></p>
++          <button id="local-discover" class="secondary">查找本机候选</button><p id="local-target-status" role="status"></p><div id="local-target-fields"></div>
++          <label id="local-gpu-option" class="checkbox" hidden><input id="local-gpu" type="checkbox"> 本次同意执行固定 GPU 张量运算</label>
++          <label id="local-infer-option" class="checkbox" hidden><input id="local-infer" type="checkbox"> 本次同意加载本地权重，执行固定离线推理</label>
++          <div id="local-vm-option" hidden><label>VirtualBox 实例 UUID（选择 .vmx 时留空）<input id="local-vm-uuid" autocomplete="off"></label><label class="checkbox"><input id="local-host-only" type="checkbox"> 尚未选择实例，本次仅检测宿主与虚拟化软件</label></div>
++          <div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看准备指引</button>
++        </div>
++        <details id="manual-collection" open><summary>改用手动工具 / 检测另一台电脑</summary>
++        <div class="download-action"><div><strong>先下载当前课程的检测工具</strong><p class="muted">这是这一步需要的下载文件。请完整解压，不要在 ZIP 中直接运行。</p></div><a id="download-tool" class="button" href="/api/tool">下载检测工具 ↓</a></div>
++        <div id="simple-collector" hidden><h3>解压后，双击 Start-Collect.cmd</h3><p>窗口会带你选择课程 Python，不需要先记住完整路径。按下面的方法选择，最后核对目标并输入 START。</p>
++        <details class="path-guide" id="python-path-help"><summary>终端查找帮助（备用）</summary><h4>窗口问 Python 在哪里？这样选</h4><ol><li><strong>直接按回车</strong>，查看已登记的 Python 候选；工具只读取安装登记与 PATH 位置，不运行候选。</li><li><strong>输入编号</strong>，选择这门课实际使用的 Python。有多个时，对照老师要求或编辑器已选的环境；列表不代表已检测通过。</li><li><strong>列表没有就输入 F</strong>，在文件窗口选择安装目录里的 <code>python.exe</code>。也可以粘贴路径或把文件拖入终端，带双引号也可以。</li></ol>
++        <details id="python-location-help"><summary>列表没有，安装目录也找不到？</summary><p><strong>普通 Python：</strong>在开始菜单搜索 Python → 右键“打开文件所在的位置”。如果看到的是快捷方式，再右键“属性”查看“目标”，进入对应安装目录，选里面的 <code>python.exe</code>，不要选文件夹、快捷方式或 <code>pythonw.exe</code>。</p><p><strong>Anaconda：</strong>打开这门课使用的 Anaconda Prompt，在该终端手动输入下面一行，把输出的整行路径复制回检测窗口：</p><pre>python -c "import sys; print(sys.executable)"</pre><p>如果还没有安装 Python，请返回上一步选择“还没安装”，按官方准备指引处理。候选列表为空不代表电脑没有安装。</p></details>
++        <details id="kernel-path-help" hidden><summary>Notebook 的 kernel.json 怎么找？</summary><p>先确认笔记本当前选择的内核名称。在课程 Python 对应的终端手动输入：</p><pre>python -m jupyter kernelspec list</pre><p>找到与所选内核对应的目录；回到采集窗口按 F，选择这个目录中的 <code>kernel.json</code>。它是内核定义文件，不是 <code>python.exe</code>；最终由固定检测确认内核是否匹配。</p></details>
++        <p class="muted">误选了包内 runtime、文件夹或不存在的位置，会提示重新选，不会因此通过。终端输入 ? 查看完整帮助，Q 退出。</p></details>
++        <p id="collector-stage-hint" class="muted">第一次检测选 A，得到 report-A.json。包内 runtime 只是检测工具，不是课程 Python。</p><p class="muted">如果窗口仍只要求粘贴完整路径，说明是旧工具：请重新下载本页工具，完整解压到新文件夹后再打开。</p></div>
++        <section id="course-visual-guide" hidden aria-label="当前课程的Windows 11图示引导"></section>
++        <p id="command-entry-hint" hidden>这门课需要明确选择软件或文件路径。请按下面展开的采集入口填写，检查命令后由你手动运行。</p>
++        <details id="command-panel"><summary>高级入口：填写路径，生成手动采集命令</summary><p>以下输入只生成命令，由本人检查后在目标电脑运行。</p><label for="tool-dir">完整解压后的工具目录</label><input id="tool-dir" placeholder="例如 D:\课航工具"><label id="target-label" for="target">课程解释器完整路径</label><input id="target" placeholder="例如 C:\CoursePython\python.exe"><p id="node-target-guide" class="muted" hidden>按上方图示选择 node.exe 程序文件，不选开始菜单文件夹或快捷方式。</p><label for="tool-python">工具 Python（包内没有 runtime 时填写）</label><input id="tool-python" placeholder="已有的工具Python完整路径">
++<div id="notebook-options" hidden><label for="kernel-spec">所选内核的 kernel.json 完整路径</label><input id="kernel-spec" placeholder="例如 D:\ANACONDA\share\jupyter\kernels\python3\kernel.json"><p class="muted">固定程序会真实启动该内核并核对解释器；仅支持已审查的 ipykernel 启动格式。</p></div>
++<div id="sqlite-options" hidden><p>先在新文件创建演示数据，再只读采集。</p><button type="button" id="prepare-sqlite" class="secondary">生成创建演示数据库命令</button></div>
++<div id="web-learning-options" hidden><label for="learning-record">本人填写的 web-record.json 完整路径（可空）</label><input id="learning-record" placeholder="例如 D:\课航工具\web-record.json"><p class="muted">本人完成记录与数字成果分别核对；本工具不认证登录或模型连接。</p></div>
++<div id="api-learning-options" hidden><p>固定 DeepSeek API 学习任务。密钥仅在本人终端隐藏输入。</p><button type="button" id="learning-preview" class="secondary">展开实际请求预览</button><div id="learning-preview-panel" hidden><label for="learning-preview-text">目的地、模型、系统说明及实际内容（可编辑消息）</label><textarea id="learning-preview-text" rows="12" aria-describedby="api-preview-hint"></textarea><p id="api-preview-hint" class="muted">保存为工具目录的 api-preview.json。内容改变会清除旧报告和发送选择；改变练习问题不能完成原任务。</p><button type="button" id="save-learning-preview" class="secondary">保存请求预览 JSON</button></div><label for="api-preview-path">api-preview.json 完整路径（可空，空时使用任务固定内容）</label><input id="api-preview-path" placeholder="例如 D:\课航工具\api-preview.json"><label class="checkbox"><input type="checkbox" id="api-send"> 本次进入终端单次发送确认（可能产生费用；此处不会发送）</label></div>
++<div id="dsh-options" hidden><div id="dsh-package-options"><label for="dsh-package">所选 @deepseek-ai/dsh 的 package.json 完整路径</label><input id="dsh-package" placeholder="例如 D:\DSH\node_modules\@deepseek-ai\dsh\package.json"></div><label for="dsh-workspace">本次专用练习目录</label><input id="dsh-workspace" placeholder="例如 D:\CoursePractice\DSH-summary"><div class="inline"><label for="dsh-provider">模型提供方公开标识<input id="dsh-provider" placeholder="例如 deepseek"></label><label for="dsh-model">模型公开标识<input id="dsh-model" placeholder="例如 deepseek-flash"></label></div><label for="dsh-evidence">本人必要工具摘要 JSON 完整路径（可空）</label><input id="dsh-evidence" placeholder="例如 D:\CoursePractice\DSH-summary\evidence.json"><button type="button" id="prepare-dsh" class="secondary">生成专用练习准备命令</button><p class="muted">仅准备新目录和固定练习文件。本人另行在DSH授权任务；本工具不启动DSH，不读其凭据。</p></div>
++<pre id="prepare-script" tabindex="0" aria-label="本人审查后运行的准备命令"></pre>
++<div id="model-options" hidden><label for="model-dir">课程固定模型本地目录</label><input id="model-dir" placeholder="例如 D:\Models\Qwen2.5-0.5B-Instruct"><label class="checkbox"><input type="checkbox" id="infer"> 本次执行固定离线推理，实际加载本地权重</label></div>
++<div id="torch-options" hidden><label class="checkbox"><input type="checkbox" id="gpu-run"> 本次主动执行固定 GPU 张量运算</label></div>
++<div id="vm-options" hidden><label for="vm-id">实例：VirtualBox UUID 或 VMware .vmx 完整路径</label><input id="vm-id" placeholder="UUID 或 D:\Virtual Machines\course\course.vmx"><label for="guest-path">手动取得的来宾 JSON 路径（可空）</label><input id="guest-path" placeholder="例如 D:\课航工具\guest.json"><p class="muted">在已由本人启动的Linux来宾运行根目录guest_probe.py，使用当前任务摘要和实例标识。先用 --help 查看参数；无来宾证据保留未知。</p></div>
++<label for="report-stage">保存哪次检测</label><select id="report-stage"><option value="A">初检 A</option><option value="B">复检 B</option></select><button id="make-command" class="secondary">生成手动命令</button><pre id="command" tabindex="0"></pre><details><summary>这一步遇到问题</summary><p><span id="target-help"></span> 检查完整解压、路径及task.json。原报告不覆盖；复检选择B，新一轮使用新目录。安装与修复由本人决定。</p></details></details>
++        <section class="report-upload" aria-labelledby="report-upload-title">
++          <h3 id="report-upload-title">找到报告，带回课航</h3><p class="muted">运行检测后，照着这三步选文件。</p>
++          <ol class="report-steps">
++            <li><h4><span>1</span> 打开工具文件夹</h4><p class="report-key-hint"><kbd>Win</kbd> + <kbd>E</kbd> 打开文件资源管理器</p>
++              <div class="folder-preview"><span class="guide-folder-icon" aria-hidden="true"></span><input id="report-folder-address" readonly aria-label="报告所在的工具文件夹" value="你解压的课航工具文件夹"></div>
++              <button id="copy-report-folder" type="button" class="secondary" hidden>复制文件夹地址</button><p id="report-folder-tip" class="muted">就是放着 task.json 的解压文件夹。</p><p id="report-copy-status" role="status"></p>
++            </li>
++            <li><h4><span>2</span> 找到这份报告</h4><div id="report-explorer-window" class="report-explorer-window"></div><p id="report-filename-hint" class="muted">初检通常保存为 report-A.json。</p></li>
++            <li><h4><span>3</span> 回到这里，选择报告</h4><label id="report-upload-label" for="report-files">选择 report-A.json</label><input id="report-files" type="file" accept=".json,application/json" multiple><p class="muted">在文件窗口打开同一个工具文件夹，选中报告后点“打开”。</p></li>
++          </ol>
++          <details id="report-extension-help"><summary>看不到 .json / .exe 文件后缀？</summary><p>在资源管理器选择“查看 → 显示 → 文件扩展名”。</p><div id="report-extension-window"></div></details>
++          <details id="report-missing-help"><summary>文件夹里没有报告？</summary><ul><li>先运行检测。下载工具、生成命令都不会生成报告。</li><li>去完整解压后的工具文件夹找，不是 ZIP 内或 Python／Node.js 安装目录。</li><li>若终端提示失败或报告已存在，先核对提示；复检生成 B，保留原来的 A。</li></ul></details>
++          <details><summary>报告校验与批量导入说明</summary><p class="muted">也可一次选择原始 A／B 两份。按报告内的采集时间确定先后，再核对同任务、同目标及组件身份；文件名不作为通过依据。时间相同或身份冲突时请核对原件，脱敏分享副本不可导入。</p></details>
++          <details id="individual-reports"><summary>分别导入 A / B</summary><div class="reports"><label>导入初检报告 A<input id="before-file" type="file" accept=".json,application/json"></label><label>导入复检报告 B<input id="after-file" type="file" accept=".json,application/json" disabled></label></div></details><p id="report-ready" role="status"></p>
++        </section>
++      </details></section>
++      <section id="review-stage"><h2 id="review-title">看看检测结果，决定下一步</h2><p id="review-hint"></p><section id="course-next-guidance" aria-label="当前课程下一步" hidden></section><details id="remediation-details"><summary>逐项处理建议</summary><div id="remediation"></div></details><p id="comparison" role="status"></p><div id="results"></div><details id="lesson-panel" hidden><summary>教学检查与重试</summary><p class="muted">由 Educates 教学动作模板适配；检查来自当前报告。本人采集新报告后更新，阅读步骤不改变事实。</p><div id="lesson-checks"></div><button id="lesson-retry" type="button" class="secondary">前往同目标复检</button></details><button id="export" class="secondary" disabled>预览脱敏分享报告</button><textarea id="export-preview" hidden rows="10" aria-label="分享前可编辑报告"></textarea><button id="save-export" hidden>保存已编辑报告</button>
++      <details id="course-sharing"><summary>要发给老师或同学？导出课程资料</summary><p class="muted">这些用于传递课程要求，不是检测前必须下载的文件。</p><div class="toolbar"><button id="export-course" class="secondary">导出课程包</button><button id="export-guide" class="secondary">下载离线指导</button></div></details>
++    </article><section id="empty-state" hidden></section>
++  </div>
++  <section id="practice-panel" class="practice-panel" hidden aria-labelledby="practice-heading">
++    <div class="practice-heading"><h2 id="practice-heading">Notebook ＋ SQLite 连续实训</h2><p id="practice-description">正在读取实训资料…</p></div>
++    <section id="practice-intro"><h3>这一堂课，你会做什么？</h3><p>先用 Notebook 分析一份成绩表，再用 SQLite 查询同一份数据，最后提交结果供老师核对。</p><ul class="requirements"><li>需要已有 Jupyter 与课程 Python 内核、NumPy、Pandas。</li><li>SQLite 练习使用 Python 标准库，不需要另装数据库服务。</li><li>课堂成果、环境检测和阅读确认分别记录。</li></ul><p>接下来先确认环境，再下载资料跟做。你可以随时返回前面的步骤。</p></section>
++    <section id="practice-prepare"><h3>分别准备两项环境</h3><p>点击一项进入环境向导。做完后，使用页面上方“返回实训”继续另一项。</p><div class="component-row"><div><strong>Notebook 数据分析</strong><p>确认课程 Python、内核和数据分析依赖。</p></div><button id="practice-notebook" class="secondary" disabled>准备 Notebook →</button></div><div class="component-row"><div><strong>SQLite 查询</strong><p>跟做资料时生成 scores.sqlite，再对该文件采集与复检。</p></div><button id="practice-sqlite" class="secondary" disabled>准备 SQLite →</button></div><p id="practice-environment" class="muted" aria-live="polite"></p><p class="muted">没有报告仍可查看后续练习，但不会显示环境通过。</p></section>
++    <section id="practice-work"><h3>下载资料，按步骤完成练习</h3><p>把资料完整解压到一个新文件夹。先完成 Notebook，再使用同一份 CSV 做 SQLite 练习。</p><a class="button" id="practice-materials" href="/api/practice/materials">下载完整实训资料 ↓</a><section id="practice-visual-guide" aria-label="连续实训图示"></section><details id="practice-instructions"><summary>跟着做：目标、准备条件和操作步骤</summary><div id="practice-steps"></div></details><label class="checkbox"><input id="practice-read" type="checkbox"> 我已阅读当前步骤（仅记录本人声明）</label><p id="practice-reading-status" class="muted"></p></section>
++    <section class="practice-submission" id="practice-submit"><h3>把你的实训结果交回来</h3><p>完成资料中的练习后，选择生成的“实训成果.json”。核验发现错误时，可以修改后重新提交。</p><section id="practice-submit-guide" aria-label="实训成果位置图示"></section><label for="practice-submission">选择 实训成果.json</label><input id="practice-submission" type="file" accept=".json,application/json"><div class="toolbar"><button id="practice-check" disabled>核验这份成果</button><button id="practice-completion" class="secondary" disabled>导出完成物与尝试记录</button></div><p id="practice-artifact-status" class="muted"></p><p id="practice-result" role="status"></p><details id="practice-attempts-panel" hidden><summary>查看提交记录，包括错误和重新提交</summary><ol id="practice-attempts"></ol></details><p class="muted">关闭或刷新前请导出。这里只核对限定的数据结果，不执行上传代码，不能证明原创或学习掌握。完成物含本机报告，分享前请检查隐私。</p></section>
++  </section>
++  <div class="flow-footer" id="flow-footer"><button id="guide-prev" class="secondary">← 上一步</button><p id="guide-footnote"></p><button id="guide-next">下一步 →</button></div>
++</section>
++<section id="teacher-screen" hidden aria-labelledby="teacher-heading"><button id="teacher-home" class="text-button">← 返回学习首页</button><h1 id="teacher-heading" tabindex="-1">教师工作台</h1><p>发布固定要求、传递课程文件，或重新核对学生提交的结果。</p><details id="practice-publish-panel" open><summary>发布 Notebook ＋ SQLite 连续实训</summary><p>课堂包固定资料与两项组件身份。课程码只在当前电脑有效，跨电脑请传递文件。</p><div class="toolbar"><button id="practice-publish">在本机发布实训</button><button id="practice-export-package" class="secondary" disabled>导出实训课程包</button></div><p id="practice-published" role="status"></p></details>
++<details id="teacher-review-panel"><summary>核对学生完成物</summary><p>选择学生导出的 Kehang-practice-completion.json，会重新核验其中保留的每次限定数据成果。学生文件中的“通过”字段不会作为核验依据；格式无效或旧资料的原内容未随完成物保存，需学生提供原件另行核对。</p><label for="practice-completion-file">选择完成物重新核验</label><input id="practice-completion-file" type="file" accept=".json,application/json"><div id="practice-teacher-review" role="status"></div></details>
++<details id="teacher-course-panel"><summary>发布单项课程任务</summary><form id="teacher-form"><div class="teacher-field"><label for="teacher-title">课程名称</label><input id="teacher-title" value="Python 基础实验" maxlength="100"></div><div class="teacher-field"><label for="teacher-goal">任务场景</label><select id="teacher-goal"><option value="python-basics">Python 基础</option><option value="node-basics">Node.js/npm 示例</option><option value="pytorch-cpu">PyTorch CPU</option><option value="pytorch-gpu">PyTorch GPU</option><option value="vm-linux">虚拟机 / Linux</option><option value="local-qwen">固定本地模型</option></select></div><p id="teacher-node-requirements" class="muted" hidden>固定演示要求：Windows、Node.js ≥22.0 且 &lt;25.0、npm ≥10.0 且 &lt;12.0；不代表学校既定要求。</p><p id="teacher-fixed-requirements" class="muted" hidden>此场景使用固定演示检测。更改名称形成新快照，检测类型不接受任意代码。</p><div id="teacher-python-options"><div class="inline"><label>Python 最低版本<input id="python-min" value="3.10"></label><label>最高版本（不含）<input id="python-max" value="3.15"></label></div><label for="requests-min">requests 最低版本（Python任务）</label><input id="requests-min" value="2.31"></div><button class="secondary">发布新任务</button></form><p id="published" role="status"></p></details></section>
++<details id="help-panel" hidden><summary>高级：单次报错诊断与发送预览</summary><section id="diagnosis"><h2>文字报错与证据解释</h2><p id="ai-status">没有检测报告时，诊断会明确列出证据缺口。规则结果独立保留。</p><label for="user-error">粘贴准备或运行阶段的报错</label><textarea id="user-error" rows="3" maxlength="8000" placeholder="先删除账号、密钥与无关日志"></textarea><button id="prepare-ai" class="secondary">生成脱敏发送预览</button><div id="ai-preview-panel" hidden><p id="ai-destination"></p><details><summary>同时发送的固定系统说明</summary><p id="ai-system"></p></details><label for="ai-preview">将发送的消息（可编辑）</label><textarea id="ai-preview" rows="10" maxlength="10000"></textarea><label class="checkbox"><input type="checkbox" id="ai-consent"> 我已核对目的地和内容，同意发送这一次请求</label><button id="send-ai" disabled>发送一次诊断请求</button></div><pre id="ai-output" aria-live="polite"></pre><p class="muted">建议由本人审查执行。手动处理后，用同一任务和目标采集B；AI回复成功不代表环境通过。</p></section></details>
++<p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
++</main>
++<aside id="learning-chat" class="learning-chat" aria-labelledby="chat-heading" hidden>
++  <div class="chat-heading"><div><h2 id="chat-heading">课航 AI</h2><p id="chat-connection" role="status">正在读取连接状态…</p></div><button id="chat-close" class="text-button" aria-label="收起 AI 聊天">收起</button></div>
++  <p id="chat-context" class="chat-context"></p>
++  <div id="chat-messages" class="chat-messages" role="log" aria-label="与课航 AI 的对话" aria-live="polite" aria-relevant="additions text"></div>
++  <div id="chat-suggestions" class="chat-suggestions" aria-label="你可以这样问"></div>
++  <p id="chat-status" role="status" class="chat-status"></p>
++  <form id="chat-form"><label for="chat-input">有什么不明白的？</label><textarea id="chat-input" rows="3" maxlength="2000" placeholder="直接提问，也可以接着上次的回答追问…" required></textarea><div class="chat-compose-actions"><button id="chat-clear" type="button" class="text-button">新对话</button><button id="chat-preview-button" type="submit">预览发送 →</button></div></form>
++  <section id="chat-preview-panel" class="chat-preview-panel" aria-label="本次聊天发送预览" hidden><p id="chat-destination"></p><details><summary>查看本次上下文和对话记录</summary><pre id="chat-preview"></pre><details><summary>系统说明</summary><p id="chat-system"></p></details></details><p class="muted">将发送上面的内容；每次请求可能产生模型费用。</p><div class="chat-confirm-actions"><button id="chat-cancel" class="text-button">返回编辑</button><button id="chat-send">同意并发送这条</button></div></section>
++  <details id="chat-setup" hidden><summary>如何连接 AI</summary><p>在启动课航的终端中设置 <code>CAMPUSLAB_AI_URL</code>、<code>CAMPUSLAB_AI_MODEL</code>，需要认证时再设置 <code>CAMPUSLAB_AI_KEY</code>，然后重启服务。接口需兼容 Chat Completions。</p><p>配置方式见项目 <code>.env.example</code>；课航不会自动读取这个文件。连接前仍可使用课程指引和检测。</p></details>
++  <p class="chat-note">对话仅保留在当前页面。AI 提供解释，检测结论以报告为准。</p>
++</aside></div><footer>课航 · 课程学习与实训助手</footer>
++</body></html>
+diff --git a/web/product.css b/web/product.css
+new file mode 100644
+index 0000000..723e276
+--- /dev/null
++++ b/web/product.css
+@@ -0,0 +1,245 @@
++/* Shared product finish. Built on Kehang's existing system font and ochre accent. */
++:root {
++  --bg: oklch(.975 .001 36);
++  --surface: oklch(1 0 0);
++  --soft: oklch(.945 .002 36);
++  --ink: oklch(.25 .004 36);
++  --muted: oklch(.45 .004 36);
++  --line: oklch(.88 .002 36);
++  --control-radius: 8px;
++  --panel-radius: 12px;
++  --feedback: 160ms cubic-bezier(.22, 1, .36, 1);
++}
++body {font-size:15px; line-height:1.65; font-weight:400; font-variant-numeric:tabular-nums}
++h1,h2,h3,strong {font-weight:500}
++h1 {font-size:32px; line-height:1.3; letter-spacing:0}
++h2 {font-size:24px; line-height:1.4}
++h3 {font-size:18px; line-height:1.5}
++p {max-width:74ch}
++header,.welcome-page header {
++  max-width:none; height:80px; padding:0 max(32px,calc((100vw - 1600px)/2));
++  gap:24px; background:var(--surface); border-bottom:1px solid var(--line);
++}
++.brand,.welcome-page .brand {font-size:24px; font-weight:600; color:var(--ink); gap:12px}
++.brand span,.welcome-page .brand span {font-size:12px; font-weight:500; color:var(--muted); letter-spacing:0}
++.header-caption {font-size:14px}
++header nav {gap:24px}
++header nav button {font-size:14px}
++button,.button {min-height:44px; border-radius:var(--control-radius); padding:10px 20px; font-weight:500; transition:background-color var(--feedback),color var(--feedback),border-color var(--feedback)}
++button:hover,.button:hover {filter:none}
++button:active,.button:active {filter:brightness(.94)}
++button.secondary {color:var(--ink); border-color:var(--line); background:var(--surface)}
++button.secondary:hover {background:var(--soft); border-color:var(--muted)}
++button.text-button {color:var(--muted); padding:8px 0; min-height:40px; font-weight:400}
++button.text-button:hover {color:var(--brand)}
++#chat-toggle,.welcome-page #chat-toggle {min-height:44px; padding:8px 20px; border:1px solid var(--line); color:var(--ink); background:var(--surface)}
++#chat-toggle:hover,.welcome-page #chat-toggle:hover {background:var(--soft); border-color:var(--muted)}
++button:disabled {opacity:1; background:var(--soft); color:var(--muted); border-color:var(--line)}
++button.text-button:disabled {background:transparent}
++input:not([type=file]):not([type=checkbox]),select,textarea {font-size:15px; line-height:1.6; padding:10px 12px; border-radius:var(--control-radius); min-height:44px}
++input::placeholder,textarea::placeholder {color:var(--muted)}
++label {font-size:14px; font-weight:500; margin:24px 0 8px}
++.checkbox {font-size:14px; gap:12px; align-items:start}
++details {padding:20px 0}
++summary {font-size:14px; font-weight:500; line-height:1.6; min-height:24px}
++details[open]>summary {margin-bottom:16px}
++pre {font-size:13px; padding:16px; border-radius:var(--control-radius)}
++.learning-layout {max-width:1664px; padding:0 32px; gap:32px}
++.learning-layout main,.in-flow .learning-layout main {padding:24px 0 48px}
++.chat-open .learning-layout {grid-template-columns:minmax(0,1fr) 360px}
++footer {max-width:1600px; padding:20px 0; font-size:12px}
++.guide-topline {margin:0 0 16px; align-items:center; gap:16px; font-size:14px}
++.guide-heading {align-items:center; gap:24px}
++.guide-heading h1 {font-size:32px; margin:0; font-weight:500; letter-spacing:0}
++.guide-heading .context,.step-count {display:none}
++#guide-progress {margin:24px 0}
++#guide-progress button {font-size:14px; min-height:52px; padding:12px 8px; gap:12px}
++#guide-progress .nav-number {width:24px; height:24px; font-size:12px; font-weight:400}
++.workspace,.practice-panel {background:transparent; border:0; border-radius:0; padding:0}
++.task-overview {margin:0 0 16px; padding:0; border:0; display:block}
++.task-overview h2 {display:none}
++.task-overview details {border:0; margin:0; padding:0}
++.task-overview summary {font-size:13px; color:var(--muted)}
++.task-overview details p {font-size:14px}
++#preparation>h2,#collect-stage>h2,#review-stage>h2 {font-size:22px; margin:0 0 8px}
++#preparation>p,#collect-intro,#review-hint {font-size:15px; color:var(--muted); margin:8px 0 24px}
++.requirements {background:var(--surface); padding:20px 24px; border-radius:var(--panel-radius); font-size:15px; margin:24px 0}
++.requirements li {margin:4px 0}
++#prepare-help {margin:24px 0; font-size:15px}
++#prepare-help>strong {font-size:18px}
++#prepare-help>p {margin:12px 0}
++#prepare-help a {font-size:14px; margin:12px 24px 0 0}
++.course-evidence {font-size:14px; color:var(--muted)}
++.course-boundary {font-size:14px; color:var(--muted)}
++#course-next-guidance {padding:24px 0; margin:8px 0 24px; border-block:1px solid var(--line)}
++#course-next-guidance h3 {margin:0 0 12px}
++#course-next-guidance p {margin:8px 0}
++.flow-footer {background:var(--bg); border-top:1px solid var(--line); padding:16px 0; margin-top:32px; gap:16px}
++.flow-footer p {font-size:12px; max-width:70ch}
++.flow-footer button {font-size:14px; padding:10px 16px}
++.python-quick-check {padding:0 0 24px; margin-bottom:24px; gap:24px}
++.python-quick-check p,.python-quick-check button {font-size:14px}
++.course-welcome,#selection-screen .course-welcome {padding:0; margin:0 0 32px}
++.course-welcome h1 {font-size:36px; margin:0; font-weight:500}
++#selection-home {margin-bottom:20px; font-size:14px}
++.library-heading h2 {font-size:18px}
++.library-heading button {font-size:14px}
++.course-filters {gap:8px; margin:20px 0 24px}
++.course-filters button {font-size:14px; min-height:40px; padding:8px 12px; font-weight:400; border-radius:var(--control-radius)}
++.course-filters button[aria-pressed=true] {font-weight:500}
++.course-grid {grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px}
++.chat-open .course-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
++button.course-card {grid-template-columns:36px minmax(0,1fr) 16px; gap:12px; padding:24px 20px; min-height:116px; border-radius:var(--panel-radius); background:var(--surface); border-color:var(--line)}
++.course-card strong {font-size:16px; font-weight:500; line-height:1.5}
++.course-card small {font-size:13px; line-height:1.6; margin-top:8px}
++.course-monogram {width:36px; height:36px; font-size:12px; font-weight:500; border-radius:8px; color:var(--muted)}
++.course-arrow {font-size:16px}
++.home-options {margin-top:32px}
++.home-options .option-row {padding:24px 0}
++.home-options strong {font-size:16px; font-weight:500}
++.home-options small {font-size:14px; margin-top:8px}
++.home-footnote {font-size:13px; margin-top:24px}
++.home-footnote button {font-size:14px}
++.local-target-row {margin:24px 0}
++.local-target-row label {font-size:14px}
++.local-target-controls {gap:12px}
++.local-target-controls select {font-size:15px}
++.local-target-controls button,#local-discover {font-size:14px; min-height:44px; padding:10px 16px}
++.local-target-row p,#local-target-status,#local-current {font-size:14px}
++#local-status {font-weight:500}
++#local-result-summary {font-size:15px}
++#local-environment-details summary {font-size:14px}
++.local-environment {padding:20px 0; gap:8px 24px}
++.local-environment strong {font-size:14px; font-weight:500}
++.local-environment span {font-size:13px}
++.local-environment button {font-size:14px; padding:8px 12px}
++.result-summary,#results>.result-summary {font-size:15px; margin-top:16px}
++#results>.result-identity {font-size:13px; margin:16px 0 24px}
++.check {padding:20px 0; gap:8px 16px}
++.check>strong {font-size:15px; font-weight:500}
++.check summary {font-size:14px}
++.remedy {padding:20px 0}
++.remedy h3 {font-size:18px}
++.remedy p {font-size:15px}
++.learning-chat {top:104px; height:calc(100dvh - 128px); min-height:0; max-height:none; margin:24px 0; border:1px solid var(--line); border-radius:var(--panel-radius); background:var(--surface); box-shadow:none}
++.learning-chat:has(.chat-welcome) {height:auto; max-height:calc(100dvh - 128px)}
++.chat-heading {padding:20px; align-items:center; gap:16px}
++.chat-heading h2 {font-size:18px; font-weight:500}
++.chat-heading p {font-size:13px; margin-top:4px}
++.chat-heading button {font-size:14px; min-height:40px}
++.chat-context {padding:12px 20px; font-size:13px; color:var(--muted)}
++.chat-messages {padding:24px 20px; min-height:96px}
++.chat-messages:has(.chat-welcome) {flex:none}
++.chat-welcome,.chat-message>p {font-size:15px; line-height:1.8}
++.chat-message>strong {font-size:13px; font-weight:500}
++.chat-user {padding:12px; border-radius:var(--control-radius)}
++.chat-suggestions {gap:4px; padding:0 20px 20px}
++.chat-suggestions button {font-size:14px; min-height:36px; padding:4px 0}
++.chat-status {font-size:13px; padding:0 20px 16px}
++#chat-form {padding:20px; margin:0}
++#chat-form label {font-size:14px; margin-bottom:12px}
++#chat-input {font-size:15px; line-height:1.6; min-height:96px; padding:12px}
++.chat-compose-actions {margin-top:12px; gap:12px}
++.chat-compose-actions button {font-size:14px; padding:8px 12px; min-height:40px}
++.chat-preview-panel {padding:0 20px 20px; max-height:260px}
++.chat-preview-panel>p,.chat-preview-panel summary {font-size:13px}
++.chat-confirm-actions button {font-size:13px; min-height:40px; padding:8px 12px}
++#chat-setup {padding:12px 20px; max-height:180px; font-size:13px}
++#chat-setup summary {font-size:13px}
++.chat-note {font-size:12px; padding:0 20px 20px; line-height:1.7}
++.practice-heading {margin-bottom:24px; padding-bottom:20px}
++.practice-heading h2 {font-size:20px; font-weight:500}
++.practice-heading p {font-size:15px}
++.component-row {background:var(--surface); padding:24px; margin:16px 0; border:0; border-radius:var(--panel-radius); gap:24px}
++.component-row p {font-size:15px}
++.practice-step-list h3 {font-size:18px}
++.practice-step-list p {font-size:15px}
++#teacher-screen {max-width:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start}
++#teacher-screen>button,#teacher-screen>h1,#teacher-screen>p,#teacher-share-slot,#teacher-course-panel {grid-column:1/-1}
++#teacher-screen>button {justify-self:start}
++#teacher-screen h1 {margin:0}
++#teacher-screen>p {margin:0 0 8px}
++#teacher-screen>details {margin:0; padding:24px; border:1px solid var(--line); border-radius:var(--panel-radius); background:var(--surface)}
++#teacher-screen details>summary {font-size:18px}
++#teacher-screen form {max-width:none; margin:24px 0 0}
++#teacher-form {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
++#teacher-form>p,#teacher-python-options {grid-column:1/-1}
++#teacher-form label {margin-top:0}
++#teacher-form>button {justify-self:start; margin-top:0}
++#teacher-python-options>.inline {gap:24px; align-items:start}
++#teacher-python-options>input {max-width:calc(50% - 12px)}
++#teacher-python-options>label {margin-top:24px}
++/* The welcome is the first surface of the same tool, with a wider optical group. */
++.welcome-page {background:var(--bg); color:var(--ink)}
++.welcome-page:before {content:none; background:none}
++.welcome-page .learning-layout {max-width:1664px; padding:0 32px}
++.welcome-page .learning-layout main {padding:0}
++.welcome-scene {min-height:calc(100svh - 80px); display:flex; flex-direction:row; align-items:center; justify-content:center; gap:112px; padding:0 0 80px}
++.welcome-scene h1 {font-size:96px; font-weight:500; line-height:1.2; letter-spacing:.02em; padding:0; margin:0}
++#welcome-start {min-width:232px; min-height:64px; padding:16px 24px; gap:64px; font-size:18px; font-weight:500; border-radius:var(--control-radius); background:var(--brand); color:white; transition:background-color var(--feedback)}
++#welcome-start:hover {background:var(--brand); filter:brightness(.94); transform:none}
++#welcome-start:active {transform:none}
++.welcome-page .learning-chat {right:max(32px,calc((100vw - 1600px)/2)); top:104px; width:360px; height:auto; max-height:calc(100dvh - 128px); min-height:0; box-shadow:none}
++@media(min-width:1120px) and (max-width:1440px) {
++  header,.welcome-page header {padding-inline:24px}
++  .learning-layout,.welcome-page .learning-layout {padding-inline:24px; gap:24px}
++  .chat-open .learning-layout {grid-template-columns:minmax(0,1fr) 320px}
++  .chat-open .workspace,.chat-open .practice-panel {padding:0}
++  .course-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
++  .chat-open .course-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
++  .welcome-page .learning-chat {right:24px; width:320px}
++  .learning-chat {top:96px; margin-top:16px; height:calc(100dvh - 112px)}
++  .learning-chat:has(.chat-welcome) {max-height:calc(100dvh - 112px)}
++}
++@media(max-width:1119px) {
++  .chat-open .learning-layout {grid-template-columns:minmax(0,1fr)}
++  .learning-chat,.welcome-page .learning-chat {position:fixed; z-index:4; top:auto; right:16px; bottom:16px; width:min(400px,calc(100vw - 32px)); height:min(720px,calc(100dvh - 112px)); min-height:0; max-height:calc(100dvh - 112px); margin:0; box-shadow:0 2px 8px #0002}
++  .learning-chat:has(.chat-welcome) {height:auto; max-height:calc(100dvh - 112px)}
++  .course-grid,.chat-open .course-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
++}
++@media(max-width:760px) {
++  header,.welcome-page header {height:72px; padding:0 20px; gap:12px}
++  header nav {gap:12px}
++  header nav button {font-size:13px}
++  .brand,.welcome-page .brand {font-size:22px}
++  #chat-toggle,.welcome-page #chat-toggle {padding:8px 12px}
++  .learning-layout,.welcome-page .learning-layout {padding:0 20px; gap:0}
++  .learning-layout main,.in-flow .learning-layout main {padding:24px 0 40px}
++  .guide-topline {gap:12px; font-size:13px; margin-bottom:20px}
++  .guide-heading h1 {font-size:26px}
++  #guide-progress {margin:20px 0}
++  #guide-progress button {font-size:12px; gap:8px; padding:12px 0}
++  .requirements {padding:16px; margin:20px 0}
++  .course-welcome h1 {font-size:30px}
++  .course-grid,.chat-open .course-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
++  button.course-card {grid-template-columns:minmax(0,1fr) 16px; padding:20px 16px; gap:8px; min-height:112px}
++  .course-monogram {display:none}
++  .course-arrow {display:block}
++  .course-card strong {font-size:16px}
++  .course-card small {font-size:14px}
++  .home-options .option-row {padding:20px 0}
++  .flow-footer {padding:12px 0; margin-top:24px; gap:12px}
++  .flow-footer button {font-size:14px; padding:10px 12px}
++  .flow-footer p {font-size:12px}
++  .component-row {padding:20px}
++  #teacher-screen {grid-template-columns:minmax(0,1fr); gap:20px}
++  #teacher-screen>details {padding:20px}
++  #teacher-form {grid-template-columns:minmax(0,1fr); gap:20px}
++  #teacher-python-options>input {max-width:none}
++  .welcome-scene {min-height:calc(100svh - 72px); flex-direction:column; gap:40px; padding:0 0 64px}
++  .welcome-scene h1 {font-size:72px; letter-spacing:.02em}
++  #welcome-start {min-width:248px; min-height:56px; font-size:16px; padding:12px 24px}
++  .learning-chat,.welcome-page .learning-chat {right:12px; bottom:12px; width:calc(100vw - 24px); max-height:calc(100dvh - 96px); height:calc(100dvh - 96px)}
++  .learning-chat:has(.chat-welcome) {max-height:calc(100dvh - 96px)}
++  .local-target-controls {gap:8px}
++  footer {margin:0 20px; padding:20px 0}
++}
++@media(max-width:560px) {
++  .course-grid,.chat-open .course-grid {grid-template-columns:minmax(0,1fr)}
++  button.course-card {min-height:100px}
++  .library-heading {align-items:start; gap:8px; flex-wrap:wrap}
++  .course-filters {gap:4px}
++}
++@media(prefers-reduced-motion:reduce) {
++  button,.button,#welcome-start {transition:none; transform:none}
++}

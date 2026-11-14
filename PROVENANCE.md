@@ -1,5 +1,7 @@
 # 本版来源
 
+2026-11-14第三轮由60a7669b45ecd4ad6a9c54d5febc3b39ace325bc完整独立克隆到D盘work/kehang-round3-20261114，分支codex/kehang-round3-20261114，固定产品65de1c4。原反馈与截图未改写；第二张图为API而非DSH。复用既有任务、固定采集器、analyze/compare、guidance与原UI交互，不升级课程版本、模型或判定。本轮共享样式与呈现逻辑为课航代码；使用Impeccable和unslop指导，unslop作者Damir Sokolovsky（https://x.com/heydamir），CC BY 4.0，流程适配署名保留在设计/验收说明。无新依赖、外部字体、图片、图标或自动部署；官方资料核对路径、真实/模拟/缺口和独立发现各自记录。
+
 2026-11-14第二轮从a7aba975aa1d59e4a86f6df7803ed59ad4c97dd7完整独立克隆，位于D盘work/kehang-round2-20261114，分支codex/kehang-round2-20261114。需求为本人14:26反馈及当前执行任务；原件保留records/round2/original-feedback。欢迎页、页面AI规则与目标票据为本轮原创，复用现有13类课程定义、固定采集器、analyze/compare、原生文件选择与Windows Job Object。无第三方新代码、框架、字体、图片或云素材。Impeccable用于UI；Lean Build与Migration用于接入和兼容。测试、受控候选、真实采集、模拟端点和独立代理审查分别记录，不能把测试夹具当真实模型或用户验收。
 
 2026-11-14课程首页与上下文聊天从Windows11图示交付版4249165继续开发，实际目录仍在D盘开发工作区，分支codex/kehang-course-chat-20261114。需求来自本轮用户关于课程可见性、连续提问和操作层次的反馈，原文见records/course-chat/feedback.md；用户明确没有报告具体Bug。首页、侧栏和会话票据为本仓库原创实现，复用原课程加载、guidance、analyze、脱敏及HTTP模型协议，不新增依赖、外部字体、图标或图片素材。impeccable用于产品界面与响应式检查。新增模型对话仅用本地HTTP协议夹具验证，不能作为真实模型效果或接入成功的证据；Python A/B另有本机真实执行原件。浏览器回归发现的缩屏遮挡由本轮实现者发现并修正，不记作用户首先发现。

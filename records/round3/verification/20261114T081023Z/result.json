@@ -1,0 +1,265 @@
+{
+  "scope": "Same-computer browser. API/Node/DSH desktop fixed collectors are real; constructed report branches explicitly simulated. No API send, model, deployment, Agent or guest execution.",
+  "checks": [
+    "Three course routes and all preparation declarations stay distinct from facts; correct tool/runtime and next step visible without expanding full guidance.",
+    "A late plan response for the previous preparation declaration cannot overwrite the current next step.",
+    "Fresh Node, API preparation and DSH desktop static web A/B preserve target, original, fixed facts and context-appropriate result guidance.",
+    "1912x948, 1366x768 and390x844 route/AI policies, focus and input reachability preserved; no horizontal overflow."
+  ],
+  "real": [
+    {
+      "scenario": "node-basics",
+      "target": "D:\\Program Files\\nodejs\\node.exe",
+      "comparison": "stable-pass",
+      "checks": {
+        "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+        "target": {
+          "requested": "D:\\Program Files\\nodejs\\node.exe",
+          "actual": "D:\\Program Files\\nodejs\\node.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T08:10:26.716977+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "node",
+            "status": "pass",
+            "observed": "24.21.0",
+            "requirement": {
+              "min": "22.0",
+              "max_exclusive": "25.0"
+            }
+          },
+          {
+            "id": "npm",
+            "status": "pass",
+            "observed": {
+              "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+              "node": "D:\\Program Files\\nodejs\\node.exe",
+              "exists": true,
+              "version": "11.19.0",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": {
+              "min": "10.0",
+              "max_exclusive": "12.0"
+            }
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "所选Node固定程序退出0、输出OK且无错误"
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "scenario": "deepseek-api",
+      "target": "D:\\ANACONDA\\python.exe",
+      "comparison": "incomplete",
+      "checks": {
+        "task_id": "97b878195b01ac825095c5b86fb93ad7c22bfad3ad675dd3b94f4b9774b3f6d3",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T08:10:28.646017+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "api:dependency",
+            "status": "pass",
+            "observed": true,
+            "requirement": "所选Python可导入urllib.request/ssl/json，无新增SDK依赖"
+          },
+          {
+            "id": "api:request",
+            "status": "pass",
+            "observed": {
+              "endpoint": "https://api.deepseek.com/chat/completions",
+              "payload": {
+                "model": "deepseek-flash",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "你是数据分析课程练习助手。依据给出的演示数据计算，只输出要求的JSON，不访问工具或外部数据。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "演示CSV数据 score\n10\n14\n18\n。计算 total、count、mean。只返回JSON对象，键恰为total、count、mean，不要代码围栏。"
+                  }
+                ],
+                "thinking": {
+                  "type": "disabled"
+                },
+                "stream": false,
+                "max_tokens": 128,
+                "response_format": {
+                  "type": "json_object"
+                }
+              }
+            },
+            "requirement": "实际目的地、模型与本固定数据练习；编辑为其他问题不能完成原任务"
+          },
+          {
+            "id": "api:protocol",
+            "status": "unknown",
+            "observed": {
+              "attempted": false,
+              "category": "not_called",
+              "http_status": null,
+              "model": null,
+              "role": null,
+              "finish_reason": null,
+              "latency_ms": null
+            },
+            "requirement": "实际非截断Chat Completions响应，固定模型、assistant与stop；HTTP200本身不足"
+          },
+          {
+            "id": "api:exercise",
+            "status": "unknown",
+            "observed": "",
+            "requirement": {
+              "total": 42,
+              "count": 3,
+              "mean": 14
+            }
+          }
+        ],
+        "passed": false
+      }
+    },
+    {
+      "scenario": "dsh-desktop",
+      "target": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "comparison": "incomplete",
+      "checks": {
+        "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+        "target": {
+          "requested": "D:\\deep seekharness\\DeepSeek Harness.exe",
+          "actual": "D:\\deep seekharness\\DeepSeek Harness.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T08:10:31.597160+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "dsh:software",
+            "status": "pass",
+            "observed": {
+              "route": "desktop",
+              "exists": true,
+              "product": "DeepSeek Harness",
+              "version": "0.2.2.0",
+              "sha256": "bad50d18a3cf42621ac03aeaf1dc527ee20384ca4c0b7eee64512954ddb9a76e",
+              "package_json": null,
+              "bin": null,
+              "bin_sha256": null,
+              "node_requirement": null,
+              "error": "",
+              "desktop_package": {
+                "path": "D:\\deep seekharness\\resources\\app.asar",
+                "sha256": "5fa8a6b21bceb8f3e99e30efa2270efd0cc773a11e42aa0488f804a64b34e637",
+                "package_sha256": "cbf5dc8ff3e6318cc61d966010e427aefa2042a1371155596de7f5af53bd3c64",
+                "name": "@deepseek-ai/dsh-desktop",
+                "version": "0.2.2-rc.1",
+                "main": "lib/main.js",
+                "error": ""
+              }
+            },
+            "requirement": "DeepSeek Harness 0.2.2-rc.1；静态身份/版本不证明已登录或任务成功"
+          },
+          {
+            "id": "dsh:workspace",
+            "status": "unknown",
+            "observed": {
+              "requested": null,
+              "actual": null,
+              "exists": null,
+              "id": null,
+              "task_id": null,
+              "input_sha256": null,
+              "error": "尚未选择专用练习目录"
+            },
+            "requirement": "同一专用目录、任务标识和固定CSV摘要"
+          },
+          {
+            "id": "dsh:model",
+            "status": "unknown",
+            "observed": {
+              "provider": null,
+              "model": null,
+              "connection": null
+            },
+            "requirement": "实际本人任务模型结果；仅提供方/模型配置不证明连接可用"
+          },
+          {
+            "id": "dsh:permission",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "本人实际授权：只读input.csv、只写summary.json、固定read/write工具"
+          },
+          {
+            "id": "dsh:tools",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "本人提供本次DSH读/写工具摘要；普通聊天、声明或模拟不代替"
+          },
+          {
+            "id": "dsh:artifact",
+            "status": "unknown",
+            "observed": {
+              "exists": null,
+              "sha256": null,
+              "value": null,
+              "error": "尚无产物"
+            },
+            "requirement": "本机summary.json恰为整数count=3、sum=42；产物不单独证明Agent调用"
+          }
+        ],
+        "passed": false,
+        "evidence_basis": "只读元数据/本机产物；无真实DSH任务摘要，相关项未知"
+      }
+    }
+  ],
+  "simulated": [
+    "Constructed API401 report: authentication guidance, not an uncalled/deployment state; no network request.",
+    "Constructed CLI runtime mismatch: Node-specific guidance, no Python/desktop substitution; dummy node never executed.",
+    "Constructed desktop installation/workspace checks: current next step is DSH model evidence, not reinstalling Python or claiming Agent completion."
+  ],
+  "errors": [],
+  "external_requests": [],
+  "passed": true
+}

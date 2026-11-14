@@ -1,0 +1,1507 @@
+{
+  "head": "579e8cfc2f8b161a818ab0b80b5b0f767fdacc29",
+  "checks": [
+    {
+      "name": "teacher-fields",
+      "width": 1912,
+      "boxes": {
+        "teacher-title": {
+          "x": 181,
+          "y": 769.90625,
+          "width": 763,
+          "height": 46
+        },
+        "teacher-goal": {
+          "x": 968,
+          "y": 769.90625,
+          "width": 763,
+          "height": 44
+        },
+        "python-min": {
+          "x": 181,
+          "y": 863,
+          "width": 763,
+          "height": 46
+        },
+        "python-max": {
+          "x": 968,
+          "y": 863,
+          "width": 763,
+          "height": 46
+        },
+        "requests-min": {
+          "x": 181,
+          "y": 972.09375,
+          "width": 763,
+          "height": 46
+        }
+      }
+    },
+    {
+      "name": "teacher-fields",
+      "width": 1366,
+      "boxes": {
+        "teacher-title": {
+          "x": 49,
+          "y": 769.90625,
+          "width": 622,
+          "height": 46
+        },
+        "teacher-goal": {
+          "x": 695,
+          "y": 769.90625,
+          "width": 622,
+          "height": 44
+        },
+        "python-min": {
+          "x": 49,
+          "y": 863,
+          "width": 622,
+          "height": 46
+        },
+        "python-max": {
+          "x": 695,
+          "y": 863,
+          "width": 622,
+          "height": 46
+        },
+        "requests-min": {
+          "x": 49,
+          "y": 972.09375,
+          "width": 622,
+          "height": 46
+        }
+      }
+    },
+    {
+      "name": "teacher-fields",
+      "width": 768,
+      "boxes": {
+        "teacher-title": {
+          "x": 57,
+          "y": 879.78125,
+          "width": 315,
+          "height": 46
+        },
+        "teacher-goal": {
+          "x": 396,
+          "y": 879.78125,
+          "width": 315,
+          "height": 44
+        },
+        "python-min": {
+          "x": 57,
+          "y": 972.875,
+          "width": 315,
+          "height": 46
+        },
+        "python-max": {
+          "x": 396,
+          "y": 972.875,
+          "width": 315,
+          "height": 46
+        },
+        "requests-min": {
+          "x": 57,
+          "y": 1081.96875,
+          "width": 315,
+          "height": 46
+        }
+      }
+    },
+    {
+      "name": "teacher-fields",
+      "width": 390,
+      "boxes": {
+        "teacher-title": {
+          "x": 41,
+          "y": 899,
+          "width": 308,
+          "height": 46
+        },
+        "teacher-goal": {
+          "x": 41,
+          "y": 996.09375,
+          "width": 308,
+          "height": 44
+        },
+        "python-min": {
+          "x": 41,
+          "y": 1083.1875,
+          "width": 308,
+          "height": 46
+        },
+        "python-max": {
+          "x": 41,
+          "y": 1160.28125,
+          "width": 308,
+          "height": 46
+        },
+        "requests-min": {
+          "x": 41,
+          "y": 1261.375,
+          "width": 308,
+          "height": 46
+        }
+      }
+    },
+    {
+      "name": "teacher-fields",
+      "width": 320,
+      "boxes": {
+        "teacher-title": {
+          "x": 41,
+          "y": 632.875,
+          "width": 238,
+          "height": 46
+        },
+        "teacher-goal": {
+          "x": 41,
+          "y": 729.96875,
+          "width": 238,
+          "height": 44
+        },
+        "python-min": {
+          "x": 41,
+          "y": 817.0625,
+          "width": 238,
+          "height": 46
+        },
+        "python-max": {
+          "x": 41,
+          "y": 894.15625,
+          "width": 238,
+          "height": 46
+        },
+        "requests-min": {
+          "x": 41,
+          "y": 995.25,
+          "width": 238,
+          "height": 46
+        }
+      }
+    },
+    "Late preview and late response do not reopen or append after close. All simulated in route, no model request."
+  ],
+  "geometry": [
+    {
+      "page": "welcome",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome-ai",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "selection",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-prepare",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-prepare",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-prepare",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice-prepare",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "teacher",
+      "width": 1912,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome-ai",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "selection",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-prepare",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-prepare",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-prepare",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice-prepare",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "teacher",
+      "width": 1366,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome-ai",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "selection",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-prepare",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-prepare",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-prepare",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice-prepare",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "teacher",
+      "width": 768,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome-ai",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "selection",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-prepare",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-prepare",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-prepare",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice-prepare",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "teacher",
+      "width": 390,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "welcome-ai",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "selection",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-prepare",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-prepare",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-prepare",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "practice-prepare",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    },
+    {
+      "page": "teacher",
+      "width": 320,
+      "overflow": false,
+      "items": []
+    }
+  ],
+  "contrast": [
+    {
+      "page": "deepseek-api-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1912,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 1366,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "deepseek-api-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-desktop-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-check",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    },
+    {
+      "page": "dsh-cli-manual",
+      "width": 768,
+      "id": "",
+      "tag": "SPAN",
+      "text": "▣",
+      "color": "rgb(19, 111, 196)",
+      "bg": [
+        233,
+        233,
+        233,
+        255
+      ],
+      "ratio": 4.22,
+      "font": "21px"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "passed": true
+}

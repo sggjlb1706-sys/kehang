@@ -1,0 +1,30 @@
+{
+  "head": "65de1c4305ea4b194c7e8a584fe99cb8d28f8753",
+  "checks": [
+    {
+      "source": "deepseek-api",
+      "value": "missing",
+      "destination": "dsh-desktop",
+      "selected": "unsure",
+      "status": "尚无检测报告；本人尚不确定准备情况，不是已验证事实\n\n网页只读核对所选工具与可选目录；不启动DSH、不配置模型、不授予工具权限，也不代做Agent任务\n\nDSH官方下载与说明官方模型配置指南",
+      "passed": true
+    },
+    {
+      "source": "dsh-desktop",
+      "value": "installed",
+      "destination": "dsh-cli",
+      "selected": "unsure",
+      "status": "尚无检测报告；本人尚不确定准备情况，不是已验证事实\n\n网页只读核对所选工具与可选目录；不启动DSH、不配置模型、不授予工具权限，也不代做Agent任务\n\nDSH官方下载与说明官方模型配置指南",
+      "passed": true
+    },
+    {
+      "source": "dsh-cli",
+      "value": "missing",
+      "destination": "deepseek-api",
+      "selected": "unsure",
+      "status": "尚无检测报告；本人尚不确定准备情况，不是已验证事实\n\n网页本机检测不发送API、不读取密钥；课航AI聊天配置与本课API调用分别管理\n\nDeepSeek API官方入门官方错误码",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

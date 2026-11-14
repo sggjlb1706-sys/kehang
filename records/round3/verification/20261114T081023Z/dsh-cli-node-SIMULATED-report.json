@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "task_id": "4c92607dceda65816099fa70186391116c23258d89bfc337995c8ecb6d31c339",
+  "collected_at": "2026-11-14T08:10:32.086840+00:00",
+  "target": {
+    "requested": "D:\\传智杯\\开发工作区\\work\\kehang-round3-20261114\\records\\round3\\verification\\20261114T081023Z\\node.exe",
+    "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round3-20261114\\records\\round3\\verification\\20261114T081023Z\\node.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "installation": {
+      "route": "cli",
+      "exists": null,
+      "product": null,
+      "version": null,
+      "sha256": null,
+      "package_json": null,
+      "bin": null,
+      "bin_sha256": null,
+      "node_requirement": null,
+      "error": "尚未取得安装证据"
+    },
+    "runtime": {
+      "kind": "selected-node",
+      "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round3-20261114\\records\\round3\\verification\\20261114T081023Z\\node.exe",
+      "version": "24.8.0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": ""
+    },
+    "workspace": {
+      "requested": null,
+      "actual": null,
+      "exists": null,
+      "id": null,
+      "task_id": null,
+      "input_sha256": null,
+      "error": "尚未选择专用练习目录"
+    },
+    "model": {
+      "provider": null,
+      "model": null,
+      "connection": null
+    },
+    "permission": null,
+    "artifact": {
+      "exists": null,
+      "sha256": null,
+      "value": null,
+      "error": "尚无产物"
+    },
+    "agent": null
+  }
+}

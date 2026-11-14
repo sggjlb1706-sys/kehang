@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-11-14T08:20:30.065823+00:00",
+  "fixed_product": "65de1c4305ea4b194c7e8a584fe99cb8d28f8753",
+  "source_HEAD": "60a7669b45ecd4ad6a9c54d5febc3b39ace325bc",
+  "source_tracked_clean": true,
+  "product_matches_fixed_commit": true,
+  "runtime_matches_source": true,
+  "original_images_match": true,
+  "unit_tests": 180,
+  "chat_groups": 13,
+  "diagram_groups": 18,
+  "real_rechecks": [
+    "node-basics",
+    "deepseek-api preparation only",
+    "dsh-desktop static only"
+  ],
+  "simulated_branches": 3,
+  "independent_unresolved": 0,
+  "published": false,
+  "official_submission": false
+}

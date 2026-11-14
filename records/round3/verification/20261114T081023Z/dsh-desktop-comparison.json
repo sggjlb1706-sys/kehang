@@ -1,0 +1,224 @@
+{
+  "before": {
+    "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+    "target": {
+      "requested": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "actual": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T08:10:30.378466+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "dsh:software",
+        "status": "pass",
+        "observed": {
+          "route": "desktop",
+          "exists": true,
+          "product": "DeepSeek Harness",
+          "version": "0.2.2.0",
+          "sha256": "bad50d18a3cf42621ac03aeaf1dc527ee20384ca4c0b7eee64512954ddb9a76e",
+          "package_json": null,
+          "bin": null,
+          "bin_sha256": null,
+          "node_requirement": null,
+          "error": "",
+          "desktop_package": {
+            "path": "D:\\deep seekharness\\resources\\app.asar",
+            "sha256": "5fa8a6b21bceb8f3e99e30efa2270efd0cc773a11e42aa0488f804a64b34e637",
+            "package_sha256": "cbf5dc8ff3e6318cc61d966010e427aefa2042a1371155596de7f5af53bd3c64",
+            "name": "@deepseek-ai/dsh-desktop",
+            "version": "0.2.2-rc.1",
+            "main": "lib/main.js",
+            "error": ""
+          }
+        },
+        "requirement": "DeepSeek Harness 0.2.2-rc.1；静态身份/版本不证明已登录或任务成功"
+      },
+      {
+        "id": "dsh:workspace",
+        "status": "unknown",
+        "observed": {
+          "requested": null,
+          "actual": null,
+          "exists": null,
+          "id": null,
+          "task_id": null,
+          "input_sha256": null,
+          "error": "尚未选择专用练习目录"
+        },
+        "requirement": "同一专用目录、任务标识和固定CSV摘要"
+      },
+      {
+        "id": "dsh:model",
+        "status": "unknown",
+        "observed": {
+          "provider": null,
+          "model": null,
+          "connection": null
+        },
+        "requirement": "实际本人任务模型结果；仅提供方/模型配置不证明连接可用"
+      },
+      {
+        "id": "dsh:permission",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本人实际授权：只读input.csv、只写summary.json、固定read/write工具"
+      },
+      {
+        "id": "dsh:tools",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本人提供本次DSH读/写工具摘要；普通聊天、声明或模拟不代替"
+      },
+      {
+        "id": "dsh:artifact",
+        "status": "unknown",
+        "observed": {
+          "exists": null,
+          "sha256": null,
+          "value": null,
+          "error": "尚无产物"
+        },
+        "requirement": "本机summary.json恰为整数count=3、sum=42；产物不单独证明Agent调用"
+      }
+    ],
+    "passed": false,
+    "evidence_basis": "只读元数据/本机产物；无真实DSH任务摘要，相关项未知"
+  },
+  "after": {
+    "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+    "target": {
+      "requested": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "actual": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T08:10:31.597160+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "dsh:software",
+        "status": "pass",
+        "observed": {
+          "route": "desktop",
+          "exists": true,
+          "product": "DeepSeek Harness",
+          "version": "0.2.2.0",
+          "sha256": "bad50d18a3cf42621ac03aeaf1dc527ee20384ca4c0b7eee64512954ddb9a76e",
+          "package_json": null,
+          "bin": null,
+          "bin_sha256": null,
+          "node_requirement": null,
+          "error": "",
+          "desktop_package": {
+            "path": "D:\\deep seekharness\\resources\\app.asar",
+            "sha256": "5fa8a6b21bceb8f3e99e30efa2270efd0cc773a11e42aa0488f804a64b34e637",
+            "package_sha256": "cbf5dc8ff3e6318cc61d966010e427aefa2042a1371155596de7f5af53bd3c64",
+            "name": "@deepseek-ai/dsh-desktop",
+            "version": "0.2.2-rc.1",
+            "main": "lib/main.js",
+            "error": ""
+          }
+        },
+        "requirement": "DeepSeek Harness 0.2.2-rc.1；静态身份/版本不证明已登录或任务成功"
+      },
+      {
+        "id": "dsh:workspace",
+        "status": "unknown",
+        "observed": {
+          "requested": null,
+          "actual": null,
+          "exists": null,
+          "id": null,
+          "task_id": null,
+          "input_sha256": null,
+          "error": "尚未选择专用练习目录"
+        },
+        "requirement": "同一专用目录、任务标识和固定CSV摘要"
+      },
+      {
+        "id": "dsh:model",
+        "status": "unknown",
+        "observed": {
+          "provider": null,
+          "model": null,
+          "connection": null
+        },
+        "requirement": "实际本人任务模型结果；仅提供方/模型配置不证明连接可用"
+      },
+      {
+        "id": "dsh:permission",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本人实际授权：只读input.csv、只写summary.json、固定read/write工具"
+      },
+      {
+        "id": "dsh:tools",
+        "status": "unknown",
+        "observed": null,
+        "requirement": "本人提供本次DSH读/写工具摘要；普通聊天、声明或模拟不代替"
+      },
+      {
+        "id": "dsh:artifact",
+        "status": "unknown",
+        "observed": {
+          "exists": null,
+          "sha256": null,
+          "value": null,
+          "error": "尚无产物"
+        },
+        "requirement": "本机summary.json恰为整数count=3、sum=42；产物不单独证明Agent调用"
+      }
+    ],
+    "passed": false,
+    "evidence_basis": "只读元数据/本机产物；无真实DSH任务摘要，相关项未知"
+  },
+  "changes": [
+    {
+      "id": "os",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "dsh:software",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "dsh:workspace",
+      "before": "unknown",
+      "after": "unknown"
+    },
+    {
+      "id": "dsh:model",
+      "before": "unknown",
+      "after": "unknown"
+    },
+    {
+      "id": "dsh:permission",
+      "before": "unknown",
+      "after": "unknown"
+    },
+    {
+      "id": "dsh:tools",
+      "before": "unknown",
+      "after": "unknown"
+    },
+    {
+      "id": "dsh:artifact",
+      "before": "unknown",
+      "after": "unknown"
+    }
+  ],
+  "outcome": "incomplete"
+}

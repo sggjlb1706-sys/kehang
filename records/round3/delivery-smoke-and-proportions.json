@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "width": 1912,
+  "height": 948,
+  "versions": [
+    {
+      "boxes": [
+        {
+          "id": "welcome-title",
+          "x": 871.046875,
+          "y": 387.796875,
+          "width": 169.90625,
+          "height": 86.390625,
+          "font": "72px"
+        },
+        {
+          "id": "welcome-start",
+          "x": 878,
+          "y": 516.1875,
+          "width": 156,
+          "height": 52,
+          "font": "16px"
+        }
+      ],
+      "foreground_width": 169.90625,
+      "ai_configured": false,
+      "layout": {
+        "main": 968,
+        "ai": 336
+      },
+      "port": 8774
+    },
+    {
+      "boxes": [
+        {
+          "id": "welcome-title",
+          "x": 686.078125,
+          "y": 416.40625,
+          "width": 195.84375,
+          "height": 115.1875,
+          "font": "96px"
+        },
+        {
+          "id": "welcome-start",
+          "x": 993.921875,
+          "y": 442,
+          "width": 232,
+          "height": 64,
+          "font": "18px"
+        }
+      ],
+      "foreground_width": 539.84375,
+      "ai_configured": false,
+      "layout": {
+        "main": 1208,
+        "ai": 360
+      },
+      "port": 8775
+    }
+  ],
+  "scope": "Read-only geometry plus new-version navigation; no collector or model request"
+}
