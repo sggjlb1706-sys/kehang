@@ -75,5 +75,39 @@ class TargetSelectionTest(unittest.TestCase):
     def test_web_course_has_no_fabricated_environment_check(self):
         self.assertEqual(self.store.discover(task('ai-web-deepseek'))['fields'], {})
 
+    def test_vm_host_only_is_explicit_and_never_selects_an_instance(self):
+        spec = task('vm-linux'); program = self.root / 'vmrun.exe'; program.touch()
+        selections = {'target': self.selected(spec, path=program)}
+        with self.assertRaises(ValueError): self.store.resolve(spec, selections, {})
+        self.assertNotIn('vm_id', self.store.resolve(spec, selections, {'host_only': True}))
+        with self.assertRaises(ValueError): self.store.resolve(spec, selections, {'host_only': 'yes'})
+
+    def test_inaccessible_optional_kernel_directory_preserves_other_candidates(self):
+        original = Path.is_dir
+        def is_dir(path):
+            if 'jupyter' in str(path): raise PermissionError('controlled denied directory')
+            return original(path)
+        with patch('campuslab.local_targets.python_choices', return_value=[(str(self.python), 'fixture')]), patch.object(Path, 'is_dir', is_dir):
+            value = self.store.discover(task('notebook-data'))
+        self.assertEqual(len(value['fields']['target']['choices']), 1)
+        self.assertEqual(value['fields']['kernel_spec']['choices'], [])
+
+    def test_native_picker_and_discovery_http_require_page_identity(self):
+        from campuslab.web import AppServer
+        from urllib.request import Request, urlopen
+        from urllib.error import HTTPError
+        import json, threading
+        server = AppServer(0, self.root / 'http.sqlite')
+        thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
+        try:
+            for endpoint in ('options', 'discover', 'pick'):
+                body = dict(task=self.spec)
+                if endpoint == 'pick': body['field'] = 'target'
+                request = Request('http://127.0.0.1:'+str(server.server_port)+'/api/local-check/'+endpoint,
+                                  data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
+                with self.assertRaises(HTTPError):urlopen(request, timeout=3)
+            self.assertFalse(server.local_check.jobs)
+        finally:server.shutdown();server.server_close();thread.join()
+
 
 if __name__ == '__main__': unittest.main()

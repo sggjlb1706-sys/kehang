@@ -138,11 +138,7 @@ const KehangChat = (()=>{
     }catch(error){if(requestEpoch===epoch)setStatus('发送未完成：'+error.message+'。问题已保留。',true);}
     finally{if(requestEpoch===epoch){busy=false;updateButtons();}}
   });
-  let resizeTimer;
-  desktop.addEventListener('change',()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer=setTimeout(()=>setOpen(pagePolicy==='workspace'&&desktop.matches),200);
-  });
+  desktop.addEventListener('change',()=>setOpen(pagePolicy==='workspace'&&desktop.matches));
   renderContext();
   return Object.freeze({open});
 })();

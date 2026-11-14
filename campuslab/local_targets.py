@@ -70,8 +70,10 @@ def python_choices():
     # Only inspect known conda roots already discovered above, never scan drives.
     for path, _ in list(choices)[:8]:
         root = Path(path).parent
-        if (root / 'conda-meta').is_dir() and (root / 'envs').is_dir():
-            choices += [(str(p), '已知 Conda 环境目录候选') for p in sorted((root / 'envs').glob('*/python.exe'))[:8]]
+        try:
+            if (root / 'conda-meta').is_dir() and (root / 'envs').is_dir():
+                choices += [(str(p), '已知 Conda 环境目录候选') for p in sorted((root / 'envs').glob('*/python.exe'))[:8]]
+        except OSError: pass
     return choices
 
 
@@ -87,11 +89,13 @@ if ($settings.folder) {
     $dialog.ShowNewFolderButton = $false
 } else {
     $dialog = New-Object System.Windows.Forms.OpenFileDialog
+    $dialog.AutoUpgradeEnabled = $false
     $dialog.Title = $settings.label
     $dialog.Filter = $settings.filter
     $dialog.Multiselect = $false
     $dialog.CheckFileExists = $true
     $dialog.RestoreDirectory = $true
+    $dialog.InitialDirectory = $settings.directory
 }
 try {
     if ($dialog.ShowDialog() -eq [Windows.Forms.DialogResult]::OK) {
@@ -106,11 +110,14 @@ def choose_native(field):
     filters = {'python': 'Python|python.exe;python3.exe', 'node': 'Node.js|node.exe', 'kernel': 'Notebook 内核|kernel.json',
                'database': 'SQLite|*.sqlite;*.sqlite3;*.db', 'package': 'DSH 包|package.json', 'desktop': 'DSH 程序|*.exe',
                'vm': '虚拟化程序|VBoxManage.exe;vmrun.exe', 'vmx': 'VMware 实例|*.vmx', 'json': '来宾报告|*.json'}
-    settings = dict(label=field['label'], folder=field['kind'] in ('folder', 'jdk'), filter=filters.get(field['kind'], '文件|*.*'))
+    settings = dict(label=field['label'], folder=field['kind'] in ('folder', 'jdk'), filter=filters.get(field['kind'], '文件|*.*'), directory=str(ROOT))
     shell = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'System32/WindowsPowerShell/v1.0/powershell.exe'
-    result = subprocess.run([str(shell), '-NoLogo', '-NoProfile', '-STA', '-WindowStyle', 'Hidden', '-EncodedCommand', base64.b64encode(PICKER.encode('utf-16le')).decode()],
-                            input=json.dumps(settings, ensure_ascii=False).encode('utf8'), capture_output=True, timeout=180,
-                            creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+    try:
+        result = subprocess.run([str(shell), '-NoLogo', '-NoProfile', '-STA', '-WindowStyle', 'Hidden', '-EncodedCommand', base64.b64encode(PICKER.encode('utf-16le')).decode()],
+                                input=json.dumps(settings, ensure_ascii=False).encode('utf8'), capture_output=True, timeout=180,
+                                creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+    except subprocess.SubprocessError:
+        raise ValueError('文件窗口未完成，请重新选择或使用手动备用入口') from None
     if result.returncode: raise ValueError('文件选择窗口不可用，请重试或使用手动备用入口')
     return json.loads(result.stdout.decode('utf-8-sig'))['selected']
 
@@ -158,7 +165,9 @@ class TargetStore:
                 folders = [Path(os.environ.get('APPDATA', str(Path.home()))) / 'jupyter/kernels', Path(os.environ.get('PROGRAMDATA', 'C:/ProgramData')) / 'jupyter/kernels']
                 folders += [Path(p).parent / 'share/jupyter/kernels' for p, _ in python_choices()[:8]]
                 for folder in folders:
-                    if folder.is_dir(): choices += [(str(p), '已知 Jupyter 内核目录') for p in sorted(folder.glob('*/kernel.json'))[:8]]
+                    try:
+                        if folder.is_dir(): choices += [(str(p), '已知 Jupyter 内核目录') for p in sorted(folder.glob('*/kernel.json'))[:8]]
+                    except OSError: pass
             elif meta['kind'] == 'vm':
                 for name, suffix in [('VBoxManage.exe', 'Oracle/VirtualBox/VBoxManage.exe'), ('vmrun.exe', 'VMware/VMware Workstation/vmrun.exe')]:
                     found = shutil.which(name)

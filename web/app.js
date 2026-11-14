@@ -334,7 +334,7 @@ function resetLocal(){
   $('local-result-panel').hidden=true;$('local-environments').replaceChildren();$('local-current').textContent='';
   $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-prepare').hidden=true;
   $('local-status').textContent='点击开始后，结果会自动显示在这里。';
-  $('manual-collection').open=!localReady();
+  $('manual-collection').open=!localReady()||guided.manualCollectorChosen;
 }
 function renderLocalEnvironments(){
   $('local-result-panel').hidden=!localState.items.length;
@@ -353,6 +353,8 @@ function renderLocalEnvironments(){
   $('local-recheck').disabled=!localState.selected?.report||localState.running;
   $('local-ai').disabled=!localState.selected?.report||localState.running;
   $('local-save').disabled=!localState.selected?.report||localState.running;
+  $('local-save-before').hidden=!localState.selected?.before;
+  $('local-save-before').disabled=localState.running;
 }
 async function selectLocal(item){
   const epoch=localState.epoch,taskEpoch=state.epoch;
@@ -432,7 +434,8 @@ $('local-cancel').addEventListener('click',()=>action(null,async()=>{
 }));
 $('local-prepare').addEventListener('click',()=>{showRoute('course',1);$('prepared').value='missing';guidance().catch(e=>notice(e.message,true));});
 $('local-ai').addEventListener('click',()=>KehangChat.open('这个检测结果意味着什么？接下来我该做什么？'));
-$('local-save').addEventListener('click',()=>{const item=localState.selected;if(item?.report){save(item.before?'report-B.json':'report-A.json',item.report);if(item.before)save('report-A.json',item.before);}});
+$('local-save').addEventListener('click',()=>{const item=localState.selected;if(item?.report)save(item.before?'report-B.json':'report-A.json',item.report);});
+$('local-save-before').addEventListener('click',()=>{if(localState.selected?.before)save('report-A.json',localState.selected.before);});
 window.addEventListener('pagehide',()=>{if(localState.running&&localState.job)fetch('/api/local-check/cancel',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},body:JSON.stringify({id:localState.job.id})}).catch(()=>{});});
 
 function syncCollector(){
