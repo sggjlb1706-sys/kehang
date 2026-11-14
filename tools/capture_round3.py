@@ -27,6 +27,7 @@ def main(stage):
                 def shots(name):
                     for width,height in [(1912,948),(1366,768),(390,844)]:
                         page.set_viewport_size(dict(width=width,height=height));page.wait_for_timeout(200)
+                        if name=='welcome-ai' and not page.locator('#learning-chat').is_visible():page.click('#chat-toggle')
                         page.evaluate('window.scrollTo(0,0)')
                         file=name+'-'+str(width)+'.png';page.screenshot(path=out/file)
                         result['shots'].append(dict(page=name,width=width,height=height,file=file,overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth')))

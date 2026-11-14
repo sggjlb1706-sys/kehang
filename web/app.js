@@ -42,6 +42,7 @@ function clearReports(keepLocal=false){
   $('diagnosis').hidden=false;clearAI();progress();
 }
 function clearTask(){
+  $('prepared').value='unsure';
   state.epoch++;clearReports();state.task=null;state.course=null;$('task-panel').hidden=true;$('empty-state').hidden=false;$('command').textContent='';$('remediation').replaceChildren();
   $('learning-preview-panel').hidden=true;$('learning-preview-text').value='';
   guided.courseStep=0;guided.courseVisited=0;guided.manualCollectorChosen=false;renderGuide();
