@@ -1,0 +1,17 @@
+{
+  "started": "2026-11-14T06:51:24.474049+00:00",
+  "checks": [],
+  "real": [],
+  "controlled": [],
+  "page_errors": [],
+  "external_requests": [],
+  "scope": "Same-computer agent browser; real fixed collectors. Target candidate injection, native automation, controlled failures and protocol fixtures are explicitly identified. No user acceptance, paid API call, GPU computation consent, model inference consent, Agent task or guest execution claimed.",
+  "actual_model_configuration": {
+    "configured": false,
+    "destination": null,
+    "model": null
+  },
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\tools\\verify_round2.py\", line 125, in main\n    page.click('#chat-toggle'); assert page.locator('#chat-input').is_focused()\n                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'Locator' object has no attribute 'is_focused'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\tools\\verify_round2.py\", line 98, in main\n    with ExitStack() as stack:\n         ~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 619, in __exit__\n    raise exc\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 604, in __exit__\n    if cb(*exc_details):\n       ~~^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\contextlib.py\", line 482, in _exit_wrapper\n    callback(*args, **kwds)\n    ~~~~~~~~^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 15992, in close\n    return mapping.from_maybe_impl(self._sync(self._impl_obj.close(reason=reason)))\n                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 104, in _sync\n    raise Error(\"Event loop is closed! Is Playwright already stopped?\")\nplaywright._impl._errors.Error: Event loop is closed! Is Playwright already stopped?\n",
+  "finished": "2026-11-14T06:51:26.101081+00:00"
+}

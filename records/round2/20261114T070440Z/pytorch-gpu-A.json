@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "task_id": "0e2f68790f83d75da8e92aeb0ccc814901a2a328e2ffd0705024834981881fa4",
+  "collected_at": "2026-11-14T07:05:12.369790+00:00",
+  "target": {
+    "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "torch": {
+      "installed": true,
+      "version": "2.14.0+cu126",
+      "imported": true,
+      "error": ""
+    },
+    "cpu": {
+      "returncode": 0,
+      "result": [
+        [
+          4,
+          4
+        ],
+        [
+          10,
+          8
+        ]
+      ],
+      "device": "cpu",
+      "error": ""
+    },
+    "gpu": {
+      "build": "12.6",
+      "available": true,
+      "device": {
+        "index": 0,
+        "uuid": "2149a163-e74b-5e6e-3861-77a465128b38",
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory": 8585216000
+      },
+      "error": "",
+      "run": {
+        "requested": false,
+        "returncode": null,
+        "result": null,
+        "device": null,
+        "device_uuid": null,
+        "error": "未触发GPU验证"
+      }
+    }
+  },
+  "commands": [
+    [
+      "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "-B",
+      "-I",
+      "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\campuslab\\torch_probe.py"
+    ]
+  ],
+  "probe_exit": 0
+}

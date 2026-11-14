@@ -1,0 +1,32 @@
+D:\传智杯\开发工作区\work\kehang-round2-20261114\records\round2\20261114T065124Z
+Traceback (most recent call last):
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 125, in main
+    page.click('#chat-toggle'); assert page.locator('#chat-input').is_focused()
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Locator' object has no attribute 'is_focused'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 240, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 98, in main
+    with ExitStack() as stack:
+         ~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\contextlib.py", line 619, in __exit__
+    raise exc
+  File "D:\ANACONDA\Lib\contextlib.py", line 604, in __exit__
+    if cb(*exc_details):
+       ~~^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\contextlib.py", line 482, in _exit_wrapper
+    callback(*args, **kwds)
+    ~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\sync_api\_generated.py", line 15992, in close
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.close(reason=reason)))
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_sync_base.py", line 104, in _sync
+    raise Error("Event loop is closed! Is Playwright already stopped?")
+playwright._impl._errors.Error: Event loop is closed! Is Playwright already stopped?

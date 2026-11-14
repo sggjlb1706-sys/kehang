@@ -1,0 +1,14 @@
+..........................................................................E.................................................................................................
+======================================================================
+ERROR: test_actual_gpu_recheck_requires_fresh_execution_consent (test_local_targets.TargetSelectionTest.test_actual_gpu_recheck_requires_fresh_execution_consent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tests\test_local_targets.py", line 109, in test_actual_gpu_recheck_requires_fresh_execution_consent
+    self.assertTrue(second['results'][0]['options']['gpu_run'])
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'options'
+
+----------------------------------------------------------------------
+Ran 172 tests in 5.616s
+
+FAILED (errors=1)

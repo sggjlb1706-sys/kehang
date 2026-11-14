@@ -1,0 +1,365 @@
+{
+  "started": "2026-11-14T06:56:25.261864+00:00",
+  "checks": [
+    "Welcome, refresh, keyboard Start, optional chat and focus return; no collector or model request on navigation.",
+    "Real web initial/recheck: python-basics => stable-pass",
+    "Real web initial/recheck: node-basics => stable-pass",
+    "Real web initial/recheck: java-jdk => stable-pass",
+    "Real web initial/recheck: notebook-data => stable-pass"
+  ],
+  "real": [
+    {
+      "scenario": "python-basics",
+      "target": "D:\\ANACONDA\\python.exe",
+      "checks": {
+        "task_id": "650987735f0967cf32ca46df53d025461d8d3d33fc8aa6181017252739794bae",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T06:56:28.126569+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:requests",
+            "status": "pass",
+            "observed": "2.32.5",
+            "requirement": ">=2.31"
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "固定导入程序退出0且输出OK"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "node-basics",
+      "target": "D:\\Program Files\\nodejs\\node.exe",
+      "checks": {
+        "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+        "target": {
+          "requested": "D:\\Program Files\\nodejs\\node.exe",
+          "actual": "D:\\Program Files\\nodejs\\node.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T06:56:30.218352+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "node",
+            "status": "pass",
+            "observed": "24.21.0",
+            "requirement": {
+              "min": "22.0",
+              "max_exclusive": "25.0"
+            }
+          },
+          {
+            "id": "npm",
+            "status": "pass",
+            "observed": {
+              "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+              "node": "D:\\Program Files\\nodejs\\node.exe",
+              "exists": true,
+              "version": "11.19.0",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": {
+              "min": "10.0",
+              "max_exclusive": "12.0"
+            }
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "所选Node固定程序退出0、输出OK且无错误"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "java-jdk",
+      "target": "C:\\Program Files\\Zulu\\zulu-21",
+      "checks": {
+        "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+        "target": {
+          "requested": "C:\\Program Files\\Zulu\\zulu-21",
+          "actual": "C:\\Program Files\\Zulu\\zulu-21",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T06:56:33.507538+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "java:java",
+            "status": "pass",
+            "observed": {
+              "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+              "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+              "exists": true,
+              "version": "21.0.1",
+              "home": "C:\\Program Files\\Zulu\\zulu-21",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": "同一JDK中的 java，21.0至25.0以下"
+          },
+          {
+            "id": "java:javac",
+            "status": "pass",
+            "observed": {
+              "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+              "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+              "exists": true,
+              "version": "21.0.1",
+              "home": "C:\\Program Files\\Zulu\\zulu-21",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": "同一JDK中的 javac，21.0至25.0以下"
+          },
+          {
+            "id": "java:identity",
+            "status": "pass",
+            "observed": [
+              {
+                "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+                "home": "C:\\Program Files\\Zulu\\zulu-21",
+                "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31"
+              },
+              {
+                "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+                "home": "C:\\Program Files\\Zulu\\zulu-21",
+                "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8"
+              }
+            ],
+            "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+          },
+          {
+            "id": "java:compile",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "",
+              "error": ""
+            },
+            "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+          },
+          {
+            "id": "java:run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "42\nC:\\Program Files\\Zulu\\zulu-21\n",
+              "error": "",
+              "home": "C:\\Program Files\\Zulu\\zulu-21"
+            },
+            "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "notebook-data",
+      "target": "D:\\ANACONDA\\python.exe",
+      "checks": {
+        "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T06:56:45.135517+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:jupyter_client",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "8.6.3",
+              "error": ""
+            },
+            "requirement": ">=8.0，来自所选课程Python"
+          },
+          {
+            "id": "package:ipykernel",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "6.30.1",
+              "error": ""
+            },
+            "requirement": ">=6.0，来自所选课程Python"
+          },
+          {
+            "id": "notebook:spec",
+            "status": "pass",
+            "observed": {
+              "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+              "exists": true,
+              "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+              "argv": [
+                "D:/ANACONDA\\python.exe",
+                "-Xfrozen_modules=off",
+                "-m",
+                "ipykernel_launcher",
+                "-f",
+                "{connection_file}"
+              ],
+              "validated": true,
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9",
+              "error": ""
+            },
+            "requirement": "明确选择受支持ipykernel的kernel.json，argv绑定课程Python"
+          },
+          {
+            "id": "notebook:identity",
+            "status": "pass",
+            "observed": {
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9"
+            },
+            "requirement": "真实内核sys.executable及Python版本与课程Python一致"
+          },
+          {
+            "id": "package:numpy",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "2.3.4",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 numpy>=1.24"
+          },
+          {
+            "id": "package:pandas",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "3.0.3",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 pandas>=2.0"
+          },
+          {
+            "id": "notebook:run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "result": {
+                "array_sum": 42,
+                "group_totals": {
+                  "A": 30,
+                  "B": 12
+                },
+                "rows": 3
+              },
+              "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+              "error": "",
+              "executed_at": "2026-11-14T06:56:44.468181+00:00"
+            },
+            "requirement": "固定CSV分组A=30/B=12、数组和42、3行；真实内核执行"
+          },
+          {
+            "id": "notebook:cleanup",
+            "status": "pass",
+            "observed": {
+              "kernel_stopped": true,
+              "channels_stopped": true,
+              "error": ""
+            },
+            "requirement": "仅关闭本次创建的临时内核及通道"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    }
+  ],
+  "controlled": [],
+  "page_errors": [],
+  "external_requests": [],
+  "scope": "Same-computer agent browser; real fixed collectors. Target candidate injection, native automation, controlled failures and protocol fixtures are explicitly identified. No user acceptance, paid API call, GPU computation consent, model inference consent, Agent task or guest execution claimed.",
+  "actual_model_configuration": {
+    "configured": false,
+    "destination": null,
+    "model": null
+  },
+  "passed": false,
+  "failure": "Traceback (most recent call last):\n  File \"D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\tools\\verify_round2.py\", line 179, in main\n    page.wait_for_function('()=>document.querySelector(\"#local-target-status\").textContent.includes(\"已取消\")', timeout=40000)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 12436, in wait_for_function\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.wait_for_function(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        )\n        ^\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 1136, in wait_for_function\n    return await self._main_frame.wait_for_function(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 910, in wait_for_function\n    await self._channel.send(\"waitForFunction\", self._timeout, params)\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"D:\\ANACONDA\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 40000ms exceeded.\n",
+  "finished": "2026-11-14T06:57:26.390255+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "product_commit": "ed34a09a6fe1c6520af00a5de606219a4eb92b37",
+  "portable": true,
+  "root": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114",
+  "timestamp": "2026-11-14T15:20:15.4870269+08:00",
+  "ai_configured": false,
+  "process_id": 31720,
+  "scenarios": [
+    "python-basics",
+    "node-basics",
+    "java-jdk",
+    "notebook-data",
+    "sqlite-basics",
+    "pytorch-cpu",
+    "pytorch-gpu",
+    "local-qwen",
+    "deepseek-api",
+    "dsh-desktop",
+    "dsh-cli",
+    "vm-linux"
+  ],
+  "url": "http://127.0.0.1:8774/",
+  "temporary": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\data\\temp"
+}

@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Controlled recheck failure retains real original report and allows retry.",
+    "Cancel same-target recheck preserves original report in result view.",
+    "Target disappears after choice: server refuses execution; no report or job.",
+    "Late picker response after Home cannot replace current fields or reopen chat.",
+    "Responsive policy cannot undo an explicit chat click; manual target editing leaves the fallback open.",
+    "Controlled GPU preparation A upgrades to explicitly confirmed execution B; dismiss sends no job; target and original preserved. No GPU was actually executed."
+  ],
+  "scope": "Controlled failures/races, plus a real Python baseline to verify original retention. Not real GPU/model/Agent evidence.",
+  "passed": true
+}

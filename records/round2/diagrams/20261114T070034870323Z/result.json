@@ -1,0 +1,141 @@
+{
+  "checks": [
+    {
+      "course": "python-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "node-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "notebook-data",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "java-jdk",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "sqlite-basics",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-cpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "pytorch-gpu",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "local-qwen",
+      "steps": 4,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "vm-linux",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "ai-web-deepseek",
+      "steps": 2,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "deepseek-api",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-desktop",
+      "steps": 3,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    },
+    {
+      "course": "dsh-cli",
+      "steps": 4,
+      "all_steps_visible": true,
+      "facts_unchanged": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/python-basics-desktop.png",
+      "sha256": "5ca6e3a8ae2c5315b591538c688b95c0fc79faa9e5ec8792d0a6c2180f459a4a"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/node-basics-desktop.png",
+      "sha256": "98f5ec0849025d995ae67560f3f8345c4750d390307c12b92d9c166ddbd3da15"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/notebook-data-desktop.png",
+      "sha256": "a60db114011a8a9beb0fefa93d94b55b92757a712d349484a76bb5e28dd5458a"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/java-jdk-desktop.png",
+      "sha256": "b92f9c369b96c4ecfef2aef2efe218445b37ad4cd79f5039cd6503bb407df0b9"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/sqlite-basics-desktop.png",
+      "sha256": "5366c5a525aec7fdecc8c57a20c67779f8a65c841ff6b0db0d96cd82874e535f"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/pytorch-cpu-desktop.png",
+      "sha256": "d50f745886dc943e200d794aa80decc8bd71e3a6dcbd58853506abfb0f1eb3f9"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/pytorch-gpu-desktop.png",
+      "sha256": "ef93ad492c1ef6156e1534fdbcae2be8e439a11a150694ff999d171cd9a71bc2"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/local-qwen-desktop.png",
+      "sha256": "32f8407089f3ca6eef4909b1b316319fee3c2f87a6a5c300da206a132441bf1d"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/vm-linux-desktop.png",
+      "sha256": "671647f8d7ddf49d29200fed0840bab37562a44b999de27cb15d8127cedc4d45"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/ai-web-deepseek-desktop.png",
+      "sha256": "d9b3510fe48cb8ae794e818a1a5b38623ac454fe39681e7057369eb2052b0b75"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/deepseek-api-desktop.png",
+      "sha256": "fcb480fdc0396aa81a4ee2782c33289c8297cde9f8dc6e54e2599ee7e4d6683c"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/dsh-desktop-desktop.png",
+      "sha256": "bf49ef95f261f0ac9075b01effbf12ddcfa06d34328785aec55c39483bcf1a5c"
+    },
+    {
+      "path": "records/round2/diagrams/20261114T070034870323Z/dsh-cli-desktop.png",
+      "sha256": "7fb718c13db2ddbd3a81c32c772863821d0d6a9a0970df44bdb6fb407015b5c0"
+    }
+  ],
+  "page_errors": [],
+  "side_effect_requests": [],
+  "scope": "Same-computer agent browser, illustrated workflow/keyboard/reflow/contract verification only; no course collector, installation, real model request or external-device acceptance.",
+  "passed": false,
+  "error": "TimeoutError('Locator.click: Timeout 30000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#course-visual-guide .visual-step-button\").nth(1)\\n    - locator resolved to <button type=\"button\" class=\"visual-step-button\">…</button>\\n  - attempting click action\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n    - waiting 20ms\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n      - waiting 100ms\\n    59 × waiting for element to be visible, enabled and stable\\n       - element is not visible\\n     - retrying click action\\n       - waiting 500ms\\n')"
+}

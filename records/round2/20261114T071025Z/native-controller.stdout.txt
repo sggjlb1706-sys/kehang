@@ -1,0 +1,1 @@
+{"handle":1247170,"offscreen":false,"framework":"Win32","window":"¿Î³Ì SQLite Êý¾Ý¿â"}

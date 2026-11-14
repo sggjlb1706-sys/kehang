@@ -1,0 +1,37 @@
+Exception in thread Thread-19 (control):
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "D:\ANACONDA\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 80, in control
+    (OUT / 'native-controller.stderr.txt').write_bytes(value.stderr)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\pathlib\_abc.py", line 641, in write_bytes
+    with self.open(mode='wb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\20261114T070905Z\\native-controller.stderr.txt'
+Exception in thread Thread-25 (control):
+Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "D:\ANACONDA\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 80, in control
+    (OUT / 'native-controller.stderr.txt').write_bytes(value.stderr)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\pathlib\_abc.py", line 641, in write_bytes
+    with self.open(mode='wb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\20261114T070905Z\\native-controller.stderr.txt'
+{"scope": "Real owned native Windows file dialog, browser and fixed read-only SQLite collector. Agent automation of explicit test choices; not human acceptance.", "passed": true, "cancel_no_job": true, "selection_no_job": true, "unicode_space_path": true, "comparison": "stable-pass", "download_originals_match": true}

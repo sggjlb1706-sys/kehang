@@ -1,0 +1,14 @@
+Welcome, refresh, keyboard Start, optional chat and focus return; no collector or model request on navigation.
+Real web initial/recheck: python-basics => stable-pass
+Real web initial/recheck: node-basics => stable-pass
+Real web initial/recheck: java-jdk => stable-pass
+Real web initial/recheck: notebook-data => stable-pass
+Real web initial/recheck: sqlite-basics => stable-pass
+Real web initial/recheck: pytorch-cpu => stable-pass
+Real web initial/recheck: pytorch-gpu => incomplete
+Real web initial/recheck: local-qwen => incomplete
+Real web initial/recheck: deepseek-api => incomplete
+Real web initial/recheck: dsh-desktop => incomplete
+Real web initial/recheck: vm-linux => incomplete
+320/390/768/1120/1280/1440 welcome/selection/course reflow; per-page AI defaults; reduced-motion setting; no horizontal overflow.
+D:\传智杯\开发工作区\work\kehang-round2-20261114\records\round2\20261114T070440Z

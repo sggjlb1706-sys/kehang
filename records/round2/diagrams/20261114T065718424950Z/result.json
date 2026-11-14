@@ -1,0 +1,9 @@
+{
+  "checks": [],
+  "screenshots": [],
+  "page_errors": [],
+  "side_effect_requests": [],
+  "scope": "Same-computer agent browser, illustrated workflow/keyboard/reflow/contract verification only; no course collector, installation, real model request or external-device acceptance.",
+  "passed": false,
+  "error": "TimeoutError('Page.click: Timeout 30000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#home-nav\")\\n    - locator resolved to <button id=\"home-nav\" class=\"text-button\">课程</button>\\n  - attempting click action\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n    - waiting 20ms\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n      - waiting 100ms\\n    58 × waiting for element to be visible, enabled and stable\\n       - element is not visible\\n     - retrying click action\\n       - waiting 500ms\\n')"
+}

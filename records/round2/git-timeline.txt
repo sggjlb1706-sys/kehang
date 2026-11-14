@@ -1,0 +1,4 @@
+795ea67f9342086c036ad743075da6b5db0775f9 2026-11-14T14:40:39+08:00 feat: connect fixed course collectors to selected local targets
+c3772641ac319abc73e43935ace5c6e496c46617 2026-11-14T14:49:01+08:00 feat: add quiet welcome and course-aware local check flow
+da9bae27f721a006bd6d01cc91dcd504d10a7e19 2026-11-14T15:09:11+08:00 fix: preserve fallback and reports across course check failures
+ed34a09a6fe1c6520af00a5de606219a4eb92b37 2026-11-14T15:14:22+08:00 fix: allow explicitly authorized same-target execution rechecks

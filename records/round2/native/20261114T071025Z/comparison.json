@@ -1,0 +1,170 @@
+{
+  "before": {
+    "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+    "target": {
+      "requested": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+      "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T07:10:29.317904+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "sqlite:runtime",
+        "status": "pass",
+        "observed": {
+          "version": "3.50.2",
+          "tool_runtime": "D:\\ANACONDA\\python.exe"
+        },
+        "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+      },
+      {
+        "id": "sqlite:database",
+        "status": "pass",
+        "observed": {
+          "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "header_valid": true,
+          "error": ""
+        },
+        "requirement": "明确SQLite文件、有效文件头与内容摘要"
+      },
+      {
+        "id": "sqlite:readonly",
+        "status": "pass",
+        "observed": {
+          "mode_ro": true,
+          "before": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "after": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9"
+        },
+        "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+      },
+      {
+        "id": "sqlite:query",
+        "status": "pass",
+        "observed": {
+          "read_only": true,
+          "returncode": 0,
+          "rows": [
+            [
+              "A",
+              2,
+              30
+            ],
+            [
+              "B",
+              1,
+              12
+            ]
+          ],
+          "error": ""
+        },
+        "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+      }
+    ],
+    "passed": true
+  },
+  "after": {
+    "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+    "target": {
+      "requested": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+      "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T07:10:29.763878+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "sqlite:runtime",
+        "status": "pass",
+        "observed": {
+          "version": "3.50.2",
+          "tool_runtime": "D:\\ANACONDA\\python.exe"
+        },
+        "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+      },
+      {
+        "id": "sqlite:database",
+        "status": "pass",
+        "observed": {
+          "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "header_valid": true,
+          "error": ""
+        },
+        "requirement": "明确SQLite文件、有效文件头与内容摘要"
+      },
+      {
+        "id": "sqlite:readonly",
+        "status": "pass",
+        "observed": {
+          "mode_ro": true,
+          "before": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+          "after": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9"
+        },
+        "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+      },
+      {
+        "id": "sqlite:query",
+        "status": "pass",
+        "observed": {
+          "read_only": true,
+          "returncode": 0,
+          "rows": [
+            [
+              "A",
+              2,
+              30
+            ],
+            [
+              "B",
+              1,
+              12
+            ]
+          ],
+          "error": ""
+        },
+        "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+      }
+    ],
+    "passed": true
+  },
+  "changes": [
+    {
+      "id": "os",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "sqlite:runtime",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "sqlite:database",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "sqlite:readonly",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "sqlite:query",
+      "before": "pass",
+      "after": "pass"
+    }
+  ],
+  "outcome": "stable-pass"
+}

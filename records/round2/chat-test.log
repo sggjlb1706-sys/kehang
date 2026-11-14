@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2_chat.py", line 290, in <module>
+    main()
+    ~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2_chat.py", line 266, in main
+    assert page.locator('#chat-input').is_visible()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+AssertionError
+{
+  "output": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\chat\\20261114T064929Z",
+  "checks": [
+    "Welcome is quiet; Start opens all 13 courses; five filters work; opening/filtering triggers no collection or model request.",
+    "Every home course button reaches its matching preparation and collector; navigation does not create report evidence.",
+    "Two real loopback HTTP requests preserve follow-up roles and fresh step context; generated HTML is displayed as plain text.",
+    "Editing or changing step invalidates previews; course conversations and drafts are isolated and restored.",
+    "Invalid protocol response creates no fabricated answer; retry retains input; new conversation clears local history.",
+    "Unconfigured model is clearly identified, with setup instructions, preview-only interaction and no simulated AI answer.",
+    "Teacher publishes/exports and student imports the same course; practice material download and return from component guidance remain reachable.",
+    "Delayed reply from another course is discarded rather than appearing in the current chat.",
+    "Fresh real Python A/B collection works from the course flow; result chat preview uses the validated selected report.",
+    "Imported custom Python requirements and course identity survive the preparation-page one-click check.",
+    "Shrinking desktop to tablet automatically collapses the chat, leaving course controls reachable.",
+    "390x700 chat preview can scroll to confirmation while keeping the close control visible."
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "scope": "Same-computer agent browser. Chat uses an explicitly local HTTP protocol fixture, not a real AI service. No installation, paid model call, external-device or official-submission claim.",
+  "passed": false,
+  "error": "AssertionError()"
+}

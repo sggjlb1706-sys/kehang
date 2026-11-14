@@ -1,0 +1,1006 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 97027a0..4e483be 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,7 +1,7 @@
+ # 正式版执行约定
+ Codex负责实现、验证和交付；未参与实现的独立只读代理审查固定版本。
+ 先读TASK.md、PLAN.md、PROVENANCE.md。只在本仓库实现，旧D盘原型和发布包保持原字节。
+-2026-11-12用户明确选择“改成课航内一键本机检测”：允许本人点击网页后，由回环服务发现本机登记/PATH中的Python并运行既有Python基础固定检查，报告直接回传。此项取代该场景原先的手动终端要求；不接受网页或模型传入任意命令、脚本、目标路径。其他课程检测与推理继续由本人手动启动。规则决定状态，AI只解释已有证据。
++2026-11-14第二轮明确扩展多课程网页本机检测：本人发现/选择必要目标后，由回环服务运行既有固定采集器，报告直接回传；目标经服务发现或原生选择登记，不接受任意命令或脚本。GPU计算、离线推理须另选本次授权；不调用收费API、不启动DSH任务或虚拟机来宾。手动工具保留备用。此项取代11月12日仅Python的实施范围。规则决定状态，AI只解释已有证据。
+ 失败与未知如实保留；模式不改事实；同目标/同任务快照才可对比。
+ 不自动安装、改系统网络、发收费模型请求、发布仓库或公网部署。
+ 提交使用实际操作时间，不拆分既成代码冒充开发；复用必须列来源。
+diff --git a/DESIGN.md b/DESIGN.md
+index 1e4c523..da286e4 100644
+--- a/DESIGN.md
++++ b/DESIGN.md
+@@ -1,5 +1,9 @@
+ # 新手学习引导
+ 
++2026-11-14第二轮：明亮教室里的初学者先看到一个安静的出发界面，再逐步进入选课与配置。欢迎页采用现有赭色品牌的深色地平线背景、系统字体和单个“开始”，不加营销段落、卡片或装饰标签；产品工具区继续浅色。背景由CSS绘制，不下载图片或字体，不添加框架。开始按钮仅有短暂位移反馈，减少动态效果时取消。
++
++AI开合按页面入口管理，首页/选课页默认收起且迟到配置或回答不重开。配置宽屏并列，窄屏按需打开；Escape/关闭返回可见入口焦点。课程目标使用原生下拉框与本机文件窗口，先选择再检测；候选发现不运行课程程序。只显示当前课程需要的字段与真实状态。这些规则取代下文上一轮首页直接选课和宽屏首页常驻聊天的描述。
++
+ 2026-11-14：从“推荐Python检测”改为“直接选择课程”。浅色系统字体、赭色主操作和已有图示继续沿用；首页用同层级课程入口和学习方向筛选建立信息层次，不通过大块推荐挤走其他课程。宽屏右侧提供持续的上下文聊天，窄屏通过顶部“问AI”展开，Escape或收起返回原入口；缩小时自动收起。聊天保留多轮、草稿和课程作用域，消息只按文本呈现；请求前集中展示目的地、脱敏上下文和历史。结果页先结论、再操作，成功明细与环境列表折叠，失败明细默认展开。此段取代下面旧版关于首页Python优先和一次性AI入口的描述。
+ 
+ 本轮面向使用中文Windows 11的课程新手，采用浅色系统字体、黄文件夹、标签页、地址/搜索栏、命令栏、左导航、文件详情列与蓝色选择状态来建立熟悉感；其余课航外观继续沿用。图示按课程分步切换，一次突出一个位置；课程真实输入框保留在图外，通过按钮定位，不让示例路径变成真实选择。手机收起示意侧栏并保留文件名/类型，文字与图可以键盘访问。图片为代码绘制的操作示意，非截图/文件发现；不使用远程字体、图标库或自动执行。
+diff --git a/PLAN.md b/PLAN.md
+index c310082..54c4b19 100644
+--- a/PLAN.md
++++ b/PLAN.md
+@@ -1,10 +1,9 @@
+-# 本轮验收计划
+-
+-1. 课程优先：首页13类课程直达与方向筛选 → 检查各课程准备/检测步骤，无隐式执行或报告。
+-2. 上下文聊天：复用规则与HTTP模型协议 → 本地协议夹具验证多轮、脱敏、报告重算、预览单次票据、目的地变化、过期、失败与迟到响应隔离。
+-3. 操作层次：结论先行与进阶工具折叠 → 检查真实Python A/B、教师发布导入、连续实训返回与下载、原13课程Win11图示。
+-4. 响应式与交付：320/390/768/1120/1280/1440及键盘 → 单测、浏览器、静态检查完成后固定候选，独立只读审查并处理必要发现。
+-
+-基线153项单测通过；本轮详细结果和证据路径见docs/课程首页与连续对话验收.md。模型协议夹具不代表真实模型回答质量或接入成功。
+-
+-全部步骤已完成：最终160项单测、13组新浏览器、18组原图示回归通过；独立审查发现的要求保留与选课上下文问题已修复，固定产品0e1be49复核无剩余阻断。范围与原件见REVIEW.md及records/course-chat。
++# 第二轮验收计划与状态
++
++1. 欢迎页/选课/配置与页面AI规则 → 首页刷新/返回、键盘焦点、320/390/768/1120/1280/1440、减少动态效果、零隐式请求。
++2. 固定采集器接入 → 服务签发目标编号、字段/课程绑定、必要输入、封闭选项、原报告及同目标复检；不执行任意脚本。
++3. 实机与负例 → 已有条件的11类真实网页A/B；DSH CLI缺可用包如实记录，网页课不适用；缺目标/空候选/目标消失/取消/失败/切课/迟到回传受控验证。GPU/模型补做实跑仅用受控证据验证授权，未冒称本人授权实跑。
++4. 回归与独立审查 → 173项单测、聊天及教师要求13组、原图示18组、原生文件窗口与SQLite A/B/原件下载、边界验证；固定产品由未参与实现的代理只读审查。审查发现的准备A→实跑B入口已修正并补回归，详细结论见REVIEW.md和records/round2/independent-review.md。
++5. 本地交付 → 保留独立新目录、可运行回环服务与启动方法；逐门能力、真实结果、截图、技能与剩余缺口见docs/第二轮验收.md和外部交付说明。不制作覆盖旧版的正式包，不上传。
++
++逐次原始日志保留，包括首次失败；最终通过材料与失败日志的身份在docs/第二轮验收.md中区分。
+diff --git a/PRODUCT.md b/PRODUCT.md
+index b1bfbed..5b95d91 100644
+--- a/PRODUCT.md
++++ b/PRODUCT.md
+@@ -1,5 +1,9 @@
+ # 课航产品范围
+ 
++2026-11-14第二轮：独立欢迎首页只保留背景、品牌和开始入口，开始后进入课程选择。首页和选课页AI默认收起；课程准备/检测宽屏并列、窄屏按需展开。此项取代本文件上一轮关于首页直接选课和首页常驻聊天的交互。
++
++12类具备固定环境采集器的课程接入网页选择目标与报告回传，DeepSeek网页入门提供学习入口并说明无适用本机环境检测。服务仅接收已登记目标编号与封闭课程选项；同目标复检沿用原任务、目标、内核/模型目录等选择，保留A原件。准备检查A之后，可单独授权同目标固定GPU运算或离线推理B；每次实跑均再次确认。API仅准备检查，DSH静态检查，VM可明确选择仅宿主/软件检查。手动工具继续备用，收费API、Agent任务、来宾操作不自动执行。
++
+ 2026-11-14：学习首页以既有13类课程为主入口，按学习方向筛选，点击课程直接进入准备步骤。Python一键检测在对应课程内提供，Notebook＋SQLite连续实训和教师资料导入各自保留清楚入口。面向选课、准备环境和查看结果的聊天支持连续追问；按课程隔离对话，随当前步骤和实际报告更新上下文。沿用服务进程的可选模型配置，每轮先预览、再主动同意发送；未配置时明确显示状态。AI解释不改变课程规则或报告判定。宽屏聊天与步骤并列，窄屏主动展开，窗口缩小时自动收起。结果先呈现结论与下一步，通过明细及原始报告按需展开。此前首页优先推荐Python的设计已由本次要求取代。
+ 
+ 2026-11-13：既有13类课程和连续实训均提供对应的分步操作图。Win11风格资源管理器、属性窗口与终端分别说明各类路径/文件及本人操作，图示可定位真实表单。报告区复用完整资源管理器示意并说明查看文件扩展名。属于引导与展示更新，课程判定、运行授权、原Python一键范围及真实证据边界不变。
+diff --git a/PROVENANCE.md b/PROVENANCE.md
+index 0cec4be..c57e31b 100644
+--- a/PROVENANCE.md
++++ b/PROVENANCE.md
+@@ -1,5 +1,7 @@
+ # 本版来源
+ 
++2026-11-14第二轮从a7aba975aa1d59e4a86f6df7803ed59ad4c97dd7完整独立克隆，位于D盘work/kehang-round2-20261114，分支codex/kehang-round2-20261114。需求为本人14:26反馈及当前执行任务；原件保留records/round2/original-feedback。欢迎页、页面AI规则与目标票据为本轮原创，复用现有13类课程定义、固定采集器、analyze/compare、原生文件选择与Windows Job Object。无第三方新代码、框架、字体、图片或云素材。Impeccable用于UI；Lean Build与Migration用于接入和兼容。测试、受控候选、真实采集、模拟端点和独立代理审查分别记录，不能把测试夹具当真实模型或用户验收。
++
+ 2026-11-14课程首页与上下文聊天从Windows11图示交付版4249165继续开发，实际目录仍在D盘开发工作区，分支codex/kehang-course-chat-20261114。需求来自本轮用户关于课程可见性、连续提问和操作层次的反馈，原文见records/course-chat/feedback.md；用户明确没有报告具体Bug。首页、侧栏和会话票据为本仓库原创实现，复用原课程加载、guidance、analyze、脱敏及HTTP模型协议，不新增依赖、外部字体、图标或图片素材。impeccable用于产品界面与响应式检查。新增模型对话仅用本地HTTP协议夹具验证，不能作为真实模型效果或接入成功的证据；Python A/B另有本机真实执行原件。浏览器回归发现的缩屏遮挡由本轮实现者发现并修正，不记作用户首先发现。
+ 
+ Windows11全课程图示版从11e52b4f7361dd4efd1453b3b47240650fb74225完整克隆，58个已有可达提交，分支codex/kehang-win11-guides-20261113。用户本次原文见records/win11-guides/feedback.txt。参考[Microsoft文件资源管理器说明](https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows)及[Windows可访问性说明](https://learn.microsoft.com/en-us/windows/apps/develop/accessibility)，在2026-11-13核对导航/查看扩展名与键盘原则；所有产品图示、文件图标和布局由本版HTML/CSS自制，无第三方截图/图标再分发。官方参考图仅放仓库外交付目录reference供核对，不打入产品和评审包。沿用impeccable的产品界面/上下文引导工作流，没有新依赖或云端素材调用。
+diff --git a/Start-Web.ps1 b/Start-Web.ps1
+index c4a2bb6..2962c44 100644
+--- a/Start-Web.ps1
++++ b/Start-Web.ps1
+@@ -2,6 +2,10 @@ param([string]$Python = 'D:\ANACONDA\python.exe', [int]$Port = 8772)
+ $ErrorActionPreference = 'Stop'
+ if (!(Test-Path -LiteralPath $Python -PathType Leaf)) { throw '请通过 -Python 指定已有的工具 Python 完整路径' }
+ Set-Location -LiteralPath $PSScriptRoot
++$taskTemporary = Join-Path $PSScriptRoot 'data\temp'
++New-Item -ItemType Directory -Path $taskTemporary -Force | Out-Null
++$env:TEMP = $taskTemporary
++$env:TMP = $taskTemporary
+ $taskRuntimeZip = Join-Path $PSScriptRoot 'vendor\python-3.13.17-embed-amd64.zip'
+ if (Test-Path -LiteralPath $taskRuntimeZip -PathType Leaf) {
+     & $Python -B -m campuslab.web --port $Port --runtime-zip $taskRuntimeZip
+diff --git a/TASK.md b/TASK.md
+index 93c08c2..207f347 100644
+--- a/TASK.md
++++ b/TASK.md
+@@ -1,7 +1,9 @@
+-# 当前任务 · 课程首页与 AI 连续对话
+-
+-用户2026-11-14反馈：先看课程并直接选择；AI可直接提问和连续追问，帮助当前步骤；布局应自然指引下一步，收拢内部工具及重复说明。用户未报告具体Bug。原文见records/course-chat/feedback.md。
+-
+-在当前D盘开发仓库与codex/kehang-course-chat-20261114分支实现：保留13类课程、实训、教师功能和原规则，首页不再优先推荐Python检测；用现有模型配置增加多轮上下文聊天；每轮预览及单次同意，不自动调用收费模型。仅原Python固定检查可由本人网页点击启动。
+-
+-成功标准：13课程可直接进入对应准备步骤；聊天连续追问带上正确的当前课程、步骤和规则证据，跨课程隔离且过期响应不混入当前对话；未配置、失败与未知如实显示；宽窄屏和键盘入口可用；原图示、真实Python A/B及教师/实训入口回归通过；固定候选独立只读审查。
++# 第二轮 · 极简首页、AI显示规则与多课程本机检测
++
++需求来源：本人2026-11-14 14:26真实反馈及本聊天执行任务；原件records/round2/original-feedback，本聊天原文和AI实际可见回应records/round2/session-visible.json。此轮取代上一轮首页直接选课、宽屏首页常驻AI和仅Python网页检测的限制。
++
++从a7aba975独立克隆到D盘work/kehang-round2-20261114，codex/kehang-round2-20261114。保留旧仓库及versions/submission，不自动发布、上传或正式提交。
++
++成功标准：欢迎首页→开始→选课→配置；首页/选课AI默认收起且只由主动点击打开，课程配置宽屏并列、窄屏可达；12类已有环境采集器网页接入，网页学习课明确不适用。必要目标经服务发现/原生窗口选择，固定检查回传，复检同任务同目标保留A；GPU/推理每次另行同意，允许准备A→授权实跑B。收费API、DSH任务、虚拟机来宾不自动执行；手动工具和教师固定要求保留。
++
++实施与证据：records/round2/plan.md及docs/第二轮验收.md。真实采集、受控候选、模拟端点及失败分别记录。本人尚未体验本轮交付，不能代写本人满意、修后验收或三条完整Prompt链。
+diff --git a/campuslab/chat.py b/campuslab/chat.py
+index e4cf390..0f2ed54 100644
+--- a/campuslab/chat.py
++++ b/campuslab/chat.py
+@@ -15,7 +15,8 @@ SYSTEM = ('你是课航课程学习助手，面向新手，用简洁中文回答
+           '不得声称执行过命令、安装、修复或改变判定。软件操作由用户审查后手动进行。'
+           '课程支持范围以提供的目录为准，目录外课程不能声称已有检测能力。')
+ STEPS = {
+-    'home': ['选择课程'],
++    'home': ['欢迎首页'],
++    'selection': ['选择课程'],
+     'course': ['选择课程', '准备环境', '运行检测', '查看结果与复检'],
+     'practice': ['了解实训', '准备环境', '跟做练习', '提交成果'],
+     'teacher': ['教师工作台'],
+diff --git a/campuslab/local_check.py b/campuslab/local_check.py
+index 9d82878..54114d0 100644
+--- a/campuslab/local_check.py
++++ b/campuslab/local_check.py
+@@ -1,4 +1,4 @@
+-"""User-clicked, bounded Python checks on the loopback server's computer."""
++"""User-clicked, fixed course checks on the loopback server's computer."""
+ from copy import deepcopy
+ import json
+ from pathlib import Path
+@@ -13,6 +13,7 @@ import time
+ from .launcher import discover_python
+ from .rules import absolute, analyze, compare, validate_task
+ from .owned_process import OwnedProcess
++from .local_targets import FIELDS, TargetStore
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ MAX_CANDIDATES = 8
+@@ -20,17 +21,23 @@ MAX_JOBS = 8
+ LEASE_SECONDS = 15
+ 
+ 
+-def run_check(spec, target, cancelled):
++def run_check(spec, target, cancelled, options=None):
+     """Use the existing collector contract in an owned, cancellable process tree."""
+-    with tempfile.TemporaryDirectory(prefix='kehang-local-') as folder:
++    temporary = ROOT / 'data/temp'
++    temporary.mkdir(parents=True, exist_ok=True)
++    with tempfile.TemporaryDirectory(prefix='kehang-local-', dir=temporary) as folder:
+         folder = Path(folder)
+         snapshot, output = folder / 'task.json', folder / 'report.json'
+         snapshot.write_text(json.dumps(spec, ensure_ascii=False), encoding='utf8')
+         command = [sys.executable, '-B', '-I', '-S', str(ROOT / 'campuslab/local_runner.py'),
+                    '--task', str(snapshot), '--target', target, '--output', str(output)]
++        for key, value in (options or {}).items():
++            if type(value) is bool:
++                if value: command.append('--' + key.replace('_', '-'))
++            else: command.extend(['--' + key.replace('_', '-'), value])
+         owned = OwnedProcess(command, cwd=ROOT)
+         process = owned.process
+-        deadline = time.monotonic() + 65
++        deadline = time.monotonic() + (195 if (options or {}).get('infer') else 150)
+         try:
+             while process.poll() is None:
+                 if cancelled.wait(.1):
+@@ -53,33 +60,37 @@ class LocalCheckService:
+         self.token = secrets.token_hex(32)
+         self.available = platform.system() == 'Windows'
+         self.discover = discover or (lambda: discover_python(ROOT))
+-        self.runner = runner or run_check
++        self.runner = runner
++        self.targets = TargetStore()
+         self.lock = threading.RLock()
+         self.jobs = {}
+         self.active = None
+         self.closed = False
+ 
+     def configuration(self):
+-        return dict(available=self.available, token=self.token, scenarios=['python-basics'],
++        return dict(available=self.available, token=self.token, scenarios=list(FIELDS),
+                     max_candidates=MAX_CANDIDATES,
+-                    scope='检测运行课航本地服务的这台 Windows 电脑；只检查 Python 基础课，不安装软件')
++                    scope='检测运行课航服务的 Windows 电脑；仅运行当前课程固定检查，不安装软件')
+ 
+     def authorize(self, token):
+         if not isinstance(token, str) or not token.isascii() or not secrets.compare_digest(token, self.token):
+             raise ValueError('请刷新本机页面后再检测')
+ 
+     def start(self, body):
+-        if set(body) not in ({'task', 'consent'}, {'task', 'consent', 'previous_job', 'target_id'}):
++        recheck_fields = {'task', 'consent', 'previous_job', 'target_id'}
++        recheck_body = recheck_fields <= set(body) <= recheck_fields | {'execution_consent', 'execution'}
++        if set(body) not in ({'task', 'consent'}, {'task', 'consent', 'selections', 'options'}) and not recheck_body:
+             raise ValueError('本机检测只接受固定任务和本次点击同意')
+         spec = deepcopy(validate_task(body['task']))
+-        if spec['scenario'] != 'python-basics' or body['consent'] is not True or not self.available:
+-            raise ValueError('当前只支持本人点击的 Windows Python 基础检测')
++        if spec['scenario'] not in FIELDS or body['consent'] is not True or not self.available:
++            raise ValueError('当前课程不支持本机检测或尚未主动同意')
+         with self.lock:
+             if self.closed:
+                 raise ValueError('服务已关闭')
+             if self.active and self.jobs[self.active]['state'] in ('running', 'cancelling'):
+                 raise ValueError('已有本机检测，请等待或取消后重试')
+             previous = None
++            selected = None
+             if 'previous_job' in body:
+                 old = self._job(body['previous_job'])
+                 if old['state'] != 'done' or old['task']['id'] != spec['id']:
+@@ -88,6 +99,18 @@ class LocalCheckService:
+                                  if item['id'] == body['target_id'] and item.get('report')), None)
+                 if previous is None:
+                     raise ValueError('未找到可复检的原环境，请重新初检')
++                if 'execution' in body:
++                    key = {'pytorch-gpu': 'gpu_run', 'local-qwen': 'infer'}.get(spec['scenario'])
++                    execution = body['execution']
++                    if not key or not isinstance(execution, dict) or set(execution) != {key} or execution[key] is not True:
++                        raise ValueError('复检只允许当前课程固定实际运行，不能更换目标或目录')
++                    previous['options'] = dict(previous.get('options', {}), **execution)
++                if any(previous.get('options', {}).get(k) for k in ('gpu_run', 'infer')) and body.get('execution_consent') is not True:
++                    raise ValueError('本次复检需要重新同意实际 GPU 计算或模型推理')
++            elif 'selections' in body:
++                selected = self.targets.resolve(spec, body['selections'], body['options'])
++            elif spec['scenario'] != 'python-basics':
++                raise ValueError('请先选择当前课程的检测目标')
+             while len(self.jobs) >= MAX_JOBS:
+                 del self.jobs[next(iter(self.jobs))]
+             identity = secrets.token_hex(16)
+@@ -95,7 +118,7 @@ class LocalCheckService:
+                        completed=0, limited=False, current='', error='', cancel=threading.Event(), seen=time.monotonic())
+             self.jobs[identity] = job
+             self.active = identity
+-            worker = threading.Thread(target=self._work, args=(job, previous), daemon=True)
++            worker = threading.Thread(target=self._work, args=(job, previous, selected), daemon=True)
+             job['worker'] = worker
+             threading.Thread(target=self._watch, args=(job,), daemon=True).start()
+             worker.start()
+@@ -132,10 +155,13 @@ class LocalCheckService:
+                 job['cancel'].set()
+             return self.status(identity)
+ 
+-    def _work(self, job, previous):
++    def _work(self, job, previous, selected):
+         try:
+             if previous:
+-                choices = [(previous['target'], previous['source'])]
++                choices = [(previous['target'], previous['source'], previous.get('options', {}))]
++            elif selected:
++                options = dict(selected)
++                choices = [(options.pop('target'), '本人确认的课程目标', options)]
+             else:
+                 choices, seen = [], set()
+                 for target, source in self.discover():
+@@ -150,7 +176,7 @@ class LocalCheckService:
+                         if key in seen:
+                             continue
+                         seen.add(key)
+-                        choices.append((target, source))
++                        choices.append((target, source, {}))
+                     except (ValueError, OSError):
+                         continue
+                 with self.lock:
+@@ -158,14 +184,14 @@ class LocalCheckService:
+                 choices = choices[:MAX_CANDIDATES]
+             with self.lock:
+                 job['total'] = len(choices)
+-            for target, source in choices:
++            for target, source, options in choices:
+                 if job['cancel'].is_set():
+                     break
+                 with self.lock:
+                     job['current'] = target
+-                item = dict(id=secrets.token_hex(12), target=target, source=source, error='')
++                item = dict(id=secrets.token_hex(12), target=target, source=source, options=options, error='')
+                 try:
+-                    report = self.runner(job['task'], target, job['cancel'])
++                    report = self.runner(job['task'], target, job['cancel']) if self.runner else run_check(job['task'], target, job['cancel'], options)
+                     if job['cancel'].is_set():
+                         break
+                     if not report or absolute(report['target']['requested']) != absolute(target):
+@@ -174,6 +200,12 @@ class LocalCheckService:
+                     if previous:
+                         baseline = previous.get('before', previous['report'])
+                         item.update(before=baseline, comparison=compare(job['task'], baseline, report))
++                    # Raw originals stay on this computer across refreshes and failed rechecks.
++                    archive = ROOT / 'data/local-check' / job['id'] / item['id']
++                    archive.mkdir(parents=True)
++                    for name, value in [('task', job['task']), ('report', report), ('selection', dict(target=target, options=options))]:
++                        (archive / (name + '.json')).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding='utf8')
++                    if previous: (archive / 'before.json').write_text(json.dumps(baseline, ensure_ascii=False, indent=2), encoding='utf8')
+                 except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError):
+                     item = dict(id=item['id'], target=target, source=source,
+                                 error='此环境未完成有效检测，状态未知。可重试或使用手动工具。')
+diff --git a/campuslab/local_runner.py b/campuslab/local_runner.py
+index d8c8a42..62a1207 100644
+--- a/campuslab/local_runner.py
++++ b/campuslab/local_runner.py
+@@ -1,11 +1,15 @@
+ """Private fixed collector entry; launched only by LocalCheckService."""
+ from pathlib import Path
++import os
+ import sys
+ 
+ # Wait until the parent has attached this process to its private Windows job.
+ if sys.stdin.buffer.read(1) != b'1':
+     raise SystemExit(1)
+ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++temporary = Path(__file__).resolve().parents[1] / 'data/temp'
++temporary.mkdir(parents=True, exist_ok=True)
++os.environ.update(TEMP=str(temporary), TMP=str(temporary))
+ from campuslab.collect import main
+ 
+ if __name__ == '__main__':
+diff --git a/campuslab/local_targets.py b/campuslab/local_targets.py
+new file mode 100644
+index 0000000..1fd8ff9
+--- /dev/null
++++ b/campuslab/local_targets.py
+@@ -0,0 +1,223 @@
++"""Bounded discovery and user-native selections; never accept executable web paths."""
++import base64
++from copy import deepcopy
++import json
++import os
++from pathlib import Path
++import secrets
++import shutil
++import subprocess
++import threading
++import time
++import uuid
++
++from .launcher import discover_python
++from .rules import absolute, validate_task
++
++ROOT = Path(__file__).resolve().parents[1]
++PYTHON = dict(label='课程 Python', kind='python', required=True)
++FIELDS = {
++    'python-basics': dict(target=PYTHON),
++    'node-basics': dict(target=dict(label='课程 Node.js', kind='node', required=True)),
++    'java-jdk': dict(target=dict(label='JDK 根目录', kind='jdk', required=True)),
++    'notebook-data': dict(target=PYTHON, kernel_spec=dict(label='Notebook 内核 kernel.json', kind='kernel', required=True)),
++    'sqlite-basics': dict(target=dict(label='课程 SQLite 数据库', kind='database', required=True)),
++    'pytorch-cpu': dict(target=PYTHON),
++    'pytorch-gpu': dict(target=PYTHON),
++    'local-qwen': dict(target=PYTHON, model_dir=dict(label='固定 Qwen 模型目录', kind='folder', required=True)),
++    'deepseek-api': dict(target=PYTHON),
++    'dsh-desktop': dict(target=dict(label='DSH 桌面程序', kind='desktop', required=True), workspace=dict(label='DSH 专用练习目录（可选）', kind='folder', required=False)),
++    'dsh-cli': dict(target=dict(label='课程 Node.js', kind='node', required=True), package_json=dict(label='DSH 包 package.json', kind='package', required=True), workspace=dict(label='DSH 专用练习目录（可选）', kind='folder', required=False)),
++    'vm-linux': dict(target=dict(label='虚拟化程序 VBoxManage.exe / vmrun.exe', kind='vm', required=True), vm_id=dict(label='VMware 实例 .vmx（VirtualBox 可在下方填 UUID）', kind='vmx', required=False), guest_report=dict(label='同任务同实例的来宾报告（可选）', kind='json', required=False)),
++}
++NOTES = {
++    'python-basics': '检查所选 Python 的版本、requests 与固定导入。也可直接检测已登记的 Python。',
++    'node-basics': '使用所选 node.exe 和同目录 npm，运行已有固定检查。',
++    'java-jdk': '核对同源 java / javac，在临时目录编译并运行固定 Java 程序。',
++    'notebook-data': '实际启动你选定的内核，核对解释器并完成固定数据计算；随后关闭本次内核。',
++    'sqlite-basics': '只读检查课程数据库，执行固定 SELECT 并复核文件摘要；不会修改数据库。',
++    'pytorch-cpu': '导入 PyTorch 并运行固定 CPU 张量计算。',
++    'pytorch-gpu': '默认检查准备状态；实际 GPU 张量计算需要勾选本次授权。',
++    'local-qwen': '核对固定模型目录及权重；实际加载模型推理需要勾选本次授权。',
++    'deepseek-api': '仅检查 Python 编程依赖与固定请求准备。不会发送 API 请求；实际调用继续使用手动预览与单次授权。',
++    'dsh-desktop': '只读核对程序与公开包元数据，可核对专用练习目录。不启动 DSH、不读取会话凭据；真实 Agent 任务仍需本人完成。',
++    'dsh-cli': '运行所选 Node 的固定身份检查，只读核对 DSH 包及可选练习目录。不执行包入口或 Agent 任务。',
++    'vm-linux': '只读检查宿主、虚拟化程序和所选实例。不启动虚拟机、不登录来宾；无真实来宾报告保留未知。',
++}
++
++
++def validate_path(kind, value):
++    absolute(value)
++    path = Path(value).resolve()
++    names = {'python': {'python.exe', 'python3.exe'}, 'node': {'node.exe'}, 'kernel': {'kernel.json'},
++             'package': {'package.json'}, 'vm': {'vboxmanage.exe', 'vmrun.exe'}}
++    if kind in names and path.name.casefold() not in names[kind]:
++        raise ValueError('所选文件类型与当前字段不符')
++    if kind in ('folder', 'jdk'):
++        if not path.is_dir(): raise ValueError('请选择已有目录')
++        if kind == 'jdk' and not (path / 'bin/java.exe').is_file(): raise ValueError('目录中没有 bin/java.exe')
++    elif not path.is_file(): raise ValueError('所选文件不存在或已移走，请重新选择')
++    if kind in ('python', 'node') and (path.parent / '.campuslab-tool-runtime').exists():
++        raise ValueError('工具自带运行时不是课程目标')
++    if kind == 'python' and path.parent.name.casefold() == 'windowsapps': raise ValueError('请选择实际 Python，不能使用应用别名')
++    extensions = {'database': {'.sqlite', '.sqlite3', '.db'}, 'vmx': {'.vmx'}, 'json': {'.json'}, 'desktop': {'.exe'}}
++    if kind in extensions and path.suffix.casefold() not in extensions[kind]: raise ValueError('所选文件后缀与当前字段不符')
++    return str(path)
++
++
++def python_choices():
++    choices = discover_python(ROOT)
++    # Only inspect known conda roots already discovered above, never scan drives.
++    for path, _ in list(choices)[:8]:
++        root = Path(path).parent
++        try:
++            if (root / 'conda-meta').is_dir() and (root / 'envs').is_dir():
++                choices += [(str(p), '已知 Conda 环境目录候选') for p in sorted((root / 'envs').glob('*/python.exe'))[:8]]
++        except OSError: pass
++    return choices
++
++
++PICKER = r'''
++$ErrorActionPreference = 'Stop'
++[Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
++[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
++$settings = [Console]::In.ReadToEnd() | ConvertFrom-Json
++Add-Type -AssemblyName System.Windows.Forms
++if ($settings.folder) {
++    $dialog = New-Object System.Windows.Forms.FolderBrowserDialog
++    $dialog.Description = $settings.label
++    $dialog.ShowNewFolderButton = $false
++} else {
++    $dialog = New-Object System.Windows.Forms.OpenFileDialog
++    $dialog.AutoUpgradeEnabled = $false
++    $dialog.Title = $settings.label
++    $dialog.Filter = $settings.filter
++    $dialog.Multiselect = $false
++    $dialog.CheckFileExists = $true
++    $dialog.RestoreDirectory = $true
++    $dialog.InitialDirectory = $settings.directory
++}
++try {
++    if ($dialog.ShowDialog() -eq [Windows.Forms.DialogResult]::OK) {
++        $value = if ($settings.folder) { $dialog.SelectedPath } else { $dialog.FileName }
++        @{ selected = $value } | ConvertTo-Json -Compress
++    } else { @{ selected = $null } | ConvertTo-Json -Compress }
++} finally { $dialog.Dispose() }
++'''
++
++
++def choose_native(field):
++    filters = {'python': 'Python|python.exe;python3.exe', 'node': 'Node.js|node.exe', 'kernel': 'Notebook 内核|kernel.json',
++               'database': 'SQLite|*.sqlite;*.sqlite3;*.db', 'package': 'DSH 包|package.json', 'desktop': 'DSH 程序|*.exe',
++               'vm': '虚拟化程序|VBoxManage.exe;vmrun.exe', 'vmx': 'VMware 实例|*.vmx', 'json': '来宾报告|*.json'}
++    settings = dict(label=field['label'], folder=field['kind'] in ('folder', 'jdk'), filter=filters.get(field['kind'], '文件|*.*'), directory=str(ROOT))
++    shell = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'System32/WindowsPowerShell/v1.0/powershell.exe'
++    try:
++        result = subprocess.run([str(shell), '-NoLogo', '-NoProfile', '-STA', '-WindowStyle', 'Hidden', '-EncodedCommand', base64.b64encode(PICKER.encode('utf-16le')).decode()],
++                                input=json.dumps(settings, ensure_ascii=False).encode('utf8'), capture_output=True, timeout=180,
++                                creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
++    except subprocess.SubprocessError:
++        raise ValueError('文件窗口未完成，请重新选择或使用手动备用入口') from None
++    if result.returncode: raise ValueError('文件选择窗口不可用，请重试或使用手动备用入口')
++    return json.loads(result.stdout.decode('utf-8-sig'))['selected']
++
++
++class TargetStore:
++    def __init__(self):
++        self.entries = {}
++        self.lock = threading.RLock()
++        self.picker_lock = threading.Lock()
++
++    def register(self, spec, field, value, source):
++        meta = FIELDS[spec['scenario']][field]
++        path = validate_path(meta['kind'], value)
++        with self.lock:
++            now = time.monotonic()
++            self.entries = {k: v for k, v in self.entries.items() if now - v['time'] < 1800}
++            for key, entry in self.entries.items():
++                if (entry['task'], entry['field'], entry['path']) == (spec['id'], field, path):
++                    entry['time'] = now
++                    return dict(id=key, path=path, source=source)
++            while len(self.entries) >= 128: self.entries.pop(next(iter(self.entries)))
++            key = secrets.token_hex(16)
++            self.entries[key] = dict(task=spec['id'], field=field, path=path, kind=meta['kind'], time=now)
++            return dict(id=key, path=path, source=source)
++
++    def configuration(self, spec):
++        validate_task(spec)
++        fields = deepcopy(FIELDS.get(spec['scenario'], {}))
++        for value in fields.values(): value['choices'] = []
++        return dict(fields=fields, note=NOTES.get(spec['scenario'], '此课程是网页提问练习，没有适用的本机环境检测。请按学习步骤进入官方网页并完成练习。'))
++
++    def discover(self, spec):
++        value = self.configuration(spec)
++        for field, meta in value['fields'].items():
++            choices = []
++            if meta['kind'] == 'python': choices = python_choices()
++            elif meta['kind'] == 'node':
++                found = shutil.which('node.exe')
++                if found: choices = [(found, 'PATH 候选')]
++            elif meta['kind'] == 'jdk':
++                found = shutil.which('javac.exe') or shutil.which('java.exe')
++                choices = [(str(Path(found).resolve().parent.parent), 'PATH 候选')] if found else []
++                if os.environ.get('JAVA_HOME'): choices.append((os.environ['JAVA_HOME'], 'JAVA_HOME 候选'))
++            elif meta['kind'] == 'kernel':
++                folders = [Path(os.environ.get('APPDATA', str(Path.home()))) / 'jupyter/kernels', Path(os.environ.get('PROGRAMDATA', 'C:/ProgramData')) / 'jupyter/kernels']
++                folders += [Path(p).parent / 'share/jupyter/kernels' for p, _ in python_choices()[:8]]
++                for folder in folders:
++                    try:
++                        if folder.is_dir(): choices += [(str(p), '已知 Jupyter 内核目录') for p in sorted(folder.glob('*/kernel.json'))[:8]]
++                    except OSError: pass
++            elif meta['kind'] == 'vm':
++                for name, suffix in [('VBoxManage.exe', 'Oracle/VirtualBox/VBoxManage.exe'), ('vmrun.exe', 'VMware/VMware Workstation/vmrun.exe')]:
++                    found = shutil.which(name)
++                    if found: choices.append((found, 'PATH 候选'))
++                    for base in (os.environ.get('ProgramFiles'), os.environ.get('ProgramFiles(x86)')):
++                        if base: choices.append((str(Path(base) / suffix), '标准安装位置候选'))
++            seen = set()
++            for path, source in choices:
++                try:
++                    item = self.register(spec, field, path, source)
++                    if item['id'] not in seen: meta['choices'].append(item); seen.add(item['id'])
++                except (OSError, ValueError): pass
++                if len(meta['choices']) >= 8: break
++        return value
++
++    def pick(self, spec, field):
++        validate_task(spec)
++        if field not in FIELDS.get(spec['scenario'], {}): raise ValueError('当前课程不接受此选择')
++        if not self.picker_lock.acquire(blocking=False): raise ValueError('已有文件窗口，请先完成或取消选择')
++        try:
++            value = choose_native(FIELDS[spec['scenario']][field])
++            return dict(selected=self.register(spec, field, value, '本人文件窗口选择') if value else None)
++        finally: self.picker_lock.release()
++
++    def resolve(self, spec, selections, options):
++        scenario = spec['scenario']
++        if not isinstance(selections, dict) or set(selections) - set(FIELDS[scenario]): raise ValueError('检测目标选择无效')
++        if not isinstance(options, dict): raise ValueError('检测选项无效')
++        allowed = {'pytorch-gpu': {'gpu_run'}, 'local-qwen': {'infer'}, 'vm-linux': {'vm_uuid', 'host_only'}}.get(scenario, set())
++        if set(options) - allowed: raise ValueError('当前课程不接受此执行选项')
++        result = {}
++        with self.lock:
++            for field, meta in FIELDS[scenario].items():
++                key = selections.get(field)
++                if not key:
++                    if meta['required']: raise ValueError('请先选择' + meta['label'])
++                    continue
++                entry = self.entries.get(key) if isinstance(key, str) else None
++                if not entry or (entry['task'], entry['field']) != (spec['id'], field) or time.monotonic() - entry['time'] >= 1800:
++                    raise ValueError('目标选择已过期或不属于当前课程，请重新选择')
++                result[field] = validate_path(meta['kind'], entry['path'])
++        for key, value in options.items():
++            if key in ('gpu_run', 'infer', 'host_only'):
++                if type(value) is not bool: raise ValueError('实际运行须明确选择本次授权')
++                if key != 'host_only': result[key] = value
++            elif value:
++                try: identity = str(uuid.UUID(value))
++                except (ValueError, TypeError, AttributeError): raise ValueError('请输入有效的 VirtualBox UUID') from None
++                if 'vm_id' in result: raise ValueError('请选择一种虚拟机实例标识')
++                result['vm_id'] = identity
++        if options.get('host_only') and 'vm_id' in result: raise ValueError('仅检测宿主时，请清空实例选择')
++        if scenario == 'vm-linux' and 'vm_id' not in result and options.get('host_only') is not True: raise ValueError('请先选择具体实例，或明确选择仅检测宿主与软件')
++        return result
+diff --git a/campuslab/web.py b/campuslab/web.py
+index abdc430..6cc87ba 100644
+--- a/campuslab/web.py
++++ b/campuslab/web.py
+@@ -70,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
+         try:
+             self.check_origin()
+             path = urlsplit(self.path)
+-            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css'}
++            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css', '/local-selection.js':'local-selection.js'}
+             if path.path in assets:
+                 name = assets[path.path]
+                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
+@@ -183,7 +183,16 @@ class Handler(BaseHTTPRequestHandler):
+             if not isinstance(body, dict):
+                 raise ValueError('请求须为对象')
+             self.check_origin()
+-            if self.path == '/api/local-check':
++            if self.path in ('/api/local-check/discover', '/api/local-check/pick', '/api/local-check/options'):
++                self.check_local_token()
++                expected = {'task', 'field'} if self.path.endswith('/pick') else {'task'}
++                if set(body) != expected: raise ValueError('目标选择参数无效')
++                spec = validate_task(body['task'])
++                if self.path.endswith('/options'): result = self.server.local_check.targets.configuration(spec)
++                elif self.path.endswith('/discover'): result = self.server.local_check.targets.discover(spec)
++                else: result = self.server.local_check.targets.pick(spec, body['field'])
++                self.send(200, result)
++            elif self.path == '/api/local-check':
+                 self.check_local_token()
+                 self.send(202, self.server.local_check.start(body))
+             elif self.path == '/api/local-check/cancel':
+diff --git a/web/app.js b/web/app.js
+index d8b2f92..e04ab0b 100644
+--- a/web/app.js
++++ b/web/app.js
+@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
+ const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
+ const practiceState={practice:null,package:null,courses:null,epoch:0,session:0,submissionEpoch:0,reviewEpoch:0,submission:null,attempts:[],environment:{}};
+ const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0,manualCollectorChosen:false};
+-const localState={epoch:0,job:null,running:false,items:[],selected:null,limited:false};
++const localState={epoch:0,job:null,running:false,items:[],selected:null,limited:false,rechecking:null};
+ const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
+ const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
+ const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
+@@ -82,7 +82,7 @@ async function chooseTask(loader,course=null){
+   $('dsh-package-options').hidden=spec.scenario!=='dsh-cli';
+   syncCollector();
+   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
+-  await guidance();await routes();progress();notice('任务已确定。先查看步骤，再到目标电脑手动采集报告。');
++  await guidance();await routes();progress();notice('任务已确定。按步骤选择目标并检测。');
+   if(epoch===state.epoch&&navigationEpoch===guided.navigationEpoch){
+     guided.courseVisited=1;showRoute('course',1);
+     syncCollector();
+@@ -322,19 +322,19 @@ function renderPreparation(plan){
+   for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
+ }
+ 
+-function localReady(){return state.task?.scenario==='python-basics'&&state.config?.local_check?.available;}
++function localReady(){return !!state.task&&state.config?.local_check?.available&&state.config.local_check.scenarios.includes(state.task.scenario);}
+ async function localAPI(path,body){
+   const response=await fetch(path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},...(body?{body:JSON.stringify(body)}:{})});
+   const result=await response.json();if(!response.ok)throw Error(result.error||'本机检测请求失败，请刷新后重试');return result;
+ }
+ function resetLocal(){
+   const job=localState.job,running=localState.running;
+-  Object.assign(localState,{epoch:localState.epoch+1,job:null,running:false,items:[],selected:null,limited:false});
++  Object.assign(localState,{epoch:localState.epoch+1,job:null,running:false,items:[],selected:null,limited:false,rechecking:null});
+   if(running&&job)localAPI('/api/local-check/cancel',{id:job.id}).catch(()=>{});
+   $('local-result-panel').hidden=true;$('local-environments').replaceChildren();$('local-current').textContent='';
+   $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-prepare').hidden=true;
+   $('local-status').textContent='点击开始后，结果会自动显示在这里。';
+-  $('manual-collection').open=!localReady();
++  $('manual-collection').open=!localReady()||guided.manualCollectorChosen;
+ }
+ function renderLocalEnvironments(){
+   $('local-result-panel').hidden=!localState.items.length;
+@@ -353,10 +353,16 @@ function renderLocalEnvironments(){
+   $('local-recheck').disabled=!localState.selected?.report||localState.running;
+   $('local-ai').disabled=!localState.selected?.report||localState.running;
+   $('local-save').disabled=!localState.selected?.report||localState.running;
++  $('local-save-before').hidden=!localState.selected?.before;
++  $('local-save-before').disabled=localState.running;
++  const executeKey={'pytorch-gpu':'gpu_run','local-qwen':'infer'}[state.task?.scenario];
++  $('local-recheck-execution-option').hidden=!localState.selected?.report||!executeKey||!!localState.selected.options?.[executeKey];
++  $('local-recheck-execution-label').textContent=executeKey==='gpu_run'?'本次复检同时执行固定 GPU 张量运算':'本次复检同时加载本地权重并执行固定离线推理';
+ }
+ async function selectLocal(item){
+   const epoch=localState.epoch,taskEpoch=state.epoch;
+   clearReports(true);localState.selected=item;
++  $('local-recheck-execution').checked=false;
+   if(item.report){
+     state.before=item.before||item.report;state.after=item.before?item.report:null;
+     render(item.analysis);$('after-file').disabled=false;
+@@ -371,21 +377,29 @@ async function startLocal(recheck=false){
+   const previous=localState.selected,previousJob=localState.job;
+   if(recheck&&(!previous?.report||!previousJob))throw Error('请先完成本机初检');
+   const body={task:state.task,consent:true};
+-  if(recheck)Object.assign(body,{previous_job:previous.job,target_id:previous.id});
++  if(recheck){
++    Object.assign(body,{previous_job:previous.job,target_id:previous.id});
++    const key={'pytorch-gpu':'gpu_run','local-qwen':'infer'}[state.task.scenario];
++    if(key&&(previous.options?.[key]||$('local-recheck-execution').checked)){
++      if(!window.confirm(key==='gpu_run'?'本次复检将执行固定 GPU 张量运算，保留初检和同一目标。是否同意？':'本次复检将加载本地模型权重并执行固定离线推理，保留初检和同一目标。是否同意？'))return;
++      body.execution_consent=true;
++      body.execution={[key]:true};
++    }
++  }else Object.assign(body,KehangTargets.request());
+   const retained=recheck?localState.items:[],limited=localState.limited;
+   resetLocal();clearReports(true);
+-  localState.items=retained;localState.limited=limited;
++  localState.items=retained;localState.limited=limited;localState.rechecking=recheck?previous:null;
+   showRoute('course',2);localState.running=true;
+   const epoch=localState.epoch,taskEpoch=state.epoch;
+   $('manual-collection').open=false;$('local-start').disabled=true;$('local-cancel').hidden=false;
+-  $('local-status').textContent='正在查找并检查 Python，请稍候……';renderGuide();
++  $('local-status').textContent='正在运行本课程固定检查，请稍候……';renderGuide();KehangTargets.render();
+   const current=()=>epoch===localState.epoch&&taskEpoch===state.epoch&&guided.route==='course'&&guided.courseStep===2;
+   try{
+     let job=await localAPI('/api/local-check',body);
+     if(!current()){await localAPI('/api/local-check/cancel',{id:job.id});return;}
+     localState.job=job;
+     while(['running','cancelling'].includes(job.state)){
+-      $('local-status').textContent=job.total?`正在检测：已完成 ${job.completed} / ${job.total} 个环境。`:'正在查找本机已登记的 Python……';
++      $('local-status').textContent=job.total?`正在检测：已完成 ${job.completed} / ${job.total} 个环境。`:'正在确认本次检测目标……';
+       $('local-current').textContent=job.current;
+       await new Promise(resolve=>setTimeout(resolve,400));
+       if(!current())return;
+@@ -393,14 +407,16 @@ async function startLocal(recheck=false){
+       if(!current())return;
+     }
+     localState.running=false;localState.job=job;
++    $('local-gpu').checked=false;$('local-infer').checked=false;KehangTargets.render();
+     $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-current').textContent='';
+-    if(job.state!=='done'){$('local-status').textContent=job.error||'本次检测已取消，未形成完整检测结论。';return;}
++    if(job.state!=='done'){$('local-status').textContent=job.error||'本次检测已取消，未形成完整检测结论。';if(recheck){localState.selected=previous;renderLocalEnvironments();}return;}
+     localState.limited=recheck?limited:job.limited;
+     // Each result keeps its owning job for a later same-target recheck.
+     for(const item of job.results)item.job=job.id;
++    if(recheck&&!job.results[0]?.report){localState.selected=previous;renderLocalEnvironments();await selectLocal(previous);notice(job.results[0]?.error||'本次复检未完成，原始报告已保留。',true);return;}
+     localState.items=recheck?retained.map(item=>item.id===previous.id?job.results[0]:item):job.results;
+     if(!job.results.length){
+-      $('local-status').textContent='没有找到可检测的 Python。这不代表没有安装；可以查看准备指引，或展开手动工具选择课程环境。';
++      $('local-status').textContent='没有找到可检测的候选。这不代表没有安装；可查找候选、选择文件，或查看准备指引。';
+       $('local-prepare').hidden=false;return;
+     }
+     $('local-status').textContent='检测完成，报告已自动返回。';
+@@ -410,16 +426,22 @@ async function startLocal(recheck=false){
+     if(current()){
+       if(localState.job)localAPI('/api/local-check/cancel',{id:localState.job.id}).catch(()=>{});
+       localState.running=false;$('local-start').disabled=false;$('local-cancel').hidden=true;
++      KehangTargets.render();if(recheck){localState.selected=previous;await selectLocal(previous);}
+       $('local-status').textContent='未完成检测，请重试或展开手动工具。';notice(error.message,true);
+     }
+   }finally{if(current())renderGuide();}
+ }
+ $('local-start').addEventListener('click',()=>action(null,()=>startLocal()));
+ $('local-recheck').addEventListener('click',()=>action(null,()=>startLocal(true)));
+-$('local-cancel').addEventListener('click',()=>{resetLocal();$('local-status').textContent='已请求取消检测；正在结束本次固定检查。可稍后重新开始。';renderGuide();});
++$('local-cancel').addEventListener('click',()=>action(null,async()=>{
++  const previous=localState.rechecking,items=localState.items;resetLocal();
++  if(previous){localState.items=items;localState.job={id:previous.job};await selectLocal(previous);}
++  $('local-status').textContent='已请求取消检测；正在结束本次固定检查。原始报告保留。';renderGuide();KehangTargets.render();
++}));
+ $('local-prepare').addEventListener('click',()=>{showRoute('course',1);$('prepared').value='missing';guidance().catch(e=>notice(e.message,true));});
+ $('local-ai').addEventListener('click',()=>KehangChat.open('这个检测结果意味着什么？接下来我该做什么？'));
+-$('local-save').addEventListener('click',()=>{if(localState.selected?.report)save('Kehang-local-report.json',localState.selected.report);});
++$('local-save').addEventListener('click',()=>{const item=localState.selected;if(item?.report)save(item.before?'report-B.json':'report-A.json',item.report);});
++$('local-save-before').addEventListener('click',()=>{if(localState.selected?.before)save('report-A.json',localState.selected.before);});
+ window.addEventListener('pagehide',()=>{if(localState.running&&localState.job)fetch('/api/local-check/cancel',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},body:JSON.stringify({id:localState.job.id})}).catch(()=>{});});
+ 
+ function syncCollector(){
+@@ -433,6 +455,7 @@ function syncCollector(){
+   $('manual-collection').classList.toggle('manual-only',!local);
+   if(!local)$('manual-collection').open=true;
+   else if(!guided.manualCollectorChosen)$('manual-collection').open=false;
++  if(typeof KehangTargets!=='undefined')KehangTargets.sync();
+ }
+ 
+ function showRoute(route,step=0){
+@@ -441,7 +464,7 @@ function showRoute(route,step=0){
+   if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
+   if(route==='practice'){guided.practiceStep=step;guided.practiceVisited=Math.max(guided.practiceVisited,step);}
+   $('notice').hidden=true;renderGuide();
+-  const title=route==='home'?$('welcome-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
++  const title=route==='home'?$('welcome-title'):route==='selection'?$('selection-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
+   title.tabIndex=-1;title.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
+ }
+ 
+@@ -449,15 +472,19 @@ function renderGuide(){
+   updateCourseVisualGuide();
+   const course=guided.route==='course',practice=guided.route==='practice',teacher=guided.route==='teacher';
+   document.body.classList.toggle('in-flow',course||practice);
++  document.body.classList.toggle('welcome-page',guided.route==='home');
+   const shareSlot=$('teacher-share-slot');
+   (teacher?shareSlot:$('review-stage')).append($('course-sharing'));
+   shareSlot.hidden=!teacher||!state.task;
+   $('teacher-current-task').textContent=state.task?'当前任务：'+state.task.title:'';
+   $('home-screen').hidden=guided.route!=='home';$('guide-shell').hidden=!course&&!practice;
++  $('selection-screen').hidden=guided.route!=='selection';
+   $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
+   $('help-panel').hidden=!course||guided.courseStep!==3;
+   $('python-quick-check').hidden=!course||state.task?.scenario!=='python-basics'||!localReady();
+-  for(const [id,current] of [['home-nav',guided.route==='home'],['teacher-nav',teacher]]){
++  $('local-course-entry').hidden=!course||state.task?.scenario==='python-basics'||!localReady();
++  $('web-course-note').hidden=!course||state.task?.scenario!=='ai-web-deepseek';
++  for(const [id,current] of [['home-nav',guided.route==='selection'],['teacher-nav',teacher]]){
+     if(current)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current');
+   }
+   $('back-practice').hidden=!course||!guided.fromPractice;
+@@ -502,13 +529,13 @@ function renderGuide(){
+     next.disabled=(index>0&&!state.task)||(index===2&&(!state.before||!state.analysis));
+     if(index===2&&!state.before)$('guide-footnote').textContent='运行后导入有效报告，即可查看检测结果；下载工具不会让环境变成通过。';
+     if(localReady()){
+-      $('collect-title').textContent=localState.running?'正在检测本机 Python':'直接检测，不用找路径';
++      $('collect-title').textContent=localState.running?'正在检测本机环境':'选择目标，开始检测';
+       $('collect-intro').textContent='在运行课航本地服务的这台电脑完成固定检查，结果自动回到网页。';
+       if(index===2)$('guide-footnote').textContent=localState.running?'检测进行中；离开本步骤会取消。':'点击“开始本机检测”；也可展开手动工具，检测另一台电脑。';
+     }
+     if(localState.selected){
+       $('guide-title').textContent=index===3?'本机检测结果':titles[index];
+-      $('review-hint').textContent=state.after?'已对同一环境再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次 Python 基础课要求，可以开始学习。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
++      $('review-hint').textContent=state.after?'已对同一目标再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次课程检查要求。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
+       if(index===3)next.textContent='返回学习首页';
+     }
+   }else if(practice){
+@@ -537,7 +564,9 @@ $('guide-next').addEventListener('click',()=>{
+     else{$('report-stage').value='B';$('command').textContent='';$('report-files').value='';showRoute('course',2);}
+   }else showRoute('course',guided.courseStep+1);
+ });
+-for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
++for(const id of ['home-link','back-home','teacher-home','selection-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
++for(const id of ['home-nav','welcome-start','back-selection'])$(id).addEventListener('click',()=>showRoute('selection'));
++$('local-course-entry').addEventListener('click',()=>showRoute('course',2));
+ $('teacher-nav').addEventListener('click',()=>{guided.fromPractice=false;showRoute('teacher');});
+ $('choose-course').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);});
+ $('start-python').addEventListener('click',e=>action(e.target,()=>startLocal()));
+diff --git a/web/index.html b/web/index.html
+index ae1ba9a..96d2fd2 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -1,21 +1,25 @@
+ <!doctype html>
+ <html lang="zh-CN">
+ <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+-<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/learning.js" defer></script></head>
+-<body>
++<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/local-selection.js" defer></script><script src="/learning.js" defer></script></head>
++<body class="welcome-page">
+ <a class="skip-link" href="#main-content">跳到主要内容</a>
+ <header><a class="brand" id="home-link" href="/" aria-label="课航首页">课航<span>KEHANG</span></a>
+ <span class="header-caption">课程学习与实训助手</span><nav aria-label="主要导航"><button id="home-nav" class="text-button">课程</button><button id="teacher-nav" class="text-button">教师工作台</button><button id="chat-toggle" class="secondary" aria-controls="learning-chat" aria-expanded="false">问 AI</button></nav></header>
+ <div class="learning-layout">
+ <main id="main-content">
+ <section id="home-screen" aria-labelledby="welcome-title">
+-  <div class="course-welcome"><h1 id="welcome-title">选一门课，从这里开始。</h1><p>准备环境、看懂检测结果，再动手完成练习。</p><ol class="home-journey" aria-label="学习流程"><li><span>1</span> 选择课程</li><li><span>2</span> 准备与检测</li><li><span>3</span> 开始学习</li></ol></div>
++  <div class="welcome-scene"><h1 id="welcome-title">课航</h1><button id="welcome-start">开始 <span aria-hidden="true">→</span></button></div>
++</section>
++<section id="selection-screen" hidden aria-labelledby="selection-title">
++  <button id="selection-home" class="text-button">← 返回首页</button>
++  <div class="course-welcome"><h1 id="selection-title">选择你的课程</h1></div>
+   <section class="course-library" aria-labelledby="course-library-title"><div class="library-heading"><h2 id="course-library-title">你想学什么？</h2><button id="choose-course" class="text-button">导入课程 / 更多路线 →</button></div><div id="course-filters" class="course-filters" role="group" aria-label="按学习方向筛选"></div><div id="course-grid" class="course-grid" aria-label="支持的课程"></div><p id="course-selection-status" role="status" class="muted"></p></section>
+   <div class="home-options"><button id="start-practice" class="option-row"><span><strong>把所学连起来，做一堂数据分析实训</strong><small>Notebook ＋ SQLite · 分析同一份数据，提交你的成果</small></span><span aria-hidden="true">→</span></button><button id="import-entry" class="option-row"><span><strong>已有老师发来的课程资料</strong><small>导入课程文件，按课堂要求开始</small></span><span aria-hidden="true">→</span></button></div>
+   <p class="home-footnote">13 类课程 · 本机学习，无需注册 <button id="home-chat" class="text-button">不知道怎么选？问 AI →</button></p>
+ </section>
+ <section id="guide-shell" hidden aria-labelledby="guide-title">
+-  <div class="guide-topline"><button id="back-home" class="text-button">← 返回学习首页</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
++  <div class="guide-topline"><button id="back-home" class="text-button">← 返回首页</button><button id="back-selection" class="text-button">选择其他课程</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
+   <div class="guide-heading"><div><p id="guide-context" class="context">课程环境准备</p><h1 id="guide-title" tabindex="-1">选择你要学习的课程</h1></div><p id="guide-count" class="step-count"></p></div>
+   <nav id="guide-progress" aria-label="学习步骤"><ol></ol></nav>
+   <div class="workspace" id="course-screen" hidden>
+@@ -30,14 +34,23 @@
+       <nav class="progress" hidden aria-label="检测证据状态"><span id="progress-task">已确认任务</span><span id="progress-evidence"></span><span id="progress-recheck"></span></nav>
+       <section id="preparation"><h2>先准备好要用的软件</h2><p>按课程要求准备，再检查实际使用的环境。</p><div id="prepare-summary" class="requirements"></div>
+         <div id="python-quick-check" class="python-quick-check" hidden><div><strong>已经装好 Python？</strong><p>直接检查本机版本和基础依赖，结果会自动回到这里。</p></div><button id="start-python">检测本机 Python →</button></div>
++        <button id="local-course-entry" hidden>选择目标并检测 →</button>
++        <p id="web-course-note" class="muted" hidden>这门课是网页提问练习，没有适用的本机环境检测。请按下方学习步骤进入 DeepSeek 官方网页；本人记录与成果核对不代表登录或模型连接证明。</p>
+         <label for="prepared">你的电脑准备到哪一步了？</label><select id="prepared"><option value="unsure">不确定，先看看需要什么</option><option value="missing">还没安装，需要操作指引</option><option value="installed">已经安装，准备检测</option></select><p id="prepared-hint" class="muted"></p>
+         <div id="prepare-help"></div>
+         <details id="full-guidance"><summary>查看完整步骤与官方下载来源</summary><label for="mode">说明详细程度</label><select id="mode"><option value="novice">新手：详细说明</option><option value="standard">标准：关键步骤</option><option value="quick">快捷：精简说明</option></select><div id="guidance"></div></details>
+         <details><summary>设备预检与准备建议（可选）</summary><details id="hardware-panel"><summary>手动收集设备信息</summary><p>先在检测步骤下载并解压工具，再在高级入口填写工具目录。本机主动运行，不自动扫描。</p><button id="hardware-command" class="secondary">生成硬件预检命令</button><pre id="hardware-script" tabindex="0"></pre><label for="hardware-file">选择 hardware.json</label><input id="hardware-file" type="file" accept=".json,application/json"><div id="hardware-results"></div></details><div id="route-advice" aria-live="polite"></div></details>
+       </section>
+-      <div id="local-result-panel" hidden><details id="local-environment-details"><summary>查看检测环境与原始报告</summary><p id="local-result-summary"></p><div id="local-environments" aria-label="本次检测到的环境"></div><button id="local-save" class="text-button">保存原始报告</button></details><div class="toolbar"><button id="local-ai" class="secondary">问 AI：这个结果意味着什么？</button><button id="local-recheck" class="text-button">重新检测当前环境</button></div></div>
++      <div id="local-result-panel" hidden><details id="local-environment-details"><summary>查看检测环境与原始报告</summary><p id="local-result-summary"></p><div id="local-environments" aria-label="本次检测到的环境"></div><button id="local-save" class="text-button">保存本次原始报告</button><button id="local-save-before" class="text-button" hidden>保存初检报告 A</button></details><label id="local-recheck-execution-option" class="checkbox" hidden><input id="local-recheck-execution" type="checkbox"><span id="local-recheck-execution-label"></span></label><div class="toolbar"><button id="local-ai" class="secondary">问 AI：这个结果意味着什么？</button><button id="local-recheck" class="text-button">重新检测当前环境</button></div></div>
+       <section class="collection" id="collect-stage"><h2 id="collect-title">下载工具，做一次检测</h2><p id="collect-intro">检测工具会生成一份报告，帮你确认课程环境是否准备好了。</p>
+-        <div id="local-check-panel" hidden><p class="muted">只检查本机已登记或 PATH 中的 Python，最多 8 个。不扫描全盘；未找到不代表没有安装。</p><div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看 Python 准备指引</button></div>
++        <div id="local-check-panel" hidden>
++          <p id="local-scope" class="muted"></p>
++          <button id="local-discover" class="secondary">查找本机候选</button><p id="local-target-status" role="status"></p><div id="local-target-fields"></div>
++          <label id="local-gpu-option" class="checkbox" hidden><input id="local-gpu" type="checkbox"> 本次同意执行固定 GPU 张量运算</label>
++          <label id="local-infer-option" class="checkbox" hidden><input id="local-infer" type="checkbox"> 本次同意加载本地权重，执行固定离线推理</label>
++          <div id="local-vm-option" hidden><label>VirtualBox 实例 UUID（选择 .vmx 时留空）<input id="local-vm-uuid" autocomplete="off"></label><label class="checkbox"><input id="local-host-only" type="checkbox"> 尚未选择实例，本次仅检测宿主与虚拟化软件</label></div>
++          <div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看准备指引</button>
++        </div>
+         <details id="manual-collection" open><summary>改用手动工具 / 检测另一台电脑</summary>
+         <div class="download-action"><div><strong>先下载当前课程的检测工具</strong><p class="muted">这是这一步需要的下载文件。请完整解压，不要在 ZIP 中直接运行。</p></div><a id="download-tool" class="button" href="/api/tool">下载检测工具 ↓</a></div>
+         <div id="simple-collector" hidden><h3>解压后，双击 Start-Collect.cmd</h3><p>窗口会带你选择课程 Python，不需要先记住完整路径。按下面的方法选择，最后核对目标并输入 START。</p>
+diff --git a/web/learning.css b/web/learning.css
+index 7d0abbe..f773ca7 100644
+--- a/web/learning.css
++++ b/web/learning.css
+@@ -31,3 +31,27 @@ button.course-card:hover{border-color:var(--brand);background:var(--soft)}button
+ @media(max-width:760px){header{padding:15px 18px;gap:10px}header nav{gap:14px}header nav button{font-size:.76rem}#chat-toggle{padding:6px 10px}.learning-layout{padding:0 18px;gap:0}.learning-layout main{padding-top:26px}.course-welcome{padding-bottom:24px}.course-welcome h1{font-size:1.6rem}.course-welcome>p{font-size:.86rem}.home-journey{font-size:.72rem;gap:14px;margin-top:18px}.home-journey li{gap:4px}.home-journey li+li:before{margin-right:2px}.library-heading{gap:8px}.library-heading h2{font-size:1.06rem}.library-heading button{font-size:.72rem}.course-filters{gap:2px;margin:14px 0}.course-filters button{font-size:.72rem;padding:5px 8px}.course-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}button.course-card{grid-template-columns:minmax(0,1fr);padding:14px 12px;gap:8px;min-height:100px}.course-monogram{display:none}.course-card strong{font-size:.86rem}.course-card small{font-size:.76rem}.course-arrow{display:none}.home-options{margin-top:24px}.home-options strong{font-size:.84rem}.home-options small{font-size:.75rem}.home-footnote{font-size:.72rem}.workspace,.practice-panel{padding:20px 16px}.guide-heading h1{font-size:1.3rem}.step-count{font-size:.7rem}.guide-heading .context{font-size:.74rem}#guide-progress button{font-size:.7rem}.flow-footer{flex-wrap:wrap}.flow-footer p{order:3;flex-basis:100%}.python-quick-check{display:block}.python-quick-check button{margin-top:8px}.learning-chat{right:10px;bottom:10px;width:calc(100vw - 20px);height:min(680px,calc(100dvh - 90px))}.chat-heading{padding-top:16px}.chat-messages{padding:16px 20px}.chat-note{font-size:.66rem}footer{margin:0 18px;padding:16px 0}}
+ @media(max-width:360px){.course-grid{grid-template-columns:minmax(0,1fr)}button.course-card{min-height:84px;grid-template-columns:minmax(0,1fr) 12px}.course-arrow{display:block}.course-card strong{font-size:.86rem}.home-journey{gap:8px;font-size:.68rem}.library-heading{align-items:start;flex-direction:column;gap:4px}header nav{gap:10px}}
+ @media(prefers-reduced-motion:reduce){button.course-card{transition:none}}
++
++/* A quiet departure screen; the warm brand appears as a distant horizon. */
++.welcome-page{background:oklch(.22 .025 36);color:oklch(.97 .005 36);isolation:isolate}
++.welcome-page:before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 85% 80% at 52% 122%,oklch(.67 .12 43),transparent 82%),radial-gradient(ellipse 85% 80% at 85% 4%,oklch(.32 .045 36),transparent 75%)}
++.welcome-page header{border:0;background:transparent;max-width:none;padding:28px 44px}
++.welcome-page .brand,.welcome-page #chat-toggle{color:oklch(.97 .005 36)}
++.welcome-page .brand span{color:oklch(.81 .02 36)}
++.welcome-page #chat-toggle{border-color:oklch(.59 .035 36);background:transparent;min-height:44px}
++.welcome-page #chat-toggle:hover{background:oklch(.32 .03 36)}
++.welcome-page .header-caption,.welcome-page #home-nav,.welcome-page #teacher-nav,.welcome-page footer{display:none}
++.welcome-page .learning-layout{max-width:none;padding-inline:44px}
++.welcome-page .learning-layout main{padding:0}
++.welcome-scene{min-height:calc(100svh - 136px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:42px;padding:44px 0 100px}
++.welcome-scene h1{font-size:4.5rem;font-weight:450;letter-spacing:.12em;padding-left:.12em;line-height:1.2;margin:0;text-shadow:none}
++#welcome-start{display:inline-flex;justify-content:space-between;align-items:center;gap:58px;min-height:52px;padding:12px 25px;border:0;border-radius:6px;background:oklch(.97 .005 36);color:oklch(.26 .03 36);font-size:1rem;font-weight:600;transition:transform .18s ease-out,background-color .18s ease-out}
++#welcome-start:hover{background:oklch(1 0 0);transform:translateY(-2px)}
++#welcome-start:active{transform:translateY(0)}
++.welcome-page.chat-open .learning-layout{grid-template-columns:minmax(0,1fr)}
++.welcome-page .learning-chat{position:fixed;z-index:4;right:32px;top:100px;width:360px;height:calc(100dvh - 124px);min-height:0;margin:0;color:var(--ink);box-shadow:0 3px 8px #0002}
++#selection-home{margin-bottom:20px;font-size:.85rem}
++#selection-screen .course-welcome{padding-bottom:24px}
++.local-target-row{margin:18px 0}.local-target-row label{font-size:.88rem}.local-target-controls{display:flex;gap:10px;align-items:center}.local-target-controls select{flex:1;min-width:0;text-overflow:ellipsis;font-size:.84rem}.local-target-controls button{flex-shrink:0;font-size:.8rem;padding:10px 12px}.local-target-row p,#local-target-status{font-size:.8rem;overflow-wrap:anywhere}#local-discover{font-size:.85rem}#local-vm-option{display:block;margin:18px 0}#local-course-entry{margin:0 0 22px}
++@media(max-width:760px){.welcome-page header{padding:20px}.welcome-page .learning-layout{padding-inline:20px}.welcome-scene{min-height:calc(100svh - 104px);padding-bottom:90px;gap:36px}.welcome-scene h1{font-size:3.5rem}.welcome-page .learning-chat{right:10px;top:auto;bottom:10px;width:calc(100vw - 20px);height:calc(100dvh - 90px)}.local-target-controls{flex-wrap:wrap}.local-target-controls select{flex-basis:100%}.guide-topline{flex-wrap:wrap;gap:10px 18px}}
++@media(prefers-reduced-motion:reduce){#welcome-start{transition:none}#welcome-start:hover{transform:none}}
+diff --git a/web/learning.js b/web/learning.js
+index 365cf06..e35f719 100644
+--- a/web/learning.js
++++ b/web/learning.js
+@@ -44,7 +44,8 @@ for(const [scenario,title,description,category,monogram] of learningCourses){
+ 
+ const KehangChat = (()=>{
+   const conversations=new Map();
+-  let scope='',fingerprint='',preview=null,busy=false,epoch=0,lastTrigger=null;
++  let scope='',fingerprint='',preview=null,busy=false,epoch=0,lastTrigger=null,pagePolicy='';
++  const desktop=window.matchMedia('(min-width: 1120px)');
+   function currentContext(){
+     const course=guided.route==='course'&&guided.courseStep>0;
+     return {route:guided.route,step:course?guided.courseStep:guided.route==='practice'?guided.practiceStep:0,task:course?state.task:null,report:course?(state.after||state.before):null};
+@@ -79,7 +80,7 @@ const KehangChat = (()=>{
+       if(key!==scope){scope=key;if(!conversations.has(scope))conversations.set(scope,{messages:[],draft:''});$('chat-input').value=conversation().draft;renderMessages();}
+       setStatus('');
+     }
+-    const stages={home:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台']};
++    const stages={home:['欢迎首页'],selection:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台']};
+     $('chat-context').textContent=(value.task?value.task.title+' · ':'')+stages[value.route][value.step];
+     const configured=state.config?.ai.configured;
+     $('chat-connection').textContent=!state.config?'正在读取连接状态…':configured?'已配置 · '+state.config.ai.model:'尚未连接模型';
+@@ -88,12 +89,17 @@ const KehangChat = (()=>{
+     const box=$('chat-suggestions');box.replaceChildren();
+     for(const question of suggestions){const button=document.createElement('button');button.type='button';button.className='text-button';button.textContent=question;button.addEventListener('click',()=>open(question));box.append(button);}
+     updateButtons();
++    const nextPolicy=value.route==='course'&&value.step>0?'workspace':value.route;
++    if(pagePolicy!==nextPolicy){pagePolicy=nextPolicy;setOpen(pagePolicy==='workspace'&&desktop.matches);}
+   }
+   function setOpen(value,focus=false){
+     if(value&&!$('learning-chat').contains(document.activeElement))lastTrigger=document.activeElement;
+     $('learning-chat').hidden=!value;document.body.classList.toggle('chat-open',value);$('chat-toggle').setAttribute('aria-expanded',String(value));
+     if(focus&&value)$('chat-input').focus({preventScroll:true});
+-    if(!value&&$('learning-chat').contains(document.activeElement))(lastTrigger?.isConnected?lastTrigger:$('chat-toggle')).focus({preventScroll:true});
++    if(!value){
++      invalidate();
++      if($('learning-chat').contains(document.activeElement))(lastTrigger?.isConnected&&lastTrigger.getClientRects().length?lastTrigger:$('chat-toggle')).focus({preventScroll:true});
++    }
+   }
+   function open(question){
+     setOpen(true,true);
+@@ -132,12 +138,7 @@ const KehangChat = (()=>{
+     }catch(error){if(requestEpoch===epoch)setStatus('发送未完成：'+error.message+'。问题已保留。',true);}
+     finally{if(requestEpoch===epoch){busy=false;updateButtons();}}
+   });
+-  const desktop=window.matchMedia('(min-width: 1120px)');
+-  let resizeTimer;
+-  desktop.addEventListener('change',()=>{
+-    clearTimeout(resizeTimer);
+-    resizeTimer=setTimeout(()=>{if(!desktop.matches)setOpen(false);},200);
+-  });
+-  renderContext();setOpen(desktop.matches);
++  desktop.addEventListener('change',()=>setOpen(pagePolicy==='workspace'&&desktop.matches));
++  renderContext();
+   return Object.freeze({open});
+ })();
+diff --git a/web/local-selection.js b/web/local-selection.js
+new file mode 100644
+index 0000000..8d29524
+--- /dev/null
++++ b/web/local-selection.js
+@@ -0,0 +1,66 @@
++'use strict';
++// Only server-issued target IDs cross back to the fixed collector service.
++const KehangTargets=(()=>{
++  let taskId='',serial=0,fields={},selected={},loading=false;
++  const status=text=>$('local-target-status').textContent=text;
++  function render(){
++    const host=$('local-target-fields');host.replaceChildren();
++    for(const [field,meta] of Object.entries(fields)){
++      const row=document.createElement('div');row.className='local-target-row';
++      const label=document.createElement('label'),select=document.createElement('select'),browse=document.createElement('button');
++      select.id='local-field-'+field;select.dataset.field=field;label.htmlFor=select.id;label.textContent=meta.label;
++      const empty=document.createElement('option');empty.value='';empty.textContent=meta.required?'请选择…':'暂不选择';select.append(empty);
++      for(const choice of meta.choices){const option=document.createElement('option');option.value=choice.id;option.textContent=choice.path;option.title=choice.source;select.append(option);}
++      select.value=selected[field]||'';select.disabled=localState.running;
++      select.addEventListener('change',()=>{selected[field]=select.value;status('选择已更新；还没有开始检测。');});
++      browse.type='button';browse.className='secondary';browse.textContent=meta.kind==='folder'||meta.kind==='jdk'?'选择目录…':'选择文件…';browse.disabled=localState.running;
++      browse.addEventListener('click',()=>action(browse,async()=>{
++        const requestSerial=serial,navigation=guided.navigationEpoch;
++        status('请在本机文件窗口选择，或点击取消。');
++        const result=await localAPI('/api/local-check/pick',{task:state.task,field});
++        if(requestSerial!==serial||navigation!==guided.navigationEpoch)return;
++        if(!result.selected){status('已取消选择；未开始检测。');return;}
++        if(!meta.choices.some(item=>item.id===result.selected.id))meta.choices.push(result.selected);
++        selected[field]=result.selected.id;render();$('local-field-'+field).focus();status('已选择；点击“开始本机检测”后才运行。');
++      }));
++      const controls=document.createElement('div');controls.className='local-target-controls';controls.append(select,browse);row.append(label,controls);host.append(row);
++      if(meta.required&&!meta.choices.length){const hint=document.createElement('p');hint.className='muted';hint.textContent='尚未选择。可查找候选，或用文件窗口选择。';row.append(hint);}
++    }
++  }
++  async function sync(){
++    if(!state.task||!state.config||taskId===state.task.id)return;
++    taskId=state.task.id;const requestSerial=++serial;fields={};selected={};loading=true;render();
++    for(const id of ['local-gpu','local-infer','local-host-only'])$(id).checked=false;
++    $('local-vm-uuid').value='';
++    $('local-gpu-option').hidden=state.task.scenario!=='pytorch-gpu';$('local-infer-option').hidden=state.task.scenario!=='local-qwen';$('local-vm-option').hidden=state.task.scenario!=='vm-linux';
++    status('正在读取本课程的选择项…');
++    try{
++      const config=await localAPI('/api/local-check/options',{task:state.task});if(requestSerial!==serial)return;
++      fields=config.fields;$('local-scope').textContent=config.note;render();status('');
++    }catch(error){if(requestSerial===serial){taskId='';status(error.message);}}
++    finally{if(requestSerial===serial)loading=false;}
++  }
++  $('local-discover').addEventListener('click',event=>action(event.target,async()=>{
++    const requestSerial=serial,navigation=guided.navigationEpoch;status('正在查找登记、PATH 或标准目录中的候选…');
++    const result=await localAPI('/api/local-check/discover',{task:state.task});
++    if(requestSerial!==serial||navigation!==guided.navigationEpoch)return;
++    for(const [field,meta] of Object.entries(result.fields)){
++      for(const item of fields[field]?.choices||[])if(!meta.choices.some(choice=>choice.id===item.id))meta.choices.push(item);
++    }
++    fields=result.fields;render();const count=Object.values(fields).reduce((n,meta)=>n+meta.choices.length,0);
++    status(count?'已找到候选，请确认本课程使用的目标。候选不代表检查通过。':'未发现候选，不代表没有安装。请用文件窗口选择，或查看准备指引。');
++  }));
++  function request(){
++    if(loading)throw Error('选择项正在读取，请稍候。');
++    const selections=Object.fromEntries(Object.entries(selected).filter(([,value])=>value));
++    // Preserve the existing Python multi-environment discovery path as an option.
++    if(state.task.scenario==='python-basics'&&!selections.target)return {};
++    for(const [field,meta] of Object.entries(fields))if(meta.required&&!selections[field]){document.getElementById('local-field-'+field)?.focus();throw Error('请先选择'+meta.label);}
++    const options={};
++    if(state.task.scenario==='pytorch-gpu')options.gpu_run=$('local-gpu').checked;
++    if(state.task.scenario==='local-qwen')options.infer=$('local-infer').checked;
++    if(state.task.scenario==='vm-linux'){options.vm_uuid=$('local-vm-uuid').value.trim();options.host_only=$('local-host-only').checked;}
++    return {selections,options};
++  }
++  sync();return Object.freeze({sync,request,render});
++})();

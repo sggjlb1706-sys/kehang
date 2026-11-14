@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+  "collected_at": "2026-11-14T07:10:29.317904+00:00",
+  "target": {
+    "requested": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+    "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\native\\20261114T071025Z\\中文 教学数据库.sqlite",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "sqlite": "3.50.2",
+    "tool_runtime": "D:\\ANACONDA\\python.exe",
+    "database": {
+      "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+      "header_valid": true,
+      "error": ""
+    },
+    "query": {
+      "read_only": true,
+      "returncode": 0,
+      "rows": [
+        [
+          "A",
+          2,
+          30
+        ],
+        [
+          "B",
+          1,
+          12
+        ]
+      ],
+      "error": ""
+    }
+  }
+}

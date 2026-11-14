@@ -1,0 +1,993 @@
+{
+  "started": "2026-11-14T07:04:40.882770+00:00",
+  "checks": [
+    "Welcome, refresh, keyboard Start, optional chat and focus return; no collector or model request on navigation.",
+    "Real web initial/recheck: python-basics => stable-pass",
+    "Real web initial/recheck: node-basics => stable-pass",
+    "Real web initial/recheck: java-jdk => stable-pass",
+    "Real web initial/recheck: notebook-data => stable-pass",
+    "Real web initial/recheck: sqlite-basics => stable-pass",
+    "Real web initial/recheck: pytorch-cpu => stable-pass",
+    "Real web initial/recheck: pytorch-gpu => incomplete",
+    "Real web initial/recheck: local-qwen => incomplete",
+    "Real web initial/recheck: deepseek-api => incomplete",
+    "Real web initial/recheck: dsh-desktop => incomplete",
+    "Real web initial/recheck: vm-linux => incomplete",
+    "320/390/768/1120/1280/1440 welcome/selection/course reflow; per-page AI defaults; reduced-motion setting; no horizontal overflow."
+  ],
+  "real": [
+    {
+      "scenario": "python-basics",
+      "target": "D:\\ANACONDA\\python.exe",
+      "checks": {
+        "task_id": "650987735f0967cf32ca46df53d025461d8d3d33fc8aa6181017252739794bae",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:04:43.898940+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:requests",
+            "status": "pass",
+            "observed": "2.32.5",
+            "requirement": ">=2.31"
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "固定导入程序退出0且输出OK"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "node-basics",
+      "target": "D:\\Program Files\\nodejs\\node.exe",
+      "checks": {
+        "task_id": "9e73c17e1bde6c4a3961190f40b235db4d0396bedca1b7dbdb47a6de6a8181eb",
+        "target": {
+          "requested": "D:\\Program Files\\nodejs\\node.exe",
+          "actual": "D:\\Program Files\\nodejs\\node.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:04:45.858806+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "node",
+            "status": "pass",
+            "observed": "24.21.0",
+            "requirement": {
+              "min": "22.0",
+              "max_exclusive": "25.0"
+            }
+          },
+          {
+            "id": "npm",
+            "status": "pass",
+            "observed": {
+              "path": "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+              "node": "D:\\Program Files\\nodejs\\node.exe",
+              "exists": true,
+              "version": "11.19.0",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": {
+              "min": "10.0",
+              "max_exclusive": "12.0"
+            }
+          },
+          {
+            "id": "run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "OK\n",
+              "error": ""
+            },
+            "requirement": "所选Node固定程序退出0、输出OK且无错误"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "java-jdk",
+      "target": "C:\\Program Files\\Zulu\\zulu-21",
+      "checks": {
+        "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+        "target": {
+          "requested": "C:\\Program Files\\Zulu\\zulu-21",
+          "actual": "C:\\Program Files\\Zulu\\zulu-21",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:04:49.031249+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "java:java",
+            "status": "pass",
+            "observed": {
+              "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+              "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+              "exists": true,
+              "version": "21.0.1",
+              "home": "C:\\Program Files\\Zulu\\zulu-21",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": "同一JDK中的 java，21.0至25.0以下"
+          },
+          {
+            "id": "java:javac",
+            "status": "pass",
+            "observed": {
+              "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+              "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+              "exists": true,
+              "version": "21.0.1",
+              "home": "C:\\Program Files\\Zulu\\zulu-21",
+              "returncode": 0,
+              "error": ""
+            },
+            "requirement": "同一JDK中的 javac，21.0至25.0以下"
+          },
+          {
+            "id": "java:identity",
+            "status": "pass",
+            "observed": [
+              {
+                "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+                "home": "C:\\Program Files\\Zulu\\zulu-21",
+                "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31"
+              },
+              {
+                "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+                "home": "C:\\Program Files\\Zulu\\zulu-21",
+                "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8"
+              }
+            ],
+            "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+          },
+          {
+            "id": "java:compile",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "",
+              "error": ""
+            },
+            "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+          },
+          {
+            "id": "java:run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "stdout": "42\nC:\\Program Files\\Zulu\\zulu-21\n",
+              "error": "",
+              "home": "C:\\Program Files\\Zulu\\zulu-21"
+            },
+            "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "notebook-data",
+      "target": "D:\\ANACONDA\\python.exe",
+      "checks": {
+        "task_id": "4d9fc2c4e572a2bef7499c46349b17b81f154215d6294734a806a2ff98310d14",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:04:56.634571+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:jupyter_client",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "8.6.3",
+              "error": ""
+            },
+            "requirement": ">=8.0，来自所选课程Python"
+          },
+          {
+            "id": "package:ipykernel",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "6.30.1",
+              "error": ""
+            },
+            "requirement": ">=6.0，来自所选课程Python"
+          },
+          {
+            "id": "notebook:spec",
+            "status": "pass",
+            "observed": {
+              "spec_path": "D:\\ANACONDA\\share\\jupyter\\kernels\\python3\\kernel.json",
+              "exists": true,
+              "spec_sha256": "067dc37838860ca8fa358a19ac5b420d3e5601e2cbac80f404cc108bedcbf0f1",
+              "argv": [
+                "D:/ANACONDA\\python.exe",
+                "-Xfrozen_modules=off",
+                "-m",
+                "ipykernel_launcher",
+                "-f",
+                "{connection_file}"
+              ],
+              "validated": true,
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9",
+              "error": ""
+            },
+            "requirement": "明确选择受支持ipykernel的kernel.json，argv绑定课程Python"
+          },
+          {
+            "id": "notebook:identity",
+            "status": "pass",
+            "observed": {
+              "started": true,
+              "actual": "D:\\ANACONDA\\python.exe",
+              "python": "3.13.9"
+            },
+            "requirement": "真实内核sys.executable及Python版本与课程Python一致"
+          },
+          {
+            "id": "package:numpy",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "2.3.4",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\numpy\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 numpy>=1.24"
+          },
+          {
+            "id": "package:pandas",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "3.0.3",
+              "imported": true,
+              "path": "D:\\ANACONDA\\Lib\\site-packages\\pandas\\__init__.py",
+              "error": ""
+            },
+            "requirement": "真实内核导入 pandas>=2.0"
+          },
+          {
+            "id": "notebook:run",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "result": {
+                "array_sum": 42,
+                "group_totals": {
+                  "A": 30,
+                  "B": 12
+                },
+                "rows": 3
+              },
+              "stdout": "CAMPUSLAB_DATA={\"actual\": \"D:\\\\ANACONDA\\\\python.exe\", \"python\": \"3.13.9\", \"packages\": {\"numpy\": {\"installed\": true, \"version\": \"2.3.4\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"error\": \"\"}, \"pandas\": {\"installed\": true, \"version\": \"3.0.3\", \"imported\": true, \"path\": \"D:\\\\ANACONDA\\\\Lib\\\\site-packages\\\\pandas\\\\__init__.py\", \"error\": \"\"}}, \"result\": {\"array_sum\": 42, \"group_totals\": {\"A\": 30, \"B\": 12}, \"rows\": 3}, \"error\": \"\"}\n",
+              "error": "",
+              "executed_at": "2026-11-14T07:04:55.942131+00:00"
+            },
+            "requirement": "固定CSV分组A=30/B=12、数组和42、3行；真实内核执行"
+          },
+          {
+            "id": "notebook:cleanup",
+            "status": "pass",
+            "observed": {
+              "kernel_stopped": true,
+              "channels_stopped": true,
+              "error": ""
+            },
+            "requirement": "仅关闭本次创建的临时内核及通道"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "sqlite-basics",
+      "target": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\20261114T070440Z\\中文 教学数据库.sqlite",
+      "checks": {
+        "task_id": "62681602897d75574a690dbb6867212c264f2e86b8a2d673039ac8fc6cbb552c",
+        "target": {
+          "requested": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\20261114T070440Z\\中文 教学数据库.sqlite",
+          "actual": "D:\\传智杯\\开发工作区\\work\\kehang-round2-20261114\\records\\round2\\20261114T070440Z\\中文 教学数据库.sqlite",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:04:57.959700+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "sqlite:runtime",
+            "status": "pass",
+            "observed": {
+              "version": "3.50.2",
+              "tool_runtime": "D:\\ANACONDA\\python.exe"
+            },
+            "requirement": "明确记录工具Python中的SQLite>=3.35；不代表服务器数据库"
+          },
+          {
+            "id": "sqlite:database",
+            "status": "pass",
+            "observed": {
+              "sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "after_sha256": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "header_valid": true,
+              "error": ""
+            },
+            "requirement": "明确SQLite文件、有效文件头与内容摘要"
+          },
+          {
+            "id": "sqlite:readonly",
+            "status": "pass",
+            "observed": {
+              "mode_ro": true,
+              "before": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9",
+              "after": "84da226bfffb8e684ae3d1690ace11dabff3aae03f0b79fbbf38bc6c39ba37e9"
+            },
+            "requirement": "mode=ro、query_only及采集前后内容摘要相同"
+          },
+          {
+            "id": "sqlite:query",
+            "status": "pass",
+            "observed": {
+              "read_only": true,
+              "returncode": 0,
+              "rows": [
+                [
+                  "A",
+                  2,
+                  30
+                ],
+                [
+                  "B",
+                  1,
+                  12
+                ]
+              ],
+              "error": ""
+            },
+            "requirement": "固定分组SELECT得到A/2/30及B/1/12"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "pytorch-cpu",
+      "target": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "checks": {
+        "task_id": "cccbae62928ff2096d34dac56986344ca56465ee7dafcb522ad6b33b8dee69c3",
+        "target": {
+          "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:09.233242+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.11.16",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:torch",
+            "status": "pass",
+            "observed": "2.14.0+cu126",
+            "requirement": "torch>=2.2；演示要求，组合兼容须实际运行"
+          },
+          {
+            "id": "torch:import",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "2.14.0+cu126",
+              "imported": true,
+              "error": ""
+            },
+            "requirement": "所选解释器实际导入PyTorch"
+          },
+          {
+            "id": "torch:cpu",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "result": [
+                [
+                  4,
+                  4
+                ],
+                [
+                  10,
+                  8
+                ]
+              ],
+              "device": "cpu",
+              "error": ""
+            },
+            "requirement": "CPU固定矩阵乘法得到[[4,4],[10,8]]"
+          }
+        ],
+        "passed": true
+      },
+      "comparison": "stable-pass",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "pytorch-gpu",
+      "target": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "checks": {
+        "task_id": "0e2f68790f83d75da8e92aeb0ccc814901a2a328e2ffd0705024834981881fa4",
+        "target": {
+          "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:15.727409+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.11.16",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:torch",
+            "status": "pass",
+            "observed": "2.14.0+cu126",
+            "requirement": "torch>=2.2；演示要求，组合兼容须实际运行"
+          },
+          {
+            "id": "torch:import",
+            "status": "pass",
+            "observed": {
+              "installed": true,
+              "version": "2.14.0+cu126",
+              "imported": true,
+              "error": ""
+            },
+            "requirement": "所选解释器实际导入PyTorch"
+          },
+          {
+            "id": "torch:cpu",
+            "status": "pass",
+            "observed": {
+              "returncode": 0,
+              "result": [
+                [
+                  4,
+                  4
+                ],
+                [
+                  10,
+                  8
+                ]
+              ],
+              "device": "cpu",
+              "error": ""
+            },
+            "requirement": "CPU固定矩阵乘法得到[[4,4],[10,8]]"
+          },
+          {
+            "id": "torch:cuda-build",
+            "status": "pass",
+            "observed": "12.6",
+            "requirement": "框架包含有效CUDA版本构建"
+          },
+          {
+            "id": "torch:gpu-available",
+            "status": "pass",
+            "observed": true,
+            "requirement": "所选框架报告CUDA设备可用"
+          },
+          {
+            "id": "torch:gpu-identity",
+            "status": "pass",
+            "observed": {
+              "index": 0,
+              "uuid": "2149a163-e74b-5e6e-3861-77a465128b38",
+              "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+              "total_memory": 8585216000
+            },
+            "requirement": "CUDA:0独立GPU UUID；名称不足以证明同一设备"
+          },
+          {
+            "id": "torch:gpu-run",
+            "status": "unknown",
+            "observed": {
+              "requested": false,
+              "returncode": null,
+              "result": null,
+              "device": null,
+              "device_uuid": null,
+              "error": "未触发GPU验证"
+            },
+            "requirement": "本人触发CUDA:0固定矩阵乘法，实际设备UUID匹配；CPU结果不可替代"
+          }
+        ],
+        "passed": false
+      },
+      "comparison": "incomplete",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "local-qwen",
+      "target": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+      "checks": {
+        "task_id": "a56b57b0b53202a1565bf08f3f1272235cb5584dd0054f7a4cbdd81486d8a1f0",
+        "target": {
+          "requested": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "actual": "D:\\ANACONDA\\envs\\pytorch\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:23.069031+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.11.16",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "package:torch",
+            "status": "pass",
+            "observed": "2.14.0+cu126",
+            "requirement": ">=2.2"
+          },
+          {
+            "id": "package:transformers",
+            "status": "missing",
+            "observed": null,
+            "requirement": ">=4.45"
+          },
+          {
+            "id": "run",
+            "status": "mismatch",
+            "observed": {
+              "returncode": 1,
+              "stdout": "",
+              "error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'transformers'\n"
+            },
+            "requirement": "固定导入程序退出0且输出OK"
+          },
+          {
+            "id": "model:weights",
+            "status": "pass",
+            "observed": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+            "requirement": "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE"
+          },
+          {
+            "id": "model:inference",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "本地离线固定问题输出2，正常EOS结束；云端输出不替代"
+          }
+        ],
+        "passed": false
+      },
+      "comparison": "incomplete",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "ai-web-deepseek",
+      "applicable": false,
+      "reason": "网页学习课程无适用本机环境检测；保留官方学习入口与本人记录核验"
+    },
+    {
+      "scenario": "deepseek-api",
+      "target": "D:\\ANACONDA\\python.exe",
+      "checks": {
+        "task_id": "97b878195b01ac825095c5b86fb93ad7c22bfad3ad675dd3b94f4b9774b3f6d3",
+        "target": {
+          "requested": "D:\\ANACONDA\\python.exe",
+          "actual": "D:\\ANACONDA\\python.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:28.461886+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "python",
+            "status": "pass",
+            "observed": "3.13.9",
+            "requirement": {
+              "min": "3.10",
+              "max_exclusive": "3.15"
+            }
+          },
+          {
+            "id": "api:dependency",
+            "status": "pass",
+            "observed": true,
+            "requirement": "所选Python可导入urllib.request/ssl/json，无新增SDK依赖"
+          },
+          {
+            "id": "api:request",
+            "status": "pass",
+            "observed": {
+              "endpoint": "https://api.deepseek.com/chat/completions",
+              "payload": {
+                "model": "deepseek-flash",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "你是数据分析课程练习助手。依据给出的演示数据计算，只输出要求的JSON，不访问工具或外部数据。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "演示CSV数据 score\n10\n14\n18\n。计算 total、count、mean。只返回JSON对象，键恰为total、count、mean，不要代码围栏。"
+                  }
+                ],
+                "thinking": {
+                  "type": "disabled"
+                },
+                "stream": false,
+                "max_tokens": 128,
+                "response_format": {
+                  "type": "json_object"
+                }
+              }
+            },
+            "requirement": "实际目的地、模型与本固定数据练习；编辑为其他问题不能完成原任务"
+          },
+          {
+            "id": "api:protocol",
+            "status": "unknown",
+            "observed": {
+              "attempted": false,
+              "category": "not_called",
+              "http_status": null,
+              "model": null,
+              "role": null,
+              "finish_reason": null,
+              "latency_ms": null
+            },
+            "requirement": "实际非截断Chat Completions响应，固定模型、assistant与stop；HTTP200本身不足"
+          },
+          {
+            "id": "api:exercise",
+            "status": "unknown",
+            "observed": "",
+            "requirement": {
+              "total": 42,
+              "count": 3,
+              "mean": 14
+            }
+          }
+        ],
+        "passed": false
+      },
+      "comparison": "incomplete",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "dsh-desktop",
+      "target": "D:\\deep seekharness\\DeepSeek Harness.exe",
+      "checks": {
+        "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+        "target": {
+          "requested": "D:\\deep seekharness\\DeepSeek Harness.exe",
+          "actual": "D:\\deep seekharness\\DeepSeek Harness.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:31.482710+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows"
+          },
+          {
+            "id": "dsh:software",
+            "status": "pass",
+            "observed": {
+              "route": "desktop",
+              "exists": true,
+              "product": "DeepSeek Harness",
+              "version": "0.2.2.0",
+              "sha256": "bad50d18a3cf42621ac03aeaf1dc527ee20384ca4c0b7eee64512954ddb9a76e",
+              "package_json": null,
+              "bin": null,
+              "bin_sha256": null,
+              "node_requirement": null,
+              "error": "",
+              "desktop_package": {
+                "path": "D:\\deep seekharness\\resources\\app.asar",
+                "sha256": "5fa8a6b21bceb8f3e99e30efa2270efd0cc773a11e42aa0488f804a64b34e637",
+                "package_sha256": "cbf5dc8ff3e6318cc61d966010e427aefa2042a1371155596de7f5af53bd3c64",
+                "name": "@deepseek-ai/dsh-desktop",
+                "version": "0.2.2-rc.1",
+                "main": "lib/main.js",
+                "error": ""
+              }
+            },
+            "requirement": "DeepSeek Harness 0.2.2-rc.1；静态身份/版本不证明已登录或任务成功"
+          },
+          {
+            "id": "dsh:workspace",
+            "status": "unknown",
+            "observed": {
+              "requested": null,
+              "actual": null,
+              "exists": null,
+              "id": null,
+              "task_id": null,
+              "input_sha256": null,
+              "error": "尚未选择专用练习目录"
+            },
+            "requirement": "同一专用目录、任务标识和固定CSV摘要"
+          },
+          {
+            "id": "dsh:model",
+            "status": "unknown",
+            "observed": {
+              "provider": null,
+              "model": null,
+              "connection": null
+            },
+            "requirement": "实际本人任务模型结果；仅提供方/模型配置不证明连接可用"
+          },
+          {
+            "id": "dsh:permission",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "本人实际授权：只读input.csv、只写summary.json、固定read/write工具"
+          },
+          {
+            "id": "dsh:tools",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "本人提供本次DSH读/写工具摘要；普通聊天、声明或模拟不代替"
+          },
+          {
+            "id": "dsh:artifact",
+            "status": "unknown",
+            "observed": {
+              "exists": null,
+              "sha256": null,
+              "value": null,
+              "error": "尚无产物"
+            },
+            "requirement": "本机summary.json恰为整数count=3、sum=42；产物不单独证明Agent调用"
+          }
+        ],
+        "passed": false,
+        "evidence_basis": "只读元数据/本机产物；无真实DSH任务摘要，相关项未知"
+      },
+      "comparison": "incomplete",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    },
+    {
+      "scenario": "dsh-cli",
+      "ran": false,
+      "reason": "已发现Node，未找到/未提供DSH CLI包；不伪造包或Agent执行。字段与失败由受控测试验证。"
+    },
+    {
+      "scenario": "vm-linux",
+      "target": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+      "checks": {
+        "task_id": "df51b551eea45c9a3481a6edd97262d43b7084df739c9019cfc4f33c993ad8a6",
+        "target": {
+          "requested": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+          "actual": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmrun.exe",
+          "exists": true
+        },
+        "collected_at": "2026-11-14T07:05:39.541299+00:00",
+        "checks": [
+          {
+            "id": "os",
+            "status": "pass",
+            "observed": "Windows",
+            "requirement": "Windows宿主"
+          },
+          {
+            "id": "host:virtualization",
+            "status": "unknown",
+            "observed": {
+              "id": "a94043c45c7bfca6b57ac0930a0069c9f9464bb67112e6dd45fe4797497e0e37",
+              "virtualization": {
+                "firmware_enabled": null,
+                "vm_monitor": null,
+                "slat": null,
+                "hypervisor_present": null
+              },
+              "source": "Windows CIM; HKLM MachineGuid SHA256",
+              "error": "CIM虚拟化查询未完成或权限不足，保留未知"
+            },
+            "requirement": "同一宿主身份；固件虚拟化、VM扩展和SLAT均有证据。已有Hypervisor时False旗标可能受屏蔽，保留未知，不推断BIOS关闭"
+          },
+          {
+            "id": "vm:software",
+            "status": "pass",
+            "observed": {
+              "provider": "vmware",
+              "version": "1.17.0",
+              "returncode": 4294967295,
+              "error": ""
+            },
+            "requirement": "VirtualBox CLI 7.x 或 vmrun CLI 1.x（非Workstation版本）；vmrun无参数帮助可退出-1"
+          },
+          {
+            "id": "vm:instance",
+            "status": "unknown",
+            "observed": {
+              "requested": null,
+              "uuid": null,
+              "name": null,
+              "os_type": null,
+              "state": null,
+              "exists": null,
+              "listed": null,
+              "error": "请选择具体实例"
+            },
+            "requirement": "显式选择的UUID或.vmx配置身份；不代表来宾已运行"
+          },
+          {
+            "id": "vm:running",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "所选实例当前运行证据；工具不会启动实例"
+          },
+          {
+            "id": "guest:identity",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "手动来宾报告：同任务/实例、DMI UUID、machine-id摘要；30分钟内，不是密码学远程证明"
+          },
+          {
+            "id": "guest:linux",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "来宾实际Linux与内核证据；配置文件OS类型不替代"
+          },
+          {
+            "id": "guest:run",
+            "status": "unknown",
+            "observed": null,
+            "requirement": "来宾固定uname与Python求和输出Linux:6；非完整课程作业验收"
+          }
+        ],
+        "passed": false
+      },
+      "comparison": "incomplete",
+      "original_retained": true,
+      "selection": "真实候选/文件窗口；SQLite、模型目录、DSH额外候选由验收脚本登记，采集器未替换"
+    }
+  ],
+  "controlled": [
+    "SQLite target chosen from explicitly controlled candidate; native dialog proof runs separately.",
+    "No discovery candidates: honest empty state and native fallback, no report.",
+    "Cancel running collector: no manufactured report; owned real process-tree cancellation is separately unit-tested.",
+    "Late local-check acknowledgement after Home never changes page; returned job receives cancel."
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "scope": "Same-computer agent browser; real fixed collectors. Target candidate injection, native automation, controlled failures and protocol fixtures are explicitly identified. No user acceptance, paid API call, GPU computation consent, model inference consent, Agent task or guest execution claimed.",
+  "actual_model_configuration": {
+    "configured": false,
+    "destination": null,
+    "model": null
+  },
+  "passed": true,
+  "finished": "2026-11-14T07:05:43.998584+00:00"
+}

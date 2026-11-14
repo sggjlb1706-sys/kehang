@@ -1,0 +1,13 @@
+{
+  "checked": "2026-11-14T07:22:17.423746+00:00",
+  "product_commit": "ed34a09a6fe1c6520af00a5de606219a4eb92b37",
+  "product_matches_fixed_commit": true,
+  "source_HEAD": "a7aba975aa1d59e4a86f6df7803ed59ad4c97dd7",
+  "source_tracked_clean": true,
+  "vendor_matches_source": true,
+  "original_feedback_images_match": true,
+  "unit_tests": 173,
+  "independent_review": "no remaining blockers",
+  "published": false,
+  "official_submission": false
+}

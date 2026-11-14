@@ -1,0 +1,44 @@
+Welcome, refresh, keyboard Start, optional chat and focus return; no collector or model request on navigation.
+Real web initial/recheck: python-basics => stable-pass
+Real web initial/recheck: node-basics => stable-pass
+Real web initial/recheck: java-jdk => stable-pass
+D:\传智杯\开发工作区\work\kehang-round2-20261114\records\round2\20261114T065210Z
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 241, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 189, in main
+    run_pair(scenario)
+    ~~~~~~~~^^^^^^^^^^
+  File "D:\传智杯\开发工作区\work\kehang-round2-20261114\tools\verify_round2.py", line 152, in run_pair
+    page.click('#local-start'); page.wait_for_function('()=>!localState.running&&!!localState.selected', timeout=200000)
+                                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\sync_api\_generated.py", line 12436, in wait_for_function
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_function(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_page.py", line 1136, in wait_for_function
+    return await self._main_frame.wait_for_function(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_frame.py", line 910, in wait_for_function
+    await self._channel.send("waitForFunction", self._timeout, params)
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\ANACONDA\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 200000ms exceeded.

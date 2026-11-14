@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "task_id": "36ce7be3fc355db2f2a6682da64823e53ea214d11c85ec8cbab60c5041da3581",
+  "collected_at": "2026-11-14T07:16:01.580635+00:00",
+  "target": {
+    "requested": "D:\\deep seekharness\\DeepSeek Harness.exe",
+    "actual": "D:\\deep seekharness\\DeepSeek Harness.exe",
+    "exists": true
+  },
+  "facts": {
+    "os": "Windows",
+    "installation": {
+      "route": "desktop",
+      "exists": true,
+      "product": "DeepSeek Harness",
+      "version": "0.2.2.0",
+      "sha256": "bad50d18a3cf42621ac03aeaf1dc527ee20384ca4c0b7eee64512954ddb9a76e",
+      "package_json": null,
+      "bin": null,
+      "bin_sha256": null,
+      "node_requirement": null,
+      "error": "",
+      "desktop_package": {
+        "path": "D:\\deep seekharness\\resources\\app.asar",
+        "sha256": "5fa8a6b21bceb8f3e99e30efa2270efd0cc773a11e42aa0488f804a64b34e637",
+        "package_sha256": "cbf5dc8ff3e6318cc61d966010e427aefa2042a1371155596de7f5af53bd3c64",
+        "name": "@deepseek-ai/dsh-desktop",
+        "version": "0.2.2-rc.1",
+        "main": "lib/main.js",
+        "error": ""
+      }
+    },
+    "runtime": {
+      "kind": "bundled-electron",
+      "actual": null,
+      "version": null,
+      "sha256": null,
+      "error": "桌面程序自带Electron运行时；本工具不执行或读取其凭据/会话"
+    },
+    "workspace": {
+      "requested": null,
+      "actual": null,
+      "exists": null,
+      "id": null,
+      "task_id": null,
+      "input_sha256": null,
+      "error": "尚未选择专用练习目录"
+    },
+    "model": {
+      "provider": null,
+      "model": null,
+      "connection": null
+    },
+    "permission": null,
+    "artifact": {
+      "exists": null,
+      "sha256": null,
+      "value": null,
+      "error": "尚无产物"
+    },
+    "agent": null
+  }
+}

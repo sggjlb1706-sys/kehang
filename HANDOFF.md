@@ -1,3 +1,9 @@
+# 第二轮当前入口 · 2026-11-14
+
+本独立体验版目录D:\传智杯\开发工作区\work\kehang-round2-20261114，分支codex/kehang-round2-20261114，固定产品ed34a09。以TASK.md、PLAN.md、PRODUCT.md、DESIGN.md最上方第二轮约定及docs/第二轮验收.md为准；后文为继承旧交接。原仓库a7aba975保持不变。
+
+体验服务http://127.0.0.1:8774/；重启用pwsh -NoProfile -File .\Start-Web.ps1 -Port 8774。首页→开始→选课→配置/检测→问AI。实际AI仍未配置。11类真实网页A/B，6类通过5类保留缺口；DSH CLI缺包，网页课不适用。GPU/推理/API/Agent/Guest未实际运行，不得把受控用例当本人授权实跑。本人尚未反馈本轮体验，不能替写满意或三条Prompt链完成。
+
 # 课程首页与连续对话交接 · 2026-11-14
 
 当前实际开发目录：`D:\传智杯\开发工作区\work\kehang-win11-guides-20261113`，分支`codex/kehang-course-chat-20261114`。产品固定提交0e1be49694cb7e49b10836f95d0addd46ecee423已通过独立只读复核。首页直接选择13课程，Python快捷检测位于本课程准备页并保留教师要求，AI侧栏支持当前步骤与报告的多轮追问，结果工具收拢。入口README，验收docs/课程首页与连续对话验收.md，独立结论REVIEW.md。

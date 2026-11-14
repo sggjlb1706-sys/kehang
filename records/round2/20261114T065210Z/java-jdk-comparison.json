@@ -1,0 +1,203 @@
+{
+  "before": {
+    "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+    "target": {
+      "requested": "C:\\Program Files\\Zulu\\zulu-21",
+      "actual": "C:\\Program Files\\Zulu\\zulu-21",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T06:52:18.160604+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "java:java",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+          "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 java，21.0至25.0以下"
+      },
+      {
+        "id": "java:javac",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+          "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 javac，21.0至25.0以下"
+      },
+      {
+        "id": "java:identity",
+        "status": "pass",
+        "observed": [
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31"
+          },
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8"
+          }
+        ],
+        "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+      },
+      {
+        "id": "java:compile",
+        "status": "pass",
+        "observed": {
+          "returncode": 0,
+          "stdout": "",
+          "error": ""
+        },
+        "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+      },
+      {
+        "id": "java:run",
+        "status": "pass",
+        "observed": {
+          "returncode": 0,
+          "stdout": "42\nC:\\Program Files\\Zulu\\zulu-21\n",
+          "error": "",
+          "home": "C:\\Program Files\\Zulu\\zulu-21"
+        },
+        "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+      }
+    ],
+    "passed": true
+  },
+  "after": {
+    "task_id": "444457bb17fa4a23feae5fc13076189d092dc21dcdac14b5fcda0ee05b7bbca3",
+    "target": {
+      "requested": "C:\\Program Files\\Zulu\\zulu-21",
+      "actual": "C:\\Program Files\\Zulu\\zulu-21",
+      "exists": true
+    },
+    "collected_at": "2026-11-14T06:52:19.659202+00:00",
+    "checks": [
+      {
+        "id": "os",
+        "status": "pass",
+        "observed": "Windows",
+        "requirement": "Windows"
+      },
+      {
+        "id": "java:java",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+          "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 java，21.0至25.0以下"
+      },
+      {
+        "id": "java:javac",
+        "status": "pass",
+        "observed": {
+          "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+          "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8",
+          "exists": true,
+          "version": "21.0.1",
+          "home": "C:\\Program Files\\Zulu\\zulu-21",
+          "returncode": 0,
+          "error": ""
+        },
+        "requirement": "同一JDK中的 javac，21.0至25.0以下"
+      },
+      {
+        "id": "java:identity",
+        "status": "pass",
+        "observed": [
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\java.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "39026fe948a287dd796ff4ac699241878a5da6e4691d915740692a7024a1cb31"
+          },
+          {
+            "path": "C:\\Program Files\\Zulu\\zulu-21\\bin\\javac.exe",
+            "home": "C:\\Program Files\\Zulu\\zulu-21",
+            "sha256": "771f0418c2f019a3a4808dd980851c1c47275a055f997c386088cd2f67dbe0e8"
+          }
+        ],
+        "requirement": "java/javac自身报告java.home等于所选JDK，版本一致，二进制摘要分别保存"
+      },
+      {
+        "id": "java:compile",
+        "status": "pass",
+        "observed": {
+          "returncode": 0,
+          "stdout": "",
+          "error": ""
+        },
+        "requirement": "固定源码在专用临时目录由所选javac编译，退出0"
+      },
+      {
+        "id": "java:run",
+        "status": "pass",
+        "observed": {
+          "returncode": 0,
+          "stdout": "42\nC:\\Program Files\\Zulu\\zulu-21\n",
+          "error": "",
+          "home": "C:\\Program Files\\Zulu\\zulu-21"
+        },
+        "requirement": "所选java运行本次编译产物，输出42及同一java.home"
+      }
+    ],
+    "passed": true
+  },
+  "changes": [
+    {
+      "id": "os",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "java:java",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "java:javac",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "java:identity",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "java:compile",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "id": "java:run",
+      "before": "pass",
+      "after": "pass"
+    }
+  ],
+  "outcome": "stable-pass"
+}
