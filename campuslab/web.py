@@ -9,6 +9,7 @@ import zipfile
 
 from .courses import CourseStore
 from .diagnosis import configuration, diagnose, redact_value
+from .chat import ChatService
 from .guidance import plan
 from .rules import analyze, compare, task, validate_task
 from .portable import export_package, import_package, guide_html
@@ -25,6 +26,7 @@ class AppServer(ThreadingHTTPServer):
         self.store = CourseStore(database or ROOT / 'data/courses.sqlite')
         self.runtime_zip = Path(runtime_zip) if runtime_zip else None
         self.local_check = LocalCheckService()
+        self.chat = ChatService()
 
     def server_close(self):
         self.local_check.close()
@@ -68,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             self.check_origin()
             path = urlsplit(self.path)
-            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css'}
+            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css'}
             if path.path in assets:
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
@@ -237,6 +239,10 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('报错过长')
                 preview=redact_value(dict(task_title=spec['title'] if spec else '尚未确认课程',scenario=spec['scenario'] if spec else None,checks=result['checks'] if result else [],evidence_note='引用已有报告；建议不改变规则' if result else '没有检测证据，解释器、依赖、硬件与目标身份均未确认；请先澄清课程并手动采集',user_error=error))
                 self.send(200, dict(preview=json.dumps(preview,ensure_ascii=False,indent=2),ai=configuration()))
+            elif self.path == '/api/chat/preview':
+                self.send(200, self.server.chat.preview(body))
+            elif self.path == '/api/chat':
+                self.send(200, self.server.chat.send(body))
             elif self.path == '/api/diagnose':
                 if body.get('report') is not None:
                     analyze(body['task'],body['report'])

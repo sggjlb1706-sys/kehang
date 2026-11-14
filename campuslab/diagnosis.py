@@ -48,8 +48,12 @@ def diagnose(preview, consent):
         raise ValueError('AI未配置；规则结果仍然可用')
     if not isinstance(preview,str) or not 1<=len(preview)<=10000:
         raise ValueError('预览内容须为1—10000字')
+    return model_request(config, [dict(role='system',content=SYSTEM),dict(role='user',content=preview)])
+
+
+def model_request(config, messages):
     key=os.environ.get('CAMPUSLAB_AI_KEY','')
-    payload=dict(model=config['model'],messages=[dict(role='system',content=SYSTEM),dict(role='user',content=preview)],temperature=0,max_tokens=512)
+    payload=dict(model=config['model'],messages=messages,temperature=0,max_tokens=1024)
     headers={'Content-Type':'application/json','Accept':'application/json'}
     if key:
         headers['Authorization']='Bearer '+key

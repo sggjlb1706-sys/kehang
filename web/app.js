@@ -205,14 +205,16 @@ $('api-send').addEventListener('change',()=>{$('command').textContent='';});
 
 function render(a){
   state.analysis=a;$('results').replaceChildren();
-  const identity=document.createElement('p');identity.textContent=`本次目标：${a.target.requested} · ${a.collected_at}`;$('results').append(identity);
+  $('review-title').textContent=a.passed?'本次课程环境检查通过':'先处理检查中发现的问题';
+  const identity=document.createElement('p');identity.className='result-identity';identity.textContent=`本次目标：${a.target.requested} · ${new Date(a.collected_at).toLocaleString('zh-CN',{hour12:false})}`;$('results').append(identity);
   const next=document.createElement('p');next.className='result-summary';const counts=Object.fromEntries(Object.keys(labels).map(key=>[key,a.checks.filter(x=>x.status===key).length]));
-  next.textContent=`通过 ${counts.pass} · 缺失 ${counts.missing} · 不符合 ${counts.mismatch} · 未知 ${counts.unknown}。`+(a.passed?(state.after?'核对同目标复检结论。':localState.selected?'本次课程检查已通过。':'初检已通过，保留原件后采集较晚的B。'):'查看“按差异处理”的下一步，手动处理后复检。');$('results').append(next);
+  next.textContent=`通过 ${counts.pass} · 缺失 ${counts.missing} · 不符合 ${counts.mismatch} · 未知 ${counts.unknown}`;$('results').append(next);
   if(a.learning_completed){const p=document.createElement('p');p.className='notice';p.textContent='本人学习记录与固定数字成果已核对；登录/远端连接仍为未知。';$('results').append(p);}
+  const checks=document.createElement('details'),checksTitle=document.createElement('summary');checks.className='result-checks';checksTitle.textContent=`查看 ${a.checks.length} 项检测明细`;checks.open=!a.passed;checks.append(checksTitle);$('results').append(checks);
   for(const c of a.checks){
     const row=document.createElement('div');row.className='check';const name=document.createElement('strong');name.textContent=names[c.id]||c.id;
     const status=document.createElement('strong');status.className='state-'+c.status;status.textContent=labels[c.status];
-    const detail=document.createElement('details'),summary=document.createElement('summary');summary.textContent='查看事实与要求';const observed=document.createElement('pre');observed.textContent=JSON.stringify({observed:c.observed,requirement:c.requirement},null,2);detail.append(summary,observed);row.append(name,status,detail);$('results').append(row);
+    const detail=document.createElement('details'),summary=document.createElement('summary');summary.textContent='查看事实与要求';const observed=document.createElement('pre');observed.textContent=JSON.stringify({observed:c.observed,requirement:c.requirement},null,2);detail.append(summary,observed);row.append(name,status,detail);checks.append(row);
   }
   $('export').disabled=false;$('diagnosis').hidden=false;
   $('ai-status').textContent=state.config?.ai.configured?'AI已配置。先检查发送目的地和脱敏内容，再主动发送一次请求。':'AI未配置，尚未发送任何请求。可继续使用完整规则结果与操作指导。';
@@ -416,7 +418,7 @@ $('local-start').addEventListener('click',()=>action(null,()=>startLocal()));
 $('local-recheck').addEventListener('click',()=>action(null,()=>startLocal(true)));
 $('local-cancel').addEventListener('click',()=>{resetLocal();$('local-status').textContent='已请求取消检测；正在结束本次固定检查。可稍后重新开始。';renderGuide();});
 $('local-prepare').addEventListener('click',()=>{showRoute('course',1);$('prepared').value='missing';guidance().catch(e=>notice(e.message,true));});
-$('local-ai').addEventListener('click',()=>{$('help-panel').open=true;$('prepare-ai').click();$('help-panel').scrollIntoView({block:'start'});});
+$('local-ai').addEventListener('click',()=>KehangChat.open('这个检测结果意味着什么？接下来我该做什么？'));
 $('local-save').addEventListener('click',()=>{if(localState.selected?.report)save('Kehang-local-report.json',localState.selected.report);});
 window.addEventListener('pagehide',()=>{if(localState.running&&localState.job)fetch('/api/local-check/cancel',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},body:JSON.stringify({id:localState.job.id})}).catch(()=>{});});
 
@@ -453,7 +455,9 @@ function renderGuide(){
   $('teacher-current-task').textContent=state.task?'当前任务：'+state.task.title:'';
   $('home-screen').hidden=guided.route!=='home';$('guide-shell').hidden=!course&&!practice;
   $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
-  $('help-panel').hidden=!course;
+  $('help-panel').hidden=!course||guided.courseStep!==3;
+  $('python-quick-check').hidden=!course||state.task?.scenario!=='python-basics'||!localReady();
+  $('home-nav').toggleAttribute('aria-current',guided.route==='home');
   $('back-practice').hidden=!course||!guided.fromPractice;
   if(course&&!state.task){guided.courseStep=0;guided.courseVisited=0;}
   if(course&&guided.courseStep===3&&!state.before){guided.courseStep=2;guided.courseVisited=Math.min(guided.courseVisited,2);}
@@ -462,6 +466,8 @@ function renderGuide(){
   $('task-panel').hidden=!course||!state.task||index===0;$('empty-state').hidden=true;
   $('preparation').hidden=!course||index!==1;$('collect-stage').hidden=!course||index!==2;$('review-stage').hidden=!course||index!==3;
   $('local-result-panel').hidden=!course||localState.running||!localState.items.length||![2,3].includes(index);
+  const resultHost=index===3?$('review-stage'):$('task-panel');
+  if($('local-result-panel').parentElement!==resultHost)resultHost.insertBefore($('local-result-panel'),index===3?$('results'):$('collect-stage'));
   for(const [i,id] of ['practice-intro','practice-prepare','practice-work','practice-submit'].entries())$(id).hidden=!practice||index!==i;
   $('guide-context').textContent=course?'课程环境准备':'Notebook ＋ SQLite 连续实训';
   const labels=course?['选择课程','准备环境','运行检测','查看与复检']:['了解任务','准备环境','跟做练习','提交成果'];
@@ -507,6 +513,7 @@ function renderGuide(){
     next.textContent=['下一步：准备环境 →','下一步：下载并跟做 →','下一步：提交成果 →','返回学习首页'][index];
     next.disabled=index<3&&!practiceState.practice;
   }
+  document.dispatchEvent(new Event('kehang-context'));
 }
 
 function updateCourseVisualGuide(){

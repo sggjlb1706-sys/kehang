@@ -1,5 +1,7 @@
 # 本版来源
 
+2026-11-14课程首页与上下文聊天从Windows11图示交付版4249165继续开发，实际目录仍在D盘开发工作区，分支codex/kehang-course-chat-20261114。需求来自本轮用户关于课程可见性、连续提问和操作层次的反馈，原文见records/course-chat/feedback.md；用户明确没有报告具体Bug。首页、侧栏和会话票据为本仓库原创实现，复用原课程加载、guidance、analyze、脱敏及HTTP模型协议，不新增依赖、外部字体、图标或图片素材。impeccable用于产品界面与响应式检查。新增模型对话仅用本地HTTP协议夹具验证，不能作为真实模型效果或接入成功的证据；Python A/B另有本机真实执行原件。浏览器回归发现的缩屏遮挡由本轮实现者发现并修正，不记作用户首先发现。
+
 Windows11全课程图示版从11e52b4f7361dd4efd1453b3b47240650fb74225完整克隆，58个已有可达提交，分支codex/kehang-win11-guides-20261113。用户本次原文见records/win11-guides/feedback.txt。参考[Microsoft文件资源管理器说明](https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows)及[Windows可访问性说明](https://learn.microsoft.com/en-us/windows/apps/develop/accessibility)，在2026-11-13核对导航/查看扩展名与键盘原则；所有产品图示、文件图标和布局由本版HTML/CSS自制，无第三方截图/图标再分发。官方参考图仅放仓库外交付目录reference供核对，不打入产品和评审包。沿用impeccable的产品界面/上下文引导工作流，没有新依赖或云端素材调用。
 
 
