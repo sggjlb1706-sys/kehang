@@ -71,6 +71,7 @@ class Handler(BaseHTTPRequestHandler):
             self.check_origin()
             path = urlsplit(self.path)
             assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css', '/local-selection.js':'local-selection.js'}
+            assets['/product.css'] = 'product.css'
             if path.path in assets:
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
@@ -215,7 +216,7 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/api/compare':
                 self.send(200, compare(body['task'], body['before'], body['after']))
             elif self.path == '/api/plan':
-                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report')))
+                self.send(200, plan(body['task'],body.get('mode','novice'),body.get('resources'),body.get('report'),body.get('prepared','unsure')))
             elif self.path == '/api/lesson':
                 from .teaching import lesson_checks
                 self.send(200,lesson_checks(analyze(body['task'],body['report'])))

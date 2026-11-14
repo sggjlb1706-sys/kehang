@@ -2,12 +2,18 @@
 from .rules import validate_task
 
 
-def plan(spec, mode='novice', resources=None, report=None):
+def plan(spec, mode='novice', resources=None, report=None, prepared='unsure'):
     validate_task(spec)
     if mode not in ('novice','standard','quick'):
         raise ValueError('指导模式无效')
+    if prepared not in ('unsure', 'missing', 'installed'):
+        raise ValueError('准备说明无效')
     from .rules import NEW_COURSES
-    if spec['scenario'] in NEW_COURSES: return learning_plan(spec,mode,report)
+    if spec['scenario'] in NEW_COURSES:
+        result = learning_plan(spec,mode,report)
+        if spec['scenario'] in ('deepseek-api','dsh-desktop','dsh-cli'):
+            result['contextual'] = contextual_guidance(spec, report, prepared)
+        return result
     if spec['scenario'] in ('pytorch-cpu','pytorch-gpu','vm-linux'):
         return course_plan(spec,mode,report)
     local = spec['scenario'] == 'local-qwen'
@@ -115,10 +121,100 @@ def learning_plan(spec,mode,report):
         from .rules import analyze
         for c in analyze(spec,report)['checks']:
             if c['status']=='pass': continue
-            actions.append(dict(id=c['id'],status=c['status'],title=c['id']+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[c['status']],
-                body='所选目标：'+report['target']['requested']+'。'+({'missing':'先确认组件路径并按任务要求手动准备。','mismatch':'展开本项原始事实与错误，核对固定要求后手动处理。','unknown':'先补充本项证据；其他组件或本人勾选不能替代。'}[c['status']]),
+            specific = check_guidance(spec, c['id']) if scenario in ('deepseek-api','dsh-desktop','dsh-cli') else None
+            actions.append(dict(id=c['id'],status=c['status'],title=(specific[0] if specific else c['id'])+' · '+{'missing':'缺失','mismatch':'不符合','unknown':'未知'}[c['status']],
+                body=specific[1] if specific else '所选目标：'+report['target']['requested']+'。'+({'missing':'先确认组件路径并按任务要求手动准备。','mismatch':'展开本项原始事实与错误，核对固定要求后手动处理。','unknown':'先补充本项证据；其他组件或本人勾选不能替代。'}[c['status']]),
                 verify=full[-1][1]+' 保留原A，采集较晚B；不同目标重新初检。'))
     return dict(mode=mode,steps=[dict(title=a,body=b) for a,b in steps],links=links,recommendation=None,remediation=actions)
+
+
+def check_guidance(spec, key):
+    """Explanations of existing fixed checks, never an alternate acceptance rule."""
+    if spec['scenario'] == 'deepseek-api':
+        messages = {
+            'os': ('运行电脑', '在运行课航服务的Windows电脑检查；另一台电脑使用手动工具，不能共用环境结论。'),
+            'python': ('课程Python', '先确认本课实际使用的Python及任务版本范围，再检测同一目标；准备API不要求安装DSH或本地模型。'),
+            'api:dependency': ('API编程依赖', '只需本任务Python的urllib.request、ssl、json标准库。先展开导入错误，不据此要求另装SDK。'),
+            'api:request': ('发送内容', '核对任务固定目的地、模型与演示数据。改变提供方、模型或问题后不能沿用原任务的成功结论。'),
+            'api:protocol': ('实际API响应', '网页检测只做未调用预检。若决定实际调用，在手动工具中预览完整请求、确认费用并进行终端单次授权，密钥仅在终端隐藏输入；没有响应证据时保留未知。'),
+            'api:exercise': ('数据练习结果', '实际调用后再核对total=42、count=3、mean=14及完整JSON。HTTP200、普通聊天和课航AI解释均不能代替本项。'),
+        }
+    else:
+        desktop = spec['scenario'] == 'dsh-desktop'
+        messages = {
+            'os': ('运行电脑', '这份DSH任务面向Windows；静态程序检查和真实Agent任务证据分别核对。'),
+            'dsh:software': ('DSH桌面程序' if desktop else 'DSH CLI包',
+                ('核对所选桌面exe及相邻公开包元数据。桌面自带运行时，不要求系统Python或PATH中的dsh。' if desktop else '核对所选@deepseek-ai/dsh的package.json及固定入口元数据；网页不会执行包入口。') + ' 本任务固定版本为'+spec['software_version']+'，不表示官方最新版；版本不符先与课程要求核对。'),
+            'dsh:node': ('CLI运行时', '确认本课所选Node满足'+str(spec['node_min'])+'及包要求。另一份Node或普通Node课程通过不能代替；桌面路线不要求本项。'),
+            'dsh:workspace': ('专用练习目录', '先选择已有的本任务专用目录；没有时，在手动备用入口生成准备命令，由本人新建目录，已有文件不覆盖。固定任务只读input.csv、只写summary.json。'),
+            'dsh:model': ('DSH任务的模型接入', '按所选DSH版本的官方模型配置指南，在DSH中由本人配置并选择提供方和模型。课航不读取密钥；未取得真实任务摘要时无法验证连接，不等于部署失败。课航右侧AI是另一套可选连接。'),
+            'dsh:permission': ('本次工具授权', '在DSH运行前审查本次固定read/write权限：只读input.csv、只写summary.json。不扩大到其他文件；课航中的勾选不代表DSH已实际授权。'),
+            'dsh:tools': ('Agent工具步骤', '在本人已选DSH及专用目录完成固定CSV任务，保留必要的读/写工具摘要、实际时间和错误。普通聊天、安装版本和静态检查均不能证明Agent已执行。'),
+            'dsh:artifact': ('固定任务产物', '核对同一专用目录的summary.json：整数count=3、sum=42。内容不符先查看实际产物；产物单独正确也不证明是本次Agent生成。'),
+        }
+    return messages.get(key, ('课程证据', '展开本项真实证据与错误，按原任务要求处理；不以指导文本替代检测。'))
+
+
+def contextual_guidance(spec, report, prepared):
+    """Choose the current route and next step from the validated task/report."""
+    from .rules import analyze
+    api = spec['scenario'] == 'deepseek-api'
+    desktop = spec['scenario'] == 'dsh-desktop'
+    checks = analyze(spec, report)['checks'] if report is not None else []
+    states = {item['id']: item['status'] for item in checks}
+    declaration = {'unsure':'本人尚不确定准备情况', 'missing':'本人说明尚未准备', 'installed':'本人说明已经准备'}[prepared]
+    if api:
+        title, intro = '准备API编程与一次固定练习', '先检查Python与请求准备，再由本人决定是否实际调用DeepSeek API'
+        requirements = [f"Python {spec['python']['min']} 至 {spec['python']['max_exclusive']}（不含上限），使用urllib / ssl / json标准库",
+                        '本任务模型：'+spec['api']['model']+'；目的地：'+spec['api']['endpoint'],
+                        '固定结果：total=42、count=3、mean=14；无需安装DSH或加载本地权重']
+        boundary = '网页本机检测不发送API、不读取密钥；课航AI聊天配置与本课API调用分别管理'
+        first = 'python'
+        order = ['os','python','api:dependency','api:request','api:protocol','api:exercise']
+        links = [dict(title='DeepSeek API官方入门',url='https://api-docs.deepseek.com/'), dict(title='官方错误码',url='https://api-docs.deepseek.com/quick_start/error_codes/')]
+        selection_hint = '选择本课Python；此项只调整准备指引，不表示API已连接'
+    else:
+        title = '准备DSH桌面任务' if desktop else '准备DSH CLI任务'
+        intro = '先确认当前工具，再分别核对工作区、模型、工具授权与固定产物'
+        requirements = [('Windows桌面程序，自带运行时；系统Python或Node不是本路线前置条件' if desktop else '本课Node ≥ '+str(spec['node_min'])+'，以及@deepseek-ai/dsh的package.json'),
+                        '本任务固定DSH版本：'+spec['software_version']+'（不是官方最新版本声明）',
+                        '专用目录中的input.csv → summary.json，固定结果count=3、sum=42']
+        boundary = '网页只读核对所选工具与可选目录；不启动DSH、不配置模型、不授予工具权限，也不代做Agent任务'
+        first = 'dsh:software'
+        order = ['os','dsh:node','dsh:software','dsh:workspace','dsh:model','dsh:permission','dsh:tools','dsh:artifact']
+        links = [dict(title='DSH官方下载与说明',url='https://www.deepseek.com/harness/'), dict(title='官方模型配置指南',url='https://deepseek-harness.github.io/deepseek-harness/en/guide/providers')]
+        selection_hint = '选择当前DSH路线的准备情况；安装声明不代表模型或任务已完成'
+    if report is None:
+        status = '尚无检测报告；'+declaration+'，不是已验证事实'
+        if prepared == 'missing':
+            next_title = '先准备本课Python' if api else ('先准备DSH桌面程序' if desktop else '先准备本课Node与DSH CLI包')
+            next_body = check_guidance(spec, first)[1]
+            if api:
+                next_body += ' 尚未安装时，按任务版本范围从Python官方渠道自行准备。'
+                links.append(dict(title='Python官方下载',url='https://www.python.org/downloads/windows/'))
+        else:
+            next_title = '先完成API编程预检' if api else ('先核对桌面程序身份' if desktop else '先核对Node与CLI包身份')
+            next_body = '点击“选择目标并检测”，确认'+('本课Python；结果只说明准备检查，不说明API调用成功。' if api else '本路线程序或包；静态软件证据与后续Agent任务分别显示。')
+    else:
+        first_missing = next((key for key in order if states.get(key) not in (None, 'pass')), None)
+        passed = [check_guidance(spec, item['id'])[0] for item in checks if item['status'] == 'pass' and item['id'] != 'os']
+        status = '已有检测报告；已核对：'+('、'.join(passed) if passed else '暂无通过项')
+        if first_missing:
+            next_title, next_body = check_guidance(spec, first_missing)
+        else:
+            next_title, next_body = '保留原始结果，同目标复检', '本固定任务现有检查均通过。保留原A与实际产物；复检使用同一任务、目标及已确认组件，变更组件后重新初检。'
+        if api:
+            run = report['facts']['run']
+            if not run['attempted']:
+                status += '；没有实际API响应证据，不判断账号、密钥或服务是否可用'
+            elif first_missing == 'api:protocol':
+                reasons = {'authentication':'认证', 'balance':'余额', 'rate_limit':'限流', 'timeout':'超时', 'network':'网络', 'model_or_protocol':'模型或协议', 'protocol':'协议', 'server':'服务端', 'runtime':'运行时'}
+                next_title = '核对本次调用的'+reasons.get(run['category'], '响应')+'问题'
+                next_body = '这来自本次报告，不能与“未调用”混同。先查看原始状态码与错误，再由本人决定是否重试；重试仍要预览并单次确认。'
+        elif report['facts']['agent'] is None:
+            status += '；尚无真实DSH任务摘要，模型连接与Agent执行保留未知'
+    return dict(title=title,intro=intro,requirements=requirements,status=status,
+                next_title=next_title,next_body=next_body,boundary=boundary,links=links,selection_hint=selection_hint)
 
 
 def remediation(spec,report,mode):

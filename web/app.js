@@ -92,8 +92,9 @@ async function chooseTask(loader,course=null){
 async function guidance(){
   if(!state.task)return;
   const epoch=state.epoch,serial=state.importEpoch;const mode=$('mode').value;
-  const data=await api('/api/plan',{task:state.task,mode,resources:(state.after||state.before)?.resources,report:state.after||state.before});
-  if(epoch!==state.epoch||serial!==state.importEpoch||mode!==$('mode').value)return;
+  const prepared=$('prepared').value;
+  const data=await api('/api/plan',{task:state.task,mode,prepared,resources:(state.after||state.before)?.resources,report:state.after||state.before});
+  if(epoch!==state.epoch||serial!==state.importEpoch||mode!==$('mode').value||prepared!==$('prepared').value)return;
   const list=document.createElement('ol');list.className='steps';
   for(const step of data.steps){const item=document.createElement('li');const title=document.createElement('strong');title.textContent=step.title;const body=document.createElement('p');body.textContent=step.body;item.append(title,body);list.append(item);}
   $('guidance').replaceChildren(list);
@@ -106,7 +107,9 @@ async function guidance(){
   $('remediation').replaceChildren();
   if(data.remediation?.length){const h=document.createElement('h3');h.textContent='按差异处理';$('remediation').append(h);}
   for(const step of data.remediation||[]){const d=document.createElement('div');d.className='remedy';const h=document.createElement('h3');h.textContent=step.title;const p=document.createElement('p');p.textContent=step.body;const v=document.createElement('p');v.className='muted';v.textContent=step.verify;d.append(h,p,v);$('remediation').append(d);}
-  $('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再生成只读采集命令。':'确认课程解释器的完整路径，再生成只读采集命令。'}[$('prepared').value];
+  if(!data.contextual)$('prepared-hint').textContent={unsure:'先对照任务要求。选择准备情况只调整提示，不代表环境通过。',missing:'先查看官方下载和安装操作参考，按课程允许的版本自行安装。',installed:state.task.scenario==='node-basics'?'确认所选 node.exe 的完整路径，再检测。':'确认本课程使用的程序或文件，再检测。'}[$('prepared').value];
+  $('remediation-details').hidden=!data.remediation?.length;
+  $('remediation-details').open=!data.contextual&&!!data.remediation?.length;
 }
 $('goal').addEventListener('change',()=>{guided.fromPractice=false;clearTask();notice('目标已更换，请确认新的任务。');});
 $('course-code').addEventListener('input',()=>{if(state.course)clearTask();});
@@ -308,18 +311,32 @@ function progress(){
 
 function renderPreparation(plan){
   if(!state.task)return;
-  const box=$('prepare-summary'),spec=state.task;
-  const requirements=['使用 Windows 电脑完成本次检测'];
-  if(spec.python)requirements.push(`课程 Python：${spec.python.min} 至 ${spec.python.max_exclusive}（不含上限）`);
-  if(spec.node)requirements.push(`课程 Node.js：${spec.node.min} 至 ${spec.node.max_exclusive}（不含上限）`);
-  if(spec.packages&&Object.keys(spec.packages).length)requirements.push('需要的依赖：'+Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('、'));
-  if(!spec.python&&!spec.node)requirements.push($('task-summary').textContent);
+  const box=$('prepare-summary'),spec=state.task,context=plan.contextual;
+  const requirements=context?[...context.requirements]:['使用 Windows 电脑完成本次检测'];
+  if(!context){
+    if(spec.python)requirements.push(`课程 Python：${spec.python.min} 至 ${spec.python.max_exclusive}（不含上限）`);
+    if(spec.node)requirements.push(`课程 Node.js：${spec.node.min} 至 ${spec.node.max_exclusive}（不含上限）`);
+    if(spec.packages&&Object.keys(spec.packages).length)requirements.push('需要的依赖：'+Object.entries(spec.packages).map(([k,v])=>`${k} ≥ ${v}`).join('、'));
+    if(!spec.python&&!spec.node)requirements.push($('task-summary').textContent);
+  }
+  $('prepare-title').textContent=context?.next_title||'准备本课使用的环境';
+  $('prepare-intro').textContent=context?.next_body||'按课程要求准备，再检查实际使用的环境';
+  const readyOptions=context?(spec.scenario==='deepseek-api'?['不确定Python是否已准备','尚未准备课程Python','已有Python，准备检查']:['不确定当前DSH路线是否已准备','尚未准备本路线工具','已准备本路线工具，准备核对']):['不确定，先看看需要什么','还没安装，需要操作指引','已经安装，准备检测'];
+  [...$('prepared').options].forEach((option,i)=>option.textContent=readyOptions[i]);
+  $('prepared').labels[0].textContent=context?(spec.scenario==='deepseek-api'?'Python准备情况（本人说明）':'当前DSH路线准备情况（本人说明）'):'你的电脑准备到哪一步了？';
   const list=document.createElement('ul');
   for(const text of requirements){const li=document.createElement('li');li.textContent=text;list.append(li);}box.replaceChildren(list);
   const help=$('prepare-help');help.replaceChildren();
-  const step=plan.steps[Math.min(1,plan.steps.length-1)];
-  if(step){const title=document.createElement('strong'),body=document.createElement('p');title.textContent=step.title;body.textContent=step.body;help.append(title,body);}
-  for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
+  const step=context?{title:context.next_title,body:context.next_body}:plan.steps[Math.min(1,plan.steps.length-1)];
+  if(context){const evidence=document.createElement('p');evidence.className='course-evidence';evidence.textContent=context.status;help.append(evidence);$('prepared-hint').textContent=context.selection_hint;}
+  if(step&&!context){const title=document.createElement('strong'),body=document.createElement('p');title.textContent=step.title;body.textContent=step.body;help.append(title,body);}
+  if(context){const boundary=document.createElement('p');boundary.className='course-boundary';boundary.textContent=context.boundary;help.append(boundary);}
+  for(const link of (context?.links||plan.links).slice(0,3)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
+  const next=$('course-next-guidance');next.replaceChildren();next.hidden=!context;
+  if(context){
+    const title=document.createElement('h3'),body=document.createElement('p'),evidence=document.createElement('p');
+    title.textContent=context.next_title;body.textContent=context.next_body;evidence.className='course-evidence';evidence.textContent=context.status;next.append(title,body,evidence);
+  }
 }
 
 function localReady(){return !!state.task&&state.config?.local_check?.available&&state.config.local_check.scenarios.includes(state.task.scenario);}
@@ -501,7 +518,7 @@ function renderGuide(){
   $('guide-context').textContent=course?'课程环境准备':'Notebook ＋ SQLite 连续实训';
   const labels=course?['选择课程','准备环境','运行检测','查看与复检']:['了解任务','准备环境','跟做练习','提交成果'];
   const titles=course?['选择你要学习的课程','准备好，再开始检测','在你的电脑上运行检测','查看结果，完成同目标复检']:['先了解这堂实训','确认实训需要的环境','下载资料，开始动手练习','提交结果，保留完成记录'];
-  $('guide-title').textContent=titles[index];$('guide-count').textContent=`第 ${index+1} 步 / 共 4 步`;
+  $('guide-title').textContent=course&&index>0?state.task?.title:titles[index];$('guide-count').textContent=`第 ${index+1} 步 / 共 4 步`;
   const nav=$('guide-progress').querySelector('ol');
   if(!nav.children.length)for(let i=0;i<4;i++){
     const li=document.createElement('li'),button=document.createElement('button');button.type='button';
@@ -534,7 +551,7 @@ function renderGuide(){
       if(index===2)$('guide-footnote').textContent=localState.running?'检测进行中；离开本步骤会取消。':'点击“开始本机检测”；也可展开手动工具，检测另一台电脑。';
     }
     if(localState.selected){
-      $('guide-title').textContent=index===3?'本机检测结果':titles[index];
+      $('guide-title').textContent=state.task?.title||titles[index];
       $('review-hint').textContent=state.after?'已对同一目标再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次课程检查要求。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
       if(index===3)next.textContent='返回学习首页';
     }
