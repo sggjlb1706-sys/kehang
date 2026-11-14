@@ -1,3 +1,9 @@
+# 课程首页与连续对话交接 · 2026-11-14
+
+当前实际开发目录：`D:\传智杯\开发工作区\work\kehang-win11-guides-20261113`，分支`codex/kehang-course-chat-20261114`。产品固定提交0e1be49694cb7e49b10836f95d0addd46ecee423已通过独立只读复核。首页直接选择13课程，Python快捷检测位于本课程准备页并保留教师要求，AI侧栏支持当前步骤与报告的多轮追问，结果工具收拢。入口README，验收docs/课程首页与连续对话验收.md，独立结论REVIEW.md。
+
+本机预览`http://127.0.0.1:8787/`，隐藏服务进程35876，日志和课程库在本仓库data/course-chat-preview.*。当前没有配置AI模型；聊天协议仅以本地夹具验证，接入真实模型需在启动终端设置`.env.example`所列变量后重启。没有调用收费模型、发布公网或重做旧ZIP。旧D盘versions/submission与交付物保留原版本；C盘入口仍为Junction。以下为历史交接。
+
 # Windows 11 全课程图示版交接
 
 当前work/kehang-win11-guides-20261113，分支codex/kehang-win11-guides-20261113，从正式11e52b4完整继承。13类课程、实训及报告图示已接入，纯展示引导，不改变检测或AI范围。验收records/win11-guides/acceptance.json；固定独立结论REVIEW.md，新目录/两ZIP以仓库外“交付/课航Windows11图示-20261113”回执为准。旧预览保留，新预览由新交付说明给出。

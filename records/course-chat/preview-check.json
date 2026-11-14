@@ -1,0 +1,10 @@
+{
+  "origin": "http://127.0.0.1:8787",
+  "ai_configured": false,
+  "contrast_ratios": {
+    "muted_on_background": 7.777014857689918,
+    "muted_on_surface": 8.11737763649378,
+    "brand_on_surface": 7.0525398865575895,
+    "muted_on_soft": 7.338454673563391
+  }
+}

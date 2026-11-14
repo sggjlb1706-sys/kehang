@@ -1,0 +1,59 @@
+{
+  "time": "2026-11-14T06:11:54.769146+00:00",
+  "candidate": "0e1be49694cb7e49b10836f95d0addd46ecee423",
+  "checks": [
+    {
+      "command": [
+        "D:/ANACONDA/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": "----------------------------------------------------------------------\nRan 160 tests in 5.329s\n\nOK\n"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "web/learning.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "web/app.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "4249165",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "sha256": {
+    "campuslab/chat.py": "388f0639ad3448fa37f7947e609443cedef57c1b04b02cf81181b495bcde1fc3",
+    "campuslab/diagnosis.py": "acd60981ad874d50952a5de0bdf2f8346402e599a252183be922be4fac22efb9",
+    "campuslab/web.py": "9bc265786617741dafcce4b70cc39d0ee437997e32fcd51a85932cdaa942e211",
+    "web/app.js": "00ac1547f590913d4564203aaf82ddd46c571500f64a03fa75a15d46087df1e7",
+    "web/index.html": "f715d73aade54a7e6d1d187e960e73f069a69846abe39568ced39cb1eb0af38a",
+    "web/learning.js": "029d586928d08260ded571cb204b152af53838e623e52aad95725ca8a308e346",
+    "web/learning.css": "dc102e9f526866b289942d5b2f5139f0982e61f4dfaeced1640dbf851c79f8c7",
+    "tests/test_chat.py": "acbc6a021eeb7554d5199694637f3e3377cf676a124b440470cc8670f9f5449d",
+    "tools/verify_course_chat.py": "f55da5c1a364f6bcdecb0f2ed2b87251dc54fd092bb374ddaea6d0ba2a14b2f4"
+  }
+}
