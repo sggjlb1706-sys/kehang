@@ -183,7 +183,14 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(body, dict):
                 raise ValueError('请求须为对象')
             self.check_origin()
-            if self.path == '/api/local-check':
+            if self.path in ('/api/local-check/discover', '/api/local-check/pick'):
+                self.check_local_token()
+                expected = {'task'} if self.path.endswith('/discover') else {'task', 'field'}
+                if set(body) != expected: raise ValueError('目标选择参数无效')
+                spec = validate_task(body['task'])
+                result = self.server.local_check.targets.discover(spec) if self.path.endswith('/discover') else self.server.local_check.targets.pick(spec, body['field'])
+                self.send(200, result)
+            elif self.path == '/api/local-check':
                 self.check_local_token()
                 self.send(202, self.server.local_check.start(body))
             elif self.path == '/api/local-check/cancel':
