@@ -31,3 +31,27 @@ button.course-card:hover{border-color:var(--brand);background:var(--soft)}button
 @media(max-width:760px){header{padding:15px 18px;gap:10px}header nav{gap:14px}header nav button{font-size:.76rem}#chat-toggle{padding:6px 10px}.learning-layout{padding:0 18px;gap:0}.learning-layout main{padding-top:26px}.course-welcome{padding-bottom:24px}.course-welcome h1{font-size:1.6rem}.course-welcome>p{font-size:.86rem}.home-journey{font-size:.72rem;gap:14px;margin-top:18px}.home-journey li{gap:4px}.home-journey li+li:before{margin-right:2px}.library-heading{gap:8px}.library-heading h2{font-size:1.06rem}.library-heading button{font-size:.72rem}.course-filters{gap:2px;margin:14px 0}.course-filters button{font-size:.72rem;padding:5px 8px}.course-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}button.course-card{grid-template-columns:minmax(0,1fr);padding:14px 12px;gap:8px;min-height:100px}.course-monogram{display:none}.course-card strong{font-size:.86rem}.course-card small{font-size:.76rem}.course-arrow{display:none}.home-options{margin-top:24px}.home-options strong{font-size:.84rem}.home-options small{font-size:.75rem}.home-footnote{font-size:.72rem}.workspace,.practice-panel{padding:20px 16px}.guide-heading h1{font-size:1.3rem}.step-count{font-size:.7rem}.guide-heading .context{font-size:.74rem}#guide-progress button{font-size:.7rem}.flow-footer{flex-wrap:wrap}.flow-footer p{order:3;flex-basis:100%}.python-quick-check{display:block}.python-quick-check button{margin-top:8px}.learning-chat{right:10px;bottom:10px;width:calc(100vw - 20px);height:min(680px,calc(100dvh - 90px))}.chat-heading{padding-top:16px}.chat-messages{padding:16px 20px}.chat-note{font-size:.66rem}footer{margin:0 18px;padding:16px 0}}
 @media(max-width:360px){.course-grid{grid-template-columns:minmax(0,1fr)}button.course-card{min-height:84px;grid-template-columns:minmax(0,1fr) 12px}.course-arrow{display:block}.course-card strong{font-size:.86rem}.home-journey{gap:8px;font-size:.68rem}.library-heading{align-items:start;flex-direction:column;gap:4px}header nav{gap:10px}}
 @media(prefers-reduced-motion:reduce){button.course-card{transition:none}}
+
+/* A quiet departure screen; the warm brand appears as a distant horizon. */
+.welcome-page{background:oklch(.22 .025 36);color:oklch(.97 .005 36);isolation:isolate}
+.welcome-page:before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 85% 80% at 52% 122%,oklch(.67 .12 43),transparent 82%),radial-gradient(ellipse 85% 80% at 85% 4%,oklch(.32 .045 36),transparent 75%)}
+.welcome-page header{border:0;background:transparent;max-width:none;padding:28px 44px}
+.welcome-page .brand,.welcome-page #chat-toggle{color:oklch(.97 .005 36)}
+.welcome-page .brand span{color:oklch(.81 .02 36)}
+.welcome-page #chat-toggle{border-color:oklch(.59 .035 36);background:transparent;min-height:44px}
+.welcome-page #chat-toggle:hover{background:oklch(.32 .03 36)}
+.welcome-page .header-caption,.welcome-page #home-nav,.welcome-page #teacher-nav,.welcome-page footer{display:none}
+.welcome-page .learning-layout{max-width:none;padding-inline:44px}
+.welcome-page .learning-layout main{padding:0}
+.welcome-scene{min-height:calc(100svh - 136px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:42px;padding:44px 0 100px}
+.welcome-scene h1{font-size:4.5rem;font-weight:450;letter-spacing:.12em;padding-left:.12em;line-height:1.2;margin:0;text-shadow:none}
+#welcome-start{display:inline-flex;justify-content:space-between;align-items:center;gap:58px;min-height:52px;padding:12px 25px;border:0;border-radius:6px;background:oklch(.97 .005 36);color:oklch(.26 .03 36);font-size:1rem;font-weight:600;transition:transform .18s ease-out,background-color .18s ease-out}
+#welcome-start:hover{background:oklch(1 0 0);transform:translateY(-2px)}
+#welcome-start:active{transform:translateY(0)}
+.welcome-page.chat-open .learning-layout{grid-template-columns:minmax(0,1fr)}
+.welcome-page .learning-chat{position:fixed;z-index:4;right:32px;top:100px;width:360px;height:calc(100dvh - 124px);min-height:0;margin:0;color:var(--ink);box-shadow:0 3px 8px #0002}
+#selection-home{margin-bottom:20px;font-size:.85rem}
+#selection-screen .course-welcome{padding-bottom:24px}
+.local-target-row{margin:18px 0}.local-target-row label{font-size:.88rem}.local-target-controls{display:flex;gap:10px;align-items:center}.local-target-controls select{flex:1;min-width:0;text-overflow:ellipsis;font-size:.84rem}.local-target-controls button{flex-shrink:0;font-size:.8rem;padding:10px 12px}.local-target-row p,#local-target-status{font-size:.8rem;overflow-wrap:anywhere}#local-discover{font-size:.85rem}#local-vm-option{display:block;margin:18px 0}#local-course-entry{margin:0 0 22px}
+@media(max-width:760px){.welcome-page header{padding:20px}.welcome-page .learning-layout{padding-inline:20px}.welcome-scene{min-height:calc(100svh - 104px);padding-bottom:90px;gap:36px}.welcome-scene h1{font-size:3.5rem}.welcome-page .learning-chat{right:10px;top:auto;bottom:10px;width:calc(100vw - 20px);height:calc(100dvh - 90px)}.local-target-controls{flex-wrap:wrap}.local-target-controls select{flex-basis:100%}.guide-topline{flex-wrap:wrap;gap:10px 18px}}
+@media(prefers-reduced-motion:reduce){#welcome-start{transition:none}#welcome-start:hover{transform:none}}

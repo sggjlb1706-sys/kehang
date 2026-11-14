@@ -44,7 +44,8 @@ for(const [scenario,title,description,category,monogram] of learningCourses){
 
 const KehangChat = (()=>{
   const conversations=new Map();
-  let scope='',fingerprint='',preview=null,busy=false,epoch=0,lastTrigger=null;
+  let scope='',fingerprint='',preview=null,busy=false,epoch=0,lastTrigger=null,pagePolicy='';
+  const desktop=window.matchMedia('(min-width: 1120px)');
   function currentContext(){
     const course=guided.route==='course'&&guided.courseStep>0;
     return {route:guided.route,step:course?guided.courseStep:guided.route==='practice'?guided.practiceStep:0,task:course?state.task:null,report:course?(state.after||state.before):null};
@@ -79,7 +80,7 @@ const KehangChat = (()=>{
       if(key!==scope){scope=key;if(!conversations.has(scope))conversations.set(scope,{messages:[],draft:''});$('chat-input').value=conversation().draft;renderMessages();}
       setStatus('');
     }
-    const stages={home:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台']};
+    const stages={home:['欢迎首页'],selection:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台']};
     $('chat-context').textContent=(value.task?value.task.title+' · ':'')+stages[value.route][value.step];
     const configured=state.config?.ai.configured;
     $('chat-connection').textContent=!state.config?'正在读取连接状态…':configured?'已配置 · '+state.config.ai.model:'尚未连接模型';
@@ -88,12 +89,17 @@ const KehangChat = (()=>{
     const box=$('chat-suggestions');box.replaceChildren();
     for(const question of suggestions){const button=document.createElement('button');button.type='button';button.className='text-button';button.textContent=question;button.addEventListener('click',()=>open(question));box.append(button);}
     updateButtons();
+    const nextPolicy=value.route==='course'&&value.step>0?'workspace':value.route;
+    if(pagePolicy!==nextPolicy){pagePolicy=nextPolicy;setOpen(pagePolicy==='workspace'&&desktop.matches);}
   }
   function setOpen(value,focus=false){
     if(value&&!$('learning-chat').contains(document.activeElement))lastTrigger=document.activeElement;
     $('learning-chat').hidden=!value;document.body.classList.toggle('chat-open',value);$('chat-toggle').setAttribute('aria-expanded',String(value));
     if(focus&&value)$('chat-input').focus({preventScroll:true});
-    if(!value&&$('learning-chat').contains(document.activeElement))(lastTrigger?.isConnected?lastTrigger:$('chat-toggle')).focus({preventScroll:true});
+    if(!value){
+      invalidate();
+      if($('learning-chat').contains(document.activeElement))(lastTrigger?.isConnected&&lastTrigger.getClientRects().length?lastTrigger:$('chat-toggle')).focus({preventScroll:true});
+    }
   }
   function open(question){
     setOpen(true,true);
@@ -132,12 +138,11 @@ const KehangChat = (()=>{
     }catch(error){if(requestEpoch===epoch)setStatus('发送未完成：'+error.message+'。问题已保留。',true);}
     finally{if(requestEpoch===epoch){busy=false;updateButtons();}}
   });
-  const desktop=window.matchMedia('(min-width: 1120px)');
   let resizeTimer;
   desktop.addEventListener('change',()=>{
     clearTimeout(resizeTimer);
-    resizeTimer=setTimeout(()=>{if(!desktop.matches)setOpen(false);},200);
+    resizeTimer=setTimeout(()=>setOpen(pagePolicy==='workspace'&&desktop.matches),200);
   });
-  renderContext();setOpen(desktop.matches);
+  renderContext();
   return Object.freeze({open});
 })();

@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const state = {task:null, course:null, before:null, after:null, analysis:null, epoch:0, importEpoch:0, config:null, hardware:null, needEpoch:0,teacherEpoch:0};
 const practiceState={practice:null,package:null,courses:null,epoch:0,session:0,submissionEpoch:0,reviewEpoch:0,submission:null,attempts:[],environment:{}};
 const guided={route:'home',courseStep:0,practiceStep:0,courseVisited:0,practiceVisited:0,fromPractice:false,navigationEpoch:0,manualCollectorChosen:false};
-const localState={epoch:0,job:null,running:false,items:[],selected:null,limited:false};
+const localState={epoch:0,job:null,running:false,items:[],selected:null,limited:false,rechecking:null};
 const labels = {pass:'通过',missing:'缺失',mismatch:'不符合',unknown:'未知'};
 const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm',python:'课程 Python',run:'固定程序运行','package:requests':'requests 依赖','package:torch':'PyTorch 依赖','package:transformers':'Transformers 依赖','model:weights':'固定模型权重','model:inference':'本地离线推理'};
 const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
@@ -82,7 +82,7 @@ async function chooseTask(loader,course=null){
   $('dsh-package-options').hidden=spec.scenario!=='dsh-cli';
   syncCollector();
   $('download-tool').href=course?`/api/tool?course=${encodeURIComponent(course)}`:`/api/tool?goal=${spec.scenario}`;
-  await guidance();await routes();progress();notice('任务已确定。先查看步骤，再到目标电脑手动采集报告。');
+  await guidance();await routes();progress();notice('任务已确定。按步骤选择目标并检测。');
   if(epoch===state.epoch&&navigationEpoch===guided.navigationEpoch){
     guided.courseVisited=1;showRoute('course',1);
     syncCollector();
@@ -322,14 +322,14 @@ function renderPreparation(plan){
   for(const link of plan.links.slice(0,2)){const a=document.createElement('a');a.textContent=link.title;a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';help.append(a);}
 }
 
-function localReady(){return state.task?.scenario==='python-basics'&&state.config?.local_check?.available;}
+function localReady(){return !!state.task&&state.config?.local_check?.available&&state.config.local_check.scenarios.includes(state.task.scenario);}
 async function localAPI(path,body){
   const response=await fetch(path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},...(body?{body:JSON.stringify(body)}:{})});
   const result=await response.json();if(!response.ok)throw Error(result.error||'本机检测请求失败，请刷新后重试');return result;
 }
 function resetLocal(){
   const job=localState.job,running=localState.running;
-  Object.assign(localState,{epoch:localState.epoch+1,job:null,running:false,items:[],selected:null,limited:false});
+  Object.assign(localState,{epoch:localState.epoch+1,job:null,running:false,items:[],selected:null,limited:false,rechecking:null});
   if(running&&job)localAPI('/api/local-check/cancel',{id:job.id}).catch(()=>{});
   $('local-result-panel').hidden=true;$('local-environments').replaceChildren();$('local-current').textContent='';
   $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-prepare').hidden=true;
@@ -371,21 +371,27 @@ async function startLocal(recheck=false){
   const previous=localState.selected,previousJob=localState.job;
   if(recheck&&(!previous?.report||!previousJob))throw Error('请先完成本机初检');
   const body={task:state.task,consent:true};
-  if(recheck)Object.assign(body,{previous_job:previous.job,target_id:previous.id});
+  if(recheck){
+    Object.assign(body,{previous_job:previous.job,target_id:previous.id});
+    if(previous.options?.gpu_run||previous.options?.infer){
+      if(!window.confirm(previous.options.gpu_run?'本次复检将再次执行固定 GPU 张量运算。是否同意？':'本次复检将再次加载本地模型权重并执行固定离线推理。是否同意？'))return;
+      body.execution_consent=true;
+    }
+  }else Object.assign(body,KehangTargets.request());
   const retained=recheck?localState.items:[],limited=localState.limited;
   resetLocal();clearReports(true);
-  localState.items=retained;localState.limited=limited;
+  localState.items=retained;localState.limited=limited;localState.rechecking=recheck?previous:null;
   showRoute('course',2);localState.running=true;
   const epoch=localState.epoch,taskEpoch=state.epoch;
   $('manual-collection').open=false;$('local-start').disabled=true;$('local-cancel').hidden=false;
-  $('local-status').textContent='正在查找并检查 Python，请稍候……';renderGuide();
+  $('local-status').textContent='正在运行本课程固定检查，请稍候……';renderGuide();KehangTargets.render();
   const current=()=>epoch===localState.epoch&&taskEpoch===state.epoch&&guided.route==='course'&&guided.courseStep===2;
   try{
     let job=await localAPI('/api/local-check',body);
     if(!current()){await localAPI('/api/local-check/cancel',{id:job.id});return;}
     localState.job=job;
     while(['running','cancelling'].includes(job.state)){
-      $('local-status').textContent=job.total?`正在检测：已完成 ${job.completed} / ${job.total} 个环境。`:'正在查找本机已登记的 Python……';
+      $('local-status').textContent=job.total?`正在检测：已完成 ${job.completed} / ${job.total} 个环境。`:'正在确认本次检测目标……';
       $('local-current').textContent=job.current;
       await new Promise(resolve=>setTimeout(resolve,400));
       if(!current())return;
@@ -393,14 +399,16 @@ async function startLocal(recheck=false){
       if(!current())return;
     }
     localState.running=false;localState.job=job;
+    $('local-gpu').checked=false;$('local-infer').checked=false;KehangTargets.render();
     $('local-start').disabled=false;$('local-cancel').hidden=true;$('local-current').textContent='';
-    if(job.state!=='done'){$('local-status').textContent=job.error||'本次检测已取消，未形成完整检测结论。';return;}
+    if(job.state!=='done'){$('local-status').textContent=job.error||'本次检测已取消，未形成完整检测结论。';if(recheck){localState.selected=previous;renderLocalEnvironments();}return;}
     localState.limited=recheck?limited:job.limited;
     // Each result keeps its owning job for a later same-target recheck.
     for(const item of job.results)item.job=job.id;
+    if(recheck&&!job.results[0]?.report){localState.selected=previous;renderLocalEnvironments();await selectLocal(previous);notice(job.results[0]?.error||'本次复检未完成，原始报告已保留。',true);return;}
     localState.items=recheck?retained.map(item=>item.id===previous.id?job.results[0]:item):job.results;
     if(!job.results.length){
-      $('local-status').textContent='没有找到可检测的 Python。这不代表没有安装；可以查看准备指引，或展开手动工具选择课程环境。';
+      $('local-status').textContent='没有找到可检测的候选。这不代表没有安装；可查找候选、选择文件，或查看准备指引。';
       $('local-prepare').hidden=false;return;
     }
     $('local-status').textContent='检测完成，报告已自动返回。';
@@ -410,16 +418,21 @@ async function startLocal(recheck=false){
     if(current()){
       if(localState.job)localAPI('/api/local-check/cancel',{id:localState.job.id}).catch(()=>{});
       localState.running=false;$('local-start').disabled=false;$('local-cancel').hidden=true;
+      KehangTargets.render();if(recheck){localState.selected=previous;await selectLocal(previous);}
       $('local-status').textContent='未完成检测，请重试或展开手动工具。';notice(error.message,true);
     }
   }finally{if(current())renderGuide();}
 }
 $('local-start').addEventListener('click',()=>action(null,()=>startLocal()));
 $('local-recheck').addEventListener('click',()=>action(null,()=>startLocal(true)));
-$('local-cancel').addEventListener('click',()=>{resetLocal();$('local-status').textContent='已请求取消检测；正在结束本次固定检查。可稍后重新开始。';renderGuide();});
+$('local-cancel').addEventListener('click',()=>action(null,async()=>{
+  const previous=localState.rechecking,items=localState.items;resetLocal();
+  if(previous){localState.items=items;localState.job={id:previous.job};await selectLocal(previous);}
+  $('local-status').textContent='已请求取消检测；正在结束本次固定检查。原始报告保留。';renderGuide();KehangTargets.render();
+}));
 $('local-prepare').addEventListener('click',()=>{showRoute('course',1);$('prepared').value='missing';guidance().catch(e=>notice(e.message,true));});
 $('local-ai').addEventListener('click',()=>KehangChat.open('这个检测结果意味着什么？接下来我该做什么？'));
-$('local-save').addEventListener('click',()=>{if(localState.selected?.report)save('Kehang-local-report.json',localState.selected.report);});
+$('local-save').addEventListener('click',()=>{const item=localState.selected;if(item?.report){save(item.before?'report-B.json':'report-A.json',item.report);if(item.before)save('report-A.json',item.before);}});
 window.addEventListener('pagehide',()=>{if(localState.running&&localState.job)fetch('/api/local-check/cancel',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Kehang-Local':state.config.local_check.token},body:JSON.stringify({id:localState.job.id})}).catch(()=>{});});
 
 function syncCollector(){
@@ -433,6 +446,7 @@ function syncCollector(){
   $('manual-collection').classList.toggle('manual-only',!local);
   if(!local)$('manual-collection').open=true;
   else if(!guided.manualCollectorChosen)$('manual-collection').open=false;
+  if(typeof KehangTargets!=='undefined')KehangTargets.sync();
 }
 
 function showRoute(route,step=0){
@@ -441,7 +455,7 @@ function showRoute(route,step=0){
   if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
   if(route==='practice'){guided.practiceStep=step;guided.practiceVisited=Math.max(guided.practiceVisited,step);}
   $('notice').hidden=true;renderGuide();
-  const title=route==='home'?$('welcome-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
+  const title=route==='home'?$('welcome-title'):route==='selection'?$('selection-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
   title.tabIndex=-1;title.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
 }
 
@@ -449,15 +463,19 @@ function renderGuide(){
   updateCourseVisualGuide();
   const course=guided.route==='course',practice=guided.route==='practice',teacher=guided.route==='teacher';
   document.body.classList.toggle('in-flow',course||practice);
+  document.body.classList.toggle('welcome-page',guided.route==='home');
   const shareSlot=$('teacher-share-slot');
   (teacher?shareSlot:$('review-stage')).append($('course-sharing'));
   shareSlot.hidden=!teacher||!state.task;
   $('teacher-current-task').textContent=state.task?'当前任务：'+state.task.title:'';
   $('home-screen').hidden=guided.route!=='home';$('guide-shell').hidden=!course&&!practice;
+  $('selection-screen').hidden=guided.route!=='selection';
   $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
   $('help-panel').hidden=!course||guided.courseStep!==3;
   $('python-quick-check').hidden=!course||state.task?.scenario!=='python-basics'||!localReady();
-  for(const [id,current] of [['home-nav',guided.route==='home'],['teacher-nav',teacher]]){
+  $('local-course-entry').hidden=!course||state.task?.scenario==='python-basics'||!localReady();
+  $('web-course-note').hidden=!course||state.task?.scenario!=='ai-web-deepseek';
+  for(const [id,current] of [['home-nav',guided.route==='selection'],['teacher-nav',teacher]]){
     if(current)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current');
   }
   $('back-practice').hidden=!course||!guided.fromPractice;
@@ -502,13 +520,13 @@ function renderGuide(){
     next.disabled=(index>0&&!state.task)||(index===2&&(!state.before||!state.analysis));
     if(index===2&&!state.before)$('guide-footnote').textContent='运行后导入有效报告，即可查看检测结果；下载工具不会让环境变成通过。';
     if(localReady()){
-      $('collect-title').textContent=localState.running?'正在检测本机 Python':'直接检测，不用找路径';
+      $('collect-title').textContent=localState.running?'正在检测本机环境':'选择目标，开始检测';
       $('collect-intro').textContent='在运行课航本地服务的这台电脑完成固定检查，结果自动回到网页。';
       if(index===2)$('guide-footnote').textContent=localState.running?'检测进行中；离开本步骤会取消。':'点击“开始本机检测”；也可展开手动工具，检测另一台电脑。';
     }
     if(localState.selected){
       $('guide-title').textContent=index===3?'本机检测结果':titles[index];
-      $('review-hint').textContent=state.after?'已对同一环境再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次 Python 基础课要求，可以开始学习。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
+      $('review-hint').textContent=state.after?'已对同一目标再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次课程检查要求。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
       if(index===3)next.textContent='返回学习首页';
     }
   }else if(practice){
@@ -537,7 +555,9 @@ $('guide-next').addEventListener('click',()=>{
     else{$('report-stage').value='B';$('command').textContent='';$('report-files').value='';showRoute('course',2);}
   }else showRoute('course',guided.courseStep+1);
 });
-for(const id of ['home-link','home-nav','back-home','teacher-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
+for(const id of ['home-link','back-home','teacher-home','selection-home'])$(id).addEventListener('click',e=>{e.preventDefault();showRoute('home');});
+for(const id of ['home-nav','welcome-start','back-selection'])$(id).addEventListener('click',()=>showRoute('selection'));
+$('local-course-entry').addEventListener('click',()=>showRoute('course',2));
 $('teacher-nav').addEventListener('click',()=>{guided.fromPractice=false;showRoute('teacher');});
 $('choose-course').addEventListener('click',()=>{guided.fromPractice=false;showRoute('course',0);});
 $('start-python').addEventListener('click',e=>action(e.target,()=>startLocal()));

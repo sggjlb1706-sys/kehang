@@ -65,8 +65,19 @@ def validate_path(kind, value):
     return str(path)
 
 
+def python_choices():
+    choices = discover_python(ROOT)
+    # Only inspect known conda roots already discovered above, never scan drives.
+    for path, _ in list(choices)[:8]:
+        root = Path(path).parent
+        if (root / 'conda-meta').is_dir() and (root / 'envs').is_dir():
+            choices += [(str(p), '已知 Conda 环境目录候选') for p in sorted((root / 'envs').glob('*/python.exe'))[:8]]
+    return choices
+
+
 PICKER = r'''
 $ErrorActionPreference = 'Stop'
+[Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
 $settings = [Console]::In.ReadToEnd() | ConvertFrom-Json
 Add-Type -AssemblyName System.Windows.Forms
@@ -135,7 +146,7 @@ class TargetStore:
         value = self.configuration(spec)
         for field, meta in value['fields'].items():
             choices = []
-            if meta['kind'] == 'python': choices = discover_python(ROOT)
+            if meta['kind'] == 'python': choices = python_choices()
             elif meta['kind'] == 'node':
                 found = shutil.which('node.exe')
                 if found: choices = [(found, 'PATH 候选')]
@@ -145,7 +156,7 @@ class TargetStore:
                 if os.environ.get('JAVA_HOME'): choices.append((os.environ['JAVA_HOME'], 'JAVA_HOME 候选'))
             elif meta['kind'] == 'kernel':
                 folders = [Path(os.environ.get('APPDATA', str(Path.home()))) / 'jupyter/kernels', Path(os.environ.get('PROGRAMDATA', 'C:/ProgramData')) / 'jupyter/kernels']
-                folders += [Path(p).parent / 'share/jupyter/kernels' for p, _ in discover_python(ROOT)[:8]]
+                folders += [Path(p).parent / 'share/jupyter/kernels' for p, _ in python_choices()[:8]]
                 for folder in folders:
                     if folder.is_dir(): choices += [(str(p), '已知 Jupyter 内核目录') for p in sorted(folder.glob('*/kernel.json'))[:8]]
             elif meta['kind'] == 'vm':
@@ -176,7 +187,7 @@ class TargetStore:
         scenario = spec['scenario']
         if not isinstance(selections, dict) or set(selections) - set(FIELDS[scenario]): raise ValueError('检测目标选择无效')
         if not isinstance(options, dict): raise ValueError('检测选项无效')
-        allowed = {'pytorch-gpu': {'gpu_run'}, 'local-qwen': {'infer'}, 'vm-linux': {'vm_uuid'}}.get(scenario, set())
+        allowed = {'pytorch-gpu': {'gpu_run'}, 'local-qwen': {'infer'}, 'vm-linux': {'vm_uuid', 'host_only'}}.get(scenario, set())
         if set(options) - allowed: raise ValueError('当前课程不接受此执行选项')
         result = {}
         with self.lock:
@@ -190,13 +201,14 @@ class TargetStore:
                     raise ValueError('目标选择已过期或不属于当前课程，请重新选择')
                 result[field] = validate_path(meta['kind'], entry['path'])
         for key, value in options.items():
-            if key in ('gpu_run', 'infer'):
+            if key in ('gpu_run', 'infer', 'host_only'):
                 if type(value) is not bool: raise ValueError('实际运行须明确选择本次授权')
-                result[key] = value
+                if key != 'host_only': result[key] = value
             elif value:
                 try: identity = str(uuid.UUID(value))
                 except (ValueError, TypeError, AttributeError): raise ValueError('请输入有效的 VirtualBox UUID') from None
                 if 'vm_id' in result: raise ValueError('请选择一种虚拟机实例标识')
                 result['vm_id'] = identity
-        if scenario == 'vm-linux' and 'vm_id' not in result: raise ValueError('请先选择 VMware 实例文件或填写 VirtualBox UUID')
+        if options.get('host_only') and 'vm_id' in result: raise ValueError('仅检测宿主时，请清空实例选择')
+        if scenario == 'vm-linux' and 'vm_id' not in result and options.get('host_only') is not True: raise ValueError('请先选择具体实例，或明确选择仅检测宿主与软件')
         return result

@@ -1,21 +1,25 @@
 <!doctype html>
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/learning.js" defer></script></head>
-<body>
+<title>课航 · 选课，准备，开始学习</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/windows-guides.css"><link rel="stylesheet" href="/learning.css"><script src="/visual-guides.js" defer></script><script src="/app.js" defer></script><script src="/local-selection.js" defer></script><script src="/learning.js" defer></script></head>
+<body class="welcome-page">
 <a class="skip-link" href="#main-content">跳到主要内容</a>
 <header><a class="brand" id="home-link" href="/" aria-label="课航首页">课航<span>KEHANG</span></a>
 <span class="header-caption">课程学习与实训助手</span><nav aria-label="主要导航"><button id="home-nav" class="text-button">课程</button><button id="teacher-nav" class="text-button">教师工作台</button><button id="chat-toggle" class="secondary" aria-controls="learning-chat" aria-expanded="false">问 AI</button></nav></header>
 <div class="learning-layout">
 <main id="main-content">
 <section id="home-screen" aria-labelledby="welcome-title">
-  <div class="course-welcome"><h1 id="welcome-title">选一门课，从这里开始。</h1><p>准备环境、看懂检测结果，再动手完成练习。</p><ol class="home-journey" aria-label="学习流程"><li><span>1</span> 选择课程</li><li><span>2</span> 准备与检测</li><li><span>3</span> 开始学习</li></ol></div>
+  <div class="welcome-scene"><h1 id="welcome-title">课航</h1><button id="welcome-start">开始 <span aria-hidden="true">→</span></button></div>
+</section>
+<section id="selection-screen" hidden aria-labelledby="selection-title">
+  <button id="selection-home" class="text-button">← 返回首页</button>
+  <div class="course-welcome"><h1 id="selection-title">选择你的课程</h1></div>
   <section class="course-library" aria-labelledby="course-library-title"><div class="library-heading"><h2 id="course-library-title">你想学什么？</h2><button id="choose-course" class="text-button">导入课程 / 更多路线 →</button></div><div id="course-filters" class="course-filters" role="group" aria-label="按学习方向筛选"></div><div id="course-grid" class="course-grid" aria-label="支持的课程"></div><p id="course-selection-status" role="status" class="muted"></p></section>
   <div class="home-options"><button id="start-practice" class="option-row"><span><strong>把所学连起来，做一堂数据分析实训</strong><small>Notebook ＋ SQLite · 分析同一份数据，提交你的成果</small></span><span aria-hidden="true">→</span></button><button id="import-entry" class="option-row"><span><strong>已有老师发来的课程资料</strong><small>导入课程文件，按课堂要求开始</small></span><span aria-hidden="true">→</span></button></div>
   <p class="home-footnote">13 类课程 · 本机学习，无需注册 <button id="home-chat" class="text-button">不知道怎么选？问 AI →</button></p>
 </section>
 <section id="guide-shell" hidden aria-labelledby="guide-title">
-  <div class="guide-topline"><button id="back-home" class="text-button">← 返回学习首页</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
+  <div class="guide-topline"><button id="back-home" class="text-button">← 返回首页</button><button id="back-selection" class="text-button">选择其他课程</button><button id="back-practice" class="text-button" hidden>← 返回实训，继续下一步</button></div>
   <div class="guide-heading"><div><p id="guide-context" class="context">课程环境准备</p><h1 id="guide-title" tabindex="-1">选择你要学习的课程</h1></div><p id="guide-count" class="step-count"></p></div>
   <nav id="guide-progress" aria-label="学习步骤"><ol></ol></nav>
   <div class="workspace" id="course-screen" hidden>
@@ -30,6 +34,8 @@
       <nav class="progress" hidden aria-label="检测证据状态"><span id="progress-task">已确认任务</span><span id="progress-evidence"></span><span id="progress-recheck"></span></nav>
       <section id="preparation"><h2>先准备好要用的软件</h2><p>按课程要求准备，再检查实际使用的环境。</p><div id="prepare-summary" class="requirements"></div>
         <div id="python-quick-check" class="python-quick-check" hidden><div><strong>已经装好 Python？</strong><p>直接检查本机版本和基础依赖，结果会自动回到这里。</p></div><button id="start-python">检测本机 Python →</button></div>
+        <button id="local-course-entry" hidden>选择目标并检测 →</button>
+        <p id="web-course-note" class="muted" hidden>这门课是网页提问练习，没有适用的本机环境检测。请按下方学习步骤进入 DeepSeek 官方网页；本人记录与成果核对不代表登录或模型连接证明。</p>
         <label for="prepared">你的电脑准备到哪一步了？</label><select id="prepared"><option value="unsure">不确定，先看看需要什么</option><option value="missing">还没安装，需要操作指引</option><option value="installed">已经安装，准备检测</option></select><p id="prepared-hint" class="muted"></p>
         <div id="prepare-help"></div>
         <details id="full-guidance"><summary>查看完整步骤与官方下载来源</summary><label for="mode">说明详细程度</label><select id="mode"><option value="novice">新手：详细说明</option><option value="standard">标准：关键步骤</option><option value="quick">快捷：精简说明</option></select><div id="guidance"></div></details>
@@ -37,7 +43,14 @@
       </section>
       <div id="local-result-panel" hidden><details id="local-environment-details"><summary>查看检测环境与原始报告</summary><p id="local-result-summary"></p><div id="local-environments" aria-label="本次检测到的环境"></div><button id="local-save" class="text-button">保存原始报告</button></details><div class="toolbar"><button id="local-ai" class="secondary">问 AI：这个结果意味着什么？</button><button id="local-recheck" class="text-button">重新检测当前环境</button></div></div>
       <section class="collection" id="collect-stage"><h2 id="collect-title">下载工具，做一次检测</h2><p id="collect-intro">检测工具会生成一份报告，帮你确认课程环境是否准备好了。</p>
-        <div id="local-check-panel" hidden><p class="muted">只检查本机已登记或 PATH 中的 Python，最多 8 个。不扫描全盘；未找到不代表没有安装。</p><div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看 Python 准备指引</button></div>
+        <div id="local-check-panel" hidden>
+          <p id="local-scope" class="muted"></p>
+          <button id="local-discover" class="secondary">查找本机候选</button><p id="local-target-status" role="status"></p><div id="local-target-fields"></div>
+          <label id="local-gpu-option" class="checkbox" hidden><input id="local-gpu" type="checkbox"> 本次同意执行固定 GPU 张量运算</label>
+          <label id="local-infer-option" class="checkbox" hidden><input id="local-infer" type="checkbox"> 本次同意加载本地权重，执行固定离线推理</label>
+          <div id="local-vm-option" hidden><label>VirtualBox 实例 UUID（选择 .vmx 时留空）<input id="local-vm-uuid" autocomplete="off"></label><label class="checkbox"><input id="local-host-only" type="checkbox"> 尚未选择实例，本次仅检测宿主与虚拟化软件</label></div>
+          <div class="toolbar"><button id="local-start">开始本机检测</button><button id="local-cancel" class="secondary" hidden>取消检测</button></div><p id="local-status" role="status" aria-live="polite">点击开始后，结果会自动显示在这里。</p><p id="local-current" class="muted"></p><button id="local-prepare" class="secondary" hidden>查看准备指引</button>
+        </div>
         <details id="manual-collection" open><summary>改用手动工具 / 检测另一台电脑</summary>
         <div class="download-action"><div><strong>先下载当前课程的检测工具</strong><p class="muted">这是这一步需要的下载文件。请完整解压，不要在 ZIP 中直接运行。</p></div><a id="download-tool" class="button" href="/api/tool">下载检测工具 ↓</a></div>
         <div id="simple-collector" hidden><h3>解压后，双击 Start-Collect.cmd</h3><p>窗口会带你选择课程 Python，不需要先记住完整路径。按下面的方法选择，最后核对目标并输入 START。</p>

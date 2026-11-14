@@ -70,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             self.check_origin()
             path = urlsplit(self.path)
-            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css'}
+            assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css', '/local-selection.js':'local-selection.js'}
             if path.path in assets:
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
@@ -183,12 +183,14 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(body, dict):
                 raise ValueError('请求须为对象')
             self.check_origin()
-            if self.path in ('/api/local-check/discover', '/api/local-check/pick'):
+            if self.path in ('/api/local-check/discover', '/api/local-check/pick', '/api/local-check/options'):
                 self.check_local_token()
-                expected = {'task'} if self.path.endswith('/discover') else {'task', 'field'}
+                expected = {'task', 'field'} if self.path.endswith('/pick') else {'task'}
                 if set(body) != expected: raise ValueError('目标选择参数无效')
                 spec = validate_task(body['task'])
-                result = self.server.local_check.targets.discover(spec) if self.path.endswith('/discover') else self.server.local_check.targets.pick(spec, body['field'])
+                if self.path.endswith('/options'): result = self.server.local_check.targets.configuration(spec)
+                elif self.path.endswith('/discover'): result = self.server.local_check.targets.discover(spec)
+                else: result = self.server.local_check.targets.pick(spec, body['field'])
                 self.send(200, result)
             elif self.path == '/api/local-check':
                 self.check_local_token()
