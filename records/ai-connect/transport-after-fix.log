@@ -1,0 +1,10 @@
+test_broken_chunked_response_fails_without_escaping (test_model_transport.ModelTransportTest.test_broken_chunked_response_fails_without_escaping) ... ok
+test_chunked_json_with_keepalive_whitespace_is_accepted (test_model_transport.ModelTransportTest.test_chunked_json_with_keepalive_whitespace_is_accepted) ... ok
+test_oversize_chunked_response_is_rejected (test_model_transport.ModelTransportTest.test_oversize_chunked_response_is_rejected) ... ok
+test_truncated_json_is_rejected (test_model_transport.ModelTransportTest.test_truncated_json_is_rejected) ... ok
+test_wrong_content_type_is_rejected (test_model_transport.ModelTransportTest.test_wrong_content_type_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.611s
+
+OK

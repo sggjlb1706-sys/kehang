@@ -1,0 +1,71 @@
+test_broken_chunked_response_fails_without_escaping (test_model_transport.ModelTransportTest.test_broken_chunked_response_fails_without_escaping) ... ok
+test_chunked_json_with_keepalive_whitespace_is_accepted (test_model_transport.ModelTransportTest.test_chunked_json_with_keepalive_whitespace_is_accepted) ... ----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52932)
+FAIL
+test_oversize_chunked_response_is_rejected (test_model_transport.ModelTransportTest.test_oversize_chunked_response_is_rejected) ... Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-ai-connect-20261115\tests\test_model_transport.py", line 41, in do_POST
+    self.wfile.write(f'{len(chunk):X}\r\n'.encode() + chunk + b'\r\n')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+ok
+test_truncated_json_is_rejected (test_model_transport.ModelTransportTest.test_truncated_json_is_rejected) ... ----------------------------------------
+ok
+Exception occurred during processing of request from ('127.0.0.1', 52934)
+test_wrong_content_type_is_rejected (test_model_transport.ModelTransportTest.test_wrong_content_type_is_rejected) ... Traceback (most recent call last):
+  File "D:\ANACONDA\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\ANACONDA\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-ai-connect-20261115\tests\test_model_transport.py", line 41, in do_POST
+    self.wfile.write(f'{len(chunk):X}\r\n'.encode() + chunk + b'\r\n')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+ok
+
+======================================================================
+FAIL: test_chunked_json_with_keepalive_whitespace_is_accepted (test_model_transport.ModelTransportTest.test_chunked_json_with_keepalive_whitespace_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\传智杯\开发工作区\work\kehang-ai-connect-20261115\tests\test_model_transport.py", line 72, in test_chunked_json_with_keepalive_whitespace_is_accepted
+    self.assertTrue(result['completed'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.631s
+
+FAILED (failures=1)

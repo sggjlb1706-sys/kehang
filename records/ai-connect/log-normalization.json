@@ -1,0 +1,46 @@
+{
+  "at_beijing": "2026-11-15T15:00:12.777313+08:00",
+  "entries": [
+    {
+      "path": "records/ai-connect/transport-before-fix.log",
+      "original": "D:\\传智杯\\开发工作区\\交付\\AI接入故障Prompt链-20261115-01\\证据\\transport-before-fix.log",
+      "original_sha256": "df620af0109f0feff7822623a2e86bfdac1380b8a819c7aa817863c0513e362f",
+      "original_bytes": 4204,
+      "crlf_count": 71,
+      "normalized_sha256": "7066a89b3b50d19f9d0f8b08da61d9365f8dcdefa5e6dc88437a189d310f9aed",
+      "normalized_bytes": 4133,
+      "transformation": "CRLF -> LF only; no content/result edits"
+    },
+    {
+      "path": "records/ai-connect/transport-after-fix.log",
+      "original": "D:\\传智杯\\开发工作区\\交付\\AI接入故障Prompt链-20261115-01\\证据\\transport-after-fix.log",
+      "original_sha256": "d778ee14f5a68144dd4f07f65f4b0fccacec435c9191fc7516c4e238a7ce3598",
+      "original_bytes": 791,
+      "crlf_count": 10,
+      "normalized_sha256": "90c82e3b39ef2b357a9f611d41805600988a1b12f59672d44feb5043d2b98f77",
+      "normalized_bytes": 781,
+      "transformation": "CRLF -> LF only; no content/result edits"
+    },
+    {
+      "path": "records/ai-connect/diagnosis-regression.log",
+      "original": "D:\\传智杯\\开发工作区\\交付\\AI接入故障Prompt链-20261115-01\\证据\\diagnosis-regression.log",
+      "original_sha256": "f1a6aecf6196646be82cadc3e66c70e3656a20b43c5543dce7aeee6afe56ec5e",
+      "original_bytes": 527,
+      "crlf_count": 9,
+      "normalized_sha256": "64824f772cc8b9e4cfe6e7a9a70b0fd86e4546b0071f033ca6e526983b7833ff",
+      "normalized_bytes": 518,
+      "transformation": "CRLF -> LF only; no content/result edits"
+    },
+    {
+      "path": "records/ai-connect/chat-regression.log",
+      "original": "D:\\传智杯\\开发工作区\\交付\\AI接入故障Prompt链-20261115-01\\证据\\chat-regression.log",
+      "original_sha256": "e129f2a386aff7ad94be001cd1dc31a6534ba85347404077eca151d6c3801842",
+      "original_bytes": 1048,
+      "crlf_count": 12,
+      "normalized_sha256": "6d221fa2b999c44c246ad2853334797036c3191f2fd4edb38345e8aacf6e2b05",
+      "normalized_bytes": 1036,
+      "transformation": "CRLF -> LF only; no content/result edits"
+    }
+  ],
+  "scope": "Pre-handoff original bytes verified against handoff index and retained in the external evidence directory. Repository log text has only CRLF normalized to LF. Failure results preserved."
+}

@@ -2,6 +2,7 @@
 import json
 import os
 import re
+from http.client import HTTPException
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
@@ -65,10 +66,10 @@ def model_request(config, messages):
         with build_opener(*handlers).open(request,timeout=25) as response:
             content_type=response.headers.get('Content-Type','').split(';')[0]
             length=response.headers.get('Content-Length')
-            if content_type!='application/json' or length is None or not length.isdigit() or int(length)>131072:
+            if content_type!='application/json' or (length is not None and (not length.isdigit() or int(length)>131072)):
                 raise ValueError('diagnostic_protocol')
             raw=response.read(131073)
-            if len(raw)!=int(length) or len(raw)>131072:
+            if len(raw)>131072 or (length is not None and len(raw)!=int(length)):
                 raise ValueError('diagnostic_truncated')
             data=json.loads(raw)
             choices=data.get('choices')
@@ -81,6 +82,6 @@ def model_request(config, messages):
             if key:
                 content=content.replace(key,'<密钥已删除>')
             return dict(completed=True, explanation=redact(content), evidence_verdict_changed=False)
-    except (HTTPError,URLError,TimeoutError,OSError,ValueError,KeyError,TypeError,AttributeError) as exc:
+    except (HTTPError,URLError,HTTPException,TimeoutError,OSError,ValueError,KeyError,TypeError,AttributeError) as exc:
         category=str(exc) if isinstance(exc,ValueError) and str(exc).startswith('diagnostic_') else type(exc).__name__
         return dict(completed=False,error=category,explanation='AI诊断未完成；原始检查结果保持。',evidence_verdict_changed=False)
