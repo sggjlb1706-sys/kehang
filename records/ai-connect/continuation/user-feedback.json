@@ -1,0 +1,7 @@
+{
+  "recorded_at_beijing": "2026-11-15T15:16:13.193777+08:00",
+  "source": "This chat: request_user_input_async reply, exact selected user answer",
+  "question": "已打开 http://127.0.0.1:8777/。请点右上“问 AI”，提出一个实际问题，再基于回答追问一轮；每次先预览再同意发送。你的实际使用结果是什么？可以直接写具体反馈，无需提供私有对话或密钥。",
+  "answer": "两轮均有正常回答",
+  "scope": "User-reported two normal rounds. No private question/answer transcript or database copied; no additional sentiment inferred. recorded_at is archive time, not an invented original message timestamp."
+}

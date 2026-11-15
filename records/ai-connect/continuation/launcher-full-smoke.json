@@ -1,0 +1,14 @@
+{
+  "at_beijing": "2026-11-15T15:10:31.1017530+08:00",
+  "account": "DELL",
+  "commit": "618547111dd45b80dab8b2860acec72e0ceec9a2",
+  "script": "启动已连接模型的课航.ps1",
+  "helper_pid": 5540,
+  "server_pid": 3648,
+  "configured": true,
+  "destination": "http://127.0.0.1:1/chat",
+  "home_status": 200,
+  "key_input": "Empty SecureString supplied by test-only Read-Host override; no credential used",
+  "real_model_calls": 0,
+  "scope": "Full corrected launcher starts under DELL account and serves home/config on temporary port 8780. This is startup proof, not inference proof."
+}
