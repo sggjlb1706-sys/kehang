@@ -1,0 +1,8 @@
+PASS 8 real course cards/teacher choices and 5 category filters correct
+PASS 6 tool guides/anchors/3 viewports readable without course/check/report requests; 18 fresh screenshots
+PASS All 5 legacy course-code URLs redirect to corresponding guide without a course task
+PASS Late initial guide load cannot take navigation back from course selection
+PASS Late course load cannot overwrite the new tools route or create stale course task
+PASS Tool chat drafts are isolated/restored; unconfigured previews carry tool guide only and cannot send
+PASS All 8 real course preparation paths remain reachable independently
+{"passed": true, "checks": 7, "errors": [], "external": []}

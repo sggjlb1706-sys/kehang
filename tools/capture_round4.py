@@ -11,7 +11,7 @@ import campuslab.web as web
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main(stage, source):
+def main(stage, source, result_only=False):
     out = ROOT / 'records/round4' / stage
     out.mkdir(parents=True, exist_ok=True)
     web.ROOT = Path(source) if source else ROOT
@@ -40,6 +40,14 @@ def main(stage, source):
                     result['shots'].append(dict(page=name, width=width, file=file, overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth')))
                 page.set_viewport_size(dict(width=1912, height=948))
 
+            if result_only:
+                page.click('#welcome-start');page.click('[data-scenario="python-basics"]')
+                page.wait_for_function('()=>state.task?.scenario==="python-basics"&&guided.courseStep===1')
+                page.click('#start-python');page.wait_for_function('()=>!!state.before&&!localState.running',timeout=90000)
+                shots('python-result')
+                (out/'capture.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf8')
+                print(json.dumps(dict(stage=stage,shots=len(result['shots']),errors=result['errors']),ensure_ascii=False))
+                browser.close();return
             shots('welcome')
             page.click('#welcome-start')
             shots('selection')
@@ -53,6 +61,9 @@ def main(stage, source):
                     page.locator('[data-extension="'+scenario+'"]').first.click()
                     page.wait_for_function('(s)=>guided.route==="extensions"&&KehangExtensions.current()===s', arg=scenario)
                 shots(scenario)
+            if stage!='before':
+                page.click('#extensions-nav');page.wait_for_selector('#extension-list:visible');shots('extensions')
+                page.locator('[data-extension="kehang-ai"]').click();page.wait_for_selector('#extension-guide:visible');shots('kehang-ai')
             page.click('#home-nav')
             page.click('[data-scenario="python-basics"]')
             page.wait_for_function('()=>guided.courseStep===1')
@@ -75,5 +86,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('stage')
     parser.add_argument('--source')
+    parser.add_argument('--result-only',action='store_true')
     args=parser.parse_args()
-    main(args.stage, args.source)
+    main(args.stage, args.source, args.result_only)

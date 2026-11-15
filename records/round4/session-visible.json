@@ -1,6 +1,6 @@
 {
   "source": "C:\\Users\\DELL\\.codex\\sessions\\2026\\11\\15\\rollout-2026-11-15T11-43-05-01a1dd4d-3070-7f12-b7c9-fb2d9b85f68b.jsonl",
-  "scope": "Visible user instruction and actual assistant prose from this revision only; no tools/private config",
+  "scope": "Visible user instruction and actual assistant prose through pre-delivery export; tools/private config omitted, final reply remains in chat",
   "messages": [
     {
       "timestamp": "2026-11-15T03:43:09.084Z",
@@ -36,6 +36,16 @@
       "timestamp": "2026-11-15T03:57:17.375Z",
       "role": "assistant",
       "text": "浏览器验证已通过：6 份指南均可直接阅读，期间没有触发检测、报告分析或工具包下载；5 种历史工具课程包也都转到了对应指南。8 项课程入口仍可用，新跑的 Python 同目标 A/B 保留了原始 A。\n\n19 组文字、按钮、焦点和控件边界配色达到所设对比度阈值。三档画面中未发现横向溢出，接下来会整理目视结果并交给独立只读代理审查；配色效果仍等你真实体验后判断。\n"
+    },
+    {
+      "timestamp": "2026-11-15T04:04:14.408Z",
+      "role": "assistant",
+      "text": "已固定候选版本 `ed215e4` 并交给独立只读代理审查。最终单测为 183 项通过，浏览器专项为 11 组通过；新增 API 示例也已按当前文档补上非思考模式开关，减少短响应示例被推理内容占满的情况。\n\n我正在补齐最终截图和启动说明。一次迟到回复测试因脚本拦截地址写错而失败，已保留日志并修正通过；这项会明确记作测试脚本错误。\n"
+    },
+    {
+      "timestamp": "2026-11-15T04:07:10.698Z",
+      "role": "assistant",
+      "text": "独立审查目前未发现 P0/P1/P2 问题，已独立跑过 183 项单测和 7 组浏览器检查，覆盖旧课程码转向、迟到响应隔离、工具聊天草稿和三档视口。\n\n新版已在本机启动：[http://127.0.0.1:8776/](http://127.0.0.1:8776/)。我会把启动方式、六类指南入口、18 组前后对比和验证缺口放进交付目录，再完成最后核对。\n"
     }
   ]
 }

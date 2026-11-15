@@ -1,0 +1,26 @@
+{
+  "stage": "before-result",
+  "source": "D:\\传智杯\\开发工作区\\work\\kehang-round3-20261114",
+  "time": "2026-11-15T04:04:06.698574+00:00",
+  "shots": [
+    {
+      "page": "python-result",
+      "width": 1912,
+      "file": "python-result-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "python-result",
+      "width": 1366,
+      "file": "python-result-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "python-result",
+      "width": 390,
+      "file": "python-result-390.png",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

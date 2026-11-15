@@ -1,0 +1,36 @@
+{
+  "head": "ed215e43471c880f99d4f4cd5dd707cbdf6bd173",
+  "checks": [
+    "8 real course cards/teacher choices and 5 category filters correct",
+    "6 tool guides/anchors/3 viewports readable without course/check/report requests; 18 fresh screenshots",
+    "All 5 legacy course-code URLs redirect to corresponding guide without a course task",
+    "Late initial guide load cannot take navigation back from course selection",
+    "Late course load cannot overwrite the new tools route or create stale course task",
+    "Tool chat drafts are isolated/restored; unconfigured previews carry tool guide only and cannot send",
+    "All 8 real course preparation paths remain reachable independently"
+  ],
+  "errors": [],
+  "external": [],
+  "shots": [
+    "dsh-desktop-1912.png",
+    "dsh-desktop-1366.png",
+    "dsh-desktop-390.png",
+    "dsh-cli-1912.png",
+    "dsh-cli-1366.png",
+    "dsh-cli-390.png",
+    "deepseek-api-1912.png",
+    "deepseek-api-1366.png",
+    "deepseek-api-390.png",
+    "ai-web-deepseek-1912.png",
+    "ai-web-deepseek-1366.png",
+    "ai-web-deepseek-390.png",
+    "local-qwen-1912.png",
+    "local-qwen-1366.png",
+    "local-qwen-390.png",
+    "kehang-ai-1912.png",
+    "kehang-ai-1366.png",
+    "kehang-ai-390.png"
+  ],
+  "draft": true,
+  "passed": true
+}

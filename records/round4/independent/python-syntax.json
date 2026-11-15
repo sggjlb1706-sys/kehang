@@ -1,0 +1,14 @@
+[
+  {
+    "guide": "local-qwen",
+    "section": "获取模型文件",
+    "kind": "Python AST",
+    "passed": true
+  },
+  {
+    "guide": "local-qwen",
+    "section": "加载并生成文本",
+    "kind": "Python AST",
+    "passed": true
+  }
+]

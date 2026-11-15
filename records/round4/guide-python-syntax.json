@@ -1,0 +1,16 @@
+[
+  {
+    "guide": "local-qwen",
+    "section": "获取模型文件",
+    "language": "Python",
+    "syntax": "pass",
+    "executed": false
+  },
+  {
+    "guide": "local-qwen",
+    "section": "加载并生成文本",
+    "language": "Python",
+    "syntax": "pass",
+    "executed": false
+  }
+]

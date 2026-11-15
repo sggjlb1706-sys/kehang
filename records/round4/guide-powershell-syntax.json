@@ -1,0 +1,58 @@
+[
+  {
+    "guide": "dsh-cli",
+    "section": "必要准备",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "dsh-cli",
+    "section": "从官方包启动",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "deepseek-api",
+    "section": "在终端临时输入 Key",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "deepseek-api",
+    "section": "发起请求",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "deepseek-api",
+    "section": "查看响应与清理",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "local-qwen",
+    "section": "准备独立环境",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  },
+  {
+    "guide": "kehang-ai",
+    "section": "在启动终端设置",
+    "language": "PowerShell",
+    "syntax": "pass",
+    "executed": false,
+    "errors": []
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "dsh-cli-0",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "dsh-cli-1",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "deepseek-api-1",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "deepseek-api-2",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "deepseek-api-3",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "local-qwen-1",
+    "passed": true,
+    "errors": []
+  },
+  {
+    "name": "kehang-ai-1",
+    "passed": true,
+    "errors": []
+  }
+]

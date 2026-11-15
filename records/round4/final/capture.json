@@ -1,0 +1,242 @@
+{
+  "stage": "final",
+  "source": "D:\\传智杯\\开发工作区\\work\\kehang-round4-20261115",
+  "time": "2026-11-15T04:03:56.287470+00:00",
+  "shots": [
+    {
+      "page": "welcome",
+      "width": 1912,
+      "file": "welcome-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "welcome",
+      "width": 1366,
+      "file": "welcome-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "welcome",
+      "width": 390,
+      "file": "welcome-390.png",
+      "overflow": false
+    },
+    {
+      "page": "selection",
+      "width": 1912,
+      "file": "selection-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "selection",
+      "width": 1366,
+      "file": "selection-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "selection",
+      "width": 390,
+      "file": "selection-390.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-desktop",
+      "width": 1912,
+      "file": "dsh-desktop-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-desktop",
+      "width": 1366,
+      "file": "dsh-desktop-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-desktop",
+      "width": 390,
+      "file": "dsh-desktop-390.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-cli",
+      "width": 1912,
+      "file": "dsh-cli-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-cli",
+      "width": 1366,
+      "file": "dsh-cli-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "dsh-cli",
+      "width": 390,
+      "file": "dsh-cli-390.png",
+      "overflow": false
+    },
+    {
+      "page": "deepseek-api",
+      "width": 1912,
+      "file": "deepseek-api-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "deepseek-api",
+      "width": 1366,
+      "file": "deepseek-api-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "deepseek-api",
+      "width": 390,
+      "file": "deepseek-api-390.png",
+      "overflow": false
+    },
+    {
+      "page": "ai-web-deepseek",
+      "width": 1912,
+      "file": "ai-web-deepseek-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "ai-web-deepseek",
+      "width": 1366,
+      "file": "ai-web-deepseek-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "ai-web-deepseek",
+      "width": 390,
+      "file": "ai-web-deepseek-390.png",
+      "overflow": false
+    },
+    {
+      "page": "local-qwen",
+      "width": 1912,
+      "file": "local-qwen-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "local-qwen",
+      "width": 1366,
+      "file": "local-qwen-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "local-qwen",
+      "width": 390,
+      "file": "local-qwen-390.png",
+      "overflow": false
+    },
+    {
+      "page": "extensions",
+      "width": 1912,
+      "file": "extensions-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "extensions",
+      "width": 1366,
+      "file": "extensions-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "extensions",
+      "width": 390,
+      "file": "extensions-390.png",
+      "overflow": false
+    },
+    {
+      "page": "kehang-ai",
+      "width": 1912,
+      "file": "kehang-ai-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "kehang-ai",
+      "width": 1366,
+      "file": "kehang-ai-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "kehang-ai",
+      "width": 390,
+      "file": "kehang-ai-390.png",
+      "overflow": false
+    },
+    {
+      "page": "python-prepare",
+      "width": 1912,
+      "file": "python-prepare-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "python-prepare",
+      "width": 1366,
+      "file": "python-prepare-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "python-prepare",
+      "width": 390,
+      "file": "python-prepare-390.png",
+      "overflow": false
+    },
+    {
+      "page": "practice",
+      "width": 1912,
+      "file": "practice-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "practice",
+      "width": 1366,
+      "file": "practice-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "practice",
+      "width": 390,
+      "file": "practice-390.png",
+      "overflow": false
+    },
+    {
+      "page": "teacher",
+      "width": 1912,
+      "file": "teacher-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "teacher",
+      "width": 1366,
+      "file": "teacher-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "teacher",
+      "width": 390,
+      "file": "teacher-390.png",
+      "overflow": false
+    },
+    {
+      "page": "ai",
+      "width": 1912,
+      "file": "ai-1912.png",
+      "overflow": false
+    },
+    {
+      "page": "ai",
+      "width": 1366,
+      "file": "ai-1366.png",
+      "overflow": false
+    },
+    {
+      "page": "ai",
+      "width": 390,
+      "file": "ai-390.png",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

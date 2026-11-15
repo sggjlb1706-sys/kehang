@@ -1,0 +1,41 @@
+{
+  "commit": "ed215e43471c880f99d4f4cd5dd707cbdf6bd173",
+  "files": [
+    {
+      "file": "campuslab/chat.py",
+      "sha256": "dab47bc22d45ab954a84da27ba6710a6b746f2a5e8f81b1769b910feb3cbae7f"
+    },
+    {
+      "file": "campuslab/web.py",
+      "sha256": "90a90d35b9ab6ce14eb14c31bf1c8abb29c5fffb74e836307c36d806b6093191"
+    },
+    {
+      "file": "campuslab/extensions.py",
+      "sha256": "0eda50e4b051e44918c3271c509d97ad93ec6d3c532e8765ea64fb82cfac8fe9"
+    },
+    {
+      "file": "web/app.js",
+      "sha256": "0b93c643bdeb98f3ce04824c1e72ed93dbe689a013872c353daec02b18a255da"
+    },
+    {
+      "file": "web/index.html",
+      "sha256": "bcdd953ca8cd4c633d229b43b3066b37dbfb7303a13af3180750febed200e3d1"
+    },
+    {
+      "file": "web/learning.js",
+      "sha256": "4c3a1c60b8728000fa7a58568f021e82a9da4b939411f46fc6ec2e3389fbbcbc"
+    },
+    {
+      "file": "web/product.css",
+      "sha256": "2a118a1eaf53dc06b96aefbbf3805a765a4059852f8fedb309eac780f0d54d25"
+    },
+    {
+      "file": "web/extensions.js",
+      "sha256": "eba7d8005242358dc3881959c71df50f36ad3aedaa10c60d988ee087c2f9aed6"
+    },
+    {
+      "file": "Start-Web.ps1",
+      "sha256": "9e334c1d53a7d5d7a3fee53dc9f93862680fe582d7cb6f83f47787028842dabf"
+    }
+  ]
+}
