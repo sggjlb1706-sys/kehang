@@ -26,9 +26,9 @@ try {
     if ($LASTEXITCODE -ne 0 -or [IO.Path]::GetFullPath($taskModule) -ne (Join-Path $taskRepo 'campuslab\diagnosis.py')) {
         throw '模型客户端未从本次修复目录加载。'
     }
-    $taskCommit = & git rev-parse HEAD
+    $taskCommit = & git -c "safe.directory=$taskRepo" rev-parse HEAD
     if ($LASTEXITCODE -ne 0) { throw '无法确认运行提交。' }
-    & git diff --quiet HEAD -- campuslab/diagnosis.py campuslab/chat.py campuslab/web.py
+    & git -c "safe.directory=$taskRepo" diff --quiet HEAD -- campuslab/diagnosis.py campuslab/chat.py campuslab/web.py
     if ($LASTEXITCODE -ne 0) { throw '运行代码存在未提交修改，请先固定修订版本。' }
     $taskState = 'D:\传智杯\开发工作区\交付\课航AI接入-20261115-01\运行数据'
     New-Item -ItemType Directory -Path $taskState -Force | Out-Null
