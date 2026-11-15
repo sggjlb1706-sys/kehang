@@ -1,0 +1,76 @@
+[
+  {
+    "started_at_beijing": "2026-11-15T15:01:37.856337+08:00",
+    "command": [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-c",
+      "import subprocess,sys,unittest; import campuslab.diagnosis as d; src=subprocess.check_output(['git','show','adb2ab374a3bf750001e706e72076dea7a2af029:campuslab/diagnosis.py']); exec(compile(src,'baseline:campuslab/diagnosis.py','exec'),d.__dict__); sys.path.insert(0,'tests'); suite=unittest.defaultTestLoader.loadTestsFromName('test_model_transport.ModelTransportTest.test_chunked_json_with_keepalive_whitespace_is_accepted'); r=unittest.TextTestRunner(verbosity=2).run(suite); sys.exit(not r.wasSuccessful())"
+    ],
+    "cwd": "D:\\传智杯\\开发工作区\\work\\kehang-ai-connect-20261115",
+    "log": "baseline-recheck.log",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "expected_observed": true
+  },
+  {
+    "started_at_beijing": "2026-11-15T15:01:38.702823+08:00",
+    "command": [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_model_transport.py",
+      "-v"
+    ],
+    "cwd": "D:\\传智杯\\开发工作区\\work\\kehang-ai-connect-20261115",
+    "log": "focused-regression.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "expected_observed": true
+  },
+  {
+    "started_at_beijing": "2026-11-15T15:01:39.892636+08:00",
+    "command": [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_diagnosis.py",
+      "-v"
+    ],
+    "cwd": "D:\\传智杯\\开发工作区\\work\\kehang-ai-connect-20261115",
+    "log": "diagnosis-regression.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "expected_observed": true
+  },
+  {
+    "started_at_beijing": "2026-11-15T15:01:40.245372+08:00",
+    "command": [
+      "D:\\ANACONDA\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_chat.py",
+      "-v"
+    ],
+    "cwd": "D:\\传智杯\\开发工作区\\work\\kehang-ai-connect-20261115",
+    "log": "chat-regression.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "expected_observed": true
+  }
+]

@@ -17,15 +17,33 @@ class TransportFixture(BaseHTTPRequestHandler):
         raw = json.dumps({'choices': [{'message': {'content': '本机协议夹具'},
                                       'finish_reason': 'stop'}]}).encode()
         kind = self.path.rsplit('/', 1)[1]
-        self.send_response(200)
+        replies = {
+            'json-list': [],
+            'multiple': {'choices': [{'message': {'content': 'a'}, 'finish_reason': 'stop'}] * 2},
+            'length-stop': {'choices': [{'message': {'content': 'partial'}, 'finish_reason': 'length'}]},
+            'tools': {'choices': [{'message': {'content': 'a', 'tool_calls': [{}]}, 'finish_reason': 'stop'}]},
+            'nontext': {'choices': [{'message': {'content': []}, 'finish_reason': 'stop'}]},
+            'empty': {'choices': [{'message': {'content': '  '}, 'finish_reason': 'stop'}]},
+        }
+        if kind in replies:
+            raw = json.dumps(replies[kind]).encode()
+        self.send_response(302 if kind == 'redirect' else 200)
         self.send_header('Content-Type', 'text/plain' if kind == 'wrong-type' else 'application/json')
-        if kind == 'wrong-type':
-            self.send_header('Content-Length', str(len(raw)))
+        if kind == 'redirect':
+            self.send_header('Location', '/valid')
+        if kind in ('wrong-type', 'fixed', 'mismatch', 'invalid-length', 'oversize-length', 'redirect'):
+            length = {'mismatch': str(len(raw) + 5), 'invalid-length': 'invalid',
+                      'oversize-length': '131073'}.get(kind, str(len(raw)))
+            self.send_header('Content-Length', length)
+            self.close_connection = True
+        elif kind == 'close-delimited':
+            self.send_header('Connection', 'close')
+            self.close_connection = True
         else:
             self.send_header('Transfer-Encoding', 'chunked')
         self.end_headers()
         try:
-            if kind == 'wrong-type':
+            if kind in ('wrong-type', 'fixed', 'mismatch', 'invalid-length', 'oversize-length', 'redirect', 'close-delimited'):
                 self.wfile.write(raw)
                 return
             if kind == 'broken':
@@ -84,3 +102,26 @@ class ModelTransportTest(unittest.TestCase):
 
     def test_wrong_content_type_is_rejected(self):
         self.assertFalse(self.request('wrong-type')['completed'])
+
+    def test_present_content_length_still_requires_exact_valid_size(self):
+        self.assertTrue(self.request('fixed')['completed'])
+        for kind in ('mismatch', 'invalid-length', 'oversize-length'):
+            with self.subTest(kind=kind):
+                result = self.request(kind)
+                self.assertFalse(result['completed'])
+                self.assertFalse(result['evidence_verdict_changed'])
+
+    def test_close_delimited_json_without_length_is_accepted(self):
+        self.assertTrue(self.request('close-delimited')['completed'])
+
+    def test_json_and_final_answer_constraints_are_preserved(self):
+        for kind in ('json-list', 'multiple', 'length-stop', 'tools', 'nontext', 'empty'):
+            with self.subTest(kind=kind):
+                result = self.request(kind)
+                self.assertFalse(result['completed'])
+                self.assertFalse(result['evidence_verdict_changed'])
+
+    def test_redirect_remains_rejected(self):
+        result = self.request('redirect')
+        self.assertFalse(result['completed'])
+        self.assertEqual(result['error'], 'HTTPError')

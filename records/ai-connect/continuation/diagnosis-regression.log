@@ -1,0 +1,9 @@
+test_basic_redaction (test_diagnosis.DiagnosisTest.test_basic_redaction) ... ok
+test_local_protocol_simulation_success_and_failure (test_diagnosis.DiagnosisTest.test_local_protocol_simulation_success_and_failure) ... ok
+test_no_consent_no_request (test_diagnosis.DiagnosisTest.test_no_consent_no_request) ... ok
+test_three_modes_same_requirements (test_diagnosis.DiagnosisTest.test_three_modes_same_requirements) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.067s
+
+OK

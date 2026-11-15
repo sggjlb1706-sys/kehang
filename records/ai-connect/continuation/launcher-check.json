@@ -1,0 +1,7 @@
+{
+  "time": "2026-11-15T15:03:24.3893217+08:00",
+  "command": "PowerShell Parser.ParseFile; invoke tools/Start-ConnectedModel.ps1 -Port 8777",
+  "syntax": "pass",
+  "occupied_port_before_key": "pass",
+  "model_calls": 0
+}
