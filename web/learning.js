@@ -8,15 +8,10 @@ const learningCourses = [
   ['sqlite-basics','SQLite 数据库','数据库文件与 SQL 查询','data','SQL'],
   ['pytorch-cpu','PyTorch · CPU','用 CPU 开始张量计算','ai','CPU'],
   ['pytorch-gpu','PyTorch · GPU','CUDA 环境与 GPU 实际运算','ai','GPU'],
-  ['local-qwen','本地模型入门','固定 Qwen 模型与离线推理','ai','AI'],
-  ['ai-web-deepseek','DeepSeek 使用入门','网页 / 客户端提问与练习','ai','Ds'],
-  ['deepseek-api','DeepSeek API','编程依赖与 API 调用准备','ai','API'],
-  ['dsh-desktop','DSH 桌面 Agent','桌面工作区、授权与任务证据','ai','App'],
-  ['dsh-cli','DSH 命令行 Agent','Node 环境、DSH 包与任务证据','ai','CLI'],
   ['vm-linux','虚拟机 / Linux','虚拟化软件、实例与来宾系统','system','VM']
 ];
 let courseLoading = false;
-for(const [value,label] of [['all','全部课程 · 13'],['coding','基础编程'],['data','数据分析'],['ai','AI 与深度学习'],['system','系统环境']]){
+for(const [value,label] of [['all','全部课程 · '+learningCourses.length],['coding','基础编程'],['data','数据分析'],['ai','深度学习'],['system','系统环境']]){
   const button=document.createElement('button');button.type='button';button.textContent=label;button.dataset.filter=value;button.setAttribute('aria-pressed',String(value==='all'));
   button.addEventListener('click',()=>{
     for(const item of $('course-filters').children)item.setAttribute('aria-pressed',String(item===button));
@@ -48,7 +43,7 @@ const KehangChat = (()=>{
   const desktop=window.matchMedia('(min-width: 1120px)');
   function currentContext(){
     const course=guided.route==='course'&&guided.courseStep>0;
-    return {route:guided.route,step:course?guided.courseStep:guided.route==='practice'?guided.practiceStep:0,task:course?state.task:null,report:course?(state.after||state.before):null};
+    return {route:guided.route,step:course?guided.courseStep:guided.route==='practice'?guided.practiceStep:0,task:course?state.task:null,report:course?(state.after||state.before):null,...(guided.route==='extensions'?{extension:KehangExtensions.current()}:{} )};
   }
   function conversation(){return conversations.get(scope);}
   function setStatus(text,error=false){$('chat-status').textContent=text;$('chat-status').classList.toggle('state-mismatch',error);}
@@ -72,7 +67,7 @@ const KehangChat = (()=>{
     box.scrollTop=box.scrollHeight;
   }
   function renderContext(){
-    const value=currentContext(),key=value.route==='course'?'course:'+(value.task?.id||'selection'):value.route;
+    const value=currentContext(),key=value.route==='course'?'course:'+(value.task?.id||'selection'):value.route==='extensions'?'extensions:'+(value.extension||'index'):value.route;
     const nextFingerprint=JSON.stringify(value);
     if(nextFingerprint!==fingerprint){
       if(scope&&conversations.has(scope))conversation().draft=$('chat-input').value;
@@ -80,7 +75,7 @@ const KehangChat = (()=>{
       if(key!==scope){scope=key;if(!conversations.has(scope))conversations.set(scope,{messages:[],draft:''});$('chat-input').value=conversation().draft;renderMessages();}
       setStatus('');
     }
-    const stages={home:['欢迎首页'],selection:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台']};
+    const stages={home:['欢迎首页'],selection:['选择课程'],course:['选择课程','准备环境','运行检测','查看检测结果'],practice:['了解任务','准备环境','跟做练习','提交成果'],teacher:['教师工作台'],extensions:['拓展工具指南']};
     $('chat-context').textContent=(value.task?value.task.title+' · ':'')+stages[value.route][value.step];
     const configured=state.config?.ai.configured;
     $('chat-connection').textContent=!state.config?'正在读取连接状态…':configured?'已配置 · '+state.config.ai.model:'尚未连接模型';

@@ -9,7 +9,7 @@ const names = {os:'操作系统',node:'课程 Node.js',npm:'同一环境的 npm'
 const newCourses={'notebook-data':'Notebook · 真实内核数据分析','java-jdk':'Java/JDK · 编译运行','sqlite-basics':'SQLite · 只读SQL入门','ai-web-deepseek':'DeepSeek · 网页/客户端学习','deepseek-api':'DeepSeek API · 编程准备','dsh-desktop':'DeepSeek Harness · Windows桌面','dsh-cli':'DeepSeek Harness · npm/CLI/Web'};
 Object.assign(names,{'package:jupyter_client':'Jupyter通信组件','package:ipykernel':'Python内核组件','package:numpy':'NumPy','package:pandas':'Pandas','notebook:spec':'所选内核定义','notebook:identity':'真实内核解释器','notebook:run':'固定数据计算','notebook:cleanup':'临时内核清理','java:java':'所选java','java:javac':'所选javac','java:identity':'同源JDK身份','java:compile':'固定源码编译','java:run':'编译产物运行','sqlite:runtime':'SQLite运行时','sqlite:database':'数据库文件身份','sqlite:readonly':'只读及文件未变','sqlite:query':'固定SELECT','api:dependency':'API编程依赖','api:request':'实际请求内容','api:protocol':'实际响应协议','api:exercise':'课程响应核对','web:workspace':'练习目录','web:self-record':'本人完成记录','web:artifact':'课程成果','web:login':'自动登录/连接证据','dsh:software':'DSH安装身份','dsh:node':'CLI所选Node','dsh:workspace':'专用工作区','dsh:model':'实际模型接入','dsh:permission':'本人实际授权','dsh:tools':'Agent工具回合','dsh:artifact':'固定任务产物'});
 for(const select of [$('goal'),$('teacher-goal')]){
-  for(const [label,keys] of [['数据与编程课程',['notebook-data','java-jdk','sqlite-basics']],['AI 使用与 Agent',['ai-web-deepseek','deepseek-api','dsh-desktop','dsh-cli']]]){
+  for(const [label,keys] of [['数据与编程课程',['notebook-data','java-jdk','sqlite-basics']]]){
     const group=document.createElement('optgroup');group.label=label;
     for(const key of keys){const option=document.createElement('option');option.value=key;option.textContent=newCourses[key];group.append(option);}select.append(group);
   }
@@ -51,7 +51,8 @@ function clearTask(){
 }
 async function chooseTask(loader,course=null){
   const navigationEpoch=guided.navigationEpoch;
-  clearTask();const epoch=state.epoch; const spec=await loader();if(epoch!==state.epoch)return;
+  clearTask();const epoch=state.epoch; const spec=await loader();if(epoch!==state.epoch||navigationEpoch!==guided.navigationEpoch)return;
+  if(KehangExtensions.isLegacy(spec.scenario)){await KehangExtensions.open(spec.scenario);return;}
   state.task=spec;state.course=course;$('task-panel').hidden=false;$('empty-state').hidden=true;
   if(newCourses[spec.scenario])$('target').value='';
   $('task-title').textContent=spec.title;
@@ -482,7 +483,7 @@ function showRoute(route,step=0){
   if(route==='course'){guided.courseStep=step;guided.courseVisited=Math.max(guided.courseVisited,step);}
   if(route==='practice'){guided.practiceStep=step;guided.practiceVisited=Math.max(guided.practiceVisited,step);}
   $('notice').hidden=true;renderGuide();
-  const title=route==='home'?$('welcome-title'):route==='selection'?$('selection-title'):route==='teacher'?$('teacher-heading'):$('guide-title');
+  const title=route==='home'?$('welcome-title'):route==='selection'?$('selection-title'):route==='teacher'?$('teacher-heading'):route==='extensions'?$('extensions-title'):$('guide-title');
   title.tabIndex=-1;title.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});
 }
 
@@ -497,12 +498,13 @@ function renderGuide(){
   $('teacher-current-task').textContent=state.task?'当前任务：'+state.task.title:'';
   $('home-screen').hidden=guided.route!=='home';$('guide-shell').hidden=!course&&!practice;
   $('selection-screen').hidden=guided.route!=='selection';
+  $('extensions-screen').hidden=guided.route!=='extensions';
   $('teacher-screen').hidden=!teacher;$('course-screen').hidden=!course;$('practice-panel').hidden=!practice;
   $('help-panel').hidden=!course||guided.courseStep!==3;
   $('python-quick-check').hidden=!course||state.task?.scenario!=='python-basics'||!localReady();
   $('local-course-entry').hidden=!course||state.task?.scenario==='python-basics'||!localReady();
   $('web-course-note').hidden=!course||state.task?.scenario!=='ai-web-deepseek';
-  for(const [id,current] of [['home-nav',guided.route==='selection'],['teacher-nav',teacher]]){
+  for(const [id,current] of [['home-nav',guided.route==='selection'],['teacher-nav',teacher],['extensions-nav',guided.route==='extensions']]){
     if(current)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current');
   }
   $('back-practice').hidden=!course||!guided.fromPractice;
@@ -660,10 +662,11 @@ $('need-form').addEventListener('submit',e=>{e.preventDefault();const serial=++s
   const box=$('need-result');box.replaceChildren();const p=document.createElement('p');p.textContent=result.message+' '+(result.question||'');box.append(p);
   const candidates=result.candidates||[];
   if(result.scenario&&!candidates.some(x=>x.scenario===result.scenario))candidates.unshift({scenario:result.scenario,label:result.scenario});
-  for(const candidate of candidates){if(!candidate.scenario)continue;const b=document.createElement('button');b.className='secondary';b.textContent='确认：'+candidate.label;b.addEventListener('click',()=>action(b,async()=>{
+  for(const candidate of candidates){if(!candidate.scenario)continue;const b=document.createElement('button');b.className='secondary';b.textContent=(KehangExtensions.isLegacy(candidate.scenario)?'打开工具指南：':'确认：')+candidate.label;b.addEventListener('click',()=>action(b,async()=>{
     const candidateNavigationEpoch=guided.navigationEpoch;
     const resolved=await api('/api/need',{text,clarification:candidate.scenario});if(serial!==state.needEpoch||candidateNavigationEpoch!==guided.navigationEpoch)return;
     if(resolved.status!=='recognized'||!resolved.scenario){notice(resolved.message,true);return;}
+    if(KehangExtensions.isLegacy(resolved.scenario)){await KehangExtensions.open(resolved.scenario);return;}
     $('goal').value=resolved.scenario;await chooseTask(()=>api('/api/goal?goal='+encodeURIComponent(resolved.scenario)));
   }));box.append(b);}
   if(result.error_help){$('user-error').value=text;$('help-panel').hidden=false;$('help-panel').open=true;$('diagnosis').scrollIntoView({block:'nearest'});}
@@ -844,6 +847,12 @@ $('practice-completion-file').addEventListener('change',e=>action(null,async()=>
 }));
 api('/api/practice').then(value=>{if(practiceState.epoch===0)renderPractice(value);}).catch(e=>{if(practiceState.epoch===0){$('practice-description').textContent='实训资料读取失败，请重新打开本页。';notice(e.message,true);}});
 Object.assign(names,{'torch:import':'PyTorch 实际导入','torch:cpu':'固定 CPU 张量','torch:cuda-build':'框架 CUDA 构建','torch:gpu-available':'GPU 可用性','torch:gpu-identity':'GPU 设备身份','torch:gpu-run':'实际 GPU 张量','host:virtualization':'宿主虚拟化条件','vm:software':'所选虚拟化软件','vm:instance':'所选虚拟机实例','vm:running':'实例运行证据','guest:identity':'来宾身份','guest:linux':'Linux 系统证据','guest:run':'来宾固定程序'});
-api('/api/catalog').then(catalog=>{for(const item of catalog){const d=document.createElement('div');d.className='catalog-item';const h=document.createElement('h3');h.textContent=item.label;const p=document.createElement('p');p.textContent=item.status+' · '+item.extension;d.append(h,p);if(item.source.startsWith('https://')){const a=document.createElement('a');a.textContent='课程来源';a.href=item.source;a.target='_blank';a.rel='noopener noreferrer';d.append(a);}$('catalog').append(d);}}).catch(e=>notice(e.message,true));
+api('/api/catalog').then(catalog=>{for(const item of catalog){
+  const d=document.createElement('div');d.className='catalog-item';const h=document.createElement('h3');h.textContent=item.label;
+  const p=document.createElement('p');p.textContent=(item.kind==='extension'?'拓展工具指南':item.kind==='reference'?'拓展参考资料（未实现）':item.status)+' · '+item.extension;d.append(h,p);
+  if(item.kind==='extension'){const b=document.createElement('button');b.className='text-button';b.textContent='打开工具指南 →';b.addEventListener('click',()=>KehangExtensions.open(item.scenario));d.append(b);}
+  else if(item.source.startsWith('https://')){const a=document.createElement('a');a.textContent='参考来源';a.href=item.source;a.target='_blank';a.rel='noopener noreferrer';d.append(a);}
+  $('catalog').append(d);
+}}).catch(e=>notice(e.message,true));
 api('/api/config').then(config=>{state.config=config;if(state.task)syncCollector();renderGuide();}).catch(e=>notice(e.message,true));
 const courseFromURL=new URLSearchParams(location.search).get('course');if(courseFromURL){$('course-code').value=courseFromURL;$('course-form').requestSubmit();}

@@ -1,11 +1,16 @@
-/* Shared product finish. Built on Kehang's existing system font and ochre accent. */
+/* Shared product palette: graphite surfaces and restrained deep teal actions. */
 :root {
-  --bg: oklch(.975 .001 36);
+  --bg: oklch(.963 .003 190);
   --surface: oklch(1 0 0);
-  --soft: oklch(.945 .002 36);
-  --ink: oklch(.25 .004 36);
-  --muted: oklch(.45 .004 36);
-  --line: oklch(.88 .002 36);
+  --soft: oklch(.932 .006 190);
+  --ink: oklch(.255 .012 190);
+  --muted: oklch(.455 .012 190);
+  --line: oklch(.855 .006 190);
+  --control-line: oklch(.61 .012 190);
+  --brand: oklch(.405 .065 190);
+  --focus: oklch(.445 .07 190);
+  --success: oklch(.385 .075 150);
+  --error: oklch(.445 .15 25);
   --control-radius: 8px;
   --panel-radius: 12px;
   --feedback: 160ms cubic-bezier(.22, 1, .36, 1);
@@ -38,6 +43,11 @@ button:disabled {opacity:1; background:var(--soft); color:var(--muted); border-c
 button.text-button:disabled {background:transparent}
 input:not([type=file]):not([type=checkbox]),select,textarea {font-size:15px; line-height:1.6; padding:10px 12px; border-radius:var(--control-radius); min-height:44px}
 input::placeholder,textarea::placeholder {color:var(--muted)}
+input:not([type=file]):not([type=checkbox]),select,textarea {border-color:var(--control-line)}
+input::file-selector-button {border-color:var(--control-line)}
+header nav [aria-current] {font-weight:500; text-decoration:underline; text-underline-offset:8px}
+#guide-progress button[aria-current=step] {font-weight:500}
+.course-filters button[aria-pressed=true] {border-color:var(--brand)}
 label {font-size:14px; font-weight:500; margin:24px 0 8px}
 .checkbox {font-size:14px; gap:12px; align-items:start}
 details {padding:20px 0}
@@ -100,6 +110,31 @@ button.course-card {grid-template-columns:36px minmax(0,1fr) 16px; gap:12px; pad
 .home-options small {font-size:14px; margin-top:8px}
 .home-footnote {font-size:13px; margin-top:24px}
 .home-footnote button {font-size:14px}
+#extension-list {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 64px; margin-top:40px}
+#extension-list h2 {font-size:18px; margin:0 0 8px; color:var(--muted)}
+#extension-list .option-row {padding:24px 0; min-height:108px}
+#extension-list strong {font-size:18px; font-weight:500}
+#extension-list small {font-size:14px; margin-top:8px}
+#extension-guide>p {color:var(--muted); font-size:14px; margin:16px 0 32px}
+.extension-content {display:grid; grid-template-columns:224px minmax(0,1fr); gap:48px; align-items:start}
+.extension-content nav {position:sticky; top:24px; display:flex; flex-direction:column; gap:4px; padding:8px 0}
+.extension-content nav a {padding:8px 12px; color:var(--muted); border-radius:var(--control-radius); text-decoration:none}
+.extension-content nav a:hover {background:var(--soft); color:var(--brand)}
+.extension-content>div {min-width:0; max-width:80ch}
+.extension-content section {padding:24px 0; border-top:1px solid var(--line); scroll-margin-top:24px}
+.extension-content section:first-child {padding-top:0; border-top:0}
+.extension-content h2,.extension-sources h2 {font-size:22px; margin:0 0 16px}
+.extension-content p {margin:12px 0}
+.extension-content pre {background:var(--surface); border:1px solid var(--line); line-height:1.8; margin:20px 0 8px}
+.extension-sources {border-top:1px solid var(--line); margin-top:32px; padding:24px 0}
+.extension-sources p {color:var(--muted); font-size:14px}
+.extension-sources a {display:block; width:fit-content; margin:12px 0; font-size:14px}
+@media(max-width:900px) {
+  .extension-content {grid-template-columns:minmax(0,1fr); gap:24px}
+  .extension-content nav {position:static; flex-direction:row; flex-wrap:wrap; padding:0; gap:4px}
+  .extension-content nav a {font-size:14px; padding:8px}
+  #extension-list {grid-template-columns:minmax(0,1fr); gap:32px; margin-top:24px}
+}
 .local-target-row {margin:24px 0}
 .local-target-row label {font-size:14px}
 .local-target-controls {gap:12px}

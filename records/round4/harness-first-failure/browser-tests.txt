@@ -1,0 +1,19 @@
+PASS 8 course cards and both course selectors exclude all 5 legacy tool routes
+PASS All 6 guides, section anchors and 3 viewports work with zero collector/report/plan/tool-download requests
+PASS Each historical tool course package redirects to its matching guide without importing reports or collecting facts
+PASS Direct guide URL, isolated tool-chat scopes, unconfigured preview-only consent and AI setup link work
+PASS Learning-goal resolver opens the API guide instead of creating a course task
+PASS All 8 real course preparation routes remain reachable
+PASS Fresh real Python A/B retains the original task, target and A report; result has no horizontal overflow
+PASS Home/selection/tool AI stays collapsed; real-course desktop AI opens, mobile stays optional; Escape restores focus
+PASS Practice-to-Notebook and return plus teacher local practice publication remain functional
+PASS 19 computed palette text/button/focus/control contrast pairs meet their WCAG thresholds; status labels remain textual
+{"passed": false, "checks": 10, "path": "D:\\传智杯\\开发工作区\\work\\kehang-round4-20261115\\records\\round4\\verification"}
+Traceback (most recent call last):
+  File "D:\传智杯\开发工作区\work\kehang-round4-20261115\tools\verify_round4.py", line 187, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\传智杯\开发工作区\work\kehang-round4-20261115\tools\verify_round4.py", line 170, in main
+    page.wait_for_timeout(100);assert held
+                                      ^^^^
+AssertionError

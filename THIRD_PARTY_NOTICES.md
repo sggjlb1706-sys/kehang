@@ -23,3 +23,7 @@ Pinokio, Labtainers, The Littlest JupyterHub, Open WebUI and Dify were evaluated
 ## Inherited dependencies
 
 The existing official embedded Python ZIP and fixed Qwen weights keep their original source/revision/hash records in [reuse.json](docs/reuse.json). The Python runtime ZIP is provided only for the tool; it is not a student's course environment. Existing model weights and third-party course applications are not copied into this source repository. Their respective licenses remain applicable. Historical prototype documents and the author's own earlier modules/history are explicitly inherited, not newly invented upstream work.
+
+## Design workflow attribution
+
+Unslop by Damir Sokolovsky (https://x.com/heydamir), https://heydamir.design/unslop, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Its review and refinement workflow was adapted for this revision; see docs/第四轮设计审查.md. No skill source, external fonts, imagery or runtime was added. Existing notices above remain in their historical scope.

@@ -60,7 +60,7 @@ class ChatTest(unittest.TestCase):
         self.assertNotIn('Alice', text)
         self.assertNotIn('sk-abcdefghijklmnop', text)
         self.assertNotIn('a@example.com', text)
-        self.assertEqual(len(value['preview']['context']['supported_courses']), 13)
+        self.assertEqual(len(value['preview']['context']['supported_courses']), 8)
         self.assertEqual(ModelFixture.calls, [])
 
     def test_real_http_protocol_multi_turn_preserves_roles_and_context(self):

@@ -1,0 +1,29 @@
+{
+  "time": "2026-11-15T04:00:27.850149+00:00",
+  "checks": [
+    "8 course cards and both course selectors exclude all 5 legacy tool routes",
+    "All 6 guides, section anchors and 3 viewports work with zero collector/report/plan/tool-download requests",
+    "Each historical tool course package redirects to its matching guide without importing reports or collecting facts",
+    "Direct guide URL, isolated tool-chat scopes, unconfigured preview-only consent and AI setup link work",
+    "Learning-goal resolver opens the API guide instead of creating a course task",
+    "All 8 real course preparation routes remain reachable",
+    "Fresh real Python A/B retains the original task, target and A report; result has no horizontal overflow",
+    "Home/selection/tool AI stays collapsed; real-course desktop AI opens, mobile stays optional; Escape restores focus",
+    "Practice-to-Notebook and return plus teacher local practice publication remain functional",
+    "19 computed palette text/button/focus/control contrast pairs meet their WCAG thresholds; status labels remain textual",
+    "Local protocol fixture verifies per-turn preview/consent, multi-turn context, text-only rendering and late-response isolation after opening tools"
+  ],
+  "errors": [],
+  "external": [],
+  "real": [
+    {
+      "scenario": "python-basics",
+      "target": "D:\\ANACONDA\\python.exe",
+      "outcome": "stable-pass"
+    }
+  ],
+  "simulated": [
+    "Two user-consented turns reached a local HTTP fixture; held late response was explicitly simulated. No real model/API/Agent request."
+  ],
+  "passed": true
+}

@@ -1,0 +1,55 @@
+FEE..........
+======================================================================
+ERROR: test_tool_chat_has_guide_context_without_course_evidence (test_extensions.ExtensionTest.test_tool_chat_has_guide_context_without_course_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\���Ǳ�\����������\work\kehang-round4-20261115\tests\test_extensions.py", line 16, in test_tool_chat_has_guide_context_without_course_evidence
+    value = context(dict(route='extensions', step=0, extension=tool))
+  File "D:\���Ǳ�\����������\work\kehang-round4-20261115\campuslab\chat.py", line 29, in context
+    raise ValueError('���첽����Ч')
+ValueError: ���첽����Ч
+
+======================================================================
+ERROR: test_guides_are_reachable_without_creating_reports (test_extensions.ExtensionWebTest.test_guides_are_reachable_without_creating_reports)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\���Ǳ�\����������\work\kehang-round4-20261115\tests\test_extensions.py", line 29, in test_guides_are_reachable_without_creating_reports
+    value = json.load(self.request('/api/extensions'))
+                      ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\���Ǳ�\����������\work\kehang-round4-20261115\tests\test_web.py", line 29, in request
+    return urlopen(Request(self.base+path,data=raw,headers=headers or ({'Content-Type':'application/json'} if raw else {})),timeout=5)
+  File "D:\ANACONDA\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\ANACONDA\Lib\urllib\request.py", line 495, in open
+    response = meth(req, response)
+  File "D:\ANACONDA\Lib\urllib\request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "D:\ANACONDA\Lib\urllib\request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\ANACONDA\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "D:\ANACONDA\Lib\urllib\request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+
+======================================================================
+FAIL: test_catalog_separates_courses_and_existing_tools (test_extensions.ExtensionTest.test_catalog_separates_courses_and_existing_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\���Ǳ�\����������\work\kehang-round4-20261115\tests\test_extensions.py", line 10, in test_catalog_separates_courses_and_existing_tools
+    self.assertEqual({x['scenario'] for x in value['supported_courses']}, set(COURSES))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the first set but not the second:
+'ai-web-deepseek'
+'local-qwen'
+'dsh-cli'
+'dsh-desktop'
+'deepseek-api'
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.325s
+
+FAILED (failures=1, errors=2)

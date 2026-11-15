@@ -1,4 +1,4 @@
-param([string]$Python = 'D:\ANACONDA\python.exe', [int]$Port = 8772)
+param([string]$Python = 'D:\ANACONDA\python.exe', [int]$Port = 8776)
 $ErrorActionPreference = 'Stop'
 if (!(Test-Path -LiteralPath $Python -PathType Leaf)) { throw '请通过 -Python 指定已有的工具 Python 完整路径' }
 Set-Location -LiteralPath $PSScriptRoot

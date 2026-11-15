@@ -6,7 +6,8 @@ import time
 
 from .diagnosis import configuration, model_request, redact_value
 from .guidance import plan
-from .rules import NEW_COURSES, analyze, task, validate_task
+from .rules import analyze, task, validate_task
+from .extensions import BY_ID, COURSES
 
 SYSTEM = ('你是课航课程学习助手，面向新手，用简洁中文回答并允许连续追问。'
           '帮助用户选择课程、理解当前步骤、准备环境和解释检查证据；先回答问题，再给一个具体下一步。'
@@ -14,12 +15,14 @@ SYSTEM = ('你是课航课程学习助手，面向新手，用简洁中文回答
           '没有报告时说明尚未检测，不推测已安装软件或硬件，不把阅读步骤、AI回答当作检测通过。'
           '不得声称执行过命令、安装、修复或改变判定。软件操作由用户审查后手动进行。'
           '课程支持范围以提供的目录为准，目录外课程不能声称已有检测能力。')
+SYSTEM += 'AI配置、API调用、本地模型和Agent使用属于拓展工具，按指南帮助操作，不要求课程报告或复检，不把阅读当作安装或调用成功。'
 STEPS = {
     'home': ['欢迎首页'],
     'selection': ['选择课程'],
     'course': ['选择课程', '准备环境', '运行检测', '查看结果与复检'],
     'practice': ['了解实训', '准备环境', '跟做练习', '提交成果'],
     'teacher': ['教师工作台'],
+    'extensions': ['拓展工具指南'],
 }
 
 
@@ -27,6 +30,16 @@ def context(body):
     route, step = body.get('route'), body.get('step')
     if route not in STEPS or type(step) is not int or not 0 <= step < len(STEPS[route]):
         raise ValueError('聊天步骤无效')
+    if route == 'extensions':
+        if body.get('task') is not None or body.get('report') is not None:
+            raise ValueError('拓展工具不使用课程任务或报告')
+        tool = body.get('extension')
+        if tool is not None and tool not in BY_ID:
+            raise ValueError('拓展工具不存在')
+        return redact_value(dict(page=route, step=STEPS[route][step],
+                                 extension=BY_ID[tool] if tool else None,
+                                 extension_tools=[dict(id=x['id'], title=x['title']) for x in BY_ID.values()],
+                                 note='参考指南；未获得安装、连接、调用或任务成功的证据'))
     spec = validate_task(body['task']) if body.get('task') is not None else None
     if (route != 'course' and spec is not None) or (route == 'course' and step > 0 and spec is None):
         raise ValueError('聊天课程与当前步骤不一致')
@@ -43,8 +56,9 @@ def context(body):
     elif route == 'practice':
         value['practice'] = 'Notebook＋SQLite连续实训：准备环境、下载资料、分别完成分析与查询、上传实训成果.json核验。'
     else:
-        scenarios = ['python-basics', 'node-basics', 'pytorch-cpu', 'pytorch-gpu', 'vm-linux', 'local-qwen', *NEW_COURSES]
+        scenarios = COURSES
         value['supported_courses'] = [dict(scenario=s, title=task(s)['title']) for s in scenarios]
+        value['extension_tools'] = [dict(id=x['id'], title=x['title']) for x in BY_ID.values()]
     return redact_value(value)
 
 

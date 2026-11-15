@@ -72,10 +72,14 @@ class Handler(BaseHTTPRequestHandler):
             path = urlsplit(self.path)
             assets = {'/':'index.html', '/app.js':'app.js', '/style.css':'style.css', '/visual-guides.js':'visual-guides.js', '/windows-guides.css':'windows-guides.css', '/learning.js':'learning.js', '/learning.css':'learning.css', '/local-selection.js':'local-selection.js'}
             assets['/product.css'] = 'product.css'
+            assets['/extensions.js'] = 'extensions.js'
             if path.path in assets:
                 name = assets[path.path]
                 kind = {'html':'text/html', 'js':'text/javascript', 'css':'text/css'}[name.rsplit('.',1)[1]]
                 self.send(200, (ROOT/'web'/name).read_bytes(), kind + '; charset=utf-8')
+            elif path.path == '/api/extensions':
+                from .extensions import catalog
+                self.send(200, catalog())
             elif path.path == '/api/practice':
                 from .practice import make_practice, export_package as practice_package
                 spec = make_practice()
@@ -98,7 +102,10 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200, self.server.local_check.status(path.path.rsplit('/', 1)[1], heartbeat=True))
             elif path.path == '/api/catalog':
                 from .preparation import CATALOG
-                self.send(200,CATALOG)
+                from .extensions import BY_ID
+                self.send(200, [dict(item, kind='extension', status='拓展工具使用指南', extension=BY_ID[item['scenario']]['summary'])
+                                if item['scenario'] in BY_ID else dict(item, kind='reference' if item['scenario']=='agent-framework-mcp' else 'course')
+                                for item in CATALOG])
             else:
                 self.send(404, dict(error='未找到该地址'))
         except (ValueError, KeyError, TypeError, OSError) as exc:
@@ -226,7 +233,11 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(200,preview(body['task']))
             elif self.path == '/api/need':
                 from .preparation import resolve_need
-                self.send(200,resolve_need(body.get('text'),body.get('clarification')))
+                from .extensions import BY_ID
+                value = resolve_need(body.get('text'),body.get('clarification'))
+                if value['candidates'] and all(x['scenario'] in BY_ID for x in value['candidates']):
+                    value['message'] = '这些是拓展工具。选择对应安装、配置与使用指南。'
+                self.send(200, value)
             elif self.path == '/api/recommend':
                 from .preparation import recommend
                 validate_task(body['task'])
