@@ -21,7 +21,8 @@ $taskProbe.ExclusiveAddressUse = $true
 try { $taskProbe.Start() } finally { $taskProbe.Stop() }
 Push-Location -LiteralPath $taskRepo
 try {
-    $taskModule = & $taskPython -B -c 'import campuslab.diagnosis as m; print(m.__file__)'
+    $taskModuleJson = & $taskPython -B -c 'import campuslab.diagnosis as m, json; print(json.dumps(m.__file__, ensure_ascii=True))'
+    $taskModule = $taskModuleJson | ConvertFrom-Json
     if ($LASTEXITCODE -ne 0 -or [IO.Path]::GetFullPath($taskModule) -ne (Join-Path $taskRepo 'campuslab\diagnosis.py')) {
         throw '模型客户端未从本次修复目录加载。'
     }

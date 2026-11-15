@@ -1,0 +1,9 @@
+{
+  "time": "2026-11-15T15:07:05.1371609+08:00",
+  "command": "pwsh -NoProfile -NonInteractive -File tools/Start-ConnectedModel.ps1 -Port 8777",
+  "exit_code": 1,
+  "expected": "NonInteractive Read-Host refusal after module/commit checks",
+  "actual": "pass",
+  "model_calls": 0,
+  "mechanism": "Native Python CP936 path text was decoded differently by PowerShell; ASCII JSON transport preserves the same Unicode module path."
+}
