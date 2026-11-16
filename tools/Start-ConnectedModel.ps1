@@ -1,12 +1,13 @@
 param(
     [string]$Url = 'https://api.deepseek.com/chat/completions',
     [string]$Model = 'deepseek-flash',
-    [int]$Port = 8777
+    [int]$Port = 8777,
+    [string]$Python = 'python'
 )
 
 $ErrorActionPreference = 'Stop'
-$taskRepo = 'D:\传智杯\开发工作区\work\kehang-ai-connect-20261115'
-$taskPython = 'D:\ANACONDA\python.exe'
+$taskRepo = Split-Path -Parent $PSScriptRoot
+$taskPython = (Get-Command $Python -CommandType Application -ErrorAction Stop).Source
 $taskUri = [Uri]$Url
 if (!$taskUri.IsAbsoluteUri -or $taskUri.UserInfo -or $taskUri.Query -or $taskUri.Fragment -or
     !(($taskUri.Scheme -eq 'https') -or ($taskUri.Scheme -eq 'http' -and $taskUri.Host -in @('127.0.0.1', 'localhost')))) {
@@ -26,12 +27,28 @@ try {
     if ($LASTEXITCODE -ne 0 -or [IO.Path]::GetFullPath($taskModule) -ne (Join-Path $taskRepo 'campuslab\diagnosis.py')) {
         throw '模型客户端未从本次修复目录加载。'
     }
-    $taskCommit = & git -c "safe.directory=$taskRepo" rev-parse HEAD
-    if ($LASTEXITCODE -ne 0) { throw '无法确认运行提交。' }
-    & git -c "safe.directory=$taskRepo" diff --quiet HEAD -- campuslab/diagnosis.py campuslab/chat.py campuslab/web.py
-    if ($LASTEXITCODE -ne 0) { throw '运行代码存在未提交修改，请先固定修订版本。' }
-    $taskState = 'D:\传智杯\开发工作区\交付\课航AI接入-20261115-01\运行数据'
+    if (Test-Path -LiteralPath (Join-Path $taskRepo '.git')) {
+        $taskCommit = & git -c "safe.directory=$taskRepo" rev-parse HEAD
+        if ($LASTEXITCODE -ne 0) { throw '无法确认运行提交。' }
+        & git -c "safe.directory=$taskRepo" diff --quiet HEAD -- campuslab/diagnosis.py campuslab/chat.py campuslab/web.py
+        if ($LASTEXITCODE -ne 0) { throw '运行代码存在未提交修改，请先固定修订版本。' }
+    } else {
+        $taskManifest = Get-Content -LiteralPath (Join-Path $taskRepo 'SOURCE-MANIFEST.json') -Raw | ConvertFrom-Json
+        $taskCommit = $taskManifest.candidate
+        foreach ($taskPath in @('campuslab/diagnosis.py', 'campuslab/chat.py', 'campuslab/web.py')) {
+            $taskEntry = @($taskManifest.files | Where-Object path -EQ $taskPath)
+            if ($taskEntry.Count -ne 1 -or (Get-FileHash -LiteralPath (Join-Path $taskRepo $taskPath) -Algorithm SHA256).Hash -ne $taskEntry[0].sha256) {
+                throw '运行代码与评审包源码清单不符。'
+            }
+        }
+        if ([string]::IsNullOrWhiteSpace($taskCommit)) { throw '评审包缺少候选提交。' }
+    }
+    $taskState = Join-Path $taskRepo 'data\connected'
     New-Item -ItemType Directory -Path $taskState -Force | Out-Null
+    $taskTemporary = Join-Path $taskState 'temp'
+    New-Item -ItemType Directory -Path $taskTemporary -Force | Out-Null
+    $env:TEMP = $taskTemporary
+    $env:TMP = $taskTemporary
     $taskDatabase = Join-Path $taskState 'courses.sqlite'
     $taskReceipt = [ordered]@{
         started_at = [DateTimeOffset]::Now.ToString('o')
