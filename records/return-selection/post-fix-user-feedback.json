@@ -1,0 +1,8 @@
+{
+  "recorded_at_beijing": "2026-11-17T09:13:23.734784+08:00",
+  "source": "Current async question reply in this chat; archive time only, not invented original message time.",
+  "question": "导航已修复。请在 http://127.0.0.1:18776/ 按 Ctrl+F5 刷新，进入 Python 再做一次一键检测，点击右下角“返回选课”。实际结果是什么？此前 A/B 测试不会记作本次新测。",
+  "answer": "已正常返回选课界面",
+  "product_commit": "1f5e84bba713fab272ed2b05caf234020743bc61",
+  "scope": "User reports successful return after reload and one-click detection. No new user A/B trial or private dialogue inferred. Competition acceptance of this core-iteration candidate is not asserted."
+}
