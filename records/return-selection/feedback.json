@@ -1,0 +1,13 @@
+{
+  "recorded_at_beijing": "2026-11-17T08:44:13.472019+08:00",
+  "source": "Current user message in this chat; recorded_at is archive time, not an invented message timestamp.",
+  "exact_user_text": "体验没问题，正常通过，唯一要修改的是检查报告AB之前已多次测验过，本次体验的是一键检测，唯一要修改的是跳转按钮，右下角的返回学习首页应该跳转回选课界面，而不是首页",
+  "actual_experience": "User reports one-click environment detection passed. A/B were tested repeatedly earlier; not a fresh A/B trial this time.",
+  "requested_change": "Only the course result footer action should return to course selection instead of welcome home.",
+  "attachment": {
+    "path": "证据/用户原件/一键检测结果与返回按钮.png",
+    "sha256": "59010cda0146f2b3105fb021499da30de617a94d0c4729fe346f982b4038dde0"
+  },
+  "baseline": "5a978446f6d4d7d77811931544791cc6213c9678",
+  "post_fix_user_feedback": "Not yet supplied; do not infer satisfaction or claim a completed new Prompt chain."
+}

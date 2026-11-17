@@ -543,9 +543,9 @@ function renderGuide(){
     $('collector-stage-hint').textContent=recheck?'这次选择 B，得到 report-B.json。保持同一课程 Python 和内核，原报告不覆盖。':'第一次检测选 A，得到 report-A.json。包内 runtime 只是检测工具，不是课程 Python。';
     updateReportGuide();
     $('report-ready').textContent=state.after?'两份报告已读取，可以进入下一步核对复检结论。':state.before?(recheck?'已保留初检；导入有效 B 后可查看复检结果。':'初检报告已读取，点击“下一步”查看结果。'):'';
-    $('review-hint').textContent=state.after?(state.analysis?.passed?'本次同目标复检全部通过。可以预览分享报告，或返回学习首页。':'复检仍有缺失、不符合或未知。按下面的差异处理，再采集新的复检报告。'):state.analysis?.passed?'初检全部通过。还需保持同一目标采集较晚的 B，才能形成复检结论。':'查看下面的具体差异。由你决定如何处理，再保持同一目标采集复检 B。';
+    $('review-hint').textContent=state.after?(state.analysis?.passed?'本次同目标复检全部通过。可以预览分享报告，或返回选课界面。':'复检仍有缺失、不符合或未知。按下面的差异处理，再采集新的复检报告。'):state.analysis?.passed?'初检全部通过。还需保持同一目标采集较晚的 B，才能形成复检结论。':'查看下面的具体差异。由你决定如何处理，再保持同一目标采集复检 B。';
     $('command-entry-hint').hidden=!$('simple-collector').hidden;
-    next.textContent=index===1?'准备好了，去检测 →':index===2?'下一步：查看结果 →':state.after&&state.analysis?.passed?'返回学习首页':'去采集复检报告 →';
+    next.textContent=index===1?'准备好了，去检测 →':index===2?'下一步：查看结果 →':state.after&&state.analysis?.passed?'返回选课':'去采集复检报告 →';
     next.disabled=(index>0&&!state.task)||(index===2&&(!state.before||!state.analysis));
     if(index===2&&!state.before)$('guide-footnote').textContent='运行后导入有效报告，即可查看检测结果；下载工具不会让环境变成通过。';
     if(localReady()){
@@ -556,7 +556,7 @@ function renderGuide(){
     if(localState.selected){
       $('guide-title').textContent=state.task?.title||titles[index];
       $('review-hint').textContent=state.after?'已对同一目标再次检测，下面分别列出结果与变化。':state.analysis?.passed?'这个环境已满足本次课程检查要求。需要时可再检测一次。':'查看具体差异和处理指引；处理后点击“重新检测当前环境”。';
-      if(index===3)next.textContent='返回学习首页';
+      if(index===3)next.textContent='返回选课';
     }
   }else if(practice){
     next.textContent=['下一步：准备环境 →','下一步：下载并跟做 →','下一步：提交成果 →','返回学习首页'][index];
@@ -579,8 +579,8 @@ $('guide-next').addEventListener('click',()=>{
   if(guided.route==='practice'){
     if(guided.practiceStep===3)showRoute('home');else showRoute('practice',guided.practiceStep+1);
   }else if(guided.courseStep===3){
-    if(localState.selected){showRoute('home');return;}
-    if(state.after&&state.analysis?.passed)showRoute('home');
+    if(localState.selected){showRoute('selection');return;}
+    if(state.after&&state.analysis?.passed)showRoute('selection');
     else{$('report-stage').value='B';$('command').textContent='';$('report-files').value='';showRoute('course',2);}
   }else showRoute('course',guided.courseStep+1);
 });

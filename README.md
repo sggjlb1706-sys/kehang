@@ -1,5 +1,7 @@
 # 课航
 
+2026-11-17 导航修复：课程检测结果页右下角已改为“返回选课”，回到8项课程的选课界面。[修复与本人反馈范围](docs/返回选课修复.md)。本次交付位于工作区 `交付/课航返回选课修复-20261117-01`；11月16日材料保留其原候选，当前候选与包以本次 CANDIDATE.json 和独立报告为准。
+
 课程环境准备、Notebook + SQLite 连续实训与教师工作台。2026-11-16 起功能冻结。
 
 当前课程为 **8 项**：Python、Node.js/npm、Java/JDK、Notebook/数据分析、SQLite、PyTorch CPU、PyTorch GPU、虚拟机/Linux。**6 份拓展指南**：DSH 桌面、DSH CLI/Web、DeepSeek API、AI 网页与客户端、本地模型工具、课航 AI 连接帮助。指南直接阅读，无检测、报告或复检前置。
